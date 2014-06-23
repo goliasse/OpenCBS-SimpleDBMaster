@@ -8699,9 +8699,230 @@ namespace OpenCBS.GUI.Clients
         _fixedDepositProductHoldings.OpeningAccountingOfficer = cbAccountingOfficer.SelectedItem.ToString();
 
         _fixedDepositProductHoldings.OpenDate = DateTime.Today;
+        _fixedDepositProductHoldings.InitialAmountPaymentMethod = cbInitialAmountPaymentMethod.SelectedItem.ToString();
+
+
         
         
+
+        }
+
+        private void btnAddCurrentAccountProduct_Click(object sender, EventArgs e)
+        {
+            CurrentAccountProductHoldings _currentAccountProductHoldings = new CurrentAccountProductHoldings();
+            
+
+                  _currentAccountProductHoldings.ClientId = _client.Id;
+            if (_client is Person)
+                _currentAccountProductHoldings.ClientType = "Person";
+            if (_client is Village)
+                _currentAccountProductHoldings.ClientType = "Village";
+            if (_client is Group)
+                _currentAccountProductHoldings.ClientType = "Group";
+            if (_client is Corporate)
+                _currentAccountProductHoldings.ClientType = "Corporate";
+
+            _currentAccountProductHoldings.InitialAmount = Convert.ToDouble(tbCurrentInitialAmount.Text);
+
+            //BranchCode(_client.Branch.Code)/ProductCode(will be fetched from database)/ClientId(_client.Id)/ProductHoldingId(Will be fetched from database after insertion)
+            _currentAccountProductHoldings.CurrentAccountContractCode = _client.Branch.Code + "/" + _client.Id;
+
+            //Fetch the product id from database CurrentAccountProduct name will be provided
+            // _currentAccountProductHoldings.CurrentAccountProductId { get; set; }
+
+
+            if(rbRateEntryFees.Checked == true)
+                _currentAccountProductHoldings.EntryFeesType = "Rate";
+            else
+                _currentAccountProductHoldings.EntryFeesType = "Flat";
+
+            _currentAccountProductHoldings.EntryFees = Convert.ToDouble(tbEntryFees.Text);
+
+            if (rbRateReopenFees.Checked == true)
+                _currentAccountProductHoldings.ReopenFeesType = "Rate";
+            else
+                _currentAccountProductHoldings.ReopenFeesType = "Flat";
+
+            _currentAccountProductHoldings.ReopenFees = Convert.ToDouble(tbEntryFees.Text);
+
+            if (rbRateCloseFees.Checked == true)
+                _currentAccountProductHoldings.ClosingFeesType = "Rate";
+            else
+                _currentAccountProductHoldings.ClosingFeesType = "Flat";
+
+            _currentAccountProductHoldings.ClosingFees = Convert.ToDouble(tbEntryFees.Text);
+
+            if (rbRateManagementFees.Checked == true)
+                _currentAccountProductHoldings.ManagementFeesType = "Rate";
+            else
+                _currentAccountProductHoldings.ManagementFeesType = "Flat";
+
+            _currentAccountProductHoldings.ManagementFees = Convert.ToDouble(tbEntryFees.Text);
+            _currentAccountProductHoldings.ManagementFeesFrequency = cbManagementFeeFreq.SelectedItem.ToString();
+
+            if (rbRateOverdraftFees.Checked == true)
+                _currentAccountProductHoldings.OverdraftFeesType = "Rate";
+            else
+                _currentAccountProductHoldings.OverdraftFeesType = "Flat";
+
+            _currentAccountProductHoldings.OverdraftFees = Convert.ToDouble(tbEntryFees.Text);
+
+            _currentAccountProductHoldings.Status = "Opened";
+
+            _currentAccountProductHoldings.Comment = tbCurrentAccountComment.Text;
+            _currentAccountProductHoldings.OpeningAccountingOfficer = cbCurrentAccountingOfficer.SelectedItem.ToString();
+
+            _currentAccountProductHoldings.OpenDate = DateTime.Today;
+            _currentAccountProductHoldings.InitialAmountPaymentMethod = cbInitialAmountPaymentMethod.SelectedItem.ToString();
+        }
+
         
+
+        private void rbFlatEntryFees_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton _rbFlat = rbFlatEntryFees;
+            RadioButton _rbRate = rbRateEntryFees;
+            if (_rbFlat.Checked == true)
+            {
+                _rbRate.Checked = false;
+            }
+            else
+            {
+                _rbRate.Checked = true;
+            }
+        }
+
+        
+
+        private void rbRateEntryFees_CheckedChanged_1(object sender, EventArgs e)
+        {
+            RadioButton _rbFlat = rbFlatEntryFees;
+            RadioButton _rbRate = rbRateEntryFees;
+            if (_rbRate.Checked == true)
+            {
+                _rbFlat.Checked = false;
+            }
+            else
+            {
+                _rbFlat.Checked = true;
+            }
+        }
+
+        private void rbFlatReopenFees_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton _rbFlat = rbFlatReopenFees;
+            RadioButton _rbRate = rbRateReopenFees;
+            if (_rbFlat.Checked == true)
+            {
+                _rbRate.Checked = false;
+            }
+            else
+            {
+                _rbRate.Checked = true;
+            }
+        }
+
+        private void rbRateReopenFees_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton _rbFlat = rbFlatReopenFees;
+            RadioButton _rbRate = rbRateReopenFees;
+            if (_rbRate.Checked == true)
+            {
+                _rbFlat.Checked = false;
+            }
+            else
+            {
+                _rbFlat.Checked = true;
+            }
+        }
+
+        private void rbFlatCloseFees_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton _rbFlat = rbFlatCloseFees;
+            RadioButton _rbRate = rbRateCloseFees;
+            if (_rbFlat.Checked == true)
+            {
+                _rbRate.Checked = false;
+            }
+            else
+            {
+                _rbRate.Checked = true;
+            }
+        }
+
+        private void rbRateCloseFees_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton _rbFlat = rbFlatCloseFees;
+            RadioButton _rbRate = rbRateCloseFees;
+            if (_rbRate.Checked == true)
+            {
+                _rbFlat.Checked = false;
+            }
+            else
+            {
+                _rbFlat.Checked = true;
+            }
+        }
+
+        private void rbFlatManagementFees_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton _rbFlat = rbFlatManagementFees;
+            RadioButton _rbRate = rbRateManagementFees;
+            if (_rbFlat.Checked == true)
+            {
+                _rbRate.Checked = false;
+            }
+            else
+            {
+                _rbRate.Checked = true;
+            }
+        }
+
+        private void rbRateManagementFees_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton _rbFlat = rbFlatManagementFees;
+            RadioButton _rbRate = rbRateManagementFees;
+            if (_rbRate.Checked == true)
+            {
+                _rbFlat.Checked = false;
+            }
+            else
+            {
+                _rbFlat.Checked = true;
+            }
+        }
+
+        private void gtOverdraftFees_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbFlatOverdraftFees_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton _rbFlat = rbFlatOverdraftFees;
+            RadioButton _rbRate = rbRateOverdraftFees;
+            if (_rbFlat.Checked == true)
+            {
+                _rbRate.Checked = false;
+            }
+            else
+            {
+                _rbRate.Checked = true;
+            }
+        }
+
+        private void rbRateOverdraftFees_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton _rbFlat = rbFlatOverdraftFees;
+            RadioButton _rbRate = rbRateOverdraftFees;
+            if (_rbRate.Checked == true)
+            {
+                _rbFlat.Checked = false;
+            }
+            else
+            {
+                _rbFlat.Checked = true;
+            }
 
         }
         

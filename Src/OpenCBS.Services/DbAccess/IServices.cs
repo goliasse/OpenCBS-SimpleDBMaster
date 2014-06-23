@@ -66,6 +66,8 @@ namespace OpenCBS.Services
         PaymentMethodServices GetPaymentMethodServices();
         MenuItemServices GetMenuItemServices();
         FixedDepositProductService GetFixedDepositProductService();
+        FixedDepositProductHoldingServices GetFixedDepositProductHoldingServices();
+        CurrentAccountProductHoldingServices GetCurrentAccountProductHoldingServices();
         CurrentAccountProductService GetCurrentAccountProductService();
 
         void SuppressAllRemotingInfos(string pComputerName, string pLoginName);

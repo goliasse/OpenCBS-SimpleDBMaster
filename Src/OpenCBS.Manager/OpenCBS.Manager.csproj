@@ -174,7 +174,9 @@
     <Compile Include="CollateralProductManager.cs" />
     <Compile Include="MenuItemManager.cs" />
     <Compile Include="PaymentMethodManager.cs" />
+    <Compile Include="Products\CurrentAccountProductHoldingManager.cs" />
     <Compile Include="Products\CurrentAccountProductManager.cs" />
+    <Compile Include="Products\FixedDepositProductHoldingManager.cs" />
     <Compile Include="Products\FixedDepositProductManager.cs" />
     <Compile Include="TellerManager.cs" />
     <Compile Include="Currencies\ExchangeRateManager.cs" />

@@ -27,5 +27,12 @@ namespace OpenCBS.CoreDomain.Products
         public string Status { get; set; }
         public int PreMatured { get; set; }
         public string Comment { get; set; }
+        public double EffectiveInterestRate { get; set; }
+        public double EffectiveDepositPeriod { get; set; }
+        public double FinalAmount { get; set; }
+        public double finalInterest { get; set; }
+        public double FinalPenality { get; set; }
+        public string InitialAmountPaymentMethod { get; set; }
+        public string FinalAmountPaymentMethod { get; set; }
     }
 }

@@ -204,7 +204,9 @@
     <Compile Include="Accounting\AccountingServices.cs" />
     <Compile Include="BranchService.cs" />
     <Compile Include="CollateralProductServices.cs" />
+    <Compile Include="CurrentAccountProductHoldingServices.cs" />
     <Compile Include="CurrentAccountProductService.cs" />
+    <Compile Include="FixedDepositProductHoldingServices.cs" />
     <Compile Include="FixedDepositProductService.cs" />
     <Compile Include="MenuItemServices.cs" />
     <Compile Include="PaymentMethodServices.cs" />

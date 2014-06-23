@@ -635,6 +635,10 @@ namespace OpenCBS.GUI.Clients
             this.menuPendingSavingEvents = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemConfirmPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCancelPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
+            this.label22 = new System.Windows.Forms.Label();
+            this.cbInitialAmountPaymentMethod = new System.Windows.Forms.ComboBox();
+            this.cbCAInitialAmountPaymentMethod = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).BeginInit();
             this.splitContainer10.Panel1.SuspendLayout();
             this.splitContainer10.Panel2.SuspendLayout();
@@ -4096,6 +4100,8 @@ namespace OpenCBS.GUI.Clients
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.cbInitialAmountPaymentMethod);
+            this.groupBox3.Controls.Add(this.label22);
             this.groupBox3.Controls.Add(this.tbComment);
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.cbAccountingOfficer);
@@ -4219,7 +4225,6 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.tbPenality, "tbPenality");
             this.tbPenality.Name = "tbPenality";
-            
             // 
             // label15
             // 
@@ -4307,6 +4312,8 @@ namespace OpenCBS.GUI.Clients
             // 
             // tabPageCurrentAccount
             // 
+            this.tabPageCurrentAccount.Controls.Add(this.cbCAInitialAmountPaymentMethod);
+            this.tabPageCurrentAccount.Controls.Add(this.label23);
             this.tabPageCurrentAccount.Controls.Add(this.btnAddCurrentAccountProduct);
             this.tabPageCurrentAccount.Controls.Add(this.gtOverdraftFees);
             this.tabPageCurrentAccount.Controls.Add(this.gbReopenFees);
@@ -4332,6 +4339,7 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.btnAddCurrentAccountProduct, "btnAddCurrentAccountProduct");
             this.btnAddCurrentAccountProduct.Name = "btnAddCurrentAccountProduct";
             this.btnAddCurrentAccountProduct.UseVisualStyleBackColor = true;
+            this.btnAddCurrentAccountProduct.Click += new System.EventHandler(this.btnAddCurrentAccountProduct_Click);
             // 
             // gtOverdraftFees
             // 
@@ -4343,11 +4351,13 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.gtOverdraftFees, "gtOverdraftFees");
             this.gtOverdraftFees.Name = "gtOverdraftFees";
             this.gtOverdraftFees.TabStop = false;
+            this.gtOverdraftFees.Enter += new System.EventHandler(this.gtOverdraftFees_Enter);
             // 
             // rbRateOverdraftFees
             // 
             resources.ApplyResources(this.rbRateOverdraftFees, "rbRateOverdraftFees");
             this.rbRateOverdraftFees.Name = "rbRateOverdraftFees";
+            this.rbRateOverdraftFees.CheckedChanged += new System.EventHandler(this.rbRateOverdraftFees_CheckedChanged);
             // 
             // rbFlatOverdraftFees
             // 
@@ -4355,6 +4365,7 @@ namespace OpenCBS.GUI.Clients
             this.rbFlatOverdraftFees.Checked = true;
             this.rbFlatOverdraftFees.Name = "rbFlatOverdraftFees";
             this.rbFlatOverdraftFees.TabStop = true;
+            this.rbFlatOverdraftFees.CheckedChanged += new System.EventHandler(this.rbFlatOverdraftFees_CheckedChanged);
             // 
             // lbOverdraftFeesType
             // 
@@ -4386,6 +4397,7 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.rbRateReopenFees, "rbRateReopenFees");
             this.rbRateReopenFees.Name = "rbRateReopenFees";
+            this.rbRateReopenFees.CheckedChanged += new System.EventHandler(this.rbRateReopenFees_CheckedChanged);
             // 
             // rbFlatReopenFees
             // 
@@ -4393,6 +4405,7 @@ namespace OpenCBS.GUI.Clients
             this.rbFlatReopenFees.Checked = true;
             this.rbFlatReopenFees.Name = "rbFlatReopenFees";
             this.rbFlatReopenFees.TabStop = true;
+            this.rbFlatReopenFees.CheckedChanged += new System.EventHandler(this.rbFlatReopenFees_CheckedChanged);
             // 
             // lbReopenFeesType
             // 
@@ -4438,6 +4451,7 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.rbRateManagementFees, "rbRateManagementFees");
             this.rbRateManagementFees.Name = "rbRateManagementFees";
+            this.rbRateManagementFees.CheckedChanged += new System.EventHandler(this.rbRateManagementFees_CheckedChanged);
             // 
             // rbFlatManagementFees
             // 
@@ -4445,6 +4459,7 @@ namespace OpenCBS.GUI.Clients
             this.rbFlatManagementFees.Checked = true;
             this.rbFlatManagementFees.Name = "rbFlatManagementFees";
             this.rbFlatManagementFees.TabStop = true;
+            this.rbFlatManagementFees.CheckedChanged += new System.EventHandler(this.rbFlatManagementFees_CheckedChanged);
             // 
             // lbManagementFeesType
             // 
@@ -4476,6 +4491,7 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.rbRateCloseFees, "rbRateCloseFees");
             this.rbRateCloseFees.Name = "rbRateCloseFees";
+            this.rbRateCloseFees.CheckedChanged += new System.EventHandler(this.rbRateCloseFees_CheckedChanged);
             // 
             // rbFlatCloseFees
             // 
@@ -4483,6 +4499,7 @@ namespace OpenCBS.GUI.Clients
             this.rbFlatCloseFees.Checked = true;
             this.rbFlatCloseFees.Name = "rbFlatCloseFees";
             this.rbFlatCloseFees.TabStop = true;
+            this.rbFlatCloseFees.CheckedChanged += new System.EventHandler(this.rbFlatCloseFees_CheckedChanged);
             // 
             // lbCloseFeesType
             // 
@@ -4514,6 +4531,7 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.rbRateEntryFees, "rbRateEntryFees");
             this.rbRateEntryFees.Name = "rbRateEntryFees";
+            this.rbRateEntryFees.CheckedChanged += new System.EventHandler(this.rbRateEntryFees_CheckedChanged_1);
             // 
             // rbFlatEntryFees
             // 
@@ -4521,6 +4539,7 @@ namespace OpenCBS.GUI.Clients
             this.rbFlatEntryFees.Checked = true;
             this.rbFlatEntryFees.Name = "rbFlatEntryFees";
             this.rbFlatEntryFees.TabStop = true;
+            this.rbFlatEntryFees.CheckedChanged += new System.EventHandler(this.rbFlatEntryFees_CheckedChanged);
             // 
             // lbEntryFeesType
             // 
@@ -4795,6 +4814,36 @@ namespace OpenCBS.GUI.Clients
             this.menuItemCancelPendingSavingEvent.Name = "menuItemCancelPendingSavingEvent";
             resources.ApplyResources(this.menuItemCancelPendingSavingEvent, "menuItemCancelPendingSavingEvent");
             this.menuItemCancelPendingSavingEvent.Click += new System.EventHandler(this.menuItemCancelPendingSavingEvent_Click);
+            // 
+            // label22
+            // 
+            resources.ApplyResources(this.label22, "label22");
+            this.label22.Name = "label22";
+            // 
+            // cbInitialAmountPaymentMethod
+            // 
+            this.cbInitialAmountPaymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cbInitialAmountPaymentMethod, "cbInitialAmountPaymentMethod");
+            this.cbInitialAmountPaymentMethod.FormattingEnabled = true;
+            this.cbInitialAmountPaymentMethod.Items.AddRange(new object[] {
+            resources.GetString("cbInitialAmountPaymentMethod.Items"),
+            resources.GetString("cbInitialAmountPaymentMethod.Items1")});
+            this.cbInitialAmountPaymentMethod.Name = "cbInitialAmountPaymentMethod";
+            // 
+            // cbCAInitialAmountPaymentMethod
+            // 
+            this.cbCAInitialAmountPaymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cbCAInitialAmountPaymentMethod, "cbCAInitialAmountPaymentMethod");
+            this.cbCAInitialAmountPaymentMethod.FormattingEnabled = true;
+            this.cbCAInitialAmountPaymentMethod.Items.AddRange(new object[] {
+            resources.GetString("cbCAInitialAmountPaymentMethod.Items"),
+            resources.GetString("cbCAInitialAmountPaymentMethod.Items1")});
+            this.cbCAInitialAmountPaymentMethod.Name = "cbCAInitialAmountPaymentMethod";
+            // 
+            // label23
+            // 
+            resources.ApplyResources(this.label23, "label23");
+            this.label23.Name = "label23";
             // 
             // ClientForm
             // 
@@ -5528,5 +5577,9 @@ namespace OpenCBS.GUI.Clients
         private TextBox tbOverdraftFees;
         private Label lbOverdraftFeesMin;
         private Button btnAddCurrentAccountProduct;
+        private ComboBox cbInitialAmountPaymentMethod;
+        private Label label22;
+        private ComboBox cbCAInitialAmountPaymentMethod;
+        private Label label23;
     }
 }
