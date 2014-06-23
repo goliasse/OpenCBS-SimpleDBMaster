@@ -46,3 +46,50 @@ CREATE TABLE [dbo].[FixedDepositProductsClientTypes](
 ) ON [PRIMARY]
 END
 GO
+
+BEGIN
+CREATE TABLE [dbo].[FixedDepositProductHoldings](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[client_id] [int] NULL,
+	[client_type] [char](1) NULL,
+	[fixed_deposit_contract_code] [nvarchar](50) NOT NULL,
+	[initial_amount] [money] NULL,
+	[interest_rate] [float] NULL,
+	[maturity_period] [int] NULL,
+	[interest_calculation_frequency] [nvarchar](50) NOT NULL,
+	[penality_type] [nvarchar](50) NOT NULL,
+	[penality] [float] NULL,
+	[opening_accounting_officer] [nvarchar](50) NOT NULL,
+	[closing_accounting_officer] [nvarchar](50) NULL,
+	[open_date] [date] NOT NULL,
+	[close_date] [date] NULL,
+	[status] [nvarchar](50) NULL,
+	[pre_matured] [bit] NOT NULL,
+	[comment] [nvarchar](50) NULL,
+	[fixed_deposit_product_id] [int] NOT NULL,
+	[effective_interest_rate] [float] NULL,
+	[effective_deposit_period] [float] NULL,
+	[final_amount] [money] NULL,
+	[final_interest] [money] NULL,
+	[initial_amount_payment_method] [nvarchar](50) NULL,
+	[final_amount_payment_method] [nvarchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[FixedDepositProductHoldings]  WITH CHECK ADD FOREIGN KEY([fixed_deposit_product_id])
+REFERENCES [dbo].[FixedDepositProducts] ([id])
+
+END
+GO
+
+
+
+
