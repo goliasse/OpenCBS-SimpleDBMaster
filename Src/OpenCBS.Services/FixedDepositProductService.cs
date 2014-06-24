@@ -33,6 +33,19 @@ namespace OpenCBS.Services
 
         }
 
+        public IFixedDepositProduct FetchProduct(int productId)
+        {
+            return _fixedDepositProductManager.FetchProduct(productId);
+        }
+         public void UpdateFixedDepositProduct(FixedDepositProduct product,int productId)
+         {
+             _fixedDepositProductManager.UpdateFixedDepositProduct(product, productId);
+         }
+         public List<IFixedDepositProduct> FetchProduct(bool showAlsoDeleted)
+         {
+             return _fixedDepositProductManager.FetchProduct(showAlsoDeleted);
+         }
+
         private void ValidateProduct(IFixedDepositProduct fixedDepositProduct)
         {
         }

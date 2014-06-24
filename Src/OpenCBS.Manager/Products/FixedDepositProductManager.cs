@@ -100,9 +100,9 @@ namespace OpenCBS.Manager.Products
 
 
 
-        public List<IFixedDepositProduct> SelectProducts(bool showAlsoDeleted, OClientTypes clientType)
+        public IFixedDepositProduct FetchProduct(int productId)
         {
-            List<IFixedDepositProduct> fixedDepositProductList = new List<IFixedDepositProduct>();
+            
 
             string q = @"SELECT
             [product_name]
@@ -119,14 +119,97 @@ namespace OpenCBS.Manager.Products
            ,[penality_type]
            ,[penality_min]
            ,[penality_max]
-            FROM [dbo].[FixedDepositProducts]";
+            FROM [dbo].[FixedDepositProducts]
+            WHERE id = @productId";
                                       
+
+            
+           
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@productId", productId);
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+                    if (r == null || r.Empty) return new FixedDepositProduct();
+                    r.Read();
+                    
+                        FixedDepositProduct fixedDepositProduct = new FixedDepositProduct();
+                        
+                        return (FixedDepositProduct)GetProduct(r);
+                        
+                      
+                    
+                }
+            }
+           
+            
+        }
+
+
+
+
+        public void UpdateFixedDepositProduct(FixedDepositProduct product, int productId)
+        {
+            string q = @"UPDATE [FixedDepositProducts] SET 
+            [product_name] = @productName
+           ,[product_code] = @productCode
+           ,[client_type] = @clientType
+           ,[product_currency] = @productCurrency
+           ,[initial_amount_min] = @initialAmountMin
+           ,[initial_amount_max] = @initialAmountMax
+           ,[interest_rate_min] = @interestRateMin
+           ,[interest_rate_max] = @interestRateMax
+           ,[maturity_period_min] = @maturityPeriodMin
+           ,[maturity_period_max] = @maturityPeriodMax
+           ,[interest_calculation_frequency] = @interestCalculationFrequency
+           ,[penality_type] = @penalityType
+           ,[penality_min] = @penalityMin
+           ,[penality_max] = @penalityMax
+           ,[deleted] = @deleted
+WHERE id = @productId";
+
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@productId", productId);
+                SetProduct(c, product);
+                c.ExecuteNonQuery();
+            }
+        }
+
+        public List<IFixedDepositProduct> FetchProduct(bool showAlsoDeleted)
+        {
+            List<IFixedDepositProduct> fixedDepositProductList = new List<IFixedDepositProduct>();
+
+
+            string q = @"SELECT
+            [id]
+           ,[product_name]
+           ,[product_code]
+           ,[client_type]
+           ,[product_currency]
+           ,[initial_amount_min]
+           ,[initial_amount_max]
+           ,[interest_rate_min]
+           ,[interest_rate_max]
+           ,[maturity_period_min]
+           ,[maturity_period_max]
+           ,[interest_calculation_frequency]
+           ,[penality_type]
+           ,[penality_min]
+           ,[penality_max]
+            FROM [dbo].[FixedDepositProducts]";
+
 
             if (!showAlsoDeleted)
                 q += " WHERE deleted = 0";
             else
                 q += " WHERE deleted = 1";
-           
+
+
 
             using (SqlConnection conn = GetConnection())
             using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
@@ -136,14 +219,22 @@ namespace OpenCBS.Manager.Products
                     if (r == null || r.Empty) return new List<IFixedDepositProduct>();
                     while (r.Read())
                     {
-                        IFixedDepositProduct pack;
 
-                      
+
+                        IFixedDepositProduct product = FetchProduct(Convert.ToInt32(r.GetInt("id")));
+
+                        fixedDepositProductList.Add(product);
                     }
                 }
             }
-           
+
             return fixedDepositProductList;
+        }
+
+        public FixedDepositProduct GetProduct(OpenCbsReader r)
+        {
+            FixedDepositProduct fixedDepositProduct = new FixedDepositProduct();
+            return fixedDepositProduct;
         }
 
 

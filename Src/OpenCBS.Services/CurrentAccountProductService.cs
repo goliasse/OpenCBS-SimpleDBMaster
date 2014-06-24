@@ -24,7 +24,7 @@ namespace OpenCBS.Services
             _currentAccountProductManager = new CurrentAccountProductManager(user);
 		}
 
-        public void SaveFixedDepositProduct(ICurrentAccountProduct currentAccountProduct)
+        public void SaveCurrentAccountProduct(ICurrentAccountProduct currentAccountProduct)
         {
 
             ValidateProduct(currentAccountProduct);
@@ -32,6 +32,19 @@ namespace OpenCBS.Services
 
 
         }
+
+        public void UpdateCurrentAccountProduct(CurrentAccountProduct product, int productId)
+        {
+            _currentAccountProductManager.UpdateCurrentAccountProduct(product, productId);
+        }
+          public CurrentAccountProduct FetchProduct(int currentAccountProductId)
+          {
+              return _currentAccountProductManager.FetchProduct(currentAccountProductId);
+          }
+          public List<CurrentAccountProduct> FetchProduct(bool showAlsoDeleted, int currentAccountProductId)
+          {
+              return _currentAccountProductManager.FetchProduct(showAlsoDeleted, currentAccountProductId);
+          }
 
         private void ValidateProduct(ICurrentAccountProduct fixedDepositProduct)
         {

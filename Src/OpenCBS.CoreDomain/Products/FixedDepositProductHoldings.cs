@@ -30,7 +30,7 @@ namespace OpenCBS.CoreDomain.Products
         public double EffectiveInterestRate { get; set; }
         public double EffectiveDepositPeriod { get; set; }
         public double FinalAmount { get; set; }
-        public double finalInterest { get; set; }
+        public double FinalInterest { get; set; }
         public double FinalPenality { get; set; }
         public string InitialAmountPaymentMethod { get; set; }
         public string FinalAmountPaymentMethod { get; set; }

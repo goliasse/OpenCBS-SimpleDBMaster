@@ -25,7 +25,7 @@ namespace OpenCBS.Services
             _fixedDepositProductHoldingManager = new FixedDepositProductHoldingManager(user);
 		}
 
-        public void SaveFixedDepositProduct(FixedDepositProductHoldingManager fixedDepositProductHolding)
+        public void SaveFixedDepositProductHolding(FixedDepositProductHoldings fixedDepositProductHolding)
         {
 
             ValidateProduct(fixedDepositProductHolding);
@@ -34,9 +34,24 @@ namespace OpenCBS.Services
 
         }
 
-        private void ValidateProduct(FixedDepositProductHoldingManager fixedDepositProduct)
+        public void UpdateFixedDepositProductHolding(FixedDepositProductHoldings product, int productId)
+        {
+            _fixedDepositProductHoldingManager.UpdateFixedDepositProductHolding(product, productId);
+        }
+        public FixedDepositProductHoldings FetchProduct(int productId)
+        {
+            return _fixedDepositProductHoldingManager.FetchProduct(productId);
+        }
+        public List<FixedDepositProductHoldings> FetchProduct(bool showAlsoDeleted)
+        {
+            return _fixedDepositProductHoldingManager.FetchProduct(showAlsoDeleted);
+        }
+
+        private void ValidateProduct(FixedDepositProductHoldings fixedDepositProductHolding)
         {
         }
+
+
 
     }
 }
