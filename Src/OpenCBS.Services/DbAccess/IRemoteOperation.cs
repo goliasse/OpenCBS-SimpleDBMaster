@@ -64,6 +64,10 @@ namespace OpenCBS.Services
         TellerServices GetTellerServices(User user);
         PaymentMethodServices GetPaymentMethodServices(User user);
         MenuItemServices GetMenuItemServices(User user);
+        FixedDepositProductService GetFixedDepositProductService(User user);
+        FixedDepositProductHoldingServices GetFixedDepositProductHoldingServices(User user);
+        CurrentAccountProductHoldingServices GetCurrentAccountProductHoldingServices(User user);
+        CurrentAccountProductService GetCurrentAccountProductService(User user);
         
         bool TestRemoting();
 

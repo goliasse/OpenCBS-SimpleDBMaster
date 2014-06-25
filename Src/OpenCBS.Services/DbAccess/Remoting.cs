@@ -342,12 +342,22 @@ namespace OpenCBS.Services
 
         public FixedDepositProductService GetFixedDepositProductService()
         {
-            return new FixedDepositProductService(CurrentUser);
+            return _remoteOperation.GetFixedDepositProductService(CurrentUser);
         }
 
         public CurrentAccountProductService GetCurrentAccountProductService()
         {
-            return new CurrentAccountProductService(CurrentUser);
+            return _remoteOperation.GetCurrentAccountProductService(CurrentUser);
+        }
+
+        public CurrentAccountProductHoldingServices GetCurrentAccountProductHoldingServices()
+        {
+            return _remoteOperation.GetCurrentAccountProductHoldingServices(CurrentUser);
+        }
+
+        public FixedDepositProductHoldingServices GetFixedDepositProductHoldingServices()
+        {
+            return _remoteOperation.GetFixedDepositProductHoldingServices(CurrentUser);
         }
 
         #region IServices Members

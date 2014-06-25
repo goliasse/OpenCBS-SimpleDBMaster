@@ -154,20 +154,156 @@ WHERE id = @productId";
 
          public List<CurrentAccountProductHoldings> FetchProduct(bool showAlsoDeleted, int productId)
          {
-             List<CurrentAccountProductHoldings> currentAccountProductList = new List<CurrentAccountProductHoldings>();
-             return currentAccountProductList;
+             List<CurrentAccountProductHoldings> currentAccountProductHoldingsList = new List<CurrentAccountProductHoldings>();
+
+             string q = @"SELECT 
+[id], 
+[client_id],
+[client_type],
+[current_account_contract_code],
+[current_account_productId],
+[initial_amount],
+[opening_accounting_officer],
+[closing_accounting_officer],
+[open_date],
+[close_date],
+[status],
+[comment],
+[entry_fees],
+[reopen_fees],
+[closing_fees],
+[management_fees],
+[overdraft_fees],
+[entry_fees_type],
+[reopen_fees_type],
+[closing_fees_type],
+[management_fees_type],
+[overdraft_fees_type],
+[management_fees_frequency],
+[initial_amount_payment_method]
+ FROM CurrentAccountProductHolding";
+
+             if (!showAlsoDeleted)
+                 q += " WHERE deleted = 0";
+             else
+                 q += " WHERE deleted = 1";
+
+             using (SqlConnection conn = GetConnection())
+             using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+             {
+
+
+                 using (OpenCbsReader r = c.ExecuteReader())
+                 {
+                     if (r == null || r.Empty) return null;
+
+                     while (r.Read())
+                     {
+
+                         CurrentAccountProductHoldings product = FetchProduct(Convert.ToInt32(r.GetInt("id")));
+
+                         currentAccountProductHoldingsList.Add(product);
+                     }
+                 }
+             }
+
+             return currentAccountProductHoldingsList;
 
          }
          public CurrentAccountProductHoldings FetchProduct(int productId)
          {
-             CurrentAccountProductHoldings currentAccountProductHolding = new CurrentAccountProductHoldings();
-             return currentAccountProductHolding;
+             const string q = @"SELECT
+[id], 
+[client_id],
+[client_type],
+[current_account_contract_code],
+[current_account_productId],
+[initial_amount],
+[opening_accounting_officer],
+[closing_accounting_officer],
+[open_date],
+[close_date],
+[status],
+[comment],
+[entry_fees],
+[reopen_fees],
+[closing_fees],
+[management_fees],
+[overdraft_fees],
+[entry_fees_type],
+[reopen_fees_type],
+[closing_fees_type],
+[management_fees_type],
+[overdraft_fees_type],
+[management_fees_frequency],
+[initial_amount_payment_method]
+ FROM CurrentAccountProductHolding WHERE id = @id";
+
+
+             using (SqlConnection conn = GetConnection())
+             using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+             {
+                 c.AddParam("@id", productId);
+
+                 using (OpenCbsReader r = c.ExecuteReader())
+                 {
+                     if (r == null || r.Empty) return null;
+
+                     r.Read();
+                     return (CurrentAccountProductHoldings)GetProduct(r);
+                 }
+             }
          }
 
          public CurrentAccountProductHoldings GetProduct(OpenCbsReader r)
          {
              CurrentAccountProductHoldings currentAccountProductHolding = new CurrentAccountProductHoldings();
-             return currentAccountProductHolding;
+currentAccountProductHolding.Id =r.GetInt("id");
+
+currentAccountProductHolding.ClientId =r.GetInt("client_id");
+
+currentAccountProductHolding.ClientType =r.GetString("client_type");
+
+currentAccountProductHolding.CurrentAccountContractCode =r.GetMoney("current_account_contract_code");
+
+currentAccountProductHolding.CurrentAccountProductId =r.GetMoney("current_account_productId");
+
+currentAccountProductHolding.InitialAmount =r.GetMoney("initial_amount");
+
+currentAccountProductHolding.OpeningAccountingOfficer =r.GetMoney("opening_accounting_officer");
+
+currentAccountProductHolding.ClosingAccountingOfficer =r.GetMoney("closing_accounting_officer");
+currentAccountProductHolding.OpenDate=r.GetMoney("open_date");
+
+currentAccountProductHolding.CloseDate =r.GetMoney("close_date");
+
+currentAccountProductHolding.Status  =r.GetMoney("status");
+
+currentAccountProductHolding.Comment =r.GetMoney("comment");
+
+currentAccountProductHolding.EntryFees =r.GetMoney("entry_fees");
+
+currentAccountProductHolding.ReopenFees =r.GetMoney("reopen_fees");
+currentAccountProductHolding.ClosingFees =r.GetMoney("closing_fees");
+
+currentAccountProductHolding.ManagementFees =r.GetMoney("management_fees");
+
+currentAccountProductHolding.OverdraftFees =r.GetMoney("overdraft_fees");
+
+currentAccountProductHolding.EntryFeesType =r.GetMoney("entry_fees_type");
+currentAccountProductHolding.ReopenFeesType =r.GetMoney("reopen_fees_type");
+
+currentAccountProductHolding.ClosingFeesType =r.GetMoney("closing_fees_type");
+
+currentAccountProductHolding.ManagementFeesType =r.GetMoney("management_fees_type");
+
+currentAccountProductHolding.OverdraftFeesType =r.GetMoney("overdraft_fees_type");
+
+currentAccountProductHolding.ManagementFeesFrequency =r.GetMoney("management_fees_frequency");
+
+currentAccountProductHolding.InitialAmountPaymentMethod =r.GetMoney("initial_amount_payment_method");
+
+return currentAccountProductHolding;
          }
 
 

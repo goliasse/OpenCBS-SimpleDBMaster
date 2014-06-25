@@ -90,6 +90,76 @@ REFERENCES [dbo].[FixedDepositProducts] ([id])
 END
 GO
 
+Begin
+
+USE [Test]
+CREATE TABLE [dbo].[CurrentAccountProductHoldings](
+    [id] [int] IDENTITY(1,1) NOT NUll Primary Key,
+    [client_id] [int] NULL,
+    [client_type] [char](1) NULL,
+    [current_account_contract_code] [nvarchar](50) NOT NULL,
+    [current_account_product_id] [int] NOT NULL,
+    [initial_amount] [money] NULL,
+    [opening_accounting_officer] [nvarchar](50) NOT NULL,
+    [closing_accounting_officer] [nvarchar](50) NULL,
+    [open_date] [date] NOT NULL,
+    [close_date] [date] NULL,
+    [status] [nvarchar](50) NULL,
+    [comment] [nvarchar](50) NULL,
+    [entry_fees] [money] NULL,
+     [reopen_fees] [money] NULL,
+     [closing_fees] [money] NULL,
+     [management_fees] [money] NULL,
+     [overdraft_fees] [money] NULL,
+     [entry_fees_type] [nvarchar](50) NULL,
+     [reopen_fees_type] [nvarchar](50) NULL,
+     [closing_fees_type] [nvarchar](50) NULL,
+     [management_fees_type] [nvarchar](50) NULL,
+     [overdraft_fees_type] [nvarchar](50) NULL,
+     [management_fees_frequency] [nvarchar](50) NOT NULL,
+     [initial_amount_payment_method] [nvarchar](50) NOT NULL)
+
+ENd
+GO
+
+Begin
+
+CREATE TABLE [dbo].[CurrentAccountProduct](
+    [id] [int] IDENTITY(1,1) NOT NUll Primary Key,
+    [current_account_product_id] [int] NOT NULL,
+    [delete] [int] NULL,
+    [current_account_product_name] [nvarchar](50) NOT NULL,
+    [current_account_product_code] [nvarchar](50) NOT NULL,
+      [client_type] [char](1) NULL,
+      [currency] [nvarchar](50) NULL,
+      [initial_amount_min] [money] NULL,
+      [initial_amount_max] [money] NULL,
+      [balance_min] [money] NULL,
+      [balance_max] [money] NULL,
+      [entry_fees_type] [nvarchar](50) NULL,
+     [reopen_fees_type] [nvarchar](50) NULL,
+     [closing_fees_type] [nvarchar](50) NULL,
+     [management_fees_type] [nvarchar](50) NULL,
+     [overdraft_fees_type] [nvarchar](50) NULL,
+     [entry_fees_min] [money] NULL,
+     [reopen_fees_min] [money] NULL,
+     [closing_fees_min] [money] NULL,
+     [management_fees_min] [money] NULL,
+     [overdraft_min] [money] NULL,
+     [entry_fees_max] [money] NULL,
+     [reopen_fees_max] [money] NULL,
+     [closing_fees_max] [money] NULL,
+     [management_fees_max] [money] NULL,
+     [overdraft_max] [money] NULL,
+      [entry_fees_value] [money] NULL,
+     [reopen_fees_value] [money] NULL,
+     [closing_fees_value] [money] NULL,
+     [management_fees_value] [money] NULL,
+     [overdraft_value] [money] NULL,
+[management_fees_frequency] [nvarchar](50) NOT NULL)
+
+End
+Go
 
 
 

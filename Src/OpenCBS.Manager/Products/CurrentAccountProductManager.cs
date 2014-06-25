@@ -300,8 +300,74 @@ WHERE id = @productId";
         public CurrentAccountProduct GetProduct(OpenCbsReader r)
 {
 CurrentAccountProduct currentAccountProduct = new CurrentAccountProduct();
+
+            currentAccountProduct.CurrentAccountProductId = r.GetMoney("id"); 
+currentAccountProduct.Delete = r.GetMoney("delete");
+currentAccountProduct.CurrentAccountProductName = r.GetMoney("current_account_product_name");
+currentAccountProduct.CurrentAccountProductCode = r.GetMoney("current_account_product_code");
+currentAccountProduct.ClientType = r.GetMoney("client_type");
+currentAccountProduct.Currency = r.GetMoney("currency");
+
+currentAccountProduct.InitialAmountMin = r.GetMoney("initial_amount_min");
+
+currentAccountProduct.InitialAmountMax = r.GetMoney("initial_amount_max");
+	
+currentAccountProduct.BalanceMin = r.GetMoney("balance_min");
+
+currentAccountProduct.BalanceMax = r.GetMoney("balance_max");
+currentAccountProduct.EntryFeesType =	r.GetMoney("entry_fees_type");
+
+currentAccountProduct.ReopenFeesType = r.GetMoney("reopen_fees_type");
+
+currentAccountProduct.ClosingFeesType = r.GetMoney("closing_fees_type");
+
+currentAccountProduct.ManagementFeesType = r.GetMoney("management_fees_type");
+
+currentAccountProduct.OverdraftType = r.GetMoney("overdraft_type");
+
+currentAccountProduct.EntryFeesMin = r.GetMoney("entry_fees_min");
+
+currentAccountProduct.ReopenFeesMin = r.GetMoney("reopen_fees_min");
+
+currentAccountProduct.ClosingFeesMin = r.GetMoney("closing_fees_min");
+
+currentAccountProduct.ManagementFeesMin = r.GetMoney("management_fees_min");
+
+currentAccountProduct.OverdraftMin = r.GetMoney("overdraft_min");
+
+currentAccountProduct.EntryFeesMax = r.GetMoney("entry_fees_max");
+
+currentAccountProduct.ReopenFeesMax = r.GetMoney("reopen_fees_max");
+
+currentAccountProduct.ClosingFeesMax = r.GetMoney("closing_fees_max");
+currentAccountProduct.ManagementFeesMax = r.GetMoney("management_fees_max");
+
+currentAccountProduct.OverdraftMax = r.GetMoney("overdraft_max");
+currentAccountProduct.EntryFeesValue = r.GetMoney("entry_fees_value");
+
+currentAccountProduct.ReopenFeesValue = r.GetMoney("reopen_fees_value");
+
+currentAccountProduct.ClosingFeesValue = r.GetMoney("closing_fees_value");
+
+currentAccountProduct.ManagementFeesValue = r.GetMoney("management_fees_value");
+
+currentAccountProduct.OverdraftValue = r.GetMoney("overdraft_value");
+currentAccountProduct.ManagementFeesFrequency = r.GetMoney("management_fees_frequency");
+
 return currentAccountProduct;
 }
+
+        public void DeleteCurrentAccountProduct(int pProductId)
+        {
+            const string q = "Update CurrentAccountProducts Set Deleted = 1 Where id = @productId";
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@productId", pProductId);
+                c.ExecuteNonQuery();
+            }
+        }
 
     }
 }

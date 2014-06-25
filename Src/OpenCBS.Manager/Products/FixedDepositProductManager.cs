@@ -234,7 +234,49 @@ WHERE id = @productId";
         public FixedDepositProduct GetProduct(OpenCbsReader r)
         {
             FixedDepositProduct fixedDepositProduct = new FixedDepositProduct();
-            return fixedDepositProduct;
+fixedDepositProduct.Id = r.GetMoney("id");
+fixedDepositProduct.Delete = 
+
+fixedDepositProduct.Name = r.GetMoney("product_name");
+fixedDepositProduct.Code = r.GetMoney("product_code");
+
+fixedDepositProduct.ClientType = r.GetMoney("client_type");
+
+fixedDepositProduct.Currency = r.GetMoney("product_currency");
+
+fixedDepositProduct.InitialAmountMin = r.GetMoney("initial_amount_min");
+
+fixedDepositProduct.InitialAmountMax = r.GetMoney("initial_amount_max");
+
+fixedDepositProduct.InterestCalculationFrequency = r.GetMoney("interest_calculation_frequency");
+
+fixedDepositProduct.PenalityType = r.GetMoney("penality_type");
+
+fixedDepositProduct.InterestRateMin = r.GetMoney("interest_rate_min");
+fixedDepositProduct.InterestRateMax = r.GetMoney("interest_rate_max");
+
+fixedDepositProduct.PenalityRateMin = r.GetMoney("penality_min");
+
+fixedDepositProduct.PenalityRateMax = r.GetMoney("penality_max");
+
+fixedDepositProduct.MaturityPeriodMin = r.GetMoney("maturity_period_min");
+
+fixedDepositProduct.MaturityPeriodMax = r.GetMoney("maturity_period_max");
+
+
+return fixedDepositProduct;
+        }
+
+        public void DeleteFixedDepositProduct(int pProductId)
+        {
+            const string q = "Update FixedDepositProducts Set Deleted = 1 Where id = @productId";
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@productId", pProductId);
+                c.ExecuteNonQuery();
+            }
         }
 
 

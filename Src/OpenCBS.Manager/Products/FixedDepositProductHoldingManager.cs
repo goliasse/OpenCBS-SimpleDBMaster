@@ -261,7 +261,7 @@ namespace OpenCBS.Manager.Products
             using (SqlConnection conn = GetConnection())
             using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
             {
-                c.AddParam("@id", productId);
+               
 
                 using (OpenCbsReader r = c.ExecuteReader())
                 {
@@ -282,8 +282,40 @@ namespace OpenCBS.Manager.Products
 
         public FixedDepositProductHoldings GetProduct(OpenCbsReader r)
         {
-            FixedDepositProductHoldings fixedDepositProductHoldings = new FixedDepositProductHoldings();
-            return fixedDepositProductHoldings;
+           FixedDepositProductHoldings fixedDepositProductHoldings = new FixedDepositProductHoldings();
+
+fixedDepositProductHoldings.Id = r.GetMoney("id");
+
+fixedDepositProductHoldings.ClientId = r.GetMoney("client_id");
+fixedDepositProductHoldings.ClientType = r.GetMoney("client_type");
+fixedDepositProductHoldings.FixedDepositContractCode = r.GetMoney("fixed_deposit_contract_code");
+fixedDepositProductHoldings.FixedDepositProductId = r.GetMoney("fixed_deposit_product_id");
+
+fixedDepositProductHoldings.InitialAmount = r.GetMoney("initial_amount");
+fixedDepositProductHoldings.InterestRate = r.GetMoney("interest_rate");
+fixedDepositProductHoldings.MaturityPeriod = r.GetMoney("maturity_period");
+fixedDepositProductHoldings.InterestCalculationFrequency = r.GetMoney("interest_calculation_frequency");
+fixedDepositProductHoldings.PenalityType = r.GetMoney("penality_type");
+fixedDepositProductHoldings.Penality = r.GetMoney("penality");
+fixedDepositProductHoldings.OpeningAccountingOfficer = r.GetMoney("opening_accounting_officer");
+fixedDepositProductHoldings.ClosingAccountingOfficer = r.GetMoney("closing_accounting_officer");
+fixedDepositProductHoldings.OpenDate = r.GetMoney("open_date");
+fixedDepositProductHoldings.CloseDate = r.GetMoney("close_date");
+fixedDepositProductHoldings.Status = r.GetMoney("status");
+fixedDepositProductHoldings.PreMatured = r.GetMoney("pre_matured");
+fixedDepositProductHoldings.Comment = r.GetMoney("comment");
+fixedDepositProductHoldings.EffectiveInterestRate = r.GetMoney("effective_interest_rate");
+fixedDepositProductHoldings.EffectiveDepositPeriod = r.GetMoney("effective_deposit_period"); 
+
+fixedDepositProductHoldings.FinalAmount = r.GetMoney("final_amount");
+fixedDepositProductHoldings.FinalInterest = r.GetMoney("final_interest");  
+//To be included into insert and fetch scripts
+fixedDepositProductHoldings.FinalPenality = 
+fixedDepositProductHoldings.InitialAmountPaymentMethod = r.GetMoney("initial_amount_payment_method");
+
+fixedDepositProductHoldings.FinalAmountPaymentMethod = r.GetMoney("final_amount_payment_method");
+
+return fixedDepositProductHoldings;
         }
 
     }

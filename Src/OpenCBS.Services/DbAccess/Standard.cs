@@ -250,6 +250,17 @@ namespace OpenCBS.Services
             return new CurrentAccountProductService(CurrentUser);
         }
 
+        public CurrentAccountProductHoldingServices GetCurrentAccountProductHoldingServices()
+        {
+            return new CurrentAccountProductHoldingServices(CurrentUser);
+        }
+
+        public FixedDepositProductHoldingServices GetFixedDepositProductHoldingServices()
+        {
+            return new FixedDepositProductHoldingServices(CurrentUser);
+        }
+
+
         #region IServices Members
 
         public NonWorkingDateSingleton GetNonWorkingDate()
