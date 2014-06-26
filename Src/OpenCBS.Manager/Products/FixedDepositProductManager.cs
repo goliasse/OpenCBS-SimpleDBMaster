@@ -97,7 +97,36 @@ namespace OpenCBS.Manager.Products
 
 
 
+        public int GetProductId(string productName, string productCode)
+        {
 
+
+            string q = @"SELECT
+            [id]
+           
+            FROM [dbo].[FixedDepositProducts]
+            WHERE product_name = @productName and product_code = @productCode";
+
+
+
+
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@productName", productName);
+                c.AddParam("@productCode", productCode);
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+                    return Convert.ToInt32(r.Read());
+
+
+
+                }
+            }
+
+
+        }
 
 
         public IFixedDepositProduct FetchProduct(int productId)
@@ -105,7 +134,9 @@ namespace OpenCBS.Manager.Products
             
 
             string q = @"SELECT
-            [product_name]
+            [id]
+           ,[deleted]
+           ,[product_name]
            ,[product_code]
            ,[client_type]
            ,[product_currency]
@@ -187,6 +218,7 @@ WHERE id = @productId";
 
             string q = @"SELECT
             [id]
+           ,[deleted]
            ,[product_name]
            ,[product_code]
            ,[client_type]
@@ -233,35 +265,36 @@ WHERE id = @productId";
 
         public FixedDepositProduct GetProduct(OpenCbsReader r)
         {
-            FixedDepositProduct fixedDepositProduct = new FixedDepositProduct();
-fixedDepositProduct.Id = r.GetMoney("id");
-fixedDepositProduct.Delete = 
+           FixedDepositProduct fixedDepositProduct = new FixedDepositProduct();
+fixedDepositProduct.Id = r.GetInt("id");
+fixedDepositProduct.Delete = r.GetInt("deleted");
 
-fixedDepositProduct.Name = r.GetMoney("product_name");
-fixedDepositProduct.Code = r.GetMoney("product_code");
 
-fixedDepositProduct.ClientType = r.GetMoney("client_type");
+fixedDepositProduct.Name = r.GetString("product_name");
+fixedDepositProduct.Code = r.GetString("product_code");
 
-fixedDepositProduct.Currency = r.GetMoney("product_currency");
+fixedDepositProduct.ClientType = r.GetString("client_type");
 
-fixedDepositProduct.InitialAmountMin = r.GetMoney("initial_amount_min");
+fixedDepositProduct.Currency = r.GetString("product_currency");
 
-fixedDepositProduct.InitialAmountMax = r.GetMoney("initial_amount_max");
+fixedDepositProduct.InitialAmountMin = r.GetDecimal("initial_amount_min");
 
-fixedDepositProduct.InterestCalculationFrequency = r.GetMoney("interest_calculation_frequency");
+fixedDepositProduct.InitialAmountMax = r.GetDecimal("initial_amount_max");
 
-fixedDepositProduct.PenalityType = r.GetMoney("penality_type");
+fixedDepositProduct.InterestCalculationFrequency = r.GetString("interest_calculation_frequency");
 
-fixedDepositProduct.InterestRateMin = r.GetMoney("interest_rate_min");
-fixedDepositProduct.InterestRateMax = r.GetMoney("interest_rate_max");
+fixedDepositProduct.PenalityType = r.GetString("penality_type");
 
-fixedDepositProduct.PenalityRateMin = r.GetMoney("penality_min");
+fixedDepositProduct.InterestRateMin = r.GetDouble("interest_rate_min");
+fixedDepositProduct.InterestRateMax = r.GetDouble("interest_rate_max");
 
-fixedDepositProduct.PenalityRateMax = r.GetMoney("penality_max");
+fixedDepositProduct.PenalityRateMin = r.GetDouble("penality_min");
 
-fixedDepositProduct.MaturityPeriodMin = r.GetMoney("maturity_period_min");
+fixedDepositProduct.PenalityRateMax = r.GetDouble("penality_max");
 
-fixedDepositProduct.MaturityPeriodMax = r.GetMoney("maturity_period_max");
+fixedDepositProduct.MaturityPeriodMin = r.GetInt("maturity_period_min");
+
+fixedDepositProduct.MaturityPeriodMax = r.GetInt("maturity_period_max");
 
 
 return fixedDepositProduct;

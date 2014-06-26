@@ -151,7 +151,8 @@ namespace OpenCBS.Manager
 
         public double GetDouble(string name)
         {
-            return _reader.GetDouble(_reader.GetOrdinal(name));
+            int r = _reader.GetOrdinal(name);
+            return _reader.GetDouble(r);
         }
 
         public double? GetNullDouble(string name)

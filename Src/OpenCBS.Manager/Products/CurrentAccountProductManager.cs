@@ -184,6 +184,7 @@ WHERE id = @productId";
         {
             const string q = @"SELECT 
 [id],
+[deleted],
 [current_account_product_name],
 [current_account_product_code], 
 [client_type],
@@ -238,6 +239,7 @@ WHERE id = @productId";
 
             string q = @"SELECT 
 [id],
+[deleted],
 [current_account_product_name],
 [current_account_product_code], 
 [client_type],
@@ -300,59 +302,58 @@ WHERE id = @productId";
         public CurrentAccountProduct GetProduct(OpenCbsReader r)
 {
 CurrentAccountProduct currentAccountProduct = new CurrentAccountProduct();
+currentAccountProduct.CurrentAccountProductId = r.GetInt("id"); 
+currentAccountProduct.Delete = r.GetInt("deleted");
+currentAccountProduct.CurrentAccountProductName = r.GetString("current_account_product_name");
+currentAccountProduct.CurrentAccountProductCode = r.GetString ("current_account_product_code");
+currentAccountProduct.ClientType = r.GetString ("client_type");
+currentAccountProduct.Currency = r.GetString ("currency");
 
-            currentAccountProduct.CurrentAccountProductId = r.GetMoney("id"); 
-currentAccountProduct.Delete = r.GetMoney("delete");
-currentAccountProduct.CurrentAccountProductName = r.GetMoney("current_account_product_name");
-currentAccountProduct.CurrentAccountProductCode = r.GetMoney("current_account_product_code");
-currentAccountProduct.ClientType = r.GetMoney("client_type");
-currentAccountProduct.Currency = r.GetMoney("currency");
+currentAccountProduct.InitialAmountMin = r.GetDouble("initial_amount_min");
 
-currentAccountProduct.InitialAmountMin = r.GetMoney("initial_amount_min");
-
-currentAccountProduct.InitialAmountMax = r.GetMoney("initial_amount_max");
+currentAccountProduct.InitialAmountMax = r.GetDouble ("initial_amount_max");
 	
-currentAccountProduct.BalanceMin = r.GetMoney("balance_min");
+currentAccountProduct.BalanceMin = r.GetDouble("balance_min");
 
-currentAccountProduct.BalanceMax = r.GetMoney("balance_max");
-currentAccountProduct.EntryFeesType =	r.GetMoney("entry_fees_type");
+currentAccountProduct.BalanceMax = r.GetDouble("balance_max");
+currentAccountProduct.EntryFeesType =	r.GetString("entry_fees_type");
 
-currentAccountProduct.ReopenFeesType = r.GetMoney("reopen_fees_type");
+currentAccountProduct.ReopenFeesType = r.GetString("reopen_fees_type");
 
-currentAccountProduct.ClosingFeesType = r.GetMoney("closing_fees_type");
+currentAccountProduct.ClosingFeesType = r.GetString("closing_fees_type");
 
-currentAccountProduct.ManagementFeesType = r.GetMoney("management_fees_type");
+currentAccountProduct.ManagementFeesType = r.GetString("management_fees_type");
 
-currentAccountProduct.OverdraftType = r.GetMoney("overdraft_type");
+currentAccountProduct.OverdraftType = r.GetString("overdraft_type");
 
-currentAccountProduct.EntryFeesMin = r.GetMoney("entry_fees_min");
+currentAccountProduct.EntryFeesMin = r.GetDouble("entry_fees_min");
 
-currentAccountProduct.ReopenFeesMin = r.GetMoney("reopen_fees_min");
+currentAccountProduct.ReopenFeesMin = r.GetDouble("reopen_fees_min");
 
-currentAccountProduct.ClosingFeesMin = r.GetMoney("closing_fees_min");
+currentAccountProduct.ClosingFeesMin = r.GetDouble("closing_fees_min");
 
-currentAccountProduct.ManagementFeesMin = r.GetMoney("management_fees_min");
+currentAccountProduct.ManagementFeesMin = r.GetDouble("management_fees_min");
 
-currentAccountProduct.OverdraftMin = r.GetMoney("overdraft_min");
+currentAccountProduct.OverdraftMin = r.GetDouble("overdraft_min");
 
-currentAccountProduct.EntryFeesMax = r.GetMoney("entry_fees_max");
+currentAccountProduct.EntryFeesMax = r.GetDouble("entry_fees_max");
 
-currentAccountProduct.ReopenFeesMax = r.GetMoney("reopen_fees_max");
+currentAccountProduct.ReopenFeesMax = r.GetDouble("reopen_fees_max");
 
-currentAccountProduct.ClosingFeesMax = r.GetMoney("closing_fees_max");
-currentAccountProduct.ManagementFeesMax = r.GetMoney("management_fees_max");
+currentAccountProduct.ClosingFeesMax = r.GetDouble("closing_fees_max");
+currentAccountProduct.ManagementFeesMax = r.GetDouble("management_fees_max");
 
-currentAccountProduct.OverdraftMax = r.GetMoney("overdraft_max");
-currentAccountProduct.EntryFeesValue = r.GetMoney("entry_fees_value");
+currentAccountProduct.OverdraftMax = r.GetDouble("overdraft_max");
+currentAccountProduct.EntryFeesValue = r.GetDouble("entry_fees_value");
 
-currentAccountProduct.ReopenFeesValue = r.GetMoney("reopen_fees_value");
+currentAccountProduct.ReopenFeesValue = r.GetDouble("reopen_fees_value");
 
-currentAccountProduct.ClosingFeesValue = r.GetMoney("closing_fees_value");
+currentAccountProduct.ClosingFeesValue = r.GetDouble("closing_fees_value");
 
-currentAccountProduct.ManagementFeesValue = r.GetMoney("management_fees_value");
+currentAccountProduct.ManagementFeesValue = r.GetDouble("management_fees_value");
 
-currentAccountProduct.OverdraftValue = r.GetMoney("overdraft_value");
-currentAccountProduct.ManagementFeesFrequency = r.GetMoney("management_fees_frequency");
+currentAccountProduct.OverdraftValue = r.GetDouble("overdraft_value");
+currentAccountProduct.ManagementFeesFrequency = r.GetString("management_fees_frequency");
 
 return currentAccountProduct;
 }

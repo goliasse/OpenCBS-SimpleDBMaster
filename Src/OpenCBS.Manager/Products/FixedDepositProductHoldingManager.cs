@@ -24,7 +24,7 @@ namespace OpenCBS.Manager.Products
 
 
 
-        public int SaveFixedDepositProductHolding(FixedDepositProductHoldings productName)
+        public string SaveFixedDepositProductHolding(FixedDepositProductHoldings productName)
         {
             
             const string q = @"INSERT INTO [FixedDepositProductHoldings]
@@ -49,6 +49,7 @@ namespace OpenCBS.Manager.Products
             ,[effective_deposit_period] 
             ,[final_amount] 
             ,[final_interest]  
+            ,[final_penalty]  
             ,[initial_amount_payment_method]
             ,[final_amount_payment_method] )
                 VALUES
@@ -73,6 +74,7 @@ namespace OpenCBS.Manager.Products
                 ,@effectiveDepositPeriod
                 ,@finalAmount
                 ,@finalInterest
+                ,@finalPenalty
                 ,@initialAmountPaymentMethod
                 ,@finalAmountPaymentMethod)
                 SELECT SCOPE_IDENTITY()";
@@ -84,32 +86,34 @@ namespace OpenCBS.Manager.Products
                
                 SetProduct(c, productName);
                 productName.Id = Convert.ToInt32(c.ExecuteScalar());
+                productName.FixedDepositContractCode = productName.FixedDepositContractCode + "/" + productName.Id;
+                UpdateFixedDepositProductHolding(productName,productName.Id);
             }
 
 
-            return productName.Id;
+            return productName.FixedDepositContractCode;
         }
 
         private static void SetProduct(OpenCbsCommand c, FixedDepositProductHoldings product)
         {
             c.AddParam("@clientId", product.ClientId);
-            c.AddParam("@client_type", product.ClientType);
-            c.AddParam("@fixed_deposit_contract_code", product.FixedDepositContractCode);
+            c.AddParam("@clientType", product.ClientType);
+            c.AddParam("@fixedDepositContractCode", product.FixedDepositContractCode);
 
-            c.AddParam("@initial_amount", product.InitialAmount);
-            c.AddParam("@interest_rate", product.InterestRate);
+            c.AddParam("@initialAmount", product.InitialAmount);
+            c.AddParam("@interestRate", product.InterestRate);
 
-            c.AddParam("@maturity_period", product.MaturityPeriod);
-            c.AddParam("@interest_calculation_frequency", product.InterestCalculationFrequency);
+            c.AddParam("@maturityPeriod", product.MaturityPeriod);
+            c.AddParam("@interestCalculationFrequency", product.InterestCalculationFrequency);
 
-            c.AddParam("@penality_type", product.PenalityType);
+            c.AddParam("@penalityType", product.PenalityType);
             c.AddParam("@penality", product.Penality);
 
-            c.AddParam("@opening_accounting_officer", product.OpeningAccountingOfficer);
-            c.AddParam("@closing_accounting_officer", product.ClosingAccountingOfficer);
+            c.AddParam("@openingAccountingOfficer", product.OpeningAccountingOfficer);
+            c.AddParam("@closingAccountingOfficer", product.ClosingAccountingOfficer);
 
-            c.AddParam("@open_date", product.OpenDate);
-            c.AddParam("@close_date", product.CloseDate);
+            c.AddParam("@openDate", product.OpenDate);
+            c.AddParam("@closeDate", product.CloseDate);
 
             c.AddParam("@status", product.Status);
 
@@ -121,6 +125,7 @@ namespace OpenCBS.Manager.Products
             c.AddParam("@effectiveDepositPeriod", product.EffectiveDepositPeriod);
             c.AddParam("@finalAmount", product.FinalAmount);
             c.AddParam("@finalInterest", product.FinalInterest);
+            c.AddParam("@finalPenalty", product.FinalPenality);
 
             c.AddParam("@initialAmountPaymentMethod", product.InitialAmountPaymentMethod);
             c.AddParam("@finalAmountPaymentMethod", product.FinalAmountPaymentMethod);
@@ -131,7 +136,7 @@ namespace OpenCBS.Manager.Products
         public void UpdateFixedDepositProductHolding(FixedDepositProductHoldings product, int productId)
         {
             string q = @"UPDATE [FixedDepositProductHoldings] SET 
-            [client_id] = @client_id
+            [client_id] = @clientId
            ,[client_type] = @clientType
            ,[fixed_deposit_contract_code] = @fixedDepositContractCode
            ,[initial_amount] = @initialAmount
@@ -152,6 +157,7 @@ namespace OpenCBS.Manager.Products
             ,[effective_deposit_period] = @effectiveDepositPeriod
             ,[final_amount] = @finalAmount
             ,[final_interest]  = @finalInterest
+            ,[final_penalty] = @finalPenalty
             ,[initial_amount_payment_method] = @initialAmountPaymentMethod
             ,[final_amount_payment_method] = @finalAmountPaymentMethod
             WHERE id = @productId";
@@ -169,7 +175,8 @@ namespace OpenCBS.Manager.Products
         public FixedDepositProductHoldings FetchProduct(int productId)
         {
             string q = @"SELECT
-            [client_id]
+            [id]
+           ,[client_id]
            ,[client_type]
            ,[fixed_deposit_contract_code]
            ,[initial_amount]
@@ -190,6 +197,7 @@ namespace OpenCBS.Manager.Products
             ,[effective_deposit_period] 
             ,[final_amount] 
             ,[final_interest]  
+            ,[final_penalty]  
             ,[initial_amount_payment_method]
             ,[final_amount_payment_method]
             FROM [dbo].[FixedDepositProductHoldings]
@@ -218,7 +226,7 @@ namespace OpenCBS.Manager.Products
         }
 
 
-        public List<FixedDepositProductHoldings> FetchProduct(bool showAlsoDeleted)
+        public List<FixedDepositProductHoldings> FetchProduct(bool showAlsoClosed)
         {
 
             List<FixedDepositProductHoldings> fixedDepositProductHoldingList = new List<FixedDepositProductHoldings>();
@@ -245,17 +253,16 @@ namespace OpenCBS.Manager.Products
            ,[effective_interest_rate] 
            ,[effective_deposit_period] 
            ,[final_amount] 
-           ,[final_interest]  
+           ,[final_interest]
+           ,[final_penalty]  
            ,[initial_amount_payment_method]
            ,[final_amount_payment_method]
            FROM [dbo].[FixedDepositProductHoldings]";
 
 
-            if (!showAlsoDeleted)
-                q += " WHERE deleted = 0";
-            else
-                q += " WHERE deleted = 1";
-
+            if (!showAlsoClosed)
+                q += " WHERE status = 'Opened'";
+            
 
 
             using (SqlConnection conn = GetConnection())
@@ -284,36 +291,36 @@ namespace OpenCBS.Manager.Products
         {
            FixedDepositProductHoldings fixedDepositProductHoldings = new FixedDepositProductHoldings();
 
-fixedDepositProductHoldings.Id = r.GetMoney("id");
+fixedDepositProductHoldings.Id = r.GetInt("id");
 
-fixedDepositProductHoldings.ClientId = r.GetMoney("client_id");
-fixedDepositProductHoldings.ClientType = r.GetMoney("client_type");
-fixedDepositProductHoldings.FixedDepositContractCode = r.GetMoney("fixed_deposit_contract_code");
-fixedDepositProductHoldings.FixedDepositProductId = r.GetMoney("fixed_deposit_product_id");
+fixedDepositProductHoldings.ClientId = r.GetInt("client_id");
+fixedDepositProductHoldings.ClientType = r.GetString("client_type");
+fixedDepositProductHoldings.FixedDepositContractCode = r.GetString("fixed_deposit_contract_code");
+fixedDepositProductHoldings.FixedDepositProductId = r.GetInt("fixed_deposit_product_id");
 
-fixedDepositProductHoldings.InitialAmount = r.GetMoney("initial_amount");
-fixedDepositProductHoldings.InterestRate = r.GetMoney("interest_rate");
-fixedDepositProductHoldings.MaturityPeriod = r.GetMoney("maturity_period");
-fixedDepositProductHoldings.InterestCalculationFrequency = r.GetMoney("interest_calculation_frequency");
-fixedDepositProductHoldings.PenalityType = r.GetMoney("penality_type");
-fixedDepositProductHoldings.Penality = r.GetMoney("penality");
-fixedDepositProductHoldings.OpeningAccountingOfficer = r.GetMoney("opening_accounting_officer");
-fixedDepositProductHoldings.ClosingAccountingOfficer = r.GetMoney("closing_accounting_officer");
-fixedDepositProductHoldings.OpenDate = r.GetMoney("open_date");
-fixedDepositProductHoldings.CloseDate = r.GetMoney("close_date");
-fixedDepositProductHoldings.Status = r.GetMoney("status");
-fixedDepositProductHoldings.PreMatured = r.GetMoney("pre_matured");
-fixedDepositProductHoldings.Comment = r.GetMoney("comment");
-fixedDepositProductHoldings.EffectiveInterestRate = r.GetMoney("effective_interest_rate");
-fixedDepositProductHoldings.EffectiveDepositPeriod = r.GetMoney("effective_deposit_period"); 
+fixedDepositProductHoldings.InitialAmount = r.GetDecimal("initial_amount");
+fixedDepositProductHoldings.InterestRate = r.GetDouble("interest_rate");
+fixedDepositProductHoldings.MaturityPeriod = r.GetInt("maturity_period");
+fixedDepositProductHoldings.InterestCalculationFrequency = r.GetString("interest_calculation_frequency");
+fixedDepositProductHoldings.PenalityType = r.GetString("penality_type");
+fixedDepositProductHoldings.Penality = r.GetDouble("penality");
+fixedDepositProductHoldings.OpeningAccountingOfficer = r.GetString("opening_accounting_officer");
+fixedDepositProductHoldings.ClosingAccountingOfficer = r.GetString("closing_accounting_officer");
+fixedDepositProductHoldings.OpenDate = r.GetDateTime("open_date");
+fixedDepositProductHoldings.CloseDate = r.GetDateTime("close_date");
+fixedDepositProductHoldings.Status = r.GetString("status");
+fixedDepositProductHoldings.PreMatured = r.GetInt("pre_matured");
+fixedDepositProductHoldings.Comment = r.GetString("comment");
+fixedDepositProductHoldings.EffectiveInterestRate = r.GetDouble("effective_interest_rate");
+fixedDepositProductHoldings.EffectiveDepositPeriod = r.GetDouble("effective_deposit_period"); 
 
-fixedDepositProductHoldings.FinalAmount = r.GetMoney("final_amount");
-fixedDepositProductHoldings.FinalInterest = r.GetMoney("final_interest");  
-//To be included into insert and fetch scripts
-fixedDepositProductHoldings.FinalPenality = 
-fixedDepositProductHoldings.InitialAmountPaymentMethod = r.GetMoney("initial_amount_payment_method");
+fixedDepositProductHoldings.FinalAmount = r.GetDecimal("final_amount");
+fixedDepositProductHoldings.FinalInterest = r.GetDecimal("final_interest");
 
-fixedDepositProductHoldings.FinalAmountPaymentMethod = r.GetMoney("final_amount_payment_method");
+fixedDepositProductHoldings.FinalPenality = r.GetDouble("final_penalty");  
+fixedDepositProductHoldings.InitialAmountPaymentMethod = r.GetString("initial_amount_payment_method");
+
+fixedDepositProductHoldings.FinalAmountPaymentMethod = r.GetString("final_amount_payment_method");
 
 return fixedDepositProductHoldings;
         }

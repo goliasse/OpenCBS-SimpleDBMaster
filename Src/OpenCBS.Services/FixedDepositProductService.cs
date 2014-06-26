@@ -33,6 +33,11 @@ namespace OpenCBS.Services
 
         }
 
+        public int GetProductId(string productName, string productCode)
+        {
+            return _fixedDepositProductManager.GetProductId(productName, productCode);
+        }
+
         public IFixedDepositProduct FetchProduct(int productId)
         {
             return _fixedDepositProductManager.FetchProduct(productId);

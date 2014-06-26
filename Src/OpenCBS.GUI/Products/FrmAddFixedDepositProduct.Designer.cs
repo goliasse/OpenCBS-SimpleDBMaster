@@ -237,7 +237,7 @@
             this.groupBox3.Size = new System.Drawing.Size(636, 116);
             this.groupBox3.TabIndex = 14;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Penality If Withdrawn Before Maturity";
+            this.groupBox3.Text = "Penalty If Withdrawn Before Maturity";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // rbPenalityTypeRate

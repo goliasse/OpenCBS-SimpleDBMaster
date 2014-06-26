@@ -264,44 +264,44 @@ currentAccountProductHolding.ClientId =r.GetInt("client_id");
 
 currentAccountProductHolding.ClientType =r.GetString("client_type");
 
-currentAccountProductHolding.CurrentAccountContractCode =r.GetMoney("current_account_contract_code");
+currentAccountProductHolding.CurrentAccountContractCode =r.GetString("current_account_contract_code");
 
-currentAccountProductHolding.CurrentAccountProductId =r.GetMoney("current_account_productId");
+currentAccountProductHolding.CurrentAccountProductId =r.GetInt("current_account_productId");
 
-currentAccountProductHolding.InitialAmount =r.GetMoney("initial_amount");
+currentAccountProductHolding.InitialAmount =r.GetDouble("initial_amount");
 
-currentAccountProductHolding.OpeningAccountingOfficer =r.GetMoney("opening_accounting_officer");
+currentAccountProductHolding.OpeningAccountingOfficer =r.GetString("opening_accounting_officer");
 
-currentAccountProductHolding.ClosingAccountingOfficer =r.GetMoney("closing_accounting_officer");
-currentAccountProductHolding.OpenDate=r.GetMoney("open_date");
+currentAccountProductHolding.ClosingAccountingOfficer =r.GetString("closing_accounting_officer");
+currentAccountProductHolding.OpenDate=r.GetDateTime("open_date");
 
-currentAccountProductHolding.CloseDate =r.GetMoney("close_date");
+currentAccountProductHolding.CloseDate = r.GetDateTime("close_date");
 
-currentAccountProductHolding.Status  =r.GetMoney("status");
+currentAccountProductHolding.Status  =r.GetString("status");
 
-currentAccountProductHolding.Comment =r.GetMoney("comment");
+currentAccountProductHolding.Comment =r.GetString("comment");
 
-currentAccountProductHolding.EntryFees =r.GetMoney("entry_fees");
+currentAccountProductHolding.EntryFees =r.GetDouble("entry_fees");
 
-currentAccountProductHolding.ReopenFees =r.GetMoney("reopen_fees");
-currentAccountProductHolding.ClosingFees =r.GetMoney("closing_fees");
+currentAccountProductHolding.ReopenFees =r.GetDouble("reopen_fees");
+currentAccountProductHolding.ClosingFees =r.GetDouble("closing_fees");
 
-currentAccountProductHolding.ManagementFees =r.GetMoney("management_fees");
+currentAccountProductHolding.ManagementFees =r.GetDouble("management_fees");
 
-currentAccountProductHolding.OverdraftFees =r.GetMoney("overdraft_fees");
+currentAccountProductHolding.OverdraftFees =r.GetDouble("overdraft_fees");
 
-currentAccountProductHolding.EntryFeesType =r.GetMoney("entry_fees_type");
-currentAccountProductHolding.ReopenFeesType =r.GetMoney("reopen_fees_type");
+currentAccountProductHolding.EntryFeesType =r.GetString("entry_fees_type");
+currentAccountProductHolding.ReopenFeesType =r.GetString("reopen_fees_type");
 
-currentAccountProductHolding.ClosingFeesType =r.GetMoney("closing_fees_type");
+currentAccountProductHolding.ClosingFeesType =r.GetString("closing_fees_type");
 
-currentAccountProductHolding.ManagementFeesType =r.GetMoney("management_fees_type");
+currentAccountProductHolding.ManagementFeesType =r.GetString("management_fees_type");
 
-currentAccountProductHolding.OverdraftFeesType =r.GetMoney("overdraft_fees_type");
+currentAccountProductHolding.OverdraftFeesType =r.GetString("overdraft_fees_type");
 
-currentAccountProductHolding.ManagementFeesFrequency =r.GetMoney("management_fees_frequency");
+currentAccountProductHolding.ManagementFeesFrequency =r.GetString("management_fees_frequency");
 
-currentAccountProductHolding.InitialAmountPaymentMethod =r.GetMoney("initial_amount_payment_method");
+currentAccountProductHolding.InitialAmountPaymentMethod =r.GetString("initial_amount_payment_method");
 
 return currentAccountProductHolding;
          }
