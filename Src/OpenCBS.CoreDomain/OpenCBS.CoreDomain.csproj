@@ -264,6 +264,7 @@
     <Compile Include="PingInfo.cs" />
     <Compile Include="Products\CurrentAccountProduct.cs" />
     <Compile Include="Products\CurrentAccountProductHoldings.cs" />
+    <Compile Include="Products\FixedDepositInterest.cs" />
     <Compile Include="Products\FixedDepositProduct.cs" />
     <Compile Include="Products\FixedDepositProductHoldings.cs" />
     <Compile Include="Products\ICurrentAccountProduct.cs" />

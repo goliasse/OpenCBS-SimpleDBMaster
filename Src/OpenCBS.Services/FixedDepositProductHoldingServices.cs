@@ -42,9 +42,30 @@ namespace OpenCBS.Services
         {
             return _fixedDepositProductHoldingManager.FetchProduct(productId);
         }
+        
         public List<FixedDepositProductHoldings> FetchProduct(bool showAlsoClosed)
         {
             return _fixedDepositProductHoldingManager.FetchProduct(showAlsoClosed);
+        }
+
+        public List<FixedDepositProductHoldings> FetchProduct(bool showAlsoClosed,int clientId,string clientType)
+        {
+            return _fixedDepositProductHoldingManager.FetchProduct(showAlsoClosed,clientId,clientType);
+        }
+
+        public FixedDepositProductHoldings FetchProduct(string productContractCode)
+        {
+            return _fixedDepositProductHoldingManager.FetchProduct(productContractCode);
+        }
+
+        public void UpdateFixedDepositProductHolding(FixedDepositProductHoldings product, string productContractCode)
+        {
+            _fixedDepositProductHoldingManager.UpdateFixedDepositProductHolding(product, productContractCode);
+        }
+
+        public FixedDepositInterest CalculateFinalAmount(string fdContractCode)
+        {
+            return _fixedDepositProductHoldingManager.CalculateFinalAmount(fdContractCode);
         }
 
         private void ValidateProduct(FixedDepositProductHoldings fixedDepositProductHolding)

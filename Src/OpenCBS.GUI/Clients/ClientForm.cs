@@ -285,7 +285,7 @@ namespace OpenCBS.GUI.Clients
 
             tabControlPerson.SelectTab(selectedTab);
             InitializeTabPageAdvancedSettings();
-
+           
             bool active = _credit != null && _credit.ContractStatus == OContractStatus.Active;
             //InitializeCustomizableFields(OCustomizableFieldEntities.Loan, pContractId, active);
             LoadLoanDetailsExtensions();
@@ -630,26 +630,48 @@ namespace OpenCBS.GUI.Clients
 
         void InitializeFixedAndCurrentAccountProduct()
         {
+
+            tabControlPerson.TabPages.Remove(tabPageFixedDeposit);
+            tabControlPerson.TabPages.Remove(tabPageCurrentAccount);
+
+            lvFixedDeposits.Items.Clear();
+
+
+            
             List<User> users = ServicesProvider.GetInstance().GetUserServices().FindAll(true);
             cbAccountingOfficer.ValueMember = "Name";
             cbAccountingOfficer.DisplayMember = "";
             cbAccountingOfficer.DataSource = users;
-            
-            
+
+
+            cbFixedDepositProduct.Items.Clear();
             FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
             List<IFixedDepositProduct> fixedDepositProductList = _fixedDepositProductService.FetchProduct(false);
-            foreach (FixedDepositProduct fixedDepositProduct in fixedDepositProductList)
-                cbFixedDepositProduct.Items.Add(fixedDepositProduct.Name + " " + fixedDepositProduct.Code);
-                
-             
+            if (fixedDepositProductList != null)
+            {
+                foreach (FixedDepositProduct fixedDepositProduct in fixedDepositProductList)
+                    cbFixedDepositProduct.Items.Add(fixedDepositProduct.Name + " " + fixedDepositProduct.Code);
+            }
+            
+            int clientId = _client.Id;
+            string clientType = "";
+            if (_client is Person)
+                clientType = "Person";
+            if (_client is Village)
+                clientType = "Village";
+            if (_client is Group)
+                clientType = "Group";
+            if (_client is Corporate)
+                clientType = "Corporate";
 
             FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
-            List<FixedDepositProductHoldings> fixedDepositProductHoldingsList = _fixedDepositProductHoldingService.FetchProduct(true);
-
-            foreach (FixedDepositProductHoldings fixedDepositProductHoldings in fixedDepositProductHoldingsList)
+            List<FixedDepositProductHoldings> fixedDepositProductHoldingsList = _fixedDepositProductHoldingService.FetchProduct(true,clientId,clientType);
+            if (fixedDepositProductHoldingsList != null)
             {
+                foreach (FixedDepositProductHoldings fixedDepositProductHoldings in fixedDepositProductHoldingsList)
+                {
 
-                var item = new ListViewItem(new[] {
+                    var item = new ListViewItem(new[] {
                     fixedDepositProductHoldings.FixedDepositContractCode,
                     fixedDepositProductHoldings.InitialAmount.ToString(),
                     fixedDepositProductHoldings.InterestRate.ToString(),
@@ -659,8 +681,9 @@ namespace OpenCBS.GUI.Clients
                     fixedDepositProductHoldings.Status
                     
                 });
-                lvFixedDeposits.Items.Add(item);
+                    lvFixedDeposits.Items.Add(item);
 
+                }
             }
              
 
@@ -6377,9 +6400,19 @@ namespace OpenCBS.GUI.Clients
             }
         }
 
+
+        void DisplayFixedDepositContractsList()
+        {
+
+        }
+
         private void tabControlPerson_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectedTab = tabControlPerson.SelectedTab;
+            if (selectedTab == tabPageFPCAContracts)
+            {
+                InitializeFixedAndCurrentAccountProduct();
+            }
             if (selectedTab == tabPageCreditCommitee)
             {
                 Control.ControlCollection controlCollection = gbxLoanDetails.Controls;
@@ -8699,7 +8732,7 @@ namespace OpenCBS.GUI.Clients
 
         private void btnAddFixedDepositProduct_Click(object sender, EventArgs e)
         {
-
+            btnAddFixedDepositProduct.Enabled = false;
             FixedDepositProductHoldings _fixedDepositProductHoldings = new FixedDepositProductHoldings();
             
 
@@ -8742,7 +8775,8 @@ namespace OpenCBS.GUI.Clients
         _fixedDepositProductHoldings.InitialAmountPaymentMethod = cbInitialAmountPaymentMethod.SelectedItem.ToString();
            
             FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
-            _fixedDepositProductHoldings.FixedDepositProductId = _fixedDepositProductService.GetProductId(fixedDepositProduct[0], fixedDepositProduct[1]); 
+            _fixedDepositProductHoldings.FixedDepositProduct = new FixedDepositProduct();
+            _fixedDepositProductHoldings.FixedDepositProduct.Id = _fixedDepositProductService.GetProductId(fixedDepositProduct[0], fixedDepositProduct[1]); 
                 
             
             
@@ -9023,9 +9057,313 @@ namespace OpenCBS.GUI.Clients
 
         private void lvFixedDeposits_SelectedIndexChanged(object sender, EventArgs e)
         {
+           
+//            int i = lvFixedDeposits.SelectedIndices[0];
+//            string selectedContractCode = lvFixedDeposits.Items[i].Text;
+
+//            FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
+//            FixedDepositProductHoldings _fixedDepositProductHoldings = _fixedDepositProductHoldingService.FetchProduct(selectedContractCode);
+
+//            cbFixedDepositProduct.SelectedItem = _fixedDepositProductHoldings.FixedDepositProduct.Name + " " + _fixedDepositProductHoldings.FixedDepositProduct.Code;
+//            tbInitialAmount.Text = _fixedDepositProductHoldings.InitialAmount.ToString();
+//            tbInterestRate.Text = _fixedDepositProductHoldings.InterestRate.ToString();
+//            tbMaturityPeriod.Text = _fixedDepositProductHoldings.MaturityPeriod.ToString();
+//cbInterestCalculationFrequency.SelectedItem =_fixedDepositProductHoldings.InterestCalculationFrequency;
+//  if(_fixedDepositProductHoldings.PenalityType=="Flat")
+//rbPenalityTypeFlat.Checked = true;
+//  else
+//rbPenalityTypeRate.Checked = true;
+
+//  tbPenality.Text = _fixedDepositProductHoldings.Penality.ToString();
+//tbFDContractCode.Text = _fixedDepositProductHoldings.FixedDepositContractCode;
+//tbProductCode.Text = _fixedDepositProductHoldings.FixedDepositProduct.Code;
+//cbAccountingOfficer.SelectedItem = _fixedDepositProductHoldings.OpeningAccountingOfficer;
+//tbComment.Text = _fixedDepositProductHoldings.Comment;
+//cbInitialAmountPaymentMethod.SelectedItem = _fixedDepositProductHoldings.InitialAmountPaymentMethod;
+
+//            tbInitialAmount.Enabled = false;
+//tbInterestRate.Enabled = false;
+//tbMaturityPeriod.Enabled = false;
+//cbInterestCalculationFrequency.Enabled = false;
+//rbPenalityTypeFlat.Enabled = false;
+//rbPenalityTypeRate.Enabled = false;
+//tbPenality.Enabled = false;
+//tbFDContractCode.Enabled = false;
+//tbProductCode.Enabled = false;
+//cbAccountingOfficer.Enabled = false;
+//tbComment.Enabled = false;
+//cbInitialAmountPaymentMethod.Enabled = false;
+
+//tabControlPerson.TabPages.Remove(tabPageFixedDeposit);
+//tabControlPerson.TabPages.Add(tabPageFixedDeposit);
+//gbInterestCalculation.Visible = true;
+//lblProductContractCode.Visible = true;
+//tbFDContractCode.Visible = true;
+//tbFDContractCode.ReadOnly = true;
+
+
+        }
+
+        private void btnAddFixedDeposit_Click(object sender, EventArgs e)
+        {
+            tabControlPerson.TabPages.Remove(tabPageFixedDeposit);
+            tabControlPerson.TabPages.Add(tabPageFixedDeposit);
+            gbInterestCalculation.Visible = false;
+            lblProductContractCode.Visible = false;
+            tbFDContractCode.Visible = false;
+            tbOpenedDate.Visible = false;
+            cbAccountStatus.Visible = false;
+            btnAddFixedDepositProduct.Visible = true;
+            label30.Visible = false;
+            label31.Visible = false;
+            btnCloseFDContract.Visible = false;
+            btnExtendPeriod.Visible = false;
+
+
+            cbFixedDepositProduct.SelectedIndex = 0;
+            
+            tbInitialAmount.ResetText();
+tbInterestRate.ResetText();
+tbMaturityPeriod.ResetText();
+cbInterestCalculationFrequency.ResetText();
+rbPenalityTypeFlat.ResetText();
+rbPenalityTypeRate.ResetText();
+tbPenality.ResetText();
+tbFDContractCode.ResetText();
+tbProductCode.ResetText();
+cbAccountingOfficer.ResetText();
+tbComment.ResetText();
+cbInitialAmountPaymentMethod.ResetText();
+
+cbFixedDepositProduct.Enabled = true;
+tbInitialAmount.Enabled = true;
+tbInterestRate.Enabled = true;
+tbMaturityPeriod.Enabled = true;
+cbInterestCalculationFrequency.Enabled = true;
+rbPenalityTypeFlat.Enabled = true;
+rbPenalityTypeRate.Enabled = true;
+tbPenality.Enabled = true;
+tbFDContractCode.Enabled = true;
+tbProductCode.Enabled = true;
+cbAccountingOfficer.Enabled = true;
+tbComment.Enabled = true;
+cbInitialAmountPaymentMethod.Enabled = true;
+
+       
+        }
+
+        FixedDepositProductHoldings _fixedDepositProductHoldings = null;
+
+        
+
+        private void btnViewFixedDeposit_Click(object sender, EventArgs e)
+        {
+
             int i = lvFixedDeposits.SelectedIndices[0];
-            string s = lvFixedDeposits.Items[i].Text;
-            MessageBox.Show(s);
+            string selectedContractCode = lvFixedDeposits.Items[i].Text;
+
+
+
+            FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
+            _fixedDepositProductHoldings = _fixedDepositProductHoldingService.FetchProduct(selectedContractCode);
+
+
+            FixedDepositInterest _fixedDepositInterest = _fixedDepositProductHoldingService.CalculateFinalAmount(selectedContractCode);
+
+            lbEffectiveInterestRate.Text = _fixedDepositInterest.EffectiveInterestRate.ToString();
+            lbEffectiveInterest.Text = _fixedDepositInterest.FinalInterest.ToString();
+            lbEffectiveDepositPeriod.Text = _fixedDepositInterest.EffectiveDepositPeriod.ToString() + " Days";
+            lbEffectivePenalty.Text = _fixedDepositInterest.Penalty.ToString() + " " + _fixedDepositInterest.PenaltyType;
+            lbTotalAmount.Text = _fixedDepositInterest.FinalAmount.ToString();
+            if (_fixedDepositInterest.PreMatured == 0)
+                lblPreMatured.Text = "No";
+            else
+                lblPreMatured.Text = "Yes";
+
+            _fixedDepositProductHoldings.EffectiveInterestRate = _fixedDepositInterest.EffectiveInterestRate;
+            _fixedDepositProductHoldings.FinalInterest = _fixedDepositInterest.FinalInterest;
+            _fixedDepositProductHoldings.EffectiveDepositPeriod = _fixedDepositInterest.EffectiveDepositPeriod;
+            _fixedDepositProductHoldings.FinalPenality = _fixedDepositInterest.Penalty;
+            _fixedDepositProductHoldings.FinalAmount = _fixedDepositInterest.FinalAmount;
+            _fixedDepositProductHoldings.PreMatured = _fixedDepositInterest.PreMatured;
+
+            cbFixedDepositProduct.SelectedItem = _fixedDepositProductHoldings.FixedDepositProduct.Name + " " + _fixedDepositProductHoldings.FixedDepositProduct.Code;
+            tbInitialAmount.Text = _fixedDepositProductHoldings.InitialAmount.ToString();
+            tbInterestRate.Text = _fixedDepositProductHoldings.InterestRate.ToString();
+            tbMaturityPeriod.Text = _fixedDepositProductHoldings.MaturityPeriod.ToString();
+            cbInterestCalculationFrequency.SelectedItem = _fixedDepositProductHoldings.InterestCalculationFrequency;
+            if (_fixedDepositProductHoldings.PenalityType == "Flat")
+                rbPenalityTypeFlat.Checked = true;
+            else
+                rbPenalityTypeRate.Checked = true;
+
+            tbPenality.Text = _fixedDepositProductHoldings.Penality.ToString();
+            tbFDContractCode.Text = _fixedDepositProductHoldings.FixedDepositContractCode;
+            tbProductCode.Text = _fixedDepositProductHoldings.FixedDepositProduct.Code;
+            cbAccountingOfficer.SelectedItem = _fixedDepositProductHoldings.OpeningAccountingOfficer;
+            tbComment.Text = _fixedDepositProductHoldings.Comment;
+            cbInitialAmountPaymentMethod.SelectedItem = _fixedDepositProductHoldings.InitialAmountPaymentMethod;
+            tbOpenedDate.Text = _fixedDepositProductHoldings.OpenDate.Date.ToString();
+            cbAccountStatus.SelectedItem = _fixedDepositProductHoldings.Status;
+
+            if (_fixedDepositProductHoldings.Status == "Closed")
+            {
+                btnCloseFDContract.Visible = false;
+                btnExtendPeriod.Visible = false;
+                lblAmountTransferMethod.Visible = true;
+                cbAmountTransferMethod.Visible = true;
+                cbAmountTransferMethod.SelectedItem = _fixedDepositProductHoldings.FinalAmountPaymentMethod;
+                cbAmountTransferMethod.Enabled = false;
+                if (_fixedDepositProductHoldings.FinalAmountPaymentMethod == "Cheque")
+                {
+                    lblChequeNumber.Visible = true;
+                    tbTransferNumber.Visible = true;
+                    lblChequeNumber.Text = "Cheque Number:";
+                    tbTransferNumber.Text = _fixedDepositProductHoldings.FinalAmountChequeAccount;
+                    tbTransferNumber.Enabled = false;
+                }
+                else if (_fixedDepositProductHoldings.FinalAmountPaymentMethod == "Transfer")
+                {
+                    lblChequeNumber.Visible = true;
+                    tbTransferNumber.Visible = true;
+                    lblChequeNumber.Text = "Account Number:";
+                    tbTransferNumber.Text = _fixedDepositProductHoldings.FinalAmountChequeAccount;
+                    tbTransferNumber.Enabled = false;
+                }
+            }
+            else
+            {
+                lblAmountTransferMethod.Visible = false;
+                cbAmountTransferMethod.Visible = false;
+                lblChequeNumber.Visible = false;
+                tbTransferNumber.Visible = false;
+                btnCloseFDContract.Visible = true;
+                btnExtendPeriod.Visible = true;
+            }
+
+
+
+            tbInitialAmount.Enabled = false;
+            tbInterestRate.Enabled = false;
+            tbMaturityPeriod.Enabled = false;
+            cbInterestCalculationFrequency.Enabled = false;
+            rbPenalityTypeFlat.Enabled = false;
+            rbPenalityTypeRate.Enabled = false;
+            tbPenality.Enabled = false;
+            tbFDContractCode.Enabled = false;
+            tbProductCode.Enabled = false;
+            cbAccountingOfficer.Enabled = false;
+            tbComment.Enabled = false;
+            cbInitialAmountPaymentMethod.Enabled = false;
+            tbOpenedDate.Enabled = false;
+            cbAccountStatus.Enabled = false;
+
+
+
+            tabControlPerson.TabPages.Remove(tabPageFixedDeposit);
+            tabControlPerson.TabPages.Add(tabPageFixedDeposit);
+            gbInterestCalculation.Visible = true;
+            lblProductContractCode.Visible = true;
+            tbFDContractCode.Visible = true;
+            tbFDContractCode.ReadOnly = true;
+
+            label30.Visible = true;
+            label31.Visible = true;
+
+
+            btnAddFixedDepositProduct.Visible = false;
+            cbFixedDepositProduct.Enabled = false;
+           
+        }
+
+        private void btnAddCurrentAccount_Click(object sender, EventArgs e)
+        {
+            tabControlPerson.TabPages.Remove(tabPageCurrentAccount);
+            tabControlPerson.TabPages.Add(tabPageCurrentAccount);
+            
+        }
+
+        private void btnViewCurrentAccount_Click(object sender, EventArgs e)
+        {
+            tabControlPerson.TabPages.Remove(tabPageCurrentAccount);
+            tabControlPerson.TabPages.Add(tabPageCurrentAccount);
+
+
+        }
+
+        private void btnExtendPeriod_Click(object sender, EventArgs e)
+        {
+            tbMaturityPeriod.Enabled = true;
+            if (btnExtendPeriod.Text == "Extend Period")
+            btnExtendPeriod.Text = "Submit";
+
+
+            else  if (btnExtendPeriod.Text == "Submit")
+            {
+
+                _fixedDepositProductHoldings.MaturityPeriod = Convert.ToInt32(tbMaturityPeriod.Text);
+                FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
+                _fixedDepositProductHoldingService.UpdateFixedDepositProductHolding(_fixedDepositProductHoldings, _fixedDepositProductHoldings.FixedDepositContractCode);
+
+                MessageBox.Show("Period Extended Successfully.");
+               // btnExtendPeriod.Enabled = false;
+            }
+        }
+
+        private void btnCloseFDContract_Click(object sender, EventArgs e)
+        {
+            if (btnCloseFDContract.Text == "Transfer Amount")
+            {
+                btnCloseFDContract.Text = "Close Account";
+                cbAccountStatus.SelectedItem = "Closed";
+                lblAmountTransferMethod.Visible = true;
+                cbAmountTransferMethod.Visible = true;
+                
+
+
+            }
+            else if (btnCloseFDContract.Text == "Close Account")
+            {
+                cbAccountStatus.SelectedItem = "Closed";
+
+                _fixedDepositProductHoldings.Status = "Closed";
+                _fixedDepositProductHoldings.FinalAmountPaymentMethod = cbAmountTransferMethod.SelectedItem.ToString();
+                _fixedDepositProductHoldings.FinalAmountChequeAccount = tbTransferNumber.Text;
+                FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
+                _fixedDepositProductHoldingService.UpdateFixedDepositProductHolding(_fixedDepositProductHoldings, _fixedDepositProductHoldings.FixedDepositContractCode);
+                MessageBox.Show("Amount Transferred And Account Closed Successfully.");
+
+            }
+            
+        }
+
+        private void cbAmountTransferMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string transferMethod = cbAmountTransferMethod.SelectedItem.ToString();
+            if (transferMethod == "Cash")
+            {
+                lblChequeNumber.Visible = false;
+                tbTransferNumber.Visible = false;
+            }
+            else if (transferMethod == "Cheque")
+            {
+                lblChequeNumber.Text = "Cheque Number";
+                lblChequeNumber.Visible = true;
+                tbTransferNumber.Visible = true;
+            }
+            else if (transferMethod == "Transfer")
+            {
+                lblChequeNumber.Text = "Account Number";
+                   lblChequeNumber.Visible = true;
+                tbTransferNumber.Visible = true;
+            }
+
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
+            _fixedDepositProductHoldingService.CalculateFinalAmount("DEF/Default/1/1");
         }
         
        

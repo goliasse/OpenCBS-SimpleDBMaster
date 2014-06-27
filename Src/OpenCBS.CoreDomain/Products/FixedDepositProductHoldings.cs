@@ -13,7 +13,8 @@ namespace OpenCBS.CoreDomain.Products
         public int ClientId { get; set; }
         public string ClientType { get; set; }
         public string FixedDepositContractCode { get; set; }
-        public int FixedDepositProductId { get; set; }
+
+        public FixedDepositProduct FixedDepositProduct { get; set; }
         public decimal InitialAmount { get; set; }
         public double InterestRate { get; set; }
         public int MaturityPeriod { get; set; }
@@ -27,6 +28,7 @@ namespace OpenCBS.CoreDomain.Products
         public string Status { get; set; }
         public int PreMatured { get; set; }
         public string Comment { get; set; }
+
         public double EffectiveInterestRate { get; set; }
         public double EffectiveDepositPeriod { get; set; }
         public decimal FinalAmount { get; set; }
@@ -34,5 +36,7 @@ namespace OpenCBS.CoreDomain.Products
         public double FinalPenality { get; set; }
         public string InitialAmountPaymentMethod { get; set; }
         public string FinalAmountPaymentMethod { get; set; }
+
+        public string FinalAmountChequeAccount { get; set; }
     }
 }

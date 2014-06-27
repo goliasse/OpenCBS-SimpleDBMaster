@@ -51,7 +51,8 @@ namespace OpenCBS.Manager.Products
             ,[final_interest]  
             ,[final_penalty]  
             ,[initial_amount_payment_method]
-            ,[final_amount_payment_method] )
+            ,[final_amount_payment_method]
+            ,[final_cheque_account_number])
                 VALUES
                 (@clientId
                 ,@clientType
@@ -76,7 +77,8 @@ namespace OpenCBS.Manager.Products
                 ,@finalInterest
                 ,@finalPenalty
                 ,@initialAmountPaymentMethod
-                ,@finalAmountPaymentMethod)
+                ,@finalAmountPaymentMethod
+                ,@finalChequeAccountNumber)
                 SELECT SCOPE_IDENTITY()";
 
 
@@ -119,7 +121,7 @@ namespace OpenCBS.Manager.Products
 
             c.AddParam("@preMatured", product.PreMatured);
             c.AddParam("@comment", product.Comment);
-            c.AddParam("@fixedDepositProductId", product.FixedDepositProductId);
+            c.AddParam("@fixedDepositProductId", product.FixedDepositProduct.Id);
             c.AddParam("@effectiveInterestRate", product.EffectiveInterestRate);
 
             c.AddParam("@effectiveDepositPeriod", product.EffectiveDepositPeriod);
@@ -129,7 +131,8 @@ namespace OpenCBS.Manager.Products
 
             c.AddParam("@initialAmountPaymentMethod", product.InitialAmountPaymentMethod);
             c.AddParam("@finalAmountPaymentMethod", product.FinalAmountPaymentMethod);
-
+            c.AddParam("@finalChequeAccountNumber", product.FinalAmountChequeAccount);
+            
         }
 
 
@@ -160,6 +163,7 @@ namespace OpenCBS.Manager.Products
             ,[final_penalty] = @finalPenalty
             ,[initial_amount_payment_method] = @initialAmountPaymentMethod
             ,[final_amount_payment_method] = @finalAmountPaymentMethod
+            ,[final_cheque_account_number] = @finalChequeAccountNumber
             WHERE id = @productId";
 
 
@@ -172,36 +176,81 @@ namespace OpenCBS.Manager.Products
             }
         }
 
+
+        public void UpdateFixedDepositProductHolding(FixedDepositProductHoldings product, string productContractCode)
+        {
+            string q = @"UPDATE [FixedDepositProductHoldings] SET 
+            [client_id] = @clientId
+           ,[client_type] = @clientType
+           ,[fixed_deposit_contract_code] = @fixedDepositContractCode
+           ,[initial_amount] = @initialAmount
+           ,[interest_rate] = @interestRate
+           ,[maturity_period] = @maturityPeriod
+           ,[interest_calculation_frequency] = @interestCalculationFrequency
+           ,[penality_type] = @penalityType
+           ,[penality] = @penality
+           ,[opening_accounting_officer] = @openingAccountingOfficer
+           ,[closing_accounting_officer] = @closingAccountingOfficer
+           ,[open_date] = @openDate
+           ,[close_date] = @closeDate
+           ,[status] = @status
+           ,[pre_matured] = @preMatured
+           ,[comment] = @comment
+           ,[fixed_deposit_product_id] = @fixedDepositProductId
+            ,[effective_interest_rate] = @effectiveInterestRate
+            ,[effective_deposit_period] = @effectiveDepositPeriod
+            ,[final_amount] = @finalAmount
+            ,[final_interest]  = @finalInterest
+            ,[final_penalty] = @finalPenalty
+            ,[initial_amount_payment_method] = @initialAmountPaymentMethod
+            ,[final_amount_payment_method] = @finalAmountPaymentMethod
+            ,[final_cheque_account_number] = @finalChequeAccountNumber
+            WHERE fixed_deposit_contract_code = @productContractCode";
+
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@productContractCode", productContractCode);
+                SetProduct(c, product);
+                c.ExecuteNonQuery();
+            }
+        }
+
+
         public FixedDepositProductHoldings FetchProduct(int productId)
         {
             string q = @"SELECT
-            [id]
-           ,[client_id]
-           ,[client_type]
-           ,[fixed_deposit_contract_code]
-           ,[initial_amount]
-           ,[interest_rate]
-           ,[maturity_period]
-           ,[interest_calculation_frequency]
-           ,[penality_type]
-           ,[penality]
-           ,[opening_accounting_officer]
-           ,[closing_accounting_officer]
-           ,[open_date]
-           ,[close_date]
-           ,[status]
-           ,[pre_matured]
-           ,[comment]
-           ,[fixed_deposit_product_id]
-            ,[effective_interest_rate] 
-            ,[effective_deposit_period] 
-            ,[final_amount] 
-            ,[final_interest]  
-            ,[final_penalty]  
-            ,[initial_amount_payment_method]
-            ,[final_amount_payment_method]
-            FROM [dbo].[FixedDepositProductHoldings]
-            WHERE id = @productId";
+            [dbo].[FixedDepositProductHoldings].[id]
+           ,[dbo].[FixedDepositProductHoldings].[client_id]
+           ,[dbo].[FixedDepositProductHoldings].[client_type]
+           ,[dbo].[FixedDepositProductHoldings].[fixed_deposit_contract_code]
+           ,[dbo].[FixedDepositProductHoldings].[initial_amount]
+           ,[dbo].[FixedDepositProductHoldings].[interest_rate]
+           ,[dbo].[FixedDepositProductHoldings].[maturity_period]
+           ,[dbo].[FixedDepositProductHoldings].[interest_calculation_frequency]
+           ,[dbo].[FixedDepositProductHoldings].[penality_type]
+           ,[dbo].[FixedDepositProductHoldings].[penality]
+           ,[dbo].[FixedDepositProductHoldings].[opening_accounting_officer]
+           ,[dbo].[FixedDepositProductHoldings].[closing_accounting_officer]
+           ,[dbo].[FixedDepositProductHoldings].[open_date]
+           ,[dbo].[FixedDepositProductHoldings].[close_date]
+           ,[dbo].[FixedDepositProductHoldings].[status]
+           ,[dbo].[FixedDepositProductHoldings].[pre_matured]
+           ,[dbo].[FixedDepositProductHoldings].[comment]
+           ,[dbo].[FixedDepositProductHoldings].[fixed_deposit_product_id]
+           ,[dbo].[FixedDepositProductHoldings].[effective_interest_rate] 
+           ,[dbo].[FixedDepositProductHoldings].[effective_deposit_period] 
+           ,[dbo].[FixedDepositProductHoldings].[final_amount] 
+           ,[dbo].[FixedDepositProductHoldings].[final_interest]
+           ,[dbo].[FixedDepositProductHoldings].[final_penalty]  
+           ,[dbo].[FixedDepositProductHoldings].[initial_amount_payment_method]
+           ,[dbo].[FixedDepositProductHoldings].[final_amount_payment_method]
+           ,[dbo].[FixedDepositProductHoldings].[final_cheque_account_number]
+           ,[dbo].[FixedDepositProducts].[product_name]
+           ,[dbo].[FixedDepositProducts].[product_code]
+            FROM [dbo].[FixedDepositProductHoldings] INNER JOIN [dbo].[FixedDepositProducts] ON [dbo].FixedDepositProducts.id = [dbo].FixedDepositProductHoldings.fixed_deposit_product_id
+            WHERE [dbo].[FixedDepositProductHoldings].[id] = @productId";
 
         
 
@@ -223,6 +272,133 @@ namespace OpenCBS.Manager.Products
             }
 
 
+
+        }
+
+
+
+        public FixedDepositProductHoldings FetchProduct(string productContractCode)
+        {
+            string q = @"SELECT
+             [dbo].[FixedDepositProductHoldings].[id]
+           ,[dbo].[FixedDepositProductHoldings].[client_id]
+           ,[dbo].[FixedDepositProductHoldings].[client_type]
+           ,[dbo].[FixedDepositProductHoldings].[fixed_deposit_contract_code]
+           ,[dbo].[FixedDepositProductHoldings].[initial_amount]
+           ,[dbo].[FixedDepositProductHoldings].[interest_rate]
+           ,[dbo].[FixedDepositProductHoldings].[maturity_period]
+           ,[dbo].[FixedDepositProductHoldings].[interest_calculation_frequency]
+           ,[dbo].[FixedDepositProductHoldings].[penality_type]
+           ,[dbo].[FixedDepositProductHoldings].[penality]
+           ,[dbo].[FixedDepositProductHoldings].[opening_accounting_officer]
+           ,[dbo].[FixedDepositProductHoldings].[closing_accounting_officer]
+           ,[dbo].[FixedDepositProductHoldings].[open_date]
+           ,[dbo].[FixedDepositProductHoldings].[close_date]
+           ,[dbo].[FixedDepositProductHoldings].[status]
+           ,[dbo].[FixedDepositProductHoldings].[pre_matured]
+           ,[dbo].[FixedDepositProductHoldings].[comment]
+           ,[dbo].[FixedDepositProductHoldings].[fixed_deposit_product_id]
+           ,[dbo].[FixedDepositProductHoldings].[effective_interest_rate] 
+           ,[dbo].[FixedDepositProductHoldings].[effective_deposit_period] 
+           ,[dbo].[FixedDepositProductHoldings].[final_amount] 
+           ,[dbo].[FixedDepositProductHoldings].[final_interest]
+           ,[dbo].[FixedDepositProductHoldings].[final_penalty]  
+           ,[dbo].[FixedDepositProductHoldings].[initial_amount_payment_method]
+           ,[dbo].[FixedDepositProductHoldings].[final_amount_payment_method]
+           ,[dbo].[FixedDepositProductHoldings].[final_cheque_account_number]
+           ,[dbo].[FixedDepositProducts].[product_name]
+           ,[dbo].[FixedDepositProducts].[product_code]
+            FROM [dbo].[FixedDepositProductHoldings] INNER JOIN [dbo].[FixedDepositProducts] ON [dbo].FixedDepositProducts.id = [dbo].FixedDepositProductHoldings.fixed_deposit_product_id
+            WHERE [dbo].[FixedDepositProductHoldings].fixed_deposit_contract_code = @productContractCode";
+
+
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@productContractCode", productContractCode);
+
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+
+
+
+                    if (r == null || r.Empty) return null;
+
+                    r.Read();
+                    return (FixedDepositProductHoldings)GetProduct(r);
+                }
+            }
+
+
+        }
+
+
+
+        public List<FixedDepositProductHoldings> FetchProduct(bool showAlsoClosed, int clientid, string clientType)
+        {
+            List<FixedDepositProductHoldings> fixedDepositProductHoldingList = new List<FixedDepositProductHoldings>();
+
+            string q = @"SELECT
+            [dbo].[FixedDepositProductHoldings].[id]
+           ,[dbo].[FixedDepositProductHoldings].[client_id]
+           ,[dbo].[FixedDepositProductHoldings].[client_type]
+           ,[dbo].[FixedDepositProductHoldings].[fixed_deposit_contract_code]
+           ,[dbo].[FixedDepositProductHoldings].[initial_amount]
+           ,[dbo].[FixedDepositProductHoldings].[interest_rate]
+           ,[dbo].[FixedDepositProductHoldings].[maturity_period]
+           ,[dbo].[FixedDepositProductHoldings].[interest_calculation_frequency]
+           ,[dbo].[FixedDepositProductHoldings].[penality_type]
+           ,[dbo].[FixedDepositProductHoldings].[penality]
+           ,[dbo].[FixedDepositProductHoldings].[opening_accounting_officer]
+           ,[dbo].[FixedDepositProductHoldings].[closing_accounting_officer]
+           ,[dbo].[FixedDepositProductHoldings].[open_date]
+           ,[dbo].[FixedDepositProductHoldings].[close_date]
+           ,[dbo].[FixedDepositProductHoldings].[status]
+           ,[dbo].[FixedDepositProductHoldings].[pre_matured]
+           ,[dbo].[FixedDepositProductHoldings].[comment]
+           ,[dbo].[FixedDepositProductHoldings].[fixed_deposit_product_id]
+           ,[dbo].[FixedDepositProductHoldings].[effective_interest_rate] 
+           ,[dbo].[FixedDepositProductHoldings].[effective_deposit_period] 
+           ,[dbo].[FixedDepositProductHoldings].[final_amount] 
+           ,[dbo].[FixedDepositProductHoldings].[final_interest]
+           ,[dbo].[FixedDepositProductHoldings].[final_penalty]  
+           ,[dbo].[FixedDepositProductHoldings].[initial_amount_payment_method]
+           ,[dbo].[FixedDepositProductHoldings].[final_amount_payment_method]
+           ,[dbo].[FixedDepositProductHoldings].[final_cheque_account_number]
+           ,[dbo].[FixedDepositProducts].[product_name]
+           ,[dbo].[FixedDepositProducts].[product_code]
+            FROM [dbo].[FixedDepositProductHoldings] INNER JOIN [dbo].[FixedDepositProducts] ON [dbo].FixedDepositProducts.id = [dbo].FixedDepositProductHoldings.fixed_deposit_product_id
+            WHERE [dbo].[FixedDepositProductHoldings].[client_id] = @ClientId AND [dbo].[FixedDepositProductHoldings].[client_type] = @ClientType
+           ";
+
+
+            if (!showAlsoClosed)
+                q += " WHERE status = 'Opened'";
+
+
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@ClientId",clientid);
+                c.AddParam("@ClientType", clientType);
+
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+                    if (r == null || r.Empty) return null;
+
+                    while (r.Read())
+                    {
+
+                        FixedDepositProductHoldings product = FetchProduct(Convert.ToInt32(r.GetInt("id")));
+
+                        fixedDepositProductHoldingList.Add(product);
+                    }
+                }
+            }
+
+            return fixedDepositProductHoldingList;
         }
 
 
@@ -232,32 +408,36 @@ namespace OpenCBS.Manager.Products
             List<FixedDepositProductHoldings> fixedDepositProductHoldingList = new List<FixedDepositProductHoldings>();
 
             string q = @"SELECT
-            [id]
-           ,[client_id]
-           ,[client_type]
-           ,[fixed_deposit_contract_code]
-           ,[initial_amount]
-           ,[interest_rate]
-           ,[maturity_period]
-           ,[interest_calculation_frequency]
-           ,[penality_type]
-           ,[penality]
-           ,[opening_accounting_officer]
-           ,[closing_accounting_officer]
-           ,[open_date]
-           ,[close_date]
-           ,[status]
-           ,[pre_matured]
-           ,[comment]
-           ,[fixed_deposit_product_id]
-           ,[effective_interest_rate] 
-           ,[effective_deposit_period] 
-           ,[final_amount] 
-           ,[final_interest]
-           ,[final_penalty]  
-           ,[initial_amount_payment_method]
-           ,[final_amount_payment_method]
-           FROM [dbo].[FixedDepositProductHoldings]";
+            [dbo].[FixedDepositProductHoldings].[id]
+           ,[dbo].[FixedDepositProductHoldings].[client_id]
+           ,[dbo].[FixedDepositProductHoldings].[client_type]
+           ,[dbo].[FixedDepositProductHoldings].[fixed_deposit_contract_code]
+           ,[dbo].[FixedDepositProductHoldings].[initial_amount]
+           ,[dbo].[FixedDepositProductHoldings].[interest_rate]
+           ,[dbo].[FixedDepositProductHoldings].[maturity_period]
+           ,[dbo].[FixedDepositProductHoldings].[interest_calculation_frequency]
+           ,[dbo].[FixedDepositProductHoldings].[penality_type]
+           ,[dbo].[FixedDepositProductHoldings].[penality]
+           ,[dbo].[FixedDepositProductHoldings].[opening_accounting_officer]
+           ,[dbo].[FixedDepositProductHoldings].[closing_accounting_officer]
+           ,[dbo].[FixedDepositProductHoldings].[open_date]
+           ,[dbo].[FixedDepositProductHoldings].[close_date]
+           ,[dbo].[FixedDepositProductHoldings].[status]
+           ,[dbo].[FixedDepositProductHoldings].[pre_matured]
+           ,[dbo].[FixedDepositProductHoldings].[comment]
+           ,[dbo].[FixedDepositProductHoldings].[fixed_deposit_product_id]
+           ,[dbo].[FixedDepositProductHoldings].[effective_interest_rate] 
+           ,[dbo].[FixedDepositProductHoldings].[effective_deposit_period] 
+           ,[dbo].[FixedDepositProductHoldings].[final_amount] 
+           ,[dbo].[FixedDepositProductHoldings].[final_interest]
+           ,[dbo].[FixedDepositProductHoldings].[final_penalty]  
+           ,[dbo].[FixedDepositProductHoldings].[initial_amount_payment_method]
+           ,[dbo].[FixedDepositProductHoldings].[final_amount_payment_method]
+           ,[dbo].[FixedDepositProductHoldings].[final_cheque_account_number]
+           ,[dbo].[FixedDepositProducts].[product_name]
+           ,[dbo].[FixedDepositProducts].[product_code]
+            FROM [dbo].[FixedDepositProductHoldings] INNER JOIN [dbo].[FixedDepositProducts] ON [dbo].FixedDepositProducts.id = [dbo].FixedDepositProductHoldings.fixed_deposit_product_id
+           ";
 
 
             if (!showAlsoClosed)
@@ -296,7 +476,10 @@ fixedDepositProductHoldings.Id = r.GetInt("id");
 fixedDepositProductHoldings.ClientId = r.GetInt("client_id");
 fixedDepositProductHoldings.ClientType = r.GetString("client_type");
 fixedDepositProductHoldings.FixedDepositContractCode = r.GetString("fixed_deposit_contract_code");
-fixedDepositProductHoldings.FixedDepositProductId = r.GetInt("fixed_deposit_product_id");
+fixedDepositProductHoldings.FixedDepositProduct = new FixedDepositProduct();
+fixedDepositProductHoldings.FixedDepositProduct.Id = r.GetInt("fixed_deposit_product_id");
+fixedDepositProductHoldings.FixedDepositProduct.Name = r.GetString("product_name");
+fixedDepositProductHoldings.FixedDepositProduct.Code = r.GetString("product_code");
 
 fixedDepositProductHoldings.InitialAmount = r.GetDecimal("initial_amount");
 fixedDepositProductHoldings.InterestRate = r.GetDouble("interest_rate");
@@ -321,9 +504,118 @@ fixedDepositProductHoldings.FinalPenality = r.GetDouble("final_penalty");
 fixedDepositProductHoldings.InitialAmountPaymentMethod = r.GetString("initial_amount_payment_method");
 
 fixedDepositProductHoldings.FinalAmountPaymentMethod = r.GetString("final_amount_payment_method");
+fixedDepositProductHoldings.FinalAmountChequeAccount = r.GetString("final_cheque_account_number");
+            
 
 return fixedDepositProductHoldings;
         }
 
+
+
+        static double CalculateInterest(double principal,
+   double interestRate,
+   double years,
+   int timesPerYear)
+        {
+            // (1 + r/n)
+            double body = 1 + (interestRate / (timesPerYear*100));
+
+            // nt
+            double exponent = timesPerYear * years;
+
+            // P(1 + r/n)^nt
+            return principal * Math.Pow(body, exponent);
+        }
+        public FixedDepositInterest CalculateFinalAmount(string fdContractCode)
+        {
+
+            double effectiveInterestRate = 0.0;
+            double finalInterestRate = 0.0;
+            double finalInterest = 0.0;
+            double penaltyFlat = 0.0;
+            double finalAmount;
+            
+            int prematured = 0;
+
+           FixedDepositProductHoldings _fixedDepositProductHoldings = FetchProduct(fdContractCode);
+
+             
+             int maturityPeriod = _fixedDepositProductHoldings.MaturityPeriod;
+            string penalityType = _fixedDepositProductHoldings.PenalityType;
+            DateTime openingDate = _fixedDepositProductHoldings.OpenDate;
+            DateTime maturityDate = openingDate.AddMonths(maturityPeriod);
+            double interestRate = _fixedDepositProductHoldings.InterestRate;
+             string interestCalculationFrequency = _fixedDepositProductHoldings.InterestCalculationFrequency;
+             double initialAmount = Convert.ToDouble(_fixedDepositProductHoldings.InitialAmount);
+            int frequency = 0;
+
+            if(interestCalculationFrequency == "Monthly")
+                frequency = 12;
+            if(interestCalculationFrequency == "Quarterly")
+                frequency = 4;
+            if(interestCalculationFrequency == "Half Yearly")
+                frequency = 2;
+            if(interestCalculationFrequency == "Yearly")
+                frequency = 1;
+
+                        double penaltyRate = _fixedDepositProductHoldings.Penality;
+                        double effectiveDepositPeriod = Convert.ToDouble(((DateTime.Now - openingDate).TotalDays) / 365);
+                        double effectiveDepositPeriodDays = Convert.ToDouble(((DateTime.Now - openingDate).TotalDays));
+            
+                        if (DateTime.Now >= maturityDate)
+                        {
+                            effectiveInterestRate = interestRate;
+                            finalAmount = CalculateInterest(initialAmount, effectiveInterestRate, effectiveDepositPeriod , frequency);
+                        }
+                        else
+                        {
+                            prematured = 1;
+                            if (penalityType == "Rate")
+                            {
+                                effectiveInterestRate = interestRate - penaltyRate;
+                                finalAmount = CalculateInterest(initialAmount, effectiveInterestRate, effectiveDepositPeriod, frequency);
+                                // finalInterestRate= Calculate interest (Initial Amount(P), Effective interest rate(r), Effective deposit period(t), Interest Calculation Frequency(n));
+
+                            }
+                            else
+                            {
+                                finalAmount = CalculateInterest(initialAmount, effectiveInterestRate, effectiveDepositPeriod, frequency);
+                                finalAmount = finalAmount - penaltyRate;
+                                if ((finalAmount - initialAmount) > penaltyRate)
+                                {
+                                    finalAmount = finalAmount - penaltyRate;
+                                }
+                                else
+                                {
+                                    finalAmount = initialAmount;
+                                }
+                                // finalInterestRate=Calculate interest (Initial Amount(p), Interest rate(r), Effective deposit period(t), Interest Calculation Frequency(n)) ;
+                            }
+                            
+                            
+                        }
+
+                        FixedDepositInterest _fixedDepositInterest = new FixedDepositInterest();
+                        _fixedDepositInterest.EffectiveDepositPeriod = effectiveDepositPeriodDays;
+                        _fixedDepositInterest.EffectiveInterestRate = effectiveInterestRate;
+                        _fixedDepositInterest.FinalAmount = Convert.ToDecimal(finalAmount);
+                        _fixedDepositInterest.FinalInterest = Convert.ToDecimal(finalAmount - initialAmount);
+                        _fixedDepositInterest.InitialAmount = Convert.ToDecimal(initialAmount);
+                        _fixedDepositInterest.Penalty = penaltyRate;
+                        _fixedDepositInterest.PenaltyType = penalityType;
+                        _fixedDepositInterest.PreMatured = prematured;
+
+
+
+                        return _fixedDepositInterest;
+
+                    }
+             
+
+
+            
+        }
+
+
     }
-}
+
