@@ -25,17 +25,35 @@ namespace OpenCBS.Services
             _currentAccountProductHoldingManager = new CurrentAccountProductHoldingManager(user);
 		}
 
-       public int SaveCurrentAccountPoductHolding(CurrentAccountProductHoldings productName)
+       public string SaveCurrentAccountPoductHolding(CurrentAccountProductHoldings productName)
        {
            return _currentAccountProductHoldingManager.SaveCurrentAccountPoductHolding(productName);
+       }
+
+
+       public CurrentAccountProductHoldings FetchProduct(string contractCode)
+       {
+           return _currentAccountProductHoldingManager.FetchProduct(contractCode);
+       }
+
+       public List<CurrentAccountProductHoldings> FetchProduct(int clientid, string clientType)
+       {
+
+           return _currentAccountProductHoldingManager.FetchProduct(clientid, clientType);
        }
         public void UpdateCurrentAccountProductHolding(CurrentAccountProductHoldings product, int productId)
         {
           _currentAccountProductHoldingManager.UpdateCurrentAccountProductHolding(product, productId);
         }
-         public List<CurrentAccountProductHoldings> FetchProduct(bool showAlsoDeleted, int productId)
+
+        public void UpdateCurrentAccountProductHolding(CurrentAccountProductHoldings product, string contractCode)
+        {
+            _currentAccountProductHoldingManager.UpdateCurrentAccountProductHolding(product, contractCode);
+        }
+
+         public List<CurrentAccountProductHoldings> FetchProduct(bool showAlsoDeleted)
          {
-             return _currentAccountProductHoldingManager.FetchProduct(showAlsoDeleted, productId);
+             return _currentAccountProductHoldingManager.FetchProduct(showAlsoDeleted);
          }
 
          public CurrentAccountProductHoldings FetchProduct(int productId)

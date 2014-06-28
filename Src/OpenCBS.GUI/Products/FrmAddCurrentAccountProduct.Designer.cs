@@ -31,7 +31,7 @@ namespace OpenCBS.GUI.Products
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddCurrentAccountProduct));
-            this.btSavingProduct = new System.Windows.Forms.Button();
+            this.btnCurrentAccountProduct = new System.Windows.Forms.Button();
             this.bClose = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControlSaving = new System.Windows.Forms.TabControl();
@@ -47,7 +47,7 @@ namespace OpenCBS.GUI.Products
             this.clientTypeVillageCheckBox = new System.Windows.Forms.CheckBox();
             this.clientTypeGroupCheckBox = new System.Windows.Forms.CheckBox();
             this.clientTypeAllCheckBox = new System.Windows.Forms.CheckBox();
-            this.tbCodeSavingProduct = new System.Windows.Forms.TextBox();
+            this.tbCodeCurrentAccountProduct = new System.Windows.Forms.TextBox();
             this.tbName = new System.Windows.Forms.TextBox();
             this.gbInitialAmount = new System.Windows.Forms.GroupBox();
             this.tbInitialAmountMax = new System.Windows.Forms.TextBox();
@@ -64,7 +64,7 @@ namespace OpenCBS.GUI.Products
             this.rbRateReopenFees = new System.Windows.Forms.RadioButton();
             this.rbFlatReopenFees = new System.Windows.Forms.RadioButton();
             this.lbReopenFeesType = new System.Windows.Forms.Label();
-            this.tbReopenFeesValue = new System.Windows.Forms.TextBox();
+            this.tbReopenFees = new System.Windows.Forms.TextBox();
             this.lbReopenFeesValue = new System.Windows.Forms.Label();
             this.tbReopenFeesMax = new System.Windows.Forms.TextBox();
             this.tbReopenFeesMin = new System.Windows.Forms.TextBox();
@@ -95,7 +95,7 @@ namespace OpenCBS.GUI.Products
             this.rbRateEntryFees = new System.Windows.Forms.RadioButton();
             this.rbFlatEntryFees = new System.Windows.Forms.RadioButton();
             this.lbEntryFeesType = new System.Windows.Forms.Label();
-            this.tbEntryFeesValue = new System.Windows.Forms.TextBox();
+            this.tbEntryFees = new System.Windows.Forms.TextBox();
             this.lbEntryFeesValue = new System.Windows.Forms.Label();
             this.tbEntryFeesMax = new System.Windows.Forms.TextBox();
             this.tbEntryFeesMin = new System.Windows.Forms.TextBox();
@@ -134,17 +134,18 @@ namespace OpenCBS.GUI.Products
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btSavingProduct
+            // btnCurrentAccountProduct
             // 
-            resources.ApplyResources(this.btSavingProduct, "btSavingProduct");
-            this.btSavingProduct.Name = "btSavingProduct";
-            this.btSavingProduct.Click += new System.EventHandler(this.btSavingProduct_Click);
+            resources.ApplyResources(this.btnCurrentAccountProduct, "btnCurrentAccountProduct");
+            this.btnCurrentAccountProduct.Name = "btnCurrentAccountProduct";
+            this.btnCurrentAccountProduct.Click += new System.EventHandler(this.btSavingProduct_Click);
             // 
             // bClose
             // 
             resources.ApplyResources(this.bClose, "bClose");
             this.bClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.bClose.Name = "bClose";
+            this.bClose.Click += new System.EventHandler(this.bClose_Click);
             // 
             // splitContainer1
             // 
@@ -182,7 +183,7 @@ namespace OpenCBS.GUI.Products
             this.groupBox1.Controls.Add(this.lbCodeSavingProduct);
             this.groupBox1.Controls.Add(this.lbNameSavingProduct);
             this.groupBox1.Controls.Add(this.gbClientType);
-            this.groupBox1.Controls.Add(this.tbCodeSavingProduct);
+            this.groupBox1.Controls.Add(this.tbCodeCurrentAccountProduct);
             this.groupBox1.Controls.Add(this.tbName);
             this.groupBox1.Controls.Add(this.gbInitialAmount);
             this.groupBox1.Controls.Add(this.gbBalance);
@@ -250,11 +251,12 @@ namespace OpenCBS.GUI.Products
             // 
             resources.ApplyResources(this.clientTypeAllCheckBox, "clientTypeAllCheckBox");
             this.clientTypeAllCheckBox.Name = "clientTypeAllCheckBox";
+            this.clientTypeAllCheckBox.CheckedChanged += new System.EventHandler(this.clientTypeAllCheckBox_CheckedChanged);
             // 
-            // tbCodeSavingProduct
+            // tbCodeCurrentAccountProduct
             // 
-            resources.ApplyResources(this.tbCodeSavingProduct, "tbCodeSavingProduct");
-            this.tbCodeSavingProduct.Name = "tbCodeSavingProduct";
+            resources.ApplyResources(this.tbCodeCurrentAccountProduct, "tbCodeCurrentAccountProduct");
+            this.tbCodeCurrentAccountProduct.Name = "tbCodeCurrentAccountProduct";
             // 
             // tbName
             // 
@@ -335,7 +337,7 @@ namespace OpenCBS.GUI.Products
             this.gbReopenFees.Controls.Add(this.rbRateReopenFees);
             this.gbReopenFees.Controls.Add(this.rbFlatReopenFees);
             this.gbReopenFees.Controls.Add(this.lbReopenFeesType);
-            this.gbReopenFees.Controls.Add(this.tbReopenFeesValue);
+            this.gbReopenFees.Controls.Add(this.tbReopenFees);
             this.gbReopenFees.Controls.Add(this.lbReopenFeesValue);
             this.gbReopenFees.Controls.Add(this.tbReopenFeesMax);
             this.gbReopenFees.Controls.Add(this.tbReopenFeesMin);
@@ -362,10 +364,10 @@ namespace OpenCBS.GUI.Products
             resources.ApplyResources(this.lbReopenFeesType, "lbReopenFeesType");
             this.lbReopenFeesType.Name = "lbReopenFeesType";
             // 
-            // tbReopenFeesValue
+            // tbReopenFees
             // 
-            resources.ApplyResources(this.tbReopenFeesValue, "tbReopenFeesValue");
-            this.tbReopenFeesValue.Name = "tbReopenFeesValue";
+            resources.ApplyResources(this.tbReopenFees, "tbReopenFees");
+            this.tbReopenFees.Name = "tbReopenFees";
             // 
             // lbReopenFeesValue
             // 
@@ -410,9 +412,19 @@ namespace OpenCBS.GUI.Products
             // 
             // cbManagementFeeFreq
             // 
+            this.cbManagementFeeFreq.AutoCompleteCustomSource.AddRange(new string[] {
+            resources.GetString("cbManagementFeeFreq.AutoCompleteCustomSource"),
+            resources.GetString("cbManagementFeeFreq.AutoCompleteCustomSource1"),
+            resources.GetString("cbManagementFeeFreq.AutoCompleteCustomSource2"),
+            resources.GetString("cbManagementFeeFreq.AutoCompleteCustomSource3")});
             this.cbManagementFeeFreq.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbManagementFeeFreq, "cbManagementFeeFreq");
             this.cbManagementFeeFreq.FormattingEnabled = true;
+            this.cbManagementFeeFreq.Items.AddRange(new object[] {
+            resources.GetString("cbManagementFeeFreq.Items"),
+            resources.GetString("cbManagementFeeFreq.Items1"),
+            resources.GetString("cbManagementFeeFreq.Items2"),
+            resources.GetString("cbManagementFeeFreq.Items3")});
             this.cbManagementFeeFreq.Name = "cbManagementFeeFreq";
             // 
             // rbRateManagementFees
@@ -529,7 +541,7 @@ namespace OpenCBS.GUI.Products
             this.gbEntryFees.Controls.Add(this.rbRateEntryFees);
             this.gbEntryFees.Controls.Add(this.rbFlatEntryFees);
             this.gbEntryFees.Controls.Add(this.lbEntryFeesType);
-            this.gbEntryFees.Controls.Add(this.tbEntryFeesValue);
+            this.gbEntryFees.Controls.Add(this.tbEntryFees);
             this.gbEntryFees.Controls.Add(this.lbEntryFeesValue);
             this.gbEntryFees.Controls.Add(this.tbEntryFeesMax);
             this.gbEntryFees.Controls.Add(this.tbEntryFeesMin);
@@ -556,10 +568,10 @@ namespace OpenCBS.GUI.Products
             resources.ApplyResources(this.lbEntryFeesType, "lbEntryFeesType");
             this.lbEntryFeesType.Name = "lbEntryFeesType";
             // 
-            // tbEntryFeesValue
+            // tbEntryFees
             // 
-            resources.ApplyResources(this.tbEntryFeesValue, "tbEntryFeesValue");
-            this.tbEntryFeesValue.Name = "tbEntryFeesValue";
+            resources.ApplyResources(this.tbEntryFees, "tbEntryFees");
+            this.tbEntryFees.Name = "tbEntryFees";
             // 
             // lbEntryFeesValue
             // 
@@ -656,7 +668,7 @@ namespace OpenCBS.GUI.Products
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btSavingProduct);
+            this.groupBox2.Controls.Add(this.btnCurrentAccountProduct);
             this.groupBox2.Controls.Add(this.bClose);
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
@@ -664,7 +676,7 @@ namespace OpenCBS.GUI.Products
             // 
             // FrmAddCurrentAccountProduct
             // 
-            this.AcceptButton = this.btSavingProduct;
+            this.AcceptButton = this.btnCurrentAccountProduct;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.bClose;
@@ -720,7 +732,7 @@ namespace OpenCBS.GUI.Products
         private System.Windows.Forms.TextBox tbBalanceMin;
         private System.Windows.Forms.Label lbBalanceMax;
         private System.Windows.Forms.Label lbBalanceMin;
-        private System.Windows.Forms.Button btSavingProduct;
+        private System.Windows.Forms.Button btnCurrentAccountProduct;
         private System.Windows.Forms.Button bClose;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.SplitContainer splitContainer1;
@@ -730,10 +742,10 @@ namespace OpenCBS.GUI.Products
         private System.Windows.Forms.TabControl tabControlSaving;
         private System.Windows.Forms.TabPage tabPageMainParameters;
         private System.Windows.Forms.Label lbCodeSavingProduct;
-        private System.Windows.Forms.TextBox tbCodeSavingProduct;
+        private System.Windows.Forms.TextBox tbCodeCurrentAccountProduct;
         private System.Windows.Forms.TabPage tabPageManagement;
         private System.Windows.Forms.GroupBox gbEntryFees;
-        private System.Windows.Forms.TextBox tbEntryFeesValue;
+        private System.Windows.Forms.TextBox tbEntryFees;
         private System.Windows.Forms.Label lbEntryFeesValue;
         private System.Windows.Forms.TextBox tbEntryFeesMax;
         private System.Windows.Forms.TextBox tbEntryFeesMin;
@@ -783,7 +795,7 @@ namespace OpenCBS.GUI.Products
         private System.Windows.Forms.RadioButton rbRateReopenFees;
         private System.Windows.Forms.RadioButton rbFlatReopenFees;
         private System.Windows.Forms.Label lbReopenFeesType;
-        private System.Windows.Forms.TextBox tbReopenFeesValue;
+        private System.Windows.Forms.TextBox tbReopenFees;
         private System.Windows.Forms.Label lbReopenFeesValue;
         private System.Windows.Forms.TextBox tbReopenFeesMax;
         private System.Windows.Forms.TextBox tbReopenFeesMin;

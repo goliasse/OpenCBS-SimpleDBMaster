@@ -118,39 +118,39 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btSavingProduct.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="btnCurrentAccountProduct.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btSavingProduct.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="btnCurrentAccountProduct.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.25pt</value>
   </data>
-  <data name="btSavingProduct.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="btnCurrentAccountProduct.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="btSavingProduct.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="btnCurrentAccountProduct.Location" type="System.Drawing.Point, System.Drawing">
     <value>400, 26</value>
   </data>
-  <data name="btSavingProduct.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnCurrentAccountProduct.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 25</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btSavingProduct.TabIndex" type="System.Int32, mscorlib">
+  <data name="btnCurrentAccountProduct.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="btSavingProduct.Text" xml:space="preserve">
+  <data name="btnCurrentAccountProduct.Text" xml:space="preserve">
     <value>Save</value>
   </data>
-  <data name="&gt;&gt;btSavingProduct.Name" xml:space="preserve">
-    <value>btSavingProduct</value>
+  <data name="&gt;&gt;btnCurrentAccountProduct.Name" xml:space="preserve">
+    <value>btnCurrentAccountProduct</value>
   </data>
-  <data name="&gt;&gt;btSavingProduct.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnCurrentAccountProduct.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btSavingProduct.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnCurrentAccountProduct.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="&gt;&gt;btSavingProduct.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnCurrentAccountProduct.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="bClose.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -507,28 +507,28 @@
   <data name="&gt;&gt;gbClientType.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="tbCodeSavingProduct.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="tbCodeCurrentAccountProduct.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
   </data>
-  <data name="tbCodeSavingProduct.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tbCodeCurrentAccountProduct.Location" type="System.Drawing.Point, System.Drawing">
     <value>326, 16</value>
   </data>
-  <data name="tbCodeSavingProduct.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tbCodeCurrentAccountProduct.Size" type="System.Drawing.Size, System.Drawing">
     <value>175, 22</value>
   </data>
-  <data name="tbCodeSavingProduct.TabIndex" type="System.Int32, mscorlib">
+  <data name="tbCodeCurrentAccountProduct.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;tbCodeSavingProduct.Name" xml:space="preserve">
-    <value>tbCodeSavingProduct</value>
+  <data name="&gt;&gt;tbCodeCurrentAccountProduct.Name" xml:space="preserve">
+    <value>tbCodeCurrentAccountProduct</value>
   </data>
-  <data name="&gt;&gt;tbCodeSavingProduct.Type" xml:space="preserve">
+  <data name="&gt;&gt;tbCodeCurrentAccountProduct.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tbCodeSavingProduct.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tbCodeCurrentAccountProduct.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;tbCodeSavingProduct.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tbCodeCurrentAccountProduct.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="tbName.Font" type="System.Drawing.Font, System.Drawing">
@@ -894,9 +894,6 @@
   <data name="rbRateReopenFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="rbRateReopenFees.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="rbRateReopenFees.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
   </data>
@@ -929,9 +926,6 @@
   </data>
   <data name="rbFlatReopenFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="rbFlatReopenFees.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="rbFlatReopenFees.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -996,28 +990,28 @@
   <data name="&gt;&gt;lbReopenFeesType.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="tbReopenFeesValue.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="tbReopenFees.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt</value>
   </data>
-  <data name="tbReopenFeesValue.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tbReopenFees.Location" type="System.Drawing.Point, System.Drawing">
     <value>323, 65</value>
   </data>
-  <data name="tbReopenFeesValue.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tbReopenFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 22</value>
   </data>
-  <data name="tbReopenFeesValue.TabIndex" type="System.Int32, mscorlib">
+  <data name="tbReopenFees.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="&gt;&gt;tbReopenFeesValue.Name" xml:space="preserve">
-    <value>tbReopenFeesValue</value>
+  <data name="&gt;&gt;tbReopenFees.Name" xml:space="preserve">
+    <value>tbReopenFees</value>
   </data>
-  <data name="&gt;&gt;tbReopenFeesValue.Type" xml:space="preserve">
+  <data name="&gt;&gt;tbReopenFees.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tbReopenFeesValue.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tbReopenFees.Parent" xml:space="preserve">
     <value>gbReopenFees</value>
   </data>
-  <data name="&gt;&gt;tbReopenFeesValue.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tbReopenFees.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="lbReopenFeesValue.AutoSize" type="System.Boolean, mscorlib">
@@ -1194,11 +1188,32 @@
   <data name="&gt;&gt;gbReopenFees.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="cbManagementFeeFreq.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="cbManagementFeeFreq.AutoCompleteCustomSource" xml:space="preserve">
+    <value>Monthly</value>
+  </data>
+  <data name="cbManagementFeeFreq.AutoCompleteCustomSource1" xml:space="preserve">
+    <value>Quarterly</value>
+  </data>
+  <data name="cbManagementFeeFreq.AutoCompleteCustomSource2" xml:space="preserve">
+    <value>Half Yearly</value>
+  </data>
+  <data name="cbManagementFeeFreq.AutoCompleteCustomSource3" xml:space="preserve">
+    <value>Yearly</value>
   </data>
   <data name="cbManagementFeeFreq.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="cbManagementFeeFreq.Items" xml:space="preserve">
+    <value>Monthly</value>
+  </data>
+  <data name="cbManagementFeeFreq.Items1" xml:space="preserve">
+    <value>Quarterly</value>
+  </data>
+  <data name="cbManagementFeeFreq.Items2" xml:space="preserve">
+    <value>Half Yearly</value>
+  </data>
+  <data name="cbManagementFeeFreq.Items3" xml:space="preserve">
+    <value>Yearly</value>
   </data>
   <data name="cbManagementFeeFreq.Location" type="System.Drawing.Point, System.Drawing">
     <value>417, 63</value>
@@ -1226,9 +1241,6 @@
   </data>
   <data name="rbRateManagementFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="rbRateManagementFees.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="rbRateManagementFees.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -1262,9 +1274,6 @@
   </data>
   <data name="rbFlatManagementFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="rbFlatManagementFees.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="rbFlatManagementFees.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -1530,9 +1539,6 @@
   <data name="rbRateCloseFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="rbRateCloseFees.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="rbRateCloseFees.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
   </data>
@@ -1565,9 +1571,6 @@
   </data>
   <data name="rbFlatCloseFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="rbFlatCloseFees.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="rbFlatCloseFees.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -1833,9 +1836,6 @@
   <data name="rbRateEntryFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="rbRateEntryFees.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="rbRateEntryFees.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
   </data>
@@ -1868,9 +1868,6 @@
   </data>
   <data name="rbFlatEntryFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="rbFlatEntryFees.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="rbFlatEntryFees.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -1935,28 +1932,28 @@
   <data name="&gt;&gt;lbEntryFeesType.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="tbEntryFeesValue.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="tbEntryFees.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt</value>
   </data>
-  <data name="tbEntryFeesValue.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tbEntryFees.Location" type="System.Drawing.Point, System.Drawing">
     <value>323, 65</value>
   </data>
-  <data name="tbEntryFeesValue.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tbEntryFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 22</value>
   </data>
-  <data name="tbEntryFeesValue.TabIndex" type="System.Int32, mscorlib">
+  <data name="tbEntryFees.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
-  <data name="&gt;&gt;tbEntryFeesValue.Name" xml:space="preserve">
-    <value>tbEntryFeesValue</value>
+  <data name="&gt;&gt;tbEntryFees.Name" xml:space="preserve">
+    <value>tbEntryFees</value>
   </data>
-  <data name="&gt;&gt;tbEntryFeesValue.Type" xml:space="preserve">
+  <data name="&gt;&gt;tbEntryFees.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tbEntryFeesValue.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tbEntryFees.Parent" xml:space="preserve">
     <value>gbEntryFees</value>
   </data>
-  <data name="&gt;&gt;tbEntryFeesValue.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tbEntryFees.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="lbEntryFeesValue.AutoSize" type="System.Boolean, mscorlib">
@@ -2163,9 +2160,6 @@
   <data name="rbRateOverdraftFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="rbRateOverdraftFees.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="rbRateOverdraftFees.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
   </data>
@@ -2198,9 +2192,6 @@
   </data>
   <data name="rbFlatOverdraftFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="rbFlatOverdraftFees.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="rbFlatOverdraftFees.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>

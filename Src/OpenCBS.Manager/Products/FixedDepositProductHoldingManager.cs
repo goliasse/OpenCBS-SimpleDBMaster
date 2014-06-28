@@ -249,7 +249,9 @@ namespace OpenCBS.Manager.Products
            ,[dbo].[FixedDepositProductHoldings].[final_cheque_account_number]
            ,[dbo].[FixedDepositProducts].[product_name]
            ,[dbo].[FixedDepositProducts].[product_code]
+           ,[dbo].[Persons].[first_name]
             FROM [dbo].[FixedDepositProductHoldings] INNER JOIN [dbo].[FixedDepositProducts] ON [dbo].FixedDepositProducts.id = [dbo].FixedDepositProductHoldings.fixed_deposit_product_id
+            JOIN [dbo].Persons ON [dbo].FixedDepositProductHoldings.client_id = [dbo].Persons.id
             WHERE [dbo].[FixedDepositProductHoldings].[id] = @productId";
 
         
@@ -308,7 +310,9 @@ namespace OpenCBS.Manager.Products
            ,[dbo].[FixedDepositProductHoldings].[final_cheque_account_number]
            ,[dbo].[FixedDepositProducts].[product_name]
            ,[dbo].[FixedDepositProducts].[product_code]
+           ,[dbo].[Persons].[first_name]
             FROM [dbo].[FixedDepositProductHoldings] INNER JOIN [dbo].[FixedDepositProducts] ON [dbo].FixedDepositProducts.id = [dbo].FixedDepositProductHoldings.fixed_deposit_product_id
+             JOIN [dbo].Persons ON [dbo].FixedDepositProductHoldings.client_id = [dbo].Persons.id
             WHERE [dbo].[FixedDepositProductHoldings].fixed_deposit_contract_code = @productContractCode";
 
 
@@ -368,7 +372,9 @@ namespace OpenCBS.Manager.Products
            ,[dbo].[FixedDepositProductHoldings].[final_cheque_account_number]
            ,[dbo].[FixedDepositProducts].[product_name]
            ,[dbo].[FixedDepositProducts].[product_code]
+           ,[dbo].[Persons].[first_name]
             FROM [dbo].[FixedDepositProductHoldings] INNER JOIN [dbo].[FixedDepositProducts] ON [dbo].FixedDepositProducts.id = [dbo].FixedDepositProductHoldings.fixed_deposit_product_id
+            JOIN [dbo].Persons ON [dbo].FixedDepositProductHoldings.client_id = [dbo].Persons.id
             WHERE [dbo].[FixedDepositProductHoldings].[client_id] = @ClientId AND [dbo].[FixedDepositProductHoldings].[client_type] = @ClientType
            ";
 
@@ -436,7 +442,9 @@ namespace OpenCBS.Manager.Products
            ,[dbo].[FixedDepositProductHoldings].[final_cheque_account_number]
            ,[dbo].[FixedDepositProducts].[product_name]
            ,[dbo].[FixedDepositProducts].[product_code]
+           ,[dbo].[Persons].[first_name]
             FROM [dbo].[FixedDepositProductHoldings] INNER JOIN [dbo].[FixedDepositProducts] ON [dbo].FixedDepositProducts.id = [dbo].FixedDepositProductHoldings.fixed_deposit_product_id
+            JOIN [dbo].Persons ON [dbo].FixedDepositProductHoldings.client_id = [dbo].Persons.id
            ";
 
 
@@ -505,6 +513,7 @@ fixedDepositProductHoldings.InitialAmountPaymentMethod = r.GetString("initial_am
 
 fixedDepositProductHoldings.FinalAmountPaymentMethod = r.GetString("final_amount_payment_method");
 fixedDepositProductHoldings.FinalAmountChequeAccount = r.GetString("final_cheque_account_number");
+fixedDepositProductHoldings.FirstName = r.GetString("first_name");
             
 
 return fixedDepositProductHoldings;

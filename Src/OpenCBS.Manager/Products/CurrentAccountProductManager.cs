@@ -27,9 +27,10 @@ namespace OpenCBS.Manager.Products
 
         public int SaveCurrentAccountProduct(ICurrentAccountProduct currentAccountProduct)
         {
-            //int identity;
+            
             const string q = @"INSERT INTO [CurrentAccountProduct]
-           ([current_account_product_name],
+           ([deleted],
+[current_account_product_name],
 [current_account_product_code], 
 [client_type],
 [currency],
@@ -41,7 +42,7 @@ namespace OpenCBS.Manager.Products
 [reopen_fees_type],
 [closing_fees_type], 
 [management_fees_type],
-[overdraft_type],
+[overdraft_fees_type],
 [entry_fees_min], 
 [reopen_fees_min], 
 [closing_fees_min], 
@@ -59,7 +60,8 @@ namespace OpenCBS.Manager.Products
 [overdraft_value], 
 [management_fees_frequency]  )
                 VALUES
-                (@currentAccountProductName,
+                (@delete,
+@currentAccountProductName,
 @currentAccountProductCode,
 @clientType,
 @currency,
@@ -95,15 +97,16 @@ namespace OpenCBS.Manager.Products
             using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
             {
                 SetProduct(c, currentAccountProduct);
-                currentAccountProduct.CurrentAccountProductId = Convert.ToInt32(c.ExecuteScalar());
+                currentAccountProduct.Id = Convert.ToInt32(c.ExecuteScalar());
             }
-            return currentAccountProduct.CurrentAccountProductId;
+            return currentAccountProduct.Id;
         }
 
 
 
         public static void SetProduct(OpenCbsCommand c, ICurrentAccountProduct product)
         {
+            c.AddParam("@delete", product.Delete);
             c.AddParam("@currentAccountProductName", product.CurrentAccountProductName);
             c.AddParam("@currentAccountProductCode", product.CurrentAccountProductCode);
             c.AddParam("@clientType", product.ClientType);
@@ -233,9 +236,64 @@ WHERE id = @productId";
 
 
 
-        public List<CurrentAccountProduct> FetchProduct(bool showAlsoDeleted, int currentAccountProductId)
+        public CurrentAccountProduct FetchProduct(string productName, string productCode)
         {
-            List<CurrentAccountProduct> currentAccountProductList = new List<CurrentAccountProduct>();
+            const string q = @"SELECT 
+[id],
+[deleted],
+[current_account_product_name],
+[current_account_product_code], 
+[client_type],
+[currency],
+[initial_amount_min], 
+[initial_amount_max], 
+[balance_min], 
+[balance_max], 
+[entry_fees_type], 
+[reopen_fees_type],
+[closing_fees_type], 
+[management_fees_type],
+[overdraft_type],
+[entry_fees_min], 
+[reopen_fees_min], 
+[closing_fees_min], 
+[management_fees_min],
+[overdraft_min], 
+[entry_fees_max], 
+[reopen_fees_max],
+[closing_fees_max], 
+[management_fees_max],
+[overdraft_max], 
+[entry_fees_value], 
+[reopen_fees_value], 
+[closing_fees_value], 
+[management_fees_value], 
+[overdraft_value], 
+[management_fees_frequency] FROM CurrentAccountProduct 
+WHERE current_account_product_name = @productName and current_account_product_code = @productCode";
+
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@productName", productName);
+                c.AddParam("@productCode", productCode);
+
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+                    if (r == null || r.Empty) return null;
+
+                    r.Read();
+                    return (CurrentAccountProduct)GetProduct(r);
+                }
+            }
+        }
+
+
+
+        public List<ICurrentAccountProduct> FetchProduct(bool showAlsoDeleted)
+        {
+            List<ICurrentAccountProduct> currentAccountProductList = new List<ICurrentAccountProduct>();
 
             string q = @"SELECT 
 [id],
@@ -299,23 +357,29 @@ WHERE id = @productId";
         }
 
 
+
+        
+
+
+
+
         public CurrentAccountProduct GetProduct(OpenCbsReader r)
 {
 CurrentAccountProduct currentAccountProduct = new CurrentAccountProduct();
-currentAccountProduct.CurrentAccountProductId = r.GetInt("id"); 
+currentAccountProduct.Id = r.GetInt("id"); 
 currentAccountProduct.Delete = r.GetInt("deleted");
 currentAccountProduct.CurrentAccountProductName = r.GetString("current_account_product_name");
 currentAccountProduct.CurrentAccountProductCode = r.GetString ("current_account_product_code");
 currentAccountProduct.ClientType = r.GetString ("client_type");
 currentAccountProduct.Currency = r.GetString ("currency");
 
-currentAccountProduct.InitialAmountMin = r.GetDouble("initial_amount_min");
+currentAccountProduct.InitialAmountMin = r.GetDecimal("initial_amount_min");
 
-currentAccountProduct.InitialAmountMax = r.GetDouble ("initial_amount_max");
-	
-currentAccountProduct.BalanceMin = r.GetDouble("balance_min");
+currentAccountProduct.InitialAmountMax = r.GetDecimal("initial_amount_max");
 
-currentAccountProduct.BalanceMax = r.GetDouble("balance_max");
+currentAccountProduct.BalanceMin = r.GetDecimal("balance_min");
+
+currentAccountProduct.BalanceMax = r.GetDecimal("balance_max");
 currentAccountProduct.EntryFeesType =	r.GetString("entry_fees_type");
 
 currentAccountProduct.ReopenFeesType = r.GetString("reopen_fees_type");
@@ -326,33 +390,33 @@ currentAccountProduct.ManagementFeesType = r.GetString("management_fees_type");
 
 currentAccountProduct.OverdraftType = r.GetString("overdraft_type");
 
-currentAccountProduct.EntryFeesMin = r.GetDouble("entry_fees_min");
+currentAccountProduct.EntryFeesMin = r.GetDecimal("entry_fees_min");
 
-currentAccountProduct.ReopenFeesMin = r.GetDouble("reopen_fees_min");
+currentAccountProduct.ReopenFeesMin = r.GetDecimal("reopen_fees_min");
 
-currentAccountProduct.ClosingFeesMin = r.GetDouble("closing_fees_min");
+currentAccountProduct.ClosingFeesMin = r.GetDecimal("closing_fees_min");
 
-currentAccountProduct.ManagementFeesMin = r.GetDouble("management_fees_min");
+currentAccountProduct.ManagementFeesMin = r.GetDecimal("management_fees_min");
 
-currentAccountProduct.OverdraftMin = r.GetDouble("overdraft_min");
+currentAccountProduct.OverdraftMin = r.GetDecimal("overdraft_min");
 
-currentAccountProduct.EntryFeesMax = r.GetDouble("entry_fees_max");
+currentAccountProduct.EntryFeesMax = r.GetDecimal("entry_fees_max");
 
-currentAccountProduct.ReopenFeesMax = r.GetDouble("reopen_fees_max");
+currentAccountProduct.ReopenFeesMax = r.GetDecimal("reopen_fees_max");
 
-currentAccountProduct.ClosingFeesMax = r.GetDouble("closing_fees_max");
-currentAccountProduct.ManagementFeesMax = r.GetDouble("management_fees_max");
+currentAccountProduct.ClosingFeesMax = r.GetDecimal("closing_fees_max");
+currentAccountProduct.ManagementFeesMax = r.GetDecimal("management_fees_max");
 
-currentAccountProduct.OverdraftMax = r.GetDouble("overdraft_max");
-currentAccountProduct.EntryFeesValue = r.GetDouble("entry_fees_value");
+currentAccountProduct.OverdraftMax = r.GetDecimal("overdraft_max");
+currentAccountProduct.EntryFeesValue = r.GetDecimal("entry_fees_value");
 
-currentAccountProduct.ReopenFeesValue = r.GetDouble("reopen_fees_value");
+currentAccountProduct.ReopenFeesValue = r.GetDecimal("reopen_fees_value");
 
-currentAccountProduct.ClosingFeesValue = r.GetDouble("closing_fees_value");
+currentAccountProduct.ClosingFeesValue = r.GetDecimal("closing_fees_value");
 
-currentAccountProduct.ManagementFeesValue = r.GetDouble("management_fees_value");
+currentAccountProduct.ManagementFeesValue = r.GetDecimal("management_fees_value");
 
-currentAccountProduct.OverdraftValue = r.GetDouble("overdraft_value");
+currentAccountProduct.OverdraftValue = r.GetDecimal("overdraft_value");
 currentAccountProduct.ManagementFeesFrequency = r.GetString("management_fees_frequency");
 
 return currentAccountProduct;

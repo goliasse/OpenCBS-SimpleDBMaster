@@ -11,8 +11,8 @@ namespace OpenCBS.CoreDomain.Products
         public int ClientId { get; set; }
         public string ClientType { get; set; }
         public string CurrentAccountContractCode { get; set; }
-        public int CurrentAccountProductId { get; set; }
-        public double InitialAmount { get; set; }
+        public CurrentAccountProduct CurrentAccountProduct { get; set; }
+        public decimal InitialAmount { get; set; }
       
         public string OpeningAccountingOfficer { get; set; }
         public string ClosingAccountingOfficer { get; set; }
@@ -22,11 +22,11 @@ namespace OpenCBS.CoreDomain.Products
       
         public string Comment { get; set; }
       
-        public double EntryFees { get; set; }
-        public double ReopenFees { get; set; }
-        public double ClosingFees { get; set; }
-        public double ManagementFees { get; set; }
-        public double OverdraftFees { get; set; }
+        public decimal EntryFees { get; set; }
+        public decimal ReopenFees { get; set; }
+        public decimal ClosingFees { get; set; }
+        public decimal ManagementFees { get; set; }
+        public decimal OverdraftFees { get; set; }
 
         public string EntryFeesType { get; set; }
         public string ReopenFeesType { get; set; }
@@ -36,5 +36,9 @@ namespace OpenCBS.CoreDomain.Products
 
         public string ManagementFeesFrequency { get; set; }
         public string InitialAmountPaymentMethod { get; set; }
+        public string FirstName { get; set; }
+
+        public string FinalAmountPaymentMethod { get; set; }
+        public string FinalAmountAccountNumber { get; set; }
     }
 }

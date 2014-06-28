@@ -31,6 +31,7 @@ using OpenCBS.GUI.UserControl;
 using OpenCBS.MultiLanguageRessources;
 using OpenCBS.Services;
 using OpenCBS.Enums;
+using OpenCBS.CoreDomain.Products;
 
 namespace OpenCBS.GUI
 {
@@ -286,6 +287,131 @@ namespace OpenCBS.GUI
                     
                     InitializeListViewContract(savingResult);
                 }
+                else if (radioButtonFixedDeposit.Checked)
+                {
+                    string contractCode = textBoxQuery.Text;
+                    if (!(contractCode != ""))
+                    {
+                        FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
+                        List<FixedDepositProductHoldings> fixedDepositProductHoldingsList = _fixedDepositProductHoldingService.FetchProduct(true);
+                        if (fixedDepositProductHoldingsList != null)
+                        {
+                            foreach (FixedDepositProductHoldings fixedDepositProductHoldings in fixedDepositProductHoldingsList)
+                            {
+
+
+                                ListViewItem item = new ListViewItem();
+                                if (fixedDepositProductHoldings.ClientType == "Person")
+                                    item.ImageIndex = 1;
+                                else
+                                    item.ImageIndex = 0;
+                                item.Tag = fixedDepositProductHoldings;
+                                item.SubItems.Add(fixedDepositProductHoldings.FixedDepositContractCode);
+                                item.SubItems.Add(fixedDepositProductHoldings.ClientType);
+                                item.SubItems.Add(fixedDepositProductHoldings.FirstName);
+                                item.SubItems.Add(fixedDepositProductHoldings.OpeningAccountingOfficer);
+                                item.SubItems.Add(fixedDepositProductHoldings.OpenDate.ToShortDateString());
+                                item.SubItems.Add(fixedDepositProductHoldings.CloseDate.ToShortDateString());
+                               
+
+                                item.SubItems.Add(fixedDepositProductHoldings.Status);
+                                item.SubItems.Add("Fixed Deposit");
+                                listViewContracts.Items.Add(item);
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
+                        FixedDepositProductHoldings fixedDepositProductHoldings = _fixedDepositProductHoldingService.FetchProduct(contractCode);
+                        if (fixedDepositProductHoldings != null)
+                        {
+                                ListViewItem item = new ListViewItem();
+                                if (fixedDepositProductHoldings.ClientType == "Person")
+                                    item.ImageIndex = 1;
+                                else
+                                    item.ImageIndex = 0;
+                                item.Tag = fixedDepositProductHoldings;
+                                item.SubItems.Add(fixedDepositProductHoldings.FixedDepositContractCode);
+                                item.SubItems.Add(fixedDepositProductHoldings.ClientType);
+                                item.SubItems.Add(fixedDepositProductHoldings.FirstName);
+                                item.SubItems.Add(fixedDepositProductHoldings.OpeningAccountingOfficer);
+                                item.SubItems.Add(fixedDepositProductHoldings.OpenDate.ToShortDateString());
+                                item.SubItems.Add(fixedDepositProductHoldings.CloseDate.ToShortDateString());
+                              
+
+                                item.SubItems.Add(fixedDepositProductHoldings.Status);
+                                item.SubItems.Add("Fixed Deposit");
+                                listViewContracts.Items.Add(item);
+
+                            
+                        }
+                    }
+                }
+                else if (radioButtonCurrentAccount.Checked)
+                {
+                    string contractCode = textBoxQuery.Text;
+                    if (!(contractCode != ""))
+                    {
+                        CurrentAccountProductHoldingServices _currentAccountProductHoldingService = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
+                        List<CurrentAccountProductHoldings> currentAccountProductHoldingsList = _currentAccountProductHoldingService.FetchProduct(true);
+                        if (currentAccountProductHoldingsList != null)
+                        {
+                            foreach (CurrentAccountProductHoldings currentAccountProductHoldings in currentAccountProductHoldingsList)
+                            {
+
+
+                                ListViewItem item = new ListViewItem();
+                                if (currentAccountProductHoldings.ClientType == "Person")
+                                    item.ImageIndex = 1;
+                                else
+                                    item.ImageIndex = 0;
+                                item.Tag = currentAccountProductHoldings;
+                                item.SubItems.Add(currentAccountProductHoldings.CurrentAccountContractCode);
+                                item.SubItems.Add(currentAccountProductHoldings.ClientType);
+                                item.SubItems.Add(currentAccountProductHoldings.FirstName);
+                                item.SubItems.Add(currentAccountProductHoldings.OpeningAccountingOfficer);
+                                item.SubItems.Add(currentAccountProductHoldings.OpenDate.ToShortDateString());
+                                item.SubItems.Add(currentAccountProductHoldings.CloseDate.ToShortDateString());
+
+
+                                item.SubItems.Add(currentAccountProductHoldings.Status);
+                                item.SubItems.Add("Current Account");
+                                listViewContracts.Items.Add(item);
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        CurrentAccountProductHoldingServices _currentAccountProductHoldingService = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
+                        CurrentAccountProductHoldings currentAccountProductHoldings = _currentAccountProductHoldingService.FetchProduct(contractCode);
+                        if (currentAccountProductHoldings != null)
+                        {
+                            ListViewItem item = new ListViewItem();
+                            if (currentAccountProductHoldings.ClientType == "Person")
+                                item.ImageIndex = 1;
+                            else
+                                item.ImageIndex = 0;
+                            item.Tag = currentAccountProductHoldings;
+                            item.SubItems.Add(currentAccountProductHoldings.CurrentAccountContractCode);
+                            item.SubItems.Add(currentAccountProductHoldings.ClientType);
+                            item.SubItems.Add(currentAccountProductHoldings.FirstName);
+                            item.SubItems.Add(currentAccountProductHoldings.OpeningAccountingOfficer);
+                            item.SubItems.Add(currentAccountProductHoldings.OpenDate.ToShortDateString());
+                            item.SubItems.Add(currentAccountProductHoldings.CloseDate.ToShortDateString());
+
+
+                            item.SubItems.Add(currentAccountProductHoldings.Status);
+                            item.SubItems.Add("Current Account");
+                            listViewContracts.Items.Add(item);
+
+
+                        }
+                    }
+                }
+
 
                 lblTitle.Text = string.Format("{0} ({1})", MultiLanguageStrings.GetString(Ressource.SearchCreditContractForm, "result.Text"), _numberOfRecords);
                 textBoxCurrentlyPage.Text = string.Format("{0}{1} / {2}", MultiLanguageStrings.GetString(Ressource.SearchCreditContractForm, "page.Text"), _currentPageNumber, _numbersTotalPage);
@@ -636,7 +762,35 @@ namespace OpenCBS.GUI
         private void listViewContracts_DoubleClick(object sender, EventArgs e)
         {
             object result = listViewContracts.SelectedItems[0].Tag;
-            if (result is CreditSearchResult)
+            if (result is CurrentAccountProductHoldings)
+            {
+                CurrentAccountProductHoldings fdph = (CurrentAccountProductHoldings)result;
+
+                var mainForm = (MainView)Application.OpenForms[0];
+
+                IClient _client = ServicesProvider.GetInstance().GetClientServices().FindTiers(fdph.ClientId, OClientTypes.Person);
+                _client.Id = fdph.ClientId;
+
+                if (fdph.ClientType == "Person")
+                    mainForm.InitializePersonForm((Person)_client, null);
+
+
+            }
+            else if (result is FixedDepositProductHoldings)
+            {
+                FixedDepositProductHoldings fdph = (FixedDepositProductHoldings)result;
+
+                var mainForm = (MainView)Application.OpenForms[0];
+                 
+                IClient _client = ServicesProvider.GetInstance().GetClientServices().FindTiers(fdph.ClientId, OClientTypes.Person);
+                _client.Id = fdph.ClientId;
+                
+                if (fdph.ClientType == "Person")
+                    mainForm.InitializePersonForm((Person)_client,null);
+
+                
+            }
+            else if (result is CreditSearchResult)
             {
                 CreditSearchResult csr = (CreditSearchResult) result;
                 if (!csr.IsViewableBy(User.CurrentUser))

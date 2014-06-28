@@ -262,6 +262,12 @@ namespace OpenCBS.GUI
             personForm.Show();
         }
 
+        public void InitializePersonForm(int clientId)
+        {
+            ClientForm personForm = new ClientForm(OClientTypes.Person, this, false, _applicationController) { MdiParent = this };
+            personForm.Show();
+        }
+
         public void InitializeCorporateForm()
         {
             ClientForm corporateForm = new ClientForm(OClientTypes.Corporate, this, false, _applicationController) { MdiParent = this };

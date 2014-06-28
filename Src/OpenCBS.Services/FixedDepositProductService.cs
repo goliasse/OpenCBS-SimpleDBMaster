@@ -24,11 +24,11 @@ namespace OpenCBS.Services
             _fixedDepositProductManager = new FixedDepositProductManager(user);
 		}
 
-        public void SaveFixedDepositProduct(IFixedDepositProduct fixedDepositProduct)
+        public int SaveFixedDepositProduct(IFixedDepositProduct fixedDepositProduct)
         {
 
             ValidateProduct(fixedDepositProduct);
-            _fixedDepositProductManager.SaveFixedDepositProduct(fixedDepositProduct);
+           return  _fixedDepositProductManager.SaveFixedDepositProduct(fixedDepositProduct);
             
 
         }

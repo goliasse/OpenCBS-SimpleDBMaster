@@ -38,5 +38,6 @@ namespace OpenCBS.CoreDomain.Products
         public string FinalAmountPaymentMethod { get; set; }
 
         public string FinalAmountChequeAccount { get; set; }
+        public string FirstName { get; set; }
     }
 }

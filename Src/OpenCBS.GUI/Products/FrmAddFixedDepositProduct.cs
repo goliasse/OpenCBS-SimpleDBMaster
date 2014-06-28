@@ -83,7 +83,7 @@ namespace OpenCBS.GUI.Products
             bool clientTypeVillage = clientTypeVillageCheckBox.Checked;
             bool clientTypeGroup = clientTypeGroupCheckBox.Checked;
             bool clientTypeAll = clientTypeAllCheckBox.Checked;
-            string CodeFixedDepositProduct = tbCodeFixedDepositProduct.Text;
+            string CodeFixedDepositProduct = tbCodeFixedDepositProduct.Text+"-FD";
             string Name = tbName.Text;
             decimal InitialAmountMax = Convert.ToDecimal(tbInitialAmountMax.Text);
             decimal InitialAmountMin = Convert.ToDecimal(tbInitialAmountMin.Text);
@@ -119,21 +119,22 @@ namespace OpenCBS.GUI.Products
                 string clientType = "";
 
             if (clientTypeAll == true)
-                clientType = "1";
+                clientType = "All";
             if(clientTypeCorp == true)
-                clientType = clientType + "2";
+                clientType = clientType + "Corporate";
             if(clientTypeIndiv == true)
-                clientType = clientType + "3";
+                clientType = clientType + "Person";
             if(clientTypeVillage == true)
-                clientType = clientType + "4";
+                clientType = clientType + "Village";
             if (clientTypeGroup == true)
-                clientType = clientType + "5";
+                clientType = clientType + "Group";
             _fixedDepositProduct.ClientType = clientType;
 
             
             FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
-            _fixedDepositProductService.SaveFixedDepositProduct(_fixedDepositProduct);
-
+           int ret = _fixedDepositProductService.SaveFixedDepositProduct(_fixedDepositProduct);
+           if (ret >= 1)
+               MessageBox.Show("Fixed Deposit Product Successfully Added.");
         }
 
         private void clientTypeAllCheckBox_CheckedChanged(object sender, EventArgs e)
