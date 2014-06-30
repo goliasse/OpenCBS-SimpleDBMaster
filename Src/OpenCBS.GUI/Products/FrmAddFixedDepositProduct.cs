@@ -35,6 +35,70 @@ namespace OpenCBS.GUI.Products
             InitializeInterestCalculationFrequency();
         }
 
+
+
+        public FrmAddFixedDepositProduct(int productId)
+        {
+            InitializeComponent();
+
+            FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
+            IFixedDepositProduct _fixedDepositProduct = _fixedDepositProductService.FetchProduct(productId);
+
+             
+            cbInterestCalculationFrequency.SelectedItem = _fixedDepositProduct.InterestCalculationFrequency;
+            cbInterestCalculationFrequency.Enabled = true;
+            cbCurrency.SelectedItem = _fixedDepositProduct.Currency;
+            cbCurrency.Enabled = true;
+            bool clientTypeCorp = clientTypeCorpCheckBox.Checked;
+            bool clientTypeIndiv = clientTypeIndivCheckBox.Checked;
+            bool clientTypeVillage = clientTypeVillageCheckBox.Checked;
+            bool clientTypeGroup = clientTypeGroupCheckBox.Checked;
+            bool clientTypeAll = clientTypeAllCheckBox.Checked;
+            tbCodeFixedDepositProduct.Text = _fixedDepositProduct.Code;
+            tbCodeFixedDepositProduct.Enabled = true;
+            tbName.Text = _fixedDepositProduct.Name;
+            tbName.Enabled = true;
+            tbInitialAmountMax.Text = _fixedDepositProduct.InitialAmountMax.ToString();
+            tbInitialAmountMax.Enabled = true;
+            tbInitialAmountMin.Text = _fixedDepositProduct.InitialAmountMin.ToString();
+            tbInitialAmountMin.Enabled = true;
+            tbInterestRateMax.Text = _fixedDepositProduct.InterestRateMax.ToString();
+            tbInterestRateMax.Enabled = true;
+            tbInterestRateMin.Text = _fixedDepositProduct.InterestRateMin.ToString();
+            tbInterestRateMin.Enabled = true;
+            tbPenalityMax.Text = _fixedDepositProduct.PenalityRateMax.ToString();
+            tbPenalityMax.Enabled = true;
+            tbPenalityMin.Text = _fixedDepositProduct.PenalityRateMin.ToString();
+            tbPenalityMin.Enabled = true;
+            tbMinMaturityPeriod.Text = _fixedDepositProduct.MaturityPeriodMin.ToString();
+            tbMinMaturityPeriod.Enabled = true;
+            tbMaxMaturityPeriod.Text = _fixedDepositProduct.MaturityPeriodMax.ToString();
+            tbMaxMaturityPeriod.Enabled = true;
+
+            if (_fixedDepositProduct.PenalityType == "Rate")
+                rbPenalityTypeRate.Checked = true;
+            else
+                rbPenalityTypeFlat.Checked = false;
+            rbPenalityTypeRate.Enabled = true;
+            rbPenalityTypeFlat.Enabled = true;
+
+
+            string clientType = "";
+
+            if (clientTypeAll == true)
+                clientType = "All";
+            if (clientTypeCorp == true)
+                clientType = clientType + "Corporate";
+            if (clientTypeIndiv == true)
+                clientType = clientType + "Person";
+            if (clientTypeVillage == true)
+                clientType = clientType + "Village";
+            if (clientTypeGroup == true)
+                clientType = clientType + "Group";
+            _fixedDepositProduct.ClientType = clientType;
+        }
+
+
         private void lbCalculAmount_Click(object sender, EventArgs e)
         {
 

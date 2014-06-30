@@ -9106,49 +9106,6 @@ namespace OpenCBS.GUI.Clients
         private void lvFixedDeposits_SelectedIndexChanged(object sender, EventArgs e)
         {
            
-//            int i = lvFixedDeposits.SelectedIndices[0];
-//            string selectedContractCode = lvFixedDeposits.Items[i].Text;
-
-//            FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
-//            FixedDepositProductHoldings _fixedDepositProductHoldings = _fixedDepositProductHoldingService.FetchProduct(selectedContractCode);
-
-//            cbFixedDepositProduct.SelectedItem = _fixedDepositProductHoldings.FixedDepositProduct.Name + " " + _fixedDepositProductHoldings.FixedDepositProduct.Code;
-//            tbInitialAmount.Text = _fixedDepositProductHoldings.InitialAmount.ToString();
-//            tbInterestRate.Text = _fixedDepositProductHoldings.InterestRate.ToString();
-//            tbMaturityPeriod.Text = _fixedDepositProductHoldings.MaturityPeriod.ToString();
-//cbInterestCalculationFrequency.SelectedItem =_fixedDepositProductHoldings.InterestCalculationFrequency;
-//  if(_fixedDepositProductHoldings.PenalityType=="Flat")
-//rbPenalityTypeFlat.Checked = true;
-//  else
-//rbPenalityTypeRate.Checked = true;
-
-//  tbPenality.Text = _fixedDepositProductHoldings.Penality.ToString();
-//tbFDContractCode.Text = _fixedDepositProductHoldings.FixedDepositContractCode;
-//tbProductCode.Text = _fixedDepositProductHoldings.FixedDepositProduct.Code;
-//cbAccountingOfficer.SelectedItem = _fixedDepositProductHoldings.OpeningAccountingOfficer;
-//tbComment.Text = _fixedDepositProductHoldings.Comment;
-//cbInitialAmountPaymentMethod.SelectedItem = _fixedDepositProductHoldings.InitialAmountPaymentMethod;
-
-//            tbInitialAmount.Enabled = false;
-//tbInterestRate.Enabled = false;
-//tbMaturityPeriod.Enabled = false;
-//cbInterestCalculationFrequency.Enabled = false;
-//rbPenalityTypeFlat.Enabled = false;
-//rbPenalityTypeRate.Enabled = false;
-//tbPenality.Enabled = false;
-//tbFDContractCode.Enabled = false;
-//tbProductCode.Enabled = false;
-//cbAccountingOfficer.Enabled = false;
-//tbComment.Enabled = false;
-//cbInitialAmountPaymentMethod.Enabled = false;
-
-//tabControlPerson.TabPages.Remove(tabPageFixedDeposit);
-//tabControlPerson.TabPages.Add(tabPageFixedDeposit);
-//gbInterestCalculation.Visible = true;
-//lblProductContractCode.Visible = true;
-//tbFDContractCode.Visible = true;
-//tbFDContractCode.ReadOnly = true;
-
 
         }
 
@@ -9156,6 +9113,7 @@ namespace OpenCBS.GUI.Clients
         {
             tabControlPerson.TabPages.Remove(tabPageFixedDeposit);
             tabControlPerson.TabPages.Add(tabPageFixedDeposit);
+            tabControlPerson.SelectedTab = tabPageFixedDeposit;
             gbInterestCalculation.Visible = false;
             lblProductContractCode.Visible = false;
             tbFDContractCode.Visible = false;
@@ -9310,6 +9268,7 @@ cbInitialAmountPaymentMethod.Enabled = true;
 
             tabControlPerson.TabPages.Remove(tabPageFixedDeposit);
             tabControlPerson.TabPages.Add(tabPageFixedDeposit);
+            tabControlPerson.SelectedTab = tabPageFixedDeposit;
             gbInterestCalculation.Visible = true;
             lblProductContractCode.Visible = true;
             tbFDContractCode.Visible = true;

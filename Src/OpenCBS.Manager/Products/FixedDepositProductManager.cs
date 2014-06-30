@@ -238,8 +238,7 @@ WHERE id = @productId";
 
             if (!showAlsoDeleted)
                 q += " WHERE deleted = 0";
-            else
-                q += " WHERE deleted = 1";
+          
 
 
 

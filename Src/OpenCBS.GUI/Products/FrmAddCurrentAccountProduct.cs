@@ -50,10 +50,126 @@ namespace OpenCBS.GUI.Products
            
         }
 
-        public FrmAddCurrentAccountProduct(SavingsBookProduct product)
+        public FrmAddCurrentAccountProduct(int productId)
         {
             InitializeComponent();
-            InitializeComboBoxCurrencies();
+            
+
+              
+              CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
+              ICurrentAccountProduct _currentAccountProduct = _currentAccountProductService.FetchProduct(productId);
+
+
+cbCurrency.SelectedItem = _currentAccountProduct.Currency;
+cbCurrency.Enabled = true;
+            bool clientTypeCorp = clientTypeCorpCheckBox.Checked;
+            bool clientTypeIndiv = clientTypeIndivCheckBox.Checked;
+            bool clientTypeVillage = clientTypeVillageCheckBox.Checked;
+            bool clientTypeGroup = clientTypeGroupCheckBox.Checked;
+            bool clientTypeAll = clientTypeAllCheckBox.Checked;
+clientTypeCorpCheckBox.Enabled = true;
+clientTypeIndivCheckBox.Enabled = true;
+clientTypeVillageCheckBox.Enabled = true;
+clientTypeGroupCheckBox.Enabled = true;
+clientTypeAllCheckBox.Enabled = true;
+tbCodeCurrentAccountProduct.Text = _currentAccountProduct.CurrentAccountProductCode;
+tbCodeCurrentAccountProduct.Enabled = true;
+tbName.Text = _currentAccountProduct.CurrentAccountProductName;
+tbName.Enabled = true;
+            
+rbFlatEntryFees.Enabled = true;
+rbRateEntryFees.Enabled = true;
+
+if(_currentAccountProduct.EntryFeesType == "Flat")
+{
+   rbFlatEntryFees.Checked = true;
+}
+else
+{
+   rbRateEntryFees.Checked = false;
+}
+rbFlatReopenFees.Enabled = true;
+rbRateReopenFees.Enabled = true;
+
+if(_currentAccountProduct.ReopenFeesType == "Flat")
+{
+   rbFlatReopenFees.Checked = true;
+}
+else
+{
+   rbRateReopenFees.Checked = true;
+}
+rbFlatCloseFees.Enabled = true;
+rbFlatCloseFees.Enabled = true;
+
+if(_currentAccountProduct.ClosingFeesType == "Flat")
+{
+rbFlatCloseFees.Checked = true;
+}
+else
+{
+rbFlatCloseFees.Checked = true;
+}
+rbFlatManagementFees.Enabled = true;
+rbRateManagementFees.Enabled = true;
+if(_currentAccountProduct.ManagementFeesType == "Flat")
+{
+   rbFlatManagementFees.Checked = true;
+}
+else
+{
+   rbRateManagementFees.Checked = true;
+}
+rbFlatOverdraftFees.Enabled = true;
+rbRateOverdraftFees.Enabled = true;
+if(_currentAccountProduct.OverdraftType == "Flat")
+{
+rbFlatOverdraftFees.Checked = true;
+}
+else
+{
+rbRateOverdraftFees.Checked = true;
+}
+cbManagementFeeFreq.SelectedItem = _currentAccountProduct.ManagementFeesFrequency;
+cbManagementFeeFreq.Enabled = true;
+tbInitialAmountMin.Text = _currentAccountProduct.InitialAmountMin.ToString();
+tbInitialAmountMin.Enabled = true;
+tbInitialAmountMax.Text =_currentAccountProduct.InitialAmountMax.ToString();
+tbInitialAmountMax.Enabled = true;
+tbBalanceMin.Text =_currentAccountProduct.BalanceMin.ToString();
+tbBalanceMin.Enabled = true;
+tbBalanceMax.Text =_currentAccountProduct.BalanceMax.ToString();
+tbBalanceMax.Enabled = true;
+tbEntryFeesMin.Text =_currentAccountProduct.EntryFeesMin.ToString();
+tbEntryFeesMin.Enabled = true;
+tbEntryFeesMax.Text =_currentAccountProduct.EntryFeesMax.ToString();
+tbEntryFeesMax.Enabled = true;
+tbReopenFeesMin.Text =_currentAccountProduct.ReopenFeesMin.ToString();
+tbReopenFeesMin.Enabled = true;
+tbReopenFeesMax.Text =_currentAccountProduct.ReopenFeesMax.ToString();
+tbReopenFeesMax.Enabled = true;
+tbCloseFeesMin.Text =_currentAccountProduct.ClosingFeesMin.ToString();
+tbCloseFeesMin.Enabled = true;
+tbCloseFeesMax.Text =_currentAccountProduct.ClosingFeesMax.ToString();
+tbCloseFeesMax.Enabled = true;
+tbManagementFeesMin.Text =_currentAccountProduct.ManagementFeesMin.ToString();
+tbManagementFeesMin.Enabled = true;
+tbManagementFeesMax.Text =_currentAccountProduct.ManagementFeesMax.ToString();
+tbManagementFeesMax.Enabled = true;
+tbOverdraftFeesMin.Text =_currentAccountProduct.OverdraftMin.ToString();
+tbOverdraftFeesMin.Enabled = true;
+tbOverdraftFeesMax.Text =_currentAccountProduct.OverdraftMax.ToString();
+tbOverdraftFeesMax.Enabled = true;
+tbEntryFees.Text =_currentAccountProduct.EntryFeesValue.ToString();
+tbEntryFees.Enabled = true;
+tbReopenFees.Text =_currentAccountProduct.ReopenFeesValue.ToString();
+tbReopenFees.Enabled = true;
+tbCloseFees.Text =_currentAccountProduct.ClosingFeesValue.ToString();
+tbCloseFees.Enabled = true;
+tbManagementFees.Text =_currentAccountProduct.ManagementFeesValue.ToString();
+tbManagementFees.Enabled = true;
+tbOverdraftFees.Text =_currentAccountProduct.OverdraftValue.ToString();
+tbOverdraftFees.Enabled = true;
           
         }
 

@@ -330,8 +330,7 @@ WHERE current_account_product_name = @productName and current_account_product_co
 
             if (!showAlsoDeleted)
                 q += " WHERE deleted = 0";
-            else
-                q += " WHERE deleted = 1";
+            
 
             using (SqlConnection conn = GetConnection())
             using (OpenCbsCommand c = new OpenCbsCommand(q, conn))

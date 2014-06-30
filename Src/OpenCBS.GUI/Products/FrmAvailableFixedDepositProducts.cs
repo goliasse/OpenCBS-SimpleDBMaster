@@ -8,11 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using OpenCBS.GUI.UserControl;
 
-using System;
-using System.Collections.Generic;
+
 using System.IO;
-using System.Text;
-using System.Windows.Forms;
+
 using OpenCBS.CoreDomain.Products;
 using OpenCBS.Enums;
 using OpenCBS.ExceptionsHandler;
@@ -20,7 +18,8 @@ using OpenCBS.Services;
 using System.Security.Permissions;
 using OpenCBS.MultiLanguageRessources;
 using OpenCBS.Shared.Settings;
-using OpenCBS.GUI.UserControl;
+
+
 
 namespace OpenCBS.GUI.Products
 {
@@ -35,8 +34,8 @@ namespace OpenCBS.GUI.Products
             
             InitializeComponent();
             _package = new LoanProduct();
-            InitializePackages();
-            webBrowserPackage.ObjectForScripting = this;
+            InitializeFixedDepositProductList(false);
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -50,27 +49,36 @@ namespace OpenCBS.GUI.Products
             get { return _idPackage; }
         }
         private bool _showDeletedPackage = false;
-        private void InitializePackages()
+        private void InitializeFixedDepositProductList(bool showAsDeleted)
         {
-            string templatePath = UserSettings.GetTemplatePath;
+            lvFixedDepositProducts.Items.Clear();
+            FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
+            List<IFixedDepositProduct> fixedDepositProductList = _fixedDepositProductService.FetchProduct(showAsDeleted);
+            if (fixedDepositProductList != null)
+            {
+                foreach (FixedDepositProduct fixedDepositProduct in fixedDepositProductList)
+                {
+                    string deleted = "";
+                    if(fixedDepositProduct.Delete == 0)
+                        deleted = "Active";
+                    else
+                           deleted = "Deleted";
+                    var item = new ListViewItem(new[] {
+                    fixedDepositProduct.Id.ToString(),
+                    deleted,
+                    fixedDepositProduct.Name,
+                    fixedDepositProduct.Code,                    
+		            fixedDepositProduct.ClientType,
+                    fixedDepositProduct.Currency
 
-            string text = string.Format(
-                @"<html>
-                  <head>
-                  <link href='{0}\cover.css' type='text/css' rel='stylesheet'/>
-                  <meta http-equiv='pragma' content='no-cache'/>
-                  <title>Covers list</title>
-                  </head>
-                  <script type='text/javascript' src='{0}\cover.js'></script>
-                  <body><h1>Tanuj Agarwal</h1></body></html>", templatePath);
+                    
+                });
+                    lvFixedDepositProducts.Items.Add(item);
+
+                }
+            }
 
           
-
-            var tempPath = Path.GetTempPath();
-            tempPath = Path.Combine(tempPath, "packages_list.html");
-            File.WriteAllText(tempPath, text, Encoding.UTF8);
-
-            webBrowserPackage.Url = new Uri(tempPath, UriKind.Absolute);
         }
 
         private string _CreateHtmlForShowingPackage(LoanProduct pPackage)
@@ -88,8 +96,44 @@ namespace OpenCBS.GUI.Products
 
         private void buttonEditProduct_Click(object sender, System.EventArgs e)
         {
-            FrmAddFixedDepositProduct _frmAddFixedDepositProduct = new FrmAddFixedDepositProduct();
+            int i = lvFixedDepositProducts.SelectedIndices[0];
+            string selectedProductId = lvFixedDepositProducts.Items[i].Text;
+
+            FrmAddFixedDepositProduct _frmAddFixedDepositProduct = new FrmAddFixedDepositProduct(Convert.ToInt32(selectedProductId));
             _frmAddFixedDepositProduct.Show();
+        }
+
+        private void checkBoxShowDeletedProduct_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if(checkBoxShowDeletedProduct.Checked == true)
+                InitializeFixedDepositProductList(true);
+            else
+                InitializeFixedDepositProductList(false);
+        }
+
+        private void lvFixedDepositProducts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDeleteProduct_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnViewProduct_Click(object sender, EventArgs e)
+        {
+
+            int i = lvFixedDepositProducts.SelectedIndices[0];
+            string selectedProductId = lvFixedDepositProducts.Items[i].Text;
+
+            FrmAddFixedDepositProduct _frmAddFixedDepositProduct = new FrmAddFixedDepositProduct(Convert.ToInt32(selectedProductId));
+            _frmAddFixedDepositProduct.Show();
+        }
+
+        private void lvFixedDepositProducts_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
         }
 
     }

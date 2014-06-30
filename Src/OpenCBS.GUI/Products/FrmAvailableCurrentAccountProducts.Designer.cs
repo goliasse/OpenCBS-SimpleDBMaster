@@ -30,12 +30,19 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.pnlSavingsProducts = new System.Windows.Forms.Panel();
-            this.webBrowserPackage = new System.Windows.Forms.WebBrowser();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonEditProduct = new System.Windows.Forms.Button();
             this.checkBoxShowDeletedProduct = new System.Windows.Forms.CheckBox();
             this.buttonAddProduct = new System.Windows.Forms.Button();
             this.buttonDeleteProduct = new System.Windows.Forms.Button();
+            this.lvCurrentAccountProducts = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnViewProduct = new System.Windows.Forms.Button();
             this.pnlSavingsProducts.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -56,34 +63,26 @@
             // 
             // pnlSavingsProducts
             // 
-            this.pnlSavingsProducts.Controls.Add(this.webBrowserPackage);
+            this.pnlSavingsProducts.Controls.Add(this.lvCurrentAccountProducts);
             this.pnlSavingsProducts.Controls.Add(this.groupBox1);
             this.pnlSavingsProducts.Location = new System.Drawing.Point(4, 38);
             this.pnlSavingsProducts.Name = "pnlSavingsProducts";
             this.pnlSavingsProducts.Size = new System.Drawing.Size(830, 486);
             this.pnlSavingsProducts.TabIndex = 32;
             // 
-            // webBrowserPackage
-            // 
-            this.webBrowserPackage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowserPackage.Location = new System.Drawing.Point(0, 0);
-            this.webBrowserPackage.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowserPackage.Name = "webBrowserPackage";
-            this.webBrowserPackage.Size = new System.Drawing.Size(673, 486);
-            this.webBrowserPackage.TabIndex = 0;
-            // 
             // groupBox1
             // 
             this.groupBox1.AutoSize = true;
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox1.Controls.Add(this.btnViewProduct);
             this.groupBox1.Controls.Add(this.buttonEditProduct);
             this.groupBox1.Controls.Add(this.checkBoxShowDeletedProduct);
             this.groupBox1.Controls.Add(this.buttonAddProduct);
             this.groupBox1.Controls.Add(this.buttonDeleteProduct);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBox1.Location = new System.Drawing.Point(673, 0);
+            this.groupBox1.Location = new System.Drawing.Point(663, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(157, 486);
+            this.groupBox1.Size = new System.Drawing.Size(167, 486);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter_2);
@@ -93,7 +92,7 @@
             this.buttonEditProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonEditProduct.Font = new System.Drawing.Font("Arial", 9F);
             this.buttonEditProduct.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonEditProduct.Location = new System.Drawing.Point(11, 70);
+            this.buttonEditProduct.Location = new System.Drawing.Point(21, 70);
             this.buttonEditProduct.Name = "buttonEditProduct";
             this.buttonEditProduct.Size = new System.Drawing.Size(140, 28);
             this.buttonEditProduct.TabIndex = 9;
@@ -106,18 +105,19 @@
             this.checkBoxShowDeletedProduct.AutoSize = true;
             this.checkBoxShowDeletedProduct.Font = new System.Drawing.Font("Arial", 9.75F);
             this.checkBoxShowDeletedProduct.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBoxShowDeletedProduct.Location = new System.Drawing.Point(11, 16);
+            this.checkBoxShowDeletedProduct.Location = new System.Drawing.Point(21, 16);
             this.checkBoxShowDeletedProduct.Name = "checkBoxShowDeletedProduct";
             this.checkBoxShowDeletedProduct.Size = new System.Drawing.Size(125, 20);
             this.checkBoxShowDeletedProduct.TabIndex = 8;
             this.checkBoxShowDeletedProduct.Text = "Deleted products";
+            this.checkBoxShowDeletedProduct.CheckedChanged += new System.EventHandler(this.checkBoxShowDeletedProduct_CheckedChanged);
             // 
             // buttonAddProduct
             // 
             this.buttonAddProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAddProduct.Font = new System.Drawing.Font("Arial", 9F);
             this.buttonAddProduct.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonAddProduct.Location = new System.Drawing.Point(11, 39);
+            this.buttonAddProduct.Location = new System.Drawing.Point(21, 39);
             this.buttonAddProduct.Name = "buttonAddProduct";
             this.buttonAddProduct.Size = new System.Drawing.Size(140, 28);
             this.buttonAddProduct.TabIndex = 7;
@@ -127,14 +127,77 @@
             // buttonDeleteProduct
             // 
             this.buttonDeleteProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDeleteProduct.Enabled = false;
             this.buttonDeleteProduct.Font = new System.Drawing.Font("Arial", 9F);
             this.buttonDeleteProduct.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonDeleteProduct.Location = new System.Drawing.Point(11, 101);
+            this.buttonDeleteProduct.Location = new System.Drawing.Point(21, 101);
             this.buttonDeleteProduct.Name = "buttonDeleteProduct";
             this.buttonDeleteProduct.Size = new System.Drawing.Size(140, 28);
             this.buttonDeleteProduct.TabIndex = 6;
             this.buttonDeleteProduct.Text = "Delete product";
+            this.buttonDeleteProduct.Click += new System.EventHandler(this.buttonDeleteProduct_Click);
+            // 
+            // lvCurrentAccountProducts
+            // 
+            this.lvCurrentAccountProducts.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.lvCurrentAccountProducts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.lvCurrentAccountProducts.GridLines = true;
+            this.lvCurrentAccountProducts.Location = new System.Drawing.Point(0, 0);
+            this.lvCurrentAccountProducts.Name = "lvCurrentAccountProducts";
+            this.lvCurrentAccountProducts.Size = new System.Drawing.Size(671, 339);
+            this.lvCurrentAccountProducts.TabIndex = 26;
+            this.lvCurrentAccountProducts.UseCompatibleStateImageBehavior = false;
+            this.lvCurrentAccountProducts.View = System.Windows.Forms.View.Details;
+            this.lvCurrentAccountProducts.SelectedIndexChanged += new System.EventHandler(this.lvCurrentAccountProducts_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Product ID";
+            this.columnHeader1.Width = 86;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Status";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Product Name";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Width = 113;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Product Code";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader4.Width = 103;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Client Type";
+            this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader5.Width = 105;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Currency";
+            this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader6.Width = 86;
+            // 
+            // btnViewProduct
+            // 
+            this.btnViewProduct.Location = new System.Drawing.Point(21, 135);
+            this.btnViewProduct.Name = "btnViewProduct";
+            this.btnViewProduct.Size = new System.Drawing.Size(140, 28);
+            this.btnViewProduct.TabIndex = 10;
+            this.btnViewProduct.Text = "View Product";
+            this.btnViewProduct.UseVisualStyleBackColor = true;
+            this.btnViewProduct.Click += new System.EventHandler(this.btnViewProduct_Click);
             // 
             // FrmAvailableCurrentAccountProducts
             // 
@@ -160,12 +223,19 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlSavingsProducts;
-        private System.Windows.Forms.WebBrowser webBrowserPackage;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonEditProduct;
         private System.Windows.Forms.CheckBox checkBoxShowDeletedProduct;
         private System.Windows.Forms.Button buttonAddProduct;
         private System.Windows.Forms.Button buttonDeleteProduct;
+        private System.Windows.Forms.ListView lvCurrentAccountProducts;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.Button btnViewProduct;
 
     }
 }

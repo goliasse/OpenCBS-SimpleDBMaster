@@ -123,7 +123,7 @@ namespace OpenCBS.GUI.Products
 
         private void EditSavingBookProduct(SavingsBookProduct pProduct)
         {
-            FrmAddCurrentAccountProduct editProductForm = new FrmAddCurrentAccountProduct(pProduct);
+            FrmAddSavingBookProduct editProductForm = new FrmAddSavingBookProduct(pProduct);
             if (editProductForm.ShowDialog() == DialogResult.OK)
             {
                 InitializePackages();

@@ -7303,7 +7303,7 @@ Max:
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAS
-        HQAAAk1TRnQBSQFMAgEBBQEAAWwBJAFsASQBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        HQAAAk1TRnQBSQFMAgEBBQEAAXQBJAF0ASQBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAAUADAAEBAQABCAYAASAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -11588,11 +11588,17 @@ Max:
   <data name="InitialAmount.Text" xml:space="preserve">
     <value>Initial Amount</value>
   </data>
+  <data name="InitialAmount.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
   <data name="InitialAmount.Width" type="System.Int32, mscorlib">
     <value>124</value>
   </data>
   <data name="InterestRate.Text" xml:space="preserve">
     <value>Interest Rate</value>
+  </data>
+  <data name="InterestRate.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
   </data>
   <data name="InterestRate.Width" type="System.Int32, mscorlib">
     <value>106</value>
@@ -11600,11 +11606,17 @@ Max:
   <data name="MaturityPeriod.Text" xml:space="preserve">
     <value>Maturity Period</value>
   </data>
+  <data name="MaturityPeriod.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
   <data name="MaturityPeriod.Width" type="System.Int32, mscorlib">
     <value>118</value>
   </data>
   <data name="OpenDate.Text" xml:space="preserve">
     <value>Open Date</value>
+  </data>
+  <data name="OpenDate.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
   </data>
   <data name="OpenDate.Width" type="System.Int32, mscorlib">
     <value>107</value>
@@ -11612,11 +11624,17 @@ Max:
   <data name="OpenAccountingOfficer.Text" xml:space="preserve">
     <value>Open Accounting Officer</value>
   </data>
+  <data name="OpenAccountingOfficer.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
   <data name="OpenAccountingOfficer.Width" type="System.Int32, mscorlib">
     <value>164</value>
   </data>
   <data name="Status.Text" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="Status.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
   </data>
   <data name="lvFixedDeposits.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 41</value>
@@ -11648,11 +11666,17 @@ Max:
   <data name="chBalance.Text" xml:space="preserve">
     <value>Balance</value>
   </data>
+  <data name="chBalance.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
   <data name="chBalance.Width" type="System.Int32, mscorlib">
     <value>77</value>
   </data>
   <data name="chOpenedDate.Text" xml:space="preserve">
     <value>Opened Date</value>
+  </data>
+  <data name="chOpenedDate.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
   </data>
   <data name="chOpenedDate.Width" type="System.Int32, mscorlib">
     <value>121</value>
@@ -11660,11 +11684,17 @@ Max:
   <data name="chOpenAO.Text" xml:space="preserve">
     <value>Accounting Officer</value>
   </data>
+  <data name="chOpenAO.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
   <data name="chOpenAO.Width" type="System.Int32, mscorlib">
     <value>136</value>
   </data>
   <data name="chStatus.Text" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="chStatus.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
   </data>
   <data name="lvCurrentAccountProducts.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 300</value>
