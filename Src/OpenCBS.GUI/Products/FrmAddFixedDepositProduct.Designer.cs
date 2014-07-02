@@ -31,6 +31,7 @@
             this.tabControlSaving = new System.Windows.Forms.TabControl();
             this.tabPageMainParameters = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -49,8 +50,9 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.gbFrequency = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tbFrequencyMonths = new System.Windows.Forms.TextBox();
             this.lbAccrual = new System.Windows.Forms.Label();
-            this.cbInterestCalculationFrequency = new System.Windows.Forms.ComboBox();
             this.groupBoxCurrency = new System.Windows.Forms.GroupBox();
             this.cbCurrency = new System.Windows.Forms.ComboBox();
             this.lbCodeSavingProduct = new System.Windows.Forms.Label();
@@ -118,6 +120,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnUpdate);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.btnSave);
@@ -138,6 +141,19 @@
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdate.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.btnUpdate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnUpdate.Location = new System.Drawing.Point(196, 573);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(128, 25);
+            this.btnUpdate.TabIndex = 16;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.Visible = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // groupBox4
             // 
@@ -187,6 +203,7 @@
             this.tbMaxMaturityPeriod.Name = "tbMaxMaturityPeriod";
             this.tbMaxMaturityPeriod.Size = new System.Drawing.Size(100, 22);
             this.tbMaxMaturityPeriod.TabIndex = 7;
+            this.tbMaxMaturityPeriod.Text = "0";
             this.tbMaxMaturityPeriod.TextChanged += new System.EventHandler(this.tbMaxMaturityPeriod_TextChanged);
             // 
             // tbMinMaturityPeriod
@@ -196,6 +213,7 @@
             this.tbMinMaturityPeriod.Name = "tbMinMaturityPeriod";
             this.tbMinMaturityPeriod.Size = new System.Drawing.Size(100, 22);
             this.tbMinMaturityPeriod.TabIndex = 6;
+            this.tbMinMaturityPeriod.Text = "0";
             this.tbMinMaturityPeriod.TextChanged += new System.EventHandler(this.tbMinMaturityPeriod_TextChanged);
             // 
             // label6
@@ -285,6 +303,7 @@
             this.tbPenalityMax.Name = "tbPenalityMax";
             this.tbPenalityMax.Size = new System.Drawing.Size(100, 22);
             this.tbPenalityMax.TabIndex = 7;
+            this.tbPenalityMax.Text = "0";
             this.tbPenalityMax.TextChanged += new System.EventHandler(this.tbPenalityMax_TextChanged);
             // 
             // tbPenalityMin
@@ -294,6 +313,7 @@
             this.tbPenalityMin.Name = "tbPenalityMin";
             this.tbPenalityMin.Size = new System.Drawing.Size(100, 22);
             this.tbPenalityMin.TabIndex = 6;
+            this.tbPenalityMin.Text = "0";
             this.tbPenalityMin.TextChanged += new System.EventHandler(this.tbPenalityMin_TextChanged);
             // 
             // label2
@@ -347,8 +367,9 @@
             // 
             // gbFrequency
             // 
+            this.gbFrequency.Controls.Add(this.label8);
+            this.gbFrequency.Controls.Add(this.tbFrequencyMonths);
             this.gbFrequency.Controls.Add(this.lbAccrual);
-            this.gbFrequency.Controls.Add(this.cbInterestCalculationFrequency);
             this.gbFrequency.Font = new System.Drawing.Font("Arial", 9.75F);
             this.gbFrequency.Location = new System.Drawing.Point(9, 321);
             this.gbFrequency.Name = "gbFrequency";
@@ -357,6 +378,24 @@
             this.gbFrequency.TabStop = false;
             this.gbFrequency.Text = "Interest Calculation Frequency";
             this.gbFrequency.Enter += new System.EventHandler(this.gbFrequency_Enter);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label8.Location = new System.Drawing.Point(266, 29);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(51, 16);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Months";
+            // 
+            // tbFrequencyMonths
+            // 
+            this.tbFrequencyMonths.Location = new System.Drawing.Point(135, 26);
+            this.tbFrequencyMonths.Name = "tbFrequencyMonths";
+            this.tbFrequencyMonths.Size = new System.Drawing.Size(100, 22);
+            this.tbFrequencyMonths.TabIndex = 3;
             // 
             // lbAccrual
             // 
@@ -369,17 +408,6 @@
             this.lbAccrual.TabIndex = 2;
             this.lbAccrual.Text = "Frequency:";
             this.lbAccrual.Click += new System.EventHandler(this.lbAccrual_Click);
-            // 
-            // cbInterestCalculationFrequency
-            // 
-            this.cbInterestCalculationFrequency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbInterestCalculationFrequency.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.cbInterestCalculationFrequency.FormattingEnabled = true;
-            this.cbInterestCalculationFrequency.Location = new System.Drawing.Point(101, 23);
-            this.cbInterestCalculationFrequency.Name = "cbInterestCalculationFrequency";
-            this.cbInterestCalculationFrequency.Size = new System.Drawing.Size(124, 24);
-            this.cbInterestCalculationFrequency.TabIndex = 0;
-            this.cbInterestCalculationFrequency.SelectedIndexChanged += new System.EventHandler(this.cbInterestCalculationFrequency_SelectedIndexChanged);
             // 
             // groupBoxCurrency
             // 
@@ -395,7 +423,6 @@
             // 
             // cbCurrency
             // 
-            this.cbCurrency.DisplayMember = "Currency.Name";
             this.cbCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCurrency.Font = new System.Drawing.Font("Arial", 9.75F);
             this.cbCurrency.FormattingEnabled = true;
@@ -545,6 +572,7 @@
             this.tbInitialAmountMax.Name = "tbInitialAmountMax";
             this.tbInitialAmountMax.Size = new System.Drawing.Size(100, 22);
             this.tbInitialAmountMax.TabIndex = 1;
+            this.tbInitialAmountMax.Text = "0";
             this.tbInitialAmountMax.TextChanged += new System.EventHandler(this.tbInitialAmountMax_TextChanged);
             // 
             // tbInitialAmountMin
@@ -554,6 +582,7 @@
             this.tbInitialAmountMin.Name = "tbInitialAmountMin";
             this.tbInitialAmountMin.Size = new System.Drawing.Size(100, 22);
             this.tbInitialAmountMin.TabIndex = 0;
+            this.tbInitialAmountMin.Text = "0";
             this.tbInitialAmountMin.TextChanged += new System.EventHandler(this.tbInitialAmountMin_TextChanged);
             // 
             // lbInitialAmonutMax
@@ -628,6 +657,7 @@
             this.tbInterestRateMax.Name = "tbInterestRateMax";
             this.tbInterestRateMax.Size = new System.Drawing.Size(100, 22);
             this.tbInterestRateMax.TabIndex = 7;
+            this.tbInterestRateMax.Text = "0";
             this.tbInterestRateMax.TextChanged += new System.EventHandler(this.tbInterestRateMax_TextChanged);
             // 
             // tbInterestRateMin
@@ -637,6 +667,7 @@
             this.tbInterestRateMin.Name = "tbInterestRateMin";
             this.tbInterestRateMin.Size = new System.Drawing.Size(100, 22);
             this.tbInterestRateMin.TabIndex = 6;
+            this.tbInterestRateMin.Text = "0";
             this.tbInterestRateMin.TextChanged += new System.EventHandler(this.tbInterestRateMin_TextChanged);
             // 
             // lbInterestRateMax
@@ -739,7 +770,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox gbFrequency;
         private System.Windows.Forms.Label lbAccrual;
-        private System.Windows.Forms.ComboBox cbInterestCalculationFrequency;
         private System.Windows.Forms.GroupBox groupBoxCurrency;
         private System.Windows.Forms.ComboBox cbCurrency;
         private System.Windows.Forms.Label lbCodeSavingProduct;
@@ -784,5 +814,8 @@
         private System.Windows.Forms.TextBox tbMinMaturityPeriod;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox tbFrequencyMonths;
     }
 }

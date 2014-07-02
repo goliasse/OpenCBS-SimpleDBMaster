@@ -40,7 +40,7 @@ namespace OpenCBS.GUI.Products
 {
     public partial class FrmAddCurrentAccountProduct : SweetBaseForm
     {
-        
+        ICurrentAccountProduct _currentAccountProduct = null;
 
         public FrmAddCurrentAccountProduct()
         {
@@ -48,130 +48,172 @@ namespace OpenCBS.GUI.Products
             InitializeComponent();
             InitializeComboBoxCurrencies();
            
+
+           
         }
 
-        public FrmAddCurrentAccountProduct(int productId)
+        public FrmAddCurrentAccountProduct(int productId,bool enabled)
         {
             InitializeComponent();
-            
+            InitializeComboBoxCurrencies();
 
-              
+            if (enabled == true)
+            {
+                btnUpdate.Visible = true;
+                btnCurrentAccountProduct.Visible = false;
+            }
               CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
-              ICurrentAccountProduct _currentAccountProduct = _currentAccountProductService.FetchProduct(productId);
+              _currentAccountProduct = _currentAccountProductService.FetchProduct(productId);
 
 
-cbCurrency.SelectedItem = _currentAccountProduct.Currency;
-cbCurrency.Enabled = true;
+          
+            cbCurrency.SelectedItem = _currentAccountProduct.Currency;
             bool clientTypeCorp = clientTypeCorpCheckBox.Checked;
             bool clientTypeIndiv = clientTypeIndivCheckBox.Checked;
             bool clientTypeVillage = clientTypeVillageCheckBox.Checked;
             bool clientTypeGroup = clientTypeGroupCheckBox.Checked;
             bool clientTypeAll = clientTypeAllCheckBox.Checked;
-clientTypeCorpCheckBox.Enabled = true;
-clientTypeIndivCheckBox.Enabled = true;
-clientTypeVillageCheckBox.Enabled = true;
-clientTypeGroupCheckBox.Enabled = true;
-clientTypeAllCheckBox.Enabled = true;
-tbCodeCurrentAccountProduct.Text = _currentAccountProduct.CurrentAccountProductCode;
-tbCodeCurrentAccountProduct.Enabled = true;
-tbName.Text = _currentAccountProduct.CurrentAccountProductName;
-tbName.Enabled = true;
+            tbCodeCurrentAccountProduct.Text = _currentAccountProduct.CurrentAccountProductCode;
+            tbName.Text = _currentAccountProduct.CurrentAccountProductName;
             
-rbFlatEntryFees.Enabled = true;
-rbRateEntryFees.Enabled = true;
 
-if(_currentAccountProduct.EntryFeesType == "Flat")
-{
-   rbFlatEntryFees.Checked = true;
-}
-else
-{
-   rbRateEntryFees.Checked = false;
-}
-rbFlatReopenFees.Enabled = true;
-rbRateReopenFees.Enabled = true;
+            if(_currentAccountProduct.EntryFeesType == "Flat")
+            {
+               rbFlatEntryFees.Checked = true;
 
-if(_currentAccountProduct.ReopenFeesType == "Flat")
-{
-   rbFlatReopenFees.Checked = true;
-}
-else
-{
-   rbRateReopenFees.Checked = true;
-}
-rbFlatCloseFees.Enabled = true;
-rbFlatCloseFees.Enabled = true;
+            }
+            else
+            {
+               rbRateEntryFees.Checked = false;
+   
+            }
 
-if(_currentAccountProduct.ClosingFeesType == "Flat")
-{
-rbFlatCloseFees.Checked = true;
-}
-else
-{
-rbFlatCloseFees.Checked = true;
-}
-rbFlatManagementFees.Enabled = true;
-rbRateManagementFees.Enabled = true;
-if(_currentAccountProduct.ManagementFeesType == "Flat")
-{
-   rbFlatManagementFees.Checked = true;
-}
-else
-{
-   rbRateManagementFees.Checked = true;
-}
-rbFlatOverdraftFees.Enabled = true;
-rbRateOverdraftFees.Enabled = true;
-if(_currentAccountProduct.OverdraftType == "Flat")
-{
-rbFlatOverdraftFees.Checked = true;
-}
-else
-{
-rbRateOverdraftFees.Checked = true;
-}
-cbManagementFeeFreq.SelectedItem = _currentAccountProduct.ManagementFeesFrequency;
-cbManagementFeeFreq.Enabled = true;
-tbInitialAmountMin.Text = _currentAccountProduct.InitialAmountMin.ToString();
-tbInitialAmountMin.Enabled = true;
-tbInitialAmountMax.Text =_currentAccountProduct.InitialAmountMax.ToString();
-tbInitialAmountMax.Enabled = true;
-tbBalanceMin.Text =_currentAccountProduct.BalanceMin.ToString();
-tbBalanceMin.Enabled = true;
-tbBalanceMax.Text =_currentAccountProduct.BalanceMax.ToString();
-tbBalanceMax.Enabled = true;
-tbEntryFeesMin.Text =_currentAccountProduct.EntryFeesMin.ToString();
-tbEntryFeesMin.Enabled = true;
-tbEntryFeesMax.Text =_currentAccountProduct.EntryFeesMax.ToString();
-tbEntryFeesMax.Enabled = true;
-tbReopenFeesMin.Text =_currentAccountProduct.ReopenFeesMin.ToString();
-tbReopenFeesMin.Enabled = true;
-tbReopenFeesMax.Text =_currentAccountProduct.ReopenFeesMax.ToString();
-tbReopenFeesMax.Enabled = true;
-tbCloseFeesMin.Text =_currentAccountProduct.ClosingFeesMin.ToString();
-tbCloseFeesMin.Enabled = true;
-tbCloseFeesMax.Text =_currentAccountProduct.ClosingFeesMax.ToString();
-tbCloseFeesMax.Enabled = true;
-tbManagementFeesMin.Text =_currentAccountProduct.ManagementFeesMin.ToString();
-tbManagementFeesMin.Enabled = true;
-tbManagementFeesMax.Text =_currentAccountProduct.ManagementFeesMax.ToString();
-tbManagementFeesMax.Enabled = true;
-tbOverdraftFeesMin.Text =_currentAccountProduct.OverdraftMin.ToString();
-tbOverdraftFeesMin.Enabled = true;
-tbOverdraftFeesMax.Text =_currentAccountProduct.OverdraftMax.ToString();
-tbOverdraftFeesMax.Enabled = true;
-tbEntryFees.Text =_currentAccountProduct.EntryFeesValue.ToString();
-tbEntryFees.Enabled = true;
-tbReopenFees.Text =_currentAccountProduct.ReopenFeesValue.ToString();
-tbReopenFees.Enabled = true;
-tbCloseFees.Text =_currentAccountProduct.ClosingFeesValue.ToString();
-tbCloseFees.Enabled = true;
-tbManagementFees.Text =_currentAccountProduct.ManagementFeesValue.ToString();
-tbManagementFees.Enabled = true;
-tbOverdraftFees.Text =_currentAccountProduct.OverdraftValue.ToString();
-tbOverdraftFees.Enabled = true;
-          
+            if(_currentAccountProduct.ReopenFeesType == "Flat")
+            {
+               rbFlatReopenFees.Checked = true;
+            }
+            else
+            {
+               rbRateReopenFees.Checked = true;
+
+            }
+
+            if(_currentAccountProduct.ClosingFeesType == "Flat")
+            {
+            rbFlatCloseFees.Checked = true;
+            }
+            else
+            {
+            rbFlatCloseFees.Checked = true;
+            }
+
+            if(_currentAccountProduct.ManagementFeesType == "Flat")
+            {
+               rbFlatManagementFees.Checked = true ;
+            }
+            else
+            {
+               rbRateManagementFees.Checked = true ;
+            }
+
+            if(_currentAccountProduct.OverdraftType == "Flat")
+            {
+            rbFlatOverdraftFees.Checked = true;
+            }
+            else
+            {
+            rbRateOverdraftFees.Checked = true;
+            }
+            cbManagementFeeFreq.SelectedItem = _currentAccountProduct.ManagementFeesFrequency;
+            tbInitialAmountMin.Text = _currentAccountProduct.InitialAmountMin.ToString();
+            tbInitialAmountMax.Text =_currentAccountProduct.InitialAmountMax.ToString();
+            tbBalanceMin.Text =_currentAccountProduct.BalanceMin.ToString();
+            tbBalanceMax.Text =_currentAccountProduct.BalanceMax.ToString();
+            tbEntryFeesMin.Text =_currentAccountProduct.EntryFeesMin.ToString();
+            tbEntryFeesMax.Text =_currentAccountProduct.EntryFeesMax.ToString();
+            tbReopenFeesMin.Text =_currentAccountProduct.ReopenFeesMin.ToString();
+            tbReopenFeesMax.Text =_currentAccountProduct.ReopenFeesMax.ToString();
+            tbCloseFeesMin.Text =_currentAccountProduct.ClosingFeesMin.ToString();
+            tbCloseFeesMax.Text =_currentAccountProduct.ClosingFeesMax.ToString();
+            tbManagementFeesMin.Text =_currentAccountProduct.ManagementFeesMin.ToString();
+            tbManagementFeesMax.Text =_currentAccountProduct.ManagementFeesMax.ToString();
+            tbOverdraftFeesMin.Text =_currentAccountProduct.OverdraftMin.ToString();
+            tbOverdraftFeesMax.Text =_currentAccountProduct.OverdraftMax.ToString();
+            tbEntryFees.Text =_currentAccountProduct.EntryFeesValue.ToString();
+            tbReopenFees.Text =_currentAccountProduct.ReopenFeesValue.ToString();
+            tbCloseFees.Text =_currentAccountProduct.ClosingFeesValue.ToString();
+            tbManagementFees.Text =_currentAccountProduct.ManagementFeesValue.ToString();
+
+            tbOverdraftFees.Text =_currentAccountProduct.OverdraftValue.ToString();
+
+            string[] clientType = _currentAccountProduct.ClientType.Split();
+
+            if (clientType[0] == "All")
+                clientTypeAllCheckBox.Checked = true;
+            else
+            {
+                for (int i = 0; i < clientType.Length; i++)
+                {
+                    if (clientType[i] == "Corporate")
+                        clientTypeCorpCheckBox.Checked = true;
+                    if (clientType[i] == "Person")
+                        clientTypeIndivCheckBox.Checked = true;
+                    if (clientType[i] == "Village")
+                        clientTypeVillageCheckBox.Checked = true;
+                    if (clientType[i] == "Group")
+                        clientTypeGroupCheckBox.Checked = true;
+                }
+
+            }
+
+            CurrentAccountControl(enabled);
+            tbCodeCurrentAccountProduct.Enabled = false;
+            tbName.Enabled = false;
         }
+
+     void CurrentAccountControl(bool enabled)
+{
+cbCurrency.Enabled = enabled;
+clientTypeCorpCheckBox.Enabled = enabled;
+clientTypeIndivCheckBox.Enabled = enabled;
+clientTypeVillageCheckBox.Enabled = enabled;
+clientTypeGroupCheckBox.Enabled = enabled;
+clientTypeAllCheckBox.Enabled = enabled;
+tbCodeCurrentAccountProduct.Enabled = enabled;
+tbName.Enabled = enabled;
+rbFlatEntryFees.Enabled = enabled;
+rbRateEntryFees.Enabled = enabled;
+rbFlatReopenFees.Enabled = enabled;
+rbRateReopenFees.Enabled = enabled;
+rbFlatCloseFees.Enabled = enabled;
+rbFlatCloseFees.Enabled = enabled;
+rbFlatManagementFees.Enabled = enabled;
+rbRateManagementFees.Enabled = enabled;
+rbFlatOverdraftFees.Enabled = enabled;
+rbRateOverdraftFees.Enabled = enabled;
+cbManagementFeeFreq.Enabled = enabled;
+tbInitialAmountMin.Enabled = enabled;
+tbInitialAmountMax.Enabled = enabled;
+tbBalanceMin.Enabled = enabled;
+tbBalanceMax.Enabled = enabled;
+tbEntryFeesMin.Enabled = enabled;
+tbEntryFeesMax.Enabled = enabled;
+tbReopenFeesMin.Enabled = enabled;
+tbReopenFeesMax.Enabled = enabled;
+tbCloseFeesMin.Enabled = enabled;
+tbCloseFeesMax.Enabled = enabled;
+tbManagementFeesMin.Enabled = enabled;
+tbManagementFeesMax.Enabled = enabled;
+tbOverdraftFeesMin.Enabled = enabled;
+tbOverdraftFeesMax.Enabled = enabled;
+tbEntryFees.Enabled = enabled;
+tbReopenFees.Enabled = enabled;
+tbCloseFees.Enabled = enabled;
+tbManagementFees.Enabled = enabled;
+tbOverdraftFees.Enabled = enabled;
+
+}
+
 
         private void InitializeComboBoxCurrencies()
         {
@@ -183,126 +225,145 @@ tbOverdraftFees.Enabled = true;
 
             foreach (Currency cur in currencies)
             {
-                cbCurrency.Items.Add(cur);
+                cbCurrency.Items.Add(cur.Name);
             }
 
-            bool oneCurrency = 2 == cbCurrency.Items.Count;
-            cbCurrency.SelectedIndex = oneCurrency ? 1 : 0;
-            cbCurrency.Enabled = !oneCurrency;
+            //bool oneCurrency = 2 == cbCurrency.Items.Count;
+            //cbCurrency.SelectedIndex = oneCurrency ? 1 : 0;
+            //cbCurrency.Enabled = !oneCurrency;
         }
 
-        private void btSavingProduct_Click(object sender, EventArgs e)
+        void InitializeCurrentAccountProduct()
         {
-            CurrentAccountProduct _currentAccountProduct = new CurrentAccountProduct();
-
             string Currency = cbCurrency.SelectedItem.ToString();
             bool clientTypeCorp = clientTypeCorpCheckBox.Checked;
             bool clientTypeIndiv = clientTypeIndivCheckBox.Checked;
             bool clientTypeVillage = clientTypeVillageCheckBox.Checked;
             bool clientTypeGroup = clientTypeGroupCheckBox.Checked;
             bool clientTypeAll = clientTypeAllCheckBox.Checked;
-            string CodeFixedDepositProduct = tbCodeCurrentAccountProduct.Text + "-CA";
+            string CodeFixedDepositProduct ="";
+            if (_currentAccountProduct.Id != 0)
+                CodeFixedDepositProduct = tbCodeCurrentAccountProduct.Text;
+            else
+                CodeFixedDepositProduct = tbCodeCurrentAccountProduct.Text + "-CA";
             string Name = tbName.Text;
 
             string clientType = "";
 
             if (clientTypeAll == true)
                 clientType = "All";
-            if (clientTypeCorp == true)
-                clientType = clientType + "Corporate";
-            if (clientTypeIndiv == true)
-                clientType = clientType + "Person";
-            if (clientTypeVillage == true)
-                clientType = clientType + "Village";
-            if (clientTypeGroup == true)
-                clientType = clientType + "Group";
+            else
+            {
+                if (clientTypeCorp == true)
+                    clientType = clientType + "Corporate,";
+                if (clientTypeIndiv == true)
+                    clientType = clientType + "Person,";
+                if (clientTypeVillage == true)
+                    clientType = clientType + "Village,";
+                if (clientTypeGroup == true)
+                    clientType = clientType + "Group,";
+                clientType = clientType.Substring(0, clientType.Length - 1);
+            }
 
-           
-if(rbFlatEntryFees.Checked)
-{
-    _currentAccountProduct.EntryFeesType = "Flat";
-}
-else
-{
-    _currentAccountProduct.EntryFeesType = "Rate";
-}
-if(rbFlatReopenFees.Checked)
-{
-    _currentAccountProduct.ReopenFeesType = "Flat";
-}
-else
-{
-     _currentAccountProduct.ReopenFeesType = "Rate";
-}
-if(rbFlatCloseFees.Checked)
-{
-    _currentAccountProduct.ClosingFeesType = "Flat";
-}
-else
-{
-    _currentAccountProduct.ClosingFeesType = "Rate";
-}
-if(rbFlatManagementFees.Checked)
-{
-    _currentAccountProduct.ManagementFeesType = "Flat";
-}
-else
-{
-    _currentAccountProduct.ManagementFeesType = "Rate";
-}
-if(rbFlatOverdraftFees.Checked)
-{
-    _currentAccountProduct.OverdraftType = "Flat";
-}
-else
-{
-    _currentAccountProduct.OverdraftType = "Rate";
-}
-decimal InitialAmountMin = Convert.ToDecimal(tbInitialAmountMin.Text);
-decimal InitialAmountMax = Convert.ToDecimal(tbInitialAmountMax.Text);
-decimal BalanceMin = Convert.ToDecimal(tbBalanceMin.Text);
-decimal BalanceMax = Convert.ToDecimal(tbBalanceMax.Text);
-decimal EntryFeesMin = Convert.ToDecimal(tbEntryFeesMin.Text);
-decimal EntryFeesMax = Convert.ToDecimal(tbEntryFeesMax.Text);
-decimal ReopenFeesMin = Convert.ToDecimal(tbReopenFeesMin.Text);
-decimal ReopenFeesMax = Convert.ToDecimal(tbReopenFeesMax.Text);
-decimal CloseFeesMin = Convert.ToDecimal(tbCloseFeesMin.Text);
-decimal CloseFeesMax = Convert.ToDecimal(tbCloseFeesMax.Text);
-decimal ManagementFeesMin = Convert.ToDecimal(tbManagementFeesMin.Text);
-decimal ManagementFeesMax = Convert.ToDecimal(tbManagementFeesMax.Text);
-decimal OverdraftFeesMin = Convert.ToDecimal(tbOverdraftFeesMin.Text);
-decimal OverdraftFeesMax = Convert.ToDecimal(tbOverdraftFeesMax.Text);
-decimal EntryFees = Convert.ToDecimal(tbEntryFees.Text);
-decimal ReopenFees = Convert.ToDecimal(tbReopenFees.Text);
-decimal CloseFees = Convert.ToDecimal(tbCloseFees.Text);
-decimal ManagementFees = Convert.ToDecimal(tbManagementFees.Text);
-decimal OverdraftFees = Convert.ToDecimal(tbOverdraftFees.Text);
-_currentAccountProduct.ManagementFeesFrequency = cbManagementFeeFreq.SelectedItem.ToString();
-_currentAccountProduct.CurrentAccountProductName = Name;
-_currentAccountProduct.CurrentAccountProductCode = CodeFixedDepositProduct;
-_currentAccountProduct.ClientType = clientType;
-_currentAccountProduct.Currency = Currency;
-_currentAccountProduct.InitialAmountMin = InitialAmountMin;
-_currentAccountProduct.InitialAmountMax = InitialAmountMax;
-_currentAccountProduct.BalanceMin = BalanceMin;
-_currentAccountProduct.BalanceMax = BalanceMax;
-_currentAccountProduct.EntryFeesMin = EntryFeesMin;
-_currentAccountProduct.EntryFeesMax = EntryFeesMax;
-_currentAccountProduct.ReopenFeesMin = ReopenFeesMin;
-_currentAccountProduct.ReopenFeesMax = ReopenFeesMax;
-_currentAccountProduct.ClosingFeesMin = CloseFeesMin;
-_currentAccountProduct.ClosingFeesMax = CloseFeesMax;
-_currentAccountProduct.ManagementFeesMin = ManagementFeesMin;
-_currentAccountProduct.ManagementFeesMax = ManagementFeesMax;
-_currentAccountProduct.OverdraftMin = OverdraftFeesMin;
-_currentAccountProduct.OverdraftMax = OverdraftFeesMax;
-_currentAccountProduct.EntryFeesValue = EntryFees;
-_currentAccountProduct.ReopenFeesValue = ReopenFees;
-_currentAccountProduct.ClosingFeesValue = CloseFees;
-_currentAccountProduct.ManagementFeesValue = ManagementFees;
-_currentAccountProduct.OverdraftValue = OverdraftFees;
-_currentAccountProduct.Delete = 0;
 
+
+            if (rbFlatEntryFees.Checked)
+            {
+                _currentAccountProduct.EntryFeesType = "Flat";
+            }
+            else
+            {
+                _currentAccountProduct.EntryFeesType = "Rate";
+            }
+            if (rbFlatReopenFees.Checked)
+            {
+                _currentAccountProduct.ReopenFeesType = "Flat";
+            }
+            else
+            {
+                _currentAccountProduct.ReopenFeesType = "Rate";
+            }
+            if (rbFlatCloseFees.Checked)
+            {
+                _currentAccountProduct.ClosingFeesType = "Flat";
+            }
+            else
+            {
+                _currentAccountProduct.ClosingFeesType = "Rate";
+            }
+            if (rbFlatManagementFees.Checked)
+            {
+                _currentAccountProduct.ManagementFeesType = "Flat";
+            }
+            else
+            {
+                _currentAccountProduct.ManagementFeesType = "Rate";
+            }
+            if (rbFlatOverdraftFees.Checked)
+            {
+                _currentAccountProduct.OverdraftType = "Flat";
+            }
+            else
+            {
+                _currentAccountProduct.OverdraftType = "Rate";
+            }
+            decimal InitialAmountMin = Convert.ToDecimal(tbInitialAmountMin.Text);
+            decimal InitialAmountMax = Convert.ToDecimal(tbInitialAmountMax.Text);
+            decimal BalanceMin = Convert.ToDecimal(tbBalanceMin.Text);
+            decimal BalanceMax = Convert.ToDecimal(tbBalanceMax.Text);
+
+
+            decimal EntryFeesMin = Convert.ToDecimal(tbEntryFeesMin.Text);
+            decimal EntryFeesMax = Convert.ToDecimal(tbEntryFeesMax.Text);
+            decimal ReopenFeesMin = Convert.ToDecimal(tbReopenFeesMin.Text);
+            decimal ReopenFeesMax = Convert.ToDecimal(tbReopenFeesMax.Text);
+            decimal CloseFeesMin = Convert.ToDecimal(tbCloseFeesMin.Text);
+            decimal CloseFeesMax = Convert.ToDecimal(tbCloseFeesMax.Text);
+            decimal ManagementFeesMin = Convert.ToDecimal(tbManagementFeesMin.Text);
+            decimal ManagementFeesMax = Convert.ToDecimal(tbManagementFeesMax.Text);
+            decimal OverdraftFeesMin = Convert.ToDecimal(tbOverdraftFeesMin.Text);
+            decimal OverdraftFeesMax = Convert.ToDecimal(tbOverdraftFeesMax.Text);
+            decimal EntryFees = Convert.ToDecimal(tbEntryFees.Text);
+            decimal ReopenFees = Convert.ToDecimal(tbReopenFees.Text);
+            decimal CloseFees = Convert.ToDecimal(tbCloseFees.Text);
+            decimal ManagementFees = Convert.ToDecimal(tbManagementFees.Text);
+            decimal OverdraftFees = Convert.ToDecimal(tbOverdraftFees.Text);
+
+
+            _currentAccountProduct.ManagementFeesFrequency = cbManagementFeeFreq.SelectedItem.ToString();
+            _currentAccountProduct.CurrentAccountProductName = Name;
+            _currentAccountProduct.CurrentAccountProductCode = CodeFixedDepositProduct;
+            _currentAccountProduct.ClientType = clientType;
+            _currentAccountProduct.Currency = Currency;
+            _currentAccountProduct.InitialAmountMin = InitialAmountMin;
+            _currentAccountProduct.InitialAmountMax = InitialAmountMax;
+            _currentAccountProduct.BalanceMin = BalanceMin;
+            _currentAccountProduct.BalanceMax = BalanceMax;
+            _currentAccountProduct.EntryFeesMin = EntryFeesMin;
+            _currentAccountProduct.EntryFeesMax = EntryFeesMax;
+            _currentAccountProduct.ReopenFeesMin = ReopenFeesMin;
+            _currentAccountProduct.ReopenFeesMax = ReopenFeesMax;
+            _currentAccountProduct.ClosingFeesMin = CloseFeesMin;
+            _currentAccountProduct.ClosingFeesMax = CloseFeesMax;
+            _currentAccountProduct.ManagementFeesMin = ManagementFeesMin;
+            _currentAccountProduct.ManagementFeesMax = ManagementFeesMax;
+            _currentAccountProduct.OverdraftMin = OverdraftFeesMin;
+            _currentAccountProduct.OverdraftMax = OverdraftFeesMax;
+            _currentAccountProduct.EntryFeesValue = EntryFees;
+            _currentAccountProduct.ReopenFeesValue = ReopenFees;
+            _currentAccountProduct.ClosingFeesValue = CloseFees;
+            _currentAccountProduct.ManagementFeesValue = ManagementFees;
+            _currentAccountProduct.OverdraftValue = OverdraftFees;
+            _currentAccountProduct.Delete = 0;
+        }
+
+
+        private void btSavingProduct_Click(object sender, EventArgs e)
+        {
+
+
+            _currentAccountProduct = new CurrentAccountProduct();
+            InitializeCurrentAccountProduct();
 
 CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
 int ret =_currentAccountProductService.SaveCurrentAccountProduct(_currentAccountProduct);
@@ -343,6 +404,20 @@ if (ret >= 1)
                 clientTypeGroupCheckBox.Enabled = true;
 
             }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            InitializeCurrentAccountProduct();
+
+            CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
+            _currentAccountProductService.UpdateCurrentAccountProduct(_currentAccountProduct, _currentAccountProduct.Id);
+            MessageBox.Show("Current Account Product Successfully Updated.");
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
 
        

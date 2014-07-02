@@ -90,7 +90,7 @@ namespace OpenCBS.Manager
 
         public bool CheckForDuplicateValue(string tableName, string columnName, string columnValue)
         {
-            string q = "SELECT "+columnName+" FROM "+tableName+" WHERE "+columnName+ "="+columnValue;
+            string q = "SELECT "+columnName+" FROM "+tableName+" WHERE "+columnName+ "='"+columnValue+"'";
             
             using (SqlConnection conn = GetConnection())
             using (OpenCbsCommand c = new OpenCbsCommand(q, conn))

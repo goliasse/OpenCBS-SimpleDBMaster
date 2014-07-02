@@ -206,6 +206,7 @@
     <Compile Include="CollateralProductServices.cs" />
     <Compile Include="CurrentAccountProductHoldingServices.cs" />
     <Compile Include="CurrentAccountProductService.cs" />
+    <Compile Include="CurrentAccountTransactionService.cs" />
     <Compile Include="FixedDepositProductHoldingServices.cs" />
     <Compile Include="FixedDepositProductService.cs" />
     <Compile Include="MenuItemServices.cs" />

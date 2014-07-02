@@ -25,8 +25,8 @@ namespace OpenCBS.GUI.Products
     public partial class FrmAddFixedDepositProduct : SweetBaseForm
     {
 
-        private int clientTypeCounter = 0;
-        private FixedDepositProduct _fixedDepositProduct;
+
+        private IFixedDepositProduct _fixedDepositProduct;
 
         public FrmAddFixedDepositProduct()
         {
@@ -37,67 +37,96 @@ namespace OpenCBS.GUI.Products
 
 
 
-        public FrmAddFixedDepositProduct(int productId)
+        public FrmAddFixedDepositProduct(int productId, bool enabled)
         {
             InitializeComponent();
+            InitializeComboBoxCurrencies();
+            InitializeInterestCalculationFrequency();
+
+
+            if (enabled == true)
+            {
+                btnUpdate.Visible = true;
+                btnSave.Visible = false;
+            }
 
             FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
-            IFixedDepositProduct _fixedDepositProduct = _fixedDepositProductService.FetchProduct(productId);
-
-             
-            cbInterestCalculationFrequency.SelectedItem = _fixedDepositProduct.InterestCalculationFrequency;
-            cbInterestCalculationFrequency.Enabled = true;
+            _fixedDepositProduct = _fixedDepositProductService.FetchProduct(productId);
+            tbFrequencyMonths.Text = _fixedDepositProduct.InterestCalculationFrequency;
+            
+           
             cbCurrency.SelectedItem = _fixedDepositProduct.Currency;
-            cbCurrency.Enabled = true;
-            bool clientTypeCorp = clientTypeCorpCheckBox.Checked;
-            bool clientTypeIndiv = clientTypeIndivCheckBox.Checked;
-            bool clientTypeVillage = clientTypeVillageCheckBox.Checked;
-            bool clientTypeGroup = clientTypeGroupCheckBox.Checked;
-            bool clientTypeAll = clientTypeAllCheckBox.Checked;
+            
             tbCodeFixedDepositProduct.Text = _fixedDepositProduct.Code;
-            tbCodeFixedDepositProduct.Enabled = true;
             tbName.Text = _fixedDepositProduct.Name;
-            tbName.Enabled = true;
             tbInitialAmountMax.Text = _fixedDepositProduct.InitialAmountMax.ToString();
-            tbInitialAmountMax.Enabled = true;
             tbInitialAmountMin.Text = _fixedDepositProduct.InitialAmountMin.ToString();
-            tbInitialAmountMin.Enabled = true;
             tbInterestRateMax.Text = _fixedDepositProduct.InterestRateMax.ToString();
-            tbInterestRateMax.Enabled = true;
             tbInterestRateMin.Text = _fixedDepositProduct.InterestRateMin.ToString();
-            tbInterestRateMin.Enabled = true;
             tbPenalityMax.Text = _fixedDepositProduct.PenalityRateMax.ToString();
-            tbPenalityMax.Enabled = true;
             tbPenalityMin.Text = _fixedDepositProduct.PenalityRateMin.ToString();
-            tbPenalityMin.Enabled = true;
             tbMinMaturityPeriod.Text = _fixedDepositProduct.MaturityPeriodMin.ToString();
-            tbMinMaturityPeriod.Enabled = true;
             tbMaxMaturityPeriod.Text = _fixedDepositProduct.MaturityPeriodMax.ToString();
-            tbMaxMaturityPeriod.Enabled = true;
 
             if (_fixedDepositProduct.PenalityType == "Rate")
                 rbPenalityTypeRate.Checked = true;
             else
                 rbPenalityTypeFlat.Checked = false;
-            rbPenalityTypeRate.Enabled = true;
-            rbPenalityTypeFlat.Enabled = true;
 
 
-            string clientType = "";
+            string []clientType = _fixedDepositProduct.ClientType.Split(',');
 
-            if (clientTypeAll == true)
-                clientType = "All";
-            if (clientTypeCorp == true)
-                clientType = clientType + "Corporate";
-            if (clientTypeIndiv == true)
-                clientType = clientType + "Person";
-            if (clientTypeVillage == true)
-                clientType = clientType + "Village";
-            if (clientTypeGroup == true)
-                clientType = clientType + "Group";
-            _fixedDepositProduct.ClientType = clientType;
+            if (clientType[0] == "All")
+                clientTypeAllCheckBox.Checked = true;
+            else
+            {
+                for (int i = 0; i < clientType.Length; i++)
+                {
+                    if (clientType[i] == "Corporate")
+                        clientTypeCorpCheckBox.Checked = true;
+                    if (clientType[i] == "Person")
+                        clientTypeIndivCheckBox.Checked = true;
+                    if (clientType[i] == "Village")
+                        clientTypeVillageCheckBox.Checked = true;
+                    if (clientType[i] == "Group")
+                        clientTypeGroupCheckBox.Checked = true;
+                }
+
+            }
+            
+            
+            
+            FixedDepositControl(enabled);
+            tbCodeFixedDepositProduct.Enabled = false;
+            tbName.Enabled = false;
         }
 
+
+ void FixedDepositControl(bool enabled)
+{
+    tbFrequencyMonths.Enabled = enabled;
+cbCurrency.Enabled = enabled;
+tbCodeFixedDepositProduct.Enabled = enabled;
+tbName.Enabled = enabled;
+tbInitialAmountMax.Enabled = enabled;
+tbInitialAmountMin.Enabled = enabled;
+tbInterestRateMax.Enabled = enabled;
+tbInterestRateMin.Enabled = enabled;
+tbPenalityMax.Enabled = enabled;
+tbPenalityMin.Enabled = enabled;
+tbMinMaturityPeriod.Enabled = enabled;
+tbMaxMaturityPeriod.Enabled = enabled;
+rbPenalityTypeRate.Enabled = enabled;
+rbPenalityTypeFlat.Enabled = enabled;
+
+clientTypeCorpCheckBox.Enabled = enabled;
+clientTypeIndivCheckBox.Enabled = enabled;
+clientTypeVillageCheckBox.Enabled = enabled;
+clientTypeGroupCheckBox.Enabled = enabled;
+clientTypeAllCheckBox.Enabled = enabled;
+
+
+}
 
         private void lbCalculAmount_Click(object sender, EventArgs e)
         {
@@ -106,12 +135,7 @@ namespace OpenCBS.GUI.Products
 
         private void InitializeInterestCalculationFrequency()
         {
-            cbInterestCalculationFrequency.Items.Clear();
-            cbInterestCalculationFrequency.Items.Add("Monthly");
-            cbInterestCalculationFrequency.Items.Add("Quarterly");
-            cbInterestCalculationFrequency.Items.Add("Half Yearly");
-            cbInterestCalculationFrequency.Items.Add("Yearly");
-            cbInterestCalculationFrequency.SelectedIndex = 0;
+           
 
         }
 
@@ -125,12 +149,12 @@ namespace OpenCBS.GUI.Products
 
             foreach (Currency cur in currencies)
             {
-                cbCurrency.Items.Add(cur);
+                cbCurrency.Items.Add(cur.Name);
             }
 
-            bool oneCurrency = 2 == cbCurrency.Items.Count;
-            cbCurrency.SelectedIndex = oneCurrency ? 1 : 0;
-            cbCurrency.Enabled = !oneCurrency;
+            //bool oneCurrency = 2 == cbCurrency.Items.Count;
+            //cbCurrency.SelectedIndex = oneCurrency ? 1 : 0;
+            //cbCurrency.Enabled = !oneCurrency;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -140,14 +164,29 @@ namespace OpenCBS.GUI.Products
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string InterestCalculationFrequency = cbInterestCalculationFrequency.SelectedItem.ToString();
+            
+            _fixedDepositProduct = new FixedDepositProduct();
+            InitializeFixedDepositProduct();
+            FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
+           int ret = _fixedDepositProductService.SaveFixedDepositProduct(_fixedDepositProduct);
+           if (ret >= 1)
+               MessageBox.Show("Fixed Deposit Product Successfully Added.");
+        }
+
+        void InitializeFixedDepositProduct()
+        {
+            string InterestCalculationFrequency = tbFrequencyMonths.Text;
             string Currency = cbCurrency.SelectedItem.ToString();
             bool clientTypeCorp = clientTypeCorpCheckBox.Checked;
             bool clientTypeIndiv = clientTypeIndivCheckBox.Checked;
             bool clientTypeVillage = clientTypeVillageCheckBox.Checked;
             bool clientTypeGroup = clientTypeGroupCheckBox.Checked;
             bool clientTypeAll = clientTypeAllCheckBox.Checked;
-            string CodeFixedDepositProduct = tbCodeFixedDepositProduct.Text+"-FD";
+            string CodeFixedDepositProduct = "";
+            if(_fixedDepositProduct.Id!=0)
+                CodeFixedDepositProduct =  tbCodeFixedDepositProduct.Text;
+            else
+                CodeFixedDepositProduct = tbCodeFixedDepositProduct.Text + "-FD";
             string Name = tbName.Text;
             decimal InitialAmountMax = Convert.ToDecimal(tbInitialAmountMax.Text);
             decimal InitialAmountMin = Convert.ToDecimal(tbInitialAmountMin.Text);
@@ -159,7 +198,7 @@ namespace OpenCBS.GUI.Products
             double PenalityMin = Convert.ToDouble(tbPenalityMin.Text);
             int MaturityPeriodMin = Convert.ToInt32(tbMinMaturityPeriod.Text);
             int MaturityPeriodMax = Convert.ToInt32(tbMaxMaturityPeriod.Text);
-            _fixedDepositProduct = new FixedDepositProduct();
+            
             _fixedDepositProduct.InterestCalculationFrequency = InterestCalculationFrequency;
             _fixedDepositProduct.Currency = Currency;
             _fixedDepositProduct.Code = CodeFixedDepositProduct;
@@ -177,29 +216,32 @@ namespace OpenCBS.GUI.Products
 
             _fixedDepositProduct.MaturityPeriodMin = MaturityPeriodMin;
             _fixedDepositProduct.MaturityPeriodMax = MaturityPeriodMax;
-            
-            
-            
-                string clientType = "";
+
+
+
+            string clientType = "";
 
             if (clientTypeAll == true)
                 clientType = "All";
-            if(clientTypeCorp == true)
-                clientType = clientType + "Corporate";
-            if(clientTypeIndiv == true)
-                clientType = clientType + "Person";
-            if(clientTypeVillage == true)
-                clientType = clientType + "Village";
-            if (clientTypeGroup == true)
-                clientType = clientType + "Group";
+            else
+            {
+                if (clientTypeCorp == true)
+                    clientType = clientType + "Corporate,";
+                if (clientTypeIndiv == true)
+                    clientType = clientType + "Person,";
+                if (clientTypeVillage == true)
+                    clientType = clientType + "Village,";
+                if (clientTypeGroup == true)
+                    clientType = clientType + "Group,";
+
+                clientType = clientType.Substring(0, clientType.Length - 1);
+            }
+
+
             _fixedDepositProduct.ClientType = clientType;
 
-            
-            FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
-           int ret = _fixedDepositProductService.SaveFixedDepositProduct(_fixedDepositProduct);
-           if (ret >= 1)
-               MessageBox.Show("Fixed Deposit Product Successfully Added.");
         }
+
 
         private void clientTypeAllCheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -254,59 +296,11 @@ namespace OpenCBS.GUI.Products
         }
 
 
-        private void AssignClientTypeToProduct(object sender)
-        {
-            CheckBox receivedCheckBox = (CheckBox)sender;
-            string clientTypeName;
-            switch (receivedCheckBox.Name)
-            {
-                case "clientTypeAllCheckBox":
-                    clientTypeName = "All";
-                    break;
-                case "clientTypeGroupCheckBox":
-                    clientTypeName = "Group";
-                    break;
-                case "clientTypeIndivCheckBox":
-                    clientTypeName = "Individual";
-                    break;
-                case "clientTypeCorpCheckBox":
-                    clientTypeName = "Corporate";
-                    break;
-                case "clientTypeVillageCheckBox":
-                    clientTypeName = "Village";
-                    break;
-                default:
-                    clientTypeName = null;
-                    break;
-            }
-
-            for (int i = 0; i < _fixedDepositProduct.ProductClientTypes.Count; i++)
-            {
-                if (_fixedDepositProduct.ProductClientTypes[i].TypeName == clientTypeName)
-                {
-                    _fixedDepositProduct.ProductClientTypes[i].IsChecked = receivedCheckBox.Checked;
-                    break;
-                }
-            }
-        }
-
+        
 
         private void clientTypeGroupCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            AssignClientTypeToProduct(sender);
-            if (((CheckBox)sender).Checked)
-                clientTypeCounter++;
-            else
-            {
-                clientTypeCounter--;
-                clientTypeAllCheckBox.Checked = false;
-            }
-            if (clientTypeCounter == 4)
-                clientTypeAllCheckBox.Checked = true;
-            else
-            {
-                clientTypeAllCheckBox.Checked = false;
-            }
+           
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -532,6 +526,16 @@ namespace OpenCBS.GUI.Products
         private void bClose_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            InitializeFixedDepositProduct();
+
+            FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
+            _fixedDepositProductService.UpdateFixedDepositProduct(_fixedDepositProduct, _fixedDepositProduct.Id);
+            
+                MessageBox.Show("Fixed Deposit Product Successfully Updated.");
         }
     }
 }

@@ -580,11 +580,10 @@ namespace OpenCBS.GUI.Clients
             this.label13 = new System.Windows.Forms.Label();
             this.tbPenality = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.gbFrequency = new System.Windows.Forms.GroupBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.tbFrequencyMonths = new System.Windows.Forms.TextBox();
             this.lbAccrual = new System.Windows.Forms.Label();
-            this.cbInterestCalculationFrequency = new System.Windows.Forms.ComboBox();
             this.lbNameSavingProduct = new System.Windows.Forms.Label();
             this.gbInitialAmount = new System.Windows.Forms.GroupBox();
             this.tbInitialAmount = new System.Windows.Forms.TextBox();
@@ -4195,8 +4194,6 @@ namespace OpenCBS.GUI.Clients
             this.tbTransferNumberForm.Controls.Add(this.cbFixedDepositProduct);
             this.tbTransferNumberForm.Controls.Add(this.groupBox4);
             this.tbTransferNumberForm.Controls.Add(this.groupBox5);
-            this.tbTransferNumberForm.Controls.Add(this.btnSave);
-            this.tbTransferNumberForm.Controls.Add(this.button1);
             this.tbTransferNumberForm.Controls.Add(this.gbFrequency);
             this.tbTransferNumberForm.Controls.Add(this.lbNameSavingProduct);
             this.tbTransferNumberForm.Controls.Add(this.gbInitialAmount);
@@ -4436,6 +4433,8 @@ namespace OpenCBS.GUI.Clients
             this.cbFixedDepositProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbFixedDepositProduct, "cbFixedDepositProduct");
             this.cbFixedDepositProduct.FormattingEnabled = true;
+            this.cbFixedDepositProduct.Items.AddRange(new object[] {
+            resources.GetString("cbFixedDepositProduct.Items")});
             this.cbFixedDepositProduct.Name = "cbFixedDepositProduct";
             this.cbFixedDepositProduct.SelectedIndexChanged += new System.EventHandler(this.cbFixedDepositProduct_SelectedIndexChanged);
             // 
@@ -4501,42 +4500,30 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.label15, "label15");
             this.label15.Name = "label15";
             // 
-            // btnSave
-            // 
-            resources.ApplyResources(this.btnSave, "btnSave");
-            this.btnSave.Name = "btnSave";
-            // 
-            // button1
-            // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.Name = "button1";
-            // 
             // gbFrequency
             // 
+            this.gbFrequency.Controls.Add(this.label27);
+            this.gbFrequency.Controls.Add(this.tbFrequencyMonths);
             this.gbFrequency.Controls.Add(this.lbAccrual);
-            this.gbFrequency.Controls.Add(this.cbInterestCalculationFrequency);
             resources.ApplyResources(this.gbFrequency, "gbFrequency");
             this.gbFrequency.Name = "gbFrequency";
             this.gbFrequency.TabStop = false;
             this.gbFrequency.Enter += new System.EventHandler(this.gbFrequency_Enter);
             // 
+            // label27
+            // 
+            resources.ApplyResources(this.label27, "label27");
+            this.label27.Name = "label27";
+            // 
+            // tbFrequencyMonths
+            // 
+            resources.ApplyResources(this.tbFrequencyMonths, "tbFrequencyMonths");
+            this.tbFrequencyMonths.Name = "tbFrequencyMonths";
+            // 
             // lbAccrual
             // 
             resources.ApplyResources(this.lbAccrual, "lbAccrual");
             this.lbAccrual.Name = "lbAccrual";
-            // 
-            // cbInterestCalculationFrequency
-            // 
-            this.cbInterestCalculationFrequency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.cbInterestCalculationFrequency, "cbInterestCalculationFrequency");
-            this.cbInterestCalculationFrequency.FormattingEnabled = true;
-            this.cbInterestCalculationFrequency.Items.AddRange(new object[] {
-            resources.GetString("cbInterestCalculationFrequency.Items"),
-            resources.GetString("cbInterestCalculationFrequency.Items1"),
-            resources.GetString("cbInterestCalculationFrequency.Items2"),
-            resources.GetString("cbInterestCalculationFrequency.Items3")});
-            this.cbInterestCalculationFrequency.Name = "cbInterestCalculationFrequency";
             // 
             // lbNameSavingProduct
             // 
@@ -5107,6 +5094,8 @@ namespace OpenCBS.GUI.Clients
             this.cbCurrentAccountProducts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbCurrentAccountProducts, "cbCurrentAccountProducts");
             this.cbCurrentAccountProducts.FormattingEnabled = true;
+            this.cbCurrentAccountProducts.Items.AddRange(new object[] {
+            resources.GetString("cbCurrentAccountProducts.Items")});
             this.cbCurrentAccountProducts.Name = "cbCurrentAccountProducts";
             this.cbCurrentAccountProducts.SelectedIndexChanged += new System.EventHandler(this.cbCurrentAccountProducts_SelectedIndexChanged);
             // 
@@ -6003,11 +5992,8 @@ namespace OpenCBS.GUI.Clients
         private Label label13;
         private TextBox tbPenality;
         private Label label15;
-        private Button btnSave;
-        private Button button1;
         private GroupBox gbFrequency;
         private Label lbAccrual;
-        private ComboBox cbInterestCalculationFrequency;
         private Label lbNameSavingProduct;
         private GroupBox gbInitialAmount;
         private Label lbInitialAmountMin;
@@ -6146,5 +6132,7 @@ namespace OpenCBS.GUI.Clients
         private ColumnHeader chOpenedDate;
         private ColumnHeader chOpenAO;
         private ColumnHeader chStatus;
+        private Label label27;
+        private TextBox tbFrequencyMonths;
     }
 }

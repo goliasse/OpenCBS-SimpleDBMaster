@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Collections.Generic;
+
 using OpenCBS.CoreDomain;
 using OpenCBS.CoreDomain.Accounting;
 using OpenCBS.CoreDomain.Contracts.Loans.Installments;
@@ -42,7 +42,7 @@ namespace OpenCBS.Manager.Products
 [reopen_fees_type],
 [closing_fees_type], 
 [management_fees_type],
-[overdraft_fees_type],
+[overdraft_type],
 [entry_fees_min], 
 [reopen_fees_min], 
 [closing_fees_min], 
@@ -138,7 +138,7 @@ namespace OpenCBS.Manager.Products
             c.AddParam("@managementFeesFrequency", product.ManagementFeesFrequency);
         }
 
-        public void UpdateCurrentAccountProduct(CurrentAccountProduct product, int productId)
+        public void UpdateCurrentAccountProduct(ICurrentAccountProduct product, int productId)
         {
             string q = @"UPDATE [CurrentAccountProduct] SET 
 [current_account_product_name] = @currentAccountProductName,
@@ -432,6 +432,152 @@ return currentAccountProduct;
                 c.ExecuteNonQuery();
             }
         }
+
+
+
+        public int SaveCurrentAccountTransactionFees(CurrentAccountTransactionFees currentAccountTransactionFees)
+{
+ const string q = @"INSERT INTO [CurrentAccountTransactionFees]
+           ([current_account_product_id],
+		[transaction_type],
+		[transaction_fees_type],
+		[transaction_fees],
+		[transaction_fees_min],
+		[transaction_fees_max],
+		[transaction_mode])
+                VALUES
+                (@currentAccountProductId
+                ,@transactionType
+                ,@transactionFeesType
+                ,@transactionFees
+                ,@transactionFeeMin
+                ,@transactionFeeMax
+                ,@transactionMode)
+         
+                SELECT SCOPE_IDENTITY()";
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+
+
+                SetTransactionFee(c, currentAccountTransactionFees);
+                currentAccountTransactionFees.Id = Convert.ToInt32(c.ExecuteScalar());
+            }
+
+
+            return currentAccountTransactionFees.Id;
+}
+
+
+        public void SetTransactionFee(OpenCbsCommand c, CurrentAccountTransactionFees currentAccountTransactionFees)
+{
+c.AddParam("@currentAccountProductId",currentAccountTransactionFees.CurrentAccountProductId);
+c.AddParam("@transactionType",currentAccountTransactionFees. TransactionType);
+c.AddParam("@transactionFeesType",currentAccountTransactionFees. TransactionFeesType);
+c.AddParam("@transactionFees",currentAccountTransactionFees. TransactionFees);
+c.AddParam("@transactionFeeMin",currentAccountTransactionFees. TransactionFeeMin);
+c.AddParam("@transactionFeeMax",currentAccountTransactionFees. TransactionFeeMax);
+c.AddParam("@transactionMode",currentAccountTransactionFees. TransactionMode);
+}
+
+public CurrentAccountTransactionFees GetTransactionFee(OpenCbsReader r)
+{
+    CurrentAccountTransactionFees currentAccountTransactionFees = new CurrentAccountTransactionFees();
+currentAccountTransactionFees.Id = r.GetInt("id");
+currentAccountTransactionFees.CurrentAccountProductId = r.GetInt("current_account_product_id");
+currentAccountTransactionFees.TransactionType = r.GetString("transaction_type");
+currentAccountTransactionFees.TransactionFeesType= r.GetString("transaction_fees_type");
+currentAccountTransactionFees.TransactionFees= r.GetDecimal("transaction_fees");
+currentAccountTransactionFees.TransactionFeeMin= r.GetDecimal("transaction_fees_min");
+currentAccountTransactionFees.TransactionFeeMax= r.GetDecimal("transaction_fees_max");
+currentAccountTransactionFees.TransactionMode= r.GetString("transaction_mode");
+
+    return currentAccountTransactionFees;
+}
+
+
+public List<CurrentAccountTransactionFees> FetchTransactionFee(int productId)
+{
+
+    List<CurrentAccountTransactionFees> currentAccountTransactionFeesList = new List<CurrentAccountTransactionFees>();
+    string q = @"SELECT
+		[id],
+	        [current_account_product_id],
+		[transaction_type],
+		[transaction_fees_type],
+		[transaction_fees],
+		[transaction_fees_min],
+		[transaction_fees_max],
+		[transaction_mode] FROM [dbo].[ CurrentAccountTransactionFees]
+            WHERE current_account_product_id = @productId";
+
+
+
+
+
+    using (SqlConnection conn = GetConnection())
+    using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+    {
+        using (OpenCbsReader r = c.ExecuteReader())
+        {
+            c.AddParam("@productId", productId);
+            if (r == null || r.Empty) return new List<CurrentAccountTransactionFees>();
+            while (r.Read())
+            {
+                CurrentAccountTransactionFees product = FetchTransaction(Convert.ToInt32(r.GetInt("id")));
+
+                currentAccountTransactionFeesList.Add(product);
+            }
+        }
+    }
+
+    return currentAccountTransactionFeesList;
+
+
+}
+
+
+
+public CurrentAccountTransactionFees FetchTransaction(int transactionId)
+{
+
+    
+    string q = @"SELECT
+		[id],
+	        [current_account_product_id],
+		[transaction_type],
+		[transaction_fees_type],
+		[transaction_fees],
+		[transaction_fees_min],
+		[transaction_fees_max],
+		[transaction_mode] FROM [dbo].[ CurrentAccountTransactionFees]
+            WHERE id = @transactionId";
+
+
+
+
+
+    using (SqlConnection conn = GetConnection())
+    using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+    {
+        c.AddParam("@transactionId", transactionId);
+        
+        using (OpenCbsReader r = c.ExecuteReader())
+        {
+            if (r == null || r.Empty) return null;
+
+            r.Read();
+            return (CurrentAccountTransactionFees)GetTransactionFee(r);
+        }
+    }
+
+  
+
+
+}
+
+
 
     }
 }

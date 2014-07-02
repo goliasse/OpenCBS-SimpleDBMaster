@@ -69,7 +69,7 @@ namespace OpenCBS.Services
         FixedDepositProductHoldingServices GetFixedDepositProductHoldingServices();
         CurrentAccountProductHoldingServices GetCurrentAccountProductHoldingServices();
         CurrentAccountProductService GetCurrentAccountProductService();
-
+        CurrentAccountTransactionService GetCurrentAccountTransactionService();
         void SuppressAllRemotingInfos(string pComputerName, string pLoginName);
 
         string GetAuthentification(string pOctoUsername, string pOctoPass, string pDbName, string pComputerName, string pLoginName);

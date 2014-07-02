@@ -179,9 +179,60 @@ namespace OpenCBS.Manager.Products
         }
 
 
+        public IFixedDepositProduct FetchProduct(string productName, string productCode)
+        {
 
 
-        public void UpdateFixedDepositProduct(FixedDepositProduct product, int productId)
+            string q = @"SELECT
+            [id]
+           ,[deleted]
+           ,[product_name]
+           ,[product_code]
+           ,[client_type]
+           ,[product_currency]
+           ,[initial_amount_min]
+           ,[initial_amount_max]
+           ,[interest_rate_min]
+           ,[interest_rate_max]
+           ,[maturity_period_min]
+           ,[maturity_period_max]
+           ,[interest_calculation_frequency]
+           ,[penality_type]
+           ,[penality_min]
+           ,[penality_max]
+            FROM [dbo].[FixedDepositProducts]
+            WHERE product_name = @productName AND product_code = @productCode";
+
+
+
+
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@productName", productName);
+                c.AddParam("@productCode", productCode);
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+                    if (r == null || r.Empty) return new FixedDepositProduct();
+                    r.Read();
+
+                    FixedDepositProduct fixedDepositProduct = new FixedDepositProduct();
+
+                    return (FixedDepositProduct)GetProduct(r);
+
+
+
+                }
+            }
+
+
+        }
+
+
+
+
+        public void UpdateFixedDepositProduct(IFixedDepositProduct product, int productId)
         {
             string q = @"UPDATE [FixedDepositProducts] SET 
             [product_name] = @productName

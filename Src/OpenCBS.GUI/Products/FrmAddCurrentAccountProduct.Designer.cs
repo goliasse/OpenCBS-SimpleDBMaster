@@ -37,6 +37,28 @@ namespace OpenCBS.GUI.Products
             this.tabControlSaving = new System.Windows.Forms.TabControl();
             this.tabPageMainParameters = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gtOverdraftFees = new System.Windows.Forms.GroupBox();
+            this.tbOverdraftLimit = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.rbRateOverdraftFees = new System.Windows.Forms.RadioButton();
+            this.rbFlatOverdraftFees = new System.Windows.Forms.RadioButton();
+            this.lbOverdraftFeesType = new System.Windows.Forms.Label();
+            this.tbOverdraftFees = new System.Windows.Forms.TextBox();
+            this.lbOverdraftFeesValue = new System.Windows.Forms.Label();
+            this.tbOverdraftFeesMax = new System.Windows.Forms.TextBox();
+            this.tbOverdraftFeesMin = new System.Windows.Forms.TextBox();
+            this.lbOverdraftFeesMax = new System.Windows.Forms.Label();
+            this.lbOverdraftFeesMin = new System.Windows.Forms.Label();
+            this.gbFrequency = new System.Windows.Forms.GroupBox();
+            this.lbAccrual = new System.Windows.Forms.Label();
+            this.cbInterestCalculationFrequency = new System.Windows.Forms.ComboBox();
+            this.gbInterestRate = new System.Windows.Forms.GroupBox();
+            this.lbYearlyInterestRateMax = new System.Windows.Forms.Label();
+            this.lbYearlyInterestRateMin = new System.Windows.Forms.Label();
+            this.tbInterestRateMax = new System.Windows.Forms.TextBox();
+            this.tbInterestRateMin = new System.Windows.Forms.TextBox();
+            this.lbInterestRateMax = new System.Windows.Forms.Label();
+            this.lbInterestRateMin = new System.Windows.Forms.Label();
             this.groupBoxCurrency = new System.Windows.Forms.GroupBox();
             this.cbCurrency = new System.Windows.Forms.ComboBox();
             this.lbCodeSavingProduct = new System.Windows.Forms.Label();
@@ -101,18 +123,22 @@ namespace OpenCBS.GUI.Products
             this.tbEntryFeesMin = new System.Windows.Forms.TextBox();
             this.lbEntryFeesMax = new System.Windows.Forms.Label();
             this.lbEntryFeesMin = new System.Windows.Forms.Label();
-            this.tabPageOverdraft = new System.Windows.Forms.TabPage();
-            this.gtOverdraftFees = new System.Windows.Forms.GroupBox();
-            this.rbRateOverdraftFees = new System.Windows.Forms.RadioButton();
-            this.rbFlatOverdraftFees = new System.Windows.Forms.RadioButton();
-            this.lbOverdraftFeesType = new System.Windows.Forms.Label();
-            this.tbOverdraftFees = new System.Windows.Forms.TextBox();
-            this.lbOverdraftFeesValue = new System.Windows.Forms.Label();
-            this.tbOverdraftFeesMax = new System.Windows.Forms.TextBox();
-            this.tbOverdraftFeesMin = new System.Windows.Forms.TextBox();
-            this.lbOverdraftFeesMax = new System.Windows.Forms.Label();
-            this.lbOverdraftFeesMin = new System.Windows.Forms.Label();
+            this.tabPageTransactions = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -120,6 +146,9 @@ namespace OpenCBS.GUI.Products
             this.tabControlSaving.SuspendLayout();
             this.tabPageMainParameters.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.gtOverdraftFees.SuspendLayout();
+            this.gbFrequency.SuspendLayout();
+            this.gbInterestRate.SuspendLayout();
             this.groupBoxCurrency.SuspendLayout();
             this.gbClientType.SuspendLayout();
             this.gbInitialAmount.SuspendLayout();
@@ -129,8 +158,8 @@ namespace OpenCBS.GUI.Products
             this.gtManagementFees.SuspendLayout();
             this.gtCloseFees.SuspendLayout();
             this.gbEntryFees.SuspendLayout();
-            this.tabPageOverdraft.SuspendLayout();
-            this.gtOverdraftFees.SuspendLayout();
+            this.tabPageTransactions.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -166,7 +195,7 @@ namespace OpenCBS.GUI.Products
             // 
             this.tabControlSaving.Controls.Add(this.tabPageMainParameters);
             this.tabControlSaving.Controls.Add(this.tabPageManagement);
-            this.tabControlSaving.Controls.Add(this.tabPageOverdraft);
+            this.tabControlSaving.Controls.Add(this.tabPageTransactions);
             resources.ApplyResources(this.tabControlSaving, "tabControlSaving");
             this.tabControlSaving.Name = "tabControlSaving";
             this.tabControlSaving.SelectedIndex = 0;
@@ -179,6 +208,9 @@ namespace OpenCBS.GUI.Products
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.gtOverdraftFees);
+            this.groupBox1.Controls.Add(this.gbFrequency);
+            this.groupBox1.Controls.Add(this.gbInterestRate);
             this.groupBox1.Controls.Add(this.groupBoxCurrency);
             this.groupBox1.Controls.Add(this.lbCodeSavingProduct);
             this.groupBox1.Controls.Add(this.lbNameSavingProduct);
@@ -190,6 +222,142 @@ namespace OpenCBS.GUI.Products
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // gtOverdraftFees
+            // 
+            this.gtOverdraftFees.Controls.Add(this.tbOverdraftLimit);
+            this.gtOverdraftFees.Controls.Add(this.label1);
+            this.gtOverdraftFees.Controls.Add(this.rbRateOverdraftFees);
+            this.gtOverdraftFees.Controls.Add(this.rbFlatOverdraftFees);
+            this.gtOverdraftFees.Controls.Add(this.lbOverdraftFeesType);
+            this.gtOverdraftFees.Controls.Add(this.tbOverdraftFees);
+            this.gtOverdraftFees.Controls.Add(this.lbOverdraftFeesValue);
+            this.gtOverdraftFees.Controls.Add(this.tbOverdraftFeesMax);
+            this.gtOverdraftFees.Controls.Add(this.tbOverdraftFeesMin);
+            this.gtOverdraftFees.Controls.Add(this.lbOverdraftFeesMax);
+            this.gtOverdraftFees.Controls.Add(this.lbOverdraftFeesMin);
+            resources.ApplyResources(this.gtOverdraftFees, "gtOverdraftFees");
+            this.gtOverdraftFees.Name = "gtOverdraftFees";
+            this.gtOverdraftFees.TabStop = false;
+            // 
+            // tbOverdraftLimit
+            // 
+            resources.ApplyResources(this.tbOverdraftLimit, "tbOverdraftLimit");
+            this.tbOverdraftLimit.Name = "tbOverdraftLimit";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // rbRateOverdraftFees
+            // 
+            resources.ApplyResources(this.rbRateOverdraftFees, "rbRateOverdraftFees");
+            this.rbRateOverdraftFees.Name = "rbRateOverdraftFees";
+            // 
+            // rbFlatOverdraftFees
+            // 
+            resources.ApplyResources(this.rbFlatOverdraftFees, "rbFlatOverdraftFees");
+            this.rbFlatOverdraftFees.Checked = true;
+            this.rbFlatOverdraftFees.Name = "rbFlatOverdraftFees";
+            this.rbFlatOverdraftFees.TabStop = true;
+            // 
+            // lbOverdraftFeesType
+            // 
+            resources.ApplyResources(this.lbOverdraftFeesType, "lbOverdraftFeesType");
+            this.lbOverdraftFeesType.Name = "lbOverdraftFeesType";
+            // 
+            // tbOverdraftFees
+            // 
+            resources.ApplyResources(this.tbOverdraftFees, "tbOverdraftFees");
+            this.tbOverdraftFees.Name = "tbOverdraftFees";
+            // 
+            // lbOverdraftFeesValue
+            // 
+            resources.ApplyResources(this.lbOverdraftFeesValue, "lbOverdraftFeesValue");
+            this.lbOverdraftFeesValue.Name = "lbOverdraftFeesValue";
+            // 
+            // tbOverdraftFeesMax
+            // 
+            resources.ApplyResources(this.tbOverdraftFeesMax, "tbOverdraftFeesMax");
+            this.tbOverdraftFeesMax.Name = "tbOverdraftFeesMax";
+            // 
+            // tbOverdraftFeesMin
+            // 
+            resources.ApplyResources(this.tbOverdraftFeesMin, "tbOverdraftFeesMin");
+            this.tbOverdraftFeesMin.Name = "tbOverdraftFeesMin";
+            // 
+            // lbOverdraftFeesMax
+            // 
+            resources.ApplyResources(this.lbOverdraftFeesMax, "lbOverdraftFeesMax");
+            this.lbOverdraftFeesMax.Name = "lbOverdraftFeesMax";
+            // 
+            // lbOverdraftFeesMin
+            // 
+            resources.ApplyResources(this.lbOverdraftFeesMin, "lbOverdraftFeesMin");
+            this.lbOverdraftFeesMin.Name = "lbOverdraftFeesMin";
+            // 
+            // gbFrequency
+            // 
+            this.gbFrequency.Controls.Add(this.lbAccrual);
+            this.gbFrequency.Controls.Add(this.cbInterestCalculationFrequency);
+            resources.ApplyResources(this.gbFrequency, "gbFrequency");
+            this.gbFrequency.Name = "gbFrequency";
+            this.gbFrequency.TabStop = false;
+            // 
+            // lbAccrual
+            // 
+            resources.ApplyResources(this.lbAccrual, "lbAccrual");
+            this.lbAccrual.Name = "lbAccrual";
+            // 
+            // cbInterestCalculationFrequency
+            // 
+            this.cbInterestCalculationFrequency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cbInterestCalculationFrequency, "cbInterestCalculationFrequency");
+            this.cbInterestCalculationFrequency.FormattingEnabled = true;
+            this.cbInterestCalculationFrequency.Name = "cbInterestCalculationFrequency";
+            // 
+            // gbInterestRate
+            // 
+            this.gbInterestRate.Controls.Add(this.lbYearlyInterestRateMax);
+            this.gbInterestRate.Controls.Add(this.lbYearlyInterestRateMin);
+            this.gbInterestRate.Controls.Add(this.tbInterestRateMax);
+            this.gbInterestRate.Controls.Add(this.tbInterestRateMin);
+            this.gbInterestRate.Controls.Add(this.lbInterestRateMax);
+            this.gbInterestRate.Controls.Add(this.lbInterestRateMin);
+            resources.ApplyResources(this.gbInterestRate, "gbInterestRate");
+            this.gbInterestRate.Name = "gbInterestRate";
+            this.gbInterestRate.TabStop = false;
+            // 
+            // lbYearlyInterestRateMax
+            // 
+            resources.ApplyResources(this.lbYearlyInterestRateMax, "lbYearlyInterestRateMax");
+            this.lbYearlyInterestRateMax.Name = "lbYearlyInterestRateMax";
+            // 
+            // lbYearlyInterestRateMin
+            // 
+            resources.ApplyResources(this.lbYearlyInterestRateMin, "lbYearlyInterestRateMin");
+            this.lbYearlyInterestRateMin.Name = "lbYearlyInterestRateMin";
+            // 
+            // tbInterestRateMax
+            // 
+            resources.ApplyResources(this.tbInterestRateMax, "tbInterestRateMax");
+            this.tbInterestRateMax.Name = "tbInterestRateMax";
+            // 
+            // tbInterestRateMin
+            // 
+            resources.ApplyResources(this.tbInterestRateMin, "tbInterestRateMin");
+            this.tbInterestRateMin.Name = "tbInterestRateMin";
+            // 
+            // lbInterestRateMax
+            // 
+            resources.ApplyResources(this.lbInterestRateMax, "lbInterestRateMax");
+            this.lbInterestRateMax.Name = "lbInterestRateMax";
+            // 
+            // lbInterestRateMin
+            // 
+            resources.ApplyResources(this.lbInterestRateMin, "lbInterestRateMin");
+            this.lbInterestRateMin.Name = "lbInterestRateMin";
             // 
             // groupBoxCurrency
             // 
@@ -598,81 +766,109 @@ namespace OpenCBS.GUI.Products
             resources.ApplyResources(this.lbEntryFeesMin, "lbEntryFeesMin");
             this.lbEntryFeesMin.Name = "lbEntryFeesMin";
             // 
-            // tabPageOverdraft
+            // tabPageTransactions
             // 
-            this.tabPageOverdraft.Controls.Add(this.gtOverdraftFees);
-            resources.ApplyResources(this.tabPageOverdraft, "tabPageOverdraft");
-            this.tabPageOverdraft.Name = "tabPageOverdraft";
+            this.tabPageTransactions.Controls.Add(this.button1);
+            this.tabPageTransactions.Controls.Add(this.groupBox3);
+            resources.ApplyResources(this.tabPageTransactions, "tabPageTransactions");
+            this.tabPageTransactions.Name = "tabPageTransactions";
             // 
-            // gtOverdraftFees
+            // button1
             // 
-            this.gtOverdraftFees.Controls.Add(this.rbRateOverdraftFees);
-            this.gtOverdraftFees.Controls.Add(this.rbFlatOverdraftFees);
-            this.gtOverdraftFees.Controls.Add(this.lbOverdraftFeesType);
-            this.gtOverdraftFees.Controls.Add(this.tbOverdraftFees);
-            this.gtOverdraftFees.Controls.Add(this.lbOverdraftFeesValue);
-            this.gtOverdraftFees.Controls.Add(this.tbOverdraftFeesMax);
-            this.gtOverdraftFees.Controls.Add(this.tbOverdraftFeesMin);
-            this.gtOverdraftFees.Controls.Add(this.lbOverdraftFeesMax);
-            this.gtOverdraftFees.Controls.Add(this.lbOverdraftFeesMin);
-            resources.ApplyResources(this.gtOverdraftFees, "gtOverdraftFees");
-            this.gtOverdraftFees.Name = "gtOverdraftFees";
-            this.gtOverdraftFees.TabStop = false;
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
             // 
-            // rbRateOverdraftFees
+            // groupBox3
             // 
-            resources.ApplyResources(this.rbRateOverdraftFees, "rbRateOverdraftFees");
-            this.rbRateOverdraftFees.Name = "rbRateOverdraftFees";
+            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.radioButton1);
+            this.groupBox3.Controls.Add(this.radioButton2);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.comboBox1);
+            this.groupBox3.Controls.Add(this.label2);
+            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.TabStop = false;
             // 
-            // rbFlatOverdraftFees
+            // textBox1
             // 
-            resources.ApplyResources(this.rbFlatOverdraftFees, "rbFlatOverdraftFees");
-            this.rbFlatOverdraftFees.Checked = true;
-            this.rbFlatOverdraftFees.Name = "rbFlatOverdraftFees";
-            this.rbFlatOverdraftFees.TabStop = true;
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Name = "textBox1";
             // 
-            // lbOverdraftFeesType
+            // textBox3
             // 
-            resources.ApplyResources(this.lbOverdraftFeesType, "lbOverdraftFeesType");
-            this.lbOverdraftFeesType.Name = "lbOverdraftFeesType";
+            resources.ApplyResources(this.textBox3, "textBox3");
+            this.textBox3.Name = "textBox3";
             // 
-            // tbOverdraftFees
+            // label3
             // 
-            resources.ApplyResources(this.tbOverdraftFees, "tbOverdraftFees");
-            this.tbOverdraftFees.Name = "tbOverdraftFees";
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
             // 
-            // lbOverdraftFeesValue
+            // label6
             // 
-            resources.ApplyResources(this.lbOverdraftFeesValue, "lbOverdraftFeesValue");
-            this.lbOverdraftFeesValue.Name = "lbOverdraftFeesValue";
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
             // 
-            // tbOverdraftFeesMax
+            // radioButton1
             // 
-            resources.ApplyResources(this.tbOverdraftFeesMax, "tbOverdraftFeesMax");
-            this.tbOverdraftFeesMax.Name = "tbOverdraftFeesMax";
+            resources.ApplyResources(this.radioButton1, "radioButton1");
+            this.radioButton1.Name = "radioButton1";
             // 
-            // tbOverdraftFeesMin
+            // radioButton2
             // 
-            resources.ApplyResources(this.tbOverdraftFeesMin, "tbOverdraftFeesMin");
-            this.tbOverdraftFeesMin.Name = "tbOverdraftFeesMin";
+            resources.ApplyResources(this.radioButton2, "radioButton2");
+            this.radioButton2.Checked = true;
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.TabStop = true;
             // 
-            // lbOverdraftFeesMax
+            // label4
             // 
-            resources.ApplyResources(this.lbOverdraftFeesMax, "lbOverdraftFeesMax");
-            this.lbOverdraftFeesMax.Name = "lbOverdraftFeesMax";
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
             // 
-            // lbOverdraftFeesMin
+            // textBox2
             // 
-            resources.ApplyResources(this.lbOverdraftFeesMin, "lbOverdraftFeesMin");
-            this.lbOverdraftFeesMin.Name = "lbOverdraftFeesMin";
+            resources.ApplyResources(this.textBox2, "textBox2");
+            this.textBox2.Name = "textBox2";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBox1, "comboBox1");
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Name = "comboBox1";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnUpdate);
             this.groupBox2.Controls.Add(this.btnCurrentAccountProduct);
             this.groupBox2.Controls.Add(this.bClose);
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
+            // 
+            // btnUpdate
+            // 
+            resources.ApplyResources(this.btnUpdate, "btnUpdate");
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // FrmAddCurrentAccountProduct
             // 
@@ -693,6 +889,12 @@ namespace OpenCBS.GUI.Products
             this.tabPageMainParameters.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.gtOverdraftFees.ResumeLayout(false);
+            this.gtOverdraftFees.PerformLayout();
+            this.gbFrequency.ResumeLayout(false);
+            this.gbFrequency.PerformLayout();
+            this.gbInterestRate.ResumeLayout(false);
+            this.gbInterestRate.PerformLayout();
             this.groupBoxCurrency.ResumeLayout(false);
             this.gbClientType.ResumeLayout(false);
             this.gbClientType.PerformLayout();
@@ -709,9 +911,9 @@ namespace OpenCBS.GUI.Products
             this.gtCloseFees.PerformLayout();
             this.gbEntryFees.ResumeLayout(false);
             this.gbEntryFees.PerformLayout();
-            this.tabPageOverdraft.ResumeLayout(false);
-            this.gtOverdraftFees.ResumeLayout(false);
-            this.gtOverdraftFees.PerformLayout();
+            this.tabPageTransactions.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -751,7 +953,7 @@ namespace OpenCBS.GUI.Products
         private System.Windows.Forms.TextBox tbEntryFeesMin;
         private System.Windows.Forms.Label lbEntryFeesMax;
         private System.Windows.Forms.Label lbEntryFeesMin;
-        private System.Windows.Forms.TabPage tabPageOverdraft;
+        private System.Windows.Forms.TabPage tabPageTransactions;
         private System.Windows.Forms.GroupBox gtCloseFees;
         private System.Windows.Forms.TextBox tbCloseFees;
         private System.Windows.Forms.Label lbCloseFees;
@@ -781,16 +983,6 @@ namespace OpenCBS.GUI.Products
         private System.Windows.Forms.CheckBox clientTypeAllCheckBox;
         private System.Windows.Forms.ComboBox cbManagementFeeFreq;
         private System.Windows.Forms.CheckBox clientTypeVillageCheckBox;
-        private System.Windows.Forms.GroupBox gtOverdraftFees;
-        private System.Windows.Forms.RadioButton rbRateOverdraftFees;
-        private System.Windows.Forms.RadioButton rbFlatOverdraftFees;
-        private System.Windows.Forms.Label lbOverdraftFeesType;
-        private System.Windows.Forms.TextBox tbOverdraftFees;
-        private System.Windows.Forms.Label lbOverdraftFeesValue;
-        private System.Windows.Forms.TextBox tbOverdraftFeesMax;
-        private System.Windows.Forms.TextBox tbOverdraftFeesMin;
-        private System.Windows.Forms.Label lbOverdraftFeesMax;
-        private System.Windows.Forms.Label lbOverdraftFeesMin;
         private System.Windows.Forms.GroupBox gbReopenFees;
         private System.Windows.Forms.RadioButton rbRateReopenFees;
         private System.Windows.Forms.RadioButton rbFlatReopenFees;
@@ -801,5 +993,41 @@ namespace OpenCBS.GUI.Products
         private System.Windows.Forms.TextBox tbReopenFeesMin;
         private System.Windows.Forms.Label lbReopenFeesMax;
         private System.Windows.Forms.Label lbReopenFeesMin;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.GroupBox gbFrequency;
+        private System.Windows.Forms.Label lbAccrual;
+        private System.Windows.Forms.ComboBox cbInterestCalculationFrequency;
+        private System.Windows.Forms.GroupBox gbInterestRate;
+        private System.Windows.Forms.Label lbYearlyInterestRateMax;
+        private System.Windows.Forms.Label lbYearlyInterestRateMin;
+        private System.Windows.Forms.TextBox tbInterestRateMax;
+        private System.Windows.Forms.TextBox tbInterestRateMin;
+        private System.Windows.Forms.Label lbInterestRateMax;
+        private System.Windows.Forms.Label lbInterestRateMin;
+        private System.Windows.Forms.GroupBox gtOverdraftFees;
+        private System.Windows.Forms.TextBox tbOverdraftLimit;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton rbRateOverdraftFees;
+        private System.Windows.Forms.RadioButton rbFlatOverdraftFees;
+        private System.Windows.Forms.Label lbOverdraftFeesType;
+        private System.Windows.Forms.TextBox tbOverdraftFees;
+        private System.Windows.Forms.Label lbOverdraftFeesValue;
+        private System.Windows.Forms.TextBox tbOverdraftFeesMax;
+        private System.Windows.Forms.TextBox tbOverdraftFeesMin;
+        private System.Windows.Forms.Label lbOverdraftFeesMax;
+        private System.Windows.Forms.Label lbOverdraftFeesMin;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label6;
     }
 }

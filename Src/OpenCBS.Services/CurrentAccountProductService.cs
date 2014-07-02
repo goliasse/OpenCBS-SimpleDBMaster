@@ -26,14 +26,15 @@ namespace OpenCBS.Services
 
         public int SaveCurrentAccountProduct(ICurrentAccountProduct currentAccountProduct)
         {
-
+            bool name = _currentAccountProductManager.CheckForDuplicateValue("CurrentAccountProduct", "current_account_product_name", currentAccountProduct.CurrentAccountProductName);
+            bool code = _currentAccountProductManager.CheckForDuplicateValue("CurrentAccountProduct", "current_account_product_code", currentAccountProduct.CurrentAccountProductCode);
             ValidateProduct(currentAccountProduct);
             return _currentAccountProductManager.SaveCurrentAccountProduct(currentAccountProduct);
 
 
         }
 
-        public void UpdateCurrentAccountProduct(CurrentAccountProduct product, int productId)
+        public void UpdateCurrentAccountProduct(ICurrentAccountProduct product, int productId)
         {
             _currentAccountProductManager.UpdateCurrentAccountProduct(product, productId);
         }
@@ -53,8 +54,29 @@ namespace OpenCBS.Services
             return _currentAccountProductManager.FetchProduct(productName, productCode);
         }
 
+        public void DeleteCurrentAccountProduct(int pProductId)
+        {
+            _currentAccountProductManager.DeleteCurrentAccountProduct(pProductId);
+        }
+
+
         private void ValidateProduct(ICurrentAccountProduct fixedDepositProduct)
         {
         }
+
+
+        public int SaveCurrentAccountTransactionFees(CurrentAccountTransactionFees currentAccountTransactionFees)
+        {
+            return _currentAccountProductManager.SaveCurrentAccountTransactionFees(currentAccountTransactionFees);
+        }
+            public List<CurrentAccountTransactionFees> FetchTransactionFee(int productId)
+            {
+               return _currentAccountProductManager.FetchTransactionFee(productId);
+            }
+
+            public CurrentAccountTransactionFees FetchTransaction(int transactionId)
+            {
+                return _currentAccountProductManager.FetchTransaction(transactionId);
+            }
     }
 }

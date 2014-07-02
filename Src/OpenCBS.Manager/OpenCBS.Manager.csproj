@@ -176,6 +176,7 @@
     <Compile Include="PaymentMethodManager.cs" />
     <Compile Include="Products\CurrentAccountProductHoldingManager.cs" />
     <Compile Include="Products\CurrentAccountProductManager.cs" />
+    <Compile Include="Products\CurrentAccountTransactionManager.cs" />
     <Compile Include="Products\FixedDepositProductHoldingManager.cs" />
     <Compile Include="Products\FixedDepositProductManager.cs" />
     <Compile Include="TellerManager.cs" />

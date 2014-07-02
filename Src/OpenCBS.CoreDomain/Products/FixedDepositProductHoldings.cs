@@ -14,7 +14,7 @@ namespace OpenCBS.CoreDomain.Products
         public string ClientType { get; set; }
         public string FixedDepositContractCode { get; set; }
 
-        public FixedDepositProduct FixedDepositProduct { get; set; }
+        public IFixedDepositProduct FixedDepositProduct { get; set; }
         public decimal InitialAmount { get; set; }
         public double InterestRate { get; set; }
         public int MaturityPeriod { get; set; }

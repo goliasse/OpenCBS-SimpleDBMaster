@@ -360,6 +360,11 @@ namespace OpenCBS.Services
             return _remoteOperation.GetFixedDepositProductHoldingServices(CurrentUser);
         }
 
+        public CurrentAccountTransactionService GetCurrentAccountTransactionService()
+        {
+            return new CurrentAccountTransactionService(CurrentUser);
+        }
+
         #region IServices Members
 
 

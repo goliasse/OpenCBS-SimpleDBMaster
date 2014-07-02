@@ -9,17 +9,23 @@ using OpenCBS.CoreDomain.Products;
 using OpenCBS.Enums;
 using System.Data.SqlClient;
 
+
+
 namespace OpenCBS.Manager.Products
 {
     public class FixedDepositProductHoldingManager : Manager
     {
+
+        FixedDepositProductManager fixedDepositProductManager = null;
         public FixedDepositProductHoldingManager(User pUser) : base(pUser)
         {
+            fixedDepositProductManager = new FixedDepositProductManager(pUser);
         }
 
         public FixedDepositProductHoldingManager(string testDB)
             : base(testDB)
         {
+            fixedDepositProductManager = new FixedDepositProductManager(testDB);
         }
 
 
@@ -249,6 +255,7 @@ namespace OpenCBS.Manager.Products
            ,[dbo].[FixedDepositProductHoldings].[final_cheque_account_number]
            ,[dbo].[FixedDepositProducts].[product_name]
            ,[dbo].[FixedDepositProducts].[product_code]
+           ,[dbo].[FixedDepositProducts].[product_currency]
            ,[dbo].[Persons].[first_name]
             FROM [dbo].[FixedDepositProductHoldings] INNER JOIN [dbo].[FixedDepositProducts] ON [dbo].FixedDepositProducts.id = [dbo].FixedDepositProductHoldings.fixed_deposit_product_id
             JOIN [dbo].Persons ON [dbo].FixedDepositProductHoldings.client_id = [dbo].Persons.id
@@ -310,6 +317,7 @@ namespace OpenCBS.Manager.Products
            ,[dbo].[FixedDepositProductHoldings].[final_cheque_account_number]
            ,[dbo].[FixedDepositProducts].[product_name]
            ,[dbo].[FixedDepositProducts].[product_code]
+           ,[dbo].[FixedDepositProducts].[product_currency]
            ,[dbo].[Persons].[first_name]
             FROM [dbo].[FixedDepositProductHoldings] INNER JOIN [dbo].[FixedDepositProducts] ON [dbo].FixedDepositProducts.id = [dbo].FixedDepositProductHoldings.fixed_deposit_product_id
              JOIN [dbo].Persons ON [dbo].FixedDepositProductHoldings.client_id = [dbo].Persons.id
@@ -372,6 +380,7 @@ namespace OpenCBS.Manager.Products
            ,[dbo].[FixedDepositProductHoldings].[final_cheque_account_number]
            ,[dbo].[FixedDepositProducts].[product_name]
            ,[dbo].[FixedDepositProducts].[product_code]
+           ,[dbo].[FixedDepositProducts].[product_currency]
            ,[dbo].[Persons].[first_name]
             FROM [dbo].[FixedDepositProductHoldings] INNER JOIN [dbo].[FixedDepositProducts] ON [dbo].FixedDepositProducts.id = [dbo].FixedDepositProductHoldings.fixed_deposit_product_id
             JOIN [dbo].Persons ON [dbo].FixedDepositProductHoldings.client_id = [dbo].Persons.id
@@ -442,6 +451,7 @@ namespace OpenCBS.Manager.Products
            ,[dbo].[FixedDepositProductHoldings].[final_cheque_account_number]
            ,[dbo].[FixedDepositProducts].[product_name]
            ,[dbo].[FixedDepositProducts].[product_code]
+           ,[dbo].[FixedDepositProducts].[product_currency]
            ,[dbo].[Persons].[first_name]
             FROM [dbo].[FixedDepositProductHoldings] INNER JOIN [dbo].[FixedDepositProducts] ON [dbo].FixedDepositProducts.id = [dbo].FixedDepositProductHoldings.fixed_deposit_product_id
             JOIN [dbo].Persons ON [dbo].FixedDepositProductHoldings.client_id = [dbo].Persons.id
@@ -488,6 +498,7 @@ fixedDepositProductHoldings.FixedDepositProduct = new FixedDepositProduct();
 fixedDepositProductHoldings.FixedDepositProduct.Id = r.GetInt("fixed_deposit_product_id");
 fixedDepositProductHoldings.FixedDepositProduct.Name = r.GetString("product_name");
 fixedDepositProductHoldings.FixedDepositProduct.Code = r.GetString("product_code");
+fixedDepositProductHoldings.FixedDepositProduct.Currency = r.GetString("product_currency");
 
 fixedDepositProductHoldings.InitialAmount = r.GetDecimal("initial_amount");
 fixedDepositProductHoldings.InterestRate = r.GetDouble("interest_rate");
@@ -514,6 +525,7 @@ fixedDepositProductHoldings.InitialAmountPaymentMethod = r.GetString("initial_am
 fixedDepositProductHoldings.FinalAmountPaymentMethod = r.GetString("final_amount_payment_method");
 fixedDepositProductHoldings.FinalAmountChequeAccount = r.GetString("final_cheque_account_number");
 fixedDepositProductHoldings.FirstName = r.GetString("first_name");
+
             
 
 return fixedDepositProductHoldings;
@@ -548,30 +560,33 @@ return fixedDepositProductHoldings;
 
            FixedDepositProductHoldings _fixedDepositProductHoldings = FetchProduct(fdContractCode);
 
+          
              
              int maturityPeriod = _fixedDepositProductHoldings.MaturityPeriod;
             string penalityType = _fixedDepositProductHoldings.PenalityType;
-            DateTime openingDate = _fixedDepositProductHoldings.OpenDate;
+            DateTime openingDate = _fixedDepositProductHoldings.OpenDate.Date;
             DateTime maturityDate = openingDate.AddMonths(maturityPeriod);
             double interestRate = _fixedDepositProductHoldings.InterestRate;
              string interestCalculationFrequency = _fixedDepositProductHoldings.InterestCalculationFrequency;
              double initialAmount = Convert.ToDouble(_fixedDepositProductHoldings.InitialAmount);
-            int frequency = 0;
 
-            if(interestCalculationFrequency == "Monthly")
-                frequency = 12;
-            if(interestCalculationFrequency == "Quarterly")
-                frequency = 4;
-            if(interestCalculationFrequency == "Half Yearly")
-                frequency = 2;
-            if(interestCalculationFrequency == "Yearly")
-                frequency = 1;
+             int frequency = Convert.ToInt32(interestCalculationFrequency);
 
-                        double penaltyRate = _fixedDepositProductHoldings.Penality;
-                        double effectiveDepositPeriod = Convert.ToDouble(((DateTime.Now - openingDate).TotalDays) / 365);
-                        double effectiveDepositPeriodDays = Convert.ToDouble(((DateTime.Now - openingDate).TotalDays));
             
-                        if (DateTime.Now >= maturityDate)
+
+            string productCurrency = _fixedDepositProductHoldings.FixedDepositProduct.Currency;
+                        double penaltyRate = _fixedDepositProductHoldings.Penality;
+
+            double effectiveDepositPeriod = 0;
+
+            if(productCurrency == "USD")
+                effectiveDepositPeriod = Convert.ToDouble(((DateTime.Now.Date - openingDate).TotalDays) / 360);
+            else
+                effectiveDepositPeriod = Convert.ToDouble(((DateTime.Now.Date - openingDate).TotalDays) / 365);
+
+                       
+            
+                        if (DateTime.Now.Date >= maturityDate)
                         {
                             effectiveInterestRate = interestRate;
                             finalAmount = CalculateInterest(initialAmount, effectiveInterestRate, effectiveDepositPeriod , frequency);
@@ -583,7 +598,7 @@ return fixedDepositProductHoldings;
                             {
                                 effectiveInterestRate = interestRate - penaltyRate;
                                 finalAmount = CalculateInterest(initialAmount, effectiveInterestRate, effectiveDepositPeriod, frequency);
-                                // finalInterestRate= Calculate interest (Initial Amount(P), Effective interest rate(r), Effective deposit period(t), Interest Calculation Frequency(n));
+                               
 
                             }
                             else
@@ -598,14 +613,14 @@ return fixedDepositProductHoldings;
                                 {
                                     finalAmount = initialAmount;
                                 }
-                                // finalInterestRate=Calculate interest (Initial Amount(p), Interest rate(r), Effective deposit period(t), Interest Calculation Frequency(n)) ;
+                               
                             }
                             
                             
                         }
 
                         FixedDepositInterest _fixedDepositInterest = new FixedDepositInterest();
-                        _fixedDepositInterest.EffectiveDepositPeriod = effectiveDepositPeriodDays;
+                        _fixedDepositInterest.EffectiveDepositPeriod = effectiveDepositPeriod;
                         _fixedDepositInterest.EffectiveInterestRate = effectiveInterestRate;
                         _fixedDepositInterest.FinalAmount = Convert.ToDecimal(finalAmount);
                         _fixedDepositInterest.FinalInterest = Convert.ToDecimal(finalAmount - initialAmount);

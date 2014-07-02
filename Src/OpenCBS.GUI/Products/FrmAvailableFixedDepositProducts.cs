@@ -99,7 +99,7 @@ namespace OpenCBS.GUI.Products
             int i = lvFixedDepositProducts.SelectedIndices[0];
             string selectedProductId = lvFixedDepositProducts.Items[i].Text;
 
-            FrmAddFixedDepositProduct _frmAddFixedDepositProduct = new FrmAddFixedDepositProduct(Convert.ToInt32(selectedProductId));
+            FrmAddFixedDepositProduct _frmAddFixedDepositProduct = new FrmAddFixedDepositProduct(Convert.ToInt32(selectedProductId),true);
             _frmAddFixedDepositProduct.Show();
         }
 
@@ -118,7 +118,12 @@ namespace OpenCBS.GUI.Products
 
         private void buttonDeleteProduct_Click(object sender, EventArgs e)
         {
+            int i = lvFixedDepositProducts.SelectedIndices[0];
+            string selectedProductId = lvFixedDepositProducts.Items[i].Text;
 
+            FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
+            _fixedDepositProductService.DeleteFixedDepositProduct(Convert.ToInt32(selectedProductId));
+            MessageBox.Show("Fixed Deposit Product Successfully Deleted.");
         }
 
         private void btnViewProduct_Click(object sender, EventArgs e)
@@ -127,7 +132,7 @@ namespace OpenCBS.GUI.Products
             int i = lvFixedDepositProducts.SelectedIndices[0];
             string selectedProductId = lvFixedDepositProducts.Items[i].Text;
 
-            FrmAddFixedDepositProduct _frmAddFixedDepositProduct = new FrmAddFixedDepositProduct(Convert.ToInt32(selectedProductId));
+            FrmAddFixedDepositProduct _frmAddFixedDepositProduct = new FrmAddFixedDepositProduct(Convert.ToInt32(selectedProductId),false);
             _frmAddFixedDepositProduct.Show();
         }
 

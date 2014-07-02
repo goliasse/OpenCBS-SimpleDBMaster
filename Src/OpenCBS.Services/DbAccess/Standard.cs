@@ -260,6 +260,11 @@ namespace OpenCBS.Services
             return new FixedDepositProductHoldingServices(CurrentUser);
         }
 
+        public CurrentAccountTransactionService GetCurrentAccountTransactionService()
+        {
+            return new CurrentAccountTransactionService(CurrentUser);
+        }
+
 
         #region IServices Members
 

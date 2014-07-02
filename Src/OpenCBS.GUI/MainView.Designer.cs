@@ -155,6 +155,7 @@ namespace OpenCBS.GUI
             this.savingProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCollateralProducts = new System.Windows.Forms.ToolStripMenuItem();
             this.fixedDepositProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.currentAccountProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._modulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._aboutModulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -165,7 +166,6 @@ namespace OpenCBS.GUI
             this.toolStripStatusLblBranchCode = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLblDB = new System.Windows.Forms.ToolStripStatusLabel();
             this.alertBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.currentAccountProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvAlerts)).BeginInit();
             this.tabFilter.SuspendLayout();
@@ -845,9 +845,17 @@ namespace OpenCBS.GUI
             // 
             // fixedDepositProductsToolStripMenuItem
             // 
+            this.fixedDepositProductsToolStripMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.package;
             this.fixedDepositProductsToolStripMenuItem.Name = "fixedDepositProductsToolStripMenuItem";
             resources.ApplyResources(this.fixedDepositProductsToolStripMenuItem, "fixedDepositProductsToolStripMenuItem");
             this.fixedDepositProductsToolStripMenuItem.Click += new System.EventHandler(this.fixedDepositProductsToolStripMenuItem_Click);
+            // 
+            // currentAccountProductsToolStripMenuItem
+            // 
+            this.currentAccountProductsToolStripMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.package;
+            this.currentAccountProductsToolStripMenuItem.Name = "currentAccountProductsToolStripMenuItem";
+            resources.ApplyResources(this.currentAccountProductsToolStripMenuItem, "currentAccountProductsToolStripMenuItem");
+            this.currentAccountProductsToolStripMenuItem.Click += new System.EventHandler(this.currentAccountProductsToolStripMenuItem_Click);
             // 
             // _modulesMenuItem
             // 
@@ -929,12 +937,6 @@ namespace OpenCBS.GUI
             // alertBindingSource
             // 
             this.alertBindingSource.DataSource = typeof(OpenCBS.CoreDomain.Alert);
-            // 
-            // currentAccountProductsToolStripMenuItem
-            // 
-            this.currentAccountProductsToolStripMenuItem.Name = "currentAccountProductsToolStripMenuItem";
-            resources.ApplyResources(this.currentAccountProductsToolStripMenuItem, "currentAccountProductsToolStripMenuItem");
-            this.currentAccountProductsToolStripMenuItem.Click += new System.EventHandler(this.currentAccountProductsToolStripMenuItem_Click);
             // 
             // MainView
             // 

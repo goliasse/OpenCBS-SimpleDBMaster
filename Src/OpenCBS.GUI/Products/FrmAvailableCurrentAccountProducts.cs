@@ -93,7 +93,7 @@ namespace OpenCBS.GUI.Products
 
 
 
-            FrmAddCurrentAccountProduct _frmAddCurrentAccountProduct = new FrmAddCurrentAccountProduct(Convert.ToInt32(selectedProductId));
+            FrmAddCurrentAccountProduct _frmAddCurrentAccountProduct = new FrmAddCurrentAccountProduct(Convert.ToInt32(selectedProductId),true);
             _frmAddCurrentAccountProduct.Show();
         }
 
@@ -112,6 +112,12 @@ namespace OpenCBS.GUI.Products
 
         private void buttonDeleteProduct_Click(object sender, EventArgs e)
         {
+            int i = lvCurrentAccountProducts.SelectedIndices[0];
+            string selectedProductId = lvCurrentAccountProducts.Items[i].Text;
+
+            CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
+            _currentAccountProductService.DeleteCurrentAccountProduct(Convert.ToInt32(selectedProductId));
+            MessageBox.Show("Current Account Product Successfully Deleted.");
 
         }
 
@@ -122,7 +128,7 @@ namespace OpenCBS.GUI.Products
 
 
 
-            FrmAddCurrentAccountProduct _frmAddCurrentAccountProduct = new FrmAddCurrentAccountProduct(Convert.ToInt32(selectedProductId));
+            FrmAddCurrentAccountProduct _frmAddCurrentAccountProduct = new FrmAddCurrentAccountProduct(Convert.ToInt32(selectedProductId),false);
             _frmAddCurrentAccountProduct.Show();
         }
     }

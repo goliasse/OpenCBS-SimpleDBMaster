@@ -37,13 +37,12 @@
             this.buttonDeleteProduct = new System.Windows.Forms.Button();
             this.btnViewProduct = new System.Windows.Forms.Button();
             this.lvFixedDepositProducts = new System.Windows.Forms.ListView();
-            this.ContractCode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.InitialAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.InterestRate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.MaturityPeriod = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.OpenDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.OpenAccountingOfficer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlSavingsProducts.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +55,7 @@
             this.label1.Location = new System.Drawing.Point(4, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(833, 36);
+            this.label1.Size = new System.Drawing.Size(921, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "Fixed Deposit Products";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -66,7 +65,7 @@
             this.pnlSavingsProducts.Controls.Add(this.groupBox1);
             this.pnlSavingsProducts.Location = new System.Drawing.Point(8, 39);
             this.pnlSavingsProducts.Name = "pnlSavingsProducts";
-            this.pnlSavingsProducts.Size = new System.Drawing.Size(821, 486);
+            this.pnlSavingsProducts.Size = new System.Drawing.Size(917, 486);
             this.pnlSavingsProducts.TabIndex = 31;
             // 
             // groupBox1
@@ -82,7 +81,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(821, 486);
+            this.groupBox1.Size = new System.Drawing.Size(917, 486);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             // 
@@ -91,7 +90,7 @@
             this.buttonEditProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonEditProduct.Font = new System.Drawing.Font("Arial", 9F);
             this.buttonEditProduct.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonEditProduct.Location = new System.Drawing.Point(675, 70);
+            this.buttonEditProduct.Location = new System.Drawing.Point(771, 70);
             this.buttonEditProduct.Name = "buttonEditProduct";
             this.buttonEditProduct.Size = new System.Drawing.Size(140, 28);
             this.buttonEditProduct.TabIndex = 9;
@@ -104,7 +103,7 @@
             this.checkBoxShowDeletedProduct.AutoSize = true;
             this.checkBoxShowDeletedProduct.Font = new System.Drawing.Font("Arial", 9.75F);
             this.checkBoxShowDeletedProduct.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBoxShowDeletedProduct.Location = new System.Drawing.Point(675, 16);
+            this.checkBoxShowDeletedProduct.Location = new System.Drawing.Point(771, 16);
             this.checkBoxShowDeletedProduct.Name = "checkBoxShowDeletedProduct";
             this.checkBoxShowDeletedProduct.Size = new System.Drawing.Size(125, 20);
             this.checkBoxShowDeletedProduct.TabIndex = 8;
@@ -116,7 +115,7 @@
             this.buttonAddProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAddProduct.Font = new System.Drawing.Font("Arial", 9F);
             this.buttonAddProduct.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonAddProduct.Location = new System.Drawing.Point(675, 39);
+            this.buttonAddProduct.Location = new System.Drawing.Point(771, 39);
             this.buttonAddProduct.Name = "buttonAddProduct";
             this.buttonAddProduct.Size = new System.Drawing.Size(140, 28);
             this.buttonAddProduct.TabIndex = 7;
@@ -128,7 +127,7 @@
             this.buttonDeleteProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonDeleteProduct.Font = new System.Drawing.Font("Arial", 9F);
             this.buttonDeleteProduct.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonDeleteProduct.Location = new System.Drawing.Point(675, 101);
+            this.buttonDeleteProduct.Location = new System.Drawing.Point(771, 101);
             this.buttonDeleteProduct.Name = "buttonDeleteProduct";
             this.buttonDeleteProduct.Size = new System.Drawing.Size(140, 28);
             this.buttonDeleteProduct.TabIndex = 6;
@@ -140,7 +139,7 @@
             this.btnViewProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnViewProduct.Font = new System.Drawing.Font("Arial", 9F);
             this.btnViewProduct.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnViewProduct.Location = new System.Drawing.Point(675, 135);
+            this.btnViewProduct.Location = new System.Drawing.Point(771, 135);
             this.btnViewProduct.Name = "btnViewProduct";
             this.btnViewProduct.Size = new System.Drawing.Size(140, 28);
             this.btnViewProduct.TabIndex = 10;
@@ -151,67 +150,59 @@
             // 
             this.lvFixedDepositProducts.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.lvFixedDepositProducts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ContractCode,
-            this.InitialAmount,
-            this.InterestRate,
-            this.MaturityPeriod,
-            this.OpenDate,
-            this.OpenAccountingOfficer,
-            this.Status});
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
             this.lvFixedDepositProducts.GridLines = true;
-            this.lvFixedDepositProducts.Location = new System.Drawing.Point(5, 3);
+            this.lvFixedDepositProducts.Location = new System.Drawing.Point(0, 0);
             this.lvFixedDepositProducts.Name = "lvFixedDepositProducts";
-            this.lvFixedDepositProducts.Size = new System.Drawing.Size(669, 218);
-            this.lvFixedDepositProducts.TabIndex = 37;
+            this.lvFixedDepositProducts.Size = new System.Drawing.Size(765, 339);
+            this.lvFixedDepositProducts.TabIndex = 27;
             this.lvFixedDepositProducts.UseCompatibleStateImageBehavior = false;
             this.lvFixedDepositProducts.View = System.Windows.Forms.View.Details;
-            this.lvFixedDepositProducts.SelectedIndexChanged += new System.EventHandler(this.lvFixedDepositProducts_SelectedIndexChanged_1);
             // 
-            // ContractCode
+            // columnHeader1
             // 
-            this.ContractCode.Text = "Contract Code";
-            this.ContractCode.Width = 115;
+            this.columnHeader1.Text = "Product ID";
+            this.columnHeader1.Width = 86;
             // 
-            // InitialAmount
+            // columnHeader2
             // 
-            this.InitialAmount.Text = "Initial Amount";
-            this.InitialAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.InitialAmount.Width = 124;
+            this.columnHeader2.Text = "Status";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // InterestRate
+            // columnHeader3
             // 
-            this.InterestRate.Text = "Interest Rate";
-            this.InterestRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.InterestRate.Width = 106;
+            this.columnHeader3.Text = "Product Name";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Width = 113;
             // 
-            // MaturityPeriod
+            // columnHeader4
             // 
-            this.MaturityPeriod.Text = "Maturity Period";
-            this.MaturityPeriod.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.MaturityPeriod.Width = 118;
+            this.columnHeader4.Text = "Product Code";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader4.Width = 103;
             // 
-            // OpenDate
+            // columnHeader5
             // 
-            this.OpenDate.Text = "Open Date";
-            this.OpenDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.OpenDate.Width = 107;
+            this.columnHeader5.Text = "Client Type";
+            this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader5.Width = 105;
             // 
-            // OpenAccountingOfficer
+            // columnHeader6
             // 
-            this.OpenAccountingOfficer.Text = "Open Accounting Officer";
-            this.OpenAccountingOfficer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.OpenAccountingOfficer.Width = 164;
-            // 
-            // Status
-            // 
-            this.Status.Text = "Status";
-            this.Status.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader6.Text = "Currency";
+            this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader6.Width = 86;
             // 
             // FrmAvailableFixedDepositProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 572);
+            this.ClientSize = new System.Drawing.Size(926, 572);
             this.Controls.Add(this.pnlSavingsProducts);
             this.Controls.Add(this.label1);
             this.Name = "FrmAvailableFixedDepositProducts";
@@ -235,13 +226,12 @@
         private System.Windows.Forms.Button buttonDeleteProduct;
         private System.Windows.Forms.Button btnViewProduct;
         private System.Windows.Forms.ListView lvFixedDepositProducts;
-        private System.Windows.Forms.ColumnHeader ContractCode;
-        private System.Windows.Forms.ColumnHeader InitialAmount;
-        private System.Windows.Forms.ColumnHeader InterestRate;
-        private System.Windows.Forms.ColumnHeader MaturityPeriod;
-        private System.Windows.Forms.ColumnHeader OpenDate;
-        private System.Windows.Forms.ColumnHeader OpenAccountingOfficer;
-        private System.Windows.Forms.ColumnHeader Status;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
 
 
     }

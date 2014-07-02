@@ -7303,7 +7303,7 @@ Max:
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAS
-        HQAAAk1TRnQBSQFMAgEBBQEAAXQBJAF0ASQBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        HQAAAk1TRnQBSQFMAgEBBQEAAZwBJAGcASQBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAAUADAAEBAQABCAYAASAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -12144,7 +12144,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="btnPrint.Location" type="System.Drawing.Point, System.Drawing">
-    <value>738, 508</value>
+    <value>739, 510</value>
   </data>
   <data name="btnPrint.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 28</value>
@@ -13044,7 +13044,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="btnAddFixedDepositProduct.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 505</value>
+    <value>11, 510</value>
   </data>
   <data name="btnAddFixedDepositProduct.Size" type="System.Drawing.Size, System.Drawing">
     <value>194, 28</value>
@@ -13069,6 +13069,9 @@ Max:
   </data>
   <data name="cbFixedDepositProduct.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
+  </data>
+  <data name="cbFixedDepositProduct.Items" xml:space="preserve">
+    <value>Select Product</value>
   </data>
   <data name="cbFixedDepositProduct.Location" type="System.Drawing.Point, System.Drawing">
     <value>277, 18</value>
@@ -13185,7 +13188,7 @@ Max:
     <value>Arial, 9.75pt</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 217</value>
+    <value>11, 214</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
     <value>390, 68</value>
@@ -13218,7 +13221,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="rbPenalityTypeRate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 22</value>
+    <value>249, 24</value>
   </data>
   <data name="rbPenalityTypeRate.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 20</value>
@@ -13251,7 +13254,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="rbPenalityTypeFlat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 22</value>
+    <value>195, 25</value>
   </data>
   <data name="rbPenalityTypeFlat.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 20</value>
@@ -13391,71 +13394,59 @@ Max:
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
     <value>21</value>
   </data>
-  <data name="btnSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="label27.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="btnSave.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.25pt</value>
+  <data name="label27.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
   </data>
-  <data name="btnSave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="label27.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>962, 573</value>
+  <data name="label27.Location" type="System.Drawing.Point, System.Drawing">
+    <value>312, 27</value>
   </data>
-  <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 25</value>
+  <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 16</value>
   </data>
-  <data name="btnSave.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+  <data name="label27.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
   </data>
-  <data name="btnSave.Text" xml:space="preserve">
-    <value>Save</value>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Months</value>
   </data>
-  <data name="&gt;&gt;btnSave.Name" xml:space="preserve">
-    <value>btnSave</value>
+  <data name="&gt;&gt;label27.Name" xml:space="preserve">
+    <value>label27</value>
   </data>
-  <data name="&gt;&gt;btnSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label27.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnSave.Parent" xml:space="preserve">
-    <value>tbTransferNumberForm</value>
+  <data name="&gt;&gt;label27.Parent" xml:space="preserve">
+    <value>gbFrequency</value>
   </data>
-  <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
-    <value>22</value>
+  <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="button1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="tbFrequencyMonths.Location" type="System.Drawing.Point, System.Drawing">
+    <value>202, 21</value>
   </data>
-  <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.25pt</value>
+  <data name="tbFrequencyMonths.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 22</value>
   </data>
-  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="tbFrequencyMonths.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1125, 573</value>
+  <data name="&gt;&gt;tbFrequencyMonths.Name" xml:space="preserve">
+    <value>tbFrequencyMonths</value>
   </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 25</value>
+  <data name="&gt;&gt;tbFrequencyMonths.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+  <data name="&gt;&gt;tbFrequencyMonths.Parent" xml:space="preserve">
+    <value>gbFrequency</value>
   </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>Close</value>
-  </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
-  </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
-    <value>tbTransferNumberForm</value>
-  </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>23</value>
+  <data name="&gt;&gt;tbFrequencyMonths.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="lbAccrual.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -13488,43 +13479,7 @@ Max:
     <value>gbFrequency</value>
   </data>
   <data name="&gt;&gt;lbAccrual.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cbInterestCalculationFrequency.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
-  </data>
-  <data name="cbInterestCalculationFrequency.Items" xml:space="preserve">
-    <value>Monthly</value>
-  </data>
-  <data name="cbInterestCalculationFrequency.Items1" xml:space="preserve">
-    <value>Quarterly</value>
-  </data>
-  <data name="cbInterestCalculationFrequency.Items2" xml:space="preserve">
-    <value>Half Yearly</value>
-  </data>
-  <data name="cbInterestCalculationFrequency.Items3" xml:space="preserve">
-    <value>Yearly</value>
-  </data>
-  <data name="cbInterestCalculationFrequency.Location" type="System.Drawing.Point, System.Drawing">
-    <value>202, 23</value>
-  </data>
-  <data name="cbInterestCalculationFrequency.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 24</value>
-  </data>
-  <data name="cbInterestCalculationFrequency.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cbInterestCalculationFrequency.Name" xml:space="preserve">
-    <value>cbInterestCalculationFrequency</value>
-  </data>
-  <data name="&gt;&gt;cbInterestCalculationFrequency.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbInterestCalculationFrequency.Parent" xml:space="preserve">
-    <value>gbFrequency</value>
-  </data>
-  <data name="&gt;&gt;cbInterestCalculationFrequency.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="gbFrequency.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -13551,7 +13506,7 @@ Max:
     <value>tbTransferNumberForm</value>
   </data>
   <data name="&gt;&gt;gbFrequency.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>22</value>
   </data>
   <data name="lbNameSavingProduct.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -13584,7 +13539,7 @@ Max:
     <value>tbTransferNumberForm</value>
   </data>
   <data name="&gt;&gt;lbNameSavingProduct.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>23</value>
   </data>
   <data name="tbInitialAmount.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -13668,7 +13623,7 @@ Max:
     <value>tbTransferNumberForm</value>
   </data>
   <data name="&gt;&gt;gbInitialAmount.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>24</value>
   </data>
   <data name="lbYearlyInterestRateMin.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -13785,7 +13740,7 @@ Max:
     <value>tbTransferNumberForm</value>
   </data>
   <data name="&gt;&gt;gbInterestRate.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>25</value>
   </data>
   <data name="tbTransferNumberForm.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -16147,6 +16102,9 @@ Max:
   </data>
   <data name="cbCurrentAccountProducts.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
+  </data>
+  <data name="cbCurrentAccountProducts.Items" xml:space="preserve">
+    <value>Select Product</value>
   </data>
   <data name="cbCurrentAccountProducts.Location" type="System.Drawing.Point, System.Drawing">
     <value>291, 26</value>

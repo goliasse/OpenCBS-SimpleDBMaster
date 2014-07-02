@@ -28,6 +28,9 @@ namespace OpenCBS.Services
         {
 
             ValidateProduct(fixedDepositProduct);
+
+            bool name = _fixedDepositProductManager.CheckForDuplicateValue("FixedDepositProducts", "product_name", fixedDepositProduct.Name);
+            bool code =_fixedDepositProductManager.CheckForDuplicateValue("FixedDepositProducts", "product_code", fixedDepositProduct.Code);
            return  _fixedDepositProductManager.SaveFixedDepositProduct(fixedDepositProduct);
             
 
@@ -42,7 +45,7 @@ namespace OpenCBS.Services
         {
             return _fixedDepositProductManager.FetchProduct(productId);
         }
-         public void UpdateFixedDepositProduct(FixedDepositProduct product,int productId)
+         public void UpdateFixedDepositProduct(IFixedDepositProduct product,int productId)
          {
              _fixedDepositProductManager.UpdateFixedDepositProduct(product, productId);
          }
@@ -50,6 +53,16 @@ namespace OpenCBS.Services
          {
              return _fixedDepositProductManager.FetchProduct(showAlsoDeleted);
          }
+
+         public IFixedDepositProduct FetchProduct(string productName, string productCode)
+         {
+             return _fixedDepositProductManager.FetchProduct( productName, productCode);
+         }
+
+        public void DeleteFixedDepositProduct(int pProductId)
+        {
+            _fixedDepositProductManager.DeleteFixedDepositProduct(pProductId);
+        }
 
         private void ValidateProduct(IFixedDepositProduct fixedDepositProduct)
         {

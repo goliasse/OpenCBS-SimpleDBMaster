@@ -647,6 +647,7 @@ namespace OpenCBS.GUI.Clients
             cbCurrentAccountingOfficer.DataSource = users;
 
             cbFixedDepositProduct.Items.Clear();
+            cbFixedDepositProduct.Items.Add("Select Product");
             FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
             List<IFixedDepositProduct> fixedDepositProductList = _fixedDepositProductService.FetchProduct(false);
             if (fixedDepositProductList != null)
@@ -656,7 +657,7 @@ namespace OpenCBS.GUI.Clients
             }
 
             cbCurrentAccountProducts.Items.Clear();
-
+            cbCurrentAccountProducts.Items.Add("Select Product");
             CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
             List<ICurrentAccountProduct> currentAccountProductList = _currentAccountProductService.FetchProduct(false);
             if (currentAccountProductList != null)
@@ -8792,7 +8793,7 @@ namespace OpenCBS.GUI.Clients
         _fixedDepositProductHoldings.InitialAmount = Convert.ToDecimal(tbInitialAmount.Text);
         _fixedDepositProductHoldings.InterestRate = Convert.ToDouble(tbInterestRate.Text);
         _fixedDepositProductHoldings.MaturityPeriod = Convert.ToInt32(tbMaturityPeriod.Text);
-        _fixedDepositProductHoldings.InterestCalculationFrequency = cbInterestCalculationFrequency.SelectedItem.ToString(); 
+        _fixedDepositProductHoldings.InterestCalculationFrequency = tbFrequencyMonths.Text;
              if (PenalityTypeRate == true)
                 _fixedDepositProductHoldings.PenalityType = "Rate";
             else
@@ -8810,8 +8811,8 @@ namespace OpenCBS.GUI.Clients
         _fixedDepositProductHoldings.InitialAmountPaymentMethod = cbInitialAmountPaymentMethod.SelectedItem.ToString();
            
             FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
-            _fixedDepositProductHoldings.FixedDepositProduct = new FixedDepositProduct();
-            _fixedDepositProductHoldings.FixedDepositProduct.Id = _fixedDepositProductService.GetProductId(fixedDepositProduct[0], fixedDepositProduct[1]); 
+            _fixedDepositProductHoldings.FixedDepositProduct = _fixedDepositProductService.FetchProduct(fixedDepositProduct[0], fixedDepositProduct[1]);
+            _fixedDepositProductHoldings.FixedDepositProduct.Id = _fixedDepositProductService.FetchProduct(fixedDepositProduct[0], fixedDepositProduct[1]).Id; 
                 
             
             
@@ -9072,11 +9073,14 @@ namespace OpenCBS.GUI.Clients
             tbProductCode.ReadOnly = true;
 
             FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
-            int FixedDepositProductId = _fixedDepositProductService.GetProductId(fixedDepositProductArr[0], fixedDepositProductArr[1]);
+           
 
 
 
-            IFixedDepositProduct fixedDepositProduct = _fixedDepositProductService.FetchProduct(FixedDepositProductId);
+            IFixedDepositProduct fixedDepositProduct = _fixedDepositProductService.FetchProduct(fixedDepositProductArr[0], fixedDepositProductArr[1]);
+
+            rbPenalityTypeRate.Text = "Rate";
+            rbPenalityTypeFlat.Text = "Flat";
             rbPenalityTypeRate.Checked = false;
             rbPenalityTypeFlat.Checked = false;
 
@@ -9088,15 +9092,9 @@ namespace OpenCBS.GUI.Clients
             rbPenalityTypeFlat.Enabled = false;
             rbPenalityTypeRate.Enabled = false;
 
+            tbFrequencyMonths.Text = fixedDepositProduct.InterestCalculationFrequency;
             cbInitialAmountPaymentMethod.SelectedIndex = 0;
-            cbInterestCalculationFrequency.SelectedIndex = 0;
-
-            
-
-
-
-             
-        }
+           }
 
         private void gbFrequency_Enter(object sender, EventArgs e)
         {
@@ -9129,31 +9127,34 @@ namespace OpenCBS.GUI.Clients
             cbFixedDepositProduct.SelectedIndex = 0;
             
             tbInitialAmount.ResetText();
-tbInterestRate.ResetText();
-tbMaturityPeriod.ResetText();
-cbInterestCalculationFrequency.ResetText();
-rbPenalityTypeFlat.ResetText();
-rbPenalityTypeRate.ResetText();
-tbPenality.ResetText();
-tbFDContractCode.ResetText();
-tbProductCode.ResetText();
-cbAccountingOfficer.ResetText();
-tbComment.ResetText();
-cbInitialAmountPaymentMethod.ResetText();
+            tbInterestRate.ResetText();
+            tbMaturityPeriod.ResetText();
+            tbFrequencyMonths.ResetText();
 
-cbFixedDepositProduct.Enabled = true;
-tbInitialAmount.Enabled = true;
-tbInterestRate.Enabled = true;
-tbMaturityPeriod.Enabled = true;
-cbInterestCalculationFrequency.Enabled = true;
-rbPenalityTypeFlat.Enabled = true;
-rbPenalityTypeRate.Enabled = true;
-tbPenality.Enabled = true;
-tbFDContractCode.Enabled = true;
-tbProductCode.Enabled = true;
-cbAccountingOfficer.Enabled = true;
-tbComment.Enabled = true;
-cbInitialAmountPaymentMethod.Enabled = true;
+
+            rbPenalityTypeFlat.ResetText();
+            rbPenalityTypeRate.ResetText();
+            tbPenality.ResetText();
+            tbFDContractCode.ResetText();
+            tbProductCode.ResetText();
+            cbAccountingOfficer.ResetText();
+            tbComment.ResetText();
+            cbInitialAmountPaymentMethod.ResetText();
+
+            cbFixedDepositProduct.Enabled = true;
+            tbInitialAmount.Enabled = true;
+            tbInterestRate.Enabled = true;
+            tbMaturityPeriod.Enabled = true;
+            tbFrequencyMonths.Enabled = true;
+            rbPenalityTypeFlat.Enabled = true;
+            rbPenalityTypeRate.Enabled = true;
+            tbPenality.Enabled = true;
+            tbFDContractCode.Enabled = true;
+            tbProductCode.Enabled = true;
+            cbAccountingOfficer.Enabled = true;
+            tbComment.Enabled = true;
+            cbInitialAmountPaymentMethod.Enabled = true;
+            btnAddFixedDepositProduct.Enabled = true;
 
        
         }
@@ -9197,7 +9198,8 @@ cbInitialAmountPaymentMethod.Enabled = true;
             tbInitialAmount.Text = _fixedDepositProductHoldings.InitialAmount.ToString();
             tbInterestRate.Text = _fixedDepositProductHoldings.InterestRate.ToString();
             tbMaturityPeriod.Text = _fixedDepositProductHoldings.MaturityPeriod.ToString();
-            cbInterestCalculationFrequency.SelectedItem = _fixedDepositProductHoldings.InterestCalculationFrequency;
+            tbFrequencyMonths.Text = _fixedDepositProductHoldings.InterestCalculationFrequency;
+            
             if (_fixedDepositProductHoldings.PenalityType == "Flat")
                 rbPenalityTypeFlat.Checked = true;
             else
@@ -9252,7 +9254,7 @@ cbInitialAmountPaymentMethod.Enabled = true;
             tbInitialAmount.Enabled = false;
             tbInterestRate.Enabled = false;
             tbMaturityPeriod.Enabled = false;
-            cbInterestCalculationFrequency.Enabled = false;
+            tbFrequencyMonths.Enabled = false;
             rbPenalityTypeFlat.Enabled = false;
             rbPenalityTypeRate.Enabled = false;
             tbPenality.Enabled = false;
@@ -9273,6 +9275,8 @@ cbInitialAmountPaymentMethod.Enabled = true;
             lblProductContractCode.Visible = true;
             tbFDContractCode.Visible = true;
             tbFDContractCode.ReadOnly = true;
+            tbOpenedDate.Visible = true;
+            cbAccountStatus.Visible = true;
 
             label30.Visible = true;
             label31.Visible = true;
