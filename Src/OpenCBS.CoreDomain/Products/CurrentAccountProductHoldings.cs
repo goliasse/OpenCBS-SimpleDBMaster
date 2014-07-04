@@ -13,6 +13,9 @@ namespace OpenCBS.CoreDomain.Products
         public string CurrentAccountContractCode { get; set; }
         public CurrentAccountProduct CurrentAccountProduct { get; set; }
         public decimal InitialAmount { get; set; }
+        public decimal OverdraftLimit { get; set; }
+        public double InterestRate { get; set; }
+        public int InterestCalculationFrequency { get; set; }
       
         public string OpeningAccountingOfficer { get; set; }
         public string ClosingAccountingOfficer { get; set; }

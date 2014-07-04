@@ -50,9 +50,12 @@ namespace OpenCBS.GUI.Products
             this.lbOverdraftFeesMax = new System.Windows.Forms.Label();
             this.lbOverdraftFeesMin = new System.Windows.Forms.Label();
             this.gbFrequency = new System.Windows.Forms.GroupBox();
+            this.tbInterestCalculationFrequency = new System.Windows.Forms.TextBox();
             this.lbAccrual = new System.Windows.Forms.Label();
-            this.cbInterestCalculationFrequency = new System.Windows.Forms.ComboBox();
             this.gbInterestRate = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbInterestValue = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.lbYearlyInterestRateMax = new System.Windows.Forms.Label();
             this.lbYearlyInterestRateMin = new System.Windows.Forms.Label();
             this.tbInterestRateMax = new System.Windows.Forms.TextBox();
@@ -124,21 +127,28 @@ namespace OpenCBS.GUI.Products
             this.lbEntryFeesMax = new System.Windows.Forms.Label();
             this.lbEntryFeesMin = new System.Windows.Forms.Label();
             this.tabPageTransactions = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnUpdateTran = new System.Windows.Forms.Button();
+            this.btnSaveTranFee = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.rbCredit = new System.Windows.Forms.RadioButton();
+            this.rbDebit = new System.Windows.Forms.RadioButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbTranFeeMax = new System.Windows.Forms.TextBox();
+            this.tbTranFeeMin = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.rbTranFeeRate = new System.Windows.Forms.RadioButton();
+            this.rbTranFeeFlat = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbTranFeeValue = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbTransactionType = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -160,6 +170,7 @@ namespace OpenCBS.GUI.Products
             this.gbEntryFees.SuspendLayout();
             this.tabPageTransactions.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -299,26 +310,28 @@ namespace OpenCBS.GUI.Products
             // 
             // gbFrequency
             // 
+            this.gbFrequency.Controls.Add(this.label11);
+            this.gbFrequency.Controls.Add(this.tbInterestCalculationFrequency);
             this.gbFrequency.Controls.Add(this.lbAccrual);
-            this.gbFrequency.Controls.Add(this.cbInterestCalculationFrequency);
             resources.ApplyResources(this.gbFrequency, "gbFrequency");
             this.gbFrequency.Name = "gbFrequency";
             this.gbFrequency.TabStop = false;
+            // 
+            // tbInterestCalculationFrequency
+            // 
+            resources.ApplyResources(this.tbInterestCalculationFrequency, "tbInterestCalculationFrequency");
+            this.tbInterestCalculationFrequency.Name = "tbInterestCalculationFrequency";
             // 
             // lbAccrual
             // 
             resources.ApplyResources(this.lbAccrual, "lbAccrual");
             this.lbAccrual.Name = "lbAccrual";
             // 
-            // cbInterestCalculationFrequency
-            // 
-            this.cbInterestCalculationFrequency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.cbInterestCalculationFrequency, "cbInterestCalculationFrequency");
-            this.cbInterestCalculationFrequency.FormattingEnabled = true;
-            this.cbInterestCalculationFrequency.Name = "cbInterestCalculationFrequency";
-            // 
             // gbInterestRate
             // 
+            this.gbInterestRate.Controls.Add(this.label9);
+            this.gbInterestRate.Controls.Add(this.tbInterestValue);
+            this.gbInterestRate.Controls.Add(this.label8);
             this.gbInterestRate.Controls.Add(this.lbYearlyInterestRateMax);
             this.gbInterestRate.Controls.Add(this.lbYearlyInterestRateMin);
             this.gbInterestRate.Controls.Add(this.tbInterestRateMax);
@@ -328,6 +341,21 @@ namespace OpenCBS.GUI.Products
             resources.ApplyResources(this.gbInterestRate, "gbInterestRate");
             this.gbInterestRate.Name = "gbInterestRate";
             this.gbInterestRate.TabStop = false;
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // tbInterestValue
+            // 
+            resources.ApplyResources(this.tbInterestValue, "tbInterestValue");
+            this.tbInterestValue.Name = "tbInterestValue";
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
             // 
             // lbYearlyInterestRateMax
             // 
@@ -564,6 +592,7 @@ namespace OpenCBS.GUI.Products
             // 
             // gtManagementFees
             // 
+            this.gtManagementFees.Controls.Add(this.label10);
             this.gtManagementFees.Controls.Add(this.cbManagementFeeFreq);
             this.gtManagementFees.Controls.Add(this.rbRateManagementFees);
             this.gtManagementFees.Controls.Add(this.rbFlatManagementFees);
@@ -768,42 +797,77 @@ namespace OpenCBS.GUI.Products
             // 
             // tabPageTransactions
             // 
-            this.tabPageTransactions.Controls.Add(this.button1);
+            this.tabPageTransactions.Controls.Add(this.btnUpdateTran);
+            this.tabPageTransactions.Controls.Add(this.btnSaveTranFee);
             this.tabPageTransactions.Controls.Add(this.groupBox3);
             resources.ApplyResources(this.tabPageTransactions, "tabPageTransactions");
             this.tabPageTransactions.Name = "tabPageTransactions";
             // 
-            // button1
+            // btnUpdateTran
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
+            resources.ApplyResources(this.btnUpdateTran, "btnUpdateTran");
+            this.btnUpdateTran.Name = "btnUpdateTran";
+            this.btnUpdateTran.Click += new System.EventHandler(this.btnUpdateTran_Click);
+            // 
+            // btnSaveTranFee
+            // 
+            resources.ApplyResources(this.btnSaveTranFee, "btnSaveTranFee");
+            this.btnSaveTranFee.Name = "btnSaveTranFee";
+            this.btnSaveTranFee.Click += new System.EventHandler(this.btnSaveTranFee_Click);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.panel1);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.tbTranFeeMax);
+            this.groupBox3.Controls.Add(this.tbTranFeeMin);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.radioButton1);
-            this.groupBox3.Controls.Add(this.radioButton2);
+            this.groupBox3.Controls.Add(this.rbTranFeeRate);
+            this.groupBox3.Controls.Add(this.rbTranFeeFlat);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.tbTranFeeValue);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.comboBox1);
+            this.groupBox3.Controls.Add(this.cbTransactionType);
             this.groupBox3.Controls.Add(this.label2);
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
-            // textBox1
+            // panel1
             // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
+            this.panel1.Controls.Add(this.rbCredit);
+            this.panel1.Controls.Add(this.rbDebit);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
             // 
-            // textBox3
+            // rbCredit
             // 
-            resources.ApplyResources(this.textBox3, "textBox3");
-            this.textBox3.Name = "textBox3";
+            resources.ApplyResources(this.rbCredit, "rbCredit");
+            this.rbCredit.Checked = true;
+            this.rbCredit.Name = "rbCredit";
+            this.rbCredit.TabStop = true;
+            // 
+            // rbDebit
+            // 
+            resources.ApplyResources(this.rbDebit, "rbDebit");
+            this.rbDebit.Name = "rbDebit";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // tbTranFeeMax
+            // 
+            resources.ApplyResources(this.tbTranFeeMax, "tbTranFeeMax");
+            this.tbTranFeeMax.Name = "tbTranFeeMax";
+            // 
+            // tbTranFeeMin
+            // 
+            resources.ApplyResources(this.tbTranFeeMin, "tbTranFeeMin");
+            this.tbTranFeeMin.Name = "tbTranFeeMin";
             // 
             // label3
             // 
@@ -815,39 +879,44 @@ namespace OpenCBS.GUI.Products
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
             // 
-            // radioButton1
+            // rbTranFeeRate
             // 
-            resources.ApplyResources(this.radioButton1, "radioButton1");
-            this.radioButton1.Name = "radioButton1";
+            resources.ApplyResources(this.rbTranFeeRate, "rbTranFeeRate");
+            this.rbTranFeeRate.Name = "rbTranFeeRate";
             // 
-            // radioButton2
+            // rbTranFeeFlat
             // 
-            resources.ApplyResources(this.radioButton2, "radioButton2");
-            this.radioButton2.Checked = true;
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.TabStop = true;
+            resources.ApplyResources(this.rbTranFeeFlat, "rbTranFeeFlat");
+            this.rbTranFeeFlat.Checked = true;
+            this.rbTranFeeFlat.Name = "rbTranFeeFlat";
+            this.rbTranFeeFlat.TabStop = true;
             // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
-            // textBox2
+            // tbTranFeeValue
             // 
-            resources.ApplyResources(this.textBox2, "textBox2");
-            this.textBox2.Name = "textBox2";
+            resources.ApplyResources(this.tbTranFeeValue, "tbTranFeeValue");
+            this.tbTranFeeValue.Name = "tbTranFeeValue";
             // 
             // label5
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
-            // comboBox1
+            // cbTransactionType
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Name = "comboBox1";
+            this.cbTransactionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cbTransactionType, "cbTransactionType");
+            this.cbTransactionType.FormattingEnabled = true;
+            this.cbTransactionType.Items.AddRange(new object[] {
+            resources.GetString("cbTransactionType.Items"),
+            resources.GetString("cbTransactionType.Items1"),
+            resources.GetString("cbTransactionType.Items2")});
+            this.cbTransactionType.Name = "cbTransactionType";
+            this.cbTransactionType.SelectedIndexChanged += new System.EventHandler(this.cbTransactionType_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -869,6 +938,16 @@ namespace OpenCBS.GUI.Products
             resources.ApplyResources(this.btnUpdate, "btnUpdate");
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
             // 
             // FrmAddCurrentAccountProduct
             // 
@@ -914,6 +993,8 @@ namespace OpenCBS.GUI.Products
             this.tabPageTransactions.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -996,7 +1077,6 @@ namespace OpenCBS.GUI.Products
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.GroupBox gbFrequency;
         private System.Windows.Forms.Label lbAccrual;
-        private System.Windows.Forms.ComboBox cbInterestCalculationFrequency;
         private System.Windows.Forms.GroupBox gbInterestRate;
         private System.Windows.Forms.Label lbYearlyInterestRateMax;
         private System.Windows.Forms.Label lbYearlyInterestRateMin;
@@ -1018,16 +1098,27 @@ namespace OpenCBS.GUI.Products
         private System.Windows.Forms.Label lbOverdraftFeesMin;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton rbTranFeeRate;
+        private System.Windows.Forms.RadioButton rbTranFeeFlat;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbTranFeeValue;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.ComboBox cbTransactionType;
+        private System.Windows.Forms.Button btnSaveTranFee;
+        private System.Windows.Forms.TextBox tbTranFeeMax;
+        private System.Windows.Forms.TextBox tbTranFeeMin;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbInterestCalculationFrequency;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox tbInterestValue;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.RadioButton rbDebit;
+        private System.Windows.Forms.RadioButton rbCredit;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnUpdateTran;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }

@@ -65,6 +65,12 @@ namespace OpenCBS.Services
         }
 
 
+        public CurrentAccountTransactionFees FetchTransaction(string transactionType, string transactionMode, int productId)
+        {
+            return _currentAccountProductManager.FetchTransaction(transactionType, transactionMode, productId);
+        }
+
+
         public int SaveCurrentAccountTransactionFees(CurrentAccountTransactionFees currentAccountTransactionFees)
         {
             return _currentAccountProductManager.SaveCurrentAccountTransactionFees(currentAccountTransactionFees);
@@ -78,5 +84,12 @@ namespace OpenCBS.Services
             {
                 return _currentAccountProductManager.FetchTransaction(transactionId);
             }
+
+
+        public void UpdateCurrentAccountTransactionFees(CurrentAccountTransactionFees transactionFees, string transactionType, string transactionMode, int productId)
+        {
+            _currentAccountProductManager.UpdateCurrentAccountTransactionFees(transactionFees, transactionType, transactionMode, productId);
+        }
+
     }
 }

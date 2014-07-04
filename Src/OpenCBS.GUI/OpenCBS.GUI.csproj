@@ -381,6 +381,12 @@
     <Compile Include="Clients\ClientForm.Designer.cs">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clients\CurrentAccountTransactionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clients\CurrentAccountTransactionForm.Designer.cs">
+      <DependentUpon>CurrentAccountTransactionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clients\LoanSharesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1374,6 +1380,9 @@
     <EmbeddedResource Include="Clients\ClientForm.pt.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clients\CurrentAccountTransactionForm.resx">
+      <DependentUpon>CurrentAccountTransactionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Clients\LoanSharesForm.es-ES.resx">
       <DependentUpon>LoanSharesForm.cs</DependentUpon>

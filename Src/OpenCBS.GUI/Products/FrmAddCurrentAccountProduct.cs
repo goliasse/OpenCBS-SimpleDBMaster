@@ -41,6 +41,7 @@ namespace OpenCBS.GUI.Products
     public partial class FrmAddCurrentAccountProduct : SweetBaseForm
     {
         ICurrentAccountProduct _currentAccountProduct = null;
+        CurrentAccountTransactionFees _currentAccountTransactionFees = null;
 
         public FrmAddCurrentAccountProduct()
         {
@@ -61,7 +62,15 @@ namespace OpenCBS.GUI.Products
             {
                 btnUpdate.Visible = true;
                 btnCurrentAccountProduct.Visible = false;
+                btnUpdateTran.Visible = true;
+                btnSaveTranFee.Visible = false;
             }
+            else
+            {
+                btnUpdateTran.Visible = false;
+                btnSaveTranFee.Visible = false;
+            }
+
               CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
               _currentAccountProduct = _currentAccountProductService.FetchProduct(productId);
 
@@ -146,7 +155,13 @@ namespace OpenCBS.GUI.Products
 
             tbOverdraftFees.Text =_currentAccountProduct.OverdraftValue.ToString();
 
-            string[] clientType = _currentAccountProduct.ClientType.Split();
+            tbInterestRateMin.Text = _currentAccountProduct.InterestMin.ToString();
+            tbInterestRateMax.Text = _currentAccountProduct.InterestMax.ToString();
+            tbInterestValue.Text = _currentAccountProduct.InterestValue.ToString();
+            tbInterestCalculationFrequency.Text = _currentAccountProduct.InterestFrequency.ToString();
+            tbOverdraftLimit.Text = _currentAccountProduct.OverdraftLimit.ToString();
+
+            string[] clientType = _currentAccountProduct.ClientType.Split(',');
 
             if (clientType[0] == "All")
                 clientTypeAllCheckBox.Checked = true;
@@ -169,50 +184,72 @@ namespace OpenCBS.GUI.Products
             CurrentAccountControl(enabled);
             tbCodeCurrentAccountProduct.Enabled = false;
             tbName.Enabled = false;
+
+            cbTransactionType.Enabled = true;
+            rbCredit.Enabled = true;
+            rbDebit.Enabled = true;
+
         }
 
-     void CurrentAccountControl(bool enabled)
-{
-cbCurrency.Enabled = enabled;
-clientTypeCorpCheckBox.Enabled = enabled;
-clientTypeIndivCheckBox.Enabled = enabled;
-clientTypeVillageCheckBox.Enabled = enabled;
-clientTypeGroupCheckBox.Enabled = enabled;
-clientTypeAllCheckBox.Enabled = enabled;
-tbCodeCurrentAccountProduct.Enabled = enabled;
-tbName.Enabled = enabled;
-rbFlatEntryFees.Enabled = enabled;
-rbRateEntryFees.Enabled = enabled;
-rbFlatReopenFees.Enabled = enabled;
-rbRateReopenFees.Enabled = enabled;
-rbFlatCloseFees.Enabled = enabled;
-rbFlatCloseFees.Enabled = enabled;
-rbFlatManagementFees.Enabled = enabled;
-rbRateManagementFees.Enabled = enabled;
-rbFlatOverdraftFees.Enabled = enabled;
-rbRateOverdraftFees.Enabled = enabled;
-cbManagementFeeFreq.Enabled = enabled;
-tbInitialAmountMin.Enabled = enabled;
-tbInitialAmountMax.Enabled = enabled;
-tbBalanceMin.Enabled = enabled;
-tbBalanceMax.Enabled = enabled;
-tbEntryFeesMin.Enabled = enabled;
-tbEntryFeesMax.Enabled = enabled;
-tbReopenFeesMin.Enabled = enabled;
-tbReopenFeesMax.Enabled = enabled;
-tbCloseFeesMin.Enabled = enabled;
-tbCloseFeesMax.Enabled = enabled;
-tbManagementFeesMin.Enabled = enabled;
-tbManagementFeesMax.Enabled = enabled;
-tbOverdraftFeesMin.Enabled = enabled;
-tbOverdraftFeesMax.Enabled = enabled;
-tbEntryFees.Enabled = enabled;
-tbReopenFees.Enabled = enabled;
-tbCloseFees.Enabled = enabled;
-tbManagementFees.Enabled = enabled;
-tbOverdraftFees.Enabled = enabled;
+            void CurrentAccountControl(bool enabled)
+            {
+            cbCurrency.Enabled = enabled;
+            clientTypeCorpCheckBox.Enabled = enabled;
+            clientTypeIndivCheckBox.Enabled = enabled;
+            clientTypeVillageCheckBox.Enabled = enabled;
+            clientTypeGroupCheckBox.Enabled = enabled;
+            clientTypeAllCheckBox.Enabled = enabled;
+            tbCodeCurrentAccountProduct.Enabled = enabled;
+            tbName.Enabled = enabled;
+            rbFlatEntryFees.Enabled = enabled;
+            rbRateEntryFees.Enabled = enabled;
+            rbFlatReopenFees.Enabled = enabled;
+            rbRateReopenFees.Enabled = enabled;
+            rbFlatCloseFees.Enabled = enabled;
+            rbRateCloseFees.Enabled = enabled;
+            rbFlatManagementFees.Enabled = enabled;
+            rbRateManagementFees.Enabled = enabled;
+            rbFlatOverdraftFees.Enabled = enabled;
+            rbRateOverdraftFees.Enabled = enabled;
+            cbManagementFeeFreq.Enabled = enabled;
+            tbInitialAmountMin.Enabled = enabled;
+            tbInitialAmountMax.Enabled = enabled;
+            tbBalanceMin.Enabled = enabled;
+            tbBalanceMax.Enabled = enabled;
+            tbEntryFeesMin.Enabled = enabled;
+            tbEntryFeesMax.Enabled = enabled;
+            tbReopenFeesMin.Enabled = enabled;
+            tbReopenFeesMax.Enabled = enabled;
+            tbCloseFeesMin.Enabled = enabled;
+            tbCloseFeesMax.Enabled = enabled;
+            tbManagementFeesMin.Enabled = enabled;
+            tbManagementFeesMax.Enabled = enabled;
+            tbOverdraftFeesMin.Enabled = enabled;
+            tbOverdraftFeesMax.Enabled = enabled;
+            tbEntryFees.Enabled = enabled;
+            tbReopenFees.Enabled = enabled;
+            tbCloseFees.Enabled = enabled;
+            tbManagementFees.Enabled = enabled;
+            tbOverdraftFees.Enabled = enabled;
 
-}
+            tbInterestRateMin.Enabled = enabled;
+            tbInterestRateMax.Enabled = enabled;
+            tbInterestValue.Enabled = enabled;
+            tbInterestCalculationFrequency.Enabled = enabled;
+            tbOverdraftLimit.Enabled = enabled;
+
+            cbTransactionType.Enabled = enabled;
+            rbTranFeeFlat.Enabled = enabled;
+            rbTranFeeRate.Enabled = enabled;
+            tbTranFeeValue.Enabled = enabled;
+            tbTranFeeMin.Enabled = enabled;
+            tbTranFeeMax.Enabled = enabled;
+            
+            btnSaveTranFee.Enabled = enabled;
+            rbCredit.Enabled = enabled;
+            rbDebit.Enabled = enabled;
+
+            }
 
 
         private void InitializeComboBoxCurrencies()
@@ -227,6 +264,8 @@ tbOverdraftFees.Enabled = enabled;
             {
                 cbCurrency.Items.Add(cur.Name);
             }
+
+            cbCurrency.SelectedIndex = 0;
 
             //bool oneCurrency = 2 == cbCurrency.Items.Count;
             //cbCurrency.SelectedIndex = oneCurrency ? 1 : 0;
@@ -355,6 +394,13 @@ tbOverdraftFees.Enabled = enabled;
             _currentAccountProduct.ManagementFeesValue = ManagementFees;
             _currentAccountProduct.OverdraftValue = OverdraftFees;
             _currentAccountProduct.Delete = 0;
+
+            _currentAccountProduct.InterestMin = Convert.ToDouble(tbInterestRateMin.Text);
+            _currentAccountProduct.InterestMax = Convert.ToDouble(tbInterestRateMax.Text);
+            _currentAccountProduct.InterestValue = Convert.ToDouble(tbInterestValue.Text);
+            _currentAccountProduct.InterestFrequency = Convert.ToInt32(tbInterestCalculationFrequency.Text);
+            _currentAccountProduct.OverdraftLimit = Convert.ToDecimal(tbOverdraftLimit.Text);
+            _currentAccountProduct.InterestType = "Rate";
         }
 
 
@@ -363,13 +409,22 @@ tbOverdraftFees.Enabled = enabled;
 
 
             _currentAccountProduct = new CurrentAccountProduct();
+           
             InitializeCurrentAccountProduct();
 
-CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
-int ret =_currentAccountProductService.SaveCurrentAccountProduct(_currentAccountProduct);
+            CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
+            int ret =_currentAccountProductService.SaveCurrentAccountProduct(_currentAccountProduct);
 
-if (ret >= 1)
-    MessageBox.Show("Current Account Product Successfully Added.");
+            if (ret >= 1)
+                MessageBox.Show("Current Account Product Successfully Added.");
+
+            tabControlSaving.TabPages.Remove(tabPageTransactions);
+            tabControlSaving.TabPages.Add(tabPageTransactions);
+            tabControlSaving.SelectedTab = tabPageTransactions;
+
+            _currentAccountTransactionFees = new CurrentAccountTransactionFees();
+            _currentAccountTransactionFees.CurrentAccountProductId = ret;
+
 
         }
 
@@ -417,6 +472,88 @@ if (ret >= 1)
 
         private void label2_Click(object sender, EventArgs e)
         {
+
+        }
+
+        void InitializeCurrentAccountTransactionFees()
+        {
+            _currentAccountTransactionFees.TransactionType = cbTransactionType.SelectedItem.ToString();
+            if(rbTranFeeFlat.Checked == true)
+            _currentAccountTransactionFees.TransactionFeesType = "Flat";
+            else
+                _currentAccountTransactionFees.TransactionFeesType = "Rate";
+            if(rbCredit.Checked == true)
+                _currentAccountTransactionFees.TransactionMode = "Credit";
+            else
+                _currentAccountTransactionFees.TransactionMode = "Debit";
+            _currentAccountTransactionFees.TransactionFees = Convert.ToDecimal(tbTranFeeValue.Text);
+            _currentAccountTransactionFees.TransactionFeeMin = Convert.ToDecimal(tbTranFeeMin.Text);
+            _currentAccountTransactionFees.TransactionFeeMax = Convert.ToDecimal(tbTranFeeMax.Text);
+            
+        }
+
+
+        private void btnSaveTranFee_Click(object sender, EventArgs e)
+        {
+            
+            InitializeCurrentAccountTransactionFees();
+
+
+            CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
+            int ret = _currentAccountProductService.SaveCurrentAccountTransactionFees(_currentAccountTransactionFees);
+
+            if (ret >= 1)
+                MessageBox.Show("Transaction Fee Successfully Specified.");
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbTransactionType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string transactionType = cbTransactionType.SelectedItem.ToString();
+            string transactionMode = "";
+              if(rbCredit.Checked == true)
+                transactionMode = "Credit";
+            else
+                transactionMode = "Debit";
+            
+
+
+            CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
+            _currentAccountTransactionFees =_currentAccountProductService.FetchTransaction(transactionType, transactionMode, _currentAccountProduct.Id);
+
+            if (_currentAccountTransactionFees != null)
+            {
+                if (_currentAccountTransactionFees.TransactionFeesType == "Flat")
+                    rbTranFeeFlat.Checked = true;
+                else
+                    rbTranFeeRate.Checked = true;
+
+
+
+                tbTranFeeValue.Text = _currentAccountTransactionFees.TransactionFees.ToString();
+                tbTranFeeMin.Text = _currentAccountTransactionFees.TransactionFeeMin.ToString();
+                tbTranFeeMax.Text = _currentAccountTransactionFees.TransactionFeeMax.ToString();
+            }
+             
+
+        }
+
+        private void btnUpdateTran_Click(object sender, EventArgs e)
+        {
+          
+            InitializeCurrentAccountTransactionFees();
+
+
+            CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
+            _currentAccountProductService.UpdateCurrentAccountTransactionFees(_currentAccountTransactionFees, _currentAccountTransactionFees.TransactionFeesType, _currentAccountTransactionFees.TransactionMode, _currentAccountTransactionFees.CurrentAccountProductId);
+
+           
+                MessageBox.Show("Transaction Fee Successfully Updated.");
+
 
         }
 

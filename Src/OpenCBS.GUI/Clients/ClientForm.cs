@@ -543,6 +543,8 @@ namespace OpenCBS.GUI.Clients
             tabControlPerson.TabPages.Remove(tabPageLoanGuarantees);
             tabControlPerson.TabPages.Remove(tabPageSavingDetails);
             tabControlPerson.TabPages.Remove(tabPageContracts);
+            tabControlPerson.TabPages.Remove(tabPageOverdraft);
+            tabControlPerson.TabPages.Remove(tabPageTransactions);
 
             InitializeProjectAddress();
 
@@ -8900,11 +8902,13 @@ namespace OpenCBS.GUI.Clients
             _currentAccountProductHoldings.OpenDate = DateTime.Today;
             _currentAccountProductHoldings.CloseDate = DateTime.MaxValue;
             _currentAccountProductHoldings.InitialAmountPaymentMethod = cbCAInitialAmountPaymentMethod.SelectedItem.ToString();
-
+            _currentAccountProductHoldings.OverdraftLimit = Convert.ToDecimal(tbOverdraftAmount.Text);
+            _currentAccountProductHoldings.InterestRate = Convert.ToDouble(tbCAInterestRate.Text);
+            
+            _currentAccountProductHoldings.InterestCalculationFrequency = Convert.ToInt32(tbCalculationFrequency.Text);
             CurrentAccountProductHoldingServices _currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
             string contractCode = _currentAccountProductHoldingServices.SaveCurrentAccountPoductHolding(_currentAccountProductHoldings);
             
-
 
             MessageBox.Show("Contract Successfully Created. Contract Code Is " + contractCode);
             btnAddCurrentAccountProduct.Enabled = false;
@@ -9464,6 +9468,10 @@ cbCAInitialAmountPaymentMethod.SelectedIndex = 0;
             lblCAAcountStatus.Visible = true;
             cbCAAccountStatus.SelectedItem = _currentAccountProductHoldings.Status;
 
+            tbOverdraftAmount.Text = _currentAccountProductHoldings.OverdraftLimit.ToString();
+			tbCAInterestRate.Text = _currentAccountProductHoldings.InterestRate .ToString();
+            tbCalculationFrequency.Text = _currentAccountProductHoldings.InterestCalculationFrequency.ToString();
+
             if (_currentAccountProductHoldings.Status == "Closed")
             {
                 gbReopenFees.Visible = true;
@@ -9517,6 +9525,9 @@ cbCAInitialAmountPaymentMethod.SelectedIndex = 0;
             cbManagementFeeFreq.Enabled = false;
             cbCAPaymentMethod.Enabled = false;
             tbCAChequeAccount.Enabled = false;
+            tbOverdraftAmount.Enabled = false;
+			tbCAInterestRate.Enabled = false;
+            tbCalculationFrequency.Enabled = false;
 
             tabControlPerson.TabPages.Remove(tabPageCurrentAccount);
             tabControlPerson.TabPages.Add(tabPageCurrentAccount);
@@ -9738,6 +9749,35 @@ cbCAInitialAmountPaymentMethod.SelectedIndex = 0;
                 lblCAChequeNumber.Visible = true;
                 tbCAChequeAccount.Visible = true;
             }
+        }
+
+        private void tbCAInterestRate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOverdraft_Click(object sender, EventArgs e)
+        {
+            tabControlPerson.TabPages.Remove(tabPageOverdraft);
+            tabControlPerson.TabPages.Add(tabPageOverdraft);
+            tabControlPerson.SelectedTab = tabPageOverdraft;
+        }
+
+        private void btnTransactions_Click(object sender, EventArgs e)
+        {
+            tabControlPerson.TabPages.Remove(tabPageTransactions);
+            tabControlPerson.TabPages.Add(tabPageTransactions);
+            tabControlPerson.SelectedTab = tabPageTransactions;
+        }
+
+        private void label44_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         

@@ -93,5 +93,113 @@ currentAccountTransactions.Checker = r.GetString("checker");
 
 return currentAccountTransactions;
 }
+
+
+        public void UpdateCurrentAccountTransactions(CurrentAccountTransactions transaction,string transactionId)
+        {
+            string q = @"UPDATE [CurrentAccountTransactions] SET 
+            [transaction_type] = @transactionType,
+ [transaction_fees] = @transactionFees
+ WHERE  id =@transactionId ";
+
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@transactionId", transactionId);
+           
+                SetProduct(c, transaction);
+                c.ExecuteNonQuery();
+            }
+        }
+
+
+public CurrentAccountTransactions FetchTransaction(string transactionId)
+        {
+
+
+            string q = @"SELECT
+[id],
+            [from_account],
+[to_account],
+[amount],
+[transaction_date],
+[transaction_mode],
+[transaction_type],
+[transaction_fees],
+[maker],
+[checker]
+
+            FROM [dbo].[CurrentAccountTransactions]
+            WHERE id = @transactionId";
+
+
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@transactionId", transactionId);
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+                    if (r == null || r.Empty) return new CurrentAccountTransactions();
+                    r.Read();
+
+                    CurrentAccountTransactions currentAccountTransactions = new CurrentAccountTransactions ();
+
+                    return (CurrentAccountTransactions)GetProduct(r);
+
+
+
+                }
+            }
+
+
+        }
+
+
+public List<CurrentAccountTransactions> FetchTransactions(string accountNumber)
+        {
+            List<CurrentAccountTransactions> currentAccountTransactionsList = new List<CurrentAccountTransactions>();
+
+
+            string q = @"SELECT
+[id],
+            [from_account],
+[to_account],
+[amount],
+[transaction_date],
+[transaction_mode],
+[transaction_type],
+[transaction_fees],
+[maker],
+[checker]
+
+            FROM [dbo].[CurrentAccountTransactions]
+            WHERE from_account = @accountNumber OR to_account = @accountNumber";
+          
+
+
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+c.AddParam("@accountNumber", accountNumber);
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+                    if (r == null || r.Empty) return new List<CurrentAccountTransactions>();
+                    while (r.Read())
+                    {
+
+
+                        CurrentAccountTransactions transaction = FetchTransaction(r.GetString("id"));
+
+                        currentAccountTransactionsList.Add(transaction);
+                    }
+                }
+            }
+
+            return currentAccountTransactionsList;
+        }
+
     }
 }

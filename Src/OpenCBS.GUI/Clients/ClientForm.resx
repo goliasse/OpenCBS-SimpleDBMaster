@@ -973,7 +973,7 @@
     <value>0, 35</value>
   </data>
   <data name="listViewGuarantors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1123, 272</value>
+    <value>1123, 255</value>
   </data>
   <data name="listViewGuarantors.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1165,7 +1165,7 @@
     <value>3, 3</value>
   </data>
   <data name="pnlGuarantorButtons.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 266</value>
+    <value>140, 249</value>
   </data>
   <data name="pnlGuarantorButtons.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -1192,7 +1192,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 272</value>
+    <value>146, 255</value>
   </data>
   <data name="panel3.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -1294,7 +1294,7 @@
     <value>0, 35</value>
   </data>
   <data name="listViewCollaterals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1123, 292</value>
+    <value>1123, 277</value>
   </data>
   <data name="listViewCollaterals.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1435,7 +1435,7 @@
     <value>1123, 35</value>
   </data>
   <data name="pnlCollateralButtons.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 292</value>
+    <value>146, 277</value>
   </data>
   <data name="pnlCollateralButtons.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -1501,10 +1501,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1269, 638</value>
+    <value>1269, 606</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>307</value>
+    <value>290</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1537,7 +1537,7 @@
     <value>0, 35</value>
   </data>
   <data name="panelLoansContracts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 238</value>
+    <value>1275, 223</value>
   </data>
   <data name="panelLoansContracts.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -1609,7 +1609,7 @@
     <value>0, 35</value>
   </data>
   <data name="panelSavingsContracts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 332</value>
+    <value>1275, 315</value>
   </data>
   <data name="panelSavingsContracts.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -1675,10 +1675,10 @@
     <value>1</value>
   </data>
   <data name="splitContainerContracts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 644</value>
+    <value>1275, 612</value>
   </data>
   <data name="splitContainerContracts.SplitterDistance" type="System.Int32, mscorlib">
-    <value>273</value>
+    <value>258</value>
   </data>
   <data name="splitContainerContracts.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1849,13 +1849,13 @@
     <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tabPageDetails.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
+    <value>4, 68</value>
   </data>
   <data name="tabPageDetails.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 644</value>
+    <value>1275, 612</value>
   </data>
   <data name="tabPageDetails.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2359,7 +2359,7 @@
     <value>0, 0</value>
   </data>
   <data name="lvContracts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1063, 328</value>
+    <value>1063, 296</value>
   </data>
   <data name="lvContracts.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2458,7 +2458,7 @@
     <value>1063, 0</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 328</value>
+    <value>186, 296</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2482,7 +2482,7 @@
     <value>3, 3</value>
   </data>
   <data name="pnlLoans.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1249, 328</value>
+    <value>1249, 296</value>
   </data>
   <data name="pnlLoans.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2506,7 +2506,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageProjectLoans.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1255, 334</value>
+    <value>1255, 302</value>
   </data>
   <data name="tabPageProjectLoans.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2842,7 +2842,7 @@
     <value>3, 261</value>
   </data>
   <data name="tabControlProject.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1263, 374</value>
+    <value>1263, 342</value>
   </data>
   <data name="tabControlProject.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2869,7 +2869,7 @@
     <value>3</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1269, 638</value>
+    <value>1269, 606</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2890,13 +2890,13 @@
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="groupBoxProjectDetails" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel1" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tabControlProject" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,193,Absolute,65,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tabPageProject.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
+    <value>4, 68</value>
   </data>
   <data name="tabPageProject.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageProject.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 644</value>
+    <value>1275, 612</value>
   </data>
   <data name="tabPageProject.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2974,7 +2974,7 @@
     <value>3, 3</value>
   </data>
   <data name="listViewLoanInstallments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1255, 329</value>
+    <value>1255, 297</value>
   </data>
   <data name="listViewLoanInstallments.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -2998,7 +2998,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageInstallments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1261, 335</value>
+    <value>1261, 303</value>
   </data>
   <data name="tabPageInstallments.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3025,7 +3025,7 @@
     <value>3, 277</value>
   </data>
   <data name="tclLoanDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1269, 364</value>
+    <value>1269, 332</value>
   </data>
   <data name="tclLoanDetails.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4234,13 +4234,13 @@
     <value>2</value>
   </data>
   <data name="tabPageLoansDetails.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
+    <value>4, 68</value>
   </data>
   <data name="tabPageLoansDetails.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageLoansDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 644</value>
+    <value>1275, 612</value>
   </data>
   <data name="tabPageLoansDetails.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -6270,13 +6270,13 @@ Max:
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="labelLocAmount" Row="0" RowSpan="2" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tbLocAmount" Row="0" RowSpan="2" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="labelLocMin" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="labelLocMax" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="labelLocMinAmount" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="labelLocMaxAmount" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="lblInsuranceMin" Row="0" RowSpan="1" Column="8" ColumnSpan="1" /&gt;&lt;Control Name="lblInsuranceMax" Row="1" RowSpan="1" Column="8" ColumnSpan="1" /&gt;&lt;Control Name="label5" Row="1" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;Control Name="label4" Row="0" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;Control Name="tbInsurance" Row="0" RowSpan="2" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="lblCreditInsurance" Row="0" RowSpan="2" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="label6" Row="0" RowSpan="1" Column="9" ColumnSpan="1" /&gt;&lt;Control Name="label7" Row="1" RowSpan="1" Column="9" ColumnSpan="1" /&gt;&lt;Control Name="lblLocCurrencyMin" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="lblLocCurrencyMax" Row="1" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,Absolute,76,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tabPageAdvancedSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
+    <value>4, 68</value>
   </data>
   <data name="tabPageAdvancedSettings.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageAdvancedSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 644</value>
+    <value>1275, 612</value>
   </data>
   <data name="tabPageAdvancedSettings.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -6693,13 +6693,13 @@ Max:
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lblCCStatus" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="pnlCCStatus" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="labelCreditCommiteeDate" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="dateTimePickerCreditCommitee" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="labelCreditCommiteeComment" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="labelCreditCommiteeCode" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="textBoxCreditCommiteeComment" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="tBCreditCommitteeCode" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tabPageCreditCommitee.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
+    <value>4, 68</value>
   </data>
   <data name="tabPageCreditCommitee.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageCreditCommitee.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 644</value>
+    <value>1275, 612</value>
   </data>
   <data name="tabPageCreditCommitee.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -6819,7 +6819,7 @@ Max:
     <value>0, 0</value>
   </data>
   <data name="lvLoansRepayments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1267, 413</value>
+    <value>1267, 381</value>
   </data>
   <data name="lvLoansRepayments.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -6981,7 +6981,7 @@ Max:
     <value>Bottom</value>
   </data>
   <data name="flowLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 413</value>
+    <value>0, 381</value>
   </data>
   <data name="flowLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
     <value>1267, 34</value>
@@ -7005,7 +7005,7 @@ Max:
     <value>4, 36</value>
   </data>
   <data name="tabPageRepayments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1267, 447</value>
+    <value>1267, 415</value>
   </data>
   <data name="tabPageRepayments.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -7303,7 +7303,7 @@ Max:
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAS
-        HQAAAk1TRnQBSQFMAgEBBQEAAZwBJAGcASQBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        HQAAAk1TRnQBSQFMAgEBBQEAAcwBJAHMASQBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAAUADAAEBAQABCAYAASAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -7437,7 +7437,7 @@ Max:
     <value>0, 157</value>
   </data>
   <data name="tabControlRepayments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 487</value>
+    <value>1275, 455</value>
   </data>
   <data name="tabControlRepayments.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -7524,10 +7524,10 @@ Max:
     <value>2</value>
   </data>
   <data name="tabPageLoanRepayment.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
+    <value>4, 68</value>
   </data>
   <data name="tabPageLoanRepayment.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 644</value>
+    <value>1275, 612</value>
   </data>
   <data name="tabPageLoanRepayment.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -7548,13 +7548,13 @@ Max:
     <value>5</value>
   </data>
   <data name="tabPageLoanGuarantees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
+    <value>4, 68</value>
   </data>
   <data name="tabPageLoanGuarantees.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageLoanGuarantees.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 644</value>
+    <value>1275, 612</value>
   </data>
   <data name="tabPageLoanGuarantees.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -9120,7 +9120,7 @@ Max:
     <value>459, 3</value>
   </data>
   <data name="flowLayoutPanel10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>799, 376</value>
+    <value>799, 344</value>
   </data>
   <data name="flowLayoutPanel10.TabIndex" type="System.Int32, mscorlib">
     <value>77</value>
@@ -9147,7 +9147,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lblIbtFeeMinMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 287</value>
+    <value>364, 259</value>
   </data>
   <data name="lblIbtFeeMinMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 29</value>
@@ -9207,7 +9207,7 @@ Max:
     <value>1</value>
   </data>
   <data name="nudIbtFee.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 290</value>
+    <value>231, 262</value>
   </data>
   <data name="nudIbtFee.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 22</value>
@@ -9240,7 +9240,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lbDepositFees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 41</value>
+    <value>3, 37</value>
   </data>
   <data name="lbDepositFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 16</value>
@@ -9294,7 +9294,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lbReopenFeesMinMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 246</value>
+    <value>364, 222</value>
   </data>
   <data name="lbReopenFeesMinMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 29</value>
@@ -9351,7 +9351,7 @@ Max:
     <value>6</value>
   </data>
   <data name="nudReopenFees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 249</value>
+    <value>231, 225</value>
   </data>
   <data name="nudReopenFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 22</value>
@@ -9381,7 +9381,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lbReopenFees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 246</value>
+    <value>3, 222</value>
   </data>
   <data name="lbReopenFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 23</value>
@@ -9411,7 +9411,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lbDepositFeesMinMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 41</value>
+    <value>364, 37</value>
   </data>
   <data name="lbDepositFeesMinMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 29</value>
@@ -9444,7 +9444,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lbAgioFeesMinMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 205</value>
+    <value>364, 185</value>
   </data>
   <data name="lbAgioFeesMinMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 29</value>
@@ -9480,7 +9480,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lbChequeDepositFees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 328</value>
+    <value>3, 296</value>
   </data>
   <data name="lbChequeDepositFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 16</value>
@@ -9504,7 +9504,7 @@ Max:
     <value>11</value>
   </data>
   <data name="nudAgioFees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 208</value>
+    <value>231, 188</value>
   </data>
   <data name="nudAgioFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 22</value>
@@ -9528,7 +9528,7 @@ Max:
     <value>12</value>
   </data>
   <data name="nudChequeDepositFees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 331</value>
+    <value>231, 299</value>
   </data>
   <data name="nudChequeDepositFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 22</value>
@@ -9561,7 +9561,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lbAgioFees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 205</value>
+    <value>3, 185</value>
   </data>
   <data name="lbAgioFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 16</value>
@@ -9591,7 +9591,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lbOverdraftFeesMinMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 164</value>
+    <value>364, 148</value>
   </data>
   <data name="lbOverdraftFeesMinMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 29</value>
@@ -9624,7 +9624,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lblChequeDepositFeesMinMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 328</value>
+    <value>364, 296</value>
   </data>
   <data name="lblChequeDepositFeesMinMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 29</value>
@@ -9660,7 +9660,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lbCloseFees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 82</value>
+    <value>3, 74</value>
   </data>
   <data name="lbCloseFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 16</value>
@@ -9684,7 +9684,7 @@ Max:
     <value>17</value>
   </data>
   <data name="nudOverdraftFees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 167</value>
+    <value>231, 151</value>
   </data>
   <data name="nudOverdraftFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 22</value>
@@ -9708,7 +9708,7 @@ Max:
     <value>18</value>
   </data>
   <data name="nudCloseFees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 85</value>
+    <value>231, 77</value>
   </data>
   <data name="nudCloseFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 22</value>
@@ -9741,7 +9741,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lbOverdraftFees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 164</value>
+    <value>3, 148</value>
   </data>
   <data name="lbOverdraftFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 16</value>
@@ -9771,7 +9771,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lbCloseFeesMinMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 82</value>
+    <value>364, 74</value>
   </data>
   <data name="lbCloseFeesMinMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 29</value>
@@ -9804,7 +9804,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lbManagementFeesMinMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>364, 123</value>
+    <value>364, 111</value>
   </data>
   <data name="lbManagementFeesMinMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 29</value>
@@ -9840,7 +9840,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lbManagementFees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 123</value>
+    <value>3, 111</value>
   </data>
   <data name="lbManagementFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 16</value>
@@ -9864,7 +9864,7 @@ Max:
     <value>23</value>
   </data>
   <data name="nudManagementFees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 126</value>
+    <value>231, 114</value>
   </data>
   <data name="nudManagementFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 22</value>
@@ -9888,7 +9888,7 @@ Max:
     <value>24</value>
   </data>
   <data name="nudDepositFees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>231, 44</value>
+    <value>231, 40</value>
   </data>
   <data name="nudDepositFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 22</value>
@@ -9921,7 +9921,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lblInterBranchTransfer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 287</value>
+    <value>3, 259</value>
   </data>
   <data name="lblInterBranchTransfer.Size" type="System.Drawing.Size, System.Drawing">
     <value>151, 16</value>
@@ -9954,7 +9954,7 @@ Max:
     <value>10</value>
   </data>
   <data name="tlpSBDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 376</value>
+    <value>456, 344</value>
   </data>
   <data name="tlpSBDetails.TabIndex" type="System.Int32, mscorlib">
     <value>78</value>
@@ -9981,7 +9981,7 @@ Max:
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageSavingsAmountsAndFees.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1261, 382</value>
+    <value>1261, 350</value>
   </data>
   <data name="tabPageSavingsAmountsAndFees.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -10524,7 +10524,7 @@ Max:
     <value>3, 226</value>
   </data>
   <data name="tabControlSavingsDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1269, 415</value>
+    <value>1269, 383</value>
   </data>
   <data name="tabControlSavingsDetails.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -11529,13 +11529,13 @@ Max:
     <value>2</value>
   </data>
   <data name="tabPageSavingDetails.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
+    <value>4, 68</value>
   </data>
   <data name="tabPageSavingDetails.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageSavingDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 644</value>
+    <value>1275, 612</value>
   </data>
   <data name="tabPageSavingDetails.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -11556,10 +11556,10 @@ Max:
     <value>7</value>
   </data>
   <data name="tabPageContracts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
+    <value>4, 68</value>
   </data>
   <data name="tabPageContracts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 644</value>
+    <value>1275, 612</value>
   </data>
   <data name="tabPageContracts.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -11937,13 +11937,13 @@ Max:
     <value>5</value>
   </data>
   <data name="tabPageFPCAContracts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
+    <value>4, 68</value>
   </data>
   <data name="tabPageFPCAContracts.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageFPCAContracts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 644</value>
+    <value>1275, 612</value>
   </data>
   <data name="tabPageFPCAContracts.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -13749,7 +13749,7 @@ Max:
     <value>3, 3</value>
   </data>
   <data name="tbTransferNumberForm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1269, 638</value>
+    <value>1269, 606</value>
   </data>
   <data name="tbTransferNumberForm.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -13767,13 +13767,13 @@ Max:
     <value>0</value>
   </data>
   <data name="tabPageFixedDeposit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
+    <value>4, 68</value>
   </data>
   <data name="tabPageFixedDeposit.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageFixedDeposit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 644</value>
+    <value>1275, 612</value>
   </data>
   <data name="tabPageFixedDeposit.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -13792,6 +13792,144 @@ Max:
   </data>
   <data name="&gt;&gt;tabPageFixedDeposit.ZOrder" xml:space="preserve">
     <value>10</value>
+  </data>
+  <data name="btnTransactions.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnTransactions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>789, 551</value>
+  </data>
+  <data name="btnTransactions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 28</value>
+  </data>
+  <data name="btnTransactions.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
+  </data>
+  <data name="btnTransactions.Text" xml:space="preserve">
+    <value>Transactions</value>
+  </data>
+  <data name="&gt;&gt;btnTransactions.Name" xml:space="preserve">
+    <value>btnTransactions</value>
+  </data>
+  <data name="&gt;&gt;btnTransactions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnTransactions.Parent" xml:space="preserve">
+    <value>tabPageCurrentAccount</value>
+  </data>
+  <data name="&gt;&gt;btnTransactions.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnOverdraft.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnOverdraft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>648, 551</value>
+  </data>
+  <data name="btnOverdraft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 28</value>
+  </data>
+  <data name="btnOverdraft.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="btnOverdraft.Text" xml:space="preserve">
+    <value>Overdraft</value>
+  </data>
+  <data name="&gt;&gt;btnOverdraft.Name" xml:space="preserve">
+    <value>btnOverdraft</value>
+  </data>
+  <data name="&gt;&gt;btnOverdraft.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnOverdraft.Parent" xml:space="preserve">
+    <value>tabPageCurrentAccount</value>
+  </data>
+  <data name="&gt;&gt;btnOverdraft.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tbCABalanceAmount.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="tbCABalanceAmount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 29</value>
+  </data>
+  <data name="tbCABalanceAmount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 22</value>
+  </data>
+  <data name="tbCABalanceAmount.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;tbCABalanceAmount.Name" xml:space="preserve">
+    <value>tbCABalanceAmount</value>
+  </data>
+  <data name="&gt;&gt;tbCABalanceAmount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbCABalanceAmount.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;tbCABalanceAmount.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label37.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label37.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="label37.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label37.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 32</value>
+  </data>
+  <data name="label37.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 16</value>
+  </data>
+  <data name="label37.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>Balance Amount:</value>
+  </data>
+  <data name="&gt;&gt;label37.Name" xml:space="preserve">
+    <value>label37</value>
+  </data>
+  <data name="&gt;&gt;label37.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label37.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;label37.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>789, 32</value>
+  </data>
+  <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>255, 140</value>
+  </data>
+  <data name="groupBox7.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="groupBox7.Text" xml:space="preserve">
+    <value>Balance</value>
+  </data>
+  <data name="groupBox7.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;groupBox7.Name" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;groupBox7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox7.Parent" xml:space="preserve">
+    <value>tabPageCurrentAccount</value>
+  </data>
+  <data name="&gt;&gt;groupBox7.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="tbCAChequeAccount.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -13926,10 +14064,10 @@ Max:
     <value>Arial, 9.75pt</value>
   </data>
   <data name="gbAmount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>789, 164</value>
+    <value>789, 179</value>
   </data>
   <data name="gbAmount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>257, 183</value>
+    <value>257, 166</value>
   </data>
   <data name="gbAmount.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -13950,7 +14088,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;gbAmount.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="lblTotalFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14376,64 +14514,154 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;gbCAFees.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tbCABalanceAmount.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
-  </data>
-  <data name="tbCABalanceAmount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>202, 27</value>
-  </data>
-  <data name="tbCABalanceAmount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 22</value>
-  </data>
-  <data name="tbCABalanceAmount.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;tbCABalanceAmount.Name" xml:space="preserve">
-    <value>tbCABalanceAmount</value>
-  </data>
-  <data name="&gt;&gt;tbCABalanceAmount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbCABalanceAmount.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;tbCABalanceAmount.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label37.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label37.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
-  </data>
-  <data name="label37.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label37.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 33</value>
-  </data>
-  <data name="label37.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 16</value>
-  </data>
-  <data name="label37.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="label37.Text" xml:space="preserve">
-    <value>Balance Amount:</value>
+  <data name="tbCalculationFrequency.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
   </data>
-  <data name="&gt;&gt;label37.Name" xml:space="preserve">
-    <value>label37</value>
+  <data name="tbCalculationFrequency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>202, 57</value>
   </data>
-  <data name="&gt;&gt;label37.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="tbCalculationFrequency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 22</value>
   </data>
-  <data name="&gt;&gt;label37.Parent" xml:space="preserve">
+  <data name="tbCalculationFrequency.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;tbCalculationFrequency.Name" xml:space="preserve">
+    <value>tbCalculationFrequency</value>
+  </data>
+  <data name="&gt;&gt;tbCalculationFrequency.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbCalculationFrequency.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
-  <data name="&gt;&gt;label37.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tbCalculationFrequency.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label43.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label43.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="label43.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label43.Location" type="System.Drawing.Point, System.Drawing">
+    <value>322, 57</value>
+  </data>
+  <data name="label43.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 16</value>
+  </data>
+  <data name="label43.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="label43.Text" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="&gt;&gt;label43.Name" xml:space="preserve">
+    <value>label43</value>
+  </data>
+  <data name="&gt;&gt;label43.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label43.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label43.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="label34.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label34.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="label34.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label34.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 57</value>
+  </data>
+  <data name="label34.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 16</value>
+  </data>
+  <data name="label34.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>Calculation Frequency:</value>
+  </data>
+  <data name="&gt;&gt;label34.Name" xml:space="preserve">
+    <value>label34</value>
+  </data>
+  <data name="&gt;&gt;label34.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label34.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tbCAInterestRate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="tbCAInterestRate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>202, 18</value>
+  </data>
+  <data name="tbCAInterestRate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 22</value>
+  </data>
+  <data name="tbCAInterestRate.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;tbCAInterestRate.Name" xml:space="preserve">
+    <value>tbCAInterestRate</value>
+  </data>
+  <data name="&gt;&gt;tbCAInterestRate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbCAInterestRate.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;tbCAInterestRate.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label33.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label33.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="label33.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label33.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 24</value>
+  </data>
+  <data name="label33.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 16</value>
+  </data>
+  <data name="label33.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>Interest Rate:</value>
+  </data>
+  <data name="&gt;&gt;label33.Name" xml:space="preserve">
+    <value>label33</value>
+  </data>
+  <data name="&gt;&gt;label33.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label33.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label33.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -14447,12 +14675,6 @@ Max:
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Balance</value>
-  </data>
-  <data name="groupBox3.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
     <value>groupBox3</value>
   </data>
@@ -14463,7 +14685,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="tbCAClosedDate.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -14490,7 +14712,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;tbCAClosedDate.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="lblCAClosedDate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14502,7 +14724,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lblCAClosedDate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>438, 328</value>
+    <value>441, 328</value>
   </data>
   <data name="lblCAClosedDate.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 16</value>
@@ -14526,22 +14748,19 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;lblCAClosedDate.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="tbOverdraftAmount.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
   </data>
   <data name="tbOverdraftAmount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>620, 294</value>
+    <value>622, 216</value>
   </data>
   <data name="tbOverdraftAmount.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 22</value>
   </data>
   <data name="tbOverdraftAmount.TabIndex" type="System.Int32, mscorlib">
     <value>47</value>
-  </data>
-  <data name="tbOverdraftAmount.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="&gt;&gt;tbOverdraftAmount.Name" xml:space="preserve">
     <value>tbOverdraftAmount</value>
@@ -14553,7 +14772,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;tbOverdraftAmount.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="label35.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14565,7 +14784,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="label35.Location" type="System.Drawing.Point, System.Drawing">
-    <value>437, 294</value>
+    <value>438, 216</value>
   </data>
   <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 16</value>
@@ -14575,9 +14794,6 @@ Max:
   </data>
   <data name="label35.Text" xml:space="preserve">
     <value>Overdraft Amount Limit:</value>
-  </data>
-  <data name="label35.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="&gt;&gt;label35.Name" xml:space="preserve">
     <value>label35</value>
@@ -14589,7 +14805,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;label35.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="btnCAPrint.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -14616,7 +14832,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;btnCAPrint.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="btnCloseAccount.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -14646,7 +14862,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;btnCloseAccount.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="cbCAAccountStatus.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -14661,7 +14877,7 @@ Max:
     <value>Closed</value>
   </data>
   <data name="cbCAAccountStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>622, 254</value>
+    <value>622, 286</value>
   </data>
   <data name="cbCAAccountStatus.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 24</value>
@@ -14682,7 +14898,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;cbCAAccountStatus.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="lblCAAcountStatus.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14694,7 +14910,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lblCAAcountStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>438, 257</value>
+    <value>441, 286</value>
   </data>
   <data name="lblCAAcountStatus.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 16</value>
@@ -14718,13 +14934,13 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;lblCAAcountStatus.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="tbCAOpenedDate.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
   </data>
   <data name="tbCAOpenedDate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>621, 222</value>
+    <value>622, 252</value>
   </data>
   <data name="tbCAOpenedDate.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 22</value>
@@ -14745,7 +14961,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;tbCAOpenedDate.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="lblCAOpenedDate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14757,7 +14973,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="lblCAOpenedDate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>438, 222</value>
+    <value>441, 252</value>
   </data>
   <data name="lblCAOpenedDate.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 16</value>
@@ -14781,7 +14997,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;lblCAOpenedDate.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>15</value>
   </data>
   <data name="tbCAProductCode.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -14808,7 +15024,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;tbCAProductCode.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>16</value>
   </data>
   <data name="lblCAProductCode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14844,7 +15060,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;lblCAProductCode.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>17</value>
   </data>
   <data name="cbCAInitialAmountPaymentMethod.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -14874,7 +15090,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;cbCAInitialAmountPaymentMethod.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>18</value>
   </data>
   <data name="label23.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14886,7 +15102,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
-    <value>438, 182</value>
+    <value>438, 179</value>
   </data>
   <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 16</value>
@@ -14907,7 +15123,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>19</value>
   </data>
   <data name="btnAddCurrentAccountProduct.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -14934,7 +15150,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;btnAddCurrentAccountProduct.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>20</value>
   </data>
   <data name="rbRateOverdraftFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -15117,7 +15333,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;gtOverdraftFees.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>21</value>
   </data>
   <data name="rbRateReopenFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -15303,7 +15519,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;gbReopenFees.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>22</value>
   </data>
   <data name="label21.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -15558,7 +15774,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;gtManagementFees.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>23</value>
   </data>
   <data name="rbRateCloseFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -15744,7 +15960,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;gbCloseFees.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>24</value>
   </data>
   <data name="rbRateEntryFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -15927,7 +16143,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;gbEntryFees.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>25</value>
   </data>
   <data name="tbCurrentAccountComment.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -15951,7 +16167,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;tbCurrentAccountComment.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>26</value>
   </data>
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -15984,7 +16200,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>27</value>
   </data>
   <data name="cbCurrentAccountingOfficer.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -16008,7 +16224,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;cbCurrentAccountingOfficer.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>28</value>
   </data>
   <data name="label17.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -16041,7 +16257,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>29</value>
   </data>
   <data name="tbCurrentAccountProductCode.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -16065,7 +16281,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;tbCurrentAccountProductCode.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>30</value>
   </data>
   <data name="label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -16098,7 +16314,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>31</value>
   </data>
   <data name="cbCurrentAccountProducts.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -16125,7 +16341,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;cbCurrentAccountProducts.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>32</value>
   </data>
   <data name="label19.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -16158,7 +16374,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>33</value>
   </data>
   <data name="tbCurrentInitialAmount.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -16242,13 +16458,13 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
-    <value>31</value>
+    <value>34</value>
   </data>
   <data name="tabPageCurrentAccount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
+    <value>4, 68</value>
   </data>
   <data name="tabPageCurrentAccount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 644</value>
+    <value>1275, 612</value>
   </data>
   <data name="tabPageCurrentAccount.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -16267,6 +16483,189 @@ Max:
   </data>
   <data name="&gt;&gt;tabPageCurrentAccount.ZOrder" xml:space="preserve">
     <value>11</value>
+  </data>
+  <data name="columnHeader31.Text" xml:space="preserve">
+    <value>Transaction ID</value>
+  </data>
+  <data name="columnHeader31.Width" type="System.Int32, mscorlib">
+    <value>115</value>
+  </data>
+  <data name="columnHeader32.Text" xml:space="preserve">
+    <value>From Account</value>
+  </data>
+  <data name="columnHeader32.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="columnHeader32.Width" type="System.Int32, mscorlib">
+    <value>124</value>
+  </data>
+  <data name="columnHeader33.Text" xml:space="preserve">
+    <value>To Account</value>
+  </data>
+  <data name="columnHeader33.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="columnHeader33.Width" type="System.Int32, mscorlib">
+    <value>106</value>
+  </data>
+  <data name="columnHeader34.Text" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="columnHeader34.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="columnHeader34.Width" type="System.Int32, mscorlib">
+    <value>118</value>
+  </data>
+  <data name="columnHeader35.Text" xml:space="preserve">
+    <value>Transaction Date</value>
+  </data>
+  <data name="columnHeader35.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="columnHeader35.Width" type="System.Int32, mscorlib">
+    <value>152</value>
+  </data>
+  <data name="columnHeader36.Text" xml:space="preserve">
+    <value>Transaction Mode</value>
+  </data>
+  <data name="columnHeader36.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="columnHeader36.Width" type="System.Int32, mscorlib">
+    <value>164</value>
+  </data>
+  <data name="columnHeader37.Text" xml:space="preserve">
+    <value>Transaction Type</value>
+  </data>
+  <data name="columnHeader37.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="columnHeader37.Width" type="System.Int32, mscorlib">
+    <value>135</value>
+  </data>
+  <data name="columnHeader38.Text" xml:space="preserve">
+    <value>Transaction Fees</value>
+  </data>
+  <data name="columnHeader38.Width" type="System.Int32, mscorlib">
+    <value>127</value>
+  </data>
+  <data name="columnHeader39.Text" xml:space="preserve">
+    <value>Maker</value>
+  </data>
+  <data name="columnHeader39.Width" type="System.Int32, mscorlib">
+    <value>93</value>
+  </data>
+  <data name="columnHeader40.Text" xml:space="preserve">
+    <value>Checker</value>
+  </data>
+  <data name="columnHeader40.Width" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="listView1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 38</value>
+  </data>
+  <data name="listView1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1245, 218</value>
+  </data>
+  <data name="listView1.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="&gt;&gt;listView1.Name" xml:space="preserve">
+    <value>listView1</value>
+  </data>
+  <data name="&gt;&gt;listView1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listView1.Parent" xml:space="preserve">
+    <value>tabPageTransactions</value>
+  </data>
+  <data name="&gt;&gt;listView1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label44.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="label44.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 15.75pt</value>
+  </data>
+  <data name="label44.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label44.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="label44.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1275, 35</value>
+  </data>
+  <data name="label44.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="label44.Text" xml:space="preserve">
+    <value>Current Account Transactions</value>
+  </data>
+  <data name="label44.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;label44.Name" xml:space="preserve">
+    <value>label44</value>
+  </data>
+  <data name="&gt;&gt;label44.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label44.Parent" xml:space="preserve">
+    <value>tabPageTransactions</value>
+  </data>
+  <data name="&gt;&gt;label44.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPageTransactions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 68</value>
+  </data>
+  <data name="tabPageTransactions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1275, 612</value>
+  </data>
+  <data name="tabPageTransactions.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="tabPageTransactions.Text" xml:space="preserve">
+    <value>Transactions</value>
+  </data>
+  <data name="&gt;&gt;tabPageTransactions.Name" xml:space="preserve">
+    <value>tabPageTransactions</value>
+  </data>
+  <data name="&gt;&gt;tabPageTransactions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageTransactions.Parent" xml:space="preserve">
+    <value>tabControlPerson</value>
+  </data>
+  <data name="&gt;&gt;tabPageTransactions.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="tabPageOverdraft.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 68</value>
+  </data>
+  <data name="tabPageOverdraft.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1275, 612</value>
+  </data>
+  <data name="tabPageOverdraft.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="tabPageOverdraft.Text" xml:space="preserve">
+    <value>Overdraft</value>
+  </data>
+  <data name="&gt;&gt;tabPageOverdraft.Name" xml:space="preserve">
+    <value>tabPageOverdraft</value>
+  </data>
+  <data name="&gt;&gt;tabPageOverdraft.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageOverdraft.Parent" xml:space="preserve">
+    <value>tabControlPerson</value>
+  </data>
+  <data name="&gt;&gt;tabPageOverdraft.ZOrder" xml:space="preserve">
+    <value>13</value>
   </data>
   <data name="tabControlPerson.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -17475,6 +17874,66 @@ Max:
   </data>
   <data name="&gt;&gt;menuItemCancelPendingSavingEvent.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader31.Name" xml:space="preserve">
+    <value>columnHeader31</value>
+  </data>
+  <data name="&gt;&gt;columnHeader31.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader32.Name" xml:space="preserve">
+    <value>columnHeader32</value>
+  </data>
+  <data name="&gt;&gt;columnHeader32.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader33.Name" xml:space="preserve">
+    <value>columnHeader33</value>
+  </data>
+  <data name="&gt;&gt;columnHeader33.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader34.Name" xml:space="preserve">
+    <value>columnHeader34</value>
+  </data>
+  <data name="&gt;&gt;columnHeader34.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader35.Name" xml:space="preserve">
+    <value>columnHeader35</value>
+  </data>
+  <data name="&gt;&gt;columnHeader35.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader36.Name" xml:space="preserve">
+    <value>columnHeader36</value>
+  </data>
+  <data name="&gt;&gt;columnHeader36.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader37.Name" xml:space="preserve">
+    <value>columnHeader37</value>
+  </data>
+  <data name="&gt;&gt;columnHeader37.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader38.Name" xml:space="preserve">
+    <value>columnHeader38</value>
+  </data>
+  <data name="&gt;&gt;columnHeader38.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader39.Name" xml:space="preserve">
+    <value>columnHeader39</value>
+  </data>
+  <data name="&gt;&gt;columnHeader39.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader40.Name" xml:space="preserve">
+    <value>columnHeader40</value>
+  </data>
+  <data name="&gt;&gt;columnHeader40.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ClientForm</value>

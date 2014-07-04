@@ -202,10 +202,10 @@
     <value>Microsoft Sans Serif, 9.75pt</value>
   </data>
   <data name="tbOverdraftLimit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>511, 51</value>
+    <value>454, 51</value>
   </data>
   <data name="tbOverdraftLimit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 22</value>
+    <value>123, 22</value>
   </data>
   <data name="tbOverdraftLimit.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -235,7 +235,7 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>348, 54</value>
+    <value>345, 54</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 16</value>
@@ -541,7 +541,7 @@
     <value>Arial, 9.75pt</value>
   </data>
   <data name="gtOverdraftFees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 332</value>
+    <value>11, 345</value>
   </data>
   <data name="gtOverdraftFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>640, 116</value>
@@ -563,6 +563,66 @@
   </data>
   <data name="&gt;&gt;gtOverdraftFees.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>245, 31</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 16</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Monthly</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>gbFrequency</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tbInterestCalculationFrequency.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="tbInterestCalculationFrequency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>116, 28</value>
+  </data>
+  <data name="tbInterestCalculationFrequency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 22</value>
+  </data>
+  <data name="tbInterestCalculationFrequency.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tbInterestCalculationFrequency.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tbInterestCalculationFrequency.Name" xml:space="preserve">
+    <value>tbInterestCalculationFrequency</value>
+  </data>
+  <data name="&gt;&gt;tbInterestCalculationFrequency.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbInterestCalculationFrequency.Parent" xml:space="preserve">
+    <value>gbFrequency</value>
+  </data>
+  <data name="&gt;&gt;tbInterestCalculationFrequency.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="lbAccrual.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -595,31 +655,7 @@
     <value>gbFrequency</value>
   </data>
   <data name="&gt;&gt;lbAccrual.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="cbInterestCalculationFrequency.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
-  </data>
-  <data name="cbInterestCalculationFrequency.Location" type="System.Drawing.Point, System.Drawing">
-    <value>116, 23</value>
-  </data>
-  <data name="cbInterestCalculationFrequency.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 24</value>
-  </data>
-  <data name="cbInterestCalculationFrequency.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cbInterestCalculationFrequency.Name" xml:space="preserve">
-    <value>cbInterestCalculationFrequency</value>
-  </data>
-  <data name="&gt;&gt;cbInterestCalculationFrequency.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbInterestCalculationFrequency.Parent" xml:space="preserve">
-    <value>gbFrequency</value>
-  </data>
-  <data name="&gt;&gt;cbInterestCalculationFrequency.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="gbFrequency.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -628,7 +664,7 @@
     <value>345, 222</value>
   </data>
   <data name="gbFrequency.Size" type="System.Drawing.Size, System.Drawing">
-    <value>302, 94</value>
+    <value>302, 117</value>
   </data>
   <data name="gbFrequency.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -647,6 +683,99 @@
   </data>
   <data name="&gt;&gt;gbFrequency.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 83</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 16</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>...% yearly</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>gbInterestRate</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tbInterestValue.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="tbInterestValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 83</value>
+  </data>
+  <data name="tbInterestValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 22</value>
+  </data>
+  <data name="tbInterestValue.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="tbInterestValue.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tbInterestValue.Name" xml:space="preserve">
+    <value>tbInterestValue</value>
+  </data>
+  <data name="&gt;&gt;tbInterestValue.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbInterestValue.Parent" xml:space="preserve">
+    <value>gbInterestRate</value>
+  </data>
+  <data name="&gt;&gt;tbInterestValue.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 86</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 16</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>or value:</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>gbInterestRate</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="lbYearlyInterestRateMax.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -679,7 +808,7 @@
     <value>gbInterestRate</value>
   </data>
   <data name="&gt;&gt;lbYearlyInterestRateMax.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="lbYearlyInterestRateMin.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -712,7 +841,7 @@
     <value>gbInterestRate</value>
   </data>
   <data name="&gt;&gt;lbYearlyInterestRateMin.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="tbInterestRateMax.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -739,7 +868,7 @@
     <value>gbInterestRate</value>
   </data>
   <data name="&gt;&gt;tbInterestRateMax.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="tbInterestRateMin.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -766,7 +895,7 @@
     <value>gbInterestRate</value>
   </data>
   <data name="&gt;&gt;tbInterestRateMin.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="lbInterestRateMax.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -799,7 +928,7 @@
     <value>gbInterestRate</value>
   </data>
   <data name="&gt;&gt;lbInterestRateMax.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="lbInterestRateMin.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -832,7 +961,7 @@
     <value>gbInterestRate</value>
   </data>
   <data name="&gt;&gt;lbInterestRateMin.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="gbInterestRate.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -841,7 +970,7 @@
     <value>11, 216</value>
   </data>
   <data name="gbInterestRate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>302, 100</value>
+    <value>302, 123</value>
   </data>
   <data name="gbInterestRate.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -1369,7 +1498,7 @@
     <value>Arial, 9.75pt</value>
   </data>
   <data name="tbBalanceMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>73, 51</value>
+    <value>116, 48</value>
   </data>
   <data name="tbBalanceMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 22</value>
@@ -1396,7 +1525,7 @@
     <value>Arial, 9.75pt</value>
   </data>
   <data name="tbBalanceMin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>73, 20</value>
+    <value>116, 19</value>
   </data>
   <data name="tbBalanceMin.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 22</value>
@@ -1489,7 +1618,7 @@
     <value>Arial, 9.75pt</value>
   </data>
   <data name="gbBalance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>345, 130</value>
+    <value>345, 123</value>
   </data>
   <data name="gbBalance.Size" type="System.Drawing.Size, System.Drawing">
     <value>302, 86</value>
@@ -1872,6 +2001,39 @@
   <data name="&gt;&gt;gbReopenFees.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>414, 24</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 16</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Management Fee Frequency:</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>gtManagementFees</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="cbManagementFeeFreq.AutoCompleteCustomSource" xml:space="preserve">
     <value>Monthly</value>
   </data>
@@ -1921,7 +2083,7 @@
     <value>gtManagementFees</value>
   </data>
   <data name="&gt;&gt;cbManagementFeeFreq.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="rbRateManagementFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1954,7 +2116,7 @@
     <value>gtManagementFees</value>
   </data>
   <data name="&gt;&gt;rbRateManagementFees.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="rbFlatManagementFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1987,7 +2149,7 @@
     <value>gtManagementFees</value>
   </data>
   <data name="&gt;&gt;rbFlatManagementFees.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="lbManagementFeesType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2020,7 +2182,7 @@
     <value>gtManagementFees</value>
   </data>
   <data name="&gt;&gt;lbManagementFeesType.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="tbManagementFees.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt</value>
@@ -2047,7 +2209,7 @@
     <value>gtManagementFees</value>
   </data>
   <data name="&gt;&gt;tbManagementFees.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="lbManagementFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2080,7 +2242,7 @@
     <value>gtManagementFees</value>
   </data>
   <data name="&gt;&gt;lbManagementFees.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="tbManagementFeesMax.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt</value>
@@ -2107,7 +2269,7 @@
     <value>gtManagementFees</value>
   </data>
   <data name="&gt;&gt;tbManagementFeesMax.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="tbManagementFeesMin.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt</value>
@@ -2134,7 +2296,7 @@
     <value>gtManagementFees</value>
   </data>
   <data name="&gt;&gt;tbManagementFeesMin.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="lbManagementFeesMax.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2167,7 +2329,7 @@
     <value>gtManagementFees</value>
   </data>
   <data name="&gt;&gt;lbManagementFeesMax.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="lbManagementFeesMin.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2200,7 +2362,7 @@
     <value>gtManagementFees</value>
   </data>
   <data name="&gt;&gt;lbManagementFeesMin.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="gtManagementFees.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -2868,92 +3030,245 @@
   <data name="&gt;&gt;tabPageManagement.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="button1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="btnUpdateTran.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="btnUpdateTran.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.25pt</value>
   </data>
-  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="btnUpdateTran.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>149, 161</value>
+  <data name="btnUpdateTran.Location" type="System.Drawing.Point, System.Drawing">
+    <value>366, 176</value>
   </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnUpdateTran.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 25</value>
   </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
+  <data name="btnUpdateTran.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
   </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>Save</value>
+  <data name="btnUpdateTran.Text" xml:space="preserve">
+    <value>Update</value>
   </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
+  <data name="&gt;&gt;btnUpdateTran.Name" xml:space="preserve">
+    <value>btnUpdateTran</value>
   </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnUpdateTran.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnUpdateTran.Parent" xml:space="preserve">
     <value>tabPageTransactions</value>
   </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnUpdateTran.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="textBox1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="btnSaveTranFee.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnSaveTranFee.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.25pt</value>
+  </data>
+  <data name="btnSaveTranFee.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnSaveTranFee.Location" type="System.Drawing.Point, System.Drawing">
+    <value>149, 176</value>
+  </data>
+  <data name="btnSaveTranFee.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 25</value>
+  </data>
+  <data name="btnSaveTranFee.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="btnSaveTranFee.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="&gt;&gt;btnSaveTranFee.Name" xml:space="preserve">
+    <value>btnSaveTranFee</value>
+  </data>
+  <data name="&gt;&gt;btnSaveTranFee.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSaveTranFee.Parent" xml:space="preserve">
+    <value>tabPageTransactions</value>
+  </data>
+  <data name="&gt;&gt;btnSaveTranFee.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="rbCredit.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rbCredit.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
   </data>
-  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>453, 67</value>
+  <data name="rbCredit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="rbCredit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 4</value>
+  </data>
+  <data name="rbCredit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="rbCredit.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="rbCredit.Text" xml:space="preserve">
+    <value>Credit</value>
+  </data>
+  <data name="&gt;&gt;rbCredit.Name" xml:space="preserve">
+    <value>rbCredit</value>
+  </data>
+  <data name="&gt;&gt;rbCredit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rbCredit.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;rbCredit.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="rbDebit.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rbDebit.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="rbDebit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rbDebit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 27</value>
+  </data>
+  <data name="rbDebit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 20</value>
+  </data>
+  <data name="rbDebit.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="rbDebit.Text" xml:space="preserve">
+    <value>Debit</value>
+  </data>
+  <data name="&gt;&gt;rbDebit.Name" xml:space="preserve">
+    <value>rbDebit</value>
+  </data>
+  <data name="&gt;&gt;rbDebit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rbDebit.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;rbDebit.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>499, 99</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 50</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>360, 103</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 16</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Transaction Mode:</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tbTranFeeMax.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="tbTranFeeMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>511, 69</value>
+  </data>
+  <data name="tbTranFeeMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 22</value>
   </data>
-  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="tbTranFeeMax.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
   </data>
-  <data name="textBox1.Text" xml:space="preserve">
+  <data name="tbTranFeeMax.Text" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
-    <value>textBox1</value>
+  <data name="&gt;&gt;tbTranFeeMax.Name" xml:space="preserve">
+    <value>tbTranFeeMax</value>
   </data>
-  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;tbTranFeeMax.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tbTranFeeMax.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
-  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;tbTranFeeMax.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="textBox3.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="tbTranFeeMin.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
   </data>
-  <data name="textBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>453, 29</value>
+  <data name="tbTranFeeMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>511, 29</value>
   </data>
-  <data name="textBox3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tbTranFeeMin.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 22</value>
   </data>
-  <data name="textBox3.TabIndex" type="System.Int32, mscorlib">
+  <data name="tbTranFeeMin.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
   </data>
-  <data name="textBox3.Text" xml:space="preserve">
+  <data name="tbTranFeeMin.Text" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;textBox3.Name" xml:space="preserve">
-    <value>textBox3</value>
+  <data name="&gt;&gt;tbTranFeeMin.Name" xml:space="preserve">
+    <value>tbTranFeeMin</value>
   </data>
-  <data name="&gt;&gt;textBox3.Type" xml:space="preserve">
+  <data name="&gt;&gt;tbTranFeeMin.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBox3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tbTranFeeMin.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
-  <data name="&gt;&gt;textBox3.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;tbTranFeeMin.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2986,7 +3301,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3019,73 +3334,73 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
-  <data name="radioButton1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="rbTranFeeRate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="radioButton1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="rbTranFeeRate.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
   </data>
-  <data name="radioButton1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="rbTranFeeRate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="radioButton1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="rbTranFeeRate.Location" type="System.Drawing.Point, System.Drawing">
     <value>225, 65</value>
   </data>
-  <data name="radioButton1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="rbTranFeeRate.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 20</value>
   </data>
-  <data name="radioButton1.TabIndex" type="System.Int32, mscorlib">
+  <data name="rbTranFeeRate.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
   </data>
-  <data name="radioButton1.Text" xml:space="preserve">
+  <data name="rbTranFeeRate.Text" xml:space="preserve">
     <value>Rate</value>
   </data>
-  <data name="&gt;&gt;radioButton1.Name" xml:space="preserve">
-    <value>radioButton1</value>
+  <data name="&gt;&gt;rbTranFeeRate.Name" xml:space="preserve">
+    <value>rbTranFeeRate</value>
   </data>
-  <data name="&gt;&gt;radioButton1.Type" xml:space="preserve">
+  <data name="&gt;&gt;rbTranFeeRate.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;radioButton1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;rbTranFeeRate.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
-  <data name="&gt;&gt;radioButton1.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;rbTranFeeRate.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
-  <data name="radioButton2.AutoSize" type="System.Boolean, mscorlib">
+  <data name="rbTranFeeFlat.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="radioButton2.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="rbTranFeeFlat.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
   </data>
-  <data name="radioButton2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="rbTranFeeFlat.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="radioButton2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="rbTranFeeFlat.Location" type="System.Drawing.Point, System.Drawing">
     <value>150, 67</value>
   </data>
-  <data name="radioButton2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="rbTranFeeFlat.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 20</value>
   </data>
-  <data name="radioButton2.TabIndex" type="System.Int32, mscorlib">
+  <data name="rbTranFeeFlat.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
   </data>
-  <data name="radioButton2.Text" xml:space="preserve">
+  <data name="rbTranFeeFlat.Text" xml:space="preserve">
     <value>Flat</value>
   </data>
-  <data name="&gt;&gt;radioButton2.Name" xml:space="preserve">
-    <value>radioButton2</value>
+  <data name="&gt;&gt;rbTranFeeFlat.Name" xml:space="preserve">
+    <value>rbTranFeeFlat</value>
   </data>
-  <data name="&gt;&gt;radioButton2.Type" xml:space="preserve">
+  <data name="&gt;&gt;rbTranFeeFlat.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;radioButton2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;rbTranFeeFlat.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
-  <data name="&gt;&gt;radioButton2.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;rbTranFeeFlat.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3118,34 +3433,34 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
-  <data name="textBox2.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="tbTranFeeValue.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt</value>
   </data>
-  <data name="textBox2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tbTranFeeValue.Location" type="System.Drawing.Point, System.Drawing">
     <value>150, 97</value>
   </data>
-  <data name="textBox2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tbTranFeeValue.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 22</value>
   </data>
-  <data name="textBox2.TabIndex" type="System.Int32, mscorlib">
+  <data name="tbTranFeeValue.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
   </data>
-  <data name="textBox2.Text" xml:space="preserve">
+  <data name="tbTranFeeValue.Text" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;textBox2.Name" xml:space="preserve">
-    <value>textBox2</value>
+  <data name="&gt;&gt;tbTranFeeValue.Name" xml:space="preserve">
+    <value>tbTranFeeValue</value>
   </data>
-  <data name="&gt;&gt;textBox2.Type" xml:space="preserve">
+  <data name="&gt;&gt;tbTranFeeValue.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBox2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tbTranFeeValue.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
-  <data name="&gt;&gt;textBox2.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="&gt;&gt;tbTranFeeValue.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3178,31 +3493,40 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
-  <data name="comboBox1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="cbTransactionType.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
   </data>
-  <data name="comboBox1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="cbTransactionType.Items" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="cbTransactionType.Items1" xml:space="preserve">
+    <value>Cheque</value>
+  </data>
+  <data name="cbTransactionType.Items2" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
+  <data name="cbTransactionType.Location" type="System.Drawing.Point, System.Drawing">
     <value>150, 29</value>
   </data>
-  <data name="comboBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="cbTransactionType.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 24</value>
   </data>
-  <data name="comboBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="cbTransactionType.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;comboBox1.Name" xml:space="preserve">
-    <value>comboBox1</value>
+  <data name="&gt;&gt;cbTransactionType.Name" xml:space="preserve">
+    <value>cbTransactionType</value>
   </data>
-  <data name="&gt;&gt;comboBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;cbTransactionType.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;comboBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;cbTransactionType.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
-  <data name="&gt;&gt;comboBox1.ZOrder" xml:space="preserve">
-    <value>9</value>
+  <data name="&gt;&gt;cbTransactionType.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3235,13 +3559,13 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 6</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>655, 140</value>
+    <value>655, 155</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3259,7 +3583,7 @@
     <value>tabPageTransactions</value>
   </data>
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="tabPageTransactions.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 36</value>
@@ -3432,14 +3756,11 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>674, 600</value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Savings book product</value>
+    <value>Current Account product</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FrmAddCurrentAccountProduct</value>

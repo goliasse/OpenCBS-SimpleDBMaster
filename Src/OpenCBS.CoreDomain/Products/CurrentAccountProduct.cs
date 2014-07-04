@@ -38,5 +38,12 @@ public decimal ClosingFeesValue { get; set; }
 public decimal ManagementFeesValue { get; set; }
 public decimal OverdraftValue { get; set; }
 public string ManagementFeesFrequency { get; set; }
+
+public double InterestMin { get; set; }
+public double InterestMax { get; set; }
+public string InterestType { get; set; }
+public double InterestValue { get; set; }
+public int InterestFrequency { get; set; }
+public decimal OverdraftLimit { get; set; }
     }
 }

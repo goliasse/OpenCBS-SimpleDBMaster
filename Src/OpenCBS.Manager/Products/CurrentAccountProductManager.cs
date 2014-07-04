@@ -58,7 +58,13 @@ namespace OpenCBS.Manager.Products
 [closing_fees_value], 
 [management_fees_value], 
 [overdraft_value], 
-[management_fees_frequency]  )
+[management_fees_frequency],
+[interest_min],
+[interest_max],
+[interest_type],
+[interest_value],
+[interest_frequency],
+[overdraft_limit])
                 VALUES
                 (@delete,
 @currentAccountProductName,
@@ -89,7 +95,13 @@ namespace OpenCBS.Manager.Products
 @closingFeesValue,
 @managementFeesValue,
 @overdraftValue,
-@managementFeesFrequency)
+@managementFeesFrequency,
+@interestMin,
+@interestMax,
+@interestType,
+@interestValue,
+@interestFrequency,
+@overdraftLimt)
                 SELECT SCOPE_IDENTITY()";
 
 
@@ -136,6 +148,12 @@ namespace OpenCBS.Manager.Products
             c.AddParam("@managementFeesValue", product.ManagementFeesValue);
             c.AddParam("@overdraftValue", product.OverdraftValue);
             c.AddParam("@managementFeesFrequency", product.ManagementFeesFrequency);
+            c.AddParam("@interestMin ", product.InterestMin);
+            c.AddParam("@interestMax ", product.InterestMax);
+            c.AddParam("@interestType", product.InterestType);
+            c.AddParam("@interestValue ", product.InterestValue);
+            c.AddParam("@interestFrequency ", product.InterestFrequency);
+            c.AddParam("@overdraftLimt ", product.OverdraftLimit);
         }
 
         public void UpdateCurrentAccountProduct(ICurrentAccountProduct product, int productId)
@@ -169,7 +187,13 @@ namespace OpenCBS.Manager.Products
 [closing_fees_value] = @closingFeesValue, 
 [management_fees_value] = @managementFeesValue, 
 [overdraft_value] = @overdraftValue, 
-[management_fees_frequency] = @managementFeesFrequency
+[management_fees_frequency] = @managementFeesFrequency,
+[interest_min] = @interestMin,
+[interest_max] = @interestMax,
+[interest_type] = @interestType,
+[interest_value] = @interestValue,
+[interest_frequency] = @interestFrequency,
+[overdraft_limit] = @overdraftLimt
 WHERE id = @productId";
 
 
@@ -216,7 +240,14 @@ WHERE id = @productId";
 [closing_fees_value], 
 [management_fees_value], 
 [overdraft_value], 
-[management_fees_frequency] FROM CurrentAccountProduct WHERE id = @id";
+[management_fees_frequency],
+[interest_min],
+[interest_max],
+[interest_type],
+[interest_value],
+[interest_frequency],
+[overdraft_limit] 
+FROM CurrentAccountProduct WHERE id = @id";
 
 
             using (SqlConnection conn = GetConnection())
@@ -269,7 +300,14 @@ WHERE id = @productId";
 [closing_fees_value], 
 [management_fees_value], 
 [overdraft_value], 
-[management_fees_frequency] FROM CurrentAccountProduct 
+[management_fees_frequency],
+[interest_min],
+[interest_max],
+[interest_type],
+[interest_value],
+[interest_frequency],
+[overdraft_limit] 
+FROM CurrentAccountProduct 
 WHERE current_account_product_name = @productName and current_account_product_code = @productCode";
 
 
@@ -326,7 +364,14 @@ WHERE current_account_product_name = @productName and current_account_product_co
 [closing_fees_value], 
 [management_fees_value], 
 [overdraft_value], 
-[management_fees_frequency] FROM CurrentAccountProduct";
+[management_fees_frequency],
+[interest_min],
+[interest_max],
+[interest_type],
+[interest_value],
+[interest_frequency],
+[overdraft_limit] 
+FROM CurrentAccountProduct";
 
             if (!showAlsoDeleted)
                 q += " WHERE deleted = 0";
@@ -418,6 +463,13 @@ currentAccountProduct.ManagementFeesValue = r.GetDecimal("management_fees_value"
 currentAccountProduct.OverdraftValue = r.GetDecimal("overdraft_value");
 currentAccountProduct.ManagementFeesFrequency = r.GetString("management_fees_frequency");
 
+currentAccountProduct.InterestMin = r.GetDouble("interest_min");
+currentAccountProduct.InterestMax = r.GetDouble("interest_max");
+currentAccountProduct.InterestType = r.GetString("interest_type");
+currentAccountProduct.InterestValue = r.GetDouble("interest_value");
+currentAccountProduct.InterestFrequency = r.GetInt("interest_frequency");
+currentAccountProduct.OverdraftLimit = r.GetDecimal("overdraft_limit");
+
 return currentAccountProduct;
 }
 
@@ -476,8 +528,8 @@ c.AddParam("@currentAccountProductId",currentAccountTransactionFees.CurrentAccou
 c.AddParam("@transactionType",currentAccountTransactionFees. TransactionType);
 c.AddParam("@transactionFeesType",currentAccountTransactionFees. TransactionFeesType);
 c.AddParam("@transactionFees",currentAccountTransactionFees. TransactionFees);
-c.AddParam("@transactionFeeMin",currentAccountTransactionFees. TransactionFeeMin);
-c.AddParam("@transactionFeeMax",currentAccountTransactionFees. TransactionFeeMax);
+c.AddParam("@transactionFeesMin",currentAccountTransactionFees. TransactionFeeMin);
+c.AddParam("@transactionFeesMax",currentAccountTransactionFees. TransactionFeeMax);
 c.AddParam("@transactionMode",currentAccountTransactionFees. TransactionMode);
 }
 
@@ -509,7 +561,7 @@ public List<CurrentAccountTransactionFees> FetchTransactionFee(int productId)
 		[transaction_fees],
 		[transaction_fees_min],
 		[transaction_fees_max],
-		[transaction_mode] FROM [dbo].[ CurrentAccountTransactionFees]
+		[transaction_mode] FROM [dbo].[CurrentAccountTransactionFees]
             WHERE current_account_product_id = @productId";
 
 
@@ -551,7 +603,7 @@ public CurrentAccountTransactionFees FetchTransaction(int transactionId)
 		[transaction_fees],
 		[transaction_fees_min],
 		[transaction_fees_max],
-		[transaction_mode] FROM [dbo].[ CurrentAccountTransactionFees]
+		[transaction_mode] FROM [dbo].[CurrentAccountTransactionFees]
             WHERE id = @transactionId";
 
 
@@ -572,9 +624,68 @@ public CurrentAccountTransactionFees FetchTransaction(int transactionId)
         }
     }
 
-  
+}
 
 
+public CurrentAccountTransactionFees FetchTransaction(string transactionType, string transactionMode, int productId)
+{
+
+
+    string q = @"SELECT
+		[id],
+	        [current_account_product_id],
+		[transaction_type],
+		[transaction_fees_type],
+		[transaction_fees],
+		[transaction_fees_min],
+		[transaction_fees_max],
+		[transaction_mode] FROM [dbo].[CurrentAccountTransactionFees]
+            WHERE transaction_type = @transactionType AND transaction_mode  = @transactionMode AND current_account_product_id = @productId";
+
+
+
+
+
+    using (SqlConnection conn = GetConnection())
+    using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+    {
+        c.AddParam("@transactionMode", transactionMode);
+        c.AddParam("@transactionType", transactionType);
+        c.AddParam("@productId", productId);
+
+        using (OpenCbsReader r = c.ExecuteReader())
+        {
+            if (r == null || r.Empty) return null;
+
+            r.Read();
+            return (CurrentAccountTransactionFees)GetTransactionFee(r);
+        }
+    }
+
+}
+
+
+public void UpdateCurrentAccountTransactionFees(CurrentAccountTransactionFees transactionFees, string transactionType, string transactionMode, int productId)
+{
+    string q = @"UPDATE [CurrentAccountTransactionFees] SET 
+            
+[transaction_fees_type] = @transactionFeesType,
+[transaction_fees] = @transactionFees,
+[transaction_fees_min] = @transactionFeesMin,
+[transaction_fees_max] = @transactionFeesMax
+
+WHERE transaction_type = @transactionType AND transaction_mode  = @transactionMode AND current_account_product_id = @productId";
+
+
+    using (SqlConnection conn = GetConnection())
+    using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+    {
+        
+        c.AddParam("@productId", productId);
+
+        SetTransactionFee(c, transactionFees);
+        c.ExecuteNonQuery();
+    }
 }
 
 

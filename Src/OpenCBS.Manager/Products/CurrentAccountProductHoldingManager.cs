@@ -49,7 +49,11 @@ namespace OpenCBS.Manager.Products
 [management_fees_type],
 [overdraft_fees_type],
 [management_fees_frequency],
-[initial_amount_payment_method])
+[initial_amount_payment_method],
+[overdraft_limit],
+[interest_rate],
+[interest_calculation_frequency]
+)
                 VALUES
                 (@clientId,
 @clientType,
@@ -73,7 +77,11 @@ namespace OpenCBS.Manager.Products
 @managementFeesType,
 @overdraftFeesType,
 @managementFeesFrequency,
-@initialAmountPaymentMethod)
+@initialAmountPaymentMethod,
+@overdraftLimit,
+@interestRate,
+@interestCalculationFrequency
+)
                 SELECT SCOPE_IDENTITY()";
 
 
@@ -115,6 +123,10 @@ namespace OpenCBS.Manager.Products
              c.AddParam("@initialAmountPaymentMethod", product.InitialAmountPaymentMethod);
              c.AddParam("@finalAmountPaymentMethod", product.FinalAmountPaymentMethod);
              c.AddParam("@finalAmountAccountNumber", product.FinalAmountAccountNumber);
+             c.AddParam("@overdraftLimit", product.OverdraftLimit);
+             c.AddParam("@interestRate", product.InterestRate);
+             c.AddParam("@interestCalculationFrequency", product.InterestCalculationFrequency);
+
          }
 
          public void UpdateCurrentAccountProductHolding(CurrentAccountProductHoldings product, int productId)
@@ -144,7 +156,10 @@ namespace OpenCBS.Manager.Products
 [management_fees_frequency] = @managementFeesFrequency,
 [initial_amount_payment_method] = @initialAmountPaymentMethod,
 [final_amount_payment_method] = @finalAmountPaymentMethod,
-[final_amount_account_number] = @finalAmountAccountNumber
+[final_amount_account_number] = @finalAmountAccountNumber,
+[overdraft_limit] = @overdraftLimit,
+[interest_rate] = @interestRate,
+[interest_calculation_frequency] = @interestCalculationFrequency
 WHERE id = @productId";
 
 
@@ -185,7 +200,10 @@ WHERE id = @productId";
 [management_fees_frequency] = @managementFeesFrequency,
 [initial_amount_payment_method] = @initialAmountPaymentMethod,
 [final_amount_payment_method] = @finalAmountPaymentMethod,
-[final_amount_account_number] = @finalAmountAccountNumber
+[final_amount_account_number] = @finalAmountAccountNumber,
+[overdraft_limit] = @overdraftLimit,
+[interest_rate] = @interestRate,
+[interest_calculation_frequency] = @interestCalculationFrequency
 WHERE current_account_contract_code = @contractCode";
 
 
@@ -228,6 +246,9 @@ WHERE current_account_contract_code = @contractCode";
 [dbo].[CurrentAccountProductHoldings].[overdraft_fees_type],
 [dbo].[CurrentAccountProductHoldings].[management_fees_frequency],
 [dbo].[CurrentAccountProductHoldings].[initial_amount_payment_method],
+[dbo].[CurrentAccountProductHoldings].[overdraft_limit],
+[dbo].[CurrentAccountProductHoldings].[interest_rate],
+[dbo].[CurrentAccountProductHoldings].[interest_calculation_frequency],
 [dbo].[CurrentAccountProduct].[current_account_product_name],
 [dbo].[CurrentAccountProduct].[current_account_product_code],
 [dbo].[Persons].[first_name]
@@ -292,6 +313,9 @@ JOIN [dbo].Persons ON [dbo].CurrentAccountProductHoldings.client_id = [dbo].Pers
 [dbo].[CurrentAccountProductHoldings].[overdraft_fees_type],
 [dbo].[CurrentAccountProductHoldings].[management_fees_frequency],
 [dbo].[CurrentAccountProductHoldings].[initial_amount_payment_method],
+[dbo].[CurrentAccountProductHoldings].[overdraft_limit],
+[dbo].[CurrentAccountProductHoldings].[interest_rate],
+[dbo].[CurrentAccountProductHoldings].[interest_calculation_frequency],
 [dbo].[CurrentAccountProduct].[current_account_product_name],
 [dbo].[CurrentAccountProduct].[current_account_product_code],
 [dbo].[Persons].[first_name]
@@ -355,6 +379,9 @@ WHERE [dbo].[CurrentAccountProductHoldings].[client_id] = @ClientId AND [dbo].[C
 [dbo].[CurrentAccountProductHoldings].[overdraft_fees_type],
 [dbo].[CurrentAccountProductHoldings].[management_fees_frequency],
 [dbo].[CurrentAccountProductHoldings].[initial_amount_payment_method],
+[dbo].[CurrentAccountProductHoldings].[overdraft_limit],
+[dbo].[CurrentAccountProductHoldings].[interest_rate],
+[dbo].[CurrentAccountProductHoldings].[interest_calculation_frequency],
 [dbo].[CurrentAccountProduct].[current_account_product_name],
 [dbo].[CurrentAccountProduct].[current_account_product_code],
 [dbo].[Persons].[first_name]
@@ -406,6 +433,9 @@ WHERE [dbo].[CurrentAccountProductHoldings].id = @id";
 [dbo].[CurrentAccountProductHoldings].[overdraft_fees_type],
 [dbo].[CurrentAccountProductHoldings].[management_fees_frequency],
 [dbo].[CurrentAccountProductHoldings].[initial_amount_payment_method],
+[dbo].[CurrentAccountProductHoldings].[overdraft_limit],
+[dbo].[CurrentAccountProductHoldings].[interest_rate],
+[dbo].[CurrentAccountProductHoldings].[interest_calculation_frequency],
 [dbo].[CurrentAccountProduct].[current_account_product_name],
 [dbo].[CurrentAccountProduct].[current_account_product_code],
 [dbo].[Persons].[first_name]
@@ -480,6 +510,10 @@ currentAccountProductHolding.ManagementFeesFrequency =r.GetString("management_fe
 
 currentAccountProductHolding.InitialAmountPaymentMethod =r.GetString("initial_amount_payment_method");
 currentAccountProductHolding.FirstName = r.GetString("first_name");
+currentAccountProductHolding.OverdraftLimit = r.GetDecimal("overdraft_limit");
+currentAccountProductHolding.InterestRate = r.GetDouble("interest_rate");
+currentAccountProductHolding.InterestCalculationFrequency = r.GetInt("interest_calculation_frequency");
+
 
 return currentAccountProductHolding;
          }

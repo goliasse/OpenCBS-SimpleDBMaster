@@ -39,5 +39,12 @@ namespace OpenCBS.CoreDomain.Products
         decimal ManagementFeesValue { get; set; }
         decimal OverdraftValue { get; set; }
         string ManagementFeesFrequency { get; set; }
+
+        double InterestMin { get; set; }
+        double InterestMax { get; set; }
+        string InterestType { get; set; }
+        double InterestValue { get; set; }
+        int InterestFrequency { get; set; }
+        decimal OverdraftLimit { get; set; }
     }
 }
