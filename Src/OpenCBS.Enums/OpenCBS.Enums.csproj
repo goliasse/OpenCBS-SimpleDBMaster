@@ -52,6 +52,7 @@
       <Link>Properties\SolutionInfo.cs</Link>
     </Compile>
     <Compile Include="EnumExtensions.cs" />
+    <Compile Include="OCurrentAccount.cs" />
     <Compile Include="ODocumentObjectType.cs" />
     <Compile Include="OGender.cs" />
     <Compile Include="OMovementType.cs" />

@@ -35,16 +35,17 @@ namespace OpenCBS.CoreDomain.Products
         string Code { get; set; }
         string ClientType { get; set; }
         string Currency { get; set; }
-        decimal InitialAmountMin { get; set; }
-        decimal InitialAmountMax { get; set; }
+        decimal? InitialAmountMin { get; set; }
+        decimal? InitialAmountMax { get; set; }
         string InterestCalculationFrequency { get; set; }
         string PenalityType { get; set; }
 
-        double InterestRateMin { get; set; }
-        double InterestRateMax { get; set; }
-        double PenalityRateMin { get; set; }
-        double PenalityRateMax { get; set; }
-        int MaturityPeriodMin { get; set; }
-        int MaturityPeriodMax { get; set; }
+        double? InterestRateMin { get; set; }
+        double? InterestRateMax { get; set; }
+        double? PenalityRateMin { get; set; }
+        double? PenalityRateMax { get; set; }
+        int? MaturityPeriodMin { get; set; }
+        int? MaturityPeriodMax { get; set; }
+        double? PenalityValue { get; set; }
     }
 }

@@ -35,6 +35,7 @@ using OpenCBS.MultiLanguageRessources;
 using OpenCBS.Services;
 using OpenCBS.Shared;
 using OpenCBS.GUI.Tools;
+using System.Globalization;
 
 namespace OpenCBS.GUI.Products
 {
@@ -407,23 +408,29 @@ namespace OpenCBS.GUI.Products
         private void btSavingProduct_Click(object sender, EventArgs e)
         {
 
+            try
+            {
+                _currentAccountProduct = new CurrentAccountProduct();
 
-            _currentAccountProduct = new CurrentAccountProduct();
-           
-            InitializeCurrentAccountProduct();
+                InitializeCurrentAccountProduct();
 
-            CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
-            int ret =_currentAccountProductService.SaveCurrentAccountProduct(_currentAccountProduct);
+                CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
+                int ret = _currentAccountProductService.SaveCurrentAccountProduct(_currentAccountProduct);
 
-            if (ret >= 1)
-                MessageBox.Show("Current Account Product Successfully Added.");
+                if (ret >= 1)
+                    MessageBox.Show("Current Account Product Successfully Added.");
 
-            tabControlSaving.TabPages.Remove(tabPageTransactions);
-            tabControlSaving.TabPages.Add(tabPageTransactions);
-            tabControlSaving.SelectedTab = tabPageTransactions;
+                tabControlSaving.TabPages.Remove(tabPageTransactions);
+                tabControlSaving.TabPages.Add(tabPageTransactions);
+                tabControlSaving.SelectedTab = tabPageTransactions;
 
-            _currentAccountTransactionFees = new CurrentAccountTransactionFees();
-            _currentAccountTransactionFees.CurrentAccountProductId = ret;
+                _currentAccountTransactionFees = new CurrentAccountTransactionFees();
+                _currentAccountTransactionFees.CurrentAccountProductId = ret;
+            }
+            catch (Exception ex)
+            {
+                new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
+            }
 
 
         }
@@ -555,6 +562,101 @@ namespace OpenCBS.GUI.Products
                 MessageBox.Show("Transaction Fee Successfully Updated.");
 
 
+        }
+
+        private void tbInitialAmountMin_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        void KeyPressControl(KeyPressEventArgs e)
+        {
+            int keyCode = e.KeyChar;
+
+            if (
+                (keyCode >= 48 && keyCode <= 57) ||
+                (keyCode == 8) ||
+                (Char.IsControl(e.KeyChar) && e.KeyChar != ((char)Keys.V | (char)Keys.ControlKey))
+                ||
+                (Char.IsControl(e.KeyChar) && e.KeyChar != ((char)Keys.C | (char)Keys.ControlKey))
+                ||
+                (e.KeyChar.ToString() == NumberFormatInfo.CurrentInfo.NumberDecimalSeparator))
+            {
+                e.Handled = false;
+            }
+            else
+                e.Handled = true;
+        }
+
+        private void tbInitialAmountMin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
+        }
+
+        private void tbInitialAmountMax_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
+        }
+
+        private void tbBalanceMin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
+        }
+
+        private void tbBalanceMax_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
+        }
+
+        private void tbInterestRateMin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
+        }
+
+        private void tbInterestRateMax_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
+        }
+
+        private void tbInterestValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
+        }
+
+        private void tbInterestCalculationFrequency_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
+        }
+
+        private void tbOverdraftFeesMin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
+        }
+
+        private void tbOverdraftFeesMax_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
+        }
+
+        private void tbOverdraftFees_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
+        }
+
+        private void tbOverdraftLimit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
+        }
+
+        private void tbEntryFeesMin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
+        }
+
+        private void tbTranFeeValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
         }
 
        

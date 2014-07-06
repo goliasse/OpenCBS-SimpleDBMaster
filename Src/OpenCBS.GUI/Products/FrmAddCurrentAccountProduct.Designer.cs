@@ -50,6 +50,7 @@ namespace OpenCBS.GUI.Products
             this.lbOverdraftFeesMax = new System.Windows.Forms.Label();
             this.lbOverdraftFeesMin = new System.Windows.Forms.Label();
             this.gbFrequency = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.tbInterestCalculationFrequency = new System.Windows.Forms.TextBox();
             this.lbAccrual = new System.Windows.Forms.Label();
             this.gbInterestRate = new System.Windows.Forms.GroupBox();
@@ -96,6 +97,7 @@ namespace OpenCBS.GUI.Products
             this.lbReopenFeesMax = new System.Windows.Forms.Label();
             this.lbReopenFeesMin = new System.Windows.Forms.Label();
             this.gtManagementFees = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.cbManagementFeeFreq = new System.Windows.Forms.ComboBox();
             this.rbRateManagementFees = new System.Windows.Forms.RadioButton();
             this.rbFlatManagementFees = new System.Windows.Forms.RadioButton();
@@ -147,8 +149,6 @@ namespace OpenCBS.GUI.Products
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -255,6 +255,7 @@ namespace OpenCBS.GUI.Products
             // 
             resources.ApplyResources(this.tbOverdraftLimit, "tbOverdraftLimit");
             this.tbOverdraftLimit.Name = "tbOverdraftLimit";
+            this.tbOverdraftLimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbOverdraftLimit_KeyPress);
             // 
             // label1
             // 
@@ -282,6 +283,7 @@ namespace OpenCBS.GUI.Products
             // 
             resources.ApplyResources(this.tbOverdraftFees, "tbOverdraftFees");
             this.tbOverdraftFees.Name = "tbOverdraftFees";
+            this.tbOverdraftFees.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbOverdraftFees_KeyPress);
             // 
             // lbOverdraftFeesValue
             // 
@@ -292,11 +294,13 @@ namespace OpenCBS.GUI.Products
             // 
             resources.ApplyResources(this.tbOverdraftFeesMax, "tbOverdraftFeesMax");
             this.tbOverdraftFeesMax.Name = "tbOverdraftFeesMax";
+            this.tbOverdraftFeesMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbOverdraftFeesMax_KeyPress);
             // 
             // tbOverdraftFeesMin
             // 
             resources.ApplyResources(this.tbOverdraftFeesMin, "tbOverdraftFeesMin");
             this.tbOverdraftFeesMin.Name = "tbOverdraftFeesMin";
+            this.tbOverdraftFeesMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbOverdraftFeesMin_KeyPress);
             // 
             // lbOverdraftFeesMax
             // 
@@ -317,10 +321,16 @@ namespace OpenCBS.GUI.Products
             this.gbFrequency.Name = "gbFrequency";
             this.gbFrequency.TabStop = false;
             // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
             // tbInterestCalculationFrequency
             // 
             resources.ApplyResources(this.tbInterestCalculationFrequency, "tbInterestCalculationFrequency");
             this.tbInterestCalculationFrequency.Name = "tbInterestCalculationFrequency";
+            this.tbInterestCalculationFrequency.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInterestCalculationFrequency_KeyPress);
             // 
             // lbAccrual
             // 
@@ -351,6 +361,7 @@ namespace OpenCBS.GUI.Products
             // 
             resources.ApplyResources(this.tbInterestValue, "tbInterestValue");
             this.tbInterestValue.Name = "tbInterestValue";
+            this.tbInterestValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInterestValue_KeyPress);
             // 
             // label8
             // 
@@ -371,11 +382,13 @@ namespace OpenCBS.GUI.Products
             // 
             resources.ApplyResources(this.tbInterestRateMax, "tbInterestRateMax");
             this.tbInterestRateMax.Name = "tbInterestRateMax";
+            this.tbInterestRateMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInterestRateMax_KeyPress);
             // 
             // tbInterestRateMin
             // 
             resources.ApplyResources(this.tbInterestRateMin, "tbInterestRateMin");
             this.tbInterestRateMin.Name = "tbInterestRateMin";
+            this.tbInterestRateMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInterestRateMin_KeyPress);
             // 
             // lbInterestRateMax
             // 
@@ -473,11 +486,14 @@ namespace OpenCBS.GUI.Products
             // 
             resources.ApplyResources(this.tbInitialAmountMax, "tbInitialAmountMax");
             this.tbInitialAmountMax.Name = "tbInitialAmountMax";
+            this.tbInitialAmountMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMax_KeyPress);
             // 
             // tbInitialAmountMin
             // 
             resources.ApplyResources(this.tbInitialAmountMin, "tbInitialAmountMin");
             this.tbInitialAmountMin.Name = "tbInitialAmountMin";
+            this.tbInitialAmountMin.TextChanged += new System.EventHandler(this.tbInitialAmountMin_TextChanged);
+            this.tbInitialAmountMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // lbInitialAmonutMax
             // 
@@ -503,11 +519,13 @@ namespace OpenCBS.GUI.Products
             // 
             resources.ApplyResources(this.tbBalanceMax, "tbBalanceMax");
             this.tbBalanceMax.Name = "tbBalanceMax";
+            this.tbBalanceMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbBalanceMax_KeyPress);
             // 
             // tbBalanceMin
             // 
             resources.ApplyResources(this.tbBalanceMin, "tbBalanceMin");
             this.tbBalanceMin.Name = "tbBalanceMin";
+            this.tbBalanceMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbBalanceMin_KeyPress);
             // 
             // lbBalanceMax
             // 
@@ -564,6 +582,7 @@ namespace OpenCBS.GUI.Products
             // 
             resources.ApplyResources(this.tbReopenFees, "tbReopenFees");
             this.tbReopenFees.Name = "tbReopenFees";
+            this.tbReopenFees.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbEntryFeesMin_KeyPress);
             // 
             // lbReopenFeesValue
             // 
@@ -574,11 +593,13 @@ namespace OpenCBS.GUI.Products
             // 
             resources.ApplyResources(this.tbReopenFeesMax, "tbReopenFeesMax");
             this.tbReopenFeesMax.Name = "tbReopenFeesMax";
+            this.tbReopenFeesMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbEntryFeesMin_KeyPress);
             // 
             // tbReopenFeesMin
             // 
             resources.ApplyResources(this.tbReopenFeesMin, "tbReopenFeesMin");
             this.tbReopenFeesMin.Name = "tbReopenFeesMin";
+            this.tbReopenFeesMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbEntryFeesMin_KeyPress);
             // 
             // lbReopenFeesMax
             // 
@@ -606,6 +627,11 @@ namespace OpenCBS.GUI.Products
             resources.ApplyResources(this.gtManagementFees, "gtManagementFees");
             this.gtManagementFees.Name = "gtManagementFees";
             this.gtManagementFees.TabStop = false;
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
             // 
             // cbManagementFeeFreq
             // 
@@ -645,6 +671,7 @@ namespace OpenCBS.GUI.Products
             // 
             resources.ApplyResources(this.tbManagementFees, "tbManagementFees");
             this.tbManagementFees.Name = "tbManagementFees";
+            this.tbManagementFees.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbEntryFeesMin_KeyPress);
             // 
             // lbManagementFees
             // 
@@ -655,11 +682,13 @@ namespace OpenCBS.GUI.Products
             // 
             resources.ApplyResources(this.tbManagementFeesMax, "tbManagementFeesMax");
             this.tbManagementFeesMax.Name = "tbManagementFeesMax";
+            this.tbManagementFeesMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbEntryFeesMin_KeyPress);
             // 
             // tbManagementFeesMin
             // 
             resources.ApplyResources(this.tbManagementFeesMin, "tbManagementFeesMin");
             this.tbManagementFeesMin.Name = "tbManagementFeesMin";
+            this.tbManagementFeesMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbEntryFeesMin_KeyPress);
             // 
             // lbManagementFeesMax
             // 
@@ -707,6 +736,7 @@ namespace OpenCBS.GUI.Products
             // 
             resources.ApplyResources(this.tbCloseFees, "tbCloseFees");
             this.tbCloseFees.Name = "tbCloseFees";
+            this.tbCloseFees.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbEntryFeesMin_KeyPress);
             // 
             // lbCloseFees
             // 
@@ -717,11 +747,13 @@ namespace OpenCBS.GUI.Products
             // 
             resources.ApplyResources(this.tbCloseFeesMax, "tbCloseFeesMax");
             this.tbCloseFeesMax.Name = "tbCloseFeesMax";
+            this.tbCloseFeesMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbEntryFeesMin_KeyPress);
             // 
             // tbCloseFeesMin
             // 
             resources.ApplyResources(this.tbCloseFeesMin, "tbCloseFeesMin");
             this.tbCloseFeesMin.Name = "tbCloseFeesMin";
+            this.tbCloseFeesMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbEntryFeesMin_KeyPress);
             // 
             // lbCloseFeesMax
             // 
@@ -769,6 +801,7 @@ namespace OpenCBS.GUI.Products
             // 
             resources.ApplyResources(this.tbEntryFees, "tbEntryFees");
             this.tbEntryFees.Name = "tbEntryFees";
+            this.tbEntryFees.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbEntryFeesMin_KeyPress);
             // 
             // lbEntryFeesValue
             // 
@@ -779,11 +812,13 @@ namespace OpenCBS.GUI.Products
             // 
             resources.ApplyResources(this.tbEntryFeesMax, "tbEntryFeesMax");
             this.tbEntryFeesMax.Name = "tbEntryFeesMax";
+            this.tbEntryFeesMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbEntryFeesMin_KeyPress);
             // 
             // tbEntryFeesMin
             // 
             resources.ApplyResources(this.tbEntryFeesMin, "tbEntryFeesMin");
             this.tbEntryFeesMin.Name = "tbEntryFeesMin";
+            this.tbEntryFeesMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbEntryFeesMin_KeyPress);
             // 
             // lbEntryFeesMax
             // 
@@ -863,11 +898,13 @@ namespace OpenCBS.GUI.Products
             // 
             resources.ApplyResources(this.tbTranFeeMax, "tbTranFeeMax");
             this.tbTranFeeMax.Name = "tbTranFeeMax";
+            this.tbTranFeeMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTranFeeValue_KeyPress);
             // 
             // tbTranFeeMin
             // 
             resources.ApplyResources(this.tbTranFeeMin, "tbTranFeeMin");
             this.tbTranFeeMin.Name = "tbTranFeeMin";
+            this.tbTranFeeMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTranFeeValue_KeyPress);
             // 
             // label3
             // 
@@ -900,6 +937,7 @@ namespace OpenCBS.GUI.Products
             // 
             resources.ApplyResources(this.tbTranFeeValue, "tbTranFeeValue");
             this.tbTranFeeValue.Name = "tbTranFeeValue";
+            this.tbTranFeeValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTranFeeValue_KeyPress);
             // 
             // label5
             // 
@@ -938,16 +976,6 @@ namespace OpenCBS.GUI.Products
             resources.ApplyResources(this.btnUpdate, "btnUpdate");
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // label10
-            // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
             // 
             // FrmAddCurrentAccountProduct
             // 

@@ -621,6 +621,7 @@ namespace OpenCBS.GUI.Clients
             this.label38 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label37 = new System.Windows.Forms.Label();
             this.tbCalculationFrequency = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
@@ -4318,6 +4319,8 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.tbTransferNumber, "tbTransferNumber");
             this.tbTransferNumber.Name = "tbTransferNumber";
+            this.tbTransferNumber.TextChanged += new System.EventHandler(this.tbTransferNumber_TextChanged);
+            this.tbTransferNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTransferNumber_KeyPress);
             // 
             // lblChequeNumber
             // 
@@ -4697,6 +4700,8 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.tbInitialPaymentNumber, "tbInitialPaymentNumber");
             this.tbInitialPaymentNumber.Name = "tbInitialPaymentNumber";
+            this.tbInitialPaymentNumber.TextChanged += new System.EventHandler(this.tbInitialPaymentNumber_TextChanged);
+            this.tbInitialPaymentNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCAChequeAccount_KeyPress);
             // 
             // lblInitialChequeNumber
             // 
@@ -4722,6 +4727,8 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.tbCAChequeAccount, "tbCAChequeAccount");
             this.tbCAChequeAccount.Name = "tbCAChequeAccount";
+            this.tbCAChequeAccount.TextChanged += new System.EventHandler(this.tbCAChequeAccount_TextChanged);
+            this.tbCAChequeAccount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCAChequeAccount_KeyPress);
             // 
             // lblCAChequeNumber
             // 
@@ -4826,6 +4833,7 @@ namespace OpenCBS.GUI.Clients
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label37);
             this.groupBox3.Controls.Add(this.tbCalculationFrequency);
             this.groupBox3.Controls.Add(this.label43);
             this.groupBox3.Controls.Add(this.label34);
@@ -4834,6 +4842,11 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
+            // 
+            // label37
+            // 
+            resources.ApplyResources(this.label37, "label37");
+            this.label37.Name = "label37";
             // 
             // tbCalculationFrequency
             // 
@@ -4875,6 +4888,8 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.tbOverdraftAmount, "tbOverdraftAmount");
             this.tbOverdraftAmount.Name = "tbOverdraftAmount";
+            this.tbOverdraftAmount.TextChanged += new System.EventHandler(this.tbOverdraftAmount_TextChanged);
+            this.tbOverdraftAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCAChequeAccount_KeyPress);
             // 
             // label35
             // 
@@ -4924,6 +4939,7 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.tbCAProductCode, "tbCAProductCode");
             this.tbCAProductCode.Name = "tbCAProductCode";
+            this.tbCAProductCode.TextChanged += new System.EventHandler(this.tbCAProductCode_TextChanged);
             // 
             // lblCAProductCode
             // 
@@ -6370,5 +6386,6 @@ namespace OpenCBS.GUI.Clients
         private TextBox tbInitialPaymentNumber;
         private Label lblInitialChequeNumber;
         private ComboBox cbCAInitialAmountMethod;
+        private Label label37;
     }
 }

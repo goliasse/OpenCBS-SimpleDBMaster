@@ -80,6 +80,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btSavingProduct = new System.Windows.Forms.Button();
             this.bClose = new System.Windows.Forms.Button();
+            this.tbPenaltyValue = new System.Windows.Forms.TextBox();
+            this.lbEntryFeesValue = new System.Windows.Forms.Label();
             this.tabControlSaving.SuspendLayout();
             this.tabPageMainParameters.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -203,8 +205,8 @@
             this.tbMaxMaturityPeriod.Name = "tbMaxMaturityPeriod";
             this.tbMaxMaturityPeriod.Size = new System.Drawing.Size(100, 22);
             this.tbMaxMaturityPeriod.TabIndex = 7;
-            this.tbMaxMaturityPeriod.Text = "0";
             this.tbMaxMaturityPeriod.TextChanged += new System.EventHandler(this.tbMaxMaturityPeriod_TextChanged);
+            this.tbMaxMaturityPeriod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // tbMinMaturityPeriod
             // 
@@ -213,8 +215,8 @@
             this.tbMinMaturityPeriod.Name = "tbMinMaturityPeriod";
             this.tbMinMaturityPeriod.Size = new System.Drawing.Size(100, 22);
             this.tbMinMaturityPeriod.TabIndex = 6;
-            this.tbMinMaturityPeriod.Text = "0";
             this.tbMinMaturityPeriod.TextChanged += new System.EventHandler(this.tbMinMaturityPeriod_TextChanged);
+            this.tbMinMaturityPeriod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // label6
             // 
@@ -242,6 +244,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.tbPenaltyValue);
+            this.groupBox3.Controls.Add(this.lbEntryFeesValue);
             this.groupBox3.Controls.Add(this.rbPenalityTypeRate);
             this.groupBox3.Controls.Add(this.rbPenalityTypeFlat);
             this.groupBox3.Controls.Add(this.label1);
@@ -303,8 +307,8 @@
             this.tbPenalityMax.Name = "tbPenalityMax";
             this.tbPenalityMax.Size = new System.Drawing.Size(100, 22);
             this.tbPenalityMax.TabIndex = 7;
-            this.tbPenalityMax.Text = "0";
             this.tbPenalityMax.TextChanged += new System.EventHandler(this.tbPenalityMax_TextChanged);
+            this.tbPenalityMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // tbPenalityMin
             // 
@@ -313,8 +317,8 @@
             this.tbPenalityMin.Name = "tbPenalityMin";
             this.tbPenalityMin.Size = new System.Drawing.Size(100, 22);
             this.tbPenalityMin.TabIndex = 6;
-            this.tbPenalityMin.Text = "0";
             this.tbPenalityMin.TextChanged += new System.EventHandler(this.tbPenalityMin_TextChanged);
+            this.tbPenalityMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // label2
             // 
@@ -396,6 +400,7 @@
             this.tbFrequencyMonths.Name = "tbFrequencyMonths";
             this.tbFrequencyMonths.Size = new System.Drawing.Size(100, 22);
             this.tbFrequencyMonths.TabIndex = 3;
+            this.tbFrequencyMonths.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // lbAccrual
             // 
@@ -572,8 +577,8 @@
             this.tbInitialAmountMax.Name = "tbInitialAmountMax";
             this.tbInitialAmountMax.Size = new System.Drawing.Size(100, 22);
             this.tbInitialAmountMax.TabIndex = 1;
-            this.tbInitialAmountMax.Text = "0";
             this.tbInitialAmountMax.TextChanged += new System.EventHandler(this.tbInitialAmountMax_TextChanged);
+            this.tbInitialAmountMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // tbInitialAmountMin
             // 
@@ -582,8 +587,8 @@
             this.tbInitialAmountMin.Name = "tbInitialAmountMin";
             this.tbInitialAmountMin.Size = new System.Drawing.Size(100, 22);
             this.tbInitialAmountMin.TabIndex = 0;
-            this.tbInitialAmountMin.Text = "0";
             this.tbInitialAmountMin.TextChanged += new System.EventHandler(this.tbInitialAmountMin_TextChanged);
+            this.tbInitialAmountMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // lbInitialAmonutMax
             // 
@@ -657,8 +662,8 @@
             this.tbInterestRateMax.Name = "tbInterestRateMax";
             this.tbInterestRateMax.Size = new System.Drawing.Size(100, 22);
             this.tbInterestRateMax.TabIndex = 7;
-            this.tbInterestRateMax.Text = "0";
             this.tbInterestRateMax.TextChanged += new System.EventHandler(this.tbInterestRateMax_TextChanged);
+            this.tbInterestRateMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // tbInterestRateMin
             // 
@@ -667,8 +672,8 @@
             this.tbInterestRateMin.Name = "tbInterestRateMin";
             this.tbInterestRateMin.Size = new System.Drawing.Size(100, 22);
             this.tbInterestRateMin.TabIndex = 6;
-            this.tbInterestRateMin.Text = "0";
             this.tbInterestRateMin.TextChanged += new System.EventHandler(this.tbInterestRateMin_TextChanged);
+            this.tbInterestRateMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // lbInterestRateMax
             // 
@@ -730,6 +735,25 @@
             this.bClose.TabIndex = 11;
             this.bClose.Text = "Close";
             this.bClose.Click += new System.EventHandler(this.bClose_Click);
+            // 
+            // tbPenaltyValue
+            // 
+            this.tbPenaltyValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.tbPenaltyValue.Location = new System.Drawing.Point(393, 54);
+            this.tbPenaltyValue.Name = "tbPenaltyValue";
+            this.tbPenaltyValue.Size = new System.Drawing.Size(100, 22);
+            this.tbPenaltyValue.TabIndex = 21;
+            // 
+            // lbEntryFeesValue
+            // 
+            this.lbEntryFeesValue.AutoSize = true;
+            this.lbEntryFeesValue.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lbEntryFeesValue.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbEntryFeesValue.Location = new System.Drawing.Point(329, 57);
+            this.lbEntryFeesValue.Name = "lbEntryFeesValue";
+            this.lbEntryFeesValue.Size = new System.Drawing.Size(56, 16);
+            this.lbEntryFeesValue.TabIndex = 20;
+            this.lbEntryFeesValue.Text = "or value:";
             // 
             // FrmAddFixedDepositProduct
             // 
@@ -817,5 +841,7 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tbFrequencyMonths;
+        private System.Windows.Forms.TextBox tbPenaltyValue;
+        private System.Windows.Forms.Label lbEntryFeesValue;
     }
 }

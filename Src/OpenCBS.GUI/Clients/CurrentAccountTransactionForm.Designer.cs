@@ -173,6 +173,7 @@
             this.tbAmount.Name = "tbAmount";
             this.tbAmount.Size = new System.Drawing.Size(149, 22);
             this.tbAmount.TabIndex = 43;
+            this.tbAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbAmount_KeyPress);
             // 
             // cbFromAccount
             // 
@@ -279,6 +280,7 @@
             this.tbPurpose.Name = "tbPurpose";
             this.tbPurpose.Size = new System.Drawing.Size(149, 22);
             this.tbPurpose.TabIndex = 55;
+            this.tbPurpose.Text = "Default";
             // 
             // tbTransactionDate
             // 

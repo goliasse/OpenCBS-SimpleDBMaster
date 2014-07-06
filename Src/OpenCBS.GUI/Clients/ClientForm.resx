@@ -2724,6 +2724,27 @@
   <data name="&gt;&gt;btnOverdraft.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="cbCAInitialAmountMethod.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="cbCAInitialAmountMethod.Items" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="cbCAInitialAmountMethod.Items1" xml:space="preserve">
+    <value>Cheque</value>
+  </data>
+  <data name="cbCAInitialAmountMethod.Items2" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
+  <data name="cbCAInitialAmountMethod.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 55</value>
+  </data>
+  <data name="cbCAInitialAmountMethod.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 24</value>
+  </data>
+  <data name="cbCAInitialAmountMethod.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
+  </data>
   <data name="&gt;&gt;cbCAInitialAmountMethod.Name" xml:space="preserve">
     <value>cbCAInitialAmountMethod</value>
   </data>
@@ -2735,6 +2756,21 @@
   </data>
   <data name="&gt;&gt;cbCAInitialAmountMethod.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="tbInitialPaymentNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="tbInitialPaymentNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 116</value>
+  </data>
+  <data name="tbInitialPaymentNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="tbInitialPaymentNumber.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
+  </data>
+  <data name="tbInitialPaymentNumber.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;tbInitialPaymentNumber.Name" xml:space="preserve">
     <value>tbInitialPaymentNumber</value>
@@ -2748,6 +2784,30 @@
   <data name="&gt;&gt;tbInitialPaymentNumber.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="lblInitialChequeNumber.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblInitialChequeNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="lblInitialChequeNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblInitialChequeNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 84</value>
+  </data>
+  <data name="lblInitialChequeNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 16</value>
+  </data>
+  <data name="lblInitialChequeNumber.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="lblInitialChequeNumber.Text" xml:space="preserve">
+    <value>From Cheque Number:</value>
+  </data>
+  <data name="lblInitialChequeNumber.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;lblInitialChequeNumber.Name" xml:space="preserve">
     <value>lblInitialChequeNumber</value>
   </data>
@@ -2759,6 +2819,27 @@
   </data>
   <data name="&gt;&gt;lblInitialChequeNumber.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="label23.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label23.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="label23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 27</value>
+  </data>
+  <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 16</value>
+  </data>
+  <data name="label23.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Payment Method:</value>
   </data>
   <data name="&gt;&gt;label23.Name" xml:space="preserve">
     <value>label23</value>
@@ -2796,6 +2877,21 @@
   <data name="&gt;&gt;gbInitialPayment.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="tbCAChequeAccount.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="tbCAChequeAccount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 124</value>
+  </data>
+  <data name="tbCAChequeAccount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 22</value>
+  </data>
+  <data name="tbCAChequeAccount.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="tbCAChequeAccount.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;tbCAChequeAccount.Name" xml:space="preserve">
     <value>tbCAChequeAccount</value>
   </data>
@@ -2807,6 +2903,30 @@
   </data>
   <data name="&gt;&gt;tbCAChequeAccount.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="lblCAChequeNumber.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblCAChequeNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="lblCAChequeNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblCAChequeNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 90</value>
+  </data>
+  <data name="lblCAChequeNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 16</value>
+  </data>
+  <data name="lblCAChequeNumber.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="lblCAChequeNumber.Text" xml:space="preserve">
+    <value>To Cheque Number:</value>
+  </data>
+  <data name="lblCAChequeNumber.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;lblCAChequeNumber.Name" xml:space="preserve">
     <value>lblCAChequeNumber</value>
@@ -2820,6 +2940,27 @@
   <data name="&gt;&gt;lblCAChequeNumber.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="cbCAPaymentMethod.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="cbCAPaymentMethod.Items" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="cbCAPaymentMethod.Items1" xml:space="preserve">
+    <value>Cheque</value>
+  </data>
+  <data name="cbCAPaymentMethod.Items2" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
+  <data name="cbCAPaymentMethod.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 50</value>
+  </data>
+  <data name="cbCAPaymentMethod.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 24</value>
+  </data>
+  <data name="cbCAPaymentMethod.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
   <data name="&gt;&gt;cbCAPaymentMethod.Name" xml:space="preserve">
     <value>cbCAPaymentMethod</value>
   </data>
@@ -2831,6 +2972,27 @@
   </data>
   <data name="&gt;&gt;cbCAPaymentMethod.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="label54.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label54.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="label54.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label54.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 24</value>
+  </data>
+  <data name="label54.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 16</value>
+  </data>
+  <data name="label54.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label54.Text" xml:space="preserve">
+    <value>Payment Method:</value>
   </data>
   <data name="&gt;&gt;label54.Name" xml:space="preserve">
     <value>label54</value>
@@ -3048,6 +3210,18 @@
   <data name="&gt;&gt;gbCAFees.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="&gt;&gt;label37.Name" xml:space="preserve">
+    <value>label37</value>
+  </data>
+  <data name="&gt;&gt;label37.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label37.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label37.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;tbCalculationFrequency.Name" xml:space="preserve">
     <value>tbCalculationFrequency</value>
   </data>
@@ -3058,7 +3232,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;tbCalculationFrequency.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;label43.Name" xml:space="preserve">
     <value>label43</value>
@@ -3070,7 +3244,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;label43.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;label34.Name" xml:space="preserve">
     <value>label34</value>
@@ -3082,7 +3256,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;tbCAInterestRate.Name" xml:space="preserve">
     <value>tbCAInterestRate</value>
@@ -3094,7 +3268,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;tbCAInterestRate.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;label33.Name" xml:space="preserve">
     <value>label33</value>
@@ -3106,7 +3280,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;label33.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -3685,7 +3859,7 @@
     <value>Arial, 9.75pt</value>
   </data>
   <data name="gbReopenFees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>441, 356</value>
+    <value>441, 457</value>
   </data>
   <data name="gbReopenFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>330, 88</value>
@@ -3886,7 +4060,7 @@
     <value>Arial, 9.75pt</value>
   </data>
   <data name="gbCloseFees.Location" type="System.Drawing.Point, System.Drawing">
-    <value>441, 453</value>
+    <value>441, 359</value>
   </data>
   <data name="gbCloseFees.Size" type="System.Drawing.Size, System.Drawing">
     <value>330, 92</value>
@@ -4412,7 +4586,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAS
-        HQAAAk1TRnQBSQFMAgEBBQEAATwBJQE8ASUBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        HQAAAk1TRnQBSQFMAgEBBQEAAVQBJQFUASUBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAAUADAAEBAQABCAYAASAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -19961,264 +20135,6 @@ Max:
   <data name="&gt;&gt;lbInterestRateMin.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="cbCAInitialAmountMethod.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
-  </data>
-  <data name="cbCAInitialAmountMethod.Items" xml:space="preserve">
-    <value>Cash</value>
-  </data>
-  <data name="cbCAInitialAmountMethod.Items1" xml:space="preserve">
-    <value>Cheque</value>
-  </data>
-  <data name="cbCAInitialAmountMethod.Items2" xml:space="preserve">
-    <value>Transfer</value>
-  </data>
-  <data name="cbCAInitialAmountMethod.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 55</value>
-  </data>
-  <data name="cbCAInitialAmountMethod.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 24</value>
-  </data>
-  <data name="cbCAInitialAmountMethod.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
-  </data>
-  <data name="&gt;&gt;cbCAInitialAmountMethod.Name" xml:space="preserve">
-    <value>cbCAInitialAmountMethod</value>
-  </data>
-  <data name="&gt;&gt;cbCAInitialAmountMethod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbCAInitialAmountMethod.Parent" xml:space="preserve">
-    <value>gbInitialPayment</value>
-  </data>
-  <data name="&gt;&gt;cbCAInitialAmountMethod.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tbInitialPaymentNumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
-  </data>
-  <data name="tbInitialPaymentNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 116</value>
-  </data>
-  <data name="tbInitialPaymentNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="tbInitialPaymentNumber.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
-  </data>
-  <data name="tbInitialPaymentNumber.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;tbInitialPaymentNumber.Name" xml:space="preserve">
-    <value>tbInitialPaymentNumber</value>
-  </data>
-  <data name="&gt;&gt;tbInitialPaymentNumber.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbInitialPaymentNumber.Parent" xml:space="preserve">
-    <value>gbInitialPayment</value>
-  </data>
-  <data name="&gt;&gt;tbInitialPaymentNumber.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lblInitialChequeNumber.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblInitialChequeNumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
-  </data>
-  <data name="lblInitialChequeNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblInitialChequeNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 84</value>
-  </data>
-  <data name="lblInitialChequeNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 16</value>
-  </data>
-  <data name="lblInitialChequeNumber.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <data name="lblInitialChequeNumber.Text" xml:space="preserve">
-    <value>From Cheque Number:</value>
-  </data>
-  <data name="lblInitialChequeNumber.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;lblInitialChequeNumber.Name" xml:space="preserve">
-    <value>lblInitialChequeNumber</value>
-  </data>
-  <data name="&gt;&gt;lblInitialChequeNumber.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblInitialChequeNumber.Parent" xml:space="preserve">
-    <value>gbInitialPayment</value>
-  </data>
-  <data name="&gt;&gt;lblInitialChequeNumber.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label23.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label23.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
-  </data>
-  <data name="label23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 27</value>
-  </data>
-  <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 16</value>
-  </data>
-  <data name="label23.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
-  </data>
-  <data name="label23.Text" xml:space="preserve">
-    <value>Payment Method:</value>
-  </data>
-  <data name="&gt;&gt;label23.Name" xml:space="preserve">
-    <value>label23</value>
-  </data>
-  <data name="&gt;&gt;label23.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label23.Parent" xml:space="preserve">
-    <value>gbInitialPayment</value>
-  </data>
-  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tbCAChequeAccount.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
-  </data>
-  <data name="tbCAChequeAccount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 124</value>
-  </data>
-  <data name="tbCAChequeAccount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
-  </data>
-  <data name="tbCAChequeAccount.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="tbCAChequeAccount.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;tbCAChequeAccount.Name" xml:space="preserve">
-    <value>tbCAChequeAccount</value>
-  </data>
-  <data name="&gt;&gt;tbCAChequeAccount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbCAChequeAccount.Parent" xml:space="preserve">
-    <value>gbAmount</value>
-  </data>
-  <data name="&gt;&gt;tbCAChequeAccount.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblCAChequeNumber.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblCAChequeNumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
-  </data>
-  <data name="lblCAChequeNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblCAChequeNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 90</value>
-  </data>
-  <data name="lblCAChequeNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 16</value>
-  </data>
-  <data name="lblCAChequeNumber.TabIndex" type="System.Int32, mscorlib">
-    <value>51</value>
-  </data>
-  <data name="lblCAChequeNumber.Text" xml:space="preserve">
-    <value>To Cheque Number:</value>
-  </data>
-  <data name="lblCAChequeNumber.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;lblCAChequeNumber.Name" xml:space="preserve">
-    <value>lblCAChequeNumber</value>
-  </data>
-  <data name="&gt;&gt;lblCAChequeNumber.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblCAChequeNumber.Parent" xml:space="preserve">
-    <value>gbAmount</value>
-  </data>
-  <data name="&gt;&gt;lblCAChequeNumber.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="cbCAPaymentMethod.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
-  </data>
-  <data name="cbCAPaymentMethod.Items" xml:space="preserve">
-    <value>Cash</value>
-  </data>
-  <data name="cbCAPaymentMethod.Items1" xml:space="preserve">
-    <value>Cheque</value>
-  </data>
-  <data name="cbCAPaymentMethod.Items2" xml:space="preserve">
-    <value>Transfer</value>
-  </data>
-  <data name="cbCAPaymentMethod.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 50</value>
-  </data>
-  <data name="cbCAPaymentMethod.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 24</value>
-  </data>
-  <data name="cbCAPaymentMethod.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="&gt;&gt;cbCAPaymentMethod.Name" xml:space="preserve">
-    <value>cbCAPaymentMethod</value>
-  </data>
-  <data name="&gt;&gt;cbCAPaymentMethod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbCAPaymentMethod.Parent" xml:space="preserve">
-    <value>gbAmount</value>
-  </data>
-  <data name="&gt;&gt;cbCAPaymentMethod.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label54.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label54.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
-  </data>
-  <data name="label54.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label54.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 24</value>
-  </data>
-  <data name="label54.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 16</value>
-  </data>
-  <data name="label54.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="label54.Text" xml:space="preserve">
-    <value>Payment Method:</value>
-  </data>
-  <data name="&gt;&gt;label54.Name" xml:space="preserve">
-    <value>label54</value>
-  </data>
-  <data name="&gt;&gt;label54.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label54.Parent" xml:space="preserve">
-    <value>gbAmount</value>
-  </data>
-  <data name="&gt;&gt;label54.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="lblTotalFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -20615,6 +20531,39 @@ Max:
   <data name="&gt;&gt;label36.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="label37.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label37.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="label37.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label37.Location" type="System.Drawing.Point, System.Drawing">
+    <value>322, 24</value>
+  </data>
+  <data name="label37.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 16</value>
+  </data>
+  <data name="label37.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>%Yearly</value>
+  </data>
+  <data name="&gt;&gt;label37.Name" xml:space="preserve">
+    <value>label37</value>
+  </data>
+  <data name="&gt;&gt;label37.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label37.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label37.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="tbCalculationFrequency.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt</value>
   </data>
@@ -20637,7 +20586,7 @@ Max:
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;tbCalculationFrequency.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="label43.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -20670,7 +20619,7 @@ Max:
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;label43.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="label34.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -20703,7 +20652,7 @@ Max:
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="tbCAInterestRate.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt</value>
@@ -20727,7 +20676,7 @@ Max:
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;tbCAInterestRate.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="label33.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -20760,7 +20709,7 @@ Max:
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;label33.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="rbRateOverdraftFees.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

@@ -143,6 +143,7 @@ clientTypeAllCheckBox.Enabled = enabled;
         {
             cbCurrency.Items.Clear();
             cbCurrency.Text = MultiLanguageStrings.GetString(Ressource.FrmAddLoanProduct, "Currency.Text");
+            
             List<Currency> currencies = ServicesProvider.GetInstance().GetCurrencyServices().FindAllCurrencies();
             Currency line = new Currency { Name = MultiLanguageStrings.GetString(Ressource.FrmAddLoanProduct, "Currency.Text"), Id = 0 };
             cbCurrency.Items.Add(line);
@@ -151,7 +152,7 @@ clientTypeAllCheckBox.Enabled = enabled;
             {
                 cbCurrency.Items.Add(cur.Name);
             }
-
+            cbCurrency.SelectedIndex = 0;
             //bool oneCurrency = 2 == cbCurrency.Items.Count;
             //cbCurrency.SelectedIndex = oneCurrency ? 1 : 0;
             //cbCurrency.Enabled = !oneCurrency;
@@ -188,16 +189,17 @@ clientTypeAllCheckBox.Enabled = enabled;
             else
                 CodeFixedDepositProduct = tbCodeFixedDepositProduct.Text + "-FD";
             string Name = tbName.Text;
-            decimal InitialAmountMax = Convert.ToDecimal(tbInitialAmountMax.Text);
-            decimal InitialAmountMin = Convert.ToDecimal(tbInitialAmountMin.Text);
-            double InterestRateMax = Convert.ToDouble(tbInterestRateMax.Text);
-            double InterestRateMin = Convert.ToDouble(tbInterestRateMin.Text);
+            
+            decimal? InitialAmountMax = ServicesHelper.ConvertStringToNullableDecimal(tbInitialAmountMax.Text);
+            decimal? InitialAmountMin = ServicesHelper.ConvertStringToNullableDecimal(tbInitialAmountMin.Text);
+            double? InterestRateMax = ServicesHelper.ConvertStringToNullableDouble(tbInterestRateMax.Text, false);
+            double? InterestRateMin = ServicesHelper.ConvertStringToNullableDouble(tbInterestRateMin.Text, false);
             bool PenalityTypeRate = rbPenalityTypeRate.Checked;
             bool PenalityTypeFlat = rbPenalityTypeFlat.Checked;
-            double PenalityMax = Convert.ToDouble(tbPenalityMax.Text);
-            double PenalityMin = Convert.ToDouble(tbPenalityMin.Text);
-            int MaturityPeriodMin = Convert.ToInt32(tbMinMaturityPeriod.Text);
-            int MaturityPeriodMax = Convert.ToInt32(tbMaxMaturityPeriod.Text);
+            double? PenalityMax = ServicesHelper.ConvertStringToNullableDouble(tbPenalityMax.Text, false);
+            double? PenalityMin = ServicesHelper.ConvertStringToNullableDouble(tbPenalityMin.Text, false);
+            int? MaturityPeriodMin = ServicesHelper.ConvertStringToNullableInt32(tbMinMaturityPeriod.Text);
+            int? MaturityPeriodMax = ServicesHelper.ConvertStringToNullableInt32(tbMaxMaturityPeriod.Text);
             
             _fixedDepositProduct.InterestCalculationFrequency = InterestCalculationFrequency;
             _fixedDepositProduct.Currency = Currency;
@@ -209,6 +211,8 @@ clientTypeAllCheckBox.Enabled = enabled;
             _fixedDepositProduct.InterestRateMin = InterestRateMin;
             _fixedDepositProduct.PenalityRateMax = PenalityMax;
             _fixedDepositProduct.PenalityRateMin = PenalityMin;
+            _fixedDepositProduct.PenalityValue = ServicesHelper.ConvertStringToNullableDouble(tbPenaltyValue.Text, false);
+
             if (PenalityTypeRate == true)
                 _fixedDepositProduct.PenalityType = "Rate";
             else
@@ -536,6 +540,31 @@ clientTypeAllCheckBox.Enabled = enabled;
             _fixedDepositProductService.UpdateFixedDepositProduct(_fixedDepositProduct, _fixedDepositProduct.Id);
             
                 MessageBox.Show("Fixed Deposit Product Successfully Updated.");
+        }
+
+
+        void KeyPressControl(KeyPressEventArgs e)
+        {
+            int keyCode = e.KeyChar;
+
+            if (
+                (keyCode >= 48 && keyCode <= 57) ||
+                (keyCode == 8) ||
+                (Char.IsControl(e.KeyChar) && e.KeyChar != ((char)Keys.V | (char)Keys.ControlKey))
+                ||
+                (Char.IsControl(e.KeyChar) && e.KeyChar != ((char)Keys.C | (char)Keys.ControlKey))
+                ||
+                (e.KeyChar.ToString() == System.Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator))
+            {
+                e.Handled = false;
+            }
+            else
+                e.Handled = true;
+        }
+
+        private void tbInitialAmountMin_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
         }
     }
 }

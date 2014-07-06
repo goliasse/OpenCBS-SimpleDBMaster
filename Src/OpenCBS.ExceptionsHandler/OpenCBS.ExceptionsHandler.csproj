@@ -135,6 +135,9 @@
     <Compile Include="..\SolutionInfo.cs">
       <Link>Properties\SolutionInfo.cs</Link>
     </Compile>
+    <Compile Include="Exceptions\CurrentAccountExceptions\OpenCbsCurrentAcccountTransactionException.cs" />
+    <Compile Include="Exceptions\CurrentAccountExceptions\OpenCbsCurrentAccountException.cs" />
+    <Compile Include="Exceptions\FixedDepositExceptions\OpenCbsFixedDepositException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -217,9 +220,7 @@
       <Name>OpenCBS.Shared</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Exceptions\FixedDepositExceptions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

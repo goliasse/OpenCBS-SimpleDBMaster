@@ -1355,4 +1355,64 @@ Enter another account number.
   <data name="TellerVaultExists.Text" xml:space="preserve">
     <value>Vault for this branch is already exists</value>
   </data>
+
+
+  <data name="CurrentAccountProductNameIsEmpty" xml:space="preserve">
+    <value>Product name can not be empty</value>
+  </data>
+  <data name="CurrentAccountProductNameIsLessThanThree" xml:space="preserve">
+    <value>Product name can not be less than three characters</value>
+  </data>
+  <data name="CurrentAccountProductCodeIsEmpty" xml:space="preserve">
+    <value>Product code can not be empty</value>
+  </data>
+  <data name="CurrentAccountProductCodeIsLessThanThree" xml:space="preserve">
+    <value>Product code can not be less than three characters</value>
+  </data>
+  <data name="ClientTypeAtleastOneClientTypeMustBeSeleted" xml:space="preserve">
+    <value>Atleast one checkbox must be seleted</value>
+  </data>
+  <data name="SelectCurrencyIsSelected" xml:space="preserve">
+    <value>Currency other than select currency… must be selected</value>
+  </data>
+  <data name="InitialAmountMinIsInvalid" xml:space="preserve">
+    <value>Initial Amount Min can't be less than zero</value>
+  </data>
+  <data name="InitialAmountMaxIsInvalid" xml:space="preserve">
+    <value>Initial Amount Max can't be less than equal to zero</value>
+  </data>
+  <data name="InitialAmountMinMaxIsInvalid" xml:space="preserve">
+    <value>Initial Amount Min can't be greater than equal to max amount</value>
+  </data>
+  <data name="BalanceMinIsInvalid" xml:space="preserve">
+    <value>Balance Min cannot be less than zero</value>
+  </data>
+  <data name="BalanceMaxIsInvalid" xml:space="preserve">
+    <value>Balance Max cannot be less than equal to zero</value>
+  </data>
+  <data name="BalanceMinMaxIsInvalid" xml:space="preserve">
+    <value>Balance min cannot be greater than equal to max balance</value>
+  </data>
+  <data name="InterestMinIsInvalid" xml:space="preserve">
+    <value>Interest Min cannot be less than zero</value>
+  </data>
+  <data name="InterestMaxIsInvalid" xml:space="preserve">
+    <value>Interest Max cannot be less than equal to zero</value>
+  </data>
+  <data name="InterestMinMaxIsInvalid" xml:space="preserve">
+    <value>Interest min cannot be greater than equal to max interest</value>
+  </data>
+  <data name="OverdraftFeesMinIsInvalid" xml:space="preserve">
+    <value>Overdraft Fees Min cannot be less than zero</value>
+  </data>
+  <data name="OverdraftFeesMaxIsInvalid" xml:space="preserve">
+    <value>Overdraft Fees Max cannot be less than equal to zero</value>
+  </data>
+  <data name="OverdraftFeesMinMaxIsInvalid" xml:space="preserve">
+    <value>Overdraft Fees min cannot be greater than equal to max overdraft fees</value>
+  </data>
+  <data name="InterestCalculationFrequencyIsInvalid" xml:space="preserve">
+    <value>Interest Calculation Frequency cannot be less than equal to zero</value>
+  </data>
+  
 </root>

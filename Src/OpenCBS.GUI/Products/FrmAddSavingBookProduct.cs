@@ -272,7 +272,7 @@ namespace OpenCBS.GUI.Products
                 _savingsProduct.CalculAmountBase = (OSavingCalculAmountBase)Enum.Parse(typeof(OSavingCalculAmountBase), cbCalculAmount.SelectedValue.ToString());
 
             InstallmentType freq = cbManagementFeeFreq.SelectedItem as InstallmentType;
-            Debug.Assert(freq != null, "Mgmg fee frequency cannot be null");
+            Debug.Assert(freq != null, "Management fee frequency cannot be null");
             _savingsProduct.ManagementFeeFreq = freq;
 
             InstallmentType freqAgio = cbAgioFeesFreq.SelectedItem as InstallmentType;

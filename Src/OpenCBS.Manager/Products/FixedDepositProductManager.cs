@@ -327,24 +327,24 @@ fixedDepositProduct.ClientType = r.GetString("client_type");
 
 fixedDepositProduct.Currency = r.GetString("product_currency");
 
-fixedDepositProduct.InitialAmountMin = r.GetDecimal("initial_amount_min");
+fixedDepositProduct.InitialAmountMin = r.GetNullDecimal("initial_amount_min");
 
-fixedDepositProduct.InitialAmountMax = r.GetDecimal("initial_amount_max");
+fixedDepositProduct.InitialAmountMax = r.GetNullDecimal("initial_amount_max");
 
 fixedDepositProduct.InterestCalculationFrequency = r.GetString("interest_calculation_frequency");
 
 fixedDepositProduct.PenalityType = r.GetString("penality_type");
 
-fixedDepositProduct.InterestRateMin = r.GetDouble("interest_rate_min");
-fixedDepositProduct.InterestRateMax = r.GetDouble("interest_rate_max");
+fixedDepositProduct.InterestRateMin = r.GetNullDouble("interest_rate_min");
+fixedDepositProduct.InterestRateMax = r.GetNullDouble("interest_rate_max");
 
-fixedDepositProduct.PenalityRateMin = r.GetDouble("penality_min");
+fixedDepositProduct.PenalityRateMin = r.GetNullDouble("penality_min");
 
-fixedDepositProduct.PenalityRateMax = r.GetDouble("penality_max");
+fixedDepositProduct.PenalityRateMax = r.GetNullDouble("penality_max");
 
-fixedDepositProduct.MaturityPeriodMin = r.GetInt("maturity_period_min");
+fixedDepositProduct.MaturityPeriodMin = r.GetNullInt("maturity_period_min");
 
-fixedDepositProduct.MaturityPeriodMax = r.GetInt("maturity_period_max");
+fixedDepositProduct.MaturityPeriodMax = r.GetNullInt("maturity_period_max");
 
 
 return fixedDepositProduct;

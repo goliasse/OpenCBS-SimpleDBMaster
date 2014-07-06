@@ -5,7 +5,8 @@ using System.Text;
 using OpenCBS.Manager.Products;
 using OpenCBS.CoreDomain;
 using OpenCBS.CoreDomain.Products;
-
+using OpenCBS.ExceptionsHandler;
+using OpenCBS.Enums;
 namespace OpenCBS.Services
 {
     public class CurrentAccountProductService
@@ -60,9 +61,68 @@ namespace OpenCBS.Services
         }
 
 
-        private void ValidateProduct(ICurrentAccountProduct fixedDepositProduct)
+        private void ValidateProduct(ICurrentAccountProduct currentAccountProduct)
         {
+
+            if (string.IsNullOrEmpty(currentAccountProduct.CurrentAccountProductName))
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.NameIsEmpty);
+
+            if (currentAccountProduct.CurrentAccountProductName.Length < 3)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.NameIsLessThanThree);
+
+            if (string.IsNullOrEmpty(currentAccountProduct.CurrentAccountProductCode))
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CodeIsEmpty);
+
+            if (currentAccountProduct.CurrentAccountProductCode.Length < 6)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.NameIsLessThanThree);
+
+            if (currentAccountProduct.ClientType == "")
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.OneCheckBoxMustBeSeleted);
+
+            if (currentAccountProduct.Currency == "" && currentAccountProduct.Currency == OCurrentAccount.SelectCurrencyDefault)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.SelectCurrencySelected);
+
+            if (currentAccountProduct.InitialAmountMin < 0)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.InitialAmountMinIsInvalid);
+
+            if (currentAccountProduct.InitialAmountMax <= 0)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.InitialAmountMaxIsInvalid);
+
+            if (currentAccountProduct.InitialAmountMax <= currentAccountProduct.InitialAmountMin)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.InitialAmountMinMaxIsInvalid);
+
+            if (currentAccountProduct.BalanceMin < 0)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.BalanceMinIsInvalid);
+
+            if (currentAccountProduct.BalanceMax <= 0)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.BalanceMaxIsInvalid);
+
+            if (currentAccountProduct.BalanceMax <= currentAccountProduct.BalanceMin)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.BalanceMinMaxIsInvalid);
+
+            if (currentAccountProduct.InterestMin < 0)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.InterestMinIsInvalid);
+
+            if (currentAccountProduct.InterestMax <= 0)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.InterestMaxIsInvalid);
+
+            if (currentAccountProduct.InterestMax <= currentAccountProduct.InterestMin)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.InterestMinMaxIsInvalid);
+
+            if (currentAccountProduct.OverdraftMin < 0)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.OverdraftFeesMinIsInvalid);
+
+            if (currentAccountProduct.OverdraftMax < 0)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.OverdraftFeesMaxIsInvalid);
+
+            if (currentAccountProduct.OverdraftMax <= currentAccountProduct.OverdraftMin)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.OverdraftFeesMinMaxIsInvalid);
+
+            if (currentAccountProduct.InterestFrequency <= 0)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.InterestCalculationFrequencyIsInvalid);
+         
         }
+
 
 
         public CurrentAccountTransactionFees FetchTransaction(string transactionType, string transactionMode, int productId)

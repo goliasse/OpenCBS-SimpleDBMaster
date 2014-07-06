@@ -8903,19 +8903,7 @@ namespace OpenCBS.GUI.Clients
 
             _currentAccountProductHoldings.EntryFees = Convert.ToDecimal(tbEntryFees.Text);
 
-            //if (rbRateReopenFees.Checked == true)
-            //    _currentAccountProductHoldings.ReopenFeesType = "Rate";
-            //else
-            //    _currentAccountProductHoldings.ReopenFeesType = "Flat";
-
-            //_currentAccountProductHoldings.ReopenFees = Convert.ToDecimal(tbReopenFees.Text);
-
-            //if (rbRateCloseFees.Checked == true)
-            //    _currentAccountProductHoldings.ClosingFeesType = "Rate";
-            //else
-            //    _currentAccountProductHoldings.ClosingFeesType = "Flat";
-
-            //_currentAccountProductHoldings.ClosingFees = Convert.ToDecimal(tbCloseFees.Text);
+           
 
             if (rbRateManagementFees.Checked == true)
                 _currentAccountProductHoldings.ManagementFeesType = "Rate";
@@ -9341,17 +9329,17 @@ namespace OpenCBS.GUI.Clients
             tabControlPerson.TabPages.Remove(tabPageCurrentAccount);
             tabControlPerson.TabPages.Add(tabPageCurrentAccount);
             tabControlPerson.SelectedTab = tabPageCurrentAccount;
+            
 
-
-            ResetCurrentAccountControls();
+            ResetCurrentAccountControls(false);
 
             EnableCurrentAccountControls(true);
-
-            
+            btnAddCurrentAccountProduct.Visible = true;
+            btnAddCurrentAccountProduct.Enabled = true;
             
         }
 
-        void ResetCurrentAccountControls()
+        void ResetCurrentAccountControls(bool visible)
         {
             tbCurrentInitialAmount.ResetText();
             tbCurrentAccountProductCode.ResetText();
@@ -9362,20 +9350,29 @@ namespace OpenCBS.GUI.Clients
             rbFlatCloseFees.Checked = true;
             tbCloseFees.ResetText();
             rbFlatManagementFees.Checked = true;
-            cbManagementFeeFreq.SelectedIndex = 1;
+            cbManagementFeeFreq.SelectedIndex = 0;
             tbManagementFees.ResetText();
             rbRateOverdraftFees.Checked = true;
             tbOverdraftFees.ResetText();
             tbCurrentAccountComment.ResetText();
-            cbCurrentAccountingOfficer.SelectedIndex = 0;
+            cbCurrentAccountingOfficer.SelectedIndex = 1;
             cbCAInitialAmountMethod.SelectedIndex = 0;
 
-            lblBalanceAmount.Visible = false;
-            tbCABalanceAmount.Visible = false;
-            lblCAOpenedDate.Visible = false;
-            tbCAOpenedDate.Visible = false;
-            lblCAAcountStatus.Visible = false;
-            cbCAAccountStatus.Visible = false;
+            lblBalanceAmount.Visible = visible;
+            tbCABalanceAmount.Visible = visible;
+            lblCAOpenedDate.Visible = visible;
+            tbCAOpenedDate.Visible = visible;
+            lblCAAcountStatus.Visible = visible;
+            cbCAAccountStatus.Visible = visible;
+            lblCAClosedDate.Visible = visible;
+            tbCAClosedDate.Visible = visible;
+            gbReopenFees.Visible = visible;
+            gbCloseFees.Visible = visible;
+            btnCloseAccount.Visible = visible;
+            gbAmount.Visible = visible;
+            gbCAFees.Visible = visible;
+            lblCAProductCode.Visible = visible;
+            tbCAProductCode.Visible = visible;
 
             tbCAInterestRate.ResetText();
             tbCalculationFrequency.ResetText();
@@ -9384,14 +9381,21 @@ namespace OpenCBS.GUI.Clients
             tbCAOpenedDate.ResetText();
             tbCABalanceAmount.ResetText();
             cbCAAccountStatus.SelectedIndex = 0;
-
-            cbCAPaymentMethod.SelectedIndex = 0;
             tbCAChequeAccount.ResetText();
+            lblEntryFees.ResetText();
+            lblReopenFees.ResetText();
+            lblManagementFees.ResetText();
+            lblOverdraftFees.ResetText();
+            lblCloseFees.ResetText();
+            lblTotalFees.ResetText();
+            tbCAProductCode.ResetText();
 
         }
 
         private void btnViewCurrentAccount_Click(object sender, EventArgs e)
         {
+
+            
            
             int i = lvCurrentAccountProducts.SelectedIndices[0];
             string selectedContractCode = lvCurrentAccountProducts.Items[i].Text;
@@ -9412,6 +9416,7 @@ namespace OpenCBS.GUI.Clients
                 btnAddCurrentAccountProduct.Visible = false;
                 gbCloseFees.Visible = false;
                 gbReopenFees.Visible = false;
+                gbInitialPayment.Visible = true;
                 btnCloseAccount.Text = "Transfer Balance";
                 if (currentAccountProduct.ClosingFeesType == "Flat")
                 {
@@ -9426,9 +9431,18 @@ namespace OpenCBS.GUI.Clients
                     rbFlatCloseFees.Enabled = false;
                 }
 
+                if (_currentAccountProductHoldings.InitialAmountPaymentMethod == "Transfer")
+                {
+                    lblInitialChequeNumber.Visible = true;
+                    tbInitialPaymentNumber.Visible = true;
+                    tbInitialPaymentNumber.Text = _currentAccountProductHoldings.InitialAmountAccountNumber;
+                }
+
             }
-            else if (_currentAccountProductHoldings.Status == "Closed")
+            else 
             {
+                if (_currentAccountProductHoldings.Status == "Closed")
+                {
                 lblCAClosedDate.Visible = true;
                 tbCAClosedDate.Visible = true;
                 tbCAClosedDate.Enabled = false;
@@ -9437,6 +9451,15 @@ namespace OpenCBS.GUI.Clients
                 gbReopenFees.Visible = true;
                 btnAddCurrentAccountProduct.Visible = false;
                 btnCloseAccount.Enabled = true;
+                gbInitialPayment.Visible = true;
+                gbAmount.Visible = true;
+                gbCloseFees.Visible = true;
+                tbReopenFees.Enabled = true;
+              
+                tbCAChequeAccount.Text = _currentAccountProductHoldings.FinalAmountAccountNumber;
+                gbReopenFees.Visible = true;
+                btnCloseAccount.Text = "Reopen Account";
+                tbCAClosedDate.Text = _currentAccountProductHoldings.CloseDate.ToShortDateString();
 
                 if (_currentAccountProductHoldings.ClosingFeesType == "Flat")
                 {
@@ -9464,12 +9487,15 @@ namespace OpenCBS.GUI.Clients
                     rbFlatReopenFees.Enabled = false;
                 }
 
+               
             } 
-            else if (_currentAccountProductHoldings.Status == "Reopened")
+            if (_currentAccountProductHoldings.Status == "Reopened")
             {
                 btnCloseAccount.Visible = true;
                 btnAddCurrentAccountProduct.Visible = false;
                 gbCloseFees.Visible = true;
+                gbInitialPayment.Visible = true;
+                gbAmount.Visible = true;
                 gbReopenFees.Visible = true;
                 tbReopenFees.Text = _currentAccountProductHoldings.ReopenFees.ToString();
                 tbReopenFees.Enabled = false;
@@ -9503,7 +9529,19 @@ namespace OpenCBS.GUI.Clients
                     rbFlatCloseFees.Enabled = false;
                 }
 
+               
+                tbReopenFees.Text = _currentAccountProductHoldings.ReopenFees.ToString();
+
             }
+
+            if (_currentAccountProductHoldings.FinalAmountPaymentMethod != "Cash")
+            {
+                lblCAChequeNumber.Visible = true;
+                tbCAChequeAccount.Visible = true;
+                tbCAChequeAccount.Text = _currentAccountProductHoldings.FinalAmountAccountNumber;
+            }
+            
+        }
 
             cbCurrentAccountProducts.SelectedItem = _currentAccountProductHoldings.CurrentAccountProduct.CurrentAccountProductName+" "+_currentAccountProductHoldings.CurrentAccountProduct.CurrentAccountProductCode;
             tbCurrentInitialAmount.Text = _currentAccountProductHoldings.InitialAmount.ToString();
@@ -9552,37 +9590,9 @@ namespace OpenCBS.GUI.Clients
             tbOverdraftAmount.Text = _currentAccountProductHoldings.OverdraftLimit.ToString();
 			tbCAInterestRate.Text = _currentAccountProductHoldings.InterestRate .ToString();
             tbCalculationFrequency.Text = _currentAccountProductHoldings.InterestCalculationFrequency.ToString();
-            if (_currentAccountProductHoldings.InitialAmountPaymentMethod == "Transfer")
-            {
-                lblInitialChequeNumber.Visible = true;
-                tbInitialPaymentNumber.Visible = true;
-                tbInitialPaymentNumber.Text = _currentAccountProductHoldings.InitialAmountAccountNumber;
-            }
-            if (_currentAccountProductHoldings.Status == "Closed")
-            {
-                gbReopenFees.Visible = true;
-                btnCloseAccount.Visible = true;
-                btnCloseAccount.Text = "Reopen Account";
-                if (_currentAccountProductHoldings.ClosingFeesType == "Flat")
-                    rbFlatCloseFees.Checked = true;
-                else
-                    rbRateCloseFees.Checked = true;
-                tbCloseFees.Text = _currentAccountProductHoldings.ClosingFees.ToString();
-
-                tbCAClosedDate.Text = _currentAccountProductHoldings.CloseDate.ToShortDateString();
-            }
-
-            if (_currentAccountProductHoldings.Status == "Reopened")
-            {
-               
-                if (_currentAccountProductHoldings.ReopenFeesType == "Flat")
-                    rbFlatReopenFees.Checked = true;
-                else
-                    rbRateReopenFees.Checked = true;
-                tbReopenFees.Text = _currentAccountProductHoldings.ReopenFees.ToString();
-
-            }
-
+           
+            
+            
 
             gbCAFees.Visible = true;
 
@@ -9628,7 +9638,7 @@ namespace OpenCBS.GUI.Clients
             tbCABalanceAmount.Enabled = enabled;
             tbInitialPaymentNumber.Enabled = enabled;
 
-           
+            
         }
 
         private void btnExtendPeriod_Click(object sender, EventArgs e)
@@ -9716,13 +9726,25 @@ namespace OpenCBS.GUI.Clients
                 gbCloseFees.Visible = true;
                 cbCAPaymentMethod.Enabled = true;
                 tbCAChequeAccount.Enabled = true;
+                tbCloseFees.Enabled = true;
+                tbReopenFees.Enabled = true;
+                tbCloseFees.ResetText();
+                tbReopenFees.ResetText();
+                tbCAChequeAccount.ResetText();
             }
             else if (btnCloseAccount.Text == "Close Account")
             {
+                tbReopenFees.Enabled = true;
+                tbReopenFees.ResetText();
                 _currentAccountProductHoldings.Status = "Closed";
                 _currentAccountProductHoldings.CloseDate = DateTime.Today;
                 _currentAccountProductHoldings.ClosingFees = Convert.ToDecimal(tbCloseFees.Text) + _currentAccountProductHoldings.ClosingFees;
+                _currentAccountProductHoldings.FinalAmountPaymentMethod = cbCAPaymentMethod.SelectedItem.ToString();
                 btnCloseAccount.Enabled = false;
+                if (cbCAPaymentMethod.SelectedItem.ToString() != "Cash")
+                {
+                    _currentAccountProductHoldings.FinalAmountAccountNumber = tbCAChequeAccount.Text;
+                }
                 if (currentAccountProduct.ClosingFeesType == "Flat")
                 {
                     rbFlatCloseFees.Checked = true;
@@ -9823,8 +9845,8 @@ namespace OpenCBS.GUI.Clients
         private void cbCAPaymentMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
             string paymentMethod = cbCAPaymentMethod.SelectedItem.ToString();
-            string finalAccountNumber = "";
-            _currentAccountProductHoldings.FinalAmountPaymentMethod = paymentMethod;
+           
+           
             if (paymentMethod == "Cash")
             {
                lblCAChequeNumber.Visible = false;
@@ -9833,16 +9855,14 @@ namespace OpenCBS.GUI.Clients
             else if (paymentMethod == "Cheque")
             {
                 lblCAChequeNumber.Text = "To Cheque Number:";
-                finalAccountNumber = tbCAChequeAccount.Text;
-                _currentAccountProductHoldings.FinalAmountAccountNumber = finalAccountNumber;
+               
                 lblCAChequeNumber.Visible = true;
                 tbCAChequeAccount.Visible = true; 
             }
             else if (paymentMethod == "Transfer")
             {
                 lblCAChequeNumber.Text = "To Account Number:";
-                finalAccountNumber = tbCAChequeAccount.Text;
-                _currentAccountProductHoldings.FinalAmountAccountNumber = finalAccountNumber;
+               
                 lblCAChequeNumber.Visible = true;
                 tbCAChequeAccount.Visible = true;
             }
@@ -9934,6 +9954,63 @@ namespace OpenCBS.GUI.Clients
                 lblInitialChequeNumber.Visible = true;
                 tbInitialPaymentNumber.Visible = true;
             }
+        }
+
+        private void tbCAProductCode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbTransferNumber_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        void KeyPressControl(KeyPressEventArgs e)
+        {
+            int keyCode = e.KeyChar;
+
+            if (
+                (keyCode >= 48 && keyCode <= 57) ||
+                (keyCode == 8) ||
+                (Char.IsControl(e.KeyChar) && e.KeyChar != ((char)Keys.V | (char)Keys.ControlKey))
+                ||
+                (Char.IsControl(e.KeyChar) && e.KeyChar != ((char)Keys.C | (char)Keys.ControlKey))
+                ||
+                (e.KeyChar.ToString() == System.Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator))
+            {
+                e.Handled = false;
+            }
+            else
+                e.Handled = true;
+        }
+
+        private void tbTransferNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
+        }
+
+        private void tbCAChequeAccount_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbInitialPaymentNumber_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbOverdraftAmount_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
+        private void tbCAChequeAccount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
         }
 
         

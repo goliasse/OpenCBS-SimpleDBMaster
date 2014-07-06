@@ -210,9 +210,6 @@
   <data name="tbOverdraftLimit.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
   </data>
-  <data name="tbOverdraftLimit.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;tbOverdraftLimit.Name" xml:space="preserve">
     <value>tbOverdraftLimit</value>
   </data>
@@ -369,9 +366,6 @@
   <data name="tbOverdraftFees.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="tbOverdraftFees.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;tbOverdraftFees.Name" xml:space="preserve">
     <value>tbOverdraftFees</value>
   </data>
@@ -429,9 +423,6 @@
   <data name="tbOverdraftFeesMax.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="tbOverdraftFeesMax.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;tbOverdraftFeesMax.Name" xml:space="preserve">
     <value>tbOverdraftFeesMax</value>
   </data>
@@ -455,9 +446,6 @@
   </data>
   <data name="tbOverdraftFeesMin.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="tbOverdraftFeesMin.Text" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;tbOverdraftFeesMin.Name" xml:space="preserve">
     <value>tbOverdraftFeesMin</value>
@@ -609,9 +597,6 @@
   <data name="tbInterestCalculationFrequency.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="tbInterestCalculationFrequency.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;tbInterestCalculationFrequency.Name" xml:space="preserve">
     <value>tbInterestCalculationFrequency</value>
   </data>
@@ -728,9 +713,6 @@
   </data>
   <data name="tbInterestValue.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
-  </data>
-  <data name="tbInterestValue.Text" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;tbInterestValue.Name" xml:space="preserve">
     <value>tbInterestValue</value>
@@ -855,9 +837,6 @@
   <data name="tbInterestRateMax.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="tbInterestRateMax.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;tbInterestRateMax.Name" xml:space="preserve">
     <value>tbInterestRateMax</value>
   </data>
@@ -881,9 +860,6 @@
   </data>
   <data name="tbInterestRateMin.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="tbInterestRateMin.Text" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;tbInterestRateMin.Name" xml:space="preserve">
     <value>tbInterestRateMin</value>
@@ -1359,9 +1335,6 @@
   <data name="tbInitialAmountMax.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tbInitialAmountMax.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;tbInitialAmountMax.Name" xml:space="preserve">
     <value>tbInitialAmountMax</value>
   </data>
@@ -1384,9 +1357,6 @@
     <value>100, 22</value>
   </data>
   <data name="tbInitialAmountMin.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tbInitialAmountMin.Text" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;tbInitialAmountMin.Name" xml:space="preserve">
@@ -1506,9 +1476,6 @@
   <data name="tbBalanceMax.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="tbBalanceMax.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;tbBalanceMax.Name" xml:space="preserve">
     <value>tbBalanceMax</value>
   </data>
@@ -1532,9 +1499,6 @@
   </data>
   <data name="tbBalanceMin.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="tbBalanceMin.Text" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;tbBalanceMin.Name" xml:space="preserve">
     <value>tbBalanceMin</value>
@@ -1806,9 +1770,6 @@
   <data name="tbReopenFees.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="tbReopenFees.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;tbReopenFees.Name" xml:space="preserve">
     <value>tbReopenFees</value>
   </data>
@@ -1866,9 +1827,6 @@
   <data name="tbReopenFeesMax.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="tbReopenFeesMax.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;tbReopenFeesMax.Name" xml:space="preserve">
     <value>tbReopenFeesMax</value>
   </data>
@@ -1892,9 +1850,6 @@
   </data>
   <data name="tbReopenFeesMin.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="tbReopenFeesMin.Text" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;tbReopenFeesMin.Name" xml:space="preserve">
     <value>tbReopenFeesMin</value>
@@ -2196,9 +2151,6 @@
   <data name="tbManagementFees.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="tbManagementFees.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;tbManagementFees.Name" xml:space="preserve">
     <value>tbManagementFees</value>
   </data>
@@ -2256,9 +2208,6 @@
   <data name="tbManagementFeesMax.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="tbManagementFeesMax.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;tbManagementFeesMax.Name" xml:space="preserve">
     <value>tbManagementFeesMax</value>
   </data>
@@ -2282,9 +2231,6 @@
   </data>
   <data name="tbManagementFeesMin.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="tbManagementFeesMin.Text" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;tbManagementFeesMin.Name" xml:space="preserve">
     <value>tbManagementFeesMin</value>
@@ -2502,9 +2448,6 @@
   <data name="tbCloseFees.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="tbCloseFees.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;tbCloseFees.Name" xml:space="preserve">
     <value>tbCloseFees</value>
   </data>
@@ -2562,9 +2505,6 @@
   <data name="tbCloseFeesMax.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="tbCloseFeesMax.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;tbCloseFeesMax.Name" xml:space="preserve">
     <value>tbCloseFeesMax</value>
   </data>
@@ -2588,9 +2528,6 @@
   </data>
   <data name="tbCloseFeesMin.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="tbCloseFeesMin.Text" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;tbCloseFeesMin.Name" xml:space="preserve">
     <value>tbCloseFeesMin</value>
@@ -2808,9 +2745,6 @@
   <data name="tbEntryFees.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
-  <data name="tbEntryFees.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;tbEntryFees.Name" xml:space="preserve">
     <value>tbEntryFees</value>
   </data>
@@ -2868,9 +2802,6 @@
   <data name="tbEntryFeesMax.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="tbEntryFeesMax.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;tbEntryFeesMax.Name" xml:space="preserve">
     <value>tbEntryFeesMax</value>
   </data>
@@ -2894,9 +2825,6 @@
   </data>
   <data name="tbEntryFeesMin.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="tbEntryFeesMin.Text" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;tbEntryFeesMin.Name" xml:space="preserve">
     <value>tbEntryFeesMin</value>
@@ -3228,9 +3156,6 @@
   <data name="tbTranFeeMax.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
   </data>
-  <data name="tbTranFeeMax.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;tbTranFeeMax.Name" xml:space="preserve">
     <value>tbTranFeeMax</value>
   </data>
@@ -3254,9 +3179,6 @@
   </data>
   <data name="tbTranFeeMin.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
-  </data>
-  <data name="tbTranFeeMin.Text" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;tbTranFeeMin.Name" xml:space="preserve">
     <value>tbTranFeeMin</value>
@@ -3446,9 +3368,6 @@
   </data>
   <data name="tbTranFeeValue.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
-  </data>
-  <data name="tbTranFeeValue.Text" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;tbTranFeeValue.Name" xml:space="preserve">
     <value>tbTranFeeValue</value>
