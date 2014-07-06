@@ -13,6 +13,7 @@ namespace OpenCBS.CoreDomain.Products
         public string CurrentAccountContractCode { get; set; }
         public CurrentAccountProduct CurrentAccountProduct { get; set; }
         public decimal InitialAmount { get; set; }
+        public decimal Balance { get; set; }
         public decimal OverdraftLimit { get; set; }
         public double InterestRate { get; set; }
         public int InterestCalculationFrequency { get; set; }
@@ -39,6 +40,7 @@ namespace OpenCBS.CoreDomain.Products
 
         public string ManagementFeesFrequency { get; set; }
         public string InitialAmountPaymentMethod { get; set; }
+        public string InitialAmountAccountNumber { get; set; }
         public string FirstName { get; set; }
 
         public string FinalAmountPaymentMethod { get; set; }

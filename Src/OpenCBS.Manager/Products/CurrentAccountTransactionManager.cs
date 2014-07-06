@@ -36,7 +36,9 @@ namespace OpenCBS.Manager.Products
 [transaction_type],
 [transaction_fees],
 [maker],
-[checker])
+[checker],
+[purpose_of_transfer]
+)
                 VALUES
 (@fromAccount,
 @toAccount,
@@ -46,7 +48,9 @@ namespace OpenCBS.Manager.Products
 @transactionType,
 @transactionFees,
 @maker,
-@checker)
+@checker,
+@purposeOfTransfer
+)
          
                 SELECT SCOPE_IDENTITY()";
 
@@ -67,15 +71,23 @@ namespace OpenCBS.Manager.Products
         public void SetProduct(OpenCbsCommand c, CurrentAccountTransactions currentAccountTransactions)
 {
 c.AddParam("@fromAccount",currentAccountTransactions.FromAccount);
-c.AddParam("@toAccount",currentAccountTransactions. ToAccount);
-c.AddParam("@amount ",currentAccountTransactions. Amount);
-c.AddParam("@transactionDate",currentAccountTransactions. TransactionDate);
-c.AddParam("@transactionMode",currentAccountTransactions. TransactionMode);
-c.AddParam("@transactionType ",currentAccountTransactions. TransactionType);
-c.AddParam("@transactionFees ",currentAccountTransactions. TransactionFees);
-c.AddParam("@maker",currentAccountTransactions. Maker);
-c.AddParam("@checker",currentAccountTransactions. Checker);
+c.AddParam("@toAccount",currentAccountTransactions.ToAccount);
+c.AddParam("@amount ",currentAccountTransactions.Amount);
+c.AddParam("@transactionDate",currentAccountTransactions.TransactionDate);
+c.AddParam("@transactionMode",currentAccountTransactions.TransactionMode);
+c.AddParam("@transactionType ",currentAccountTransactions.TransactionType);
+c.AddParam("@transactionFees ",CalculateTransactionFees(currentAccountTransactions));
+c.AddParam("@maker",currentAccountTransactions.Maker);
+c.AddParam("@checker",currentAccountTransactions.Checker);
+c.AddParam("@purposeOfTransfer", currentAccountTransactions.PurposeOfTransfer);
+            
 }
+
+        public decimal CalculateTransactionFees(CurrentAccountTransactions currentAccountTransactions)
+        {
+            return 10;
+        }
+
 
         public CurrentAccountTransactions GetProduct(OpenCbsReader r)
 {
@@ -90,6 +102,7 @@ currentAccountTransactions.TransactionType = r.GetString("transaction_type");
 currentAccountTransactions.TransactionFees = r.GetDecimal("transaction_fees");
 currentAccountTransactions.Maker = r.GetString("maker");
 currentAccountTransactions.Checker = r.GetString("checker");
+currentAccountTransactions.PurposeOfTransfer = r.GetString("purpose_of_transfer");
 
 return currentAccountTransactions;
 }
@@ -114,7 +127,7 @@ return currentAccountTransactions;
         }
 
 
-public CurrentAccountTransactions FetchTransaction(string transactionId)
+public CurrentAccountTransactions FetchTransaction(int transactionId)
         {
 
 
@@ -128,7 +141,8 @@ public CurrentAccountTransactions FetchTransaction(string transactionId)
 [transaction_type],
 [transaction_fees],
 [maker],
-[checker]
+[checker],
+[purpose_of_transfer]
 
             FROM [dbo].[CurrentAccountTransactions]
             WHERE id = @transactionId";
@@ -172,7 +186,8 @@ public List<CurrentAccountTransactions> FetchTransactions(string accountNumber)
 [transaction_type],
 [transaction_fees],
 [maker],
-[checker]
+[checker],
+[purpose_of_transfer]
 
             FROM [dbo].[CurrentAccountTransactions]
             WHERE from_account = @accountNumber OR to_account = @accountNumber";
@@ -191,7 +206,7 @@ c.AddParam("@accountNumber", accountNumber);
                     {
 
 
-                        CurrentAccountTransactions transaction = FetchTransaction(r.GetString("id"));
+                        CurrentAccountTransactions transaction = FetchTransaction(r.GetInt("id"));
 
                         currentAccountTransactionsList.Add(transaction);
                     }

@@ -593,11 +593,15 @@ namespace OpenCBS.GUI.Clients
             this.tbInterestRate = new System.Windows.Forms.TextBox();
             this.lbInterestRateMin = new System.Windows.Forms.Label();
             this.tabPageCurrentAccount = new System.Windows.Forms.TabPage();
-            this.btnTransactions = new System.Windows.Forms.Button();
-            this.btnOverdraft = new System.Windows.Forms.Button();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.tbCABalanceAmount = new System.Windows.Forms.TextBox();
-            this.label37 = new System.Windows.Forms.Label();
+            this.btnTransactions = new System.Windows.Forms.Button();
+            this.lblBalanceAmount = new System.Windows.Forms.Label();
+            this.btnOverdraft = new System.Windows.Forms.Button();
+            this.gbInitialPayment = new System.Windows.Forms.GroupBox();
+            this.cbCAInitialAmountMethod = new System.Windows.Forms.ComboBox();
+            this.tbInitialPaymentNumber = new System.Windows.Forms.TextBox();
+            this.lblInitialChequeNumber = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.gbAmount = new System.Windows.Forms.GroupBox();
             this.tbCAChequeAccount = new System.Windows.Forms.TextBox();
             this.lblCAChequeNumber = new System.Windows.Forms.Label();
@@ -634,8 +638,6 @@ namespace OpenCBS.GUI.Clients
             this.lblCAOpenedDate = new System.Windows.Forms.Label();
             this.tbCAProductCode = new System.Windows.Forms.TextBox();
             this.lblCAProductCode = new System.Windows.Forms.Label();
-            this.cbCAInitialAmountPaymentMethod = new System.Windows.Forms.ComboBox();
-            this.label23 = new System.Windows.Forms.Label();
             this.btnAddCurrentAccountProduct = new System.Windows.Forms.Button();
             this.gtOverdraftFees = new System.Windows.Forms.GroupBox();
             this.rbRateOverdraftFees = new System.Windows.Forms.RadioButton();
@@ -681,6 +683,21 @@ namespace OpenCBS.GUI.Clients
             this.tbCurrentInitialAmount = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.tabPageTransactions = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lvTransactions = new System.Windows.Forms.ListView();
+            this.columnHeader31 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader32 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader33 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader34 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader35 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader36 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader37 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader38 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader39 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader40 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader41 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label44 = new System.Windows.Forms.Label();
             this.tabPageOverdraft = new System.Windows.Forms.TabPage();
             this.menuBtnAddSavingOperation = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.savingDepositToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -713,18 +730,6 @@ namespace OpenCBS.GUI.Clients
             this.menuPendingSavingEvents = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemConfirmPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCancelPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader31 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader32 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader33 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader34 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader35 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader36 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader37 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label44 = new System.Windows.Forms.Label();
-            this.columnHeader38 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader39 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader40 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).BeginInit();
             this.splitContainer10.Panel1.SuspendLayout();
             this.splitContainer10.Panel2.SuspendLayout();
@@ -854,7 +859,7 @@ namespace OpenCBS.GUI.Clients
             this.gbInitialAmount.SuspendLayout();
             this.gbInterestRate.SuspendLayout();
             this.tabPageCurrentAccount.SuspendLayout();
-            this.groupBox7.SuspendLayout();
+            this.gbInitialPayment.SuspendLayout();
             this.gbAmount.SuspendLayout();
             this.gbCAFees.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -4104,6 +4109,7 @@ namespace OpenCBS.GUI.Clients
             this.chOpenedDate,
             this.chOpenAO,
             this.chStatus});
+            this.lvCurrentAccountProducts.GridLines = true;
             resources.ApplyResources(this.lvCurrentAccountProducts, "lvCurrentAccountProducts");
             this.lvCurrentAccountProducts.Name = "lvCurrentAccountProducts";
             this.lvCurrentAccountProducts.UseCompatibleStateImageBehavior = false;
@@ -4601,9 +4607,11 @@ namespace OpenCBS.GUI.Clients
             // 
             // tabPageCurrentAccount
             // 
+            this.tabPageCurrentAccount.Controls.Add(this.tbCABalanceAmount);
             this.tabPageCurrentAccount.Controls.Add(this.btnTransactions);
+            this.tabPageCurrentAccount.Controls.Add(this.lblBalanceAmount);
             this.tabPageCurrentAccount.Controls.Add(this.btnOverdraft);
-            this.tabPageCurrentAccount.Controls.Add(this.groupBox7);
+            this.tabPageCurrentAccount.Controls.Add(this.gbInitialPayment);
             this.tabPageCurrentAccount.Controls.Add(this.gbAmount);
             this.tabPageCurrentAccount.Controls.Add(this.gbCAFees);
             this.tabPageCurrentAccount.Controls.Add(this.groupBox3);
@@ -4619,8 +4627,6 @@ namespace OpenCBS.GUI.Clients
             this.tabPageCurrentAccount.Controls.Add(this.lblCAOpenedDate);
             this.tabPageCurrentAccount.Controls.Add(this.tbCAProductCode);
             this.tabPageCurrentAccount.Controls.Add(this.lblCAProductCode);
-            this.tabPageCurrentAccount.Controls.Add(this.cbCAInitialAmountPaymentMethod);
-            this.tabPageCurrentAccount.Controls.Add(this.label23);
             this.tabPageCurrentAccount.Controls.Add(this.btnAddCurrentAccountProduct);
             this.tabPageCurrentAccount.Controls.Add(this.gtOverdraftFees);
             this.tabPageCurrentAccount.Controls.Add(this.gbReopenFees);
@@ -4641,12 +4647,22 @@ namespace OpenCBS.GUI.Clients
             this.tabPageCurrentAccount.UseVisualStyleBackColor = true;
             this.tabPageCurrentAccount.Click += new System.EventHandler(this.tabPageCurrentAccount_Click);
             // 
+            // tbCABalanceAmount
+            // 
+            resources.ApplyResources(this.tbCABalanceAmount, "tbCABalanceAmount");
+            this.tbCABalanceAmount.Name = "tbCABalanceAmount";
+            // 
             // btnTransactions
             // 
             resources.ApplyResources(this.btnTransactions, "btnTransactions");
             this.btnTransactions.Name = "btnTransactions";
             this.btnTransactions.UseVisualStyleBackColor = true;
             this.btnTransactions.Click += new System.EventHandler(this.btnTransactions_Click);
+            // 
+            // lblBalanceAmount
+            // 
+            resources.ApplyResources(this.lblBalanceAmount, "lblBalanceAmount");
+            this.lblBalanceAmount.Name = "lblBalanceAmount";
             // 
             // btnOverdraft
             // 
@@ -4655,23 +4671,42 @@ namespace OpenCBS.GUI.Clients
             this.btnOverdraft.UseVisualStyleBackColor = true;
             this.btnOverdraft.Click += new System.EventHandler(this.btnOverdraft_Click);
             // 
-            // groupBox7
+            // gbInitialPayment
             // 
-            this.groupBox7.Controls.Add(this.tbCABalanceAmount);
-            this.groupBox7.Controls.Add(this.label37);
-            resources.ApplyResources(this.groupBox7, "groupBox7");
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.TabStop = false;
+            this.gbInitialPayment.Controls.Add(this.cbCAInitialAmountMethod);
+            this.gbInitialPayment.Controls.Add(this.tbInitialPaymentNumber);
+            this.gbInitialPayment.Controls.Add(this.lblInitialChequeNumber);
+            this.gbInitialPayment.Controls.Add(this.label23);
+            resources.ApplyResources(this.gbInitialPayment, "gbInitialPayment");
+            this.gbInitialPayment.Name = "gbInitialPayment";
+            this.gbInitialPayment.TabStop = false;
             // 
-            // tbCABalanceAmount
+            // cbCAInitialAmountMethod
             // 
-            resources.ApplyResources(this.tbCABalanceAmount, "tbCABalanceAmount");
-            this.tbCABalanceAmount.Name = "tbCABalanceAmount";
+            this.cbCAInitialAmountMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cbCAInitialAmountMethod, "cbCAInitialAmountMethod");
+            this.cbCAInitialAmountMethod.FormattingEnabled = true;
+            this.cbCAInitialAmountMethod.Items.AddRange(new object[] {
+            resources.GetString("cbCAInitialAmountMethod.Items"),
+            resources.GetString("cbCAInitialAmountMethod.Items1"),
+            resources.GetString("cbCAInitialAmountMethod.Items2")});
+            this.cbCAInitialAmountMethod.Name = "cbCAInitialAmountMethod";
+            this.cbCAInitialAmountMethod.SelectedIndexChanged += new System.EventHandler(this.cbCAInitialAmountMethod_SelectedIndexChanged);
             // 
-            // label37
+            // tbInitialPaymentNumber
             // 
-            resources.ApplyResources(this.label37, "label37");
-            this.label37.Name = "label37";
+            resources.ApplyResources(this.tbInitialPaymentNumber, "tbInitialPaymentNumber");
+            this.tbInitialPaymentNumber.Name = "tbInitialPaymentNumber";
+            // 
+            // lblInitialChequeNumber
+            // 
+            resources.ApplyResources(this.lblInitialChequeNumber, "lblInitialChequeNumber");
+            this.lblInitialChequeNumber.Name = "lblInitialChequeNumber";
+            // 
+            // label23
+            // 
+            resources.ApplyResources(this.label23, "label23");
+            this.label23.Name = "label23";
             // 
             // gbAmount
             // 
@@ -4894,21 +4929,6 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.lblCAProductCode, "lblCAProductCode");
             this.lblCAProductCode.Name = "lblCAProductCode";
-            // 
-            // cbCAInitialAmountPaymentMethod
-            // 
-            this.cbCAInitialAmountPaymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.cbCAInitialAmountPaymentMethod, "cbCAInitialAmountPaymentMethod");
-            this.cbCAInitialAmountPaymentMethod.FormattingEnabled = true;
-            this.cbCAInitialAmountPaymentMethod.Items.AddRange(new object[] {
-            resources.GetString("cbCAInitialAmountPaymentMethod.Items"),
-            resources.GetString("cbCAInitialAmountPaymentMethod.Items1")});
-            this.cbCAInitialAmountPaymentMethod.Name = "cbCAInitialAmountPaymentMethod";
-            // 
-            // label23
-            // 
-            resources.ApplyResources(this.label23, "label23");
-            this.label23.Name = "label23";
             // 
             // btnAddCurrentAccountProduct
             // 
@@ -5204,11 +5224,103 @@ namespace OpenCBS.GUI.Clients
             // 
             // tabPageTransactions
             // 
-            this.tabPageTransactions.Controls.Add(this.listView1);
+            this.tabPageTransactions.Controls.Add(this.button2);
+            this.tabPageTransactions.Controls.Add(this.button1);
+            this.tabPageTransactions.Controls.Add(this.lvTransactions);
             this.tabPageTransactions.Controls.Add(this.label44);
             resources.ApplyResources(this.tabPageTransactions, "tabPageTransactions");
             this.tabPageTransactions.Name = "tabPageTransactions";
             this.tabPageTransactions.UseVisualStyleBackColor = true;
+            this.tabPageTransactions.Click += new System.EventHandler(this.tabPageTransactions_Click);
+            // 
+            // button2
+            // 
+            resources.ApplyResources(this.button2, "button2");
+            this.button2.Name = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lvTransactions
+            // 
+            this.lvTransactions.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.lvTransactions.AllowColumnReorder = true;
+            this.lvTransactions.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader31,
+            this.columnHeader32,
+            this.columnHeader33,
+            this.columnHeader34,
+            this.columnHeader35,
+            this.columnHeader36,
+            this.columnHeader37,
+            this.columnHeader38,
+            this.columnHeader39,
+            this.columnHeader40,
+            this.columnHeader41});
+            this.lvTransactions.GridLines = true;
+            resources.ApplyResources(this.lvTransactions, "lvTransactions");
+            this.lvTransactions.Name = "lvTransactions";
+            this.lvTransactions.UseCompatibleStateImageBehavior = false;
+            this.lvTransactions.View = System.Windows.Forms.View.Details;
+            this.lvTransactions.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
+            // columnHeader31
+            // 
+            resources.ApplyResources(this.columnHeader31, "columnHeader31");
+            // 
+            // columnHeader32
+            // 
+            resources.ApplyResources(this.columnHeader32, "columnHeader32");
+            // 
+            // columnHeader33
+            // 
+            resources.ApplyResources(this.columnHeader33, "columnHeader33");
+            // 
+            // columnHeader34
+            // 
+            resources.ApplyResources(this.columnHeader34, "columnHeader34");
+            // 
+            // columnHeader35
+            // 
+            resources.ApplyResources(this.columnHeader35, "columnHeader35");
+            // 
+            // columnHeader36
+            // 
+            resources.ApplyResources(this.columnHeader36, "columnHeader36");
+            // 
+            // columnHeader37
+            // 
+            resources.ApplyResources(this.columnHeader37, "columnHeader37");
+            // 
+            // columnHeader38
+            // 
+            resources.ApplyResources(this.columnHeader38, "columnHeader38");
+            // 
+            // columnHeader39
+            // 
+            resources.ApplyResources(this.columnHeader39, "columnHeader39");
+            // 
+            // columnHeader40
+            // 
+            resources.ApplyResources(this.columnHeader40, "columnHeader40");
+            // 
+            // columnHeader41
+            // 
+            resources.ApplyResources(this.columnHeader41, "columnHeader41");
+            // 
+            // label44
+            // 
+            this.label44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(81)))), ((int)(((byte)(152)))));
+            resources.ApplyResources(this.label44, "label44");
+            this.label44.ForeColor = System.Drawing.Color.White;
+            this.label44.Name = "label44";
+            this.label44.Click += new System.EventHandler(this.label44_Click);
             // 
             // tabPageOverdraft
             // 
@@ -5413,75 +5525,6 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.menuItemCancelPendingSavingEvent, "menuItemCancelPendingSavingEvent");
             this.menuItemCancelPendingSavingEvent.Click += new System.EventHandler(this.menuItemCancelPendingSavingEvent_Click);
             // 
-            // listView1
-            // 
-            this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader31,
-            this.columnHeader32,
-            this.columnHeader33,
-            this.columnHeader34,
-            this.columnHeader35,
-            this.columnHeader36,
-            this.columnHeader37,
-            this.columnHeader38,
-            this.columnHeader39,
-            this.columnHeader40});
-            this.listView1.GridLines = true;
-            resources.ApplyResources(this.listView1, "listView1");
-            this.listView1.Name = "listView1";
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
-            // 
-            // columnHeader31
-            // 
-            resources.ApplyResources(this.columnHeader31, "columnHeader31");
-            // 
-            // columnHeader32
-            // 
-            resources.ApplyResources(this.columnHeader32, "columnHeader32");
-            // 
-            // columnHeader33
-            // 
-            resources.ApplyResources(this.columnHeader33, "columnHeader33");
-            // 
-            // columnHeader34
-            // 
-            resources.ApplyResources(this.columnHeader34, "columnHeader34");
-            // 
-            // columnHeader35
-            // 
-            resources.ApplyResources(this.columnHeader35, "columnHeader35");
-            // 
-            // columnHeader36
-            // 
-            resources.ApplyResources(this.columnHeader36, "columnHeader36");
-            // 
-            // columnHeader37
-            // 
-            resources.ApplyResources(this.columnHeader37, "columnHeader37");
-            // 
-            // label44
-            // 
-            this.label44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(81)))), ((int)(((byte)(152)))));
-            resources.ApplyResources(this.label44, "label44");
-            this.label44.ForeColor = System.Drawing.Color.White;
-            this.label44.Name = "label44";
-            this.label44.Click += new System.EventHandler(this.label44_Click);
-            // 
-            // columnHeader38
-            // 
-            resources.ApplyResources(this.columnHeader38, "columnHeader38");
-            // 
-            // columnHeader39
-            // 
-            resources.ApplyResources(this.columnHeader39, "columnHeader39");
-            // 
-            // columnHeader40
-            // 
-            resources.ApplyResources(this.columnHeader40, "columnHeader40");
-            // 
             // ClientForm
             // 
             resources.ApplyResources(this, "$this");
@@ -5672,8 +5715,8 @@ namespace OpenCBS.GUI.Clients
             this.gbInterestRate.PerformLayout();
             this.tabPageCurrentAccount.ResumeLayout(false);
             this.tabPageCurrentAccount.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
+            this.gbInitialPayment.ResumeLayout(false);
+            this.gbInitialPayment.PerformLayout();
             this.gbAmount.ResumeLayout(false);
             this.gbAmount.PerformLayout();
             this.gbCAFees.ResumeLayout(false);
@@ -6222,7 +6265,6 @@ namespace OpenCBS.GUI.Clients
         private Button btnAddCurrentAccountProduct;
         private ComboBox cbInitialAmountPaymentMethod;
         private Label label22;
-        private ComboBox cbCAInitialAmountPaymentMethod;
         private Label label23;
         private Button btnPrint;
         private Button btnExtendPeriod;
@@ -6300,9 +6342,9 @@ namespace OpenCBS.GUI.Clients
         private TextBox tbFrequencyMonths;
         private TextBox tbCAInterestRate;
         private Label label33;
-        private GroupBox groupBox7;
+        private GroupBox gbInitialPayment;
         private TextBox tbCABalanceAmount;
-        private Label label37;
+        private Label lblBalanceAmount;
         private Label label34;
         private Label label43;
         private TextBox tbCalculationFrequency;
@@ -6310,7 +6352,7 @@ namespace OpenCBS.GUI.Clients
         private Button btnOverdraft;
         private TabPage tabPageTransactions;
         private TabPage tabPageOverdraft;
-        private ListView listView1;
+        private ListView lvTransactions;
         private ColumnHeader columnHeader31;
         private ColumnHeader columnHeader32;
         private ColumnHeader columnHeader33;
@@ -6322,5 +6364,11 @@ namespace OpenCBS.GUI.Clients
         private ColumnHeader columnHeader38;
         private ColumnHeader columnHeader39;
         private ColumnHeader columnHeader40;
+        private Button button1;
+        private Button button2;
+        private ColumnHeader columnHeader41;
+        private TextBox tbInitialPaymentNumber;
+        private Label lblInitialChequeNumber;
+        private ComboBox cbCAInitialAmountMethod;
     }
 }

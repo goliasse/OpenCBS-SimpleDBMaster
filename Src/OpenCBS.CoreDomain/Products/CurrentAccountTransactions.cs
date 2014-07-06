@@ -17,6 +17,7 @@ namespace OpenCBS.CoreDomain.Products
         public decimal TransactionFees { get; set; }
         public string Maker { get; set; }
         public string Checker { get; set; }
+        public string PurposeOfTransfer { get; set; }
 
 
 
