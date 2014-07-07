@@ -64,7 +64,18 @@ namespace OpenCBS.Manager.Products
 [interest_type],
 [interest_value],
 [interest_frequency],
-[overdraft_limit])
+[overdraft_limit],
+[overdraft_interest_type],
+[overdraft_interest_value],
+[overdraft_interest_min],
+[overdraft_interest_max],
+[commitment_fee_type],
+[commitment_fee_min],
+[commitment_fee_max],
+[commitment_fee_value],
+[overdraft_limit_min],
+[overdraft_limit_max]
+)
                 VALUES
                 (@delete,
 @currentAccountProductName,
@@ -101,7 +112,18 @@ namespace OpenCBS.Manager.Products
 @interestType,
 @interestValue,
 @interestFrequency,
-@overdraftLimt)
+@overdraftLimt,
+@overdraftInterestType,
+@overdraftInterestValue,
+@overdraftInterestMin,
+@overdraftInterestMax,
+@commitmentFeeType,
+@commitmentFeeMin,
+@commitmentFeeMax,
+@commitmentFeeValue,
+@overdraftLimitMin,
+@overdraftLimitMax
+)
                 SELECT SCOPE_IDENTITY()";
 
 
@@ -110,6 +132,7 @@ namespace OpenCBS.Manager.Products
             {
                 SetProduct(c, currentAccountProduct);
                 currentAccountProduct.Id = Convert.ToInt32(c.ExecuteScalar());
+                
             }
             return currentAccountProduct.Id;
         }
@@ -154,6 +177,16 @@ namespace OpenCBS.Manager.Products
             c.AddParam("@interestValue ", product.InterestValue);
             c.AddParam("@interestFrequency ", product.InterestFrequency);
             c.AddParam("@overdraftLimt ", product.OverdraftLimit);
+            c.AddParam("@overdraftInterestType", product.OverdraftInterestType);
+c.AddParam("@overdraftInterestValue", product.OverdraftInterestValue);
+c.AddParam("@overdraftInterestMin", product.OverdraftInterestMin);
+c.AddParam("@overdraftInterestMax", product.OverdraftInterestMax);
+c.AddParam("@commitmentFeeType", product.CommitmentFeeType);
+c.AddParam("@commitmentFeeMin", product.CommitmentFeeMin);
+c.AddParam("@commitmentFeeMax", product.CommitmentFeeMax);
+c.AddParam("@commitmentFeeValue", product.CommitmentFeeValue);
+c.AddParam("@overdraftLimitMin", product.OverdraftLimitMin);
+c.AddParam("@overdraftLimitMax", product.OverdraftLimitMax);
         }
 
         public void UpdateCurrentAccountProduct(ICurrentAccountProduct product, int productId)
@@ -193,7 +226,17 @@ namespace OpenCBS.Manager.Products
 [interest_type] = @interestType,
 [interest_value] = @interestValue,
 [interest_frequency] = @interestFrequency,
-[overdraft_limit] = @overdraftLimt
+[overdraft_limit] = @overdraftLimt,
+[overdraft_interest_type] = @overdraftInterestType,
+[overdraft_interest_value] = @overdraftInterestValue,
+[overdraft_interest_min] = @overdraftInterestMin,
+[overdraft_interest_max] = @overdraftInterestMax,
+[commitment_fee_type]= @commitmentFeeType,
+[commitment_fee_min] = @commitmentFeeMin,
+[commitment_fee_max] = @commitmentFeeMax,
+[commitment_fee_value] = @commitmentFeeValue,
+[overdraft_limit_min] = @overdraftLimitMin,
+[overdraft_limit_max] = @overdraftLimitMax
 WHERE id = @productId";
 
 
@@ -246,7 +289,17 @@ WHERE id = @productId";
 [interest_type],
 [interest_value],
 [interest_frequency],
-[overdraft_limit] 
+[overdraft_limit],
+[overdraft_interest_type],
+[overdraft_interest_value],
+[overdraft_interest_min],
+[overdraft_interest_max],
+[commitment_fee_type],
+[commitment_fee_min],
+[commitment_fee_max],
+[commitment_fee_value],
+[overdraft_limit_min],
+[overdraft_limit_max] 
 FROM CurrentAccountProduct WHERE id = @id";
 
 
@@ -306,7 +359,17 @@ FROM CurrentAccountProduct WHERE id = @id";
 [interest_type],
 [interest_value],
 [interest_frequency],
-[overdraft_limit] 
+[overdraft_limit],
+[overdraft_interest_type],
+[overdraft_interest_value],
+[overdraft_interest_min],
+[overdraft_interest_max],
+[commitment_fee_type],
+[commitment_fee_min],
+[commitment_fee_max],
+[commitment_fee_value],
+[overdraft_limit_min],
+[overdraft_limit_max] 
 FROM CurrentAccountProduct 
 WHERE current_account_product_name = @productName and current_account_product_code = @productCode";
 
@@ -370,7 +433,17 @@ WHERE current_account_product_name = @productName and current_account_product_co
 [interest_type],
 [interest_value],
 [interest_frequency],
-[overdraft_limit] 
+[overdraft_limit],
+[overdraft_interest_type],
+[overdraft_interest_value],
+[overdraft_interest_min],
+[overdraft_interest_max],
+[commitment_fee_type],
+[commitment_fee_min],
+[commitment_fee_max],
+[commitment_fee_value],
+[overdraft_limit_min],
+[overdraft_limit_max]
 FROM CurrentAccountProduct";
 
             if (!showAlsoDeleted)
@@ -389,7 +462,7 @@ FROM CurrentAccountProduct";
                     while (r.Read())
                     {
 
-                        CurrentAccountProduct product = FetchProduct(Convert.ToInt32(r.GetInt("id")));
+                        CurrentAccountProduct product = FetchProduct(Convert.ToInt32(r.GetNullInt("id")));
 
                         currentAccountProductList.Add(product);
                     }
@@ -411,19 +484,19 @@ FROM CurrentAccountProduct";
 {
 CurrentAccountProduct currentAccountProduct = new CurrentAccountProduct();
 currentAccountProduct.Id = r.GetInt("id"); 
-currentAccountProduct.Delete = r.GetInt("deleted");
+currentAccountProduct.Delete = r.GetNullInt("deleted");
 currentAccountProduct.CurrentAccountProductName = r.GetString("current_account_product_name");
 currentAccountProduct.CurrentAccountProductCode = r.GetString ("current_account_product_code");
 currentAccountProduct.ClientType = r.GetString ("client_type");
 currentAccountProduct.Currency = r.GetString ("currency");
 
-currentAccountProduct.InitialAmountMin = r.GetDecimal("initial_amount_min");
+currentAccountProduct.InitialAmountMin = r.GetNullDecimal("initial_amount_min");
 
-currentAccountProduct.InitialAmountMax = r.GetDecimal("initial_amount_max");
+currentAccountProduct.InitialAmountMax = r.GetNullDecimal("initial_amount_max");
 
-currentAccountProduct.BalanceMin = r.GetDecimal("balance_min");
+currentAccountProduct.BalanceMin = r.GetNullDecimal("balance_min");
 
-currentAccountProduct.BalanceMax = r.GetDecimal("balance_max");
+currentAccountProduct.BalanceMax = r.GetNullDecimal("balance_max");
 currentAccountProduct.EntryFeesType =	r.GetString("entry_fees_type");
 
 currentAccountProduct.ReopenFeesType = r.GetString("reopen_fees_type");
@@ -434,41 +507,51 @@ currentAccountProduct.ManagementFeesType = r.GetString("management_fees_type");
 
 currentAccountProduct.OverdraftType = r.GetString("overdraft_type");
 
-currentAccountProduct.EntryFeesMin = r.GetDecimal("entry_fees_min");
+currentAccountProduct.EntryFeesMin = r.GetNullDecimal("entry_fees_min");
 
-currentAccountProduct.ReopenFeesMin = r.GetDecimal("reopen_fees_min");
+currentAccountProduct.ReopenFeesMin = r.GetNullDecimal("reopen_fees_min");
 
-currentAccountProduct.ClosingFeesMin = r.GetDecimal("closing_fees_min");
+currentAccountProduct.ClosingFeesMin = r.GetNullDecimal("closing_fees_min");
 
-currentAccountProduct.ManagementFeesMin = r.GetDecimal("management_fees_min");
+currentAccountProduct.ManagementFeesMin = r.GetNullDecimal("management_fees_min");
 
-currentAccountProduct.OverdraftMin = r.GetDecimal("overdraft_min");
+currentAccountProduct.OverdraftMin = r.GetNullDecimal("overdraft_min");
 
-currentAccountProduct.EntryFeesMax = r.GetDecimal("entry_fees_max");
+currentAccountProduct.EntryFeesMax = r.GetNullDecimal("entry_fees_max");
 
-currentAccountProduct.ReopenFeesMax = r.GetDecimal("reopen_fees_max");
+currentAccountProduct.ReopenFeesMax = r.GetNullDecimal("reopen_fees_max");
 
-currentAccountProduct.ClosingFeesMax = r.GetDecimal("closing_fees_max");
-currentAccountProduct.ManagementFeesMax = r.GetDecimal("management_fees_max");
+currentAccountProduct.ClosingFeesMax = r.GetNullDecimal("closing_fees_max");
+currentAccountProduct.ManagementFeesMax = r.GetNullDecimal("management_fees_max");
 
-currentAccountProduct.OverdraftMax = r.GetDecimal("overdraft_max");
-currentAccountProduct.EntryFeesValue = r.GetDecimal("entry_fees_value");
+currentAccountProduct.OverdraftMax = r.GetNullDecimal("overdraft_max");
+currentAccountProduct.EntryFeesValue = r.GetNullDecimal("entry_fees_value");
 
-currentAccountProduct.ReopenFeesValue = r.GetDecimal("reopen_fees_value");
+currentAccountProduct.ReopenFeesValue = r.GetNullDecimal("reopen_fees_value");
 
-currentAccountProduct.ClosingFeesValue = r.GetDecimal("closing_fees_value");
+currentAccountProduct.ClosingFeesValue = r.GetNullDecimal("closing_fees_value");
 
-currentAccountProduct.ManagementFeesValue = r.GetDecimal("management_fees_value");
+currentAccountProduct.ManagementFeesValue = r.GetNullDecimal("management_fees_value");
 
-currentAccountProduct.OverdraftValue = r.GetDecimal("overdraft_value");
+currentAccountProduct.OverdraftValue = r.GetNullDecimal("overdraft_value");
 currentAccountProduct.ManagementFeesFrequency = r.GetString("management_fees_frequency");
 
-currentAccountProduct.InterestMin = r.GetDouble("interest_min");
-currentAccountProduct.InterestMax = r.GetDouble("interest_max");
+currentAccountProduct.InterestMin = r.GetNullDouble("interest_min");
+currentAccountProduct.InterestMax = r.GetNullDouble("interest_max");
 currentAccountProduct.InterestType = r.GetString("interest_type");
-currentAccountProduct.InterestValue = r.GetDouble("interest_value");
-currentAccountProduct.InterestFrequency = r.GetInt("interest_frequency");
-currentAccountProduct.OverdraftLimit = r.GetDecimal("overdraft_limit");
+currentAccountProduct.InterestValue = r.GetNullDouble("interest_value");
+currentAccountProduct.InterestFrequency = r.GetNullInt("interest_frequency");
+currentAccountProduct.OverdraftLimit = r.GetNullDecimal("overdraft_limit");
+currentAccountProduct.OverdraftInterestType = r.GetString("overdraft_interest_type");
+currentAccountProduct.OverdraftInterestValue = r.GetNullDouble("overdraft_interest_value");
+currentAccountProduct.OverdraftInterestMin = r.GetNullDouble("overdraft_interest_min");
+currentAccountProduct.OverdraftInterestMax = r.GetNullDouble("overdraft_interest_max");
+currentAccountProduct.CommitmentFeeType = r.GetString("commitment_fee_type");
+currentAccountProduct.CommitmentFeeMin = r.GetNullDouble("commitment_fee_min");
+currentAccountProduct.CommitmentFeeMax = r.GetNullDouble("commitment_fee_max");
+currentAccountProduct.CommitmentFeeValue = r.GetNullDouble("commitment_fee_value");
+currentAccountProduct.OverdraftLimitMin = r.GetNullDecimal("overdraft_limit_min");
+currentAccountProduct.OverdraftLimitMax = r.GetNullDecimal("overdraft_limit_max");
 
 return currentAccountProduct;
 }
@@ -540,9 +623,9 @@ currentAccountTransactionFees.Id = r.GetInt("id");
 currentAccountTransactionFees.CurrentAccountProductId = r.GetInt("current_account_product_id");
 currentAccountTransactionFees.TransactionType = r.GetString("transaction_type");
 currentAccountTransactionFees.TransactionFeesType= r.GetString("transaction_fees_type");
-currentAccountTransactionFees.TransactionFees= r.GetDecimal("transaction_fees");
-currentAccountTransactionFees.TransactionFeeMin= r.GetDecimal("transaction_fees_min");
-currentAccountTransactionFees.TransactionFeeMax= r.GetDecimal("transaction_fees_max");
+currentAccountTransactionFees.TransactionFees= r.GetNullDecimal("transaction_fees");
+currentAccountTransactionFees.TransactionFeeMin= r.GetNullDecimal("transaction_fees_min");
+currentAccountTransactionFees.TransactionFeeMax= r.GetNullDecimal("transaction_fees_max");
 currentAccountTransactionFees.TransactionMode= r.GetString("transaction_mode");
 
     return currentAccountTransactionFees;
@@ -577,7 +660,7 @@ public List<CurrentAccountTransactionFees> FetchTransactionFee(int productId)
             if (r == null || r.Empty) return new List<CurrentAccountTransactionFees>();
             while (r.Read())
             {
-                CurrentAccountTransactionFees product = FetchTransaction(Convert.ToInt32(r.GetInt("id")));
+                CurrentAccountTransactionFees product = FetchTransaction(Convert.ToInt32(r.GetNullInt("id")));
 
                 currentAccountTransactionFeesList.Add(product);
             }

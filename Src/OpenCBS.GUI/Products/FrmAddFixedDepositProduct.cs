@@ -1,24 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
 using OpenCBS.GUI.UserControl;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
 using OpenCBS.CoreDomain.Accounting;
-using OpenCBS.CoreDomain.Contracts.Loans.Installments;
 using OpenCBS.CoreDomain.Products;
-using OpenCBS.Enums;
-using OpenCBS.ExceptionsHandler;
-using OpenCBS.GUI.UserControl;
 using OpenCBS.MultiLanguageRessources;
 using OpenCBS.Services;
-using OpenCBS.Shared;
-using OpenCBS.GUI.Tools;
 
 namespace OpenCBS.GUI.Products
 {
@@ -59,8 +46,8 @@ namespace OpenCBS.GUI.Products
             
             tbCodeFixedDepositProduct.Text = _fixedDepositProduct.Code;
             tbName.Text = _fixedDepositProduct.Name;
-            tbInitialAmountMax.Text = _fixedDepositProduct.InitialAmountMax.ToString();
-            tbInitialAmountMin.Text = _fixedDepositProduct.InitialAmountMin.ToString();
+            tbInitialAmountMax.Text = _fixedDepositProduct.InitialAmountMax.GetFormatedValue(true);
+            tbInitialAmountMin.Text = _fixedDepositProduct.InitialAmountMin.GetFormatedValue(true);
             tbInterestRateMax.Text = _fixedDepositProduct.InterestRateMax.ToString();
             tbInterestRateMin.Text = _fixedDepositProduct.InterestRateMin.ToString();
             tbPenalityMax.Text = _fixedDepositProduct.PenalityRateMax.ToString();

@@ -746,7 +746,7 @@ namespace OpenCBS.GUI.Clients
                     currentAccountTransactions.Id.ToString(),
                         currentAccountTransactions.FromAccount,
                         currentAccountTransactions.ToAccount,
-                        currentAccountTransactions.Amount.ToString(),
+                        currentAccountTransactions.Amount.GetFormatedValue(true),
                         currentAccountTransactions.TransactionDate.ToShortDateString(),
                         currentAccountTransactions.TransactionMode,
                         currentAccountTransactions.TransactionType

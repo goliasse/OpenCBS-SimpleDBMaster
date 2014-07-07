@@ -695,9 +695,6 @@ namespace OpenCBS.GUI.Clients
             this.columnHeader36 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader37 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader38 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader39 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader40 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader41 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label44 = new System.Windows.Forms.Label();
             this.tabPageOverdraft = new System.Windows.Forms.TabPage();
             this.menuBtnAddSavingOperation = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -5275,10 +5272,7 @@ namespace OpenCBS.GUI.Clients
             this.columnHeader35,
             this.columnHeader36,
             this.columnHeader37,
-            this.columnHeader38,
-            this.columnHeader39,
-            this.columnHeader40,
-            this.columnHeader41});
+            this.columnHeader38});
             this.lvTransactions.GridLines = true;
             resources.ApplyResources(this.lvTransactions, "lvTransactions");
             this.lvTransactions.Name = "lvTransactions";
@@ -5317,18 +5311,6 @@ namespace OpenCBS.GUI.Clients
             // columnHeader38
             // 
             resources.ApplyResources(this.columnHeader38, "columnHeader38");
-            // 
-            // columnHeader39
-            // 
-            resources.ApplyResources(this.columnHeader39, "columnHeader39");
-            // 
-            // columnHeader40
-            // 
-            resources.ApplyResources(this.columnHeader40, "columnHeader40");
-            // 
-            // columnHeader41
-            // 
-            resources.ApplyResources(this.columnHeader41, "columnHeader41");
             // 
             // label44
             // 
@@ -6378,11 +6360,8 @@ namespace OpenCBS.GUI.Clients
         private ColumnHeader columnHeader37;
         private Label label44;
         private ColumnHeader columnHeader38;
-        private ColumnHeader columnHeader39;
-        private ColumnHeader columnHeader40;
         private Button button1;
         private Button button2;
-        private ColumnHeader columnHeader41;
         private TextBox tbInitialPaymentNumber;
         private Label lblInitialChequeNumber;
         private ComboBox cbCAInitialAmountMethod;

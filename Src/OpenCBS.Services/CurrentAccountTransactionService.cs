@@ -5,6 +5,7 @@ using System.Text;
 using OpenCBS.Manager.Products;
 using OpenCBS.CoreDomain;
 using OpenCBS.CoreDomain.Products;
+using OpenCBS.ExceptionsHandler;
 
 namespace OpenCBS.Services
 {
@@ -30,6 +31,28 @@ namespace OpenCBS.Services
         {
             return _currentAccountTransactionManager.SaveCurrentAccountTransactions(currentAccountTransactions);
         }
+
+
+        void ValidateCurrentAccountTransaction(CurrentAccountTransactions currentAccountTransactions)
+        {
+            if (currentAccountTransactions.Amount.HasValue)
+                throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.AmountIsInvalid);
+
+            if (currentAccountTransactions.Amount.HasValue && currentAccountTransactions.Amount <= 0)
+                throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.AmountIsInvalid);
+
+            if (currentAccountTransactions.FromAccount == "")
+                throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.FromAccountNotSelected);
+
+            if (currentAccountTransactions.ToAccount == "")
+                throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.ToAccountNotSelected);
+
+            if (currentAccountTransactions.FromAccount == currentAccountTransactions.ToAccount)
+                throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.ToAndFromAccountIsInvalid);
+
+            //Purpose of transfre not be blank
+        }
+
 
           public void  UpdateCurrentAccountTransactions(CurrentAccountTransactions transaction,string transactionId)
           {

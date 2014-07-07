@@ -49,16 +49,42 @@ namespace OpenCBS.GUI.Products
            
             InitializeComponent();
             InitializeComboBoxCurrencies();
+            InitializeManagementFeeFrequency();
+            InitializeTransactionType();
            
+        }
 
-           
+        void InitializeTransactionType()
+        {
+            cbTransactionType.Items.Clear();
+            cbTransactionType.Items.Add(OCurrentAccount.SelectPaymentMethodDefault);
+            cbTransactionType.Items.Add("Cash");
+            cbTransactionType.Items.Add("Cheque");
+            cbTransactionType.Items.Add("Transfer");
+            cbTransactionType.SelectedIndex = 0;
+            
+
+
+        }
+
+        void InitializeManagementFeeFrequency()
+        {
+            cbManagementFeeFreq.Items.Clear();
+            cbManagementFeeFreq.Items.Add(OCurrentAccount.SelectFrequencyDefault);
+            cbManagementFeeFreq.Items.Add("Monthly");
+            cbManagementFeeFreq.Items.Add("Quarterly");
+            cbManagementFeeFreq.Items.Add("Half Yearly");
+            cbManagementFeeFreq.Items.Add("Yearly");
+            cbManagementFeeFreq.SelectedIndex = 0;
+
         }
 
         public FrmAddCurrentAccountProduct(int productId,bool enabled)
         {
             InitializeComponent();
             InitializeComboBoxCurrencies();
-
+            InitializeManagementFeeFrequency();
+            InitializeTransactionType();
             if (enabled == true)
             {
                 btnUpdate.Visible = true;
@@ -135,32 +161,32 @@ namespace OpenCBS.GUI.Products
             rbRateOverdraftFees.Checked = true;
             }
             cbManagementFeeFreq.SelectedItem = _currentAccountProduct.ManagementFeesFrequency;
-            tbInitialAmountMin.Text = _currentAccountProduct.InitialAmountMin.ToString();
-            tbInitialAmountMax.Text =_currentAccountProduct.InitialAmountMax.ToString();
-            tbBalanceMin.Text =_currentAccountProduct.BalanceMin.ToString();
-            tbBalanceMax.Text =_currentAccountProduct.BalanceMax.ToString();
-            tbEntryFeesMin.Text =_currentAccountProduct.EntryFeesMin.ToString();
-            tbEntryFeesMax.Text =_currentAccountProduct.EntryFeesMax.ToString();
-            tbReopenFeesMin.Text =_currentAccountProduct.ReopenFeesMin.ToString();
-            tbReopenFeesMax.Text =_currentAccountProduct.ReopenFeesMax.ToString();
-            tbCloseFeesMin.Text =_currentAccountProduct.ClosingFeesMin.ToString();
-            tbCloseFeesMax.Text =_currentAccountProduct.ClosingFeesMax.ToString();
-            tbManagementFeesMin.Text =_currentAccountProduct.ManagementFeesMin.ToString();
-            tbManagementFeesMax.Text =_currentAccountProduct.ManagementFeesMax.ToString();
-            tbOverdraftFeesMin.Text =_currentAccountProduct.OverdraftMin.ToString();
-            tbOverdraftFeesMax.Text =_currentAccountProduct.OverdraftMax.ToString();
-            tbEntryFees.Text =_currentAccountProduct.EntryFeesValue.ToString();
-            tbReopenFees.Text =_currentAccountProduct.ReopenFeesValue.ToString();
-            tbCloseFees.Text =_currentAccountProduct.ClosingFeesValue.ToString();
-            tbManagementFees.Text =_currentAccountProduct.ManagementFeesValue.ToString();
+            tbInitialAmountMin.Text = _currentAccountProduct.InitialAmountMin.GetFormatedValue(true);
+            tbInitialAmountMax.Text = _currentAccountProduct.InitialAmountMax.GetFormatedValue(true);
+            tbBalanceMin.Text = _currentAccountProduct.BalanceMin.GetFormatedValue(true);
+            tbBalanceMax.Text = _currentAccountProduct.BalanceMax.GetFormatedValue(true);
+            tbEntryFeesMin.Text = _currentAccountProduct.EntryFeesMin.GetFormatedValue(true);
+            tbEntryFeesMax.Text = _currentAccountProduct.EntryFeesMax.GetFormatedValue(true);
+            tbReopenFeesMin.Text = _currentAccountProduct.ReopenFeesMin.GetFormatedValue(true);
+            tbReopenFeesMax.Text = _currentAccountProduct.ReopenFeesMax.GetFormatedValue(true);
+            tbCloseFeesMin.Text = _currentAccountProduct.ClosingFeesMin.GetFormatedValue(true);
+            tbCloseFeesMax.Text = _currentAccountProduct.ClosingFeesMax.GetFormatedValue(true);
+            tbManagementFeesMin.Text = _currentAccountProduct.ManagementFeesMin.GetFormatedValue(true);
+            tbManagementFeesMax.Text = _currentAccountProduct.ManagementFeesMax.GetFormatedValue(true);
+            tbOverdraftFeesMin.Text = _currentAccountProduct.OverdraftMin.GetFormatedValue(true);
+            tbOverdraftFeesMax.Text = _currentAccountProduct.OverdraftMax.GetFormatedValue(true);
+            tbEntryFees.Text = _currentAccountProduct.EntryFeesValue.GetFormatedValue(true);
+            tbReopenFees.Text = _currentAccountProduct.ReopenFeesValue.GetFormatedValue(true);
+            tbCloseFees.Text = _currentAccountProduct.ClosingFeesValue.GetFormatedValue(true);
+            tbManagementFees.Text = _currentAccountProduct.ManagementFeesValue.GetFormatedValue(true);
 
-            tbOverdraftFees.Text =_currentAccountProduct.OverdraftValue.ToString();
+            tbOverdraftFees.Text = _currentAccountProduct.OverdraftValue.GetFormatedValue(true);
 
             tbInterestRateMin.Text = _currentAccountProduct.InterestMin.ToString();
             tbInterestRateMax.Text = _currentAccountProduct.InterestMax.ToString();
             tbInterestValue.Text = _currentAccountProduct.InterestValue.ToString();
             tbInterestCalculationFrequency.Text = _currentAccountProduct.InterestFrequency.ToString();
-            tbOverdraftLimit.Text = _currentAccountProduct.OverdraftLimit.ToString();
+            tbODLimitValue.Text = _currentAccountProduct.OverdraftLimit.GetFormatedValue(true);
 
             string[] clientType = _currentAccountProduct.ClientType.Split(',');
 
@@ -181,6 +207,47 @@ namespace OpenCBS.GUI.Products
                 }
 
             }
+
+            if (_currentAccountProduct.InterestType == "Flat")
+            {
+                rbODInterestFlat.Checked = true;
+            }
+            else
+            {
+                rbODInterestRate.Checked = true;
+            }
+
+            if (_currentAccountProduct.CommitmentFeeType == "Flat")
+            {
+                rbODCommitmentFlat.Checked = true;
+            }
+            else
+            {
+                rbODCommitmentRate.Checked = true;
+            }
+
+            if (_currentAccountProduct.CommitmentFeeType == "Flat")
+            {
+                rbODCommitmentFlat.Checked = true;
+            }
+            else
+            {
+                rbODCommitmentRate.Checked = true;
+            }
+
+
+
+            tbODInterestMin.Text = _currentAccountProduct.InterestMin.ToString();
+            tbODInterestMax.Text = _currentAccountProduct.InterestMax.ToString();
+            tbODInterestValue.Text = _currentAccountProduct.OverdraftInterestValue.ToString();
+
+            tbODCommitmentMin.Text = _currentAccountProduct.CommitmentFeeMin.ToString();
+            tbODCommitmentMax.Text = _currentAccountProduct.CommitmentFeeMax.ToString();
+            tbODCommitmentValue.Text = _currentAccountProduct.CommitmentFeeValue.ToString();
+            tbODLimitMin.Text = _currentAccountProduct.OverdraftLimitMin.GetFormatedValue(true);
+            tbODLimitMax.Text = _currentAccountProduct.OverdraftMax.GetFormatedValue(true);
+            tbODLimitValue.Text = _currentAccountProduct.OverdraftValue.GetFormatedValue(true);
+
 
             CurrentAccountControl(enabled);
             tbCodeCurrentAccountProduct.Enabled = false;
@@ -237,7 +304,7 @@ namespace OpenCBS.GUI.Products
             tbInterestRateMax.Enabled = enabled;
             tbInterestValue.Enabled = enabled;
             tbInterestCalculationFrequency.Enabled = enabled;
-            tbOverdraftLimit.Enabled = enabled;
+            tbODLimitValue.Enabled = enabled;
 
             cbTransactionType.Enabled = enabled;
             rbTranFeeFlat.Enabled = enabled;
@@ -249,6 +316,24 @@ namespace OpenCBS.GUI.Products
             btnSaveTranFee.Enabled = enabled;
             rbCredit.Enabled = enabled;
             rbDebit.Enabled = enabled;
+
+
+
+            rbODInterestFlat.Enabled = enabled;
+            rbODInterestRate.Enabled = enabled;
+            tbODInterestMin.Enabled = enabled;
+            tbODInterestMax.Enabled = enabled;
+            tbODInterestValue.Enabled = enabled;
+            rbODCommitmentFlat.Enabled = enabled;
+            rbODCommitmentRate.Enabled = enabled;
+            tbODCommitmentMin.Enabled = enabled;
+            tbODCommitmentMax.Enabled = enabled;
+            tbODCommitmentValue.Enabled = enabled;
+            tbODLimitMin.Enabled = enabled;
+            tbODLimitMax.Enabled = enabled;
+            tbODLimitValue.Enabled = enabled;
+
+
 
             }
 
@@ -347,27 +432,27 @@ namespace OpenCBS.GUI.Products
             {
                 _currentAccountProduct.OverdraftType = "Rate";
             }
-            decimal InitialAmountMin = Convert.ToDecimal(tbInitialAmountMin.Text);
-            decimal InitialAmountMax = Convert.ToDecimal(tbInitialAmountMax.Text);
-            decimal BalanceMin = Convert.ToDecimal(tbBalanceMin.Text);
-            decimal BalanceMax = Convert.ToDecimal(tbBalanceMax.Text);
+            decimal? InitialAmountMin = ServicesHelper.ConvertStringToNullableDecimal(tbInitialAmountMin.Text);
+            decimal? InitialAmountMax = ServicesHelper.ConvertStringToNullableDecimal(tbInitialAmountMax.Text);
+            decimal? BalanceMin = ServicesHelper.ConvertStringToNullableDecimal(tbBalanceMin.Text);
+            decimal? BalanceMax = ServicesHelper.ConvertStringToNullableDecimal(tbBalanceMax.Text);
 
 
-            decimal EntryFeesMin = Convert.ToDecimal(tbEntryFeesMin.Text);
-            decimal EntryFeesMax = Convert.ToDecimal(tbEntryFeesMax.Text);
-            decimal ReopenFeesMin = Convert.ToDecimal(tbReopenFeesMin.Text);
-            decimal ReopenFeesMax = Convert.ToDecimal(tbReopenFeesMax.Text);
-            decimal CloseFeesMin = Convert.ToDecimal(tbCloseFeesMin.Text);
-            decimal CloseFeesMax = Convert.ToDecimal(tbCloseFeesMax.Text);
-            decimal ManagementFeesMin = Convert.ToDecimal(tbManagementFeesMin.Text);
-            decimal ManagementFeesMax = Convert.ToDecimal(tbManagementFeesMax.Text);
-            decimal OverdraftFeesMin = Convert.ToDecimal(tbOverdraftFeesMin.Text);
-            decimal OverdraftFeesMax = Convert.ToDecimal(tbOverdraftFeesMax.Text);
-            decimal EntryFees = Convert.ToDecimal(tbEntryFees.Text);
-            decimal ReopenFees = Convert.ToDecimal(tbReopenFees.Text);
-            decimal CloseFees = Convert.ToDecimal(tbCloseFees.Text);
-            decimal ManagementFees = Convert.ToDecimal(tbManagementFees.Text);
-            decimal OverdraftFees = Convert.ToDecimal(tbOverdraftFees.Text);
+            decimal? EntryFeesMin = ServicesHelper.ConvertStringToNullableDecimal(tbEntryFeesMin.Text);
+            decimal? EntryFeesMax = ServicesHelper.ConvertStringToNullableDecimal(tbEntryFeesMax.Text);
+            decimal? ReopenFeesMin = ServicesHelper.ConvertStringToNullableDecimal(tbReopenFeesMin.Text);
+            decimal? ReopenFeesMax = ServicesHelper.ConvertStringToNullableDecimal(tbReopenFeesMax.Text);
+            decimal? CloseFeesMin = ServicesHelper.ConvertStringToNullableDecimal(tbCloseFeesMin.Text);
+            decimal? CloseFeesMax = ServicesHelper.ConvertStringToNullableDecimal(tbCloseFeesMax.Text);
+            decimal? ManagementFeesMin = ServicesHelper.ConvertStringToNullableDecimal(tbManagementFeesMin.Text);
+            decimal? ManagementFeesMax = ServicesHelper.ConvertStringToNullableDecimal(tbManagementFeesMax.Text);
+            decimal? OverdraftFeesMin = ServicesHelper.ConvertStringToNullableDecimal(tbOverdraftFeesMin.Text);
+            decimal? OverdraftFeesMax = ServicesHelper.ConvertStringToNullableDecimal(tbOverdraftFeesMax.Text);
+            decimal? EntryFees = ServicesHelper.ConvertStringToNullableDecimal(tbEntryFees.Text);
+            decimal? ReopenFees = ServicesHelper.ConvertStringToNullableDecimal(tbReopenFees.Text);
+            decimal? CloseFees = ServicesHelper.ConvertStringToNullableDecimal(tbCloseFees.Text);
+            decimal? ManagementFees = ServicesHelper.ConvertStringToNullableDecimal(tbManagementFees.Text);
+            decimal? OverdraftFees = ServicesHelper.ConvertStringToNullableDecimal(tbOverdraftFees.Text);
 
 
             _currentAccountProduct.ManagementFeesFrequency = cbManagementFeeFreq.SelectedItem.ToString();
@@ -396,12 +481,47 @@ namespace OpenCBS.GUI.Products
             _currentAccountProduct.OverdraftValue = OverdraftFees;
             _currentAccountProduct.Delete = 0;
 
-            _currentAccountProduct.InterestMin = Convert.ToDouble(tbInterestRateMin.Text);
-            _currentAccountProduct.InterestMax = Convert.ToDouble(tbInterestRateMax.Text);
-            _currentAccountProduct.InterestValue = Convert.ToDouble(tbInterestValue.Text);
-            _currentAccountProduct.InterestFrequency = Convert.ToInt32(tbInterestCalculationFrequency.Text);
-            _currentAccountProduct.OverdraftLimit = Convert.ToDecimal(tbOverdraftLimit.Text);
+            _currentAccountProduct.InterestMin = ServicesHelper.ConvertStringToNullableDouble(tbInterestRateMin.Text, false);
+            _currentAccountProduct.InterestMax = ServicesHelper.ConvertStringToNullableDouble(tbInterestRateMax.Text, false);
+            _currentAccountProduct.InterestValue = ServicesHelper.ConvertStringToNullableDouble(tbInterestValue.Text, false);
+            _currentAccountProduct.InterestFrequency = ServicesHelper.ConvertStringToNullableInt32(tbInterestCalculationFrequency.Text);
+            
             _currentAccountProduct.InterestType = "Rate";
+
+            
+            if (rbODInterestFlat.Checked)
+            {
+                _currentAccountProduct.OverdraftInterestType = "Flat";
+            }
+            else
+            {
+                _currentAccountProduct.OverdraftInterestType = "Rate";
+            }
+            
+            
+
+            _currentAccountProduct.OverdraftInterestMin = ServicesHelper.ConvertStringToNullableDouble(tbODInterestMin.Text, false);
+            _currentAccountProduct.OverdraftInterestMax = ServicesHelper.ConvertStringToNullableDouble(tbODInterestMax.Text, false);
+            _currentAccountProduct.OverdraftInterestValue = ServicesHelper.ConvertStringToNullableDouble(tbODInterestValue.Text, false);
+
+            if (rbODCommitmentFlat.Checked)
+            {
+                _currentAccountProduct.CommitmentFeeType = "Flat";
+            }
+            else
+            {
+                _currentAccountProduct.CommitmentFeeType = "Rate";
+            }
+
+            _currentAccountProduct.CommitmentFeeMin = ServicesHelper.ConvertStringToNullableDouble(tbODCommitmentMin.Text, false);
+            _currentAccountProduct.CommitmentFeeMax = ServicesHelper.ConvertStringToNullableDouble(tbODCommitmentMax.Text, false);
+            _currentAccountProduct.CommitmentFeeValue = ServicesHelper.ConvertStringToNullableDouble(tbODCommitmentValue.Text, false);
+
+            _currentAccountProduct.OverdraftLimitMin = ServicesHelper.ConvertStringToNullableDecimal(tbODLimitMin.Text);
+
+            _currentAccountProduct.OverdraftLimitMax = ServicesHelper.ConvertStringToNullableDecimal(tbODLimitMax.Text);
+            _currentAccountProduct.OverdraftLimit = ServicesHelper.ConvertStringToNullableDecimal(tbODLimitValue.Text);
+
         }
 
 
@@ -493,9 +613,9 @@ namespace OpenCBS.GUI.Products
                 _currentAccountTransactionFees.TransactionMode = "Credit";
             else
                 _currentAccountTransactionFees.TransactionMode = "Debit";
-            _currentAccountTransactionFees.TransactionFees = Convert.ToDecimal(tbTranFeeValue.Text);
-            _currentAccountTransactionFees.TransactionFeeMin = Convert.ToDecimal(tbTranFeeMin.Text);
-            _currentAccountTransactionFees.TransactionFeeMax = Convert.ToDecimal(tbTranFeeMax.Text);
+            _currentAccountTransactionFees.TransactionFees = ServicesHelper.ConvertStringToNullableDecimal(tbTranFeeValue.Text);
+            _currentAccountTransactionFees.TransactionFeeMin = ServicesHelper.ConvertStringToNullableDecimal(tbTranFeeMin.Text);
+            _currentAccountTransactionFees.TransactionFeeMax = ServicesHelper.ConvertStringToNullableDecimal(tbTranFeeMax.Text);
             
         }
 
@@ -521,29 +641,34 @@ namespace OpenCBS.GUI.Products
         private void cbTransactionType_SelectedIndexChanged(object sender, EventArgs e)
         {
             string transactionType = cbTransactionType.SelectedItem.ToString();
-            string transactionMode = "";
-              if(rbCredit.Checked == true)
-                transactionMode = "Credit";
-            else
-                transactionMode = "Debit";
-            
-
-
-            CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
-            _currentAccountTransactionFees =_currentAccountProductService.FetchTransaction(transactionType, transactionMode, _currentAccountProduct.Id);
-
-            if (_currentAccountTransactionFees != null)
+            if (transactionType != OCurrentAccount.SelectPaymentMethodDefault)
             {
-                if (_currentAccountTransactionFees.TransactionFeesType == "Flat")
-                    rbTranFeeFlat.Checked = true;
+                string transactionMode = "";
+
+                if (rbCredit.Checked == true)
+                    transactionMode = "Credit";
                 else
-                    rbTranFeeRate.Checked = true;
+                    transactionMode = "Debit";
 
 
 
-                tbTranFeeValue.Text = _currentAccountTransactionFees.TransactionFees.ToString();
-                tbTranFeeMin.Text = _currentAccountTransactionFees.TransactionFeeMin.ToString();
-                tbTranFeeMax.Text = _currentAccountTransactionFees.TransactionFeeMax.ToString();
+                CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
+                _currentAccountTransactionFees = _currentAccountProductService.FetchTransaction(transactionType, transactionMode, _currentAccountProduct.Id);
+
+                if (_currentAccountTransactionFees != null)
+                {
+                    if (_currentAccountTransactionFees.TransactionFeesType == "Flat")
+                        rbTranFeeFlat.Checked = true;
+                    else
+                        rbTranFeeRate.Checked = true;
+
+
+
+                    tbTranFeeValue.Text = _currentAccountTransactionFees.TransactionFees.GetFormatedValue(true);
+                    tbTranFeeMin.Text = _currentAccountTransactionFees.TransactionFeeMin.GetFormatedValue(true);
+
+                    tbTranFeeMax.Text = _currentAccountTransactionFees.TransactionFeeMax.GetFormatedValue(true);
+                }
             }
              
 
@@ -655,6 +780,16 @@ namespace OpenCBS.GUI.Products
         }
 
         private void tbTranFeeValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbOverdraftFeesMin_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             KeyPressControl(e);
         }

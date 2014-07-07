@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace OpenCBS.ExceptionsHandler.Exceptions.CurrentAccountExceptions
+namespace OpenCBS.ExceptionsHandler
 {
     [Serializable]
     public class OpenCbsCurrentAcccountTransactionException : OpenCbsException
@@ -59,7 +59,28 @@ namespace OpenCBS.ExceptionsHandler.Exceptions.CurrentAccountExceptions
             string returned = String.Empty;
             switch (exceptionId)
             {
+                case OpenCbsCurrentAcccountTransactionExceptionEnum.AmountTransferMethodNotSelected:
+                    returned = "AmountTransferMethodNotSelected";
+                    break;
+                case OpenCbsCurrentAcccountTransactionExceptionEnum.FromAccountNotSelected:
+                    returned = "SelectFromAccountNotSelected";
+                    break;
+                case OpenCbsCurrentAcccountTransactionExceptionEnum.ToAccountNotSelected:
+                    returned = "SelectToAccountNotSelected";
+                    break;
+                case OpenCbsCurrentAcccountTransactionExceptionEnum.TransactionMakerNotSelected:
+                    returned = "TransactionMakerNotSelected";
+                    break;
+                case OpenCbsCurrentAcccountTransactionExceptionEnum.TransactionCheckerNotSelected:
+                    returned = "TransactionCheckerNotSelected";
+                    break;
+                case OpenCbsCurrentAcccountTransactionExceptionEnum.ToAndFromAccountIsInvalid:
+                    returned = "ToAndFromAccountIsInvalid";
+                    break;
 
+                case OpenCbsCurrentAcccountTransactionExceptionEnum.AmountIsInvalid:
+                    returned = "AmountIsInvalid";
+                    break;
             }
             return returned;
         }
@@ -70,7 +91,13 @@ namespace OpenCBS.ExceptionsHandler.Exceptions.CurrentAccountExceptions
     [Serializable]
     public enum OpenCbsCurrentAcccountTransactionExceptionEnum
     {
-
+        AmountTransferMethodNotSelected,
+        FromAccountNotSelected,
+        ToAccountNotSelected,
+        TransactionMakerNotSelected,
+        TransactionCheckerNotSelected,
+        ToAndFromAccountIsInvalid,
+        AmountIsInvalid
 
     }
     

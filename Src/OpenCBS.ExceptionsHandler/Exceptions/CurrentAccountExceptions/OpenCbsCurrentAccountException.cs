@@ -123,6 +123,99 @@ namespace OpenCBS.ExceptionsHandler
                     returned = "InterestCalculationFrequencyIsInvalid";
                     break;
 
+                case OpenCbsCurrentAccountExceptionEnum.EntryFeesMinIsInvalid:
+                    returned = "EntryFeesMinIsInvalid";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.EntryFeesMaxIsInvalid:
+                    returned = "EntryFeesMaxIsInvalid";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.EntryFeesMinMaxIsInvalid:
+                    returned = "EntryFeesMinMaxIsInvalid";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.ReopenFeesMinIsInvalid:
+                    returned = "ReopenFeesMinIsInvalid";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.ReopenFeesMaxIsInvalid:
+                    returned = "ReopenFeesMaxIsInvalid";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.ReopenFeesMinMaxIsInvalid:
+                    returned = "ReopenFeesMinMaxIsInvalid";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CloseFeesMinIsInvalid:
+                    returned = "CloseFeesMinIsInvalid";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CloseFeesMaxIsInvalid:
+                    returned = "CloseFeesMaxIsInvalid";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CloseFeesMinMaxIsInvalid:
+                    returned = "CloseFeesMinMaxIsInvalid";
+                    break;
+
+
+                case OpenCbsCurrentAccountExceptionEnum.ManagementFeesMinIsInvalid:
+                    returned = "ManagementFeesMinIsInvalid";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.ManagementFeesMaxIsInvalid:
+                    returned = "ManagementFeesMaxIsInvalid";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.ManagementFeesMinMaxIsInvalid:
+                    returned = "ManagementFeesMinMaxIsInvalid";
+                    break;
+
+
+                case OpenCbsCurrentAccountExceptionEnum.ManagementFeeFrequencyIsEmpty:
+                    returned = "ManagementFeeFrequencyIsEmpty";
+                    break;
+
+
+                case OpenCbsCurrentAccountExceptionEnum.OverdraftInterestRateMinIsInvalid:
+                    returned = "OverdraftInterestRateIsInvalid";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.OverdraftInterestRateMaxIsInvalid:
+                    returned = "OverdraftInterestRateMaxIsInvalid";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.OverdraftInterestRateMinMaxIsInvalid:
+                    returned = "OverdraftInterestRateMinMaxIsInvalid";
+                    break;
+
+
+                case OpenCbsCurrentAccountExceptionEnum.CommitmentFeesMinIsInvalid:
+                    returned = "CommitmentFeesMinIsInvalid";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CommitmentFeesMaxIsInvalid:
+                    returned = "CommitmentFeesMaxIsInvalid";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CommitmentFeesMinMaxIsInvalid:
+                    returned = "CommitmentFeesMinMaxIsInvalid";
+                    break;
+
+
+                case OpenCbsCurrentAccountExceptionEnum.OverdraftLimitMinIsInvalid:
+                    returned = "OverdraftLimitMinIsInvalid";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.OverdraftLimitMaxIsInvalid:
+                    returned = "OverdraftLimitMaxIsInvalid";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.OverdraftLimitMinMaxIsInvalid:
+                    returned = "OverdraftLimitMinMaxIsInvalid";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.TransactionTypeIsEmpty:
+                    returned = "CurrentAccountProductTransactionTypeIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.TransactionValueIsLessThanZero:
+                    returned = "CurrentAccountProductTransactionValueIsLessThanZero";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.TransactionMinIsInvalid:
+                    returned = "CurrentAccountProductTransactionMinIsInvalid";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.TransactionMaxIsInvalid:
+                    returned = "CurrentAccountProductTransactionMaxIsInvalid";
+                    break;
+
+
             }
             return returned;
         }
@@ -151,7 +244,36 @@ namespace OpenCBS.ExceptionsHandler
         OverdraftFeesMinIsInvalid,
         OverdraftFeesMaxIsInvalid,
         OverdraftFeesMinMaxIsInvalid,
-        InterestCalculationFrequencyIsInvalid
+        InterestCalculationFrequencyIsInvalid,
+        EntryFeesMinIsInvalid,
+        EntryFeesMaxIsInvalid,
+        EntryFeesMinMaxIsInvalid,
+        ReopenFeesMinIsInvalid,
+        ReopenFeesMaxIsInvalid,
+        ReopenFeesMinMaxIsInvalid,
+        CloseFeesMinIsInvalid,
+        CloseFeesMaxIsInvalid,
+        CloseFeesMinMaxIsInvalid,
+        ManagementFeesMinIsInvalid,
+        ManagementFeesMaxIsInvalid,
+        ManagementFeesMinMaxIsInvalid,
+        ManagementFeeFrequencyIsEmpty,
+        FixedOverdraftFeesMinIsInvalid,
+        FixedOverdraftFeesMaxIsInvalid,
+        FixedOverdraftFeesMinMaxIsInvalid,
+        OverdraftInterestRateMinIsInvalid,
+        OverdraftInterestRateMaxIsInvalid,
+        OverdraftInterestRateMinMaxIsInvalid,
+        CommitmentFeesMinIsInvalid,
+        CommitmentFeesMaxIsInvalid,
+        CommitmentFeesMinMaxIsInvalid,
+        OverdraftLimitMinIsInvalid,
+        OverdraftLimitMaxIsInvalid,
+        OverdraftLimitMinMaxIsInvalid,
+        TransactionTypeIsEmpty,
+        TransactionValueIsLessThanZero,
+        TransactionMinIsInvalid,
+        TransactionMaxIsInvalid
 
     }
 

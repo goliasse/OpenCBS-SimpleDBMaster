@@ -115,10 +115,6 @@
       <Project>{8AFC1E87-3856-4F05-8280-5360D33C200B}</Project>
       <Name>OpenCBS.Enums</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OpenCBS.ExceptionsHandler\OpenCBS.ExceptionsHandler.csproj">
-      <Project>{98B26AD8-D160-462B-B70F-982D8701154A}</Project>
-      <Name>OpenCBS.ExceptionsHandler</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OpenCBS.Shared\OpenCBS.Shared.csproj">
       <Project>{B3288E21-E5A9-4620-BEF3-AFB0B207655C}</Project>
       <Name>OpenCBS.Shared</Name>

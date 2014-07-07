@@ -18,8 +18,8 @@ namespace OpenCBS.CoreDomain.Products
         public string Code { get; set; }
         public string ClientType { get; set; }
         public string Currency { get; set; }
-        public decimal? InitialAmountMin { get; set; }
-        public decimal? InitialAmountMax { get; set; }
+        public OCurrency InitialAmountMin { get; set; }
+        public OCurrency InitialAmountMax { get; set; }
         public string InterestCalculationFrequency { get; set; }
         public string PenalityType { get; set; }
         public double? InterestRateMin { get; set; }

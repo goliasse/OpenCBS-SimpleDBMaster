@@ -35,8 +35,8 @@ namespace OpenCBS.CoreDomain.Products
         string Code { get; set; }
         string ClientType { get; set; }
         string Currency { get; set; }
-        decimal? InitialAmountMin { get; set; }
-        decimal? InitialAmountMax { get; set; }
+        OCurrency InitialAmountMin { get; set; }
+        OCurrency InitialAmountMax { get; set; }
         string InterestCalculationFrequency { get; set; }
         string PenalityType { get; set; }
 

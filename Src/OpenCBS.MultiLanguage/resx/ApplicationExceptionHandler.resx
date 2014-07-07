@@ -456,7 +456,7 @@ You must complete either "min" and "max" or "value". Amount cannot be null (Main
     <value>This Client is a bad client. You need to explain why.</value>
   </data>
   <data name="DecimalAmount.Text" xml:space="preserve">
-    <value>You use a currency with no cents, the amount can't contain cents</value>
+    <value>You use a currency with no cents, the amount cannot contain cents</value>
   </data>
   <data name="ContractExceptionBeneficiaryIsBad.Text" xml:space="preserve">
     <value>It is a bad client. You cannot create a loan for a bad client</value>
@@ -1002,7 +1002,7 @@ You must complete either "min" and "max" or "value". If you do not want to use t
     <value>The account descript is invalid</value>
   </data>
   <data name="AccountExceptionCannotBeDeleted.Text" xml:space="preserve">
-    <value>This account can't be deleted, it's a default account</value>
+    <value>This account cannot be deleted, it's a default account</value>
   </data>
   <data name="AccountExceptionParentAccountDoesntExists.Text" xml:space="preserve">
     <value>The parent account doesn't exists</value>
@@ -1376,13 +1376,13 @@ Enter another account number.
     <value>Currency other than select currency… must be selected</value>
   </data>
   <data name="InitialAmountMinIsInvalid" xml:space="preserve">
-    <value>Initial Amount Min can't be less than zero</value>
+    <value>Initial Amount Min cannot be less than zero</value>
   </data>
   <data name="InitialAmountMaxIsInvalid" xml:space="preserve">
-    <value>Initial Amount Max can't be less than equal to zero</value>
+    <value>Initial Amount Max cannot be less than equal to zero</value>
   </data>
   <data name="InitialAmountMinMaxIsInvalid" xml:space="preserve">
-    <value>Initial Amount Min can't be greater than equal to max amount</value>
+    <value>Initial Amount Min cannot be greater than equal to max amount</value>
   </data>
   <data name="BalanceMinIsInvalid" xml:space="preserve">
     <value>Balance Min cannot be less than zero</value>
@@ -1415,4 +1415,124 @@ Enter another account number.
     <value>Interest Calculation Frequency cannot be less than equal to zero</value>
   </data>
   
+
+<data name="EntryFeesMinIsInvalid" xml:space="preserve">
+    <value>Entry Fees Min cannot be less than zero</value>
+  </data>
+  <data name="EntryFeesMaxIsInvalid" xml:space="preserve">
+    <value>Entry Fees Max cannot be less than equal to zero</value>
+  </data>
+   <data name="EntryFeesMinMaxIsInvalid" xml:space="preserve">
+    <value>EntryFees min cannot be greater than equal to max balance</value>
+  </data>
+
+
+<data name="ReopenFeesMinIsInvalid" xml:space="preserve">
+    <value>Reopen Fees Min cannot be less than zero</value>
+  </data>
+  <data name="ReopenFeesMaxIsInvalid" xml:space="preserve">
+    <value>Reopen Fees Max cannot be less than equal to zero</value>
+  </data>
+   <data name="ReopenFeesMinMaxIsInvalid" xml:space="preserve">
+    <value>Reopen Fees min cannot be greater than equal to max balance</value>
+  </data>
+
+
+<data name="CloseFeesMinIsInvalid" xml:space="preserve">
+    <value>Close Fees Min cannot be less than zero</value>
+  </data>
+  <data name="CloseFeesMaxIsInvalid" xml:space="preserve">
+    <value>Close Fees Max cannot be less than equal to zero</value>
+  </data>
+   <data name="CloseFeesMinMaxIsInvalid" xml:space="preserve">
+    <value>Close Fees min cannot be greater than equal to max balance</value>
+  </data>
+
+
+<data name="ManagementFeesMinIsInvalid" xml:space="preserve">
+    <value>Management Fees Min cannot be less than zero</value>
+  </data>
+  <data name="ManagementFeesMaxIsInvalid" xml:space="preserve">
+    <value>Management Fees Max cannot be less than equal to zero</value>
+  </data>
+   <data name="ManagementFeesMinMaxIsInvalid" xml:space="preserve">
+    <value>Management Fees min cannot be greater than equal to max balance</value>
+  </data>
+
+ <data name="ManagementFeeFrequencyIsEmpty" xml:space="preserve">
+    <value>Management fee frequency can not be empty</value>
+  </data>
+  
+
+<data name="OverdraftInterestRateIsInvalid" xml:space="preserve">
+    <value>Overdraft Interest Rate Min cannot be less than zero and more than hundred</value>
+  </data>
+  <data name="OverdraftInterestRateMaxIsInvalid" xml:space="preserve">
+    <value>Overdraft Interest Rate Max cannot be less than equal to zero and more than hundred</value>
+  </data>
+   <data name="OverdraftInterestRateMinMaxIsInvalid" xml:space="preserve">
+    <value>Overdraft Interest Rate min cannot be greater than equal to max balance</value>
+  </data>
+
+
+<data name="CommitmentFeesMinIsInvalid" xml:space="preserve">
+    <value>Commitment Fees Min cannot be less than zero and more than hundred</value>
+  </data>
+  <data name="CommitmentFeesMaxIsInvalid" xml:space="preserve">
+    <value>Commitment Fees Max cannot be less than equal to zero and more than hundred</value>
+  </data>
+   <data name="CommitmentFeesMinMaxIsInvalid" xml:space="preserve">
+    <value>Commitment Fees min cannot be greater than equal to max balance</value>
+  </data>
+
+
+<data name="OverdraftLimitMinIsInvalid" xml:space="preserve">
+    <value>Overdraft Limit Min cannot be less than zero</value>
+  </data>
+  <data name="OverdraftLimitMaxIsInvalid" xml:space="preserve">
+    <value>Overdraft Limit Max cannot be less than equal to zero</value>
+  </data>
+   <data name="OverdraftLimitMinMaxIsInvalid" xml:space="preserve">
+    <value>Overdraft Limit min cannot be greater than equal to max balance</value>
+  </data>
+
+
+ <data name="CurrentAccountProductTransactionTypeIsEmpty" xml:space="preserve">
+    <value>Transaction type can not be empty</value>
+  </data>
+  <data name="CurrentAccountProductTransactionValueIsLessThanZero" xml:space="preserve">
+    <value>Transaction value can not be less than zero</value>
+</data>
+
+<data name="CurrentAccountProductTransactionMinIsInvalid" xml:space="preserve">
+    <value>Transaction Min cannot be less than zero</value>
+  </data>
+  <data name="CurrentAccountProductTransactionMaxIsInvalid" xml:space="preserve">
+    <value>Transaction Max cannot be less than equal to zero</value>
+  </data>
+  
+ <data name="AmountTransferMethodNotSelected" xml:space="preserve">
+    <value>Amount Transfer Method is  not selected</value>
+  </data>
+  <data name="SelectFromAccountNotSelected" xml:space="preserve">
+    <value>From Account is not selected</value>
+  </data>
+   <data name="SelectToAccountNotSelected" xml:space="preserve">
+    <value>To Account is  not selected</value>
+  </data>
+
+  <data name="TransactionMakerNotSelected" xml:space="preserve">
+    <value>Transaction Maker is not selected</value>
+  </data>
+   <data name="TransactionCheckerNotSelected" xml:space="preserve">
+    <value>Transaction Checker is not selected</value>
+  </data>
+
+<data name="ToAndFromAccountIsInvalid" xml:space="preserve">
+    <value>To and from acoount can not be the same</value>
+  </data>
+  <data name="AmountIsInvalid" xml:space="preserve">
+    <value>Amount cannot be less than equal to zero</value>
+  </data>
+
 </root>

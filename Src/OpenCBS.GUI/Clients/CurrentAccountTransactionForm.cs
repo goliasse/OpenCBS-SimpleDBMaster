@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using OpenCBS.CoreDomain.Products;
 using OpenCBS.CoreDomain;
 using OpenCBS.Services;
+using OpenCBS.Enums;
 
 namespace OpenCBS.GUI.Clients
 {
@@ -23,6 +24,22 @@ namespace OpenCBS.GUI.Clients
             InitializeMakerAndChecker();
             InitializeFromAndToAccount();
             btnMakeTransaction.Visible = true;
+
+            InitializeTransactionType();
+        }
+
+
+        void InitializeTransactionType()
+        {
+            cbTransactionType.Items.Clear();
+            cbTransactionType.Items.Add(OCurrentAccount.SelectPaymentMethodDefault);
+            cbTransactionType.Items.Add("Cash");
+            cbTransactionType.Items.Add("Cheque");
+            cbTransactionType.Items.Add("Transfer");
+            cbTransactionType.SelectedIndex = 0;
+
+
+
         }
 
         public CurrentAccountTransactionForm(int transactionId)
@@ -105,6 +122,7 @@ namespace OpenCBS.GUI.Clients
         private void InitializeMakerAndChecker()
         {
             List<User> users = ServicesProvider.GetInstance().GetUserServices().FindAll(true);
+
             cbMaker.ValueMember = "Name";
             cbMaker.DisplayMember = "";
             cbMaker.DataSource = users;
