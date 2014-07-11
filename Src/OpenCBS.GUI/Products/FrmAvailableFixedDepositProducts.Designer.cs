@@ -31,11 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pnlSavingsProducts = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.buttonEditProduct = new System.Windows.Forms.Button();
-            this.checkBoxShowDeletedProduct = new System.Windows.Forms.CheckBox();
-            this.buttonAddProduct = new System.Windows.Forms.Button();
-            this.buttonDeleteProduct = new System.Windows.Forms.Button();
-            this.btnViewProduct = new System.Windows.Forms.Button();
             this.lvFixedDepositProducts = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -43,6 +38,11 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnViewProduct = new System.Windows.Forms.Button();
+            this.buttonEditProduct = new System.Windows.Forms.Button();
+            this.checkBoxShowDeletedProduct = new System.Windows.Forms.CheckBox();
+            this.buttonAddProduct = new System.Windows.Forms.Button();
+            this.buttonDeleteProduct = new System.Windows.Forms.Button();
             this.pnlSavingsProducts.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -84,6 +84,71 @@
             this.groupBox1.Size = new System.Drawing.Size(917, 486);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
+            // 
+            // lvFixedDepositProducts
+            // 
+            this.lvFixedDepositProducts.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.lvFixedDepositProducts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.lvFixedDepositProducts.FullRowSelect = true;
+            this.lvFixedDepositProducts.GridLines = true;
+            this.lvFixedDepositProducts.Location = new System.Drawing.Point(0, 0);
+            this.lvFixedDepositProducts.Name = "lvFixedDepositProducts";
+            this.lvFixedDepositProducts.Size = new System.Drawing.Size(765, 339);
+            this.lvFixedDepositProducts.TabIndex = 27;
+            this.lvFixedDepositProducts.UseCompatibleStateImageBehavior = false;
+            this.lvFixedDepositProducts.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Product ID";
+            this.columnHeader1.Width = 86;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Status";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Product Name";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Width = 113;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Product Code";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader4.Width = 103;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Client Type";
+            this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader5.Width = 105;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Currency";
+            this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader6.Width = 86;
+            // 
+            // btnViewProduct
+            // 
+            this.btnViewProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnViewProduct.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnViewProduct.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnViewProduct.Location = new System.Drawing.Point(771, 135);
+            this.btnViewProduct.Name = "btnViewProduct";
+            this.btnViewProduct.Size = new System.Drawing.Size(140, 28);
+            this.btnViewProduct.TabIndex = 10;
+            this.btnViewProduct.Text = "View product";
+            this.btnViewProduct.Click += new System.EventHandler(this.btnViewProduct_Click);
             // 
             // buttonEditProduct
             // 
@@ -133,70 +198,6 @@
             this.buttonDeleteProduct.TabIndex = 6;
             this.buttonDeleteProduct.Text = "Delete product";
             this.buttonDeleteProduct.Click += new System.EventHandler(this.buttonDeleteProduct_Click);
-            // 
-            // btnViewProduct
-            // 
-            this.btnViewProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnViewProduct.Font = new System.Drawing.Font("Arial", 9F);
-            this.btnViewProduct.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnViewProduct.Location = new System.Drawing.Point(771, 135);
-            this.btnViewProduct.Name = "btnViewProduct";
-            this.btnViewProduct.Size = new System.Drawing.Size(140, 28);
-            this.btnViewProduct.TabIndex = 10;
-            this.btnViewProduct.Text = "View product";
-            this.btnViewProduct.Click += new System.EventHandler(this.btnViewProduct_Click);
-            // 
-            // lvFixedDepositProducts
-            // 
-            this.lvFixedDepositProducts.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.lvFixedDepositProducts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6});
-            this.lvFixedDepositProducts.GridLines = true;
-            this.lvFixedDepositProducts.Location = new System.Drawing.Point(0, 0);
-            this.lvFixedDepositProducts.Name = "lvFixedDepositProducts";
-            this.lvFixedDepositProducts.Size = new System.Drawing.Size(765, 339);
-            this.lvFixedDepositProducts.TabIndex = 27;
-            this.lvFixedDepositProducts.UseCompatibleStateImageBehavior = false;
-            this.lvFixedDepositProducts.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Product ID";
-            this.columnHeader1.Width = 86;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Status";
-            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Product Name";
-            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader3.Width = 113;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Product Code";
-            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader4.Width = 103;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Client Type";
-            this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader5.Width = 105;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Currency";
-            this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader6.Width = 86;
             // 
             // FrmAvailableFixedDepositProducts
             // 

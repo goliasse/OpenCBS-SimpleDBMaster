@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OpenCBS.CoreDomain.Accounting;
 using OpenCBS.Shared;
 
 namespace OpenCBS.CoreDomain.Products
@@ -13,7 +14,7 @@ public int? Delete { get; set; }
 public string CurrentAccountProductName { get; set; }
 public string CurrentAccountProductCode { get; set; }
 public string ClientType { get; set; }
-public string Currency { get; set; }
+public Currency Currency { get; set; }
 public OCurrency InitialAmountMin { get; set; }
 public OCurrency InitialAmountMax { get; set; }
 public OCurrency BalanceMin { get; set; }

@@ -41,7 +41,7 @@ namespace OpenCBS.GUI.Products
 {
     public partial class FrmAddCurrentAccountProduct : SweetBaseForm
     {
-        ICurrentAccountProduct _currentAccountProduct = null;
+        CurrentAccountProduct _currentAccountProduct = null;
         CurrentAccountTransactionFees _currentAccountTransactionFees = null;
 
         public FrmAddCurrentAccountProduct()
@@ -103,7 +103,7 @@ namespace OpenCBS.GUI.Products
 
 
           
-            cbCurrency.SelectedItem = _currentAccountProduct.Currency;
+            cbCurrency.SelectedItem = _currentAccountProduct.Currency.Name;
             bool clientTypeCorp = clientTypeCorpCheckBox.Checked;
             bool clientTypeIndiv = clientTypeIndivCheckBox.Checked;
             bool clientTypeVillage = clientTypeVillageCheckBox.Checked;
@@ -175,6 +175,7 @@ namespace OpenCBS.GUI.Products
             tbManagementFeesMax.Text = _currentAccountProduct.ManagementFeesMax.GetFormatedValue(true);
             tbOverdraftFeesMin.Text = _currentAccountProduct.OverdraftMin.GetFormatedValue(true);
             tbOverdraftFeesMax.Text = _currentAccountProduct.OverdraftMax.GetFormatedValue(true);
+
             tbEntryFees.Text = _currentAccountProduct.EntryFeesValue.GetFormatedValue(true);
             tbReopenFees.Text = _currentAccountProduct.ReopenFeesValue.GetFormatedValue(true);
             tbCloseFees.Text = _currentAccountProduct.ClosingFeesValue.GetFormatedValue(true);
@@ -351,16 +352,16 @@ namespace OpenCBS.GUI.Products
                 cbCurrency.Items.Add(cur.Name);
             }
 
-            cbCurrency.SelectedIndex = 0;
 
-            //bool oneCurrency = 2 == cbCurrency.Items.Count;
-            //cbCurrency.SelectedIndex = oneCurrency ? 1 : 0;
-            //cbCurrency.Enabled = !oneCurrency;
+
+            bool oneCurrency = 2 == cbCurrency.Items.Count;
+            cbCurrency.SelectedIndex = oneCurrency ? 1 : 0;
+            cbCurrency.Enabled = !oneCurrency;
         }
 
         void InitializeCurrentAccountProduct()
         {
-            string Currency = cbCurrency.SelectedItem.ToString();
+            
             bool clientTypeCorp = clientTypeCorpCheckBox.Checked;
             bool clientTypeIndiv = clientTypeIndivCheckBox.Checked;
             bool clientTypeVillage = clientTypeVillageCheckBox.Checked;
@@ -387,6 +388,8 @@ namespace OpenCBS.GUI.Products
                     clientType = clientType + "Village,";
                 if (clientTypeGroup == true)
                     clientType = clientType + "Group,";
+
+                if (clientType.Length > 0)
                 clientType = clientType.Substring(0, clientType.Length - 1);
             }
 
@@ -459,7 +462,17 @@ namespace OpenCBS.GUI.Products
             _currentAccountProduct.CurrentAccountProductName = Name;
             _currentAccountProduct.CurrentAccountProductCode = CodeFixedDepositProduct;
             _currentAccountProduct.ClientType = clientType;
-            _currentAccountProduct.Currency = Currency;
+
+            List<Currency> currencies = ServicesProvider.GetInstance().GetCurrencyServices().FindAllCurrencies();
+            foreach (Currency cur in currencies)
+            {
+                if (cbCurrency.SelectedItem.ToString() == cur.Name)
+                    _currentAccountProduct.Currency = cur;
+                
+            }
+
+
+             
             _currentAccountProduct.InitialAmountMin = InitialAmountMin;
             _currentAccountProduct.InitialAmountMax = InitialAmountMax;
             _currentAccountProduct.BalanceMin = BalanceMin;

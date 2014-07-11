@@ -79,7 +79,7 @@ namespace OpenCBS.Services
             if (currentAccountProduct.ClientType == "")
                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.OneCheckBoxMustBeSeleted);
 
-            if (currentAccountProduct.Currency == "" && currentAccountProduct.Currency == OCurrentAccount.SelectCurrencyDefault)
+            if (currentAccountProduct.Currency.Name == "" && currentAccountProduct.Currency.Name == OCurrentAccount.SelectCurrencyDefault)
                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.SelectCurrencySelected);
 
             if (currentAccountProduct.InitialAmountMin < 0)
@@ -92,6 +92,14 @@ namespace OpenCBS.Services
                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.InitialAmountMinMaxIsInvalid);
 
             //Initial amount min and max not be blank
+            if (!currentAccountProduct.InitialAmountMin.HasValue)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.InitialAmountMinIsEmpty);
+
+
+            if (!currentAccountProduct.InitialAmountMax.HasValue)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.InitialAmountMaxIsEmpty);
+
+            
 
             if (currentAccountProduct.BalanceMin < 0)
                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.BalanceMinIsInvalid);
@@ -104,9 +112,20 @@ namespace OpenCBS.Services
 
             //Balance amount min and max not be blank
 
+            if (!currentAccountProduct.BalanceMax.HasValue)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.BalanceMaxIsEmpty);
+
+            if (!currentAccountProduct.BalanceMin.HasValue)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.BalanceMinIsEmpty);
+
             //Initial amount min can not be less than balance min
             //Initial amount max can not be greater than balance max
 
+            if (currentAccountProduct.InitialAmountMin < currentAccountProduct.BalanceMin)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CAPInitialAmountMinLessThanBalanceMin);
+
+            if (currentAccountProduct.InitialAmountMax > currentAccountProduct.BalanceMax)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CAPInitialAmountMaxLessThanBalanceMax);
 
             if (currentAccountProduct.InterestMin < 0)
                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.InterestMinIsInvalid);
@@ -130,12 +149,17 @@ namespace OpenCBS.Services
 
             if (!ServicesHelper.CheckMinMaxAndValueCorrectlyFilled(currentAccountProduct.OverdraftMin, currentAccountProduct.OverdraftMax, currentAccountProduct.OverdraftValue))
                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.OverdraftFeesMinMaxIsInvalid);
+            
+            //InterestCalculationFrequency can not be blank
+
+            if (!currentAccountProduct.InterestFrequency.HasValue)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.InterestCalculationFrequencyIsEmpty);
 
             if (currentAccountProduct.InterestFrequency.HasValue && currentAccountProduct.InterestFrequency <= 0)
                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.InterestCalculationFrequencyIsInvalid);
 
 
-            //InterestCalculationFrequency can not be blank
+            
 
             if (currentAccountProduct.EntryFeesMin.HasValue && currentAccountProduct.EntryFeesMin < 0)
                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.EntryFeesMinIsInvalid);

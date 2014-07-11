@@ -52,7 +52,6 @@ namespace OpenCBS.GUI.Products
             this.lbInterestRateMax = new System.Windows.Forms.Label();
             this.lbInterestRateMin = new System.Windows.Forms.Label();
             this.groupBoxCurrency = new System.Windows.Forms.GroupBox();
-            this.cbCurrency = new System.Windows.Forms.ComboBox();
             this.lbCodeSavingProduct = new System.Windows.Forms.Label();
             this.lbNameSavingProduct = new System.Windows.Forms.Label();
             this.gbClientType = new System.Windows.Forms.GroupBox();
@@ -151,6 +150,9 @@ namespace OpenCBS.GUI.Products
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.gtOverdraftFees = new System.Windows.Forms.GroupBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
             this.rbRateOverdraftFees = new System.Windows.Forms.RadioButton();
             this.rbFlatOverdraftFees = new System.Windows.Forms.RadioButton();
             this.lbOverdraftFeesType = new System.Windows.Forms.Label();
@@ -181,6 +183,7 @@ namespace OpenCBS.GUI.Products
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.cbCurrency = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -364,14 +367,6 @@ namespace OpenCBS.GUI.Products
             resources.ApplyResources(this.groupBoxCurrency, "groupBoxCurrency");
             this.groupBoxCurrency.Name = "groupBoxCurrency";
             this.groupBoxCurrency.TabStop = false;
-            // 
-            // cbCurrency
-            // 
-            this.cbCurrency.DisplayMember = "Currency.Name";
-            this.cbCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.cbCurrency, "cbCurrency");
-            this.cbCurrency.FormattingEnabled = true;
-            this.cbCurrency.Name = "cbCurrency";
             // 
             // lbCodeSavingProduct
             // 
@@ -1006,6 +1001,9 @@ namespace OpenCBS.GUI.Products
             // 
             // gtOverdraftFees
             // 
+            this.gtOverdraftFees.Controls.Add(this.label30);
+            this.gtOverdraftFees.Controls.Add(this.label29);
+            this.gtOverdraftFees.Controls.Add(this.label28);
             this.gtOverdraftFees.Controls.Add(this.rbRateOverdraftFees);
             this.gtOverdraftFees.Controls.Add(this.rbFlatOverdraftFees);
             this.gtOverdraftFees.Controls.Add(this.lbOverdraftFeesType);
@@ -1018,6 +1016,21 @@ namespace OpenCBS.GUI.Products
             resources.ApplyResources(this.gtOverdraftFees, "gtOverdraftFees");
             this.gtOverdraftFees.Name = "gtOverdraftFees";
             this.gtOverdraftFees.TabStop = false;
+            // 
+            // label30
+            // 
+            resources.ApplyResources(this.label30, "label30");
+            this.label30.Name = "label30";
+            // 
+            // label29
+            // 
+            resources.ApplyResources(this.label29, "label29");
+            this.label29.Name = "label29";
+            // 
+            // label28
+            // 
+            resources.ApplyResources(this.label28, "label28");
+            this.label28.Name = "label28";
             // 
             // rbRateOverdraftFees
             // 
@@ -1212,6 +1225,14 @@ namespace OpenCBS.GUI.Products
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // cbCurrency
+            // 
+            this.cbCurrency.DisplayMember = "Currency.Name";
+            this.cbCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cbCurrency, "cbCurrency");
+            this.cbCurrency.FormattingEnabled = true;
+            this.cbCurrency.Name = "cbCurrency";
+            // 
             // FrmAddCurrentAccountProduct
             // 
             this.AcceptButton = this.btnCurrentAccountProduct;
@@ -1291,7 +1312,6 @@ namespace OpenCBS.GUI.Products
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBoxCurrency;
-        private System.Windows.Forms.ComboBox cbCurrency;
         private System.Windows.Forms.TabControl tabControlSaving;
         private System.Windows.Forms.TabPage tabPageMainParameters;
         private System.Windows.Forms.Label lbCodeSavingProduct;
@@ -1422,5 +1442,9 @@ namespace OpenCBS.GUI.Products
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.ComboBox cbCurrency;
     }
 }

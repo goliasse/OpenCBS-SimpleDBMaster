@@ -81,7 +81,7 @@ namespace OpenCBS.Manager.Products
             c.AddParam("@productName", fixedDepositProduct.Name);
             c.AddParam("@productCode", fixedDepositProduct.Code);
             c.AddParam("@clientType", fixedDepositProduct.ClientType);
-            c.AddParam("@productCurrency", fixedDepositProduct.Currency);
+            c.AddParam("@productCurrency", fixedDepositProduct.Currency.Id);
             c.AddParam("@initialAmountMin", fixedDepositProduct.InitialAmountMin);
             c.AddParam("@initialAmountMax", fixedDepositProduct.InitialAmountMax);
             c.AddParam("@interestRateMin", fixedDepositProduct.InterestRateMin);
@@ -134,7 +134,7 @@ namespace OpenCBS.Manager.Products
             
 
             string q = @"SELECT
-            [id]
+            [dbo].[FixedDepositProducts].[id] As FixedDepositProductsId
            ,[deleted]
            ,[product_name]
            ,[product_code]
@@ -150,8 +150,14 @@ namespace OpenCBS.Manager.Products
            ,[penality_type]
            ,[penality_min]
            ,[penality_max]
-            FROM [dbo].[FixedDepositProducts]
-            WHERE id = @productId";
+,cur.id AS currency_id
+,cur.name AS currency_name 
+,cur.code AS currency_code
+,cur.is_pivot AS currency_is_pivot
+,cur.is_swapped AS currency_is_swapped
+,cur.use_cents AS currency_use_cents
+            FROM [dbo].[FixedDepositProducts] INNER JOIN Currencies AS cur ON [dbo].[FixedDepositProducts].product_currency = cur.id
+            WHERE [FixedDepositProducts].id = @productId";
                                       
 
             
@@ -184,7 +190,7 @@ namespace OpenCBS.Manager.Products
 
 
             string q = @"SELECT
-            [id]
+            [dbo].[FixedDepositProducts].[id] As FixedDepositProductsId
            ,[deleted]
            ,[product_name]
            ,[product_code]
@@ -200,7 +206,13 @@ namespace OpenCBS.Manager.Products
            ,[penality_type]
            ,[penality_min]
            ,[penality_max]
-            FROM [dbo].[FixedDepositProducts]
+,cur.id AS currency_id
+,cur.name AS currency_name 
+,cur.code AS currency_code
+,cur.is_pivot AS currency_is_pivot
+,cur.is_swapped AS currency_is_swapped
+,cur.use_cents AS currency_use_cents
+            FROM [dbo].[FixedDepositProducts] INNER JOIN Currencies AS cur ON [dbo].[FixedDepositProducts].product_currency = cur.id
             WHERE product_name = @productName AND product_code = @productCode";
 
 
@@ -268,7 +280,7 @@ WHERE id = @productId";
 
 
             string q = @"SELECT
-            [id]
+            [dbo].[FixedDepositProducts].[id] As FixedDepositProductsId
            ,[deleted]
            ,[product_name]
            ,[product_code]
@@ -284,7 +296,13 @@ WHERE id = @productId";
            ,[penality_type]
            ,[penality_min]
            ,[penality_max]
-            FROM [dbo].[FixedDepositProducts]";
+,cur.id AS currency_id
+,cur.name AS currency_name 
+,cur.code AS currency_code
+,cur.is_pivot AS currency_is_pivot
+,cur.is_swapped AS currency_is_swapped
+,cur.use_cents AS currency_use_cents
+            FROM [dbo].[FixedDepositProducts] INNER JOIN Currencies AS cur ON [dbo].[FixedDepositProducts].product_currency = cur.id";
 
 
             if (!showAlsoDeleted)
@@ -303,7 +321,7 @@ WHERE id = @productId";
                     {
 
 
-                        IFixedDepositProduct product = FetchProduct(Convert.ToInt32(r.GetInt("id")));
+                        IFixedDepositProduct product = FetchProduct(Convert.ToInt32(r.GetInt("FixedDepositProductsId")));
 
                         fixedDepositProductList.Add(product);
                     }
@@ -316,7 +334,7 @@ WHERE id = @productId";
         public FixedDepositProduct GetProduct(OpenCbsReader r)
         {
            FixedDepositProduct fixedDepositProduct = new FixedDepositProduct();
-fixedDepositProduct.Id = r.GetInt("id");
+           fixedDepositProduct.Id = r.GetInt("FixedDepositProductsId");
 fixedDepositProduct.Delete = r.GetInt("deleted");
 
 
@@ -325,11 +343,20 @@ fixedDepositProduct.Code = r.GetString("product_code");
 
 fixedDepositProduct.ClientType = r.GetString("client_type");
 
-fixedDepositProduct.Currency = r.GetString("product_currency");
 
-fixedDepositProduct.InitialAmountMin = r.GetNullDecimal("initial_amount_min");
+fixedDepositProduct.Currency = new Currency()
+{
+    Id = r.GetInt("currency_id"),
+    Code = r.GetString("currency_code"),
+    Name = r.GetString("currency_name"),
+    IsPivot = r.GetBool("currency_is_pivot"),
+    IsSwapped = r.GetBool("currency_is_swapped"),
+    UseCents = r.GetBool("currency_use_cents")
+};
+           
+fixedDepositProduct.InitialAmountMin = r.GetMoney("initial_amount_min");
 
-fixedDepositProduct.InitialAmountMax = r.GetNullDecimal("initial_amount_max");
+fixedDepositProduct.InitialAmountMax = r.GetMoney("initial_amount_max");
 
 fixedDepositProduct.InterestCalculationFrequency = r.GetString("interest_calculation_frequency");
 

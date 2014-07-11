@@ -216,6 +216,128 @@ namespace OpenCBS.ExceptionsHandler
                     break;
 
 
+
+                case OpenCbsCurrentAccountExceptionEnum.InitialAmountIsEmpty:
+                    returned = "InitialAmountIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.InterestRateIsEmpty:
+                    returned = "InterestRateIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.MaturityPeriodIsEmpty:
+                    returned = "MaturityPeriodIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.PenaltyIsEmpty:
+                    returned = "PenaltyIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.ICFIsEmpty:
+                    returned = "ICFIsEmpty";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.InitialAmountMinIsEmpty:
+                    returned = "InitialAmountMinIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.InitialAmountMaxIsEmpty:
+                    returned = "InitialAmountMaxIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.BalanceMinIsEmpty:
+                    returned = "BalanceMinIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.BalanceMaxIsEmpty:
+                    returned = "BalanceMaxIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.InterestCalculationFrequencyIsEmpty:
+                    returned = "InterestCalculationFrequencyIsEmpty";
+                    break;
+
+
+
+                case OpenCbsCurrentAccountExceptionEnum.CAPHCurrentAccountProductIsBlank:
+                    returned = "CAPHCurrentAccountProductIsBlank";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CAPHInitialAmountIsEmpty:
+                    returned = "CAPHInitialAmountIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CAPHInitialAmountIsInvalid:
+                    returned = "CAPHInitialAmountIsInvalid";
+                    break;
+
+
+                case OpenCbsCurrentAccountExceptionEnum.CAPHEntryFeeIsEmpty:
+                    returned = "CAPHEntryFeeIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CAPHEntryFeeIsInvalid:
+                    returned = "CAPHEntryFeeIsInvalid";
+                    break;
+
+
+                case OpenCbsCurrentAccountExceptionEnum.CAPHReopenFeeIsEmpty:
+                    returned = "CAPHReopenFeeIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CAPHReopenFeeIsInvalid:
+                    returned = "CAPHReopenFeeIsInvalid";
+                    break;
+
+
+                case OpenCbsCurrentAccountExceptionEnum.CAPHCloseFeeIsEmpty:
+                    returned = "CAPHCloseFeeIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CAPHCloseFeeIsInvalid:
+                    returned = "CAPHCloseFeeIsInvalid";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CAPHManagementFeeIsEmpty:
+                    returned = "CAPHManagementFeeIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CAPHManagementFeeIsInvalid:
+                    returned = "CAPHManagementFeeIsInvalid";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CAPHProductCodeIsEmpty:
+                    returned = "CAPHProductCodeIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CAPHAccountingOfficerIsBlank:
+                    returned = "CAPHAccountingOfficerIsBlank";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CAPHCommentIsEmpty:
+                    returned = "CAPHCommentIsEmpty";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CAPHFixedOverdraftFeeIsEmpty:
+                    returned = "CAPHFixedOverdraftFeeIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CAPHFixedOverdraftFeeIsInvalid:
+                    returned = "CAPHFixedOverdraftFeeIsInvalid";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CAPHOverdraftInterestRateIsEmpty:
+                    returned = "CAPHOverdraftInterestRateIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CAPHOverdraftInterestRateIsInvalid:
+                    returned = "CAPHOverdraftInterestRateIsInvalid";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CAPHOverdraftLimitIsEmpty:
+                    returned = "CAPHOverdraftLimitIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CAPHOverdraftLimitIsInvalid:
+                    returned = "CAPHOverdraftLimitIsInvalid";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CAPHOverdraftCommitmentFeeIsEmpty:
+                    returned = "CAPHOverdraftCommitmentFeeIsEmpty";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CAPHOverdraftCommitmentFeeIsInvalid:
+                    returned = "CAPHOverdraftCommitmentFeeIsInvalid";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CAPInitialAmountMinLessThanBalanceMin:
+                    returned = "CAPInitialAmountMinLessThanBalanceMin";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CAPInitialAmountMaxLessThanBalanceMax:
+                    returned = "CAPInitialAmountMaxLessThanBalanceMax";
+                    break;
+
             }
             return returned;
         }
@@ -273,7 +395,41 @@ namespace OpenCBS.ExceptionsHandler
         TransactionTypeIsEmpty,
         TransactionValueIsLessThanZero,
         TransactionMinIsInvalid,
-        TransactionMaxIsInvalid
+        TransactionMaxIsInvalid,
+        InitialAmountIsEmpty,
+        InterestRateIsEmpty,
+        MaturityPeriodIsEmpty,
+        PenaltyIsEmpty,
+        ICFIsEmpty,
+        InitialAmountMinIsEmpty,
+        InitialAmountMaxIsEmpty,
+        BalanceMinIsEmpty,
+        BalanceMaxIsEmpty,
+        InterestCalculationFrequencyIsEmpty,
+        CAPHCurrentAccountProductIsBlank,
+        CAPHInitialAmountIsEmpty,
+        CAPHInitialAmountIsInvalid,
+        CAPHEntryFeeIsEmpty,
+        CAPHEntryFeeIsInvalid,
+        CAPHReopenFeeIsEmpty,
+        CAPHReopenFeeIsInvalid,
+        CAPHCloseFeeIsEmpty,
+        CAPHCloseFeeIsInvalid,
+        CAPHManagementFeeIsEmpty,
+        CAPHManagementFeeIsInvalid,
+        CAPHProductCodeIsEmpty,
+        CAPHAccountingOfficerIsBlank,
+        CAPHCommentIsEmpty,
+        CAPHFixedOverdraftFeeIsEmpty,
+        CAPHFixedOverdraftFeeIsInvalid,
+        CAPHOverdraftInterestRateIsEmpty,
+        CAPHOverdraftInterestRateIsInvalid,
+        CAPHOverdraftLimitIsEmpty,
+        CAPHOverdraftLimitIsInvalid,
+        CAPHOverdraftCommitmentFeeIsEmpty,
+        CAPHOverdraftCommitmentFeeIsInvalid,
+        CAPInitialAmountMaxLessThanBalanceMax,
+        CAPInitialAmountMinLessThanBalanceMin
 
     }
 

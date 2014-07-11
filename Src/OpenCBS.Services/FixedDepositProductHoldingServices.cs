@@ -70,6 +70,10 @@ namespace OpenCBS.Services
 
         private void ValidateProduct(FixedDepositProductHoldings fixedDepositProductHolding)
         {
+
+
+
+
         }
 
 

@@ -593,7 +593,78 @@ namespace OpenCBS.GUI.Clients
             this.tbInterestRate = new System.Windows.Forms.TextBox();
             this.lbInterestRateMin = new System.Windows.Forms.Label();
             this.tabPageCurrentAccount = new System.Windows.Forms.TabPage();
+            this.checkBoxOverdraftApplied = new System.Windows.Forms.CheckBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.tbCurrentInitialAmount = new System.Windows.Forms.TextBox();
+            this.tbCalculationFrequency = new System.Windows.Forms.TextBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.tabControlCurrentAccount = new System.Windows.Forms.TabControl();
+            this.tabPageFees = new System.Windows.Forms.TabPage();
+            this.gbEntryFees = new System.Windows.Forms.GroupBox();
+            this.rbRateEntryFees = new System.Windows.Forms.RadioButton();
+            this.rbFlatEntryFees = new System.Windows.Forms.RadioButton();
+            this.lbEntryFeesType = new System.Windows.Forms.Label();
+            this.tbEntryFees = new System.Windows.Forms.TextBox();
+            this.lbEntryFeesMin = new System.Windows.Forms.Label();
+            this.gtManagementFees = new System.Windows.Forms.GroupBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.rbRateManagementFees = new System.Windows.Forms.RadioButton();
+            this.rbFlatManagementFees = new System.Windows.Forms.RadioButton();
+            this.lbManagementFeesType = new System.Windows.Forms.Label();
+            this.tbManagementFees = new System.Windows.Forms.TextBox();
+            this.lbManagementFeesMin = new System.Windows.Forms.Label();
+            this.tabPageOverdraft = new System.Windows.Forms.TabPage();
+            this.tbOverdraftDate = new System.Windows.Forms.TextBox();
+            this.lblOverdraftAppliedDate = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.rbODCommitmentTypeRate = new System.Windows.Forms.RadioButton();
+            this.rbODCommitmentTypeFlat = new System.Windows.Forms.RadioButton();
+            this.label42 = new System.Windows.Forms.Label();
+            this.tbCAODCommitmentFee = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.rbODInterestTypeRate = new System.Windows.Forms.RadioButton();
+            this.rbODInterestTypeFlat = new System.Windows.Forms.RadioButton();
+            this.label39 = new System.Windows.Forms.Label();
+            this.tbCAODInterestRate = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.tbOverdraftAmount = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.gtOverdraftFees = new System.Windows.Forms.GroupBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.rbRateOverdraftFees = new System.Windows.Forms.RadioButton();
+            this.rbFlatOverdraftFees = new System.Windows.Forms.RadioButton();
+            this.lbOverdraftFeesType = new System.Windows.Forms.Label();
+            this.tbOverdraftFees = new System.Windows.Forms.TextBox();
+            this.lbOverdraftFeesMin = new System.Windows.Forms.Label();
+            this.tabPageCloseAccount = new System.Windows.Forms.TabPage();
+            this.gbCloseFees = new System.Windows.Forms.GroupBox();
+            this.rbRateCloseFees = new System.Windows.Forms.RadioButton();
+            this.rbFlatCloseFees = new System.Windows.Forms.RadioButton();
+            this.lbCloseFeesType = new System.Windows.Forms.Label();
+            this.tbCloseFees = new System.Windows.Forms.TextBox();
+            this.lbCloseFeesMin = new System.Windows.Forms.Label();
+            this.tabPageReopenAccount = new System.Windows.Forms.TabPage();
+            this.gbReopenFees = new System.Windows.Forms.GroupBox();
+            this.rbRateReopenFees = new System.Windows.Forms.RadioButton();
+            this.rbFlatReopenFees = new System.Windows.Forms.RadioButton();
+            this.lbReopenFeesType = new System.Windows.Forms.Label();
+            this.tbReopenFees = new System.Windows.Forms.TextBox();
+            this.lbReopenFeesMin = new System.Windows.Forms.Label();
+            this.tabPageFeesTransactions = new System.Windows.Forms.TabPage();
+            this.listViewFeeTransactions = new System.Windows.Forms.ListView();
+            this.chToAccount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chFeeDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chPurposeOfTransfer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chTransactionType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tbCAInterestRate = new System.Windows.Forms.TextBox();
             this.tbCABalanceAmount = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
             this.btnTransactions = new System.Windows.Forms.Button();
             this.lblBalanceAmount = new System.Windows.Forms.Label();
             this.btnOverdraft = new System.Windows.Forms.Button();
@@ -607,30 +678,8 @@ namespace OpenCBS.GUI.Clients
             this.lblCAChequeNumber = new System.Windows.Forms.Label();
             this.cbCAPaymentMethod = new System.Windows.Forms.ComboBox();
             this.label54 = new System.Windows.Forms.Label();
-            this.gbCAFees = new System.Windows.Forms.GroupBox();
-            this.lblTotalFees = new System.Windows.Forms.Label();
-            this.lblCloseFees = new System.Windows.Forms.Label();
-            this.lblOverdraftFees = new System.Windows.Forms.Label();
-            this.lblManagementFees = new System.Windows.Forms.Label();
-            this.lblReopenFees = new System.Windows.Forms.Label();
-            this.lblEntryFees = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.tbCalculationFrequency = new System.Windows.Forms.TextBox();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.tbCAInterestRate = new System.Windows.Forms.TextBox();
-            this.label33 = new System.Windows.Forms.Label();
             this.tbCAClosedDate = new System.Windows.Forms.TextBox();
             this.lblCAClosedDate = new System.Windows.Forms.Label();
-            this.tbOverdraftAmount = new System.Windows.Forms.TextBox();
-            this.label35 = new System.Windows.Forms.Label();
             this.btnCAPrint = new System.Windows.Forms.Button();
             this.btnCloseAccount = new System.Windows.Forms.Button();
             this.cbCAAccountStatus = new System.Windows.Forms.ComboBox();
@@ -640,38 +689,6 @@ namespace OpenCBS.GUI.Clients
             this.tbCAProductCode = new System.Windows.Forms.TextBox();
             this.lblCAProductCode = new System.Windows.Forms.Label();
             this.btnAddCurrentAccountProduct = new System.Windows.Forms.Button();
-            this.gtOverdraftFees = new System.Windows.Forms.GroupBox();
-            this.rbRateOverdraftFees = new System.Windows.Forms.RadioButton();
-            this.rbFlatOverdraftFees = new System.Windows.Forms.RadioButton();
-            this.lbOverdraftFeesType = new System.Windows.Forms.Label();
-            this.tbOverdraftFees = new System.Windows.Forms.TextBox();
-            this.lbOverdraftFeesMin = new System.Windows.Forms.Label();
-            this.gbReopenFees = new System.Windows.Forms.GroupBox();
-            this.rbRateReopenFees = new System.Windows.Forms.RadioButton();
-            this.rbFlatReopenFees = new System.Windows.Forms.RadioButton();
-            this.lbReopenFeesType = new System.Windows.Forms.Label();
-            this.tbReopenFees = new System.Windows.Forms.TextBox();
-            this.lbReopenFeesMin = new System.Windows.Forms.Label();
-            this.gtManagementFees = new System.Windows.Forms.GroupBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.cbManagementFeeFreq = new System.Windows.Forms.ComboBox();
-            this.rbRateManagementFees = new System.Windows.Forms.RadioButton();
-            this.rbFlatManagementFees = new System.Windows.Forms.RadioButton();
-            this.lbManagementFeesType = new System.Windows.Forms.Label();
-            this.tbManagementFees = new System.Windows.Forms.TextBox();
-            this.lbManagementFeesMin = new System.Windows.Forms.Label();
-            this.gbCloseFees = new System.Windows.Forms.GroupBox();
-            this.rbRateCloseFees = new System.Windows.Forms.RadioButton();
-            this.rbFlatCloseFees = new System.Windows.Forms.RadioButton();
-            this.lbCloseFeesType = new System.Windows.Forms.Label();
-            this.tbCloseFees = new System.Windows.Forms.TextBox();
-            this.lbCloseFeesMin = new System.Windows.Forms.Label();
-            this.gbEntryFees = new System.Windows.Forms.GroupBox();
-            this.rbRateEntryFees = new System.Windows.Forms.RadioButton();
-            this.rbFlatEntryFees = new System.Windows.Forms.RadioButton();
-            this.lbEntryFeesType = new System.Windows.Forms.Label();
-            this.tbEntryFees = new System.Windows.Forms.TextBox();
-            this.lbEntryFeesMin = new System.Windows.Forms.Label();
             this.tbCurrentAccountComment = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.cbCurrentAccountingOfficer = new System.Windows.Forms.ComboBox();
@@ -680,9 +697,6 @@ namespace OpenCBS.GUI.Clients
             this.label18 = new System.Windows.Forms.Label();
             this.cbCurrentAccountProducts = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.tbCurrentInitialAmount = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
             this.tabPageTransactions = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -696,7 +710,6 @@ namespace OpenCBS.GUI.Clients
             this.columnHeader37 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader38 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label44 = new System.Windows.Forms.Label();
-            this.tabPageOverdraft = new System.Windows.Forms.TabPage();
             this.menuBtnAddSavingOperation = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.savingDepositToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.savingWithdrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -857,16 +870,21 @@ namespace OpenCBS.GUI.Clients
             this.gbInitialAmount.SuspendLayout();
             this.gbInterestRate.SuspendLayout();
             this.tabPageCurrentAccount.SuspendLayout();
-            this.gbInitialPayment.SuspendLayout();
-            this.gbAmount.SuspendLayout();
-            this.gbCAFees.SuspendLayout();
+            this.tabControlCurrentAccount.SuspendLayout();
+            this.tabPageFees.SuspendLayout();
+            this.gbEntryFees.SuspendLayout();
+            this.gtManagementFees.SuspendLayout();
+            this.tabPageOverdraft.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.gtOverdraftFees.SuspendLayout();
-            this.gbReopenFees.SuspendLayout();
-            this.gtManagementFees.SuspendLayout();
+            this.tabPageCloseAccount.SuspendLayout();
             this.gbCloseFees.SuspendLayout();
-            this.gbEntryFees.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.tabPageReopenAccount.SuspendLayout();
+            this.gbReopenFees.SuspendLayout();
+            this.tabPageFeesTransactions.SuspendLayout();
+            this.gbInitialPayment.SuspendLayout();
+            this.gbAmount.SuspendLayout();
             this.tabPageTransactions.SuspendLayout();
             this.menuBtnAddSavingOperation.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -1400,7 +1418,6 @@ namespace OpenCBS.GUI.Clients
             this.tabControlPerson.Controls.Add(this.tabPageFixedDeposit);
             this.tabControlPerson.Controls.Add(this.tabPageCurrentAccount);
             this.tabControlPerson.Controls.Add(this.tabPageTransactions);
-            this.tabControlPerson.Controls.Add(this.tabPageOverdraft);
             resources.ApplyResources(this.tabControlPerson, "tabControlPerson");
             this.tabControlPerson.ImageList = this.imageListTab;
             this.tabControlPerson.Multiline = true;
@@ -4064,6 +4081,7 @@ namespace OpenCBS.GUI.Clients
             this.OpenDate,
             this.OpenAccountingOfficer,
             this.Status});
+            this.lvFixedDeposits.FullRowSelect = true;
             this.lvFixedDeposits.GridLines = true;
             resources.ApplyResources(this.lvFixedDeposits, "lvFixedDeposits");
             this.lvFixedDeposits.Name = "lvFixedDeposits";
@@ -4107,6 +4125,7 @@ namespace OpenCBS.GUI.Clients
             this.chOpenedDate,
             this.chOpenAO,
             this.chStatus});
+            this.lvCurrentAccountProducts.FullRowSelect = true;
             this.lvCurrentAccountProducts.GridLines = true;
             resources.ApplyResources(this.lvCurrentAccountProducts, "lvCurrentAccountProducts");
             this.lvCurrentAccountProducts.Name = "lvCurrentAccountProducts";
@@ -4202,6 +4221,7 @@ namespace OpenCBS.GUI.Clients
             // 
             // tbTransferNumberForm
             // 
+            this.tbTransferNumberForm.BackColor = System.Drawing.SystemColors.Control;
             this.tbTransferNumberForm.Controls.Add(this.cbAccountStatus);
             this.tbTransferNumberForm.Controls.Add(this.tbOpenedDate);
             this.tbTransferNumberForm.Controls.Add(this.label31);
@@ -4317,7 +4337,7 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.tbTransferNumber, "tbTransferNumber");
             this.tbTransferNumber.Name = "tbTransferNumber";
             this.tbTransferNumber.TextChanged += new System.EventHandler(this.tbTransferNumber_TextChanged);
-            this.tbTransferNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTransferNumber_KeyPress);
+            this.tbTransferNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPenality_KeyPress);
             // 
             // lblChequeNumber
             // 
@@ -4488,6 +4508,8 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.tbMaturityPeriod, "tbMaturityPeriod");
             this.tbMaturityPeriod.Name = "tbMaturityPeriod";
+            this.tbMaturityPeriod.TextChanged += new System.EventHandler(this.tbMaturityPeriod_TextChanged);
+            this.tbMaturityPeriod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPenality_KeyPress);
             // 
             // label12
             // 
@@ -4526,6 +4548,8 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.tbPenality, "tbPenality");
             this.tbPenality.Name = "tbPenality";
+            this.tbPenality.TextChanged += new System.EventHandler(this.tbPenality_TextChanged);
+            this.tbPenality.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPenality_KeyPress);
             // 
             // label15
             // 
@@ -4551,6 +4575,8 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.tbFrequencyMonths, "tbFrequencyMonths");
             this.tbFrequencyMonths.Name = "tbFrequencyMonths";
+            this.tbFrequencyMonths.TextChanged += new System.EventHandler(this.tbFrequencyMonths_TextChanged);
+            this.tbFrequencyMonths.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPenality_KeyPress);
             // 
             // lbAccrual
             // 
@@ -4575,6 +4601,8 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.tbInitialAmount, "tbInitialAmount");
             this.tbInitialAmount.Name = "tbInitialAmount";
+            this.tbInitialAmount.TextChanged += new System.EventHandler(this.tbInitialAmount_TextChanged);
+            this.tbInitialAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPenality_KeyPress);
             // 
             // lbInitialAmountMin
             // 
@@ -4599,6 +4627,8 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.tbInterestRate, "tbInterestRate");
             this.tbInterestRate.Name = "tbInterestRate";
+            this.tbInterestRate.TextChanged += new System.EventHandler(this.tbInterestRate_TextChanged);
+            this.tbInterestRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPenality_KeyPress);
             // 
             // lbInterestRateMin
             // 
@@ -4607,18 +4637,25 @@ namespace OpenCBS.GUI.Clients
             // 
             // tabPageCurrentAccount
             // 
+            this.tabPageCurrentAccount.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageCurrentAccount.Controls.Add(this.checkBoxOverdraftApplied);
+            this.tabPageCurrentAccount.Controls.Add(this.label37);
+            this.tabPageCurrentAccount.Controls.Add(this.tbCurrentInitialAmount);
+            this.tabPageCurrentAccount.Controls.Add(this.tbCalculationFrequency);
+            this.tabPageCurrentAccount.Controls.Add(this.label43);
+            this.tabPageCurrentAccount.Controls.Add(this.label20);
+            this.tabPageCurrentAccount.Controls.Add(this.label34);
+            this.tabPageCurrentAccount.Controls.Add(this.tabControlCurrentAccount);
+            this.tabPageCurrentAccount.Controls.Add(this.tbCAInterestRate);
             this.tabPageCurrentAccount.Controls.Add(this.tbCABalanceAmount);
+            this.tabPageCurrentAccount.Controls.Add(this.label33);
             this.tabPageCurrentAccount.Controls.Add(this.btnTransactions);
             this.tabPageCurrentAccount.Controls.Add(this.lblBalanceAmount);
             this.tabPageCurrentAccount.Controls.Add(this.btnOverdraft);
             this.tabPageCurrentAccount.Controls.Add(this.gbInitialPayment);
             this.tabPageCurrentAccount.Controls.Add(this.gbAmount);
-            this.tabPageCurrentAccount.Controls.Add(this.gbCAFees);
-            this.tabPageCurrentAccount.Controls.Add(this.groupBox3);
             this.tabPageCurrentAccount.Controls.Add(this.tbCAClosedDate);
             this.tabPageCurrentAccount.Controls.Add(this.lblCAClosedDate);
-            this.tabPageCurrentAccount.Controls.Add(this.tbOverdraftAmount);
-            this.tabPageCurrentAccount.Controls.Add(this.label35);
             this.tabPageCurrentAccount.Controls.Add(this.btnCAPrint);
             this.tabPageCurrentAccount.Controls.Add(this.btnCloseAccount);
             this.tabPageCurrentAccount.Controls.Add(this.cbCAAccountStatus);
@@ -4628,11 +4665,6 @@ namespace OpenCBS.GUI.Clients
             this.tabPageCurrentAccount.Controls.Add(this.tbCAProductCode);
             this.tabPageCurrentAccount.Controls.Add(this.lblCAProductCode);
             this.tabPageCurrentAccount.Controls.Add(this.btnAddCurrentAccountProduct);
-            this.tabPageCurrentAccount.Controls.Add(this.gtOverdraftFees);
-            this.tabPageCurrentAccount.Controls.Add(this.gbReopenFees);
-            this.tabPageCurrentAccount.Controls.Add(this.gtManagementFees);
-            this.tabPageCurrentAccount.Controls.Add(this.gbCloseFees);
-            this.tabPageCurrentAccount.Controls.Add(this.gbEntryFees);
             this.tabPageCurrentAccount.Controls.Add(this.tbCurrentAccountComment);
             this.tabPageCurrentAccount.Controls.Add(this.label16);
             this.tabPageCurrentAccount.Controls.Add(this.cbCurrentAccountingOfficer);
@@ -4641,16 +4673,479 @@ namespace OpenCBS.GUI.Clients
             this.tabPageCurrentAccount.Controls.Add(this.label18);
             this.tabPageCurrentAccount.Controls.Add(this.cbCurrentAccountProducts);
             this.tabPageCurrentAccount.Controls.Add(this.label19);
-            this.tabPageCurrentAccount.Controls.Add(this.groupBox6);
             resources.ApplyResources(this.tabPageCurrentAccount, "tabPageCurrentAccount");
             this.tabPageCurrentAccount.Name = "tabPageCurrentAccount";
-            this.tabPageCurrentAccount.UseVisualStyleBackColor = true;
             this.tabPageCurrentAccount.Click += new System.EventHandler(this.tabPageCurrentAccount_Click);
+            // 
+            // checkBoxOverdraftApplied
+            // 
+            resources.ApplyResources(this.checkBoxOverdraftApplied, "checkBoxOverdraftApplied");
+            this.checkBoxOverdraftApplied.Name = "checkBoxOverdraftApplied";
+            this.checkBoxOverdraftApplied.UseVisualStyleBackColor = true;
+            this.checkBoxOverdraftApplied.CheckedChanged += new System.EventHandler(this.checkBoxOverdraftApplied_CheckedChanged);
+            // 
+            // label37
+            // 
+            resources.ApplyResources(this.label37, "label37");
+            this.label37.Name = "label37";
+            // 
+            // tbCurrentInitialAmount
+            // 
+            resources.ApplyResources(this.tbCurrentInitialAmount, "tbCurrentInitialAmount");
+            this.tbCurrentInitialAmount.Name = "tbCurrentInitialAmount";
+            this.tbCurrentInitialAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCurrentInitialAmount_KeyPress);
+            // 
+            // tbCalculationFrequency
+            // 
+            resources.ApplyResources(this.tbCalculationFrequency, "tbCalculationFrequency");
+            this.tbCalculationFrequency.Name = "tbCalculationFrequency";
+            this.tbCalculationFrequency.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCurrentInitialAmount_KeyPress);
+            // 
+            // label43
+            // 
+            resources.ApplyResources(this.label43, "label43");
+            this.label43.Name = "label43";
+            // 
+            // label20
+            // 
+            resources.ApplyResources(this.label20, "label20");
+            this.label20.Name = "label20";
+            // 
+            // label34
+            // 
+            resources.ApplyResources(this.label34, "label34");
+            this.label34.Name = "label34";
+            // 
+            // tabControlCurrentAccount
+            // 
+            this.tabControlCurrentAccount.Controls.Add(this.tabPageFees);
+            this.tabControlCurrentAccount.Controls.Add(this.tabPageOverdraft);
+            this.tabControlCurrentAccount.Controls.Add(this.tabPageCloseAccount);
+            this.tabControlCurrentAccount.Controls.Add(this.tabPageReopenAccount);
+            this.tabControlCurrentAccount.Controls.Add(this.tabPageFeesTransactions);
+            resources.ApplyResources(this.tabControlCurrentAccount, "tabControlCurrentAccount");
+            this.tabControlCurrentAccount.Name = "tabControlCurrentAccount";
+            this.tabControlCurrentAccount.SelectedIndex = 0;
+            // 
+            // tabPageFees
+            // 
+            this.tabPageFees.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageFees.Controls.Add(this.gbEntryFees);
+            this.tabPageFees.Controls.Add(this.gtManagementFees);
+            resources.ApplyResources(this.tabPageFees, "tabPageFees");
+            this.tabPageFees.Name = "tabPageFees";
+            // 
+            // gbEntryFees
+            // 
+            this.gbEntryFees.Controls.Add(this.rbRateEntryFees);
+            this.gbEntryFees.Controls.Add(this.rbFlatEntryFees);
+            this.gbEntryFees.Controls.Add(this.lbEntryFeesType);
+            this.gbEntryFees.Controls.Add(this.tbEntryFees);
+            this.gbEntryFees.Controls.Add(this.lbEntryFeesMin);
+            resources.ApplyResources(this.gbEntryFees, "gbEntryFees");
+            this.gbEntryFees.Name = "gbEntryFees";
+            this.gbEntryFees.TabStop = false;
+            // 
+            // rbRateEntryFees
+            // 
+            resources.ApplyResources(this.rbRateEntryFees, "rbRateEntryFees");
+            this.rbRateEntryFees.Name = "rbRateEntryFees";
+            this.rbRateEntryFees.CheckedChanged += new System.EventHandler(this.rbRateEntryFees_CheckedChanged_1);
+            // 
+            // rbFlatEntryFees
+            // 
+            resources.ApplyResources(this.rbFlatEntryFees, "rbFlatEntryFees");
+            this.rbFlatEntryFees.Checked = true;
+            this.rbFlatEntryFees.Name = "rbFlatEntryFees";
+            this.rbFlatEntryFees.TabStop = true;
+            this.rbFlatEntryFees.CheckedChanged += new System.EventHandler(this.rbFlatEntryFees_CheckedChanged);
+            // 
+            // lbEntryFeesType
+            // 
+            resources.ApplyResources(this.lbEntryFeesType, "lbEntryFeesType");
+            this.lbEntryFeesType.Name = "lbEntryFeesType";
+            // 
+            // tbEntryFees
+            // 
+            resources.ApplyResources(this.tbEntryFees, "tbEntryFees");
+            this.tbEntryFees.Name = "tbEntryFees";
+            this.tbEntryFees.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbEntryFees_KeyPress);
+            // 
+            // lbEntryFeesMin
+            // 
+            resources.ApplyResources(this.lbEntryFeesMin, "lbEntryFeesMin");
+            this.lbEntryFeesMin.Name = "lbEntryFeesMin";
+            // 
+            // gtManagementFees
+            // 
+            this.gtManagementFees.Controls.Add(this.label38);
+            this.gtManagementFees.Controls.Add(this.rbRateManagementFees);
+            this.gtManagementFees.Controls.Add(this.rbFlatManagementFees);
+            this.gtManagementFees.Controls.Add(this.lbManagementFeesType);
+            this.gtManagementFees.Controls.Add(this.tbManagementFees);
+            this.gtManagementFees.Controls.Add(this.lbManagementFeesMin);
+            resources.ApplyResources(this.gtManagementFees, "gtManagementFees");
+            this.gtManagementFees.Name = "gtManagementFees";
+            this.gtManagementFees.TabStop = false;
+            // 
+            // label38
+            // 
+            resources.ApplyResources(this.label38, "label38");
+            this.label38.Name = "label38";
+            // 
+            // rbRateManagementFees
+            // 
+            resources.ApplyResources(this.rbRateManagementFees, "rbRateManagementFees");
+            this.rbRateManagementFees.Name = "rbRateManagementFees";
+            this.rbRateManagementFees.CheckedChanged += new System.EventHandler(this.rbRateManagementFees_CheckedChanged);
+            // 
+            // rbFlatManagementFees
+            // 
+            resources.ApplyResources(this.rbFlatManagementFees, "rbFlatManagementFees");
+            this.rbFlatManagementFees.Checked = true;
+            this.rbFlatManagementFees.Name = "rbFlatManagementFees";
+            this.rbFlatManagementFees.TabStop = true;
+            this.rbFlatManagementFees.CheckedChanged += new System.EventHandler(this.rbFlatManagementFees_CheckedChanged);
+            // 
+            // lbManagementFeesType
+            // 
+            resources.ApplyResources(this.lbManagementFeesType, "lbManagementFeesType");
+            this.lbManagementFeesType.Name = "lbManagementFeesType";
+            // 
+            // tbManagementFees
+            // 
+            resources.ApplyResources(this.tbManagementFees, "tbManagementFees");
+            this.tbManagementFees.Name = "tbManagementFees";
+            this.tbManagementFees.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbEntryFees_KeyPress);
+            // 
+            // lbManagementFeesMin
+            // 
+            resources.ApplyResources(this.lbManagementFeesMin, "lbManagementFeesMin");
+            this.lbManagementFeesMin.Name = "lbManagementFeesMin";
+            // 
+            // tabPageOverdraft
+            // 
+            this.tabPageOverdraft.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageOverdraft.Controls.Add(this.tbOverdraftDate);
+            this.tabPageOverdraft.Controls.Add(this.lblOverdraftAppliedDate);
+            this.tabPageOverdraft.Controls.Add(this.groupBox6);
+            this.tabPageOverdraft.Controls.Add(this.groupBox3);
+            this.tabPageOverdraft.Controls.Add(this.tbOverdraftAmount);
+            this.tabPageOverdraft.Controls.Add(this.label35);
+            this.tabPageOverdraft.Controls.Add(this.gtOverdraftFees);
+            resources.ApplyResources(this.tabPageOverdraft, "tabPageOverdraft");
+            this.tabPageOverdraft.Name = "tabPageOverdraft";
+            // 
+            // tbOverdraftDate
+            // 
+            resources.ApplyResources(this.tbOverdraftDate, "tbOverdraftDate");
+            this.tbOverdraftDate.Name = "tbOverdraftDate";
+            // 
+            // lblOverdraftAppliedDate
+            // 
+            resources.ApplyResources(this.lblOverdraftAppliedDate, "lblOverdraftAppliedDate");
+            this.lblOverdraftAppliedDate.Name = "lblOverdraftAppliedDate";
+            this.lblOverdraftAppliedDate.Click += new System.EventHandler(this.lblOverdraftAppliedDate_Click);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label41);
+            this.groupBox6.Controls.Add(this.rbODCommitmentTypeRate);
+            this.groupBox6.Controls.Add(this.rbODCommitmentTypeFlat);
+            this.groupBox6.Controls.Add(this.label42);
+            this.groupBox6.Controls.Add(this.tbCAODCommitmentFee);
+            this.groupBox6.Controls.Add(this.label45);
+            resources.ApplyResources(this.groupBox6, "groupBox6");
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.TabStop = false;
+            // 
+            // label41
+            // 
+            resources.ApplyResources(this.label41, "label41");
+            this.label41.Name = "label41";
+            // 
+            // rbODCommitmentTypeRate
+            // 
+            resources.ApplyResources(this.rbODCommitmentTypeRate, "rbODCommitmentTypeRate");
+            this.rbODCommitmentTypeRate.Checked = true;
+            this.rbODCommitmentTypeRate.Name = "rbODCommitmentTypeRate";
+            this.rbODCommitmentTypeRate.TabStop = true;
+            // 
+            // rbODCommitmentTypeFlat
+            // 
+            resources.ApplyResources(this.rbODCommitmentTypeFlat, "rbODCommitmentTypeFlat");
+            this.rbODCommitmentTypeFlat.Name = "rbODCommitmentTypeFlat";
+            // 
+            // label42
+            // 
+            resources.ApplyResources(this.label42, "label42");
+            this.label42.Name = "label42";
+            // 
+            // tbCAODCommitmentFee
+            // 
+            resources.ApplyResources(this.tbCAODCommitmentFee, "tbCAODCommitmentFee");
+            this.tbCAODCommitmentFee.Name = "tbCAODCommitmentFee";
+            this.tbCAODCommitmentFee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCurrentInitialAmount_KeyPress);
+            // 
+            // label45
+            // 
+            resources.ApplyResources(this.label45, "label45");
+            this.label45.Name = "label45";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label21);
+            this.groupBox3.Controls.Add(this.rbODInterestTypeRate);
+            this.groupBox3.Controls.Add(this.rbODInterestTypeFlat);
+            this.groupBox3.Controls.Add(this.label39);
+            this.groupBox3.Controls.Add(this.tbCAODInterestRate);
+            this.groupBox3.Controls.Add(this.label40);
+            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.TabStop = false;
+            // 
+            // label21
+            // 
+            resources.ApplyResources(this.label21, "label21");
+            this.label21.Name = "label21";
+            // 
+            // rbODInterestTypeRate
+            // 
+            resources.ApplyResources(this.rbODInterestTypeRate, "rbODInterestTypeRate");
+            this.rbODInterestTypeRate.Checked = true;
+            this.rbODInterestTypeRate.Name = "rbODInterestTypeRate";
+            this.rbODInterestTypeRate.TabStop = true;
+            // 
+            // rbODInterestTypeFlat
+            // 
+            resources.ApplyResources(this.rbODInterestTypeFlat, "rbODInterestTypeFlat");
+            this.rbODInterestTypeFlat.Name = "rbODInterestTypeFlat";
+            // 
+            // label39
+            // 
+            resources.ApplyResources(this.label39, "label39");
+            this.label39.Name = "label39";
+            // 
+            // tbCAODInterestRate
+            // 
+            resources.ApplyResources(this.tbCAODInterestRate, "tbCAODInterestRate");
+            this.tbCAODInterestRate.Name = "tbCAODInterestRate";
+            this.tbCAODInterestRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCurrentInitialAmount_KeyPress);
+            // 
+            // label40
+            // 
+            resources.ApplyResources(this.label40, "label40");
+            this.label40.Name = "label40";
+            // 
+            // tbOverdraftAmount
+            // 
+            resources.ApplyResources(this.tbOverdraftAmount, "tbOverdraftAmount");
+            this.tbOverdraftAmount.Name = "tbOverdraftAmount";
+            this.tbOverdraftAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCurrentInitialAmount_KeyPress);
+            // 
+            // label35
+            // 
+            resources.ApplyResources(this.label35, "label35");
+            this.label35.Name = "label35";
+            // 
+            // gtOverdraftFees
+            // 
+            this.gtOverdraftFees.Controls.Add(this.label36);
+            this.gtOverdraftFees.Controls.Add(this.rbRateOverdraftFees);
+            this.gtOverdraftFees.Controls.Add(this.rbFlatOverdraftFees);
+            this.gtOverdraftFees.Controls.Add(this.lbOverdraftFeesType);
+            this.gtOverdraftFees.Controls.Add(this.tbOverdraftFees);
+            this.gtOverdraftFees.Controls.Add(this.lbOverdraftFeesMin);
+            resources.ApplyResources(this.gtOverdraftFees, "gtOverdraftFees");
+            this.gtOverdraftFees.Name = "gtOverdraftFees";
+            this.gtOverdraftFees.TabStop = false;
+            this.gtOverdraftFees.Enter += new System.EventHandler(this.gtOverdraftFees_Enter);
+            // 
+            // label36
+            // 
+            resources.ApplyResources(this.label36, "label36");
+            this.label36.Name = "label36";
+            // 
+            // rbRateOverdraftFees
+            // 
+            resources.ApplyResources(this.rbRateOverdraftFees, "rbRateOverdraftFees");
+            this.rbRateOverdraftFees.Name = "rbRateOverdraftFees";
+            this.rbRateOverdraftFees.CheckedChanged += new System.EventHandler(this.rbRateOverdraftFees_CheckedChanged);
+            // 
+            // rbFlatOverdraftFees
+            // 
+            resources.ApplyResources(this.rbFlatOverdraftFees, "rbFlatOverdraftFees");
+            this.rbFlatOverdraftFees.Checked = true;
+            this.rbFlatOverdraftFees.Name = "rbFlatOverdraftFees";
+            this.rbFlatOverdraftFees.TabStop = true;
+            this.rbFlatOverdraftFees.CheckedChanged += new System.EventHandler(this.rbFlatOverdraftFees_CheckedChanged);
+            // 
+            // lbOverdraftFeesType
+            // 
+            resources.ApplyResources(this.lbOverdraftFeesType, "lbOverdraftFeesType");
+            this.lbOverdraftFeesType.Name = "lbOverdraftFeesType";
+            // 
+            // tbOverdraftFees
+            // 
+            resources.ApplyResources(this.tbOverdraftFees, "tbOverdraftFees");
+            this.tbOverdraftFees.Name = "tbOverdraftFees";
+            this.tbOverdraftFees.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCurrentInitialAmount_KeyPress);
+            // 
+            // lbOverdraftFeesMin
+            // 
+            resources.ApplyResources(this.lbOverdraftFeesMin, "lbOverdraftFeesMin");
+            this.lbOverdraftFeesMin.Name = "lbOverdraftFeesMin";
+            // 
+            // tabPageCloseAccount
+            // 
+            this.tabPageCloseAccount.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageCloseAccount.Controls.Add(this.gbCloseFees);
+            resources.ApplyResources(this.tabPageCloseAccount, "tabPageCloseAccount");
+            this.tabPageCloseAccount.Name = "tabPageCloseAccount";
+            // 
+            // gbCloseFees
+            // 
+            this.gbCloseFees.Controls.Add(this.rbRateCloseFees);
+            this.gbCloseFees.Controls.Add(this.rbFlatCloseFees);
+            this.gbCloseFees.Controls.Add(this.lbCloseFeesType);
+            this.gbCloseFees.Controls.Add(this.tbCloseFees);
+            this.gbCloseFees.Controls.Add(this.lbCloseFeesMin);
+            resources.ApplyResources(this.gbCloseFees, "gbCloseFees");
+            this.gbCloseFees.Name = "gbCloseFees";
+            this.gbCloseFees.TabStop = false;
+            // 
+            // rbRateCloseFees
+            // 
+            resources.ApplyResources(this.rbRateCloseFees, "rbRateCloseFees");
+            this.rbRateCloseFees.Name = "rbRateCloseFees";
+            // 
+            // rbFlatCloseFees
+            // 
+            resources.ApplyResources(this.rbFlatCloseFees, "rbFlatCloseFees");
+            this.rbFlatCloseFees.Checked = true;
+            this.rbFlatCloseFees.Name = "rbFlatCloseFees";
+            this.rbFlatCloseFees.TabStop = true;
+            // 
+            // lbCloseFeesType
+            // 
+            resources.ApplyResources(this.lbCloseFeesType, "lbCloseFeesType");
+            this.lbCloseFeesType.Name = "lbCloseFeesType";
+            // 
+            // tbCloseFees
+            // 
+            resources.ApplyResources(this.tbCloseFees, "tbCloseFees");
+            this.tbCloseFees.Name = "tbCloseFees";
+            this.tbCloseFees.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCloseFees_KeyPress);
+            // 
+            // lbCloseFeesMin
+            // 
+            resources.ApplyResources(this.lbCloseFeesMin, "lbCloseFeesMin");
+            this.lbCloseFeesMin.Name = "lbCloseFeesMin";
+            // 
+            // tabPageReopenAccount
+            // 
+            this.tabPageReopenAccount.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageReopenAccount.Controls.Add(this.gbReopenFees);
+            resources.ApplyResources(this.tabPageReopenAccount, "tabPageReopenAccount");
+            this.tabPageReopenAccount.Name = "tabPageReopenAccount";
+            // 
+            // gbReopenFees
+            // 
+            this.gbReopenFees.Controls.Add(this.rbRateReopenFees);
+            this.gbReopenFees.Controls.Add(this.rbFlatReopenFees);
+            this.gbReopenFees.Controls.Add(this.lbReopenFeesType);
+            this.gbReopenFees.Controls.Add(this.tbReopenFees);
+            this.gbReopenFees.Controls.Add(this.lbReopenFeesMin);
+            resources.ApplyResources(this.gbReopenFees, "gbReopenFees");
+            this.gbReopenFees.Name = "gbReopenFees";
+            this.gbReopenFees.TabStop = false;
+            // 
+            // rbRateReopenFees
+            // 
+            resources.ApplyResources(this.rbRateReopenFees, "rbRateReopenFees");
+            this.rbRateReopenFees.Name = "rbRateReopenFees";
+            // 
+            // rbFlatReopenFees
+            // 
+            resources.ApplyResources(this.rbFlatReopenFees, "rbFlatReopenFees");
+            this.rbFlatReopenFees.Checked = true;
+            this.rbFlatReopenFees.Name = "rbFlatReopenFees";
+            this.rbFlatReopenFees.TabStop = true;
+            // 
+            // lbReopenFeesType
+            // 
+            resources.ApplyResources(this.lbReopenFeesType, "lbReopenFeesType");
+            this.lbReopenFeesType.Name = "lbReopenFeesType";
+            // 
+            // tbReopenFees
+            // 
+            resources.ApplyResources(this.tbReopenFees, "tbReopenFees");
+            this.tbReopenFees.Name = "tbReopenFees";
+            this.tbReopenFees.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbReopenFees_KeyPress);
+            // 
+            // lbReopenFeesMin
+            // 
+            resources.ApplyResources(this.lbReopenFeesMin, "lbReopenFeesMin");
+            this.lbReopenFeesMin.Name = "lbReopenFeesMin";
+            // 
+            // tabPageFeesTransactions
+            // 
+            this.tabPageFeesTransactions.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageFeesTransactions.Controls.Add(this.listViewFeeTransactions);
+            resources.ApplyResources(this.tabPageFeesTransactions, "tabPageFeesTransactions");
+            this.tabPageFeesTransactions.Name = "tabPageFeesTransactions";
+            // 
+            // listViewFeeTransactions
+            // 
+            this.listViewFeeTransactions.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chToAccount,
+            this.chAmount,
+            this.chFeeDate,
+            this.chPurposeOfTransfer,
+            this.chTransactionType});
+            this.listViewFeeTransactions.GridLines = true;
+            resources.ApplyResources(this.listViewFeeTransactions, "listViewFeeTransactions");
+            this.listViewFeeTransactions.Name = "listViewFeeTransactions";
+            this.listViewFeeTransactions.UseCompatibleStateImageBehavior = false;
+            this.listViewFeeTransactions.View = System.Windows.Forms.View.Details;
+            // 
+            // chToAccount
+            // 
+            resources.ApplyResources(this.chToAccount, "chToAccount");
+            // 
+            // chAmount
+            // 
+            resources.ApplyResources(this.chAmount, "chAmount");
+            // 
+            // chFeeDate
+            // 
+            resources.ApplyResources(this.chFeeDate, "chFeeDate");
+            // 
+            // chPurposeOfTransfer
+            // 
+            resources.ApplyResources(this.chPurposeOfTransfer, "chPurposeOfTransfer");
+            // 
+            // chTransactionType
+            // 
+            resources.ApplyResources(this.chTransactionType, "chTransactionType");
+            // 
+            // tbCAInterestRate
+            // 
+            resources.ApplyResources(this.tbCAInterestRate, "tbCAInterestRate");
+            this.tbCAInterestRate.Name = "tbCAInterestRate";
+            this.tbCAInterestRate.TextChanged += new System.EventHandler(this.tbCAInterestRate_TextChanged);
+            this.tbCAInterestRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCurrentInitialAmount_KeyPress);
             // 
             // tbCABalanceAmount
             // 
             resources.ApplyResources(this.tbCABalanceAmount, "tbCABalanceAmount");
             this.tbCABalanceAmount.Name = "tbCABalanceAmount";
+            this.tbCABalanceAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCurrentInitialAmount_KeyPress);
+            // 
+            // label33
+            // 
+            resources.ApplyResources(this.label33, "label33");
+            this.label33.Name = "label33";
             // 
             // btnTransactions
             // 
@@ -4698,7 +5193,7 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.tbInitialPaymentNumber, "tbInitialPaymentNumber");
             this.tbInitialPaymentNumber.Name = "tbInitialPaymentNumber";
             this.tbInitialPaymentNumber.TextChanged += new System.EventHandler(this.tbInitialPaymentNumber_TextChanged);
-            this.tbInitialPaymentNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCAChequeAccount_KeyPress);
+            this.tbInitialPaymentNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCurrentInitialAmount_KeyPress);
             // 
             // lblInitialChequeNumber
             // 
@@ -4725,7 +5220,7 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.tbCAChequeAccount, "tbCAChequeAccount");
             this.tbCAChequeAccount.Name = "tbCAChequeAccount";
             this.tbCAChequeAccount.TextChanged += new System.EventHandler(this.tbCAChequeAccount_TextChanged);
-            this.tbCAChequeAccount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCAChequeAccount_KeyPress);
+            this.tbCAChequeAccount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCurrentInitialAmount_KeyPress);
             // 
             // lblCAChequeNumber
             // 
@@ -4750,127 +5245,6 @@ namespace OpenCBS.GUI.Clients
             this.label54.Name = "label54";
             this.label54.Click += new System.EventHandler(this.label54_Click);
             // 
-            // gbCAFees
-            // 
-            this.gbCAFees.Controls.Add(this.lblTotalFees);
-            this.gbCAFees.Controls.Add(this.lblCloseFees);
-            this.gbCAFees.Controls.Add(this.lblOverdraftFees);
-            this.gbCAFees.Controls.Add(this.lblManagementFees);
-            this.gbCAFees.Controls.Add(this.lblReopenFees);
-            this.gbCAFees.Controls.Add(this.lblEntryFees);
-            this.gbCAFees.Controls.Add(this.label42);
-            this.gbCAFees.Controls.Add(this.label41);
-            this.gbCAFees.Controls.Add(this.label40);
-            this.gbCAFees.Controls.Add(this.label39);
-            this.gbCAFees.Controls.Add(this.label38);
-            this.gbCAFees.Controls.Add(this.label36);
-            resources.ApplyResources(this.gbCAFees, "gbCAFees");
-            this.gbCAFees.Name = "gbCAFees";
-            this.gbCAFees.TabStop = false;
-            // 
-            // lblTotalFees
-            // 
-            resources.ApplyResources(this.lblTotalFees, "lblTotalFees");
-            this.lblTotalFees.Name = "lblTotalFees";
-            // 
-            // lblCloseFees
-            // 
-            resources.ApplyResources(this.lblCloseFees, "lblCloseFees");
-            this.lblCloseFees.Name = "lblCloseFees";
-            // 
-            // lblOverdraftFees
-            // 
-            resources.ApplyResources(this.lblOverdraftFees, "lblOverdraftFees");
-            this.lblOverdraftFees.Name = "lblOverdraftFees";
-            // 
-            // lblManagementFees
-            // 
-            resources.ApplyResources(this.lblManagementFees, "lblManagementFees");
-            this.lblManagementFees.Name = "lblManagementFees";
-            // 
-            // lblReopenFees
-            // 
-            resources.ApplyResources(this.lblReopenFees, "lblReopenFees");
-            this.lblReopenFees.Name = "lblReopenFees";
-            // 
-            // lblEntryFees
-            // 
-            resources.ApplyResources(this.lblEntryFees, "lblEntryFees");
-            this.lblEntryFees.Name = "lblEntryFees";
-            // 
-            // label42
-            // 
-            resources.ApplyResources(this.label42, "label42");
-            this.label42.Name = "label42";
-            // 
-            // label41
-            // 
-            resources.ApplyResources(this.label41, "label41");
-            this.label41.Name = "label41";
-            // 
-            // label40
-            // 
-            resources.ApplyResources(this.label40, "label40");
-            this.label40.Name = "label40";
-            // 
-            // label39
-            // 
-            resources.ApplyResources(this.label39, "label39");
-            this.label39.Name = "label39";
-            // 
-            // label38
-            // 
-            resources.ApplyResources(this.label38, "label38");
-            this.label38.Name = "label38";
-            // 
-            // label36
-            // 
-            resources.ApplyResources(this.label36, "label36");
-            this.label36.Name = "label36";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label37);
-            this.groupBox3.Controls.Add(this.tbCalculationFrequency);
-            this.groupBox3.Controls.Add(this.label43);
-            this.groupBox3.Controls.Add(this.label34);
-            this.groupBox3.Controls.Add(this.tbCAInterestRate);
-            this.groupBox3.Controls.Add(this.label33);
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
-            // 
-            // label37
-            // 
-            resources.ApplyResources(this.label37, "label37");
-            this.label37.Name = "label37";
-            // 
-            // tbCalculationFrequency
-            // 
-            resources.ApplyResources(this.tbCalculationFrequency, "tbCalculationFrequency");
-            this.tbCalculationFrequency.Name = "tbCalculationFrequency";
-            // 
-            // label43
-            // 
-            resources.ApplyResources(this.label43, "label43");
-            this.label43.Name = "label43";
-            // 
-            // label34
-            // 
-            resources.ApplyResources(this.label34, "label34");
-            this.label34.Name = "label34";
-            // 
-            // tbCAInterestRate
-            // 
-            resources.ApplyResources(this.tbCAInterestRate, "tbCAInterestRate");
-            this.tbCAInterestRate.Name = "tbCAInterestRate";
-            this.tbCAInterestRate.TextChanged += new System.EventHandler(this.tbCAInterestRate_TextChanged);
-            // 
-            // label33
-            // 
-            resources.ApplyResources(this.label33, "label33");
-            this.label33.Name = "label33";
-            // 
             // tbCAClosedDate
             // 
             resources.ApplyResources(this.tbCAClosedDate, "tbCAClosedDate");
@@ -4880,18 +5254,6 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.lblCAClosedDate, "lblCAClosedDate");
             this.lblCAClosedDate.Name = "lblCAClosedDate";
-            // 
-            // tbOverdraftAmount
-            // 
-            resources.ApplyResources(this.tbOverdraftAmount, "tbOverdraftAmount");
-            this.tbOverdraftAmount.Name = "tbOverdraftAmount";
-            this.tbOverdraftAmount.TextChanged += new System.EventHandler(this.tbOverdraftAmount_TextChanged);
-            this.tbOverdraftAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCAChequeAccount_KeyPress);
-            // 
-            // label35
-            // 
-            resources.ApplyResources(this.label35, "label35");
-            this.label35.Name = "label35";
             // 
             // btnCAPrint
             // 
@@ -4911,10 +5273,6 @@ namespace OpenCBS.GUI.Clients
             this.cbCAAccountStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.cbCAAccountStatus, "cbCAAccountStatus");
             this.cbCAAccountStatus.FormattingEnabled = true;
-            this.cbCAAccountStatus.Items.AddRange(new object[] {
-            resources.GetString("cbCAAccountStatus.Items"),
-            resources.GetString("cbCAAccountStatus.Items1"),
-            resources.GetString("cbCAAccountStatus.Items2")});
             this.cbCAAccountStatus.Name = "cbCAAccountStatus";
             // 
             // lblCAAcountStatus
@@ -4949,226 +5307,6 @@ namespace OpenCBS.GUI.Clients
             this.btnAddCurrentAccountProduct.Name = "btnAddCurrentAccountProduct";
             this.btnAddCurrentAccountProduct.UseVisualStyleBackColor = true;
             this.btnAddCurrentAccountProduct.Click += new System.EventHandler(this.btnAddCurrentAccountProduct_Click);
-            // 
-            // gtOverdraftFees
-            // 
-            this.gtOverdraftFees.Controls.Add(this.rbRateOverdraftFees);
-            this.gtOverdraftFees.Controls.Add(this.rbFlatOverdraftFees);
-            this.gtOverdraftFees.Controls.Add(this.lbOverdraftFeesType);
-            this.gtOverdraftFees.Controls.Add(this.tbOverdraftFees);
-            this.gtOverdraftFees.Controls.Add(this.lbOverdraftFeesMin);
-            resources.ApplyResources(this.gtOverdraftFees, "gtOverdraftFees");
-            this.gtOverdraftFees.Name = "gtOverdraftFees";
-            this.gtOverdraftFees.TabStop = false;
-            this.gtOverdraftFees.Enter += new System.EventHandler(this.gtOverdraftFees_Enter);
-            // 
-            // rbRateOverdraftFees
-            // 
-            resources.ApplyResources(this.rbRateOverdraftFees, "rbRateOverdraftFees");
-            this.rbRateOverdraftFees.Name = "rbRateOverdraftFees";
-            this.rbRateOverdraftFees.CheckedChanged += new System.EventHandler(this.rbRateOverdraftFees_CheckedChanged);
-            // 
-            // rbFlatOverdraftFees
-            // 
-            resources.ApplyResources(this.rbFlatOverdraftFees, "rbFlatOverdraftFees");
-            this.rbFlatOverdraftFees.Checked = true;
-            this.rbFlatOverdraftFees.Name = "rbFlatOverdraftFees";
-            this.rbFlatOverdraftFees.TabStop = true;
-            this.rbFlatOverdraftFees.CheckedChanged += new System.EventHandler(this.rbFlatOverdraftFees_CheckedChanged);
-            // 
-            // lbOverdraftFeesType
-            // 
-            resources.ApplyResources(this.lbOverdraftFeesType, "lbOverdraftFeesType");
-            this.lbOverdraftFeesType.Name = "lbOverdraftFeesType";
-            // 
-            // tbOverdraftFees
-            // 
-            resources.ApplyResources(this.tbOverdraftFees, "tbOverdraftFees");
-            this.tbOverdraftFees.Name = "tbOverdraftFees";
-            // 
-            // lbOverdraftFeesMin
-            // 
-            resources.ApplyResources(this.lbOverdraftFeesMin, "lbOverdraftFeesMin");
-            this.lbOverdraftFeesMin.Name = "lbOverdraftFeesMin";
-            // 
-            // gbReopenFees
-            // 
-            this.gbReopenFees.Controls.Add(this.rbRateReopenFees);
-            this.gbReopenFees.Controls.Add(this.rbFlatReopenFees);
-            this.gbReopenFees.Controls.Add(this.lbReopenFeesType);
-            this.gbReopenFees.Controls.Add(this.tbReopenFees);
-            this.gbReopenFees.Controls.Add(this.lbReopenFeesMin);
-            resources.ApplyResources(this.gbReopenFees, "gbReopenFees");
-            this.gbReopenFees.Name = "gbReopenFees";
-            this.gbReopenFees.TabStop = false;
-            // 
-            // rbRateReopenFees
-            // 
-            resources.ApplyResources(this.rbRateReopenFees, "rbRateReopenFees");
-            this.rbRateReopenFees.Name = "rbRateReopenFees";
-            this.rbRateReopenFees.CheckedChanged += new System.EventHandler(this.rbRateReopenFees_CheckedChanged);
-            // 
-            // rbFlatReopenFees
-            // 
-            resources.ApplyResources(this.rbFlatReopenFees, "rbFlatReopenFees");
-            this.rbFlatReopenFees.Checked = true;
-            this.rbFlatReopenFees.Name = "rbFlatReopenFees";
-            this.rbFlatReopenFees.TabStop = true;
-            this.rbFlatReopenFees.CheckedChanged += new System.EventHandler(this.rbFlatReopenFees_CheckedChanged);
-            // 
-            // lbReopenFeesType
-            // 
-            resources.ApplyResources(this.lbReopenFeesType, "lbReopenFeesType");
-            this.lbReopenFeesType.Name = "lbReopenFeesType";
-            // 
-            // tbReopenFees
-            // 
-            resources.ApplyResources(this.tbReopenFees, "tbReopenFees");
-            this.tbReopenFees.Name = "tbReopenFees";
-            // 
-            // lbReopenFeesMin
-            // 
-            resources.ApplyResources(this.lbReopenFeesMin, "lbReopenFeesMin");
-            this.lbReopenFeesMin.Name = "lbReopenFeesMin";
-            // 
-            // gtManagementFees
-            // 
-            this.gtManagementFees.Controls.Add(this.label21);
-            this.gtManagementFees.Controls.Add(this.cbManagementFeeFreq);
-            this.gtManagementFees.Controls.Add(this.rbRateManagementFees);
-            this.gtManagementFees.Controls.Add(this.rbFlatManagementFees);
-            this.gtManagementFees.Controls.Add(this.lbManagementFeesType);
-            this.gtManagementFees.Controls.Add(this.tbManagementFees);
-            this.gtManagementFees.Controls.Add(this.lbManagementFeesMin);
-            resources.ApplyResources(this.gtManagementFees, "gtManagementFees");
-            this.gtManagementFees.Name = "gtManagementFees";
-            this.gtManagementFees.TabStop = false;
-            // 
-            // label21
-            // 
-            resources.ApplyResources(this.label21, "label21");
-            this.label21.Name = "label21";
-            // 
-            // cbManagementFeeFreq
-            // 
-            this.cbManagementFeeFreq.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.cbManagementFeeFreq, "cbManagementFeeFreq");
-            this.cbManagementFeeFreq.FormattingEnabled = true;
-            this.cbManagementFeeFreq.Items.AddRange(new object[] {
-            resources.GetString("cbManagementFeeFreq.Items"),
-            resources.GetString("cbManagementFeeFreq.Items1"),
-            resources.GetString("cbManagementFeeFreq.Items2"),
-            resources.GetString("cbManagementFeeFreq.Items3")});
-            this.cbManagementFeeFreq.Name = "cbManagementFeeFreq";
-            // 
-            // rbRateManagementFees
-            // 
-            resources.ApplyResources(this.rbRateManagementFees, "rbRateManagementFees");
-            this.rbRateManagementFees.Name = "rbRateManagementFees";
-            this.rbRateManagementFees.CheckedChanged += new System.EventHandler(this.rbRateManagementFees_CheckedChanged);
-            // 
-            // rbFlatManagementFees
-            // 
-            resources.ApplyResources(this.rbFlatManagementFees, "rbFlatManagementFees");
-            this.rbFlatManagementFees.Checked = true;
-            this.rbFlatManagementFees.Name = "rbFlatManagementFees";
-            this.rbFlatManagementFees.TabStop = true;
-            this.rbFlatManagementFees.CheckedChanged += new System.EventHandler(this.rbFlatManagementFees_CheckedChanged);
-            // 
-            // lbManagementFeesType
-            // 
-            resources.ApplyResources(this.lbManagementFeesType, "lbManagementFeesType");
-            this.lbManagementFeesType.Name = "lbManagementFeesType";
-            // 
-            // tbManagementFees
-            // 
-            resources.ApplyResources(this.tbManagementFees, "tbManagementFees");
-            this.tbManagementFees.Name = "tbManagementFees";
-            // 
-            // lbManagementFeesMin
-            // 
-            resources.ApplyResources(this.lbManagementFeesMin, "lbManagementFeesMin");
-            this.lbManagementFeesMin.Name = "lbManagementFeesMin";
-            // 
-            // gbCloseFees
-            // 
-            this.gbCloseFees.Controls.Add(this.rbRateCloseFees);
-            this.gbCloseFees.Controls.Add(this.rbFlatCloseFees);
-            this.gbCloseFees.Controls.Add(this.lbCloseFeesType);
-            this.gbCloseFees.Controls.Add(this.tbCloseFees);
-            this.gbCloseFees.Controls.Add(this.lbCloseFeesMin);
-            resources.ApplyResources(this.gbCloseFees, "gbCloseFees");
-            this.gbCloseFees.Name = "gbCloseFees";
-            this.gbCloseFees.TabStop = false;
-            // 
-            // rbRateCloseFees
-            // 
-            resources.ApplyResources(this.rbRateCloseFees, "rbRateCloseFees");
-            this.rbRateCloseFees.Name = "rbRateCloseFees";
-            this.rbRateCloseFees.CheckedChanged += new System.EventHandler(this.rbRateCloseFees_CheckedChanged);
-            // 
-            // rbFlatCloseFees
-            // 
-            resources.ApplyResources(this.rbFlatCloseFees, "rbFlatCloseFees");
-            this.rbFlatCloseFees.Checked = true;
-            this.rbFlatCloseFees.Name = "rbFlatCloseFees";
-            this.rbFlatCloseFees.TabStop = true;
-            this.rbFlatCloseFees.CheckedChanged += new System.EventHandler(this.rbFlatCloseFees_CheckedChanged);
-            // 
-            // lbCloseFeesType
-            // 
-            resources.ApplyResources(this.lbCloseFeesType, "lbCloseFeesType");
-            this.lbCloseFeesType.Name = "lbCloseFeesType";
-            // 
-            // tbCloseFees
-            // 
-            resources.ApplyResources(this.tbCloseFees, "tbCloseFees");
-            this.tbCloseFees.Name = "tbCloseFees";
-            // 
-            // lbCloseFeesMin
-            // 
-            resources.ApplyResources(this.lbCloseFeesMin, "lbCloseFeesMin");
-            this.lbCloseFeesMin.Name = "lbCloseFeesMin";
-            // 
-            // gbEntryFees
-            // 
-            this.gbEntryFees.Controls.Add(this.rbRateEntryFees);
-            this.gbEntryFees.Controls.Add(this.rbFlatEntryFees);
-            this.gbEntryFees.Controls.Add(this.lbEntryFeesType);
-            this.gbEntryFees.Controls.Add(this.tbEntryFees);
-            this.gbEntryFees.Controls.Add(this.lbEntryFeesMin);
-            resources.ApplyResources(this.gbEntryFees, "gbEntryFees");
-            this.gbEntryFees.Name = "gbEntryFees";
-            this.gbEntryFees.TabStop = false;
-            // 
-            // rbRateEntryFees
-            // 
-            resources.ApplyResources(this.rbRateEntryFees, "rbRateEntryFees");
-            this.rbRateEntryFees.Name = "rbRateEntryFees";
-            this.rbRateEntryFees.CheckedChanged += new System.EventHandler(this.rbRateEntryFees_CheckedChanged_1);
-            // 
-            // rbFlatEntryFees
-            // 
-            resources.ApplyResources(this.rbFlatEntryFees, "rbFlatEntryFees");
-            this.rbFlatEntryFees.Checked = true;
-            this.rbFlatEntryFees.Name = "rbFlatEntryFees";
-            this.rbFlatEntryFees.TabStop = true;
-            this.rbFlatEntryFees.CheckedChanged += new System.EventHandler(this.rbFlatEntryFees_CheckedChanged);
-            // 
-            // lbEntryFeesType
-            // 
-            resources.ApplyResources(this.lbEntryFeesType, "lbEntryFeesType");
-            this.lbEntryFeesType.Name = "lbEntryFeesType";
-            // 
-            // tbEntryFees
-            // 
-            resources.ApplyResources(this.tbEntryFees, "tbEntryFees");
-            this.tbEntryFees.Name = "tbEntryFees";
-            // 
-            // lbEntryFeesMin
-            // 
-            resources.ApplyResources(this.lbEntryFeesMin, "lbEntryFeesMin");
-            this.lbEntryFeesMin.Name = "lbEntryFeesMin";
             // 
             // tbCurrentAccountComment
             // 
@@ -5217,24 +5355,6 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.label19, "label19");
             this.label19.Name = "label19";
             // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.tbCurrentInitialAmount);
-            this.groupBox6.Controls.Add(this.label20);
-            resources.ApplyResources(this.groupBox6, "groupBox6");
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.TabStop = false;
-            // 
-            // tbCurrentInitialAmount
-            // 
-            resources.ApplyResources(this.tbCurrentInitialAmount, "tbCurrentInitialAmount");
-            this.tbCurrentInitialAmount.Name = "tbCurrentInitialAmount";
-            // 
-            // label20
-            // 
-            resources.ApplyResources(this.label20, "label20");
-            this.label20.Name = "label20";
-            // 
             // tabPageTransactions
             // 
             this.tabPageTransactions.Controls.Add(this.button2);
@@ -5273,6 +5393,7 @@ namespace OpenCBS.GUI.Clients
             this.columnHeader36,
             this.columnHeader37,
             this.columnHeader38});
+            this.lvTransactions.FullRowSelect = true;
             this.lvTransactions.GridLines = true;
             resources.ApplyResources(this.lvTransactions, "lvTransactions");
             this.lvTransactions.Name = "lvTransactions";
@@ -5319,12 +5440,6 @@ namespace OpenCBS.GUI.Clients
             this.label44.ForeColor = System.Drawing.Color.White;
             this.label44.Name = "label44";
             this.label44.Click += new System.EventHandler(this.label44_Click);
-            // 
-            // tabPageOverdraft
-            // 
-            resources.ApplyResources(this.tabPageOverdraft, "tabPageOverdraft");
-            this.tabPageOverdraft.Name = "tabPageOverdraft";
-            this.tabPageOverdraft.UseVisualStyleBackColor = true;
             // 
             // menuBtnAddSavingOperation
             // 
@@ -5713,26 +5828,31 @@ namespace OpenCBS.GUI.Clients
             this.gbInterestRate.PerformLayout();
             this.tabPageCurrentAccount.ResumeLayout(false);
             this.tabPageCurrentAccount.PerformLayout();
-            this.gbInitialPayment.ResumeLayout(false);
-            this.gbInitialPayment.PerformLayout();
-            this.gbAmount.ResumeLayout(false);
-            this.gbAmount.PerformLayout();
-            this.gbCAFees.ResumeLayout(false);
-            this.gbCAFees.PerformLayout();
+            this.tabControlCurrentAccount.ResumeLayout(false);
+            this.tabPageFees.ResumeLayout(false);
+            this.gbEntryFees.ResumeLayout(false);
+            this.gbEntryFees.PerformLayout();
+            this.gtManagementFees.ResumeLayout(false);
+            this.gtManagementFees.PerformLayout();
+            this.tabPageOverdraft.ResumeLayout(false);
+            this.tabPageOverdraft.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.gtOverdraftFees.ResumeLayout(false);
             this.gtOverdraftFees.PerformLayout();
-            this.gbReopenFees.ResumeLayout(false);
-            this.gbReopenFees.PerformLayout();
-            this.gtManagementFees.ResumeLayout(false);
-            this.gtManagementFees.PerformLayout();
+            this.tabPageCloseAccount.ResumeLayout(false);
             this.gbCloseFees.ResumeLayout(false);
             this.gbCloseFees.PerformLayout();
-            this.gbEntryFees.ResumeLayout(false);
-            this.gbEntryFees.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.tabPageReopenAccount.ResumeLayout(false);
+            this.gbReopenFees.ResumeLayout(false);
+            this.gbReopenFees.PerformLayout();
+            this.tabPageFeesTransactions.ResumeLayout(false);
+            this.gbInitialPayment.ResumeLayout(false);
+            this.gbInitialPayment.PerformLayout();
+            this.gbAmount.ResumeLayout(false);
+            this.gbAmount.PerformLayout();
             this.tabPageTransactions.ResumeLayout(false);
             this.menuBtnAddSavingOperation.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -6225,29 +6345,14 @@ namespace OpenCBS.GUI.Clients
         private Label label18;
         private ComboBox cbCurrentAccountProducts;
         private Label label19;
-        private GroupBox groupBox6;
         private TextBox tbCurrentInitialAmount;
         private Label label20;
-        private GroupBox gbReopenFees;
-        private RadioButton rbRateReopenFees;
-        private RadioButton rbFlatReopenFees;
-        private Label lbReopenFeesType;
-        private TextBox tbReopenFees;
-        private Label lbReopenFeesMin;
         private GroupBox gtManagementFees;
-        private Label label21;
-        private ComboBox cbManagementFeeFreq;
         private RadioButton rbRateManagementFees;
         private RadioButton rbFlatManagementFees;
         private Label lbManagementFeesType;
         private TextBox tbManagementFees;
         private Label lbManagementFeesMin;
-        private GroupBox gbCloseFees;
-        private RadioButton rbRateCloseFees;
-        private RadioButton rbFlatCloseFees;
-        private Label lbCloseFeesType;
-        private TextBox tbCloseFees;
-        private Label lbCloseFeesMin;
         private GroupBox gbEntryFees;
         private RadioButton rbRateEntryFees;
         private RadioButton rbFlatEntryFees;
@@ -6308,24 +6413,8 @@ namespace OpenCBS.GUI.Clients
         private Label lblCAOpenedDate;
         private TextBox tbCAProductCode;
         private Label lblCAProductCode;
-        private GroupBox groupBox3;
         private TextBox tbCAClosedDate;
         private Label lblCAClosedDate;
-        private TextBox tbOverdraftAmount;
-        private Label label35;
-        private GroupBox gbCAFees;
-        private Label label41;
-        private Label label40;
-        private Label label39;
-        private Label label38;
-        private Label label36;
-        private Label lblTotalFees;
-        private Label lblCloseFees;
-        private Label lblOverdraftFees;
-        private Label lblManagementFees;
-        private Label lblReopenFees;
-        private Label lblEntryFees;
-        private Label label42;
         private GroupBox gbAmount;
         private Label label54;
         private TextBox tbCAChequeAccount;
@@ -6349,7 +6438,6 @@ namespace OpenCBS.GUI.Clients
         private Button btnTransactions;
         private Button btnOverdraft;
         private TabPage tabPageTransactions;
-        private TabPage tabPageOverdraft;
         private ListView lvTransactions;
         private ColumnHeader columnHeader31;
         private ColumnHeader columnHeader32;
@@ -6366,5 +6454,50 @@ namespace OpenCBS.GUI.Clients
         private Label lblInitialChequeNumber;
         private ComboBox cbCAInitialAmountMethod;
         private Label label37;
+        private TabControl tabControlCurrentAccount;
+        private TabPage tabPageFees;
+        private TabPage tabPageOverdraft;
+        private CheckBox checkBoxOverdraftApplied;
+        private TextBox tbOverdraftAmount;
+        private Label label35;
+        private TabPage tabPageCloseAccount;
+        private GroupBox gbCloseFees;
+        private RadioButton rbRateCloseFees;
+        private RadioButton rbFlatCloseFees;
+        private Label lbCloseFeesType;
+        private TextBox tbCloseFees;
+        private Label lbCloseFeesMin;
+        private TabPage tabPageReopenAccount;
+        private GroupBox gbReopenFees;
+        private RadioButton rbRateReopenFees;
+        private RadioButton rbFlatReopenFees;
+        private Label lbReopenFeesType;
+        private TextBox tbReopenFees;
+        private Label lbReopenFeesMin;
+        private TabPage tabPageFeesTransactions;
+        private ListView listViewFeeTransactions;
+        private ColumnHeader chToAccount;
+        private ColumnHeader chAmount;
+        private ColumnHeader chFeeDate;
+        private ColumnHeader chPurposeOfTransfer;
+        private ColumnHeader chTransactionType;
+        private Label label36;
+        private Label label38;
+        private GroupBox groupBox3;
+        private Label label21;
+        private RadioButton rbODInterestTypeRate;
+        private RadioButton rbODInterestTypeFlat;
+        private Label label39;
+        private TextBox tbCAODInterestRate;
+        private Label label40;
+        private GroupBox groupBox6;
+        private Label label41;
+        private RadioButton rbODCommitmentTypeRate;
+        private RadioButton rbODCommitmentTypeFlat;
+        private Label label42;
+        private TextBox tbCAODCommitmentFee;
+        private Label label45;
+        private TextBox tbOverdraftDate;
+        private Label lblOverdraftAppliedDate;
     }
 }

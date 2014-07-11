@@ -46,7 +46,7 @@ namespace OpenCBS.GUI.Products
                   currentAccountProduct.CurrentAccountProductName,
                   currentAccountProduct.CurrentAccountProductCode,
                   currentAccountProduct.ClientType,
-                  currentAccountProduct.Currency
+                  currentAccountProduct.Currency.Name
 
 
                     

@@ -6,6 +6,7 @@ using OpenCBS.CoreDomain.Accounting;
 using OpenCBS.CoreDomain.Products;
 using OpenCBS.MultiLanguageRessources;
 using OpenCBS.Services;
+using OpenCBS.ExceptionsHandler;
 
 namespace OpenCBS.GUI.Products
 {
@@ -42,7 +43,7 @@ namespace OpenCBS.GUI.Products
             tbFrequencyMonths.Text = _fixedDepositProduct.InterestCalculationFrequency;
             
            
-            cbCurrency.SelectedItem = _fixedDepositProduct.Currency;
+            cbCurrency.SelectedItem = _fixedDepositProduct.Currency.Name;
             
             tbCodeFixedDepositProduct.Text = _fixedDepositProduct.Code;
             tbName.Text = _fixedDepositProduct.Name;
@@ -152,19 +153,26 @@ clientTypeAllCheckBox.Enabled = enabled;
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
+            try{
+
             _fixedDepositProduct = new FixedDepositProduct();
             InitializeFixedDepositProduct();
             FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
            int ret = _fixedDepositProductService.SaveFixedDepositProduct(_fixedDepositProduct);
            if (ret >= 1)
                MessageBox.Show("Fixed Deposit Product Successfully Added.");
+
+             }
+            catch (Exception ex)
+            {
+                new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
+            }
         }
 
         void InitializeFixedDepositProduct()
         {
             string InterestCalculationFrequency = tbFrequencyMonths.Text;
-            string Currency = cbCurrency.SelectedItem.ToString();
+            
             bool clientTypeCorp = clientTypeCorpCheckBox.Checked;
             bool clientTypeIndiv = clientTypeIndivCheckBox.Checked;
             bool clientTypeVillage = clientTypeVillageCheckBox.Checked;
@@ -189,7 +197,13 @@ clientTypeAllCheckBox.Enabled = enabled;
             int? MaturityPeriodMax = ServicesHelper.ConvertStringToNullableInt32(tbMaxMaturityPeriod.Text);
             
             _fixedDepositProduct.InterestCalculationFrequency = InterestCalculationFrequency;
-            _fixedDepositProduct.Currency = Currency;
+            List<Currency> currencies = ServicesProvider.GetInstance().GetCurrencyServices().FindAllCurrencies();
+            foreach (Currency cur in currencies)
+            {
+                if (cbCurrency.SelectedItem.ToString() == cur.Name)
+                    _fixedDepositProduct.Currency = cur;
+
+            }
             _fixedDepositProduct.Code = CodeFixedDepositProduct;
             _fixedDepositProduct.Name = Name;
             _fixedDepositProduct.InitialAmountMax = InitialAmountMax;
@@ -225,6 +239,8 @@ clientTypeAllCheckBox.Enabled = enabled;
                 if (clientTypeGroup == true)
                     clientType = clientType + "Group,";
 
+
+                if (clientType.Length > 0)
                 clientType = clientType.Substring(0, clientType.Length - 1);
             }
 

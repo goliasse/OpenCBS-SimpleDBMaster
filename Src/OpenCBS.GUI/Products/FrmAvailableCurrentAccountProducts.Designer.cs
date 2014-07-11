@@ -80,6 +80,7 @@
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6});
+            this.lvCurrentAccountProducts.FullRowSelect = true;
             this.lvCurrentAccountProducts.GridLines = true;
             this.lvCurrentAccountProducts.Location = new System.Drawing.Point(0, 0);
             this.lvCurrentAccountProducts.Name = "lvCurrentAccountProducts";

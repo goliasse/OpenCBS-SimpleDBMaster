@@ -69,7 +69,8 @@ namespace OpenCBS.GUI.Products
                     fixedDepositProduct.Name,
                     fixedDepositProduct.Code,                    
 		            fixedDepositProduct.ClientType,
-                    fixedDepositProduct.Currency
+                    fixedDepositProduct.Currency.Name.ToString()
+
 
                     
                 });

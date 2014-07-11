@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OpenCBS.Shared;
 
 
 namespace OpenCBS.CoreDomain.Products
@@ -15,25 +16,25 @@ namespace OpenCBS.CoreDomain.Products
         public string FixedDepositContractCode { get; set; }
 
         public IFixedDepositProduct FixedDepositProduct { get; set; }
-        public decimal InitialAmount { get; set; }
-        public double InterestRate { get; set; }
-        public int MaturityPeriod { get; set; }
+        public OCurrency InitialAmount { get; set; }
+        public double? InterestRate { get; set; }
+        public int? MaturityPeriod { get; set; }
         public string InterestCalculationFrequency { get; set; }
         public string PenalityType { get; set; }
-        public double Penality { get; set; }
+        public double? Penality { get; set; }
         public string OpeningAccountingOfficer { get; set; }
         public string ClosingAccountingOfficer { get; set; }
         public DateTime OpenDate { get; set; }
         public DateTime CloseDate { get; set; }
         public string Status { get; set; }
-        public int PreMatured { get; set; }
+        public int? PreMatured { get; set; }
         public string Comment { get; set; }
 
-        public double EffectiveInterestRate { get; set; }
-        public double EffectiveDepositPeriod { get; set; }
-        public decimal FinalAmount { get; set; }
-        public decimal FinalInterest { get; set; }
-        public double FinalPenality { get; set; }
+        public double? EffectiveInterestRate { get; set; }
+        public double? EffectiveDepositPeriod { get; set; }
+        public OCurrency FinalAmount { get; set; }
+        public OCurrency FinalInterest { get; set; }
+        public double? FinalPenality { get; set; }
         public string InitialAmountPaymentMethod { get; set; }
         public string FinalAmountPaymentMethod { get; set; }
 

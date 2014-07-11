@@ -257,8 +257,15 @@ namespace OpenCBS.Manager.Products
            ,[dbo].[FixedDepositProducts].[product_code]
            ,[dbo].[FixedDepositProducts].[product_currency]
            ,[dbo].[Persons].[first_name]
+            ,cur.id AS currency_id
+            ,cur.name AS currency_name 
+            ,cur.code AS currency_code
+            ,cur.is_pivot AS currency_is_pivot
+            ,cur.is_swapped AS currency_is_swapped
+            ,cur.use_cents AS currency_use_cents
             FROM [dbo].[FixedDepositProductHoldings] INNER JOIN [dbo].[FixedDepositProducts] ON [dbo].FixedDepositProducts.id = [dbo].FixedDepositProductHoldings.fixed_deposit_product_id
             JOIN [dbo].Persons ON [dbo].FixedDepositProductHoldings.client_id = [dbo].Persons.id
+            JOIN Currencies AS cur ON [dbo].[FixedDepositProducts].product_currency = cur.id
             WHERE [dbo].[FixedDepositProductHoldings].[id] = @productId";
 
         
@@ -319,8 +326,15 @@ namespace OpenCBS.Manager.Products
            ,[dbo].[FixedDepositProducts].[product_code]
            ,[dbo].[FixedDepositProducts].[product_currency]
            ,[dbo].[Persons].[first_name]
+            ,cur.id AS currency_id
+            ,cur.name AS currency_name 
+            ,cur.code AS currency_code
+            ,cur.is_pivot AS currency_is_pivot
+            ,cur.is_swapped AS currency_is_swapped
+            ,cur.use_cents AS currency_use_cents
             FROM [dbo].[FixedDepositProductHoldings] INNER JOIN [dbo].[FixedDepositProducts] ON [dbo].FixedDepositProducts.id = [dbo].FixedDepositProductHoldings.fixed_deposit_product_id
              JOIN [dbo].Persons ON [dbo].FixedDepositProductHoldings.client_id = [dbo].Persons.id
+            JOIN Currencies AS cur ON [dbo].[FixedDepositProducts].product_currency = cur.id
             WHERE [dbo].[FixedDepositProductHoldings].fixed_deposit_contract_code = @productContractCode";
 
 
@@ -381,9 +395,16 @@ namespace OpenCBS.Manager.Products
            ,[dbo].[FixedDepositProducts].[product_name]
            ,[dbo].[FixedDepositProducts].[product_code]
            ,[dbo].[FixedDepositProducts].[product_currency]
-           ,[dbo].[Persons].[first_name]
+            ,[dbo].[Persons].[first_name]
+            ,cur.id AS currency_id
+            ,cur.name AS currency_name 
+            ,cur.code AS currency_code
+            ,cur.is_pivot AS currency_is_pivot
+            ,cur.is_swapped AS currency_is_swapped
+            ,cur.use_cents AS currency_use_cents            
             FROM [dbo].[FixedDepositProductHoldings] INNER JOIN [dbo].[FixedDepositProducts] ON [dbo].FixedDepositProducts.id = [dbo].FixedDepositProductHoldings.fixed_deposit_product_id
             JOIN [dbo].Persons ON [dbo].FixedDepositProductHoldings.client_id = [dbo].Persons.id
+            JOIN Currencies AS cur ON [dbo].[FixedDepositProducts].product_currency = cur.id
             WHERE [dbo].[FixedDepositProductHoldings].[client_id] = @ClientId AND [dbo].[FixedDepositProductHoldings].[client_type] = @ClientType
            ";
 
@@ -453,8 +474,15 @@ namespace OpenCBS.Manager.Products
            ,[dbo].[FixedDepositProducts].[product_code]
            ,[dbo].[FixedDepositProducts].[product_currency]
            ,[dbo].[Persons].[first_name]
+            ,cur.id AS currency_id
+            ,cur.name AS currency_name 
+            ,cur.code AS currency_code
+            ,cur.is_pivot AS currency_is_pivot
+            ,cur.is_swapped AS currency_is_swapped
+            ,cur.use_cents AS currency_use_cents
             FROM [dbo].[FixedDepositProductHoldings] INNER JOIN [dbo].[FixedDepositProducts] ON [dbo].FixedDepositProducts.id = [dbo].FixedDepositProductHoldings.fixed_deposit_product_id
             JOIN [dbo].Persons ON [dbo].FixedDepositProductHoldings.client_id = [dbo].Persons.id
+            JOIN Currencies AS cur ON [dbo].[FixedDepositProducts].product_currency = cur.id
            ";
 
 
@@ -498,28 +526,37 @@ fixedDepositProductHoldings.FixedDepositProduct = new FixedDepositProduct();
 fixedDepositProductHoldings.FixedDepositProduct.Id = r.GetInt("fixed_deposit_product_id");
 fixedDepositProductHoldings.FixedDepositProduct.Name = r.GetString("product_name");
 fixedDepositProductHoldings.FixedDepositProduct.Code = r.GetString("product_code");
-fixedDepositProductHoldings.FixedDepositProduct.Currency = r.GetString("product_currency");
 
-fixedDepositProductHoldings.InitialAmount = r.GetDecimal("initial_amount");
-fixedDepositProductHoldings.InterestRate = r.GetDouble("interest_rate");
-fixedDepositProductHoldings.MaturityPeriod = r.GetInt("maturity_period");
+fixedDepositProductHoldings.FixedDepositProduct.Currency = new Currency()
+{
+    Id = r.GetInt("currency_id"),
+    Code = r.GetString("currency_code"),
+    Name = r.GetString("currency_name"),
+    IsPivot = r.GetBool("currency_is_pivot"),
+    IsSwapped = r.GetBool("currency_is_swapped"),
+    UseCents = r.GetBool("currency_use_cents")
+};
+
+fixedDepositProductHoldings.InitialAmount = r.GetMoney("initial_amount");
+fixedDepositProductHoldings.InterestRate = r.GetNullDouble("interest_rate");
+fixedDepositProductHoldings.MaturityPeriod = r.GetNullInt("maturity_period");
 fixedDepositProductHoldings.InterestCalculationFrequency = r.GetString("interest_calculation_frequency");
 fixedDepositProductHoldings.PenalityType = r.GetString("penality_type");
-fixedDepositProductHoldings.Penality = r.GetDouble("penality");
+fixedDepositProductHoldings.Penality = r.GetNullDouble("penality");
 fixedDepositProductHoldings.OpeningAccountingOfficer = r.GetString("opening_accounting_officer");
 fixedDepositProductHoldings.ClosingAccountingOfficer = r.GetString("closing_accounting_officer");
 fixedDepositProductHoldings.OpenDate = r.GetDateTime("open_date");
 fixedDepositProductHoldings.CloseDate = r.GetDateTime("close_date");
 fixedDepositProductHoldings.Status = r.GetString("status");
-fixedDepositProductHoldings.PreMatured = r.GetInt("pre_matured");
+fixedDepositProductHoldings.PreMatured = r.GetNullInt("pre_matured");
 fixedDepositProductHoldings.Comment = r.GetString("comment");
-fixedDepositProductHoldings.EffectiveInterestRate = r.GetDouble("effective_interest_rate");
-fixedDepositProductHoldings.EffectiveDepositPeriod = r.GetDouble("effective_deposit_period"); 
+fixedDepositProductHoldings.EffectiveInterestRate = r.GetNullDouble("effective_interest_rate");
+fixedDepositProductHoldings.EffectiveDepositPeriod = r.GetNullDouble("effective_deposit_period"); 
 
-fixedDepositProductHoldings.FinalAmount = r.GetDecimal("final_amount");
-fixedDepositProductHoldings.FinalInterest = r.GetDecimal("final_interest");
+fixedDepositProductHoldings.FinalAmount = r.GetMoney("final_amount");
+fixedDepositProductHoldings.FinalInterest = r.GetMoney("final_interest");
 
-fixedDepositProductHoldings.FinalPenality = r.GetDouble("final_penalty");  
+fixedDepositProductHoldings.FinalPenality = r.GetNullDouble("final_penalty");  
 fixedDepositProductHoldings.InitialAmountPaymentMethod = r.GetString("initial_amount_payment_method");
 
 fixedDepositProductHoldings.FinalAmountPaymentMethod = r.GetString("final_amount_payment_method");
@@ -533,53 +570,52 @@ return fixedDepositProductHoldings;
 
 
 
-        static double CalculateInterest(double principal,
-   double interestRate,
-   double years,
-   int timesPerYear)
+        static double CalculateInterest(double? principal,
+   double? interestRate,
+   double? years,
+   int? timesPerYear)
         {
+            
             // (1 + r/n)
-            double body = 1 + (interestRate / (timesPerYear*100));
+            double body = (double)(1 + (interestRate / (timesPerYear*100)));
 
             // nt
-            double exponent = timesPerYear * years;
+            double exponent = (double)(timesPerYear * years);
 
             // P(1 + r/n)^nt
-            return principal * Math.Pow(body, exponent);
+            return (double)principal * Math.Pow(body, exponent);
         }
         public FixedDepositInterest CalculateFinalAmount(string fdContractCode)
         {
 
-            double effectiveInterestRate = 0.0;
-            double finalInterestRate = 0.0;
-            double finalInterest = 0.0;
-            double penaltyFlat = 0.0;
-            double finalAmount;
+            double? effectiveInterestRate = 0.0;
+          
+            double? finalAmount;
             
-            int prematured = 0;
+            int? prematured = 0;
 
            FixedDepositProductHoldings _fixedDepositProductHoldings = FetchProduct(fdContractCode);
 
           
              
-             int maturityPeriod = _fixedDepositProductHoldings.MaturityPeriod;
+             int? maturityPeriod = _fixedDepositProductHoldings.MaturityPeriod;
             string penalityType = _fixedDepositProductHoldings.PenalityType;
             DateTime openingDate = _fixedDepositProductHoldings.OpenDate.Date;
-            DateTime maturityDate = openingDate.AddMonths(maturityPeriod);
-            double interestRate = _fixedDepositProductHoldings.InterestRate;
+            DateTime maturityDate = openingDate.AddMonths((int)maturityPeriod);
+            double? interestRate = _fixedDepositProductHoldings.InterestRate;
              string interestCalculationFrequency = _fixedDepositProductHoldings.InterestCalculationFrequency;
-             double initialAmount = Convert.ToDouble(_fixedDepositProductHoldings.InitialAmount);
+             double? initialAmount = Convert.ToDouble(_fixedDepositProductHoldings.InitialAmount);
 
-             int frequency = Convert.ToInt32(interestCalculationFrequency);
+             int? frequency = Convert.ToInt32(interestCalculationFrequency);
 
             
 
-            string productCurrency = _fixedDepositProductHoldings.FixedDepositProduct.Currency;
-                        double penaltyRate = _fixedDepositProductHoldings.Penality;
+            Currency productCurrency = _fixedDepositProductHoldings.FixedDepositProduct.Currency;
+                        double? penaltyRate = _fixedDepositProductHoldings.Penality;
 
-            double effectiveDepositPeriod = 0;
+            double? effectiveDepositPeriod = 0;
 
-            if(productCurrency == "USD")
+            if(productCurrency.Name == "USD")
                 effectiveDepositPeriod = Convert.ToDouble(((DateTime.Now.Date - openingDate).TotalDays) / 360);
             else
                 effectiveDepositPeriod = Convert.ToDouble(((DateTime.Now.Date - openingDate).TotalDays) / 365);

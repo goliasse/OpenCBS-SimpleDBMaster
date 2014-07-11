@@ -60,7 +60,134 @@ namespace OpenCBS.ExceptionsHandler
             string returned = String.Empty;
             switch (exceptionId)
             {
+                case OpenCbsFixedDepositExceptionEnum.FDPHFixedDepositProductNameIsBlank:
+                    returned = "FDPHFixedDepositProductNameIsBlank";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHFixedDepositProductNameIsLessThanThree:
+                    returned = "FDPHFixedDepositProductNameIsLessThanThree";
+                    break;
 
+                case OpenCbsFixedDepositExceptionEnum.FDPHFixedDepositProductCodeIsBlank:
+                    returned = "FDPHFixedDepositProductCodeIsBlank";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHFixedDepositProductCodeLessThanThree:
+                    returned = "FDPHFixedDepositProductCodeLessThanThree";
+                    break;
+
+                case OpenCbsFixedDepositExceptionEnum.FDPHClientTypeIsEmpty:
+                    returned = "FDPHClientTypeIsEmpty";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHCurrencyIsBlank:
+                    returned = "FDPHCurrencyIsBlank";
+                    break;
+
+                case OpenCbsFixedDepositExceptionEnum.FDPHInitialAmountMinIsEmpty:
+                    returned = "FDPHInitialAmountMinIsEmpty";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHInitialAmountMinIsInvalid:
+                    returned = "FDPHInitialAmountMinIsInvalid";
+                    break;
+
+                case OpenCbsFixedDepositExceptionEnum.FDPHInitialAmountMaxIsEmpty:
+                    returned = "FDPHInitialAmountMaxIsEmpty";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHInitialAmountMaxIsInvalid:
+                    returned = "FDPHInitialAmountMaxIsInvalid";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHInitialAmountMinMaxIsInvalid:
+                    returned = "FDPHInitialAmountMinMaxIsInvalid";
+                    break;
+
+
+
+
+
+
+                case OpenCbsFixedDepositExceptionEnum.FDPHInterestRateMinIsEmpty:
+                    returned = "FDPHInterestRateMinIsEmpty";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHInterestRateMinIsInvalid:
+                    returned = "FDPHInterestRateMinIsInvalid";
+                    break;
+
+                case OpenCbsFixedDepositExceptionEnum.FDPHInterestRateMaxIsEmpty:
+                    returned = "FDPHInterestRateMaxIsEmpty";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHInterestRateMaxIsInvalid:
+                    returned = "FDPHInterestRateMaxIsInvalid";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHInterestRateMinMaxIsInvalid:
+                    returned = "FDPHInterestRateMinMaxIsInvalid";
+                    break;
+
+
+                case OpenCbsFixedDepositExceptionEnum.FDPHMaturityPeriodMinIsEmpty:
+                    returned = "FDPHMaturityPeriodMinIsEmpty";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHMaturityPeriodMinIsInvalid:
+                    returned = "FDPHMaturityPeriodMinIsInvalid";
+                    break;
+
+                case OpenCbsFixedDepositExceptionEnum.FDPHMaturityPeriodMaxIsEmpty:
+                    returned = "FDPHMaturityPeriodMaxIsEmpty";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHMaturityPeriodMaxIsInvalid:
+                    returned = "FDPHMaturityPeriodMaxIsInvalid";
+                    break;
+
+                case OpenCbsFixedDepositExceptionEnum.FDPHInterestCalculationFrequencyIsEmpty:
+                    returned = "FDPHInterestCalculationFrequencyIsEmpty";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHInterestCalculationFrequencyIsInvalid:
+                    returned = "FDPHInterestCalculationFrequencyIsInvalid";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHPenaltyMinMaxIsInvalid:
+                    returned = "FDPHPenaltyMinMaxIsInvalid";
+                    break;
+
+                case OpenCbsFixedDepositExceptionEnum.FDPHFixedDepositProductIsBlank:
+                    returned = "FDPHFixedDepositProductIsBlank";
+                    break;
+
+                case OpenCbsFixedDepositExceptionEnum.FDPHInitialAmountIsEmpty:
+                    returned = "FDPHInitialAmountIsEmpty";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHInitialAmountIsInvalid:
+                    returned = "FDPHInitialAmountIsInvalid";
+                    break;
+
+
+                case OpenCbsFixedDepositExceptionEnum.FDPHInterestRateIsEmpty:
+                    returned = "FDPHInterestRateIsEmpty";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHInterestRateIsInvalid:
+                    returned = "FDPHInterestRateIsInvalid";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHMaturityPeriodIsEmpty:
+                    returned = "FDPHMaturityPeriodIsEmpty";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHMaturityPeriodIsInvalid:
+                    returned = "FDPHMaturityPeriodIsInvalid";
+                    break;
+
+
+                
+                case OpenCbsFixedDepositExceptionEnum.FDPHPenaltyIsEmpty:
+                    returned = "FDPHPenaltyIsEmpty";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHPenaltyIsInvalid:
+                    returned = "FDPHPenaltyIsInvalid";
+                    break;
+
+                case OpenCbsFixedDepositExceptionEnum.FDPHProductCodeIsBlank:
+                    returned = "FDPHProductCodeIsBlank";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHAccountingOfficerIsBlank:
+                    returned = "FDPHAccountingOfficerIsBlank";
+                    break;
+                case OpenCbsFixedDepositExceptionEnum.FDPHCommentIsBlank:
+                    returned = "FDPHCommentIsBlank";
+                    break;
             }
             return returned;
         }
@@ -71,7 +198,42 @@ namespace OpenCBS.ExceptionsHandler
     [Serializable]
     public enum OpenCbsFixedDepositExceptionEnum
     {
-
+        FDPHFixedDepositProductNameIsBlank,
+        FDPHFixedDepositProductNameIsLessThanThree,
+        FDPHFixedDepositProductCodeIsBlank,
+        FDPHFixedDepositProductCodeLessThanThree,
+        FDPHClientTypeIsEmpty,
+        FDPHCurrencyIsBlank,
+        FDPHInitialAmountMinIsEmpty,
+        FDPHInitialAmountMinIsInvalid,
+        FDPHInitialAmountMaxIsEmpty,
+        FDPHInitialAmountMaxIsInvalid,
+        FDPHInitialAmountMinMaxIsInvalid,
+        FDPHInterestRateMinIsEmpty,
+        FDPHInterestRateMinIsInvalid,
+        FDPHInterestRateMaxIsEmpty,
+        FDPHInterestRateMaxIsInvalid,
+        FDPHInterestRateMinMaxIsInvalid,
+        FDPHMaturityPeriodMinIsEmpty,
+        FDPHMaturityPeriodMinIsInvalid,
+        FDPHMaturityPeriodMaxIsEmpty,
+        FDPHMaturityPeriodMaxIsInvalid,
+        FDPHInterestCalculationFrequencyIsEmpty,
+        FDPHInterestCalculationFrequencyIsInvalid,
+        FDPHPenaltyMinMaxIsInvalid,
+        FDPHFixedDepositProductIsBlank,
+        FDPHInitialAmountIsEmpty,
+        FDPHInitialAmountIsInvalid,
+        FDPHInterestRateIsEmpty,
+        FDPHInterestRateIsInvalid,
+        FDPHMaturityPeriodIsEmpty,
+        FDPHMaturityPeriodIsInvalid,
+       
+        FDPHPenaltyIsEmpty,
+        FDPHPenaltyIsInvalid,
+        FDPHProductCodeIsBlank,
+        FDPHAccountingOfficerIsBlank,
+        FDPHCommentIsBlank
 
     }
 }

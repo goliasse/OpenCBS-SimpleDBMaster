@@ -54,7 +54,13 @@ namespace OpenCBS.Manager.Products
 [interest_rate],
 [interest_calculation_frequency],
 [initial_amount_account_number],
-[balance]
+[balance],
+[overdraft_interest],
+[overdraft_interest_type],
+[overdraft_commitment_fee_type],
+[overdraft_commitment_fee],
+[overdraft_applied],
+[overdraft_applied_date]
 )
                 VALUES
                 (@clientId,
@@ -84,7 +90,12 @@ namespace OpenCBS.Manager.Products
 @interestRate,
 @interestCalculationFrequency,
 @initialAmountAccountNumber,
-@balance
+@balance,
+@overdraftInterestType,
+@overdraftCommitmentFeeType,
+@overdraftCommitmentFee,
+@overdraftApplied,
+@overdraftAppliedDate
 )
                 SELECT SCOPE_IDENTITY()";
 
@@ -134,6 +145,12 @@ namespace OpenCBS.Manager.Products
 
              //Calculate the balance after all the deductions
              c.AddParam("@balance", product.Balance);
+             c.AddParam("@overdraftInterest", product.OverdraftInterest);
+             c.AddParam("@overdraftInterestType", product.OverdraftInterestType);
+             c.AddParam("@overdraftCommitmentFeeType", product.OverdraftCommitmentFeeType);
+             c.AddParam("@overdraftCommitmentFee", product.OverdraftCommitmentFee);
+             c.AddParam("@overdraftApplied", product.OverdraftApplied);
+             c.AddParam("@overdraftAppliedDate", product.OverdraftAppliedDate);
 
              
 
@@ -170,7 +187,13 @@ namespace OpenCBS.Manager.Products
 [overdraft_limit] = @overdraftLimit,
 [interest_rate] = @interestRate,
 [interest_calculation_frequency] = @interestCalculationFrequency,
-[balance] = @balance
+[balance] = @balance,
+[overdraft_interest] = @overdraftInterest,
+[overdraft_interest_type] = @overdraftInterestType,
+[overdraft_commitment_fee_type] = @overdraftCommitmentFeeType,
+[overdraft_commitment_fee] = @overdraftCommitmentFee,
+[overdraft_applied] = @overdraftApplied,
+[overdraft_applied_date] = @overdraftAppliedDate
 WHERE id = @productId";
 
 
@@ -215,7 +238,13 @@ WHERE id = @productId";
 [overdraft_limit] = @overdraftLimit,
 [interest_rate] = @interestRate,
 [interest_calculation_frequency] = @interestCalculationFrequency,
-[balance] = @balance
+[balance] = @balance,
+[overdraft_interest] = @overdraftInterest,
+[overdraft_interest_type] = @overdraftInterestType,
+[overdraft_commitment_fee_type] = @overdraftCommitmentFeeType,
+[overdraft_commitment_fee] = @overdraftCommitmentFee,
+[overdraft_applied] = @overdraftApplied,
+[overdraft_applied_date] = @overdraftAppliedDate
 WHERE current_account_contract_code = @contractCode";
 
 
@@ -265,11 +294,23 @@ WHERE current_account_contract_code = @contractCode";
 [dbo].[CurrentAccountProductHoldings].[final_amount_payment_method],
 [dbo].[CurrentAccountProductHoldings].[final_amount_account_number],
 [dbo].[CurrentAccountProductHoldings].[balance],
+[dbo].[CurrentAccountProductHoldings].[overdraft_interest],
+[dbo].[CurrentAccountProductHoldings].[overdraft_interest_type],
+[dbo].[CurrentAccountProductHoldings].[overdraft_commitment_fee_type],
+[dbo].[CurrentAccountProductHoldings].[overdraft_commitment_fee],
+[dbo].[CurrentAccountProductHoldings].[overdraft_applied],
+[dbo].[CurrentAccountProductHoldings].[overdraft_applied_date],
 [dbo].[CurrentAccountProduct].[current_account_product_name],
 [dbo].[CurrentAccountProduct].[current_account_product_code],
-[dbo].[Persons].[first_name]
+[dbo].[Persons].[first_name],
+cur.name AS currency_name, 
+cur.code AS currency_code,
+cur.is_pivot AS currency_is_pivot, 
+cur.is_swapped AS currency_is_swapped,
+cur.use_cents AS currency_use_cents
 FROM [dbo].[CurrentAccountProductHoldings] INNER JOIN [dbo].[CurrentAccountProduct] ON [dbo].CurrentAccountProduct.id = [dbo].CurrentAccountProductHoldings.current_account_product_id
 JOIN [dbo].Persons ON [dbo].CurrentAccountProductHoldings.client_id = [dbo].Persons.id
+JOIN [dbo].Currencies AS cur ON [dbo].CurrentAccountProduct.currency = cur.id
 ";
 
              if (!showAlsoClosed)
@@ -336,11 +377,23 @@ JOIN [dbo].Persons ON [dbo].CurrentAccountProductHoldings.client_id = [dbo].Pers
 [dbo].[CurrentAccountProductHoldings].[final_amount_payment_method],
 [dbo].[CurrentAccountProductHoldings].[final_amount_account_number],
 [dbo].[CurrentAccountProductHoldings].[balance],
+[dbo].[CurrentAccountProductHoldings].[overdraft_interest],
+[dbo].[CurrentAccountProductHoldings].[overdraft_interest_type],
+[dbo].[CurrentAccountProductHoldings].[overdraft_commitment_fee_type],
+[dbo].[CurrentAccountProductHoldings].[overdraft_commitment_fee],
+[dbo].[CurrentAccountProductHoldings].[overdraft_applied],
+[dbo].[CurrentAccountProductHoldings].[overdraft_applied_date],
 [dbo].[CurrentAccountProduct].[current_account_product_name],
 [dbo].[CurrentAccountProduct].[current_account_product_code],
-[dbo].[Persons].[first_name]
+[dbo].[Persons].[first_name],
+cur.name AS currency_name, 
+cur.code AS currency_code,
+cur.is_pivot AS currency_is_pivot, 
+cur.is_swapped AS currency_is_swapped,
+cur.use_cents AS currency_use_cents
 FROM [dbo].[CurrentAccountProductHoldings] INNER JOIN [dbo].[CurrentAccountProduct] ON [dbo].CurrentAccountProduct.id = [dbo].CurrentAccountProductHoldings.current_account_product_id
 JOIN [dbo].Persons ON [dbo].CurrentAccountProductHoldings.client_id = [dbo].Persons.id
+JOIN [dbo].Currencies AS cur ON [dbo].CurrentAccountProduct.currency = cur.id
 WHERE [dbo].[CurrentAccountProductHoldings].[client_id] = @ClientId AND [dbo].[CurrentAccountProductHoldings].[client_type] = @ClientType
 ";
 
@@ -406,11 +459,23 @@ WHERE [dbo].[CurrentAccountProductHoldings].[client_id] = @ClientId AND [dbo].[C
 [dbo].[CurrentAccountProductHoldings].[final_amount_payment_method],
 [dbo].[CurrentAccountProductHoldings].[final_amount_account_number],
 [dbo].[CurrentAccountProductHoldings].[balance],
+[dbo].[CurrentAccountProductHoldings].[overdraft_interest],
+[dbo].[CurrentAccountProductHoldings].[overdraft_interest_type],
+[dbo].[CurrentAccountProductHoldings].[overdraft_commitment_fee_type],
+[dbo].[CurrentAccountProductHoldings].[overdraft_commitment_fee],
+[dbo].[CurrentAccountProductHoldings].[overdraft_applied],
+[dbo].[CurrentAccountProductHoldings].[overdraft_applied_date],
 [dbo].[CurrentAccountProduct].[current_account_product_name],
 [dbo].[CurrentAccountProduct].[current_account_product_code],
-[dbo].[Persons].[first_name]
+[dbo].[Persons].[first_name],
+cur.name AS currency_name, 
+cur.code AS currency_code,
+cur.is_pivot AS currency_is_pivot, 
+cur.is_swapped AS currency_is_swapped,
+cur.use_cents AS currency_use_cents
 FROM [dbo].[CurrentAccountProductHoldings] INNER JOIN [dbo].[CurrentAccountProduct] ON [dbo].CurrentAccountProduct.id = [dbo].CurrentAccountProductHoldings.current_account_product_id
 JOIN [dbo].Persons ON [dbo].CurrentAccountProductHoldings.client_id = [dbo].Persons.id
+JOIN [dbo].Currencies AS cur ON [dbo].CurrentAccountProduct.currency = cur.id
 WHERE [dbo].[CurrentAccountProductHoldings].id = @id";
 
 
@@ -464,11 +529,23 @@ WHERE [dbo].[CurrentAccountProductHoldings].id = @id";
 [dbo].[CurrentAccountProductHoldings].[final_amount_payment_method],
 [dbo].[CurrentAccountProductHoldings].[final_amount_account_number],
 [dbo].[CurrentAccountProductHoldings].[balance],
+[dbo].[CurrentAccountProductHoldings].[overdraft_interest],
+[dbo].[CurrentAccountProductHoldings].[overdraft_interest_type],
+[dbo].[CurrentAccountProductHoldings].[overdraft_commitment_fee_type],
+[dbo].[CurrentAccountProductHoldings].[overdraft_commitment_fee],
+[dbo].[CurrentAccountProductHoldings].[overdraft_applied],
+[dbo].[CurrentAccountProductHoldings].[overdraft_applied_date],
 [dbo].[CurrentAccountProduct].[current_account_product_name],
 [dbo].[CurrentAccountProduct].[current_account_product_code],
-[dbo].[Persons].[first_name]
+[dbo].[Persons].[first_name],
+cur.name AS currency_name, 
+cur.code AS currency_code,
+cur.is_pivot AS currency_is_pivot, 
+cur.is_swapped AS currency_is_swapped,
+cur.use_cents AS currency_use_cents
 FROM [dbo].[CurrentAccountProductHoldings] INNER JOIN [dbo].[CurrentAccountProduct] ON [dbo].CurrentAccountProduct.id = [dbo].CurrentAccountProductHoldings.current_account_product_id
 JOIN [dbo].Persons ON [dbo].CurrentAccountProductHoldings.client_id = [dbo].Persons.id
+JOIN [dbo].Currencies AS cur ON [dbo].CurrentAccountProduct.currency = cur.id
 WHERE [dbo].CurrentAccountProductHoldings.current_account_contract_code = @contractCode";
 
 
@@ -503,7 +580,16 @@ currentAccountProductHolding.CurrentAccountProduct.Id = r.GetInt("current_accoun
 currentAccountProductHolding.CurrentAccountProduct.CurrentAccountProductName = r.GetString("current_account_product_name");
 currentAccountProductHolding.CurrentAccountProduct.CurrentAccountProductCode = r.GetString("current_account_product_code");
 
-currentAccountProductHolding.InitialAmount =r.GetDecimal("initial_amount");
+currentAccountProductHolding.CurrentAccountProduct.Currency = new Currency()
+{
+    Id = r.GetInt("currency_id"),
+    Code = r.GetString("currency_code"),
+    Name = r.GetString("currency_name"),
+    IsPivot = r.GetBool("currency_is_pivot"),
+    IsSwapped = r.GetBool("currency_is_swapped"),
+    UseCents = r.GetBool("currency_use_cents")
+};
+currentAccountProductHolding.InitialAmount =r.GetMoney("initial_amount");
 
 currentAccountProductHolding.OpeningAccountingOfficer =r.GetString("opening_accounting_officer");
 
@@ -516,14 +602,14 @@ currentAccountProductHolding.Status  =r.GetString("status");
 
 currentAccountProductHolding.Comment =r.GetString("comment");
 
-currentAccountProductHolding.EntryFees = r.GetDecimal("entry_fees");
+currentAccountProductHolding.EntryFees = r.GetMoney("entry_fees");
 
-currentAccountProductHolding.ReopenFees = r.GetDecimal("reopen_fees");
-currentAccountProductHolding.ClosingFees = r.GetDecimal("closing_fees");
+currentAccountProductHolding.ReopenFees = r.GetMoney("reopen_fees");
+currentAccountProductHolding.ClosingFees = r.GetMoney("closing_fees");
 
-currentAccountProductHolding.ManagementFees = r.GetDecimal("management_fees");
+currentAccountProductHolding.ManagementFees = r.GetMoney("management_fees");
 
-currentAccountProductHolding.OverdraftFees = r.GetDecimal("overdraft_fees");
+currentAccountProductHolding.OverdraftFees = r.GetMoney("overdraft_fees");
 
 currentAccountProductHolding.EntryFeesType =r.GetString("entry_fees_type");
 currentAccountProductHolding.ReopenFeesType =r.GetString("reopen_fees_type");
@@ -538,14 +624,21 @@ currentAccountProductHolding.ManagementFeesFrequency =r.GetString("management_fe
 
 currentAccountProductHolding.InitialAmountPaymentMethod =r.GetString("initial_amount_payment_method");
 currentAccountProductHolding.FirstName = r.GetString("first_name");
-currentAccountProductHolding.OverdraftLimit = r.GetDecimal("overdraft_limit");
-currentAccountProductHolding.InterestRate = r.GetDouble("interest_rate");
-currentAccountProductHolding.InterestCalculationFrequency = r.GetInt("interest_calculation_frequency");
+currentAccountProductHolding.OverdraftLimit = r.GetMoney("overdraft_limit");
+currentAccountProductHolding.InterestRate = r.GetNullDouble("interest_rate");
+currentAccountProductHolding.InterestCalculationFrequency = r.GetNullInt("interest_calculation_frequency");
 currentAccountProductHolding.InitialAmountAccountNumber = r.GetString("initial_amount_account_number");
-currentAccountProductHolding.Balance = r.GetDecimal("balance");
+currentAccountProductHolding.Balance = r.GetMoney("balance");
 
 currentAccountProductHolding.FinalAmountPaymentMethod = r.GetString("final_amount_payment_method");
 currentAccountProductHolding.FinalAmountAccountNumber = r.GetString("final_amount_account_number");
+
+currentAccountProductHolding.OverdraftInterest = r.GetNullDouble("overdraft_interest");
+ currentAccountProductHolding.OverdraftInterestType = r.GetString("overdraft_interest_type");
+currentAccountProductHolding.OverdraftCommitmentFeeType = r.GetString("overdraft_commitment_fee_type");
+ currentAccountProductHolding.OverdraftCommitmentFee = r.GetNullDouble("overdraft_commitment_fee");
+ currentAccountProductHolding.OverdraftApplied = r.GetNullInt("overdraft_applied");
+ currentAccountProductHolding.OverdraftAppliedDate = r.GetDateTime("overdraft_applied_date");
 
 return currentAccountProductHolding;
          }

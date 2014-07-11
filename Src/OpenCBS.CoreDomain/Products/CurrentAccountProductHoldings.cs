@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OpenCBS.Shared;
 
 namespace OpenCBS.CoreDomain.Products
 {
@@ -12,11 +13,11 @@ namespace OpenCBS.CoreDomain.Products
         public string ClientType { get; set; }
         public string CurrentAccountContractCode { get; set; }
         public CurrentAccountProduct CurrentAccountProduct { get; set; }
-        public decimal InitialAmount { get; set; }
-        public decimal Balance { get; set; }
-        public decimal OverdraftLimit { get; set; }
-        public double InterestRate { get; set; }
-        public int InterestCalculationFrequency { get; set; }
+        public OCurrency InitialAmount { get; set; }
+        public OCurrency Balance { get; set; }
+        public OCurrency OverdraftLimit { get; set; }
+        public double? InterestRate { get; set; }
+        public int? InterestCalculationFrequency { get; set; }
       
         public string OpeningAccountingOfficer { get; set; }
         public string ClosingAccountingOfficer { get; set; }
@@ -26,11 +27,11 @@ namespace OpenCBS.CoreDomain.Products
       
         public string Comment { get; set; }
       
-        public decimal EntryFees { get; set; }
-        public decimal ReopenFees { get; set; }
-        public decimal ClosingFees { get; set; }
-        public decimal ManagementFees { get; set; }
-        public decimal OverdraftFees { get; set; }
+        public OCurrency EntryFees { get; set; }
+        public OCurrency ReopenFees { get; set; }
+        public OCurrency ClosingFees { get; set; }
+        public OCurrency ManagementFees { get; set; }
+        public OCurrency OverdraftFees { get; set; }
 
         public string EntryFeesType { get; set; }
         public string ReopenFeesType { get; set; }
@@ -45,5 +46,12 @@ namespace OpenCBS.CoreDomain.Products
 
         public string FinalAmountPaymentMethod { get; set; }
         public string FinalAmountAccountNumber { get; set; }
+
+        public double? OverdraftInterest { get; set; }
+        public string OverdraftInterestType { get; set; }
+        public string OverdraftCommitmentFeeType { get; set; }
+        public double? OverdraftCommitmentFee { get; set; }
+        public int? OverdraftApplied { get; set; }
+        public DateTime OverdraftAppliedDate { get; set; }
     }
 }
