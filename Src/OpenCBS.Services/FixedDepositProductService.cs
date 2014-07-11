@@ -84,7 +84,10 @@ namespace OpenCBS.Services
             if (fixedDepositProduct.ClientType == "")
                 throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHClientTypeIsEmpty);
 
-            if (fixedDepositProduct.Currency.Name == "" && fixedDepositProduct.Currency.Name == OCurrentAccount.SelectCurrencyDefault)
+            if (fixedDepositProduct.Currency == null)
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHCurrencyIsBlank);
+
+            if (fixedDepositProduct.Currency != null && fixedDepositProduct.Currency.Name == OCurrentAccount.SelectCurrencyDefault)
                 throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHCurrencyIsBlank);
 
             if (!fixedDepositProduct.InitialAmountMin.HasValue)

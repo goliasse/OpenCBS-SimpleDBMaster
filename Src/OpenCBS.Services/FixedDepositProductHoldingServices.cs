@@ -5,6 +5,8 @@ using System.Text;
 using OpenCBS.Manager.Products;
 using OpenCBS.CoreDomain;
 using OpenCBS.CoreDomain.Products;
+using OpenCBS.ExceptionsHandler;
+using OpenCBS.Shared;
 
 namespace OpenCBS.Services
 {
@@ -28,7 +30,7 @@ namespace OpenCBS.Services
         public string SaveFixedDepositProductHolding(FixedDepositProductHoldings fixedDepositProductHolding)
         {
 
-            ValidateProduct(fixedDepositProductHolding);
+            ValidateProduct(fixedDepositProductHolding, fixedDepositProductHolding.FixedDepositProduct);
             return _fixedDepositProductHoldingManager.SaveFixedDepositProductHolding(fixedDepositProductHolding);
             
 
@@ -68,12 +70,71 @@ namespace OpenCBS.Services
             return _fixedDepositProductHoldingManager.CalculateFinalAmount(fdContractCode);
         }
 
-        private void ValidateProduct(FixedDepositProductHoldings fixedDepositProductHolding)
+        private void ValidateProduct(FixedDepositProductHoldings fixedDepositProductHolding, IFixedDepositProduct fixedDepositProduct)
         {
 
+            if (fixedDepositProductHolding.FixedDepositProduct == null)
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHFixedDepositProductIsBlank);
+
+            if (fixedDepositProductHolding.FixedDepositProduct.Id == 0)
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHFixedDepositProductIsBlank);
+
+            if (!fixedDepositProductHolding.InitialAmount.HasValue)
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInitialAmountIsEmpty);
+
+            if (ServicesHelper.CheckIfValueBetweenMinAndMax(fixedDepositProduct.InitialAmountMin,
+                                                                   fixedDepositProduct.InitialAmountMax,
+                                                                   fixedDepositProductHolding.InitialAmount))
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInitialAmountMinMaxIsInvalid);
+
+            if (!fixedDepositProductHolding.InterestRate.HasValue)
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInterestRateIsEmpty);
+
+
+            if (ServicesHelper.CheckIfValueBetweenMinAndMax(fixedDepositProduct.InterestRateMin,
+                                                                   fixedDepositProduct.InterestRateMax,
+                                                                   fixedDepositProductHolding.InterestRate))
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInterestRateMinMaxIsInvalid);
+
+            if (!fixedDepositProductHolding.MaturityPeriod.HasValue)
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHMaturityPeriodIsEmpty);
+
+            if (CheckIfValueBetweenMinAndMax(fixedDepositProduct.MaturityPeriodMin,
+                                                                   fixedDepositProduct.MaturityPeriodMax,
+                                                                   fixedDepositProductHolding.MaturityPeriod))
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHMaturityPeriodIsInvalid);
+
+            
+            if(IsPenaltyCorrect(fixedDepositProductHolding, fixedDepositProduct))
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHPenaltyMinMaxIsInvalid);
+            
 
 
 
+            
+
+        }
+
+        public static bool CheckIfValueBetweenMinAndMax(OCurrency min, OCurrency max, OCurrency number)
+        {
+            bool result = false;
+            if (number <= max && number >= min) result = true;
+            return result;
+        }
+
+        private static bool IsPenaltyCorrect(FixedDepositProductHoldings fixedDepositProductHolding, IFixedDepositProduct fixedDepositProduct)
+        {
+            if (fixedDepositProduct.PenalityValue.HasValue)
+            {
+                return fixedDepositProduct.PenalityValue == fixedDepositProductHolding.Penality;
+            }
+            else
+            {
+                return ServicesHelper.CheckIfValueBetweenMinAndMax(fixedDepositProduct.PenalityRateMin,
+                                                                    fixedDepositProduct.PenalityRateMax,
+                                                                    fixedDepositProductHolding.Penality);
+            }
+            
         }
 
 

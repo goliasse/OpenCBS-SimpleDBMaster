@@ -7,6 +7,7 @@ using OpenCBS.CoreDomain.Products;
 using OpenCBS.MultiLanguageRessources;
 using OpenCBS.Services;
 using OpenCBS.ExceptionsHandler;
+using OpenCBS.Enums;
 
 namespace OpenCBS.GUI.Products
 {
@@ -200,7 +201,7 @@ clientTypeAllCheckBox.Enabled = enabled;
             List<Currency> currencies = ServicesProvider.GetInstance().GetCurrencyServices().FindAllCurrencies();
             foreach (Currency cur in currencies)
             {
-                if (cbCurrency.SelectedItem.ToString() == cur.Name)
+                if ((cbCurrency.SelectedItem.ToString() == cur.Name) && (cbCurrency.SelectedItem.ToString() != OCurrentAccount.SelectCurrencyDefault))
                     _fixedDepositProduct.Currency = cur;
 
             }

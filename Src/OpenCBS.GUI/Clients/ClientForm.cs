@@ -8833,7 +8833,7 @@ namespace OpenCBS.GUI.Clients
         {
             try{
 
-            btnAddFixedDepositProduct.Enabled = false;
+           
             FixedDepositProductHoldings _fixedDepositProductHoldings = new FixedDepositProductHoldings();
 
 
@@ -8889,6 +8889,7 @@ namespace OpenCBS.GUI.Clients
 
 
             MessageBox.Show("Contract Successfully Created. Contract Code Is " + contractCode);
+            btnAddFixedDepositProduct.Enabled = false;
 
              }
             catch (Exception ex)

@@ -466,7 +466,7 @@ namespace OpenCBS.GUI.Products
             List<Currency> currencies = ServicesProvider.GetInstance().GetCurrencyServices().FindAllCurrencies();
             foreach (Currency cur in currencies)
             {
-                if (cbCurrency.SelectedItem.ToString() == cur.Name)
+                if ((cbCurrency.SelectedItem.ToString() == cur.Name) && (cbCurrency.SelectedItem.ToString() != OCurrentAccount.SelectCurrencyDefault))
                     _currentAccountProduct.Currency = cur;
                 
             }

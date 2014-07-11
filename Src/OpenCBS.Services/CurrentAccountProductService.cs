@@ -79,7 +79,10 @@ namespace OpenCBS.Services
             if (currentAccountProduct.ClientType == "")
                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.OneCheckBoxMustBeSeleted);
 
-            if (currentAccountProduct.Currency.Name == "" && currentAccountProduct.Currency.Name == OCurrentAccount.SelectCurrencyDefault)
+            if (currentAccountProduct.Currency == null)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.SelectCurrencySelected);
+
+            if (currentAccountProduct.Currency != null && currentAccountProduct.Currency.Name == OCurrentAccount.SelectCurrencyDefault)
                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.SelectCurrencySelected);
 
             if (currentAccountProduct.InitialAmountMin < 0)
