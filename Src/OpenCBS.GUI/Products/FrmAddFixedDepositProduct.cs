@@ -38,6 +38,10 @@ namespace OpenCBS.GUI.Products
                 btnUpdate.Visible = true;
                 btnSave.Visible = false;
             }
+            else
+            {
+                btnSave.Visible = false;
+            }
 
             FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
             _fixedDepositProduct = _fixedDepositProductService.FetchProduct(productId);
@@ -52,8 +56,15 @@ namespace OpenCBS.GUI.Products
             tbInitialAmountMin.Text = _fixedDepositProduct.InitialAmountMin.GetFormatedValue(true);
             tbInterestRateMax.Text = _fixedDepositProduct.InterestRateMax.ToString();
             tbInterestRateMin.Text = _fixedDepositProduct.InterestRateMin.ToString();
-            tbPenalityMax.Text = _fixedDepositProduct.PenalityRateMax.ToString();
-            tbPenalityMin.Text = _fixedDepositProduct.PenalityRateMin.ToString();
+            if (_fixedDepositProduct.PenalityValue.HasValue)
+            {
+                tbPenaltyValue.Text = _fixedDepositProduct.PenalityValue.ToString();
+            }
+            else
+            {
+                tbPenalityMax.Text = _fixedDepositProduct.PenalityRateMax.ToString();
+                tbPenalityMin.Text = _fixedDepositProduct.PenalityRateMin.ToString();
+            }
             tbMinMaturityPeriod.Text = _fixedDepositProduct.MaturityPeriodMin.ToString();
             tbMaxMaturityPeriod.Text = _fixedDepositProduct.MaturityPeriodMax.ToString();
 
@@ -91,31 +102,30 @@ namespace OpenCBS.GUI.Products
         }
 
 
- void FixedDepositControl(bool enabled)
-{
-    tbFrequencyMonths.Enabled = enabled;
-cbCurrency.Enabled = enabled;
-tbCodeFixedDepositProduct.Enabled = enabled;
-tbName.Enabled = enabled;
-tbInitialAmountMax.Enabled = enabled;
-tbInitialAmountMin.Enabled = enabled;
-tbInterestRateMax.Enabled = enabled;
-tbInterestRateMin.Enabled = enabled;
-tbPenalityMax.Enabled = enabled;
-tbPenalityMin.Enabled = enabled;
-tbMinMaturityPeriod.Enabled = enabled;
-tbMaxMaturityPeriod.Enabled = enabled;
-rbPenalityTypeRate.Enabled = enabled;
-rbPenalityTypeFlat.Enabled = enabled;
+        void FixedDepositControl(bool enabled)
+        {
+            tbFrequencyMonths.Enabled = enabled;
+            cbCurrency.Enabled = enabled;
+            tbCodeFixedDepositProduct.Enabled = enabled;
+            tbName.Enabled = enabled;
+            tbInitialAmountMax.Enabled = enabled;
+            tbInitialAmountMin.Enabled = enabled;
+            tbInterestRateMax.Enabled = enabled;
+            tbInterestRateMin.Enabled = enabled;
+            tbPenalityMax.Enabled = enabled;
+            tbPenalityMin.Enabled = enabled;
+            tbMinMaturityPeriod.Enabled = enabled;
+            tbMaxMaturityPeriod.Enabled = enabled;
+            rbPenalityTypeRate.Enabled = enabled;
+            rbPenalityTypeFlat.Enabled = enabled;
 
-clientTypeCorpCheckBox.Enabled = enabled;
-clientTypeIndivCheckBox.Enabled = enabled;
-clientTypeVillageCheckBox.Enabled = enabled;
-clientTypeGroupCheckBox.Enabled = enabled;
-clientTypeAllCheckBox.Enabled = enabled;
-
-
-}
+            clientTypeCorpCheckBox.Enabled = enabled;
+            clientTypeIndivCheckBox.Enabled = enabled;
+            clientTypeVillageCheckBox.Enabled = enabled;
+            clientTypeGroupCheckBox.Enabled = enabled;
+            clientTypeAllCheckBox.Enabled = enabled;
+            tbPenaltyValue.Enabled = enabled;
+        }
 
         private void lbCalculAmount_Click(object sender, EventArgs e)
         {

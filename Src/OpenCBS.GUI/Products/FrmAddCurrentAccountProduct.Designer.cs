@@ -52,6 +52,7 @@ namespace OpenCBS.GUI.Products
             this.lbInterestRateMax = new System.Windows.Forms.Label();
             this.lbInterestRateMin = new System.Windows.Forms.Label();
             this.groupBoxCurrency = new System.Windows.Forms.GroupBox();
+            this.cbCurrency = new System.Windows.Forms.ComboBox();
             this.lbCodeSavingProduct = new System.Windows.Forms.Label();
             this.lbNameSavingProduct = new System.Windows.Forms.Label();
             this.gbClientType = new System.Windows.Forms.GroupBox();
@@ -183,7 +184,6 @@ namespace OpenCBS.GUI.Products
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.cbCurrency = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -367,6 +367,14 @@ namespace OpenCBS.GUI.Products
             resources.ApplyResources(this.groupBoxCurrency, "groupBoxCurrency");
             this.groupBoxCurrency.Name = "groupBoxCurrency";
             this.groupBoxCurrency.TabStop = false;
+            // 
+            // cbCurrency
+            // 
+            this.cbCurrency.DisplayMember = "Currency.Name";
+            this.cbCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cbCurrency, "cbCurrency");
+            this.cbCurrency.FormattingEnabled = true;
+            this.cbCurrency.Name = "cbCurrency";
             // 
             // lbCodeSavingProduct
             // 
@@ -1224,14 +1232,6 @@ namespace OpenCBS.GUI.Products
             resources.ApplyResources(this.btnUpdate, "btnUpdate");
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // cbCurrency
-            // 
-            this.cbCurrency.DisplayMember = "Currency.Name";
-            this.cbCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.cbCurrency, "cbCurrency");
-            this.cbCurrency.FormattingEnabled = true;
-            this.cbCurrency.Name = "cbCurrency";
             // 
             // FrmAddCurrentAccountProduct
             // 

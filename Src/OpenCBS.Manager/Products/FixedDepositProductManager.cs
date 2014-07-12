@@ -41,6 +41,7 @@ namespace OpenCBS.Manager.Products
            ,[penality_type]
            ,[penality_min]
            ,[penality_max]
+           ,[penalty_value]
            ,[deleted])
                 VALUES
                 (@productName
@@ -57,6 +58,7 @@ namespace OpenCBS.Manager.Products
                 ,@penalityType
                 ,@penalityMin
                 ,@penalityMax
+                ,@penalityValue
                 ,@deleted)
                 SELECT SCOPE_IDENTITY()";
 
@@ -92,6 +94,8 @@ namespace OpenCBS.Manager.Products
             c.AddParam("@penalityType", fixedDepositProduct.PenalityType);
             c.AddParam("@penalityMin", fixedDepositProduct.PenalityRateMin);
             c.AddParam("@penalityMax", fixedDepositProduct.PenalityRateMax);
+            c.AddParam("@penalityValue", fixedDepositProduct.PenalityValue);
+            
             c.AddParam("@deleted", 0);
          }
 
@@ -150,6 +154,7 @@ namespace OpenCBS.Manager.Products
            ,[penality_type]
            ,[penality_min]
            ,[penality_max]
+           ,[penalty_value]
 ,cur.id AS currency_id
 ,cur.name AS currency_name 
 ,cur.code AS currency_code
@@ -206,6 +211,7 @@ namespace OpenCBS.Manager.Products
            ,[penality_type]
            ,[penality_min]
            ,[penality_max]
+           ,[penalty_value]
 ,cur.id AS currency_id
 ,cur.name AS currency_name 
 ,cur.code AS currency_code
@@ -261,6 +267,7 @@ namespace OpenCBS.Manager.Products
            ,[penality_type] = @penalityType
            ,[penality_min] = @penalityMin
            ,[penality_max] = @penalityMax
+           ,[penalty_value] = @penalityValue
            ,[deleted] = @deleted
 WHERE id = @productId";
 
@@ -296,6 +303,7 @@ WHERE id = @productId";
            ,[penality_type]
            ,[penality_min]
            ,[penality_max]
+           ,[penalty_value]
 ,cur.id AS currency_id
 ,cur.name AS currency_name 
 ,cur.code AS currency_code
@@ -368,6 +376,8 @@ fixedDepositProduct.InterestRateMax = r.GetNullDouble("interest_rate_max");
 fixedDepositProduct.PenalityRateMin = r.GetNullDouble("penality_min");
 
 fixedDepositProduct.PenalityRateMax = r.GetNullDouble("penality_max");
+fixedDepositProduct.PenalityValue = r.GetNullDouble("penalty_value");
+
 
 fixedDepositProduct.MaturityPeriodMin = r.GetNullInt("maturity_period_min");
 

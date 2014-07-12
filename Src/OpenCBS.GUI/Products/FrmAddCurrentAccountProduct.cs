@@ -163,31 +163,62 @@ namespace OpenCBS.GUI.Products
             cbManagementFeeFreq.SelectedItem = _currentAccountProduct.ManagementFeesFrequency;
             tbInitialAmountMin.Text = _currentAccountProduct.InitialAmountMin.GetFormatedValue(true);
             tbInitialAmountMax.Text = _currentAccountProduct.InitialAmountMax.GetFormatedValue(true);
+
             tbBalanceMin.Text = _currentAccountProduct.BalanceMin.GetFormatedValue(true);
             tbBalanceMax.Text = _currentAccountProduct.BalanceMax.GetFormatedValue(true);
-            tbEntryFeesMin.Text = _currentAccountProduct.EntryFeesMin.GetFormatedValue(true);
-            tbEntryFeesMax.Text = _currentAccountProduct.EntryFeesMax.GetFormatedValue(true);
-            tbReopenFeesMin.Text = _currentAccountProduct.ReopenFeesMin.GetFormatedValue(true);
-            tbReopenFeesMax.Text = _currentAccountProduct.ReopenFeesMax.GetFormatedValue(true);
-            tbCloseFeesMin.Text = _currentAccountProduct.ClosingFeesMin.GetFormatedValue(true);
-            tbCloseFeesMax.Text = _currentAccountProduct.ClosingFeesMax.GetFormatedValue(true);
-            tbManagementFeesMin.Text = _currentAccountProduct.ManagementFeesMin.GetFormatedValue(true);
-            tbManagementFeesMax.Text = _currentAccountProduct.ManagementFeesMax.GetFormatedValue(true);
-            tbOverdraftFeesMin.Text = _currentAccountProduct.OverdraftMin.GetFormatedValue(true);
-            tbOverdraftFeesMax.Text = _currentAccountProduct.OverdraftMax.GetFormatedValue(true);
 
-            tbEntryFees.Text = _currentAccountProduct.EntryFeesValue.GetFormatedValue(true);
-            tbReopenFees.Text = _currentAccountProduct.ReopenFeesValue.GetFormatedValue(true);
-            tbCloseFees.Text = _currentAccountProduct.ClosingFeesValue.GetFormatedValue(true);
-            tbManagementFees.Text = _currentAccountProduct.ManagementFeesValue.GetFormatedValue(true);
+            if (_currentAccountProduct.EntryFeesValue.HasValue)
+                tbEntryFees.Text = _currentAccountProduct.EntryFeesValue.GetFormatedValue(true);
+            else
+            {
+                tbEntryFeesMin.Text = _currentAccountProduct.EntryFeesMin.GetFormatedValue(true);
+                tbEntryFeesMax.Text = _currentAccountProduct.EntryFeesMax.GetFormatedValue(true);
+            }
 
-            tbOverdraftFees.Text = _currentAccountProduct.OverdraftValue.GetFormatedValue(true);
+            if (_currentAccountProduct.ReopenFeesValue.HasValue)
+                tbReopenFees.Text = _currentAccountProduct.ReopenFeesValue.GetFormatedValue(true);
+            else
+            {
+                tbReopenFeesMax.Text = _currentAccountProduct.ReopenFeesMax.GetFormatedValue(true);
+                tbReopenFees.Text = _currentAccountProduct.ReopenFeesValue.GetFormatedValue(true);
+            }
 
-            tbInterestRateMin.Text = _currentAccountProduct.InterestMin.ToString();
-            tbInterestRateMax.Text = _currentAccountProduct.InterestMax.ToString();
-            tbInterestValue.Text = _currentAccountProduct.InterestValue.ToString();
+            if (_currentAccountProduct.ClosingFeesValue.HasValue)
+                tbCloseFees.Text = _currentAccountProduct.ClosingFeesValue.GetFormatedValue(true);
+            else
+            {
+                tbCloseFeesMin.Text = _currentAccountProduct.ClosingFeesMin.GetFormatedValue(true);
+                tbCloseFeesMax.Text = _currentAccountProduct.ClosingFeesMax.GetFormatedValue(true);
+            }
+
+            if (_currentAccountProduct.ManagementFeesValue.HasValue)
+                tbManagementFees.Text = _currentAccountProduct.ManagementFeesValue.GetFormatedValue(true);
+            else
+            {
+                tbManagementFeesMin.Text = _currentAccountProduct.ManagementFeesMin.GetFormatedValue(true);
+                tbManagementFeesMax.Text = _currentAccountProduct.ManagementFeesMax.GetFormatedValue(true);
+            }
+
+
+            if (_currentAccountProduct.OverdraftValue.HasValue)
+                tbOverdraftFees.Text = _currentAccountProduct.OverdraftValue.GetFormatedValue(true);
+            else
+            {
+                tbOverdraftFeesMin.Text = _currentAccountProduct.OverdraftMin.GetFormatedValue(true);
+                tbOverdraftFeesMax.Text = _currentAccountProduct.OverdraftMax.GetFormatedValue(true);
+            }
+
+            if (_currentAccountProduct.InterestValue.HasValue)
+                tbInterestValue.Text = _currentAccountProduct.InterestValue.ToString();
+            else
+            {
+                tbInterestRateMin.Text = _currentAccountProduct.InterestMin.ToString();
+                tbInterestRateMax.Text = _currentAccountProduct.InterestMax.ToString();
+            }
+            
+
             tbInterestCalculationFrequency.Text = _currentAccountProduct.InterestFrequency.ToString();
-            tbODLimitValue.Text = _currentAccountProduct.OverdraftLimit.GetFormatedValue(true);
+            
 
             string[] clientType = _currentAccountProduct.ClientType.Split(',');
 
@@ -218,14 +249,7 @@ namespace OpenCBS.GUI.Products
                 rbODInterestRate.Checked = true;
             }
 
-            if (_currentAccountProduct.CommitmentFeeType == "Flat")
-            {
-                rbODCommitmentFlat.Checked = true;
-            }
-            else
-            {
-                rbODCommitmentRate.Checked = true;
-            }
+            
 
             if (_currentAccountProduct.CommitmentFeeType == "Flat")
             {
@@ -236,18 +260,37 @@ namespace OpenCBS.GUI.Products
                 rbODCommitmentRate.Checked = true;
             }
 
+            if (_currentAccountProduct.CommitmentFeeType == "Flat")
+            {
+                rbODCommitmentFlat.Checked = true;
+            }
+            else
+            {
+                rbODCommitmentRate.Checked = true;
+            }
 
-
-            tbODInterestMin.Text = _currentAccountProduct.InterestMin.ToString();
-            tbODInterestMax.Text = _currentAccountProduct.InterestMax.ToString();
-            tbODInterestValue.Text = _currentAccountProduct.OverdraftInterestValue.ToString();
-
-            tbODCommitmentMin.Text = _currentAccountProduct.CommitmentFeeMin.ToString();
-            tbODCommitmentMax.Text = _currentAccountProduct.CommitmentFeeMax.ToString();
-            tbODCommitmentValue.Text = _currentAccountProduct.CommitmentFeeValue.ToString();
-            tbODLimitMin.Text = _currentAccountProduct.OverdraftLimitMin.GetFormatedValue(true);
-            tbODLimitMax.Text = _currentAccountProduct.OverdraftMax.GetFormatedValue(true);
-            tbODLimitValue.Text = _currentAccountProduct.OverdraftValue.GetFormatedValue(true);
+            if (_currentAccountProduct.OverdraftInterestValue.HasValue)
+                tbODInterestValue.Text = _currentAccountProduct.OverdraftInterestValue.ToString();
+            else
+            {
+                tbODInterestMin.Text = _currentAccountProduct.OverdraftInterestMin.ToString();
+                tbODInterestMax.Text = _currentAccountProduct.OverdraftInterestMax.ToString();
+            }
+            if (_currentAccountProduct.CommitmentFeeValue.HasValue)
+                tbODCommitmentValue.Text = _currentAccountProduct.CommitmentFeeValue.ToString();
+            else
+            {
+                tbODCommitmentMin.Text = _currentAccountProduct.CommitmentFeeMin.ToString();
+                tbODCommitmentMax.Text = _currentAccountProduct.CommitmentFeeMax.ToString();
+            }
+            if (_currentAccountProduct.OverdraftValue.HasValue)
+                tbODLimitValue.Text = _currentAccountProduct.OverdraftValue.GetFormatedValue(true);
+            else
+            {
+                tbODLimitMin.Text = _currentAccountProduct.OverdraftLimitMin.GetFormatedValue(true);
+                tbODLimitMax.Text = _currentAccountProduct.OverdraftMax.GetFormatedValue(true);
+            }
+            
 
 
             CurrentAccountControl(enabled);

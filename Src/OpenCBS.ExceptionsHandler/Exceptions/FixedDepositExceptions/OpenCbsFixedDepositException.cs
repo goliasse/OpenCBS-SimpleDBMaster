@@ -188,6 +188,30 @@ namespace OpenCBS.ExceptionsHandler
                 case OpenCbsFixedDepositExceptionEnum.FDPHCommentIsBlank:
                     returned = "FDPHCommentIsBlank";
                     break;
+
+                case OpenCbsFixedDepositExceptionEnum.FDPHInitialAmountAccountNumberIsBlank:
+                    returned = "FDPHInitialAmountAccountNumberIsBlank";
+                    break;
+
+                case OpenCbsFixedDepositExceptionEnum.FDPHFinalAmountAccountNumberIsBlank:
+                    returned = "FDPHFinalAmountAccountNumberIsBlank";
+                    break;
+
+                case OpenCbsFixedDepositExceptionEnum.FDPHInitialAmountPaymentMethodIsBlank:
+                    returned = "FDPHInitialAmountPaymentMethodIsBlank";
+                    break;
+
+                case OpenCbsFixedDepositExceptionEnum.FDPHFinalAmountPaymentMethodIsBlank:
+                    returned = "FDPHFinalAmountPaymentMethodIsBlank";
+                    break;
+
+                case OpenCbsFixedDepositExceptionEnum.FixedDepositProductNameAlreadyExist:
+                    returned = "FixedDepositProductNameAlreadyExist";
+                    break;
+
+                case OpenCbsFixedDepositExceptionEnum.FixedDepositProductCodeAlreadyExist:
+                    returned = "FixedDepositProductCodeAlreadyExist";
+                    break;
             }
             return returned;
         }
@@ -198,6 +222,12 @@ namespace OpenCBS.ExceptionsHandler
     [Serializable]
     public enum OpenCbsFixedDepositExceptionEnum
     {
+        FixedDepositProductNameAlreadyExist,
+        FixedDepositProductCodeAlreadyExist,
+        FDPHFinalAmountPaymentMethodIsBlank,
+        FDPHInitialAmountPaymentMethodIsBlank,
+        FDPHFinalAmountAccountNumberIsBlank,
+        FDPHInitialAmountAccountNumberIsBlank,
         FDPHFixedDepositProductNameIsBlank,
         FDPHFixedDepositProductNameIsLessThanThree,
         FDPHFixedDepositProductCodeIsBlank,

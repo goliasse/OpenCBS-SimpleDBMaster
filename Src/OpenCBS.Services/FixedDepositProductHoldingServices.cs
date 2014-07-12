@@ -30,6 +30,8 @@ namespace OpenCBS.Services
         public string SaveFixedDepositProductHolding(FixedDepositProductHoldings fixedDepositProductHolding)
         {
 
+           
+
             ValidateProduct(fixedDepositProductHolding, fixedDepositProductHolding.FixedDepositProduct);
             return _fixedDepositProductHoldingManager.SaveFixedDepositProductHolding(fixedDepositProductHolding);
             
@@ -38,6 +40,7 @@ namespace OpenCBS.Services
 
         public void UpdateFixedDepositProductHolding(FixedDepositProductHoldings product, int productId)
         {
+            ValidateProduct(product, product.FixedDepositProduct);
             _fixedDepositProductHoldingManager.UpdateFixedDepositProductHolding(product, productId);
         }
         public FixedDepositProductHoldings FetchProduct(int productId)
@@ -62,6 +65,7 @@ namespace OpenCBS.Services
 
         public void UpdateFixedDepositProductHolding(FixedDepositProductHoldings product, string productContractCode)
         {
+            ValidateProduct(product, product.FixedDepositProduct);
             _fixedDepositProductHoldingManager.UpdateFixedDepositProductHolding(product, productContractCode);
         }
 
@@ -70,48 +74,76 @@ namespace OpenCBS.Services
             return _fixedDepositProductHoldingManager.CalculateFinalAmount(fdContractCode);
         }
 
-        private void ValidateProduct(FixedDepositProductHoldings fixedDepositProductHolding, IFixedDepositProduct fixedDepositProduct)
+        private void ValidateProduct(FixedDepositProductHoldings productHolding, IFixedDepositProduct product)
         {
 
-            if (fixedDepositProductHolding.FixedDepositProduct == null)
+            if (productHolding.FixedDepositProduct == null)
                 throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHFixedDepositProductIsBlank);
 
-            if (fixedDepositProductHolding.FixedDepositProduct.Id == 0)
+            if (productHolding.FixedDepositProduct.Id == 0)
                 throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHFixedDepositProductIsBlank);
 
-            if (!fixedDepositProductHolding.InitialAmount.HasValue)
+            if (!productHolding.InitialAmount.HasValue)
                 throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInitialAmountIsEmpty);
 
-            if (ServicesHelper.CheckIfValueBetweenMinAndMax(fixedDepositProduct.InitialAmountMin,
-                                                                   fixedDepositProduct.InitialAmountMax,
-                                                                   fixedDepositProductHolding.InitialAmount))
-                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInitialAmountMinMaxIsInvalid);
+            if (!ServicesHelper.CheckIfValueBetweenMinAndMax(product.InitialAmountMin,
+                                                                   product.InitialAmountMax,
+                                                                   productHolding.InitialAmount))
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInitialAmountIsInvalid);
 
-            if (!fixedDepositProductHolding.InterestRate.HasValue)
+            if (!productHolding.InterestRate.HasValue)
                 throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInterestRateIsEmpty);
 
 
-            if (ServicesHelper.CheckIfValueBetweenMinAndMax(fixedDepositProduct.InterestRateMin,
-                                                                   fixedDepositProduct.InterestRateMax,
-                                                                   fixedDepositProductHolding.InterestRate))
-                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInterestRateMinMaxIsInvalid);
+            if (!ServicesHelper.CheckIfValueBetweenMinAndMax(product.InterestRateMin,
+                                                                   product.InterestRateMax,
+                                                                   productHolding.InterestRate))
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInterestRateIsInvalid);
 
-            if (!fixedDepositProductHolding.MaturityPeriod.HasValue)
+            if (!productHolding.MaturityPeriod.HasValue)
                 throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHMaturityPeriodIsEmpty);
 
-            if (CheckIfValueBetweenMinAndMax(fixedDepositProduct.MaturityPeriodMin,
-                                                                   fixedDepositProduct.MaturityPeriodMax,
-                                                                   fixedDepositProductHolding.MaturityPeriod))
+            if (!CheckIfValueBetweenMinAndMax(product.MaturityPeriodMin,
+                                                                   product.MaturityPeriodMax,
+                                                                   productHolding.MaturityPeriod))
                 throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHMaturityPeriodIsInvalid);
 
-            
-            if(IsPenaltyCorrect(fixedDepositProductHolding, fixedDepositProduct))
-                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHPenaltyMinMaxIsInvalid);
-            
+
+            if (string.IsNullOrEmpty(productHolding.InterestCalculationFrequency))
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInterestCalculationFrequencyIsEmpty);
+
+            if (Convert.ToInt32(productHolding.InterestCalculationFrequency) <= 0)
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInterestCalculationFrequencyIsInvalid);
+
+            if(!IsPenaltyCorrect(productHolding, product))
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHPenaltyIsInvalid);
 
 
+            if (string.IsNullOrEmpty(productHolding.Comment))
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHCommentIsBlank);
 
-            
+            if (string.IsNullOrEmpty(productHolding.InitialAmountPaymentMethod))
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInitialAmountPaymentMethodIsBlank);
+
+            if (productHolding.InitialAmountPaymentMethod != "Cash")
+            {
+                if (string.IsNullOrEmpty(productHolding.InitialAmountChequeAccount))
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInitialAmountAccountNumberIsBlank);
+            }
+
+            if (productHolding.Status == "Closed")
+            {
+
+                if (string.IsNullOrEmpty(productHolding.FinalAmountPaymentMethod))
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHFinalAmountPaymentMethodIsBlank);
+
+                if (productHolding.FinalAmountPaymentMethod != "Cash")
+                {
+                    if (string.IsNullOrEmpty(productHolding.FinalAmountChequeAccount))
+                        throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHFinalAmountAccountNumberIsBlank);
+                }
+
+            }
 
         }
 

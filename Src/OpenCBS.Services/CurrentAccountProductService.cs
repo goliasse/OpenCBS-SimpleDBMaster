@@ -29,6 +29,13 @@ namespace OpenCBS.Services
         {
             bool name = _currentAccountProductManager.CheckForDuplicateValue("CurrentAccountProduct", "current_account_product_name", currentAccountProduct.CurrentAccountProductName);
             bool code = _currentAccountProductManager.CheckForDuplicateValue("CurrentAccountProduct", "current_account_product_code", currentAccountProduct.CurrentAccountProductCode);
+
+            if (name)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CurrentAccountProductNameAlreadyExist);
+
+            if (code)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CurrentAccountProductCodeAlreadyExist);
+
             ValidateProduct(currentAccountProduct);
             return _currentAccountProductManager.SaveCurrentAccountProduct(currentAccountProduct);
 
@@ -37,6 +44,7 @@ namespace OpenCBS.Services
 
         public void UpdateCurrentAccountProduct(ICurrentAccountProduct product, int productId)
         {
+            ValidateProduct(product);
             _currentAccountProductManager.UpdateCurrentAccountProduct(product, productId);
         }
           public CurrentAccountProduct FetchProduct(int currentAccountProductId)

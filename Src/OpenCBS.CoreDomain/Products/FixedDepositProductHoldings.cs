@@ -36,6 +36,7 @@ namespace OpenCBS.CoreDomain.Products
         public OCurrency FinalInterest { get; set; }
         public double? FinalPenality { get; set; }
         public string InitialAmountPaymentMethod { get; set; }
+        public string InitialAmountChequeAccount { get; set; }
         public string FinalAmountPaymentMethod { get; set; }
 
         public string FinalAmountChequeAccount { get; set; }

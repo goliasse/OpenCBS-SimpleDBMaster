@@ -338,6 +338,33 @@ namespace OpenCBS.ExceptionsHandler
                     returned = "CAPInitialAmountMaxLessThanBalanceMax";
                     break;
 
+                case OpenCbsCurrentAccountExceptionEnum.CAPHInitialAmountAccountNumberIsBlank:
+                    returned = "CAPHInitialAmountAccountNumberIsBlank";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CAPHFinalAmountAccountNumberIsBlank:
+                    returned = "CAPHFinalAmountAccountNumberIsBlank";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CAPHFinalAmountPaymentMethodIsBlank:
+                    returned = "CAPHFinalAmountPaymentMethodIsBlank";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CAPHInitialAmountPaymentMethodIsBlank:
+                    returned = "CAPHInitialAmountPaymentMethodIsBlank";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CurrentAccountProductCodeAlreadyExist:
+                    returned = "CurrentAccountProductCodeAlreadyExist";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CurrentAccountProductNameAlreadyExist:
+                    returned = "CurrentAccountProductNameAlreadyExist";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CAPHInterestRateIsInvalid:
+                    returned = "CAPHInterestRateIsInvalid";
+                    break;
             }
             return returned;
         }
@@ -348,6 +375,13 @@ namespace OpenCBS.ExceptionsHandler
     [Serializable]
     public enum OpenCbsCurrentAccountExceptionEnum
     {
+        CAPHInterestRateIsInvalid,
+        CurrentAccountProductCodeAlreadyExist,
+        CurrentAccountProductNameAlreadyExist,
+        CAPHInitialAmountPaymentMethodIsBlank,
+        CAPHFinalAmountPaymentMethodIsBlank,
+        CAPHFinalAmountAccountNumberIsBlank,
+        CAPHInitialAmountAccountNumberIsBlank,
         NameIsEmpty,
         NameIsLessThanThree,
         CodeIsEmpty,

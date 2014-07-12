@@ -1574,83 +1574,83 @@ Enter another account number.
 
 
    <data name="FDPHFixedDepositProductNameIsBlank" xml:space="preserve">
-    <value>Product Name can't be empty</value>
+    <value>Product Name cannot be empty</value>
   </data>
    <data name="FDPHFixedDepositProductNameIsLessThanThree" xml:space="preserve">
     <value>Value entered in Product Name can not be less than three characters</value>
   </data>
 
 <data name="FDPHFixedDepositProductCodeIsBlank" xml:space="preserve">
-    <value>Code can't be empty</value>
+    <value>Code cannot be empty</value>
   </data>
    <data name="FDPHFixedDepositProductCodeLessThanThree" xml:space="preserve">
     <value>Value entered in Product Code can not be less than three characters</value>
   </data>
 <data name="FDPHClientTypeIsEmpty" xml:space="preserve">
-    <value>Client Type can't be empty</value>
+    <value>Client Type cannot be empty</value>
   </data>
 <data name="FDPHCurrencyIsEmpty" xml:space="preserve">
-    <value>Currency can't be empty</value>
+    <value>Currency cannot be empty</value>
   </data>
 
 
  <data name="FDPHInitialAmountMinIsEmpty" xml:space="preserve">
-    <value>Initial Amount Min can't be empty</value>
+    <value>Initial Amount Min cannot be empty</value>
   </data>
   <data name="FDPHInitialAmountMinIsInvalid" xml:space="preserve">
-    <value>Initial Amount Min can't be less than zero</value>
+    <value>Initial Amount Min cannot be less than zero</value>
   </data>
  <data name="FDPHInitialAmountMaxIsEmpty" xml:space="preserve">
-    <value>Initial Amount Max can't be empty</value>
+    <value>Initial Amount Max cannot be empty</value>
   </data>
   <data name="FDPHInitialAmountMaxIsInvalid" xml:space="preserve">
-    <value>Initial Amount Max can't be less than equal to zero</value>
+    <value>Initial Amount Max cannot be less than equal to zero</value>
   </data>
  <data name="FDPHInitialAmountMinMaxIsInvalid" xml:space="preserve">
-    <value>Initial Amount min can't be greater than equal to max amount</value>
+    <value>Initial Amount min cannot be greater than equal to max amount</value>
   </data>
 
 
 
  <data name="FDPHInterestRateMinIsEmpty" xml:space="preserve">
-    <value>Interest Rate Min can't be empty</value>
+    <value>Interest Rate Min cannot be empty</value>
   </data>
   <data name="FDPHInterestRateMinIsInvalid" xml:space="preserve">
-    <value>Interest Rate Min can't be less than zero</value>
+    <value>Interest Rate Min cannot be less than zero</value>
   </data>
  <data name="FDPHInterestRateMaxIsEmpty" xml:space="preserve">
-    <value>Interest Rate Max can't be empty</value>
+    <value>Interest Rate Max cannot be empty</value>
   </data>
   <data name="FDPHInterestRateMaxIsInvalid" xml:space="preserve">
-    <value>Interest Rate Max can't be less than equal to zero</value>
+    <value>Interest Rate Max cannot be less than equal to zero</value>
   </data>
  <data name="FDPHInterestRateMinMaxIsInvalid" xml:space="preserve">
-    <value>Interest Rate min can't be greater than equal to max Interest Rate</value>
+    <value>Interest Rate min cannot be greater than equal to max Interest Rate</value>
   </data>
 
 
 <data name="FDPHMaturityPeriodMinIsEmpty" xml:space="preserve">
-    <value>Maturity Period Min can't be empty</value>
+    <value>Maturity Period Min cannot be empty</value>
   </data>
   <data name="FDPHMaturityPeriodMinIsInvalid" xml:space="preserve">
-    <value>Maturity Period Min can't be less than zero</value>
+    <value>Maturity Period Min cannot be less than zero</value>
   </data>
  <data name="FDPHMaturityPeriodMaxIsEmpty" xml:space="preserve">
-    <value>Maturity Period Max can't be empty</value>
+    <value>Maturity Period Max cannot be empty</value>
   </data>
   <data name="FDPHMaturityPeriodMaxIsInvalid" xml:space="preserve">
-    <value>Maturity Period Max can't be less than equal to zero</value>
+    <value>Maturity Period Max cannot be less than equal to zero</value>
   </data>
 
 
 <data name="FDPHInterestCalculationFrequencyIsEmpty" xml:space="preserve">
-    <value>Interest Calculation Frequency can't be empty</value>
+    <value>Interest Calculation Frequency cannot be empty</value>
   </data>
   <data name="FDPHInterestCalculationFrequencyIsInvalid" xml:space="preserve">
-    <value>Interest Calculation Frequency can't be less than equal to zero</value>
+    <value>Interest Calculation Frequency cannot be less than equal to zero</value>
   </data>
 <data name="FDPHPenaltyMinMaxIsInvalid" xml:space="preserve">
-    <value>Penalty Min can't be greater than equal to max Penalty</value>
+    <value>Penalty Min cannot be greater than equal to max Penalty</value>
   </data>
 
   <data name="InitialAmountMinIsEmpty" xml:space="preserve">
@@ -1698,35 +1698,35 @@ Enter another account number.
     <value>Account Product other than select Account Product… must be selected</value>
   </data>
  <data name="CAPHInitialAmountIsEmpty" xml:space="preserve">
-    <value>Initial Amount can't be empty</value>
+    <value>Initial Amount cannot be empty</value>
   </data>
    <data name="CAPHInitialAmountIsInvalid" xml:space="preserve">
     <value>Value entered in Initial Amount is not between min and max range</value>
   </data>
 
 <data name="CAPHEntryFeeIsEmpty" xml:space="preserve">
-    <value>Entry Fee can't be empty</value>
+    <value>Entry Fee cannot be empty</value>
   </data>
    <data name="CAPHEntryFeeIsInvalid" xml:space="preserve">
     <value>Value entered in Entry Fee is not between min and max range</value>
   </data>
 
 <data name="CAPHReopenFeeIsEmpty" xml:space="preserve">
-    <value>Reopen Fee can't be empty</value>
+    <value>Reopen Fee cannot be empty</value>
   </data>
    <data name="CAPHReopenFeeIsInvalid" xml:space="preserve">
     <value>Value entered in Reopen Fee is not between min and max range</value>
   </data>
 
 <data name="CAPHCloseFeeIsEmpty" xml:space="preserve">
-    <value>Close Fee can't be empty</value>
+    <value>Close Fee cannot be empty</value>
   </data>
    <data name="CAPHCloseFeeIsInvalid" xml:space="preserve">
     <value>Value entered in Close Fee is not between min and max range</value>
   </data>
 
 <data name="CAPHManagementFeeIsEmpty" xml:space="preserve">
-    <value>Management Fee can't be empty</value>
+    <value>Management Fee cannot be empty</value>
   </data>
    <data name="CAPHManagementFeeIsInvalid" xml:space="preserve">
     <value>Value entered in Management Fee is not between min and max range</value>
@@ -1734,39 +1734,39 @@ Enter another account number.
 
 
 <data name="CAPHProductCodeIsEmpty" xml:space="preserve">
-    <value>Product Code can't be empty</value>
+    <value>Product Code cannot be empty</value>
   </data>
  <data name="CAPHAccountingOfficerIsBlank" xml:space="preserve">
     <value>Accounting Officer other than select Accounting Officer… must be selected</value>
   </data>
 <data name="CAPHCommentIsEmpty" xml:space="preserve">
-    <value>Comment can't be empty</value>
+    <value>Comment cannot be empty</value>
   </data>
 
 
 <data name="CAPHFixedOverdraftFeeIsEmpty" xml:space="preserve">
-    <value>Fixed Overdraft Fee can't be empty</value>
+    <value>Fixed Overdraft Fee cannot be empty</value>
   </data>
    <data name="CAPHFixedOverdraftFeeIsInvalid" xml:space="preserve">
     <value>Value entered in Fixed Overdraft Fee is not between min and max range</value>
   </data>
 
 <data name="CAPHOverdraftInterestRateIsEmpty" xml:space="preserve">
-    <value>Overdraft Interest Rate can't be empty</value>
+    <value>Overdraft Interest Rate cannot be empty</value>
   </data>
    <data name="CAPHOverdraftInterestRateIsInvalid" xml:space="preserve">
     <value>Value entered in Overdraft Interest Rate is not between min and max range</value>
   </data>
 
 <data name="CAPHOverdraftLimitIsEmpty" xml:space="preserve">
-    <value>Overdraft Limit can't be empty</value>
+    <value>Overdraft Limit cannot be empty</value>
   </data>
    <data name="CAPHOverdraftLimitIsInvalid" xml:space="preserve">
     <value>Value entered in Overdraft Limit is not between min and max range</value>
   </data>
 
 <data name="CAPHOverdraftCommitmentFeeIsEmpty" xml:space="preserve">
-    <value>Overdraft Commitment Fee can't be empty</value>
+    <value>Overdraft Commitment Fee cannot be empty</value>
   </data>
    <data name="CAPHOverdraftCommitmentFeeIsInvalid" xml:space="preserve">
     <value>Value entered in Overdraft Commitment Fee is not between min and max range</value>
@@ -1774,25 +1774,32 @@ Enter another account number.
 
 
  <data name="FDPHFixedDepositProductIsBlank" xml:space="preserve">
-    <value>Fixed Deposit Product other than select Fixed Deposit Product… must be selected</value>
+    <value>Fixed Deposit Product other than select Product… must be selected</value>
   </data>
  <data name="FDPHInitialAmountIsEmpty" xml:space="preserve">
-    <value>Initial Amount can't be empty</value>
+    <value>Initial Amount cannot be empty</value>
   </data>
    <data name="FDPHInitialAmountIsInvalid" xml:space="preserve">
     <value>Value entered in Initial Amount is not between min and max range</value>
   </data>
-
+  
+  <data name="InterestRateIsEmpty" xml:space="preserve">
+    <value>Interest Rate cannot be empty</value>
+  </data>
 
  <data name="FDPHInterestRateIsEmpty" xml:space="preserve">
-    <value>Interest Rate can't be empty</value>
+    <value>Interest Rate cannot be empty</value>
   </data>
    <data name="FDPHInterestRateIsInvalid" xml:space="preserve">
     <value>Value entered in Interest Rate is not between min and max range</value>
   </data>
 
+  <data name="CAPHInterestRateIsInvalid" xml:space="preserve">
+    <value>Value entered in Interest Rate is not between min and max range</value>
+  </data>
+
  <data name="FDPHMaturityPeriodIsEmpty" xml:space="preserve">
-    <value>Maturity Period can't be empty</value>
+    <value>Maturity Period cannot be empty</value>
   </data>
    <data name="FDPHMaturityPeriodIsInvalid" xml:space="preserve">
     <value>Value entered in Maturity Period is not between min and max range</value>
@@ -1801,14 +1808,14 @@ Enter another account number.
 
 
  <data name="FDPHInterestCalculationFrequencyIsEmpty" xml:space="preserve">
-    <value>Interest Calculation Frequency can't be empty</value>
+    <value>Interest Calculation Frequency cannot be empty</value>
   </data>
    <data name="FDPHInterestCalculationFrequencyIsInvalid" xml:space="preserve">
     <value>Value entered in Interest Calculation Frequency is not between min and max range</value>
   </data>
 
  <data name="FDPHPenaltyIsEmpty" xml:space="preserve">
-    <value>Penalty can't be empty</value>
+    <value>Penalty cannot be empty</value>
   </data>
    <data name="FDPHPenaltyIsInvalid" xml:space="preserve">
     <value>Value entered in Penalty is not between min and max range</value>
@@ -1816,14 +1823,14 @@ Enter another account number.
 
 
  <data name="FDPHProductCodeIsBlank" xml:space="preserve">
-    <value>Product Code can't be empty</value>
+    <value>Product Code cannot be empty</value>
   </data>
 
  <data name="FDPHAccountingOfficerIsBlank" xml:space="preserve">
     <value>Accounting Officer other than select Accounting Officer… must be selected</value>
   </data>
  <data name="FDPHCommentIsBlank" xml:space="preserve">
-    <value>Comment can't be empty</value>
+    <value>Comment cannot be empty</value>
   </data>
 
 
@@ -1836,5 +1843,55 @@ Enter another account number.
     <value>Initial amount max is greater than Balance max</value>
   </data>
 
+  
+
+<data name="CAPHInitialAmountAccountNumberIsBlank" xml:space="preserve">
+    <value>Initial Amount Account Number or Cheque Number is blank</value>
+  </data>
+
+  <data name="FDPHInitialAmountAccountNumberIsBlank" xml:space="preserve">
+    <value>Initial Amount Account Number or Cheque Number is blank</value>
+  </data>
+
+  <data name="CAPHInitialAmountPaymentMethodIsBlank" xml:space="preserve">
+    <value>Initial Amount Payment Method is blank</value>
+  </data>
+
+  <data name="FDPHInitialAmountPaymentMethodIsBlank" xml:space="preserve">
+    <value>Initial Amount Payment Method is blank</value>
+  </data>
+
+  <data name="CAPHFinalAmountPaymentMethodIsBlank" xml:space="preserve">
+    <value>Final Amount Payment Method is blank</value>
+  </data>
+
+  <data name="FDPHFinalAmountPaymentMethodIsBlank" xml:space="preserve">
+    <value>Final Amount Payment Method is blank</value>
+  </data>
+
+  <data name="FDPHFinalAmountAccountNumberIsBlank" xml:space="preserve">
+    <value>Final Amount Account Number or Cheque Number is blank</value>
+  </data>
+
+  <data name="CAPHFinalAmountAccountNumberIsBlank" xml:space="preserve">
+    <value>Final Amount Account Number or Cheque Number is blank</value>
+  </data>
+
+
+  <data name="CurrentAccountProductNameAlreadyExist" xml:space="preserve">
+    <value>Current Account product name already exist!!</value>
+  </data>
+
+  <data name="FixedDepositProductNameAlreadyExist" xml:space="preserve">
+    <value>Fixed Deposit product name already exist!!</value>
+  </data>
+
+  <data name="CurrentAccountProductCodeAlreadyExist" xml:space="preserve">
+    <value>Current Account product code already exist!!</value>
+  </data>
+
+  <data name="FixedDepositProductCodeAlreadyExist" xml:space="preserve">
+    <value>Fixed Deposit product code already exist!!</value>
+  </data>
 
 </root>
