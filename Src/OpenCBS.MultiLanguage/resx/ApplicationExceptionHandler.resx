@@ -1394,10 +1394,10 @@ Enter another account number.
     <value>Balance min cannot be greater than equal to max balance</value>
   </data>
   <data name="InterestMinIsInvalid" xml:space="preserve">
-    <value>Interest Min cannot be less than zero</value>
+    <value>Interest Min cannot be less than zero or greater than 100</value>
   </data>
   <data name="InterestMaxIsInvalid" xml:space="preserve">
-    <value>Interest Max cannot be less than equal to zero</value>
+    <value>Interest Max cannot be less than equal to zero or greater than 100</value>
   </data>
   <data name="InterestMinMaxIsInvalid" xml:space="preserve">
     <value>Interest min cannot be greater than equal to max interest</value>
@@ -1616,13 +1616,13 @@ Enter another account number.
     <value>Interest Rate Min cannot be empty</value>
   </data>
   <data name="FDPHInterestRateMinIsInvalid" xml:space="preserve">
-    <value>Interest Rate Min cannot be less than zero</value>
+    <value>Interest Rate Min cannot be less than zero or greater than 100</value>
   </data>
  <data name="FDPHInterestRateMaxIsEmpty" xml:space="preserve">
     <value>Interest Rate Max cannot be empty</value>
   </data>
   <data name="FDPHInterestRateMaxIsInvalid" xml:space="preserve">
-    <value>Interest Rate Max cannot be less than equal to zero</value>
+    <value>Interest Rate Max cannot be less than equal to zero or greater than 100</value>
   </data>
  <data name="FDPHInterestRateMinMaxIsInvalid" xml:space="preserve">
     <value>Interest Rate min cannot be greater than equal to max Interest Rate</value>
@@ -1892,6 +1892,26 @@ Enter another account number.
 
   <data name="FixedDepositProductCodeAlreadyExist" xml:space="preserve">
     <value>Fixed Deposit product code already exist!!</value>
+  </data>
+
+  <data name="CurrentAccountProductSelectAProduct" xml:space="preserve">
+    <value>Please select a Current Account product!!</value>
+  </data>
+  
+<data name="FixedDepositProductSelectAProduct" xml:space="preserve">
+    <value>Please select a Fixed Deposit product!!</value>
+  </data>
+  
+<data name="FDPHSelectAContract" xml:space="preserve">
+    <value>Please select a Fixed Deposit Contract!!</value>
+  </data>
+  
+<data name="CAPHSelectAContract" xml:space="preserve">
+    <value>Please select a Current Account Contract!!</value>
+  </data>
+  
+<data name="CurrentAccountTransactionSelectATransaction" xml:space="preserve">
+    <value>Please select a Current Account Transaction!!</value>
   </data>
 
 </root>

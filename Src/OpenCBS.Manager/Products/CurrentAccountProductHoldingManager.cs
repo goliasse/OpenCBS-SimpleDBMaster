@@ -259,6 +259,41 @@ WHERE current_account_contract_code = @contractCode";
          }
 
 
+         public decimal CalculateFixedOverdraftFees(DateTime calculationDate, CurrentAccountProductHoldings productHolding)
+         {
+             //TODO : CalculateFixedOverdraftFees
+            
+
+
+//          
+//IF OD_Fees_Type is Flat Then
+//    If  Month and year of OD_Applied_Date is equal to Month and year(Last Date of month) then	
+//    OD_Fees = Fetch OD_Fees
+//    Effective days = Last Date of month – OD_Applied_Date
+//    OD_Fees = (OD_Fees/Day(Last Date of month))* Effective days
+//    Else
+//    OD_Fees = Fetch OD_Fees
+//End If
+
+//    From_Account = Contract Code
+//    Fetch To_Branch from Contract Code
+//    Fetch To_Branch_Account_Number from Branch table
+//    To_Account = To_Branch_Account_Number
+//    Amount = OD_Fees
+//    Purpose Of Transfer = Fixed overdraft fees for month <month (Last date of month)>
+//    Transaction_Date = Today’s Date
+//    Transaction_Maker = Batch Process
+//    Transaction_Checker = Batch Process
+//    Transaction_Type = Fee
+//    Transaction_Mode = Debit
+//    Debit Fee Transaction (Transaction)
+//    Save Transaction (Transaction)
+//End If
+
+             return 10;
+         }
+
+
          public List<CurrentAccountProductHoldings> FetchProduct(bool showAlsoClosed)
          {
              List<CurrentAccountProductHoldings> currentAccountProductHoldingsList = new List<CurrentAccountProductHoldings>();

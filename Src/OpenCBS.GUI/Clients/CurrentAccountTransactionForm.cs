@@ -176,10 +176,24 @@ namespace OpenCBS.GUI.Clients
             currentAccountTransactions.Checker = cbChecker.SelectedItem.ToString();
             currentAccountTransactions.TransactionDate = DateTime.Today;
             currentAccountTransactions.PurposeOfTransfer = tbPurpose.Text;
-            
+            string[] data = null;
+            string productCode = "";
+            if (currentAccountTransactions.TransactionType == "Transfer")
+            {
+                data = currentAccountTransactions.FromAccount.Split('/');
+                productCode = data[1];
+            }
+            else
+            {
+                data = currentAccountTransactions.ToAccount.Split('/');
+                productCode = data[1];
+            }
+            CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
+            CurrentAccountProduct _currentAccountProduct = _currentAccountProductService.FetchProduct(productCode);
+            CurrentAccountTransactionFees _currentAccountTransactionFees = _currentAccountProductService.FetchTransactionFee(currentAccountTransactions.TransactionType, currentAccountTransactions.TransactionMode, _currentAccountProduct.Id);
             CurrentAccountTransactionService _currentAccountTransactionService = ServicesProvider.GetInstance().GetCurrentAccountTransactionService();
 
-            int ret = _currentAccountTransactionService.SaveCurrentAccountTransactions(currentAccountTransactions);
+            int ret = _currentAccountTransactionService.SaveCurrentAccountTransactions(currentAccountTransactions, _currentAccountTransactionFees);
             if (ret >= 1)
                 MessageBox.Show("Transaction Successful.");
 

@@ -10,6 +10,7 @@ using OpenCBS.GUI.UserControl;
 using OpenCBS.Services;
 using OpenCBS.CoreDomain.Products;
 using System.Security.Permissions;
+using OpenCBS.ExceptionsHandler;
 
 namespace OpenCBS.GUI.Products
 {
@@ -123,13 +124,31 @@ namespace OpenCBS.GUI.Products
 
         private void btnViewProduct_Click(object sender, EventArgs e)
         {
-            int i = lvCurrentAccountProducts.SelectedIndices[0];
-            string selectedProductId = lvCurrentAccountProducts.Items[i].Text;
+             
+            try
+            {
 
+                int i = lvCurrentAccountProducts.SelectedIndices[0];
+                string selectedProductId = lvCurrentAccountProducts.Items[i].Text;
+                FrmAddCurrentAccountProduct _frmAddCurrentAccountProduct = new FrmAddCurrentAccountProduct(Convert.ToInt32(selectedProductId), false);
+                _frmAddCurrentAccountProduct.Show();
+                
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    
+                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CurrentAccountProductSelectAProduct);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
 
-
-            FrmAddCurrentAccountProduct _frmAddCurrentAccountProduct = new FrmAddCurrentAccountProduct(Convert.ToInt32(selectedProductId),false);
-            _frmAddCurrentAccountProduct.Show();
+          
+            
         }
     }
 }

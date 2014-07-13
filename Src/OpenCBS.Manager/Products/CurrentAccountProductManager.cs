@@ -16,6 +16,9 @@ namespace OpenCBS.Manager.Products
     public class CurrentAccountProductManager : Manager
     {
 
+        
+
+
         public CurrentAccountProductManager(User pUser) : base(pUser)
         {
         }
@@ -404,6 +407,84 @@ WHERE current_account_product_name = @productName and current_account_product_co
 
 
 
+        public CurrentAccountProduct FetchProduct(string productCode)
+        {
+            const string q = @"SELECT 
+[CurrentAccountProduct].[id],
+[deleted],
+[current_account_product_name],
+[current_account_product_code], 
+[client_type],
+[currency],
+[initial_amount_min], 
+[initial_amount_max], 
+[balance_min], 
+[balance_max], 
+[entry_fees_type], 
+[reopen_fees_type],
+[closing_fees_type], 
+[management_fees_type],
+[overdraft_type],
+[entry_fees_min], 
+[reopen_fees_min], 
+[closing_fees_min], 
+[management_fees_min],
+[overdraft_min], 
+[entry_fees_max], 
+[reopen_fees_max],
+[closing_fees_max], 
+[management_fees_max],
+[overdraft_max], 
+[entry_fees_value], 
+[reopen_fees_value], 
+[closing_fees_value], 
+[management_fees_value], 
+[overdraft_value], 
+[management_fees_frequency],
+[interest_min],
+[interest_max],
+[interest_type],
+[interest_value],
+[interest_frequency],
+[overdraft_limit],
+[overdraft_interest_type],
+[overdraft_interest_value],
+[overdraft_interest_min],
+[overdraft_interest_max],
+[commitment_fee_type],
+[commitment_fee_min],
+[commitment_fee_max],
+[commitment_fee_value],
+[overdraft_limit_min],
+[overdraft_limit_max],
+cur.id AS currency_id,
+cur.name AS currency_name, 
+cur.code AS currency_code,
+cur.is_pivot AS currency_is_pivot, 
+cur.is_swapped AS currency_is_swapped,
+cur.use_cents AS currency_use_cents 
+FROM CurrentAccountProduct INNER JOIN Currencies AS cur ON CurrentAccountProduct.currency = cur.id
+WHERE current_account_product_code = @productCode";
+
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+      
+                c.AddParam("@productCode", productCode);
+
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+                    if (r == null || r.Empty) return null;
+
+                    r.Read();
+                    return (CurrentAccountProduct)GetProduct(r);
+                }
+            }
+        }
+
+
+
         public List<ICurrentAccountProduct> FetchProduct(bool showAlsoDeleted)
         {
             List<ICurrentAccountProduct> currentAccountProductList = new List<ICurrentAccountProduct>();
@@ -611,8 +692,8 @@ return currentAccountProduct;
                 ,@transactionType
                 ,@transactionFeesType
                 ,@transactionFees
-                ,@transactionFeeMin
-                ,@transactionFeeMax
+                ,@transactionFeesMin
+                ,@transactionFeesMax
                 ,@transactionMode)
          
                 SELECT SCOPE_IDENTITY()";
@@ -736,7 +817,7 @@ public CurrentAccountTransactionFees FetchTransaction(int transactionId)
 }
 
 
-public CurrentAccountTransactionFees FetchTransaction(string transactionType, string transactionMode, int productId)
+public CurrentAccountTransactionFees FetchTransactionFee(string transactionType, string transactionMode, int productId)
 {
 
 

@@ -1143,11 +1143,13 @@ namespace OpenCBS.GUI.Products
             this.rbCredit.Checked = true;
             this.rbCredit.Name = "rbCredit";
             this.rbCredit.TabStop = true;
+            this.rbCredit.CheckedChanged += new System.EventHandler(this.rbCredit_CheckedChanged);
             // 
             // rbDebit
             // 
             resources.ApplyResources(this.rbDebit, "rbDebit");
             this.rbDebit.Name = "rbDebit";
+            this.rbDebit.CheckedChanged += new System.EventHandler(this.rbDebit_CheckedChanged);
             // 
             // label7
             // 

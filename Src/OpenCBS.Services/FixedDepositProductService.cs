@@ -119,10 +119,10 @@ namespace OpenCBS.Services
             if (!fixedDepositProduct.InterestRateMax.HasValue)
                 throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInterestRateMaxIsEmpty);
 
-            if (fixedDepositProduct.InterestRateMin < 0)
+            if (fixedDepositProduct.InterestRateMin < 0 || fixedDepositProduct.InterestRateMin > 100)
                 throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInterestRateMinIsInvalid);
 
-            if (fixedDepositProduct.InterestRateMax <= 0)
+            if (fixedDepositProduct.InterestRateMax <= 0 || fixedDepositProduct.InterestRateMax > 100)
                 throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInterestRateMaxIsInvalid);
 
             if (fixedDepositProduct.InterestRateMax <= fixedDepositProduct.InterestRateMin)

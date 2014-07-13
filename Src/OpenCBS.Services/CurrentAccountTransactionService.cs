@@ -27,9 +27,9 @@ namespace OpenCBS.Services
 		}
 
 
-        public int SaveCurrentAccountTransactions(CurrentAccountTransactions currentAccountTransactions)
+        public int SaveCurrentAccountTransactions(CurrentAccountTransactions currentAccountTransactions, CurrentAccountTransactionFees currentAccountTransactionFees)
         {
-            return _currentAccountTransactionManager.SaveCurrentAccountTransactions(currentAccountTransactions);
+            return _currentAccountTransactionManager.SaveCurrentAccountTransactions(currentAccountTransactions, currentAccountTransactionFees);
         }
 
 
@@ -54,9 +54,9 @@ namespace OpenCBS.Services
         }
 
 
-          public void  UpdateCurrentAccountTransactions(CurrentAccountTransactions transaction,string transactionId)
+        public void UpdateCurrentAccountTransactions(decimal transactionFee, int transactionId)
           {
-              _currentAccountTransactionManager.UpdateCurrentAccountTransactions(transaction, transactionId);
+              _currentAccountTransactionManager.UpdateCurrentAccountTransactions(transactionFee, transactionId);
           }
               public  CurrentAccountTransactions FetchTransaction(int transactionId)
               {

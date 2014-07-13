@@ -365,6 +365,20 @@ namespace OpenCBS.ExceptionsHandler
                 case OpenCbsCurrentAccountExceptionEnum.CAPHInterestRateIsInvalid:
                     returned = "CAPHInterestRateIsInvalid";
                     break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CurrentAccountProductSelectAProduct:
+                    returned = "CurrentAccountProductSelectAProduct";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CAPHSelectAContract:
+                    returned = "CAPHSelectAContract";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CurrentAccountTransactionSelectATransaction:
+                    returned = "CurrentAccountTransactionSelectATransaction";
+                    break;
+
+
             }
             return returned;
         }
@@ -375,6 +389,9 @@ namespace OpenCBS.ExceptionsHandler
     [Serializable]
     public enum OpenCbsCurrentAccountExceptionEnum
     {
+        CurrentAccountTransactionSelectATransaction,
+        CAPHSelectAContract,
+        CurrentAccountProductSelectAProduct,
         CAPHInterestRateIsInvalid,
         CurrentAccountProductCodeAlreadyExist,
         CurrentAccountProductNameAlreadyExist,

@@ -129,12 +129,26 @@ namespace OpenCBS.GUI.Products
 
         private void btnViewProduct_Click(object sender, EventArgs e)
         {
-
+            try{
             int i = lvFixedDepositProducts.SelectedIndices[0];
             string selectedProductId = lvFixedDepositProducts.Items[i].Text;
 
             FrmAddFixedDepositProduct _frmAddFixedDepositProduct = new FrmAddFixedDepositProduct(Convert.ToInt32(selectedProductId),false);
             _frmAddFixedDepositProduct.Show();
+
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FixedDepositProductSelectAProduct);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
         }
 
         private void lvFixedDepositProducts_SelectedIndexChanged_1(object sender, EventArgs e)

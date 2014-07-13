@@ -212,6 +212,14 @@ namespace OpenCBS.ExceptionsHandler
                 case OpenCbsFixedDepositExceptionEnum.FixedDepositProductCodeAlreadyExist:
                     returned = "FixedDepositProductCodeAlreadyExist";
                     break;
+
+                case OpenCbsFixedDepositExceptionEnum.FDPHSelectAContract:
+                    returned = "FDPHSelectAContract";
+                    break;
+
+                case OpenCbsFixedDepositExceptionEnum.FixedDepositProductSelectAProduct:
+                    returned = "FixedDepositProductSelectAProduct";
+                    break;
             }
             return returned;
         }
@@ -222,6 +230,8 @@ namespace OpenCBS.ExceptionsHandler
     [Serializable]
     public enum OpenCbsFixedDepositExceptionEnum
     {
+        FDPHSelectAContract,
+        FixedDepositProductSelectAProduct,
         FixedDepositProductNameAlreadyExist,
         FixedDepositProductCodeAlreadyExist,
         FDPHFinalAmountPaymentMethodIsBlank,

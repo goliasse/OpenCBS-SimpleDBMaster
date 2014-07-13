@@ -90,7 +90,7 @@ namespace OpenCBS.GUI.Products
                 btnUpdate.Visible = true;
                 btnCurrentAccountProduct.Visible = false;
                 btnUpdateTran.Visible = true;
-                btnSaveTranFee.Visible = false;
+               
             }
             else
             {
@@ -660,6 +660,8 @@ namespace OpenCBS.GUI.Products
 
         void InitializeCurrentAccountTransactionFees()
         {
+            _currentAccountTransactionFees.CurrentAccountProductId = _currentAccountProduct.Id;
+            
             _currentAccountTransactionFees.TransactionType = cbTransactionType.SelectedItem.ToString();
             if(rbTranFeeFlat.Checked == true)
             _currentAccountTransactionFees.TransactionFeesType = "Flat";
@@ -694,7 +696,8 @@ namespace OpenCBS.GUI.Products
 
         }
 
-        private void cbTransactionType_SelectedIndexChanged(object sender, EventArgs e)
+
+        void FetchTransactionFees()
         {
             string transactionType = cbTransactionType.SelectedItem.ToString();
             if (transactionType != OCurrentAccount.SelectPaymentMethodDefault)
@@ -709,7 +712,7 @@ namespace OpenCBS.GUI.Products
 
 
                 CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
-                _currentAccountTransactionFees = _currentAccountProductService.FetchTransaction(transactionType, transactionMode, _currentAccountProduct.Id);
+                _currentAccountTransactionFees = _currentAccountProductService.FetchTransactionFee(transactionType, transactionMode, _currentAccountProduct.Id);
 
                 if (_currentAccountTransactionFees != null)
                 {
@@ -725,8 +728,18 @@ namespace OpenCBS.GUI.Products
 
                     tbTranFeeMax.Text = _currentAccountTransactionFees.TransactionFeeMax.GetFormatedValue(true);
                 }
+                else
+                {
+                    _currentAccountTransactionFees = new CurrentAccountTransactionFees();
+                }
+
             }
-             
+        }
+
+        private void cbTransactionType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            FetchTransactionFees();
 
         }
 
@@ -848,6 +861,16 @@ namespace OpenCBS.GUI.Products
         private void tbOverdraftFeesMin_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             KeyPressControl(e);
+        }
+
+        private void rbCredit_CheckedChanged(object sender, EventArgs e)
+        {
+            FetchTransactionFees();
+        }
+
+        private void rbDebit_CheckedChanged(object sender, EventArgs e)
+        {
+            FetchTransactionFees();
         }
 
        

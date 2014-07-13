@@ -771,7 +771,8 @@ namespace OpenCBS.GUI.Clients
                         currentAccountTransactions.Amount.GetFormatedValue(true),
                         currentAccountTransactions.TransactionDate.ToShortDateString(),
                         currentAccountTransactions.TransactionMode,
-                        currentAccountTransactions.TransactionType
+                        currentAccountTransactions.TransactionType,
+                        currentAccountTransactions.TransactionFees.GetFormatedValue(true)
                         
                     
                     
@@ -9322,6 +9323,7 @@ namespace OpenCBS.GUI.Clients
 
         private void btnViewFixedDeposit_Click(object sender, EventArgs e)
         {
+            try{
 
             int i = lvFixedDeposits.SelectedIndices[0];
             string selectedContractCode = lvFixedDeposits.Items[i].Text;
@@ -9442,6 +9444,20 @@ namespace OpenCBS.GUI.Clients
 
             btnAddFixedDepositProduct.Visible = false;
             cbFixedDepositProduct.Enabled = false;
+
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHSelectAContract);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
            
         }
 
@@ -9517,7 +9533,7 @@ namespace OpenCBS.GUI.Clients
 
         private void btnViewCurrentAccount_Click(object sender, EventArgs e)
         {
-
+            try{
             
            
             int i = lvCurrentAccountProducts.SelectedIndices[0];
@@ -9753,7 +9769,19 @@ namespace OpenCBS.GUI.Clients
             tabControlPerson.TabPages.Add(tabPageCurrentAccount);
             tabControlPerson.SelectedTab = tabPageCurrentAccount;
 
-           
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CAPHSelectAContract);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
 
         }
 
@@ -10254,6 +10282,7 @@ namespace OpenCBS.GUI.Clients
             }
             else
             {
+                btnOverdraft.Text = "Overdraft";
                 UpdateOverdraft();
                 CurrentAccountProductHoldingServices _currentAccountProductHoldingService = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
                 CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
@@ -10296,11 +10325,26 @@ namespace OpenCBS.GUI.Clients
         CurrentAccountTransactionForm currentAccountTransactionForm = null;
         private void button2_Click(object sender, EventArgs e)
         {
+            try{
             int i = lvTransactions.SelectedIndices[0];
             int selectedTransactionId = Convert.ToInt32(lvTransactions.Items[i].Text);
 
             currentAccountTransactionForm = new CurrentAccountTransactionForm(selectedTransactionId);
             currentAccountTransactionForm.Show();
+
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CurrentAccountTransactionSelectATransaction);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
           
         }
 
@@ -10409,6 +10453,11 @@ namespace OpenCBS.GUI.Clients
             else
             {
                 tabControlCurrentAccount.TabPages.Remove(tabPageOverdraft);
+                tbOverdraftAmount.ResetText();
+                tbOverdraftFees.ResetText();
+                tbCAODInterestRate.ResetText();
+                tbOverdraftDate.ResetText();
+                tbCAODCommitmentFee.ResetText();
             }
         }
 
