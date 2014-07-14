@@ -40,6 +40,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tbPenaltyValue = new System.Windows.Forms.TextBox();
+            this.lbEntryFeesValue = new System.Windows.Forms.Label();
             this.rbPenalityTypeRate = new System.Windows.Forms.RadioButton();
             this.rbPenalityTypeFlat = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -80,8 +82,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btSavingProduct = new System.Windows.Forms.Button();
             this.bClose = new System.Windows.Forms.Button();
-            this.tbPenaltyValue = new System.Windows.Forms.TextBox();
-            this.lbEntryFeesValue = new System.Windows.Forms.Label();
             this.tabControlSaving.SuspendLayout();
             this.tabPageMainParameters.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -261,6 +261,25 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Penalty If Withdrawn Before Maturity";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // tbPenaltyValue
+            // 
+            this.tbPenaltyValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.tbPenaltyValue.Location = new System.Drawing.Point(393, 54);
+            this.tbPenaltyValue.Name = "tbPenaltyValue";
+            this.tbPenaltyValue.Size = new System.Drawing.Size(100, 22);
+            this.tbPenaltyValue.TabIndex = 21;
+            // 
+            // lbEntryFeesValue
+            // 
+            this.lbEntryFeesValue.AutoSize = true;
+            this.lbEntryFeesValue.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lbEntryFeesValue.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbEntryFeesValue.Location = new System.Drawing.Point(329, 57);
+            this.lbEntryFeesValue.Name = "lbEntryFeesValue";
+            this.lbEntryFeesValue.Size = new System.Drawing.Size(56, 16);
+            this.lbEntryFeesValue.TabIndex = 20;
+            this.lbEntryFeesValue.Text = "or value:";
             // 
             // rbPenalityTypeRate
             // 
@@ -736,25 +755,6 @@
             this.bClose.Text = "Close";
             this.bClose.Click += new System.EventHandler(this.bClose_Click);
             // 
-            // tbPenaltyValue
-            // 
-            this.tbPenaltyValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.tbPenaltyValue.Location = new System.Drawing.Point(393, 54);
-            this.tbPenaltyValue.Name = "tbPenaltyValue";
-            this.tbPenaltyValue.Size = new System.Drawing.Size(100, 22);
-            this.tbPenaltyValue.TabIndex = 21;
-            // 
-            // lbEntryFeesValue
-            // 
-            this.lbEntryFeesValue.AutoSize = true;
-            this.lbEntryFeesValue.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.lbEntryFeesValue.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbEntryFeesValue.Location = new System.Drawing.Point(329, 57);
-            this.lbEntryFeesValue.Name = "lbEntryFeesValue";
-            this.lbEntryFeesValue.Size = new System.Drawing.Size(56, 16);
-            this.lbEntryFeesValue.TabIndex = 20;
-            this.lbEntryFeesValue.Text = "or value:";
-            // 
             // FrmAddFixedDepositProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -762,6 +762,9 @@
             this.ClientSize = new System.Drawing.Size(677, 664);
             this.Controls.Add(this.tabControlSaving);
             this.Controls.Add(this.groupBox2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmAddFixedDepositProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fixed Deposit Product";

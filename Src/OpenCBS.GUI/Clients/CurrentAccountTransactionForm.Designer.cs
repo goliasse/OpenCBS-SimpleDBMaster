@@ -334,8 +334,11 @@
             this.Controls.Add(this.rbDebit);
             this.Controls.Add(this.rbCredit);
             this.Controls.Add(this.lblAmountTransferMethod);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CurrentAccountTransactionForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Current Account Transaction";
             this.TopMost = true;
             this.ResumeLayout(false);

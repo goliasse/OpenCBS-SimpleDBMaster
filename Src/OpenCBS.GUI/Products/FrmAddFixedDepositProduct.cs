@@ -548,12 +548,18 @@ namespace OpenCBS.GUI.Products
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            try{
             InitializeFixedDepositProduct();
 
             FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
             _fixedDepositProductService.UpdateFixedDepositProduct(_fixedDepositProduct, _fixedDepositProduct.Id);
             
                 MessageBox.Show("Fixed Deposit Product Successfully Updated.");
+            }
+            catch (Exception ex)
+            {
+                new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
+            }
         }
 
 

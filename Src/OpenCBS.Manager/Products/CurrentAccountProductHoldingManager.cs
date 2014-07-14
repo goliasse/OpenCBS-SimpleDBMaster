@@ -8,6 +8,7 @@ using OpenCBS.CoreDomain.Contracts.Loans.Installments;
 using OpenCBS.CoreDomain.Products;
 using OpenCBS.Enums;
 using System.Data.SqlClient;
+using OpenCBS.CoreDomain.SearchResult;
 
 namespace OpenCBS.Manager.Products
 {
@@ -259,38 +260,175 @@ WHERE current_account_contract_code = @contractCode";
          }
 
 
+
+         
+
+
+         public decimal CalculateClosingFees(CurrentAccountProductHoldings productHolding)
+         {
+
+             decimal closingFees = 0;
+
+             if (productHolding.ManagementFeesType == "Flat")
+             {
+                 closingFees = productHolding.ClosingFees.Value;
+             }
+             else
+                 return 0;
+
+             CurrentAccountTransactions feeTransaction = new CurrentAccountTransactions();
+             feeTransaction.Amount = closingFees;
+             feeTransaction.Checker = "Fees";
+             feeTransaction.FromAccount = productHolding.CurrentAccountContractCode;
+             feeTransaction.Maker = "Fees";
+             feeTransaction.PurposeOfTransfer = "Closing Fee applied for " + productHolding.CurrentAccountContractCode;
+             feeTransaction.ToAccount = "DEF/Test1-CA/1/24"; // TODO: Fetch To_branch_account_number from From_Account 
+             feeTransaction.TransactionDate = DateTime.Today;
+             feeTransaction.TransactionFees = -1;
+             feeTransaction.TransactionMode = "Debit";
+             feeTransaction.TransactionType = "Fee";
+             // TODO: Debit Transaction Fees
+             return closingFees;
+         }
+
+
+         public decimal CalculateReopenFees(CurrentAccountProductHoldings productHolding)
+         {
+
+             decimal reopenFees = 0;
+
+             if (productHolding.ManagementFeesType == "Flat")
+             {
+                 reopenFees = productHolding.ReopenFees.Value;
+             }
+             else
+                 return 0;
+
+             CurrentAccountTransactions feeTransaction = new CurrentAccountTransactions();
+             feeTransaction.Amount = reopenFees;
+             feeTransaction.Checker = "Fees";
+             feeTransaction.FromAccount = productHolding.CurrentAccountContractCode;
+             feeTransaction.Maker = "Fees";
+             feeTransaction.PurposeOfTransfer = "Reopen Fee applied for " + productHolding.CurrentAccountContractCode;
+             feeTransaction.ToAccount = "DEF/Test1-CA/1/24"; // TODO: Fetch To_branch_account_number from From_Account 
+             feeTransaction.TransactionDate = DateTime.Today;
+             feeTransaction.TransactionFees = -1;
+             feeTransaction.TransactionMode = "Debit";
+             feeTransaction.TransactionType = "Fee";
+             // TODO: Debit Transaction Fees
+             return reopenFees;
+         }
+
+         public decimal CalculateEntryFees(CurrentAccountProductHoldings productHolding)
+         {
+
+             decimal entryFees = 0;
+
+             if (productHolding.ManagementFeesType == "Flat")
+             {
+                entryFees = productHolding.EntryFees.Value;
+             }
+             else
+                 return 0;
+
+             CurrentAccountTransactions feeTransaction = new CurrentAccountTransactions();
+             feeTransaction.Amount = entryFees;
+             feeTransaction.Checker = "Fees";
+             feeTransaction.FromAccount = productHolding.CurrentAccountContractCode;
+             feeTransaction.Maker = "Fees";
+             feeTransaction.PurposeOfTransfer = "Entry Fee applied for " + productHolding.CurrentAccountContractCode;
+             feeTransaction.ToAccount = "DEF/Test1-CA/1/24"; // TODO: Fetch To_branch_account_number from From_Account 
+             feeTransaction.TransactionDate = DateTime.Today;
+             feeTransaction.TransactionFees = -1;
+             feeTransaction.TransactionMode = "Debit";
+             feeTransaction.TransactionType = "Fee";
+             // TODO: Debit Transaction Fees
+             return entryFees;
+         }
+
+
+         public decimal CalculateManagementFees(DateTime calculationDate, CurrentAccountProductHoldings productHolding)
+         {
+
+             decimal managementFees = 0;
+
+             if (productHolding.ManagementFeesType == "Flat")
+             {
+                 
+                     if ((calculationDate.Month == productHolding.OpenDate.Month) &&
+                         (calculationDate.Year == productHolding.OpenDate.Year))
+                     {
+                         managementFees = productHolding.ManagementFees.Value;
+                         double effectiveDays = (calculationDate - productHolding.OpenDate).TotalDays;
+                         managementFees = (managementFees / calculationDate.Day) * (decimal)effectiveDays;
+                     }
+                     else
+                     {
+                         managementFees = productHolding.ManagementFees.Value;
+                     }
+                
+             }
+             else
+                 return 0;
+
+             CurrentAccountTransactions feeTransaction = new CurrentAccountTransactions();
+             feeTransaction.Amount = managementFees;
+             feeTransaction.Checker = "Fees";
+             feeTransaction.FromAccount = productHolding.CurrentAccountContractCode;
+             feeTransaction.Maker = "Fees";
+             feeTransaction.PurposeOfTransfer = "Management Fee applied for " + calculationDate.Month;
+             feeTransaction.ToAccount = "DEF/Test1-CA/1/24"; // TODO: Fetch To_branch_account_number from From_Account 
+             feeTransaction.TransactionDate = DateTime.Today;
+             feeTransaction.TransactionFees = -1;
+             feeTransaction.TransactionMode = "Debit";
+             feeTransaction.TransactionType = "Fee";
+             // TODO: Debit Transaction Fees
+             return managementFees;             
+         }
+
+
          public decimal CalculateFixedOverdraftFees(DateTime calculationDate, CurrentAccountProductHoldings productHolding)
          {
-             //TODO : CalculateFixedOverdraftFees
-            
+             decimal fixedOverdraftFees = 0;
+
+             if (productHolding.OverdraftFeesType == "Flat")
+             {
+                 if (productHolding.OverdraftApplied == 1)
+                 {
+                     if ((calculationDate.Month == productHolding.OverdraftAppliedDate.Month) &&
+                         (calculationDate.Year == productHolding.OverdraftAppliedDate.Year))
+                     {
+                         fixedOverdraftFees = productHolding.OverdraftFees.Value;
+                         double effectiveDays = (calculationDate - productHolding.OverdraftAppliedDate).TotalDays;
+                         fixedOverdraftFees = (fixedOverdraftFees / calculationDate.Day) * (decimal)effectiveDays;
+                     }
+                     else
+                     {
+                         fixedOverdraftFees = productHolding.OverdraftFees.Value;
+                     }
+                 }
+                 else
+                     return 0;
+             }
+             else
+                 return 0;
+
+              CurrentAccountTransactions feeTransaction = new CurrentAccountTransactions();
+              feeTransaction.Amount = fixedOverdraftFees;
+                feeTransaction.Checker = "Fees";
+                feeTransaction.FromAccount = productHolding.CurrentAccountContractCode;
+                feeTransaction.Maker = "Fees";
+                feeTransaction.PurposeOfTransfer = "Fixed Overdraft Fee applied for " + calculationDate.Month;
+                feeTransaction.ToAccount = "DEF/Test1-CA/1/24"; // TODO: Fetch To_branch_account_number from From_Account 
+                feeTransaction.TransactionDate = DateTime.Today;
+                feeTransaction.TransactionFees = -1;
+                feeTransaction.TransactionMode = "Debit";
+                feeTransaction.TransactionType = "Fee";
+                // TODO: Debit Transaction Fee
 
 
-//          
-//IF OD_Fees_Type is Flat Then
-//    If  Month and year of OD_Applied_Date is equal to Month and year(Last Date of month) then	
-//    OD_Fees = Fetch OD_Fees
-//    Effective days = Last Date of month – OD_Applied_Date
-//    OD_Fees = (OD_Fees/Day(Last Date of month))* Effective days
-//    Else
-//    OD_Fees = Fetch OD_Fees
-//End If
 
-//    From_Account = Contract Code
-//    Fetch To_Branch from Contract Code
-//    Fetch To_Branch_Account_Number from Branch table
-//    To_Account = To_Branch_Account_Number
-//    Amount = OD_Fees
-//    Purpose Of Transfer = Fixed overdraft fees for month <month (Last date of month)>
-//    Transaction_Date = Today’s Date
-//    Transaction_Maker = Batch Process
-//    Transaction_Checker = Batch Process
-//    Transaction_Type = Fee
-//    Transaction_Mode = Debit
-//    Debit Fee Transaction (Transaction)
-//    Save Transaction (Transaction)
-//End If
-
-             return 10;
+                return fixedOverdraftFees;
          }
 
 
@@ -351,7 +489,7 @@ JOIN [dbo].Currencies AS cur ON [dbo].CurrentAccountProduct.currency = cur.id
 ";
 
              if (!showAlsoClosed)
-                  q += " WHERE [dbo].CurrentAccountProductHoldings.status = 'Opened'";
+                  q += " WHERE [dbo].CurrentAccountProductHoldings.status <> 'Closed'";
 
              using (SqlConnection conn = GetConnection())
              using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
@@ -681,6 +819,45 @@ currentAccountProductHolding.OverdraftCommitmentFeeType = r.GetString("overdraft
  currentAccountProductHolding.OverdraftAppliedDate = r.GetDateTime("overdraft_applied_date");
 
 return currentAccountProductHolding;
+         }
+
+
+
+
+         public TransactionSearchResult GetTransactionSearchResult(OpenCbsReader r)
+         {
+             TransactionSearchResult transactionSearchResult
+              = new TransactionSearchResult();
+             transactionSearchResult.Account = r.GetString("Account");
+             transactionSearchResult.TransactionDate = r.GetDateTime("Transaction_Date");
+             transactionSearchResult.Amount = r.GetDecimal("Amount");
+             transactionSearchResult.Balance = r.GetDecimal("Balance");
+             return transactionSearchResult;
+         }
+
+         public List<TransactionSearchResult> SearchTransaction(DateTime calculationDate, string contractCode)
+         {
+             List<TransactionSearchResult> listTransaction = new List<TransactionSearchResult>();
+             string q = @" Select From_Account As Account, Transaction_Date, Amount, From_Balance as Balance From CurrentAccountTransactions Where From_Account = @contractCode And From_Balance > 0 And Month(Transaction_Date) = @month
+                           UNION
+                           Select To_Account As Account, Transaction_Date, Amount, To_Balance as Balance From CurrentAccountTransactions Where To_Account = @contractCode And To_Balance > 0 And Month(Transaction_Date) = @month order By Transaction_Date";
+             using (SqlConnection conn = GetConnection())
+             using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+             {
+                 c.AddParam("@contractCode", contractCode);
+                 c.AddParam("@month", calculationDate.Month);
+
+                 using (OpenCbsReader r = c.ExecuteReader())
+                 {
+
+                     while (r.Read())
+                     {
+
+                         listTransaction.Add(GetTransactionSearchResult(r));
+                     }
+                 }
+             }
+             return listTransaction;
          }
 
 

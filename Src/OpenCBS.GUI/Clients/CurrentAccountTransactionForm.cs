@@ -10,6 +10,7 @@ using OpenCBS.CoreDomain.Products;
 using OpenCBS.CoreDomain;
 using OpenCBS.Services;
 using OpenCBS.Enums;
+using OpenCBS.ExceptionsHandler;
 
 namespace OpenCBS.GUI.Clients
 {
@@ -96,7 +97,7 @@ namespace OpenCBS.GUI.Clients
             cbFromAccount.Items.Clear();
             cbToAccount.Items.Clear();
             FixedDepositProductHoldingServices _fixedDepositProductHoldingServices = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
-            List<FixedDepositProductHoldings> fixedDepositProductHoldingsList = _fixedDepositProductHoldingServices.FetchProduct(true);
+            List<FixedDepositProductHoldings> fixedDepositProductHoldingsList = _fixedDepositProductHoldingServices.FetchProduct(false);
             if (fixedDepositProductHoldingsList != null)
             {
                 foreach (FixedDepositProductHoldings fixedDepositProductHoldings in fixedDepositProductHoldingsList)
@@ -108,7 +109,7 @@ namespace OpenCBS.GUI.Clients
 
 
             CurrentAccountProductHoldingServices _currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
-            List<CurrentAccountProductHoldings> currentAccountProductHoldingsList = _currentAccountProductHoldingServices.FetchProduct(true);
+            List<CurrentAccountProductHoldings> currentAccountProductHoldingsList = _currentAccountProductHoldingServices.FetchProduct(false);
             if (currentAccountProductHoldingsList != null)
             {
                 foreach (CurrentAccountProductHoldings currentAccountProductHoldings in currentAccountProductHoldingsList)
@@ -158,6 +159,7 @@ namespace OpenCBS.GUI.Clients
 
         private void btnExtendPeriod_Click(object sender, EventArgs e)
         {
+            try{
             currentAccountTransactions = new CurrentAccountTransactions();
 
             if (rbCredit.Checked == true)
@@ -196,6 +198,12 @@ namespace OpenCBS.GUI.Clients
             int ret = _currentAccountTransactionService.SaveCurrentAccountTransactions(currentAccountTransactions, _currentAccountTransactionFees);
             if (ret >= 1)
                 MessageBox.Show("Transaction Successful.");
+
+            }
+            catch (Exception ex)
+            {
+                new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
+            }
 
 
         }

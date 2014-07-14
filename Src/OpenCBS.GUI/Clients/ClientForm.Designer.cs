@@ -757,6 +757,7 @@ namespace OpenCBS.GUI.Clients
             this.menuPendingSavingEvents = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemConfirmPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCancelPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).BeginInit();
             this.splitContainer10.Panel1.SuspendLayout();
             this.splitContainer10.Panel2.SuspendLayout();
@@ -4699,6 +4700,7 @@ namespace OpenCBS.GUI.Clients
             // tabPageCurrentAccount
             // 
             this.tabPageCurrentAccount.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageCurrentAccount.Controls.Add(this.button3);
             this.tabPageCurrentAccount.Controls.Add(this.lblCAInterestRateMinMax);
             this.tabPageCurrentAccount.Controls.Add(this.lblCAInitialAmountMinMax);
             this.tabPageCurrentAccount.Controls.Add(this.checkBoxOverdraftApplied);
@@ -5754,6 +5756,13 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.menuItemCancelPendingSavingEvent, "menuItemCancelPendingSavingEvent");
             this.menuItemCancelPendingSavingEvent.Click += new System.EventHandler(this.menuItemCancelPendingSavingEvent_Click);
             // 
+            // button3
+            // 
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.Name = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // ClientForm
             // 
             resources.ApplyResources(this, "$this");
@@ -6633,5 +6642,6 @@ namespace OpenCBS.GUI.Clients
         private TextBox tbFDInitialAmountNumber;
         private Label lblFDInitialAccount;
         private Label label47;
+        private Button button3;
     }
 }

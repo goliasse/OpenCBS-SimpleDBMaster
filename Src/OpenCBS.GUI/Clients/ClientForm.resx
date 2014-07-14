@@ -7303,7 +7303,7 @@ Max:
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAS
-        HQAAAk1TRnQBSQFMAgEBBQEAAewBJQHsASUBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        HQAAAk1TRnQBSQFMAgEBBQEAAfQBJQH0ASUBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAAUADAAEBAQABCAYAASAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -14024,6 +14024,30 @@ Max:
   <data name="&gt;&gt;tabPageFixedDeposit.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>228, 210</value>
+  </data>
+  <data name="button3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="button3.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="button3.Text" xml:space="preserve">
+    <value>button3</value>
+  </data>
+  <data name="&gt;&gt;button3.Name" xml:space="preserve">
+    <value>button3</value>
+  </data>
+  <data name="&gt;&gt;button3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button3.Parent" xml:space="preserve">
+    <value>tabPageCurrentAccount</value>
+  </data>
+  <data name="&gt;&gt;button3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="lblCAInterestRateMinMax.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 7pt</value>
   </data>
@@ -14055,7 +14079,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;lblCAInterestRateMinMax.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="lblCAInitialAmountMinMax.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 7pt</value>
@@ -14088,7 +14112,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;lblCAInitialAmountMinMax.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="checkBoxOverdraftApplied.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14115,7 +14139,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;checkBoxOverdraftApplied.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="label37.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14148,7 +14172,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;label37.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="tbCurrentInitialAmount.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -14172,7 +14196,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;tbCurrentInitialAmount.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="tbCalculationFrequency.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt</value>
@@ -14196,7 +14220,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;tbCalculationFrequency.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="label43.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14229,7 +14253,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;label43.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="label20.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14262,7 +14286,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="label34.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14295,7 +14319,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="lblCAEntryFeesMinMax.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 7pt</value>
@@ -16311,7 +16335,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;tabControlCurrentAccount.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="tbCAInterestRate.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt</value>
@@ -16335,7 +16359,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;tbCAInterestRate.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="tbCABalanceAmount.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt</value>
@@ -16362,7 +16386,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;tbCABalanceAmount.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="label33.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -16395,7 +16419,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;label33.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="btnTransactions.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -16422,7 +16446,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;btnTransactions.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="lblBalanceAmount.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -16458,7 +16482,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;lblBalanceAmount.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="btnOverdraft.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -16485,7 +16509,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;btnOverdraft.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="cbCAInitialAmountMethod.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -16638,7 +16662,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;gbInitialPayment.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="tbCAChequeAccount.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -16797,7 +16821,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;gbAmount.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="tbCAClosedDate.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -16824,7 +16848,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;tbCAClosedDate.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="lblCAClosedDate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -16860,7 +16884,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;lblCAClosedDate.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="btnCAPrint.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -16887,7 +16911,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;btnCAPrint.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
   <data name="btnCloseAccount.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -16917,7 +16941,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;btnCloseAccount.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>22</value>
   </data>
   <data name="cbCAAccountStatus.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -16944,7 +16968,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;cbCAAccountStatus.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>23</value>
   </data>
   <data name="lblCAAcountStatus.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -16980,7 +17004,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;lblCAAcountStatus.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>24</value>
   </data>
   <data name="tbCAOpenedDate.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -17007,7 +17031,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;tbCAOpenedDate.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>25</value>
   </data>
   <data name="lblCAOpenedDate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -17043,7 +17067,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;lblCAOpenedDate.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>26</value>
   </data>
   <data name="tbCAProductCode.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -17070,7 +17094,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;tbCAProductCode.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>27</value>
   </data>
   <data name="lblCAProductCode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -17106,7 +17130,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;lblCAProductCode.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>28</value>
   </data>
   <data name="btnAddCurrentAccountProduct.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -17133,7 +17157,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;btnAddCurrentAccountProduct.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>29</value>
   </data>
   <data name="tbCurrentAccountComment.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -17157,7 +17181,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;tbCurrentAccountComment.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>30</value>
   </data>
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -17190,7 +17214,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>31</value>
   </data>
   <data name="cbCurrentAccountingOfficer.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -17214,7 +17238,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;cbCurrentAccountingOfficer.ZOrder" xml:space="preserve">
-    <value>31</value>
+    <value>32</value>
   </data>
   <data name="label17.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -17247,7 +17271,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>32</value>
+    <value>33</value>
   </data>
   <data name="tbCurrentAccountProductCode.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -17271,7 +17295,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;tbCurrentAccountProductCode.ZOrder" xml:space="preserve">
-    <value>33</value>
+    <value>34</value>
   </data>
   <data name="label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -17304,7 +17328,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>34</value>
+    <value>35</value>
   </data>
   <data name="cbCurrentAccountProducts.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -17331,7 +17355,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;cbCurrentAccountProducts.ZOrder" xml:space="preserve">
-    <value>35</value>
+    <value>36</value>
   </data>
   <data name="label19.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -17364,7 +17388,7 @@ Max:
     <value>tabPageCurrentAccount</value>
   </data>
   <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
-    <value>36</value>
+    <value>37</value>
   </data>
   <data name="tabPageCurrentAccount.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 68</value>

@@ -497,7 +497,7 @@ namespace OpenCBS.Manager.Products
 
 
             if (!showAlsoClosed)
-                q += " WHERE status = 'Opened'";
+                q += " WHERE status <> 'Closed'";
             
 
 

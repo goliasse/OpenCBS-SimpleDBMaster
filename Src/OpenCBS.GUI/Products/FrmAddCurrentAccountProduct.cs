@@ -646,11 +646,17 @@ namespace OpenCBS.GUI.Products
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            try{
             InitializeCurrentAccountProduct();
 
             CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
             _currentAccountProductService.UpdateCurrentAccountProduct(_currentAccountProduct, _currentAccountProduct.Id);
             MessageBox.Show("Current Account Product Successfully Updated.");
+            }
+            catch (Exception ex)
+            {
+                new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -680,7 +686,7 @@ namespace OpenCBS.GUI.Products
 
         private void btnSaveTranFee_Click(object sender, EventArgs e)
         {
-            
+            try{
             InitializeCurrentAccountTransactionFees();
 
 
@@ -689,6 +695,11 @@ namespace OpenCBS.GUI.Products
 
             if (ret >= 1)
                 MessageBox.Show("Transaction Fee Successfully Specified.");
+            }
+            catch (Exception ex)
+            {
+                new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
+            }
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
@@ -745,7 +756,7 @@ namespace OpenCBS.GUI.Products
 
         private void btnUpdateTran_Click(object sender, EventArgs e)
         {
-          
+          try{
             InitializeCurrentAccountTransactionFees();
 
 
@@ -754,7 +765,11 @@ namespace OpenCBS.GUI.Products
 
            
                 MessageBox.Show("Transaction Fee Successfully Updated.");
-
+            }
+            catch (Exception ex)
+            {
+                new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
+            }
 
         }
 

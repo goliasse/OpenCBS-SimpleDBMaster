@@ -32,7 +32,30 @@ namespace OpenCBS.Services
            return _currentAccountProductHoldingManager.SaveCurrentAccountPoductHolding(currentAccountProductHoldings);
        }
 
+       public decimal CalculateFixedOverdraftFees(DateTime calculationDate, CurrentAccountProductHoldings productHolding)
+       {
+           return _currentAccountProductHoldingManager.CalculateFixedOverdraftFees(calculationDate, productHolding);
+       }
 
+
+       public decimal CalculateManagementFees(DateTime calculationDate, CurrentAccountProductHoldings productHolding)
+       {
+           return _currentAccountProductHoldingManager.CalculateManagementFees(calculationDate, productHolding);
+       }
+
+       public decimal CalculateClosingFees(CurrentAccountProductHoldings productHolding)
+       {
+           return _currentAccountProductHoldingManager.CalculateClosingFees(productHolding);
+       }
+           public decimal CalculateReopenFees(CurrentAccountProductHoldings productHolding)
+           {
+               return _currentAccountProductHoldingManager.CalculateReopenFees(productHolding);
+           }
+
+           public decimal CalculateEntryFees(CurrentAccountProductHoldings productHolding)
+               {
+                   return _currentAccountProductHoldingManager.CalculateEntryFees(productHolding);
+               }
        void ValidateProduct(CurrentAccountProductHoldings productHolding, CurrentAccountProduct product)
        {
            if (productHolding.CurrentAccountProduct == null)

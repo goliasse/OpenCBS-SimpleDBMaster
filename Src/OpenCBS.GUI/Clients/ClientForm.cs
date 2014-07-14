@@ -9820,6 +9820,7 @@ namespace OpenCBS.GUI.Clients
 
         private void btnExtendPeriod_Click(object sender, EventArgs e)
         {
+            try{
             tbMaturityPeriod.Enabled = true;
             if (btnExtendPeriod.Text == "Extend Period")
             btnExtendPeriod.Text = "Submit";
@@ -9834,6 +9835,12 @@ namespace OpenCBS.GUI.Clients
 
                 MessageBox.Show("Period Extended Successfully.");
                // btnExtendPeriod.Enabled = false;
+            }
+
+            }
+            catch (Exception ex)
+            {
+                new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
             }
         }
 
@@ -10053,12 +10060,12 @@ namespace OpenCBS.GUI.Clients
                     if (currentAccountProduct.CommitmentFeeValue.HasValue)
                         tbCAODCommitmentFee.Text = currentAccountProduct.CommitmentFeeValue.ToString();
 
-                    if (currentAccountProduct.InterestType == "Flat")
+                    if (currentAccountProduct.OverdraftInterestType == "Flat")
                         rbODInterestTypeFlat.Checked = true;
                     else
                         rbODInterestTypeRate.Checked = true;
 
-                    if (currentAccountProduct.InterestValue.HasValue)
+                    if (currentAccountProduct.OverdraftInterestValue.HasValue)
                         tbCAODInterestRate.Text = currentAccountProduct.InterestValue.ToString();
 
 
@@ -10270,6 +10277,7 @@ namespace OpenCBS.GUI.Clients
 
         private void btnOverdraft_Click(object sender, EventArgs e)
         {
+            try{
             if (btnOverdraft.Text == "Overdraft")
             {
                 btnOverdraft.Text = "Update";
@@ -10291,6 +10299,11 @@ namespace OpenCBS.GUI.Clients
                 _currentAccountProductHoldings.CurrentAccountProduct = currentAccountProduct;
                 _currentAccountProductHoldingService.UpdateCurrentAccountProductHolding(_currentAccountProductHoldings, tbCAProductCode.Text);
                 MessageBox.Show("Overdraft Successfully Updated.");
+            }
+             }
+            catch (Exception ex)
+            {
+                new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
             }
         }
 
@@ -10449,6 +10462,39 @@ namespace OpenCBS.GUI.Clients
                 tabControlCurrentAccount.TabPages.Remove(tabPageOverdraft);
                 tabControlCurrentAccount.TabPages.Add(tabPageOverdraft);
                 tabControlCurrentAccount.SelectedTab = tabPageOverdraft;
+
+
+                if (currentAccountProduct.OverdraftType == "Flat")
+                    rbFlatOverdraftFees.Checked = true;
+                else
+                    rbRateOverdraftFees.Checked = true;
+
+                if (currentAccountProduct.OverdraftValue.HasValue)
+                    tbOverdraftFees.Text = currentAccountProduct.OverdraftValue.GetFormatedValue(OCurrency.UseCents);
+
+                if (currentAccountProduct.CommitmentFeeType == "Flat")
+                    rbODCommitmentTypeFlat.Checked = true;
+                else
+                    rbODCommitmentTypeRate.Checked = true;
+
+                if (currentAccountProduct.CommitmentFeeValue.HasValue)
+                    tbCAODCommitmentFee.Text = currentAccountProduct.CommitmentFeeValue.ToString();
+
+                if (currentAccountProduct.OverdraftInterestType == "Flat")
+                    rbODInterestTypeFlat.Checked = true;
+                else
+                    rbODInterestTypeRate.Checked = true;
+
+                if (currentAccountProduct.OverdraftInterestValue.HasValue)
+                    tbCAODInterestRate.Text = currentAccountProduct.InterestValue.ToString();
+
+                rbFlatOverdraftFees.Enabled = false;
+                rbRateOverdraftFees.Enabled = false;
+                rbODInterestTypeFlat.Enabled = false;
+                rbODInterestTypeRate.Enabled = false;
+                rbODCommitmentTypeFlat.Enabled = false;
+                rbODCommitmentTypeRate.Enabled = false;
+
             }
             else
             {
@@ -10546,6 +10592,15 @@ namespace OpenCBS.GUI.Clients
                 lblFDInitialAccount.Visible = true;
                 tbFDInitialAmountNumber.Visible = true;
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DateTime calculationDate = new DateTime(2014, 08, 13);
+            
+            CurrentAccountProductHoldingServices _currentAccountProductHoldingService = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
+
+            _currentAccountProductHoldingService.CalculateManagementFees(calculationDate, _currentAccountProductHoldings);
         }
 
         
