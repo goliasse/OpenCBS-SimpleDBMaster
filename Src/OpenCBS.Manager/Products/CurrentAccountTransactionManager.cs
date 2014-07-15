@@ -14,13 +14,16 @@ namespace OpenCBS.Manager.Products
 {
     public class CurrentAccountTransactionManager : Manager
     {
+       
         public CurrentAccountTransactionManager(User pUser) : base(pUser)
         {
+           
         }
 
         public CurrentAccountTransactionManager(string testDB)
             : base(testDB)
         {
+            
         }
 
 
@@ -220,7 +223,28 @@ public CurrentAccountTransactions FetchTransaction(int transactionId)
 
         }
 
+public CurrentAccountTransactions FetchMonthClosingBalance(int calculationMonth, string contractCode)
+{
+    CurrentAccountTransactions currentAccountTransactions = null;
+    string q = @"select top (1) * from CurrentAccountTransactions Where (From_Acount = @contractCode OR To_Account = @contractCode) AND DATEPART(mm, transaction_date) = (@month-1) order by Transaction_Date DESC";
+    using (SqlConnection conn = GetConnection())
+    using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+    {
+        c.AddParam("@contractCode", contractCode);
+        c.AddParam("@month", calculationMonth);
 
+        using (OpenCbsReader r = c.ExecuteReader())
+        {
+
+            while (r.Read())
+            {
+                currentAccountTransactions = GetProduct(r);
+            }
+        }
+    }
+
+    return currentAccountTransactions;
+}
 
 
 public List<CurrentAccountTransactions> FetchTransactions(string accountNumber)

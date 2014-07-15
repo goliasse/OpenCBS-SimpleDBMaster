@@ -320,5 +320,19 @@ namespace OpenCBS.Services
              return _currentAccountProductHoldingManager.FetchProduct(productId);
          }
 
+
+          public decimal CurrentAccountOverdraftInterestCalculation(DateTime calculationDate, CurrentAccountProductHoldings productHolding)
+          {
+              return _currentAccountProductHoldingManager.CurrentAccountOverdraftInterestCalculation(calculationDate, productHolding);
+          }
+            public decimal CurrentAccountCommitmentFeeCalculation(DateTime calculationDate, CurrentAccountProductHoldings productHolding)
+            {
+                return _currentAccountProductHoldingManager.CurrentAccountCommitmentFeeCalculation(calculationDate, productHolding);
+            }
+            public decimal CurrentAccountInterestCalculation(DateTime calculationDate, CurrentAccountProductHoldings productHolding)
+            {
+                return _currentAccountProductHoldingManager.CurrentAccountInterestCalculation(calculationDate, productHolding);
+            }
+
     }
 }

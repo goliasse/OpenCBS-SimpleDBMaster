@@ -10599,8 +10599,8 @@ namespace OpenCBS.GUI.Clients
             DateTime calculationDate = new DateTime(2014, 08, 13);
             
             CurrentAccountProductHoldingServices _currentAccountProductHoldingService = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
-
-            _currentAccountProductHoldingService.CalculateManagementFees(calculationDate, _currentAccountProductHoldings);
+            
+            _currentAccountProductHoldingService.CurrentAccountInterestCalculation(calculationDate, _currentAccountProductHoldings);
         }
 
         
