@@ -1913,5 +1913,31 @@ Enter another account number.
 <data name="CurrentAccountTransactionSelectATransaction" xml:space="preserve">
     <value>Please select a Current Account Transaction!!</value>
   </data>
+  
+  <data name="FromAndToAccountIsSame" xml:space="preserve">
+    <value>From Account And To Account is same!!</value>
+  </data>
+  
+  <data name="PurposeOfTransferIsBlank" xml:space="preserve">
+    <value>Purpose Of Transfer is blank!!</value>
+  </data>
+  
+  <data name="CATAmountIsBlank" xml:space="preserve">
+    <value>Amount is blank!!</value>
+  </data>
+  
+  <data name="CATPurposeOfTransferIsBlank" xml:space="preserve">
+    <value>Purpose Of Transfer is blank!!</value>
+  </data>
+  
+  <data name="CATSelectATransactionType" xml:space="preserve">
+    <value>Please select a Transaction Type!!</value>
+  </data>
+  
+  
+
+<data name="CATBalanceLessThanMinBalance" xml:space="preserve">
+    <value>Remaining balance would be less than Minimum Balance after transaction!!</value>
+  </data>
 
 </root>

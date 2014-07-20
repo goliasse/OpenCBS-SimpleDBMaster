@@ -282,6 +282,8 @@ namespace OpenCBS.Services
 
         public CurrentAccountTransactionFees FetchTransactionFee(string transactionType, string transactionMode, int productId)
         {
+            
+
             return _currentAccountProductManager.FetchTransactionFee(transactionType, transactionMode, productId);
         }
 

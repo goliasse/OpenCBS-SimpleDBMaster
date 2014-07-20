@@ -6,6 +6,7 @@ using OpenCBS.Manager.Products;
 using OpenCBS.CoreDomain;
 using OpenCBS.CoreDomain.Products;
 using OpenCBS.ExceptionsHandler;
+using OpenCBS.Enums;
 
 namespace OpenCBS.Services
 {
@@ -27,30 +28,42 @@ namespace OpenCBS.Services
 		}
 
 
-        public int SaveCurrentAccountTransactions(CurrentAccountTransactions currentAccountTransactions, CurrentAccountTransactionFees currentAccountTransactionFees)
-        {
-            return _currentAccountTransactionManager.SaveCurrentAccountTransactions(currentAccountTransactions, currentAccountTransactionFees);
-        }
+        //public int SaveCurrentAccountTransactions(CurrentAccountTransactions currentAccountTransactions, CurrentAccountTransactionFees currentAccountTransactionFees)
+        //{
+        //    ValidateCurrentAccountTransaction(currentAccountTransactions);
+        //    return _currentAccountTransactionManager.SaveCurrentAccountTransactions(currentAccountTransactions, currentAccountTransactionFees);
+        //}
 
 
-        void ValidateCurrentAccountTransaction(CurrentAccountTransactions currentAccountTransactions)
+        void ValidateCurrentAccountTransaction(CurrentAccountTransactions currentAccountTransactions, CurrentAccountProduct _currentAccountProduct, CurrentAccountProductHoldings currentAccountProductHoldings)
         {
-            if (currentAccountTransactions.Amount.HasValue)
-                throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.AmountIsInvalid);
+            if (!currentAccountTransactions.Amount.HasValue)
+                throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.CATAmountIsBlank);
 
             if (currentAccountTransactions.Amount.HasValue && currentAccountTransactions.Amount <= 0)
                 throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.AmountIsInvalid);
 
-            if (currentAccountTransactions.FromAccount == "")
+            if (string.IsNullOrEmpty(currentAccountTransactions.FromAccount))
                 throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.FromAccountNotSelected);
 
-            if (currentAccountTransactions.ToAccount == "")
+            if (string.IsNullOrEmpty(currentAccountTransactions.ToAccount))
                 throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.ToAccountNotSelected);
 
             if (currentAccountTransactions.FromAccount == currentAccountTransactions.ToAccount)
                 throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.ToAndFromAccountIsInvalid);
 
-            //Purpose of transfre not be blank
+            if(currentAccountTransactions.TransactionType == OCurrentAccount.SelectPaymentMethodDefault)
+                throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.CATSelectATransactionType);
+
+            if (string.IsNullOrEmpty(currentAccountTransactions.PurposeOfTransfer))
+                throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.PurposeOfTransferIsBlank);
+
+            if (currentAccountProductHoldings.OverdraftApplied == 0)
+            {
+                if (_currentAccountProduct.BalanceMin > (currentAccountProductHoldings.Balance - currentAccountTransactions.Amount))
+                    throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.CATBalanceLessThanMinBalance);
+            }
+            
         }
 
 
@@ -67,6 +80,24 @@ namespace OpenCBS.Services
               {
                   return _currentAccountTransactionManager.FetchTransactions(accountNumber);
               }
+
+
+              public int MakeATransaction(CurrentAccountTransactions currentAccountTransactions, CurrentAccountTransactionFees currentAccountTransactionFees, CurrentAccountProduct _currentAccountProduct, CurrentAccountProductHoldings currentAccountProductHoldings)
+              {
+                  ValidateCurrentAccountTransaction(currentAccountTransactions, _currentAccountProduct, currentAccountProductHoldings);
+                  return _currentAccountTransactionManager.MakeATransaction(currentAccountTransactions, currentAccountTransactionFees);
+              }
+
+              public int DebitFeeTransaction(CurrentAccountTransactions currentAccountTransactions)
+              {
+                 return _currentAccountTransactionManager.DebitFeeTransaction(currentAccountTransactions);
+              }
+
+              public List<CurrentAccountTransactions> FetchFeeTransactions(string accountNumber, string maker)
+        {
+            return _currentAccountTransactionManager.FetchFeeTransactions(accountNumber, maker);
+        }
+
 
 
     }

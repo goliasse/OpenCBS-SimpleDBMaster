@@ -751,6 +751,38 @@ namespace OpenCBS.GUI.Clients
 
         }
 
+
+
+        void InitializeCurrentAccountFeeTransactions(string accountNumber)
+        {
+            listViewFeeTransactions.Items.Clear();
+            CurrentAccountTransactionService _currentAccountTransactionService = ServicesProvider.GetInstance().GetCurrentAccountTransactionService();
+            List<CurrentAccountTransactions> currentAccountTransactionsList = _currentAccountTransactionService.FetchFeeTransactions(accountNumber,"Fees");
+
+
+            if (currentAccountTransactionsList != null)
+            {
+                foreach (CurrentAccountTransactions currentAccountTransactions in currentAccountTransactionsList)
+                {
+
+
+                    var item = new ListViewItem(new[] {
+                    currentAccountTransactions.Id.ToString(),
+                         currentAccountTransactions.ToAccount,
+                        currentAccountTransactions.Amount.GetFormatedValue(true),
+                        currentAccountTransactions.TransactionDate.ToShortDateString(),
+                        currentAccountTransactions.PurposeOfTransfer,
+                        currentAccountTransactions.TransactionType
+                    
+                    
+                    
+                });
+                    listViewFeeTransactions.Items.Add(item);
+
+                }
+            }
+        }
+
         void InitializeCurrentAccountTransactions(string accountNumber)
         {
             lvTransactions.Items.Clear();
@@ -772,8 +804,8 @@ namespace OpenCBS.GUI.Clients
                         currentAccountTransactions.TransactionDate.ToShortDateString(),
                         currentAccountTransactions.TransactionMode,
                         currentAccountTransactions.TransactionType,
-                        currentAccountTransactions.TransactionFees.GetFormatedValue(true)
-                        
+                        currentAccountTransactions.TransactionFees.GetFormatedValue(true),
+                        currentAccountTransactions.PurposeOfTransfer
                     
                     
                     
@@ -9547,8 +9579,8 @@ namespace OpenCBS.GUI.Clients
             currentAccountProduct = _currentAccountProductService.FetchProduct(_currentAccountProductHoldings.CurrentAccountProduct.Id);
 
             btnCloseAccount.Enabled = true;
-            
-            
+
+            tabControlCurrentAccount.TabPages.Add(tabPageFeesTransactions);
 
             if (_currentAccountProductHoldings.Status == "Opened")
             {
@@ -9585,6 +9617,10 @@ namespace OpenCBS.GUI.Clients
                 {
                     tabControlCurrentAccount.TabPages.Remove(tabPageCloseAccount);
                     tabControlCurrentAccount.TabPages.Add(tabPageCloseAccount);
+
+                    tabControlCurrentAccount.TabPages.Remove(tabPageReopenAccount);
+                    tabControlCurrentAccount.TabPages.Add(tabPageReopenAccount);
+
                 lblCAClosedDate.Visible = true;
                 tbCAClosedDate.Visible = true;
                 tbCAClosedDate.Enabled = false;
@@ -9635,6 +9671,8 @@ namespace OpenCBS.GUI.Clients
             {
                 tabControlCurrentAccount.TabPages.Remove(tabPageReopenAccount);
                 tabControlCurrentAccount.TabPages.Add(tabPageReopenAccount);
+              
+                tabControlCurrentAccount.SelectedTab = tabPageReopenAccount;
                 btnCloseAccount.Visible = true;
                 btnAddCurrentAccountProduct.Visible = false;
                 gbCloseFees.Visible = true;
@@ -9768,6 +9806,8 @@ namespace OpenCBS.GUI.Clients
             tabControlPerson.TabPages.Remove(tabPageCurrentAccount);
             tabControlPerson.TabPages.Add(tabPageCurrentAccount);
             tabControlPerson.SelectedTab = tabPageCurrentAccount;
+
+            InitializeCurrentAccountFeeTransactions(_currentAccountProductHoldings.CurrentAccountContractCode);
 
             }
             catch (Exception ex)
@@ -9920,25 +9960,43 @@ namespace OpenCBS.GUI.Clients
                 gbCloseFees.Visible = true;
                 cbCAPaymentMethod.Enabled = true;
                 tbCAChequeAccount.Enabled = true;
-                tbCloseFees.Enabled = true;
+                cbCAPaymentMethod.SelectedIndex = 0;
                 tbReopenFees.Enabled = true;
                 tbCloseFees.ResetText();
                 tbReopenFees.ResetText();
                 tbCAChequeAccount.ResetText();
                 tabControlCurrentAccount.TabPages.Remove(tabPageCloseAccount);
                 tabControlCurrentAccount.TabPages.Add(tabPageCloseAccount);
+                tabControlCurrentAccount.SelectedTab = tabPageCloseAccount;
+
+                if (currentAccountProduct.ClosingFeesValue.HasValue)
+                {
+
+                    lblCACloseFeesMinMax.Text = string.Format("{0} {1}",
+                   (currentAccountProduct.ClosingFeesValue.GetFormatedValue(currentAccountProduct.Currency.UseCents)), currentAccountProduct.ClosingFeesType == "Flat" ? currentAccountProduct.Currency.Code : "%");
+
+                    tbCloseFees.Text = currentAccountProduct.ClosingFeesValue.GetFormatedValue(currentAccountProduct.Currency.UseCents);
+                    tbCloseFees.Enabled = false;
+                }
+                else
+                {
+                    lblCACloseFeesMinMax.Text = string.Format("{0}{1} {4}\r\n{2}{3} {4}",
+                          "Min ", (currentAccountProduct.ClosingFeesMin.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
+                          "Max ", (currentAccountProduct.ClosingFeesMax.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
+                          currentAccountProduct.ClosingFeesType == "Flat" ? currentAccountProduct.Currency.Code : "%");
+                }
             }
             else if (btnCloseAccount.Text == "Close Account")
             {
-                tabControlCurrentAccount.TabPages.Remove(tabPageReopenAccount);
-                tabControlCurrentAccount.TabPages.Add(tabPageReopenAccount);
+                
                 tbReopenFees.Enabled = true;
                 tbReopenFees.ResetText();
                 _currentAccountProductHoldings.Status = "Closed";
                 _currentAccountProductHoldings.CloseDate = DateTime.Today;
-                _currentAccountProductHoldings.ClosingFees = ServicesHelper.ConvertStringToNullableDecimal(tbCloseFees.Text) + _currentAccountProductHoldings.ClosingFees;
+                _currentAccountProductHoldings.ClosingFees = ServicesHelper.ConvertStringToNullableDecimal(tbCloseFees.Text);
+               
                 _currentAccountProductHoldings.FinalAmountPaymentMethod = cbCAPaymentMethod.SelectedItem.ToString();
-                btnCloseAccount.Enabled = false;
+                
                 if (cbCAPaymentMethod.SelectedItem.ToString() != "Cash")
                 {
                     _currentAccountProductHoldings.FinalAmountAccountNumber = tbCAChequeAccount.Text;
@@ -9962,17 +10020,40 @@ namespace OpenCBS.GUI.Clients
                 currentAccountProduct = _currentAccountProductService.FetchProduct(_currentAccountProductHoldings.CurrentAccountProduct.Id);
                 _currentAccountProductHoldings.CurrentAccountProduct = currentAccountProduct;
                 _currentAccountProductHoldingService.UpdateCurrentAccountProductHolding(_currentAccountProductHoldings, tbCAProductCode.Text);
-                MessageBox.Show(tbCAProductCode.Text + " Successfully Closed.");
 
+                _currentAccountProductHoldingService.CalculateClosingFees(_currentAccountProductHoldings);
+               
+                MessageBox.Show(tbCAProductCode.Text + " Successfully Closed.");
+                btnCloseAccount.Enabled = false;
+               
+
+                if (currentAccountProduct.ReopenFeesValue.HasValue)
+                {
+
+                    lblCAReopenFeesMinMax.Text = string.Format("{0} {1}",
+                   (currentAccountProduct.ReopenFeesValue.GetFormatedValue(currentAccountProduct.Currency.UseCents)), currentAccountProduct.ReopenFeesType == "Flat" ? currentAccountProduct.Currency.Code : "%");
+
+                    tbReopenFees.Text = currentAccountProduct.ReopenFeesValue.GetFormatedValue(currentAccountProduct.Currency.UseCents);
+                    tbReopenFees.Enabled = false;
+                }
+                else
+                {
+                    lblCAReopenFeesMinMax.Text = string.Format("{0}{1} {4}\r\n{2}{3} {4}",
+                          "Min ", (currentAccountProduct.ReopenFeesMin.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
+                          "Max ", (currentAccountProduct.ReopenFeesMax.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
+                          currentAccountProduct.ReopenFeesType == "Flat" ? currentAccountProduct.Currency.Code : "%");
+
+
+                }
 
             }
             else if (btnCloseAccount.Text == "Reopen Account")
             {
                
                 _currentAccountProductHoldings.Status = "Reopened";
-                _currentAccountProductHoldings.ReopenFees = ServicesHelper.ConvertStringToNullableDecimal(tbReopenFees.Text) + _currentAccountProductHoldings.ReopenFees;
+                _currentAccountProductHoldings.ReopenFees = ServicesHelper.ConvertStringToNullableDecimal(tbReopenFees.Text);
                 //_currentAccountProductHoldings.OpenDate = DateTime.Today;
-                btnCloseAccount.Enabled = false;
+               
                 if (currentAccountProduct.ReopenFeesType == "Flat")
                 {
                     rbFlatReopenFees.Checked = true;
@@ -9993,7 +10074,10 @@ namespace OpenCBS.GUI.Clients
                 _currentAccountProductHoldings.CurrentAccountProduct = currentAccountProduct;
                 _currentAccountProductHoldingService.UpdateCurrentAccountProductHolding(_currentAccountProductHoldings, tbCAProductCode.Text);
 
+                _currentAccountProductHoldingService.CalculateReopenFees(_currentAccountProductHoldings);
+                
                 MessageBox.Show(tbCAProductCode.Text + " Successfully Reopened.");
+                btnCloseAccount.Enabled = false;
             }
 
              }
@@ -10179,6 +10263,7 @@ namespace OpenCBS.GUI.Clients
                               currentAccountProduct.CommitmentFeeType == "Flat" ? currentAccountProduct.Currency.Code : "%");
                     }
 
+
                     if (currentAccountProduct.ReopenFeesValue.HasValue)
                     {
 
@@ -10198,7 +10283,6 @@ namespace OpenCBS.GUI.Clients
 
                     }
 
-
                     if (currentAccountProduct.ClosingFeesValue.HasValue)
                     {
 
@@ -10215,6 +10299,10 @@ namespace OpenCBS.GUI.Clients
                               "Max ", (currentAccountProduct.ClosingFeesMax.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
                               currentAccountProduct.ClosingFeesType == "Flat" ? currentAccountProduct.Currency.Code : "%");
                     }
+                    
+
+
+                   
 
                     //    cbCAInitialAmountPaymentMethod.SelectedIndex = 0;
 
@@ -10596,10 +10684,10 @@ namespace OpenCBS.GUI.Clients
 
         private void button3_Click(object sender, EventArgs e)
         {
-            DateTime calculationDate = new DateTime(2014, 08, 13);
-            
+            DateTime calculationDate = new DateTime(2014, 07, 31);
+
             CurrentAccountProductHoldingServices _currentAccountProductHoldingService = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
-            
+
             _currentAccountProductHoldingService.CurrentAccountInterestCalculation(calculationDate, _currentAccountProductHoldings);
         }
 

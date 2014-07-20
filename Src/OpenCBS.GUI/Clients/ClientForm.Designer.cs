@@ -600,6 +600,7 @@ namespace OpenCBS.GUI.Clients
             this.tbInterestRate = new System.Windows.Forms.TextBox();
             this.lbInterestRateMin = new System.Windows.Forms.Label();
             this.tabPageCurrentAccount = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.lblCAInterestRateMinMax = new System.Windows.Forms.Label();
             this.lblCAInitialAmountMinMax = new System.Windows.Forms.Label();
             this.checkBoxOverdraftApplied = new System.Windows.Forms.CheckBox();
@@ -757,7 +758,7 @@ namespace OpenCBS.GUI.Clients
             this.menuPendingSavingEvents = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemConfirmPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCancelPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
-            this.button3 = new System.Windows.Forms.Button();
+            this.columnHeader39 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).BeginInit();
             this.splitContainer10.Panel1.SuspendLayout();
             this.splitContainer10.Panel2.SuspendLayout();
@@ -4742,6 +4743,13 @@ namespace OpenCBS.GUI.Clients
             this.tabPageCurrentAccount.Name = "tabPageCurrentAccount";
             this.tabPageCurrentAccount.Click += new System.EventHandler(this.tabPageCurrentAccount_Click);
             // 
+            // button3
+            // 
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.Name = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // lblCAInterestRateMinMax
             // 
             resources.ApplyResources(this.lblCAInterestRateMinMax, "lblCAInterestRateMinMax");
@@ -5216,6 +5224,7 @@ namespace OpenCBS.GUI.Clients
             // listViewFeeTransactions
             // 
             this.listViewFeeTransactions.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader39,
             this.chToAccount,
             this.chAmount,
             this.chFeeDate,
@@ -5756,12 +5765,9 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.menuItemCancelPendingSavingEvent, "menuItemCancelPendingSavingEvent");
             this.menuItemCancelPendingSavingEvent.Click += new System.EventHandler(this.menuItemCancelPendingSavingEvent_Click);
             // 
-            // button3
+            // columnHeader39
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            resources.ApplyResources(this.columnHeader39, "columnHeader39");
             // 
             // ClientForm
             // 
@@ -6643,5 +6649,6 @@ namespace OpenCBS.GUI.Clients
         private Label lblFDInitialAccount;
         private Label label47;
         private Button button3;
+        private ColumnHeader columnHeader39;
     }
 }

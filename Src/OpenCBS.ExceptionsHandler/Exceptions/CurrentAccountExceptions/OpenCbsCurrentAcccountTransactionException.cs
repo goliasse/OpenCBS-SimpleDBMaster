@@ -81,6 +81,30 @@ namespace OpenCBS.ExceptionsHandler
                 case OpenCbsCurrentAcccountTransactionExceptionEnum.AmountIsInvalid:
                     returned = "AmountIsInvalid";
                     break;
+
+                case OpenCbsCurrentAcccountTransactionExceptionEnum.PurposeOfTransferIsBlank:
+                    returned = "PurposeOfTransferIsBlank";
+                    break;
+
+                case OpenCbsCurrentAcccountTransactionExceptionEnum.FromAndToAccountIsSame:
+                    returned = "FromAndToAccountIsSame";
+                    break;
+
+                case OpenCbsCurrentAcccountTransactionExceptionEnum.CATAmountIsBlank:
+                    returned = "CATAmountIsBlank";
+                    break;
+
+                case OpenCbsCurrentAcccountTransactionExceptionEnum.CATSelectATransactionType:
+                    returned = "CATSelectATransactionType";
+                    break;
+
+                case OpenCbsCurrentAcccountTransactionExceptionEnum.CATPurposeOfTransferIsBlank:
+                    returned = "CATPurposeOfTransferIsBlank";
+                    break;
+
+                case OpenCbsCurrentAcccountTransactionExceptionEnum.CATBalanceLessThanMinBalance:
+                    returned = "CATBalanceLessThanMinBalance";
+                    break;
             }
             return returned;
         }
@@ -97,7 +121,13 @@ namespace OpenCBS.ExceptionsHandler
         TransactionMakerNotSelected,
         TransactionCheckerNotSelected,
         ToAndFromAccountIsInvalid,
-        AmountIsInvalid
+        AmountIsInvalid,
+        PurposeOfTransferIsBlank,
+        FromAndToAccountIsSame,
+        CATAmountIsBlank,
+        CATSelectATransactionType,
+        CATPurposeOfTransferIsBlank,
+        CATBalanceLessThanMinBalance
 
     }
     

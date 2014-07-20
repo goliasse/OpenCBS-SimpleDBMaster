@@ -37,6 +37,7 @@ namespace OpenCBS.GUI.Clients
             cbTransactionType.Items.Add("Cash");
             cbTransactionType.Items.Add("Cheque");
             cbTransactionType.Items.Add("Transfer");
+            cbTransactionType.Items.Add("Fee");
             cbTransactionType.SelectedIndex = 0;
 
 
@@ -48,7 +49,8 @@ namespace OpenCBS.GUI.Clients
             InitializeComponent();
             InitializeMakerAndChecker();
             InitializeFromAndToAccount();
-            
+            InitializeTransactionType();
+
             CurrentAccountTransactionService _currentAccountTransactionService = ServicesProvider.GetInstance().GetCurrentAccountTransactionService();
             CurrentAccountTransactions currentAccountTransactions = _currentAccountTransactionService.FetchTransaction(transactionId);
             btnMakeTransaction.Visible = false;
@@ -173,31 +175,64 @@ namespace OpenCBS.GUI.Clients
            
             currentAccountTransactions.ToAccount = cbToAccount.Text;
 
-            currentAccountTransactions.Amount = Convert.ToDecimal(tbAmount.Text);
+            currentAccountTransactions.Amount = ServicesHelper.ConvertStringToNullableDecimal(tbAmount.Text);
             currentAccountTransactions.Maker = cbMaker.SelectedItem.ToString();
             currentAccountTransactions.Checker = cbChecker.SelectedItem.ToString();
             currentAccountTransactions.TransactionDate = DateTime.Today;
             currentAccountTransactions.PurposeOfTransfer = tbPurpose.Text;
             string[] data = null;
             string productCode = "";
+            CurrentAccountProductHoldingServices _currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
+            CurrentAccountProductHoldings currentAccountProductHoldings = null;
             if (currentAccountTransactions.TransactionType == "Transfer")
             {
-                data = currentAccountTransactions.FromAccount.Split('/');
-                productCode = data[1];
+                if (currentAccountTransactions.FromAccount != "")
+                {
+                    data = currentAccountTransactions.FromAccount.Split('/');
+                    productCode = data[1];
+                    
+                    currentAccountProductHoldings = _currentAccountProductHoldingServices.FetchProduct(currentAccountTransactions.FromAccount);
+                }
             }
             else
             {
-                data = currentAccountTransactions.ToAccount.Split('/');
-                productCode = data[1];
+                if (currentAccountTransactions.TransactionMode == "Debit")
+                {
+                    currentAccountProductHoldings = _currentAccountProductHoldingServices.FetchProduct(currentAccountTransactions.FromAccount);
+                }
+                if (currentAccountTransactions.ToAccount != "")
+                {
+                    data = currentAccountTransactions.ToAccount.Split('/');
+                    productCode = data[1];
+                }
             }
+
+            if (string.IsNullOrEmpty(currentAccountTransactions.FromAccount))
+                throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.FromAccountNotSelected);
+
+            if (string.IsNullOrEmpty(currentAccountTransactions.ToAccount))
+                throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.ToAccountNotSelected);
+
             CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
             CurrentAccountProduct _currentAccountProduct = _currentAccountProductService.FetchProduct(productCode);
+
+            if (currentAccountTransactions.TransactionType == OCurrentAccount.SelectPaymentMethodDefault)
+                throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.CATSelectATransactionType);
+
             CurrentAccountTransactionFees _currentAccountTransactionFees = _currentAccountProductService.FetchTransactionFee(currentAccountTransactions.TransactionType, currentAccountTransactions.TransactionMode, _currentAccountProduct.Id);
             CurrentAccountTransactionService _currentAccountTransactionService = ServicesProvider.GetInstance().GetCurrentAccountTransactionService();
 
-            int ret = _currentAccountTransactionService.SaveCurrentAccountTransactions(currentAccountTransactions, _currentAccountTransactionFees);
+            int ret = _currentAccountTransactionService.MakeATransaction(currentAccountTransactions, _currentAccountTransactionFees, _currentAccountProduct, currentAccountProductHoldings);
             if (ret >= 1)
-                MessageBox.Show("Transaction Successful.");
+                MessageBox.Show("Transaction Successfull.");
+            
+            else if (ret == -1)
+                MessageBox.Show("Balance is less than amount to be withdrawn and account does not have Overdraft facility enabled.");
+
+            
+                
+            
+
 
             }
             catch (Exception ex)

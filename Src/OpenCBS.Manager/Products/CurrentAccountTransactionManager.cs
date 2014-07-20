@@ -14,16 +14,16 @@ namespace OpenCBS.Manager.Products
 {
     public class CurrentAccountTransactionManager : Manager
     {
-       
+        CurrentAccountProductHoldingManager currentAccountProductHoldingManager = null;
         public CurrentAccountTransactionManager(User pUser) : base(pUser)
         {
-           
+           // currentAccountProductHoldingManager = new  CurrentAccountProductHoldingManager(pUser);
         }
 
         public CurrentAccountTransactionManager(string testDB)
             : base(testDB)
         {
-            
+           // currentAccountProductHoldingManager = new CurrentAccountProductHoldingManager(testDB);
         }
 
 
@@ -62,7 +62,7 @@ namespace OpenCBS.Manager.Products
             {
 
 
-                SetProduct(c, currentAccountTransactions, currentAccountTransactionFees);
+                SetProduct(c, currentAccountTransactions);
                 currentAccountTransactions.Id = Convert.ToInt32(c.ExecuteScalar());
                 decimal transactionFee = CalculateTransactionFees(currentAccountTransactions, currentAccountTransactionFees);
                 UpdateCurrentAccountTransactions(transactionFee, currentAccountTransactions.Id);
@@ -73,7 +73,7 @@ namespace OpenCBS.Manager.Products
         }
 
 
-        public void SetProduct(OpenCbsCommand c, CurrentAccountTransactions currentAccountTransactions, CurrentAccountTransactionFees currentAccountTransactionFees)
+        public void SetProduct(OpenCbsCommand c, CurrentAccountTransactions currentAccountTransactions)
         {
         c.AddParam("@fromAccount",currentAccountTransactions.FromAccount);
         c.AddParam("@toAccount",currentAccountTransactions.ToAccount);
@@ -108,38 +108,46 @@ namespace OpenCBS.Manager.Products
                 feeTransaction.FromAccount = currentAccountTransactions.FromAccount;
                 feeTransaction.Maker = "Fees";
                 feeTransaction.PurposeOfTransfer = "Transaction fee applied for " + currentAccountTransactions.Id;
-                feeTransaction.ToAccount = "DEF/Test1-CA/1/24"; // TODO: Fetch To_branch_account_number from From_Account 
+                feeTransaction.ToAccount = FetchBranchAccountNumber(currentAccountTransactions.FromAccount);  
                 feeTransaction.TransactionDate = DateTime.Today;
                 feeTransaction.TransactionFees = -1;
                 feeTransaction.TransactionMode = "Debit";
                 feeTransaction.TransactionType = "Fee";
-                // TODO: Debit Transaction Fee
+                DebitFeeTransaction(feeTransaction);
 
             }
 
             
-            //If Transaction_Fee_Type is Flat then
-            //Fetch Transaction_Fee
-            //Fee_Transaction_Amount = Transaction_Fee
-            //    Else
-            //        Fetch Transaction_Fee
-            //        Fee_Transaction_Amount = Transaction Fee * Transaction_Amount/100
-            //        Fee_From_Account = Transaction_From_Account	
-            //        Fetch From_Branch from Transaction_From_Account
-            //        Fetch From_Branch_Account_Number from Branch table
-            //        Fee_To_Account = From_Branch_Account_Number
-            //        Fee_Purpose Of Transfer = Transaction fee applied for <Transaction ID>
-            //        Fee_Transaction_Date = Today’s Date
-            //        Fee_Transaction_Maker = Batch Process
-            //        Fee_Transaction_Checker = Batch Process
-            //        Fee_Transaction_Type = Fee
-            //        Fee_Transaction_Mode = Debit
-            //        Debit Transaction fee
-            //    End If
-            //End If
+          
             return feeTransaction.Amount.Value;
         }
 
+        public string FetchBranchAccountNumber(string productCode)
+        {
+            string[] data = productCode.Split('/');
+            string q = "SELECT branch_account_number from Branches where code = @branchCode";
+            string branchAccountNumber = "";
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@branchCode", data[0]);
+
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+                    if (r == null || r.Empty) return null;
+
+                    while (r.Read())
+                    {
+
+                        branchAccountNumber = r.GetString("branch_account_number");
+
+                    }
+                }
+            }
+
+            return branchAccountNumber;
+
+        }
 
         public CurrentAccountTransactions GetProduct(OpenCbsReader r)
 {
@@ -155,6 +163,8 @@ currentAccountTransactions.TransactionFees = r.GetNullDecimal("transaction_fees"
 currentAccountTransactions.Maker = r.GetString("maker");
 currentAccountTransactions.Checker = r.GetString("checker");
 currentAccountTransactions.PurposeOfTransfer = r.GetString("purpose_of_transfer");
+currentAccountTransactions.FromBalance = r.GetDecimal("from_account_balance");
+currentAccountTransactions.ToBalance = r.GetDecimal("to_account_balance");
 
 return currentAccountTransactions;
 }
@@ -226,7 +236,7 @@ public CurrentAccountTransactions FetchTransaction(int transactionId)
 public CurrentAccountTransactions FetchMonthClosingBalance(int calculationMonth, string contractCode)
 {
     CurrentAccountTransactions currentAccountTransactions = null;
-    string q = @"select top (1) * from CurrentAccountTransactions Where (From_Acount = @contractCode OR To_Account = @contractCode) AND DATEPART(mm, transaction_date) = (@month-1) order by Transaction_Date DESC";
+    string q = @"select top (1) * from CurrentAccountTransactions Where (From_Account = @contractCode OR To_Account = @contractCode) AND DATEPART(mm, transaction_date) = @month order by Transaction_Date DESC";
     using (SqlConnection conn = GetConnection())
     using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
     {
@@ -290,6 +300,128 @@ c.AddParam("@accountNumber", accountNumber);
             }
 
             return currentAccountTransactionsList;
+        }
+
+
+public List<CurrentAccountTransactions> FetchFeeTransactions(string accountNumber, string maker)
+{
+    List<CurrentAccountTransactions> currentAccountTransactionsList = new List<CurrentAccountTransactions>();
+
+
+    string q = @"SELECT
+[id],
+[from_account],
+[to_account],
+[amount],
+[transaction_date],
+[transaction_mode],
+[transaction_type],
+[transaction_fees],
+[maker],
+[checker],
+[purpose_of_transfer]
+
+FROM [dbo].[CurrentAccountTransactions]
+WHERE from_account = @accountNumber OR to_account = @accountNumber
+AND maker = @maker";
+
+
+
+
+    using (SqlConnection conn = GetConnection())
+    using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+    {
+        c.AddParam("@accountNumber", accountNumber);
+        c.AddParam("@maker", maker);
+        using (OpenCbsReader r = c.ExecuteReader())
+        {
+            if (r == null || r.Empty) return new List<CurrentAccountTransactions>();
+            while (r.Read())
+            {
+
+
+                CurrentAccountTransactions transaction = FetchTransaction(r.GetInt("id"));
+
+                currentAccountTransactionsList.Add(transaction);
+            }
+        }
+    }
+
+    return currentAccountTransactionsList;
+}
+
+
+
+        public int MakeATransaction(CurrentAccountTransactions currentAccountTransactions, CurrentAccountTransactionFees currentAccountTransactionFees)
+        {
+            int ret = -99;
+            using (SqlConnection conn = GetConnection())
+            {
+                using (OpenCbsCommand command = new OpenCbsCommand("BalanceCalculation", conn).AsStoredProcedure())
+                {
+                    
+                    command.AddParam("@transaction_mode",currentAccountTransactions.TransactionMode);
+                    command.AddParam("@transaction_type",currentAccountTransactions.TransactionType);
+                    command.AddParam("@to_account",currentAccountTransactions.ToAccount);
+                    command.AddParam("@from_account",currentAccountTransactions.FromAccount);
+                    command.AddParam("@amount",currentAccountTransactions.Amount);
+                    command.AddParam("@transaction_date",currentAccountTransactions.TransactionDate);
+                    command.AddParam("@transaction_fees",0);
+                    command.AddParam("@maker",currentAccountTransactions.Maker);
+                    command.AddParam("@checker",currentAccountTransactions.Checker);
+                    command.AddParam("@purpose_of_transfer", currentAccountTransactions.PurposeOfTransfer);
+
+                    ret = Convert.ToInt32(command.ExecuteScalar());
+                    currentAccountTransactions.Id = ret;
+                    decimal transactionFee = 0;
+                    if(currentAccountTransactionFees!=null)
+                    transactionFee = CalculateTransactionFees(currentAccountTransactions, currentAccountTransactionFees);
+                    UpdateCurrentAccountTransactions(transactionFee, ret);
+
+                            
+                    
+                }
+            }
+
+            return ret;
+        }
+
+
+public int DebitFeeTransaction(CurrentAccountTransactions currentAccountTransactions)
+        {
+            int ret = -99;
+            using (SqlConnection conn = GetConnection())
+            {
+                using (OpenCbsCommand command = new OpenCbsCommand("DebitFeeTransaction", conn).AsStoredProcedure())
+                {
+                    command.AddParam("@transaction_mode", currentAccountTransactions.TransactionMode);
+                    command.AddParam("@transaction_type", currentAccountTransactions.TransactionType);
+                    command.AddParam("@to_account", currentAccountTransactions.ToAccount);
+                    command.AddParam("@from_account", currentAccountTransactions.FromAccount);
+                    command.AddParam("@amount", currentAccountTransactions.Amount);
+                    command.AddParam("@transaction_date", currentAccountTransactions.TransactionDate);
+                    command.AddParam("@transaction_fees", 0);
+                    command.AddParam("@maker", currentAccountTransactions.Maker);
+                    command.AddParam("@checker", currentAccountTransactions.Checker);
+                    command.AddParam("@purpose_of_transfer", currentAccountTransactions.PurposeOfTransfer);
+
+        
+
+
+
+                    using (OpenCbsReader reader = command.ExecuteReader())
+                    {
+                        if (reader == null || reader.Empty) return 0;
+
+                        while (reader.Read())
+                        {
+                            ret = reader.GetInt("ret");
+                            
+                        }
+                        return ret;
+                    }
+                }
+            }
         }
 
     }

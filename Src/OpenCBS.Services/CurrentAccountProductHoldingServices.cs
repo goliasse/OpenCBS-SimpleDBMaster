@@ -112,7 +112,7 @@ namespace OpenCBS.Services
                if (!productHolding.ClosingFees.HasValue)
                    throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CAPHCloseFeeIsEmpty);
 
-               if (!IsManagementFessCorrect(productHolding, product))
+               if (!IsCloseFessCorrect(productHolding, product))
                    throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CAPHCloseFeeIsInvalid);
 
                if (string.IsNullOrEmpty(productHolding.FinalAmountPaymentMethod))
