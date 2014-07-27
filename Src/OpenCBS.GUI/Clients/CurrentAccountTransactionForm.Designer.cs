@@ -51,6 +51,8 @@
             this.tbPurpose = new System.Windows.Forms.TextBox();
             this.tbTransactionDate = new System.Windows.Forms.TextBox();
             this.lblTransactionDate = new System.Windows.Forms.Label();
+            this.lblFromAccountBalance = new System.Windows.Forms.Label();
+            this.lblToAccountBalance = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblAmountTransferMethod
@@ -69,7 +71,7 @@
             this.rbDebit.AutoSize = true;
             this.rbDebit.Font = new System.Drawing.Font("Arial", 9.75F);
             this.rbDebit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rbDebit.Location = new System.Drawing.Point(345, 30);
+            this.rbDebit.Location = new System.Drawing.Point(319, 30);
             this.rbDebit.Name = "rbDebit";
             this.rbDebit.Size = new System.Drawing.Size(56, 20);
             this.rbDebit.TabIndex = 32;
@@ -82,7 +84,7 @@
             this.rbCredit.Checked = true;
             this.rbCredit.Font = new System.Drawing.Font("Arial", 9.75F);
             this.rbCredit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.rbCredit.Location = new System.Drawing.Point(252, 30);
+            this.rbCredit.Location = new System.Drawing.Point(226, 30);
             this.rbCredit.Name = "rbCredit";
             this.rbCredit.Size = new System.Drawing.Size(60, 20);
             this.rbCredit.TabIndex = 33;
@@ -160,7 +162,7 @@
             // tbTransactionFees
             // 
             this.tbTransactionFees.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.tbTransactionFees.Location = new System.Drawing.Point(252, 267);
+            this.tbTransactionFees.Location = new System.Drawing.Point(226, 267);
             this.tbTransactionFees.Name = "tbTransactionFees";
             this.tbTransactionFees.Size = new System.Drawing.Size(149, 22);
             this.tbTransactionFees.TabIndex = 42;
@@ -169,7 +171,7 @@
             // tbAmount
             // 
             this.tbAmount.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.tbAmount.Location = new System.Drawing.Point(252, 148);
+            this.tbAmount.Location = new System.Drawing.Point(226, 148);
             this.tbAmount.Name = "tbAmount";
             this.tbAmount.Size = new System.Drawing.Size(149, 22);
             this.tbAmount.TabIndex = 43;
@@ -179,26 +181,28 @@
             // 
             this.cbFromAccount.Font = new System.Drawing.Font("Arial", 9.75F);
             this.cbFromAccount.FormattingEnabled = true;
-            this.cbFromAccount.Location = new System.Drawing.Point(252, 88);
+            this.cbFromAccount.Location = new System.Drawing.Point(226, 88);
             this.cbFromAccount.Name = "cbFromAccount";
             this.cbFromAccount.Size = new System.Drawing.Size(149, 24);
             this.cbFromAccount.TabIndex = 44;
+            this.cbFromAccount.SelectedIndexChanged += new System.EventHandler(this.cbFromAccount_SelectedIndexChanged);
             // 
             // cbToAccount
             // 
             this.cbToAccount.Font = new System.Drawing.Font("Arial", 9.75F);
             this.cbToAccount.FormattingEnabled = true;
-            this.cbToAccount.Location = new System.Drawing.Point(252, 118);
+            this.cbToAccount.Location = new System.Drawing.Point(226, 118);
             this.cbToAccount.Name = "cbToAccount";
             this.cbToAccount.Size = new System.Drawing.Size(149, 24);
             this.cbToAccount.TabIndex = 45;
+            this.cbToAccount.SelectedIndexChanged += new System.EventHandler(this.cbToAccount_SelectedIndexChanged);
             // 
             // cbMaker
             // 
             this.cbMaker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaker.Font = new System.Drawing.Font("Arial", 9.75F);
             this.cbMaker.FormattingEnabled = true;
-            this.cbMaker.Location = new System.Drawing.Point(252, 179);
+            this.cbMaker.Location = new System.Drawing.Point(226, 179);
             this.cbMaker.Name = "cbMaker";
             this.cbMaker.Size = new System.Drawing.Size(149, 24);
             this.cbMaker.TabIndex = 48;
@@ -208,7 +212,7 @@
             this.cbChecker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbChecker.Font = new System.Drawing.Font("Arial", 9.75F);
             this.cbChecker.FormattingEnabled = true;
-            this.cbChecker.Location = new System.Drawing.Point(252, 209);
+            this.cbChecker.Location = new System.Drawing.Point(226, 209);
             this.cbChecker.Name = "cbChecker";
             this.cbChecker.Size = new System.Drawing.Size(149, 24);
             this.cbChecker.TabIndex = 49;
@@ -228,7 +232,7 @@
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnClose.Location = new System.Drawing.Point(252, 321);
+            this.btnClose.Location = new System.Drawing.Point(226, 321);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(115, 28);
             this.btnClose.TabIndex = 51;
@@ -245,7 +249,7 @@
             "Cash",
             "Cheque",
             "Transfer"});
-            this.cbTransactionType.Location = new System.Drawing.Point(252, 56);
+            this.cbTransactionType.Location = new System.Drawing.Point(226, 56);
             this.cbTransactionType.Name = "cbTransactionType";
             this.cbTransactionType.Size = new System.Drawing.Size(149, 24);
             this.cbTransactionType.TabIndex = 53;
@@ -276,7 +280,7 @@
             // tbPurpose
             // 
             this.tbPurpose.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.tbPurpose.Location = new System.Drawing.Point(252, 238);
+            this.tbPurpose.Location = new System.Drawing.Point(226, 238);
             this.tbPurpose.Name = "tbPurpose";
             this.tbPurpose.Size = new System.Drawing.Size(149, 22);
             this.tbPurpose.TabIndex = 55;
@@ -285,7 +289,7 @@
             // tbTransactionDate
             // 
             this.tbTransactionDate.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.tbTransactionDate.Location = new System.Drawing.Point(252, 293);
+            this.tbTransactionDate.Location = new System.Drawing.Point(226, 293);
             this.tbTransactionDate.Name = "tbTransactionDate";
             this.tbTransactionDate.Size = new System.Drawing.Size(149, 22);
             this.tbTransactionDate.TabIndex = 57;
@@ -304,13 +308,37 @@
             this.lblTransactionDate.Text = "Transaction Date:";
             this.lblTransactionDate.Visible = false;
             // 
+            // lblFromAccountBalance
+            // 
+            this.lblFromAccountBalance.Font = new System.Drawing.Font("Arial", 7F);
+            this.lblFromAccountBalance.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblFromAccountBalance.Location = new System.Drawing.Point(381, 88);
+            this.lblFromAccountBalance.Name = "lblFromAccountBalance";
+            this.lblFromAccountBalance.Size = new System.Drawing.Size(136, 29);
+            this.lblFromAccountBalance.TabIndex = 64;
+            this.lblFromAccountBalance.Text = "...";
+            this.lblFromAccountBalance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblToAccountBalance
+            // 
+            this.lblToAccountBalance.Font = new System.Drawing.Font("Arial", 7F);
+            this.lblToAccountBalance.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblToAccountBalance.Location = new System.Drawing.Point(381, 118);
+            this.lblToAccountBalance.Name = "lblToAccountBalance";
+            this.lblToAccountBalance.Size = new System.Drawing.Size(136, 29);
+            this.lblToAccountBalance.TabIndex = 65;
+            this.lblToAccountBalance.Text = "...";
+            this.lblToAccountBalance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // CurrentAccountTransactionForm
             // 
             this.AcceptButton = this.btnMakeTransaction;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(493, 378);
+            this.ClientSize = new System.Drawing.Size(517, 378);
+            this.Controls.Add(this.lblToAccountBalance);
+            this.Controls.Add(this.lblFromAccountBalance);
             this.Controls.Add(this.tbTransactionDate);
             this.Controls.Add(this.lblTransactionDate);
             this.Controls.Add(this.tbPurpose);
@@ -371,5 +399,7 @@
         private System.Windows.Forms.TextBox tbPurpose;
         private System.Windows.Forms.TextBox tbTransactionDate;
         private System.Windows.Forms.Label lblTransactionDate;
+        private System.Windows.Forms.Label lblFromAccountBalance;
+        private System.Windows.Forms.Label lblToAccountBalance;
     }
 }

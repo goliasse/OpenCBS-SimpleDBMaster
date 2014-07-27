@@ -10688,7 +10688,7 @@ namespace OpenCBS.GUI.Clients
 
             CurrentAccountProductHoldingServices _currentAccountProductHoldingService = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
 
-            _currentAccountProductHoldingService.CurrentAccountInterestCalculation(calculationDate, _currentAccountProductHoldings);
+            _currentAccountProductHoldingService.CurrentAccountOverdraftInterestCalculation(calculationDate, _currentAccountProductHoldings);
         }
 
         

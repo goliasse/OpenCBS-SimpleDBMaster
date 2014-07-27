@@ -324,5 +324,34 @@ namespace OpenCBS.GUI.Clients
         {
             KeyPressControl(e);
         }
+
+        private void cbFromAccount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((cbTransactionType.SelectedItem.ToString() == "Transfer") && (cbFromAccount.Text != ""))
+            {
+                CurrentAccountProductHoldingServices _currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
+                CurrentAccountProductHoldings currentAccountProductHoldings = _currentAccountProductHoldingServices.FetchProduct(cbFromAccount.Text);
+                CurrentAccountProduct currentAccountProduct = currentAccountProductHoldings.CurrentAccountProduct;
+                lblFromAccountBalance.Text = string.Format("{0}{1} {4}\r\n{2}{3} {4}",
+                                  "Balance ", (currentAccountProductHoldings.Balance.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
+                                  "Overdraft ", (currentAccountProductHoldings.OverdraftLimit.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
+                                  currentAccountProduct.Currency.Code);
+            }
+                       
+        }
+
+        private void cbToAccount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((cbTransactionType.SelectedItem.ToString() == "Transfer") && (cbToAccount.Text != ""))
+            {
+                CurrentAccountProductHoldingServices _currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
+                CurrentAccountProductHoldings currentAccountProductHoldings = _currentAccountProductHoldingServices.FetchProduct(cbToAccount.Text);
+                CurrentAccountProduct currentAccountProduct = currentAccountProductHoldings.CurrentAccountProduct;
+                lblToAccountBalance.Text = string.Format("{0}{1} {4}\r\n{2}{3} {4}",
+                                  "Balance ", (currentAccountProductHoldings.Balance.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
+                                  "Overdraft ", (currentAccountProductHoldings.OverdraftLimit.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
+                                  currentAccountProduct.Currency.Code);
+            }
+        }
     }
 }

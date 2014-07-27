@@ -14,16 +14,19 @@ namespace OpenCBS.Manager.Products
 {
     public class CurrentAccountProductHoldingManager : Manager
     {
+        CurrentAccountProductManager currentAccountProductManager = null;
          CurrentAccountTransactionManager currentAccountTransactionManager = null;
          public CurrentAccountProductHoldingManager(User pUser) : base(pUser)
         {
               currentAccountTransactionManager = new CurrentAccountTransactionManager(pUser);
+              currentAccountProductManager = new CurrentAccountProductManager(pUser);
         }
 
          public CurrentAccountProductHoldingManager(string testDB)
              : base(testDB)
         {
              currentAccountTransactionManager = new CurrentAccountTransactionManager(testDB);
+             currentAccountProductManager = new CurrentAccountProductManager(testDB);
         }
 
 
@@ -814,9 +817,10 @@ currentAccountProductHolding.ClientType =r.GetString("client_type");
 currentAccountProductHolding.CurrentAccountContractCode =r.GetString("current_account_contract_code");
 
 currentAccountProductHolding.CurrentAccountProduct = new CurrentAccountProduct();
-currentAccountProductHolding.CurrentAccountProduct.Id = r.GetInt("current_account_product_id");
-currentAccountProductHolding.CurrentAccountProduct.CurrentAccountProductName = r.GetString("current_account_product_name");
-currentAccountProductHolding.CurrentAccountProduct.CurrentAccountProductCode = r.GetString("current_account_product_code");
+currentAccountProductHolding.CurrentAccountProduct = currentAccountProductManager.FetchProduct(r.GetInt("current_account_product_id"));
+//currentAccountProductHolding.CurrentAccountProduct.Id = r.GetInt("current_account_product_id");
+//currentAccountProductHolding.CurrentAccountProduct.CurrentAccountProductName = r.GetString("current_account_product_name");
+//currentAccountProductHolding.CurrentAccountProduct.CurrentAccountProductCode = r.GetString("current_account_product_code");
 
 currentAccountProductHolding.CurrentAccountProduct.Currency = new Currency()
 {
@@ -922,9 +926,9 @@ return currentAccountProductHolding;
         {
             string contractCode = productHolding.CurrentAccountContractCode;
 
-            string q = @" Select From_Account As Account, Transaction_Date, Amount, From_Account_Balance as Balance From CurrentAccountTransactions Where From_Account = @contractCode And From_Account_Balance < 0 And Month(Transaction_Date) = @month
+            string q = @" Select From_Account As Account, Transaction_Date, Amount, From_Account_Balance as Balance From CurrentAccountTransactions Where From_Account = @contractCode  And Month(Transaction_Date) = @month
                            UNION
-                           Select To_Account As Account, Transaction_Date, Amount, To_Account_Balance as Balance From CurrentAccountTransactions Where To_Account = @contractCode And To_Account_Balance < 0 And Month(Transaction_Date) = @month order By Transaction_Date";
+                           Select To_Account As Account, Transaction_Date, Amount, To_Account_Balance as Balance From CurrentAccountTransactions Where To_Account = @contractCode And Month(Transaction_Date) = @month order By Transaction_Date";
 
             List<TransactionSearchResult> listTransaction = new List<TransactionSearchResult>();
             listTransaction = SearchTransaction(q, calculationDate, contractCode);
@@ -946,7 +950,7 @@ return currentAccountProductHolding;
                 openingBalanceTransaction.Amount = currentAccountTransactions.Amount.Value;
                 openingBalanceTransaction.Account = contractCode;
                 openingBalanceTransaction.Balance = openingBalance;
-                openingBalanceTransaction.TransactionDate = currentAccountTransactions.TransactionDate;
+                
 
                 if (openingBalance < 0)
                 {
@@ -971,14 +975,16 @@ return currentAccountProductHolding;
                 closingBalanceTransaction.Amount = currentAccountTransactions.Amount.Value;
                 closingBalanceTransaction.Account = contractCode;
                 closingBalanceTransaction.Balance = closingBalance;
-                closingBalanceTransaction.TransactionDate = currentAccountTransactions.TransactionDate;
+              
 
                 if (closingBalance < 0)
                 {
-                    if (productHolding.CloseDate != DateTime.MaxValue)
-                        closingBalanceTransaction.TransactionDate = new DateTime(calculationDate.Year, calculationDate.Month, DateTime.DaysInMonth(calculationDate.Year, calculationDate.Month));
-                    else
+
+                    if ((productHolding.Status == "Closed") && (productHolding.CloseDate.Month == calculationDate.Month) && (productHolding.CloseDate.Year == calculationDate.Year))
                         closingBalanceTransaction.TransactionDate = productHolding.CloseDate;
+                    else
+                        closingBalanceTransaction.TransactionDate = new DateTime(calculationDate.Year, calculationDate.Month, DateTime.DaysInMonth(calculationDate.Year, calculationDate.Month));
+
                     listTransaction.Insert(listTransaction.Count, closingBalanceTransaction);
                 }
             }
@@ -988,7 +994,7 @@ return currentAccountProductHolding;
 
             decimal overdraftInterest = 0;
 
-            for (int i = 0; i < listTransaction.Count - 1; i++)
+            for (int i = 0; i < listTransaction.Count-1; i++)
             {
                 TransactionSearchResult firstTransaction = listTransaction[i];
                 TransactionSearchResult secondTransaction = listTransaction[i + 1];
@@ -997,7 +1003,7 @@ return currentAccountProductHolding;
                     double effectiveDays = (secondTransaction.TransactionDate - firstTransaction.TransactionDate).TotalDays;
                     decimal effectiveBalance = firstTransaction.Balance;
                     double overdraftInterestRate = productHolding.InterestRate.Value;
-                    if (i != (listTransaction.Count - 1))
+                    if (i != (listTransaction.Count - 2))
                         overdraftInterest = overdraftInterest + ((effectiveBalance * (decimal)overdraftInterestRate * (decimal)effectiveDays) / (100 * 365));
                     else
                         overdraftInterest = overdraftInterest + ((effectiveBalance * (decimal)overdraftInterestRate * ((decimal)effectiveDays + 1)) / (100 * 365));
@@ -1007,15 +1013,15 @@ return currentAccountProductHolding;
 
 
             CurrentAccountTransactions interestTransaction = new CurrentAccountTransactions();
-            interestTransaction.Amount = overdraftInterest;
+            interestTransaction.Amount = -overdraftInterest;
             interestTransaction.Checker = "Interest";
             interestTransaction.FromAccount = productHolding.CurrentAccountContractCode;
             interestTransaction.Maker = "Interest";
-            interestTransaction.PurposeOfTransfer = "Regular interest credit for month " + calculationDate.Month;
+            interestTransaction.PurposeOfTransfer = "Overdraft interest debit for month " + calculationDate.Month;
             interestTransaction.ToAccount = FetchBranchAccountNumber(productHolding.CurrentAccountContractCode);
             interestTransaction.TransactionDate = calculationDate;
             interestTransaction.TransactionFees = -1;
-            interestTransaction.TransactionMode = "Credit";
+            interestTransaction.TransactionMode = "Debit";
             interestTransaction.TransactionType = "Interest";
 
             currentAccountTransactionManager.MakeATransaction(interestTransaction, null);
@@ -1087,16 +1093,14 @@ return currentAccountProductHolding;
 
                 if (closingBalance > 0)
                 {
-                    if (productHolding.CloseDate != DateTime.MaxValue)
-                    closingBalanceTransaction.TransactionDate = new DateTime(calculationDate.Year, calculationDate.Month, DateTime.DaysInMonth(calculationDate.Year, calculationDate.Month));
+                    if ((productHolding.Status == "Closed") && (productHolding.CloseDate.Month == calculationDate.Month) && (productHolding.CloseDate.Year == calculationDate.Year))
+                        closingBalanceTransaction.TransactionDate = productHolding.CloseDate;
                     else
-                    closingBalanceTransaction.TransactionDate = productHolding.CloseDate;
+                        closingBalanceTransaction.TransactionDate = new DateTime(calculationDate.Year, calculationDate.Month, DateTime.DaysInMonth(calculationDate.Year, calculationDate.Month));
+
                     listTransaction.Insert(listTransaction.Count, closingBalanceTransaction);
                 }
             }
-
-             
-             
 
             decimal interest = 0;
 
@@ -1109,7 +1113,7 @@ return currentAccountProductHolding;
                     double effectiveDays = (secondTransaction.TransactionDate - firstTransaction.TransactionDate).TotalDays;
                     decimal effectiveBalance = firstTransaction.Balance;
                     double interestRate = productHolding.InterestRate.Value;
-                    if (i != (listTransaction.Count - 1))
+                    if (i != (listTransaction.Count - 2))
                         interest = interest + ((effectiveBalance * (decimal)interestRate * (decimal)effectiveDays) / (100 * 365));
                     else
                         interest = interest + ((effectiveBalance * (decimal)interestRate * ((decimal)effectiveDays + 1)) / (100 * 365));
