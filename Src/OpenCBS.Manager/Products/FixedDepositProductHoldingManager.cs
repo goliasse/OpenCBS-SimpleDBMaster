@@ -121,10 +121,12 @@ namespace OpenCBS.Manager.Products
             finalAmountTransaction.FromAccount = productHolding.FixedDepositContractCode;
             finalAmountTransaction.Maker = "Final Amount";
             finalAmountTransaction.PurposeOfTransfer = "Final amount paid for " + productHolding.FixedDepositContractCode;
-            if (productHolding.FinalAmountChequeAccount != null)
-                finalAmountTransaction.ToAccount = productHolding.FinalAmountChequeAccount;
+
+            if (string.IsNullOrEmpty(productHolding.FinalAmountChequeAccount))
+                finalAmountTransaction.ToAccount = productHolding.FinalAmountPaymentMethod;    
             else
-                finalAmountTransaction.ToAccount = productHolding.FinalAmountPaymentMethod;
+                finalAmountTransaction.ToAccount = productHolding.FinalAmountChequeAccount;
+
             finalAmountTransaction.TransactionDate = DateTime.Today;
             finalAmountTransaction.TransactionFees = 0;
             finalAmountTransaction.TransactionMode = "Debit";

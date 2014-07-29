@@ -6,6 +6,8 @@ using OpenCBS.Manager.Products;
 using OpenCBS.CoreDomain;
 using OpenCBS.CoreDomain.Products;
 using OpenCBS.ExceptionsHandler;
+using OpenCBS.CoreDomain.Events.Products;
+using OpenCBS.Manager.Events;
 
 namespace OpenCBS.Services
 {
@@ -13,6 +15,7 @@ namespace OpenCBS.Services
     {
 
        private readonly CurrentAccountProductHoldingManager _currentAccountProductHoldingManager;
+       private readonly CurrentAccountEventManager _currentAccountEventManager;
         private User _user;
 
         public CurrentAccountProductHoldingServices(CurrentAccountProductHoldingManager currentAccountProductHoldingManager)
@@ -24,12 +27,24 @@ namespace OpenCBS.Services
 		{
             _user = user;
             _currentAccountProductHoldingManager = new CurrentAccountProductHoldingManager(user);
+            _currentAccountEventManager = new CurrentAccountEventManager(user);
 		}
 
        public string SaveCurrentAccountPoductHolding(CurrentAccountProductHoldings currentAccountProductHoldings)
        {
            ValidateProduct(currentAccountProductHoldings, currentAccountProductHoldings.CurrentAccountProduct);
            return _currentAccountProductHoldingManager.SaveCurrentAccountPoductHolding(currentAccountProductHoldings);
+       }
+
+       public List<CurrentAccountEvent> FetchEvents(string contractCode)
+       {
+           return _currentAccountEventManager.FetchEvents(contractCode);
+       }
+
+       public void SaveCurrentAccountEvent(CurrentAccountEvent currentAccounEvent)
+       {
+
+           _currentAccountEventManager.SaveCurrentAccountEvent(currentAccounEvent);
        }
 
        public decimal CalculateFixedOverdraftFees(DateTime calculationDate, CurrentAccountProductHoldings productHolding)

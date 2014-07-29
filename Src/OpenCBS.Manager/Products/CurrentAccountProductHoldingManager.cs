@@ -9,6 +9,8 @@ using OpenCBS.CoreDomain.Products;
 using OpenCBS.Enums;
 using System.Data.SqlClient;
 using OpenCBS.CoreDomain.SearchResult;
+using OpenCBS.CoreDomain.Events.Products;
+using OpenCBS.Manager.Events;
 
 namespace OpenCBS.Manager.Products
 {
@@ -16,10 +18,12 @@ namespace OpenCBS.Manager.Products
     {
         CurrentAccountProductManager currentAccountProductManager = null;
          CurrentAccountTransactionManager currentAccountTransactionManager = null;
+         CurrentAccountEventManager currentAccountEventManager = null;
          public CurrentAccountProductHoldingManager(User pUser) : base(pUser)
         {
               currentAccountTransactionManager = new CurrentAccountTransactionManager(pUser);
               currentAccountProductManager = new CurrentAccountProductManager(pUser);
+              currentAccountEventManager = new CurrentAccountEventManager(pUser);
         }
 
          public CurrentAccountProductHoldingManager(string testDB)
@@ -27,6 +31,7 @@ namespace OpenCBS.Manager.Products
         {
              currentAccountTransactionManager = new CurrentAccountTransactionManager(testDB);
              currentAccountProductManager = new CurrentAccountProductManager(testDB);
+             currentAccountEventManager = new CurrentAccountEventManager(testDB);
         }
 
 
@@ -173,6 +178,10 @@ namespace OpenCBS.Manager.Products
              
 
          }
+
+
+     
+
 
          public void UpdateCurrentAccountProductHolding(CurrentAccountProductHoldings product, int productId)
          {
@@ -347,7 +356,15 @@ WHERE current_account_contract_code = @contractCode";
              feeTransaction.TransactionFees = -1;
              feeTransaction.TransactionMode = "Debit";
              feeTransaction.TransactionType = "Fee";
-             currentAccountTransactionManager.DebitFeeTransaction(feeTransaction);
+             int ret = currentAccountTransactionManager.DebitFeeTransaction(feeTransaction);
+             if (ret > 0)
+             {
+                 CurrentAccountEvent currentAccountEvent = new CurrentAccountEvent();
+                 currentAccountEvent.ContractCode = productHolding.CurrentAccountContractCode;
+                 currentAccountEvent.EventCode = "CLFT";
+                 currentAccountEvent.Description = "Closing Fee debit transaction #" + ret;
+                 currentAccountEventManager.SaveCurrentAccountEvent(currentAccountEvent);
+             }
              return closingFees;
          }
 
@@ -375,7 +392,15 @@ WHERE current_account_contract_code = @contractCode";
              feeTransaction.TransactionFees = -1;
              feeTransaction.TransactionMode = "Debit";
              feeTransaction.TransactionType = "Fee";
-             currentAccountTransactionManager.DebitFeeTransaction(feeTransaction);
+             int ret = currentAccountTransactionManager.DebitFeeTransaction(feeTransaction);
+             if (ret > 0)
+             {
+                 CurrentAccountEvent currentAccountEvent = new CurrentAccountEvent();
+                 currentAccountEvent.ContractCode = productHolding.CurrentAccountContractCode;
+                 currentAccountEvent.EventCode = "REFT";
+                 currentAccountEvent.Description = "Reopen Fee debit transaction #" + ret;
+                 currentAccountEventManager.SaveCurrentAccountEvent(currentAccountEvent);
+             }
              return reopenFees;
          }
 
@@ -402,7 +427,15 @@ WHERE current_account_contract_code = @contractCode";
              feeTransaction.TransactionFees = -1;
              feeTransaction.TransactionMode = "Debit";
              feeTransaction.TransactionType = "Fee";
-             currentAccountTransactionManager.DebitFeeTransaction(feeTransaction);
+             int ret = currentAccountTransactionManager.DebitFeeTransaction(feeTransaction);
+             if (ret > 0)
+             {
+                 CurrentAccountEvent currentAccountEvent = new CurrentAccountEvent();
+                 currentAccountEvent.ContractCode = productHolding.CurrentAccountContractCode;
+                 currentAccountEvent.EventCode = "ENFT";
+                 currentAccountEvent.Description = "Entry Fee debit transaction #" + ret;
+                 currentAccountEventManager.SaveCurrentAccountEvent(currentAccountEvent);
+             }
              return entryFees;
          }
 
@@ -442,7 +475,15 @@ WHERE current_account_contract_code = @contractCode";
              feeTransaction.TransactionFees = -1;
              feeTransaction.TransactionMode = "Debit";
              feeTransaction.TransactionType = "Fee";
-             currentAccountTransactionManager.DebitFeeTransaction(feeTransaction);
+             int ret = currentAccountTransactionManager.DebitFeeTransaction(feeTransaction);
+             if (ret > 0)
+             {
+                 CurrentAccountEvent currentAccountEvent = new CurrentAccountEvent();
+                 currentAccountEvent.ContractCode = productHolding.CurrentAccountContractCode;
+                 currentAccountEvent.EventCode = "MGFT";
+                 currentAccountEvent.Description = "Management Fee debit transaction #" + ret;
+                 currentAccountEventManager.SaveCurrentAccountEvent(currentAccountEvent);
+             }
              return managementFees;             
          }
 
@@ -484,8 +525,15 @@ WHERE current_account_contract_code = @contractCode";
                 feeTransaction.TransactionFees = -1;
                 feeTransaction.TransactionMode = "Debit";
                 feeTransaction.TransactionType = "Fee";
-                currentAccountTransactionManager.DebitFeeTransaction(feeTransaction);
-
+                int ret = currentAccountTransactionManager.DebitFeeTransaction(feeTransaction);
+                if (ret > 0)
+                {
+                    CurrentAccountEvent currentAccountEvent = new CurrentAccountEvent();
+                    currentAccountEvent.ContractCode = productHolding.CurrentAccountContractCode;
+                    currentAccountEvent.EventCode = "ODFT";
+                    currentAccountEvent.Description = "Fixed Overdraft Fee debit transaction #" + ret;
+                    currentAccountEventManager.SaveCurrentAccountEvent(currentAccountEvent);
+                }
 
 
                 return fixedOverdraftFees;
@@ -1056,7 +1104,15 @@ return currentAccountProductHolding;
             interestTransaction.TransactionMode = "Debit";
             interestTransaction.TransactionType = "Interest";
 
-            currentAccountTransactionManager.DebitFeeTransaction(interestTransaction);
+            int ret = currentAccountTransactionManager.DebitFeeTransaction(interestTransaction);
+            if (ret > 0)
+            {
+                CurrentAccountEvent currentAccountEvent = new CurrentAccountEvent();
+                currentAccountEvent.ContractCode = productHolding.CurrentAccountContractCode;
+                currentAccountEvent.EventCode = "ODDT";
+                currentAccountEvent.Description = "Overdraft Interest debit transaction #" + ret;
+                currentAccountEventManager.SaveCurrentAccountEvent(currentAccountEvent);
+            }
             return overdraftInterest;
         }
 
@@ -1172,7 +1228,16 @@ return currentAccountProductHolding;
             interestTransaction.TransactionMode = "Debit";
             interestTransaction.TransactionType = "Fee";
 
-            currentAccountTransactionManager.DebitFeeTransaction(interestTransaction);
+            int ret = currentAccountTransactionManager.DebitFeeTransaction(interestTransaction);
+            if (ret > 0)
+            {
+                CurrentAccountEvent currentAccountEvent = new CurrentAccountEvent();
+                currentAccountEvent.ContractCode = productHolding.CurrentAccountContractCode;
+                currentAccountEvent.EventCode = "CFDT";
+                currentAccountEvent.Description = "Commitment Fee debit transaction #" + ret;
+                currentAccountEventManager.SaveCurrentAccountEvent(currentAccountEvent);
+            }
+
             return commitmentFee;
         }
         

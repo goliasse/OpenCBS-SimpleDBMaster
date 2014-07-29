@@ -7,6 +7,8 @@ using OpenCBS.CoreDomain;
 using OpenCBS.CoreDomain.Products;
 using OpenCBS.ExceptionsHandler;
 using OpenCBS.Shared;
+using OpenCBS.CoreDomain.Events.Products;
+using OpenCBS.Manager.Events;
 
 namespace OpenCBS.Services
 {
@@ -14,6 +16,8 @@ namespace OpenCBS.Services
     {
 
         private readonly FixedDepositProductHoldingManager _fixedDepositProductHoldingManager;
+        private readonly FixedDepositEventManager _fixedDepositEventManager;
+
         private User _user;
 
         public FixedDepositProductHoldingServices(FixedDepositProductHoldingManager fixedDepositProductManager)
@@ -25,18 +29,26 @@ namespace OpenCBS.Services
 		{
             _user = user;
             _fixedDepositProductHoldingManager = new FixedDepositProductHoldingManager(user);
+            _fixedDepositEventManager = new FixedDepositEventManager(user);
 		}
 
         public string SaveFixedDepositProductHolding(FixedDepositProductHoldings fixedDepositProductHolding)
         {
-
-           
-
             ValidateProduct(fixedDepositProductHolding, fixedDepositProductHolding.FixedDepositProduct);
             return _fixedDepositProductHoldingManager.SaveFixedDepositProductHolding(fixedDepositProductHolding);
-            
-
         }
+
+
+        public List<FixedDepositEvent> FetchEvents(string contractCode)
+        {
+            return _fixedDepositEventManager.FetchEvents(contractCode);
+        }
+
+        public void SaveFixedDepositEvent(FixedDepositEvent currentAccounEvent)
+        {
+            _fixedDepositEventManager.SaveFixedDepositEvent(currentAccounEvent);
+        }
+       
 
         public void UpdateFixedDepositProductHolding(FixedDepositProductHoldings product, int productId)
         {

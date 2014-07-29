@@ -11,6 +11,7 @@ using OpenCBS.CoreDomain;
 using OpenCBS.Services;
 using OpenCBS.Enums;
 using OpenCBS.ExceptionsHandler;
+using OpenCBS.CoreDomain.Events.Products;
 
 namespace OpenCBS.GUI.Clients
 {
@@ -199,12 +200,21 @@ namespace OpenCBS.GUI.Clients
                 if (currentAccountTransactions.TransactionMode == "Debit")
                 {
                     currentAccountProductHoldings = _currentAccountProductHoldingServices.FetchProduct(currentAccountTransactions.FromAccount);
-                }
-                if (currentAccountTransactions.ToAccount != "")
-                {
-                    data = currentAccountTransactions.ToAccount.Split('/');
+
+                    data = currentAccountTransactions.FromAccount.Split('/');
                     productCode = data[1];
                 }
+                else
+                {
+                    if (currentAccountTransactions.ToAccount != "")
+                    {
+                        data = currentAccountTransactions.ToAccount.Split('/');
+                        productCode = data[1];
+
+                        currentAccountProductHoldings = _currentAccountProductHoldingServices.FetchProduct(currentAccountTransactions.ToAccount);
+                    }
+                }
+                
             }
 
             if (string.IsNullOrEmpty(currentAccountTransactions.FromAccount))
@@ -224,8 +234,11 @@ namespace OpenCBS.GUI.Clients
 
             int ret = _currentAccountTransactionService.MakeATransaction(currentAccountTransactions, _currentAccountTransactionFees, _currentAccountProduct, currentAccountProductHoldings);
             if (ret >= 1)
+            {
+               
                 MessageBox.Show("Transaction Successfull.");
-            
+            }
+
             else if (ret == -1)
                 MessageBox.Show("Balance is less than amount to be withdrawn and account does not have Overdraft facility enabled.");
 
@@ -271,7 +284,8 @@ namespace OpenCBS.GUI.Clients
 
         void InitializeControls()
         {
-           
+            lblFromAccountBalance.Text = "";
+            lblToAccountBalance.Text = "";
             cbFromAccount.Text = "";
             cbToAccount.Text = "";
             lblFromAccount.Text = "Select From Account:";
@@ -348,7 +362,7 @@ namespace OpenCBS.GUI.Clients
         CurrentAccountProductHoldingServices _currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
         private void cbFromAccount_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((cbTransactionType.SelectedItem.ToString() == "Transfer") && (cbFromAccount.Text != ""))
+            if ((cbFromAccount.Text != "") && (cbFromAccount.Text != "Cash"))
             {
                 
                 CurrentAccountProductHoldings currentAccountProductHoldings = _currentAccountProductHoldingServices.FetchProduct(cbFromAccount.Text);
@@ -363,7 +377,7 @@ namespace OpenCBS.GUI.Clients
 
         private void cbToAccount_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((cbTransactionType.SelectedItem.ToString() == "Transfer") && (cbToAccount.Text != ""))
+            if ((cbToAccount.Text != "") && (cbToAccount.Text != "Cash"))
             {
                 
                 CurrentAccountProductHoldings currentAccountProductHoldings = _currentAccountProductHoldingServices.FetchProduct(cbToAccount.Text);

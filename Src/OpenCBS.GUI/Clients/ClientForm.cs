@@ -62,6 +62,7 @@ using Group = OpenCBS.CoreDomain.Clients.Group;
 
 namespace OpenCBS.GUI.Clients
 {
+    using OpenCBS.CoreDomain.Events.Products;
     using ML = MultiLanguageStrings;
     public partial class ClientForm : SweetForm
     {
@@ -751,7 +752,25 @@ namespace OpenCBS.GUI.Clients
 
         }
 
+        void InitializeCurrentAccountEvents(string accountNumber)
+        {
+            lvCAEvents.Items.Clear();
+            CurrentAccountProductHoldingServices _currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
+            List<CurrentAccountEvent> currentAccountEventList = _currentAccountProductHoldingServices.FetchEvents(accountNumber);
 
+            if (currentAccountEventList != null)
+            {
+                foreach (CurrentAccountEvent CurrentAccountEvent in currentAccountEventList)
+                {
+                    var item = new ListViewItem(new[] {
+                    CurrentAccountEvent.EventCode,
+                         CurrentAccountEvent.Description,
+                        CurrentAccountEvent.CreationDate.ToShortDateString()
+                });
+                    lvCAEvents.Items.Add(item);
+                }
+            }
+        }
 
         void InitializeCurrentAccountFeeTransactions(string accountNumber)
         {
@@ -8929,6 +8948,11 @@ namespace OpenCBS.GUI.Clients
             FixedDepositProductHoldingServices _fixedDepositProductHoldingServices = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
             string contractCode = _fixedDepositProductHoldingServices.SaveFixedDepositProductHolding(_fixedDepositProductHoldings);
 
+            FixedDepositEvent fixedDepositEvent = new FixedDepositEvent();
+            fixedDepositEvent.ContractCode = contractCode;
+            fixedDepositEvent.EventCode = "FDOP";
+            fixedDepositEvent.Description = "Fixed Deposit Account Opened";
+            _fixedDepositProductHoldingServices.SaveFixedDepositEvent(fixedDepositEvent);
 
 
             MessageBox.Show("Contract Successfully Created. Contract Code Is " + contractCode);
@@ -9014,7 +9038,28 @@ namespace OpenCBS.GUI.Clients
             CurrentAccountProductHoldingServices _currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
             string contractCode = _currentAccountProductHoldingServices.SaveCurrentAccountPoductHolding(_currentAccountProductHoldings);
 
+            CurrentAccountEvent currentAccountEvent = new CurrentAccountEvent();
+            currentAccountEvent.ContractCode = contractCode;
+            currentAccountEvent.EventCode = "CAOP";
+            currentAccountEvent.Description = "Current Account Opened";
+            _currentAccountProductHoldingServices.SaveCurrentAccountEvent(currentAccountEvent);
 
+            if (_currentAccountProductHoldings.OverdraftApplied == 1)
+            {
+                currentAccountEvent = new CurrentAccountEvent();
+                currentAccountEvent.ContractCode = _currentAccountProductHoldings.CurrentAccountContractCode;
+                currentAccountEvent.EventCode = "ODAP";
+                currentAccountEvent.Description = "Current Account OD applied";
+                _currentAccountProductHoldingServices.SaveCurrentAccountEvent(currentAccountEvent);
+            }
+            else
+            {
+                currentAccountEvent = new CurrentAccountEvent();
+                currentAccountEvent.ContractCode = _currentAccountProductHoldings.CurrentAccountContractCode;
+                currentAccountEvent.EventCode = "ODWT";
+                currentAccountEvent.Description = "Current Account OD withdrawn";
+                _currentAccountProductHoldingServices.SaveCurrentAccountEvent(currentAccountEvent);
+            }
             MessageBox.Show("Contract Successfully Created. Contract Code Is " + contractCode);
             btnAddCurrentAccountProduct.Enabled = false;
              }
@@ -9824,7 +9869,7 @@ namespace OpenCBS.GUI.Clients
             tabControlPerson.SelectedTab = tabPageCurrentAccount;
 
             InitializeCurrentAccountFeeTransactions(_currentAccountProductHoldings.CurrentAccountContractCode);
-
+            InitializeCurrentAccountEvents(_currentAccountProductHoldings.CurrentAccountContractCode);
             }
             catch (Exception ex)
             {
@@ -9884,10 +9929,22 @@ namespace OpenCBS.GUI.Clients
 
             else  if (btnExtendPeriod.Text == "Submit")
             {
-
+                string old = _fixedDepositProductHoldings.MaturityPeriod.ToString();
                 _fixedDepositProductHoldings.MaturityPeriod = ServicesHelper.ConvertStringToNullableInt32(tbMaturityPeriod.Text);
+
+                string[] fixedDepositProduct = cbFixedDepositProduct.SelectedItem.ToString().Split();
+
+                FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
+                _fixedDepositProductHoldings.FixedDepositProduct = _fixedDepositProductService.FetchProduct(fixedDepositProduct[0], fixedDepositProduct[1]);
+
                 FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
                 _fixedDepositProductHoldingService.UpdateFixedDepositProductHolding(_fixedDepositProductHoldings, _fixedDepositProductHoldings.FixedDepositContractCode);
+
+                FixedDepositEvent fixedDepositEvent = new FixedDepositEvent();
+                fixedDepositEvent.ContractCode = _fixedDepositProductHoldings.FixedDepositContractCode;
+                fixedDepositEvent.EventCode = "FDPE";
+                fixedDepositEvent.Description = "Fixed Deposit maturity period changed from " + old + " to " + _fixedDepositProductHoldings.MaturityPeriod;
+                _fixedDepositProductHoldingService.SaveFixedDepositEvent(fixedDepositEvent);
 
                 MessageBox.Show("Period Extended Successfully.");
                // btnExtendPeriod.Enabled = false;
@@ -9926,9 +9983,25 @@ namespace OpenCBS.GUI.Clients
                 _fixedDepositProductHoldings.FixedDepositProduct = product;
                 FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
                 _fixedDepositProductHoldingService.UpdateFixedDepositProductHolding(_fixedDepositProductHoldings, _fixedDepositProductHoldings.FixedDepositContractCode);
-                
+
+                FixedDepositEvent fixedDepositEvent = new FixedDepositEvent();
+                fixedDepositEvent.ContractCode = _fixedDepositProductHoldings.FixedDepositContractCode;
+                fixedDepositEvent.EventCode = "FDCL";
+                fixedDepositEvent.Description = "Fixed Deposit Account Closed";
+                _fixedDepositProductHoldingService.SaveFixedDepositEvent(fixedDepositEvent);
+
+                if (lblPreMatured.Text == "Yes")
+                {
+                    fixedDepositEvent = new FixedDepositEvent();
+                    fixedDepositEvent.ContractCode = _fixedDepositProductHoldings.FixedDepositContractCode;
+                    fixedDepositEvent.EventCode = "FDPR";
+                    fixedDepositEvent.Description = "Fixed Deposit Account Prematured";
+                    _fixedDepositProductHoldingService.SaveFixedDepositEvent(fixedDepositEvent);
+                }
+
                 _fixedDepositProductHoldingService.TransferFinalAmount(_fixedDepositProductHoldings);
                 MessageBox.Show("Amount Transferred And Account Closed Successfully.");
+                btnCloseFDContract.Enabled = false;
 
             }
 
@@ -9943,6 +10016,7 @@ namespace OpenCBS.GUI.Clients
         private void cbAmountTransferMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
             string transferMethod = cbAmountTransferMethod.SelectedItem.ToString();
+            tbTransferNumber.Text = "";
             if (transferMethod == "Cash")
             {
                 lblChequeNumber.Visible = false;
@@ -10017,6 +10091,12 @@ namespace OpenCBS.GUI.Clients
                 _currentAccountProductHoldingService.CurrentAccountOverdraftInterestCalculation(DateTime.Today, _currentAccountProductHoldings);
                 _currentAccountProductHoldingService.TransferFinalAmount(_currentAccountProductHoldings);
 
+                CurrentAccountEvent currentAccountEvent = new CurrentAccountEvent();
+                currentAccountEvent.ContractCode = _currentAccountProductHoldings.CurrentAccountContractCode;
+                currentAccountEvent.EventCode = "CACL";
+                currentAccountEvent.Description = "Current Account Closed";
+                _currentAccountProductHoldingService.SaveCurrentAccountEvent(currentAccountEvent);
+
                 MessageBox.Show(tbCAProductCode.Text + " Successfully Closed.");
                 btnCloseAccount.Enabled = false;
                
@@ -10069,7 +10149,13 @@ namespace OpenCBS.GUI.Clients
                 _currentAccountProductHoldingService.UpdateCurrentAccountProductHolding(_currentAccountProductHoldings, tbCAProductCode.Text);
 
                 _currentAccountProductHoldingService.CalculateReopenFees(_currentAccountProductHoldings);
-                
+
+                CurrentAccountEvent currentAccountEvent = new CurrentAccountEvent();
+                currentAccountEvent.ContractCode = _currentAccountProductHoldings.CurrentAccountContractCode;
+                currentAccountEvent.EventCode = "CARE";
+                currentAccountEvent.Description = "Current Account Reopened";
+                _currentAccountProductHoldingService.SaveCurrentAccountEvent(currentAccountEvent);
+
                 MessageBox.Show(tbCAProductCode.Text + " Successfully Reopened.");
                 btnCloseAccount.Enabled = false;
             }
@@ -10329,8 +10415,8 @@ namespace OpenCBS.GUI.Clients
         private void cbCAPaymentMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
             string paymentMethod = cbCAPaymentMethod.SelectedItem.ToString();
-           
-           
+
+            tbCAChequeAccount.Text = "";
             if (paymentMethod == "Cash")
             {
                lblCAChequeNumber.Visible = false;
@@ -10457,7 +10543,7 @@ namespace OpenCBS.GUI.Clients
         private void cbCAInitialAmountMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
             string paymentMethod = cbCAInitialAmountMethod.SelectedItem.ToString();
-           
+            tbInitialPaymentNumber.Text = "";
           
             if (paymentMethod == "Cash")
             {
@@ -10657,6 +10743,7 @@ namespace OpenCBS.GUI.Clients
 
 
             string transferMethod = cbInitialAmountPaymentMethod.SelectedItem.ToString();
+            tbFDInitialAmountNumber.Text = "";
             if (transferMethod == "Cash")
             {
                 lblFDInitialAccount.Visible = false;
@@ -10721,6 +10808,11 @@ namespace OpenCBS.GUI.Clients
                           currentAccountProduct.ClosingFeesType == "Flat" ? currentAccountProduct.Currency.Code : "%");
                 }
             }
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
         }
 
         

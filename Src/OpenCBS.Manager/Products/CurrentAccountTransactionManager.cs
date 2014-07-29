@@ -9,21 +9,27 @@ using OpenCBS.CoreDomain.Contracts.Loans.Installments;
 using OpenCBS.CoreDomain.Products;
 using OpenCBS.Enums;
 using System.Data.SqlClient;
+using OpenCBS.Manager.Events;
+using OpenCBS.CoreDomain.Events.Products;
 
 namespace OpenCBS.Manager.Products
 {
     public class CurrentAccountTransactionManager : Manager
     {
-        CurrentAccountProductHoldingManager currentAccountProductHoldingManager = null;
+       
+        CurrentAccountEventManager currentAccountEventManager = null;
+        FixedDepositEventManager fixedDepositEventManager = null;
         public CurrentAccountTransactionManager(User pUser) : base(pUser)
         {
-           // currentAccountProductHoldingManager = new  CurrentAccountProductHoldingManager(pUser);
+            currentAccountEventManager = new CurrentAccountEventManager(pUser);
+            fixedDepositEventManager = new FixedDepositEventManager(pUser);
         }
 
         public CurrentAccountTransactionManager(string testDB)
             : base(testDB)
         {
-           // currentAccountProductHoldingManager = new CurrentAccountProductHoldingManager(testDB);
+            currentAccountEventManager = new CurrentAccountEventManager(testDB);
+            fixedDepositEventManager = new FixedDepositEventManager(testDB);
         }
 
 
@@ -120,7 +126,15 @@ namespace OpenCBS.Manager.Products
                 feeTransaction.TransactionFees = -1;
                 feeTransaction.TransactionMode = "Debit";
                 feeTransaction.TransactionType = "Fee";
-                DebitFeeTransaction(feeTransaction);
+                int ret = DebitFeeTransaction(feeTransaction);
+                if (ret > 0)
+                {
+                    CurrentAccountEvent currentAccountEvent = new CurrentAccountEvent();
+                    currentAccountEvent.ContractCode = currentAccountTransactions.FromAccount;
+                    currentAccountEvent.EventCode = "TRFT";
+                    currentAccountEvent.Description = "Transaction Fee debit transaction #" + ret;
+                    currentAccountEventManager.SaveCurrentAccountEvent(currentAccountEvent);
+                }
 
             }
 
@@ -383,8 +397,35 @@ AND maker = @maker";
                     command.AddParam("@maker",currentAccountTransactions.Maker);
                     command.AddParam("@checker",currentAccountTransactions.Checker);
                     command.AddParam("@purpose_of_transfer", currentAccountTransactions.PurposeOfTransfer);
-
                     ret = Convert.ToInt32(command.ExecuteScalar());
+                    CurrentAccountEvent currentAccountEvent = new CurrentAccountEvent();
+                    if (currentAccountTransactions.TransactionMode == "Credit")
+                    {
+
+                        currentAccountEvent.ContractCode = currentAccountTransactions.ToAccount;
+                        if (currentAccountTransactions.TransactionType == "Interest")
+                        {
+                            currentAccountEvent.EventCode = "RICT";
+                            currentAccountEvent.Description = "Regular interest credit transaction #" + ret;
+                        }
+                        else
+                        {
+                            currentAccountEvent.EventCode = "CACT";
+                            currentAccountEvent.Description = "Current Account Credit transaction #" + ret;
+                        }
+
+                        
+                    }
+                    else if (currentAccountTransactions.TransactionMode == "Debit")
+                    {
+
+                        currentAccountEvent.ContractCode = currentAccountTransactions.FromAccount;
+                        currentAccountEvent.EventCode = "CADT";
+                        currentAccountEvent.Description = "Current Account Debit transaction #" + ret;
+                    }
+                    currentAccountEventManager.SaveCurrentAccountEvent(currentAccountEvent);
+
+                   
                     currentAccountTransactions.Id = ret;
                     decimal transactionFee = 0;
                     if(currentAccountTransactionFees!=null)
@@ -418,27 +459,15 @@ public int DebitFeeTransaction(CurrentAccountTransactions currentAccountTransact
                     command.AddParam("@checker", currentAccountTransactions.Checker);
                     command.AddParam("@purpose_of_transfer", currentAccountTransactions.PurposeOfTransfer);
 
-        
+                    ret = Convert.ToInt32(command.ExecuteScalar());
 
-
-
-                    using (OpenCbsReader reader = command.ExecuteReader())
-                    {
-                        if (reader == null || reader.Empty) return 0;
-
-                        while (reader.Read())
-                        {
-                            ret = reader.GetInt("ret");
-                            
-                        }
-                        return ret;
-                    }
+                    return ret;
                 }
             }
         }
 
 
-public int MakeFDTransaction(CurrentAccountTransactions currentAccountTransactions)
+public int MakeFDTransaction(CurrentAccountTransactions fixedDepositTransactions)
 {
     int ret = -99;
     using (SqlConnection conn = GetConnection())
@@ -446,18 +475,35 @@ public int MakeFDTransaction(CurrentAccountTransactions currentAccountTransactio
         using (OpenCbsCommand command = new OpenCbsCommand("MakeFDTransaction", conn).AsStoredProcedure())
         {
 
-            command.AddParam("@transaction_mode", currentAccountTransactions.TransactionMode);
-            command.AddParam("@transaction_type", currentAccountTransactions.TransactionType);
-            command.AddParam("@to_account", currentAccountTransactions.ToAccount);
-            command.AddParam("@from_account", currentAccountTransactions.FromAccount);
-            command.AddParam("@amount", currentAccountTransactions.Amount);
-            command.AddParam("@transaction_date", currentAccountTransactions.TransactionDate);
+            command.AddParam("@transaction_mode", fixedDepositTransactions.TransactionMode);
+            command.AddParam("@transaction_type", fixedDepositTransactions.TransactionType);
+            command.AddParam("@to_account", fixedDepositTransactions.ToAccount);
+            command.AddParam("@from_account", fixedDepositTransactions.FromAccount);
+            command.AddParam("@amount", fixedDepositTransactions.Amount);
+            command.AddParam("@transaction_date", fixedDepositTransactions.TransactionDate);
             command.AddParam("@transaction_fees", 0);
-            command.AddParam("@maker", currentAccountTransactions.Maker);
-            command.AddParam("@checker", currentAccountTransactions.Checker);
-            command.AddParam("@purpose_of_transfer", currentAccountTransactions.PurposeOfTransfer);
+            command.AddParam("@maker", fixedDepositTransactions.Maker);
+            command.AddParam("@checker", fixedDepositTransactions.Checker);
+            command.AddParam("@purpose_of_transfer", fixedDepositTransactions.PurposeOfTransfer);
 
             ret = Convert.ToInt32(command.ExecuteScalar());
+
+
+            FixedDepositEvent fixedDepositEvent = new FixedDepositEvent();
+            if (fixedDepositTransactions.TransactionMode == "Credit")
+            {
+                fixedDepositEvent.ContractCode = fixedDepositTransactions.ToAccount;
+                fixedDepositEvent.EventCode = "FDCT";
+                fixedDepositEvent.Description = "Fixed depsit Credit transaction #" + ret;
+            }
+            else if (fixedDepositTransactions.TransactionMode == "Debit")
+            {
+
+                fixedDepositEvent.ContractCode = fixedDepositTransactions.FromAccount;
+                fixedDepositEvent.EventCode = "FDDT";
+                fixedDepositEvent.Description = "Fixed depsit Debit transaction #" + ret;
+            }
+            fixedDepositEventManager.SaveFixedDepositEvent(fixedDepositEvent);
           
         }
     }

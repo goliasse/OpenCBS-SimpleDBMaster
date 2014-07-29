@@ -681,6 +681,11 @@ namespace OpenCBS.GUI.Clients
             this.chPurposeOfTransfer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chTransactionType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chFeesBalance = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lvCAEvents = new System.Windows.Forms.ListView();
+            this.columnHeader42 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader43 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader44 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbCAInterestRate = new System.Windows.Forms.TextBox();
             this.tbCABalanceAmount = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
@@ -728,6 +733,7 @@ namespace OpenCBS.GUI.Clients
             this.columnHeader36 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader37 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader38 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader41 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader40 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label44 = new System.Windows.Forms.Label();
             this.menuBtnAddSavingOperation = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -761,7 +767,6 @@ namespace OpenCBS.GUI.Clients
             this.menuPendingSavingEvents = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemConfirmPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCancelPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
-            this.columnHeader41 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).BeginInit();
             this.splitContainer10.Panel1.SuspendLayout();
             this.splitContainer10.Panel2.SuspendLayout();
@@ -905,6 +910,7 @@ namespace OpenCBS.GUI.Clients
             this.tabPageReopenAccount.SuspendLayout();
             this.gbReopenFees.SuspendLayout();
             this.tabPageFeesTransactions.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.gbInitialPayment.SuspendLayout();
             this.gbAmount.SuspendLayout();
             this.tabPageTransactions.SuspendLayout();
@@ -4541,6 +4547,7 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
             // lblFDMaturityMinMax
             // 
@@ -4809,6 +4816,7 @@ namespace OpenCBS.GUI.Clients
             this.tabControlCurrentAccount.Controls.Add(this.tabPageCloseAccount);
             this.tabControlCurrentAccount.Controls.Add(this.tabPageReopenAccount);
             this.tabControlCurrentAccount.Controls.Add(this.tabPageFeesTransactions);
+            this.tabControlCurrentAccount.Controls.Add(this.tabPage1);
             resources.ApplyResources(this.tabControlCurrentAccount, "tabControlCurrentAccount");
             this.tabControlCurrentAccount.Name = "tabControlCurrentAccount";
             this.tabControlCurrentAccount.SelectedIndex = 0;
@@ -5268,6 +5276,37 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.chFeesBalance, "chFeesBalance");
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.lvCAEvents);
+            resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // lvCAEvents
+            // 
+            this.lvCAEvents.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader42,
+            this.columnHeader43,
+            this.columnHeader44});
+            this.lvCAEvents.GridLines = true;
+            resources.ApplyResources(this.lvCAEvents, "lvCAEvents");
+            this.lvCAEvents.Name = "lvCAEvents";
+            this.lvCAEvents.UseCompatibleStateImageBehavior = false;
+            this.lvCAEvents.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader42
+            // 
+            resources.ApplyResources(this.columnHeader42, "columnHeader42");
+            // 
+            // columnHeader43
+            // 
+            resources.ApplyResources(this.columnHeader43, "columnHeader43");
+            // 
+            // columnHeader44
+            // 
+            resources.ApplyResources(this.columnHeader44, "columnHeader44");
+            // 
             // tbCAInterestRate
             // 
             resources.ApplyResources(this.tbCAInterestRate, "tbCAInterestRate");
@@ -5575,6 +5614,10 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.columnHeader38, "columnHeader38");
             // 
+            // columnHeader41
+            // 
+            resources.ApplyResources(this.columnHeader41, "columnHeader41");
+            // 
             // columnHeader40
             // 
             resources.ApplyResources(this.columnHeader40, "columnHeader40");
@@ -5783,10 +5826,6 @@ namespace OpenCBS.GUI.Clients
             this.menuItemCancelPendingSavingEvent.Name = "menuItemCancelPendingSavingEvent";
             resources.ApplyResources(this.menuItemCancelPendingSavingEvent, "menuItemCancelPendingSavingEvent");
             this.menuItemCancelPendingSavingEvent.Click += new System.EventHandler(this.menuItemCancelPendingSavingEvent_Click);
-            // 
-            // columnHeader41
-            // 
-            resources.ApplyResources(this.columnHeader41, "columnHeader41");
             // 
             // ClientForm
             // 
@@ -6001,6 +6040,7 @@ namespace OpenCBS.GUI.Clients
             this.gbReopenFees.ResumeLayout(false);
             this.gbReopenFees.PerformLayout();
             this.tabPageFeesTransactions.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.gbInitialPayment.ResumeLayout(false);
             this.gbInitialPayment.PerformLayout();
             this.gbAmount.ResumeLayout(false);
@@ -6672,5 +6712,10 @@ namespace OpenCBS.GUI.Clients
         private ColumnHeader chFeesBalance;
         private ColumnHeader columnHeader40;
         private ColumnHeader columnHeader41;
+        private TabPage tabPage1;
+        private ListView lvCAEvents;
+        private ColumnHeader columnHeader42;
+        private ColumnHeader columnHeader43;
+        private ColumnHeader columnHeader44;
     }
 }

@@ -7303,7 +7303,7 @@ Max:
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAS
-        HQAAAk1TRnQBSQFMAgEBBQEAATQBJgE0ASYBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        HQAAAk1TRnQBSQFMAgEBBQEAAVwBJgFcASYBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAAUADAAEBAQABCAYAASAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -11886,10 +11886,10 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-2, 262</value>
+    <value>3, 262</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1269, 35</value>
+    <value>1067, 35</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -16316,6 +16316,75 @@ Max:
   <data name="&gt;&gt;tabPageFeesTransactions.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="columnHeader42.Text" xml:space="preserve">
+    <value>Event Code</value>
+  </data>
+  <data name="columnHeader42.Width" type="System.Int32, mscorlib">
+    <value>124</value>
+  </data>
+  <data name="columnHeader43.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="columnHeader43.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="columnHeader43.Width" type="System.Int32, mscorlib">
+    <value>140</value>
+  </data>
+  <data name="columnHeader44.Text" xml:space="preserve">
+    <value>Creation Date</value>
+  </data>
+  <data name="columnHeader44.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="columnHeader44.Width" type="System.Int32, mscorlib">
+    <value>158</value>
+  </data>
+  <data name="lvCAEvents.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="lvCAEvents.Size" type="System.Drawing.Size, System.Drawing">
+    <value>965, 303</value>
+  </data>
+  <data name="lvCAEvents.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lvCAEvents.Name" xml:space="preserve">
+    <value>lvCAEvents</value>
+  </data>
+  <data name="&gt;&gt;lvCAEvents.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lvCAEvents.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;lvCAEvents.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1263, 310</value>
+  </data>
+  <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
+    <value>tabControlCurrentAccount</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="tabControlCurrentAccount.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 276</value>
   </data>
@@ -18775,6 +18844,24 @@ Max:
   <data name="&gt;&gt;chFeesBalance.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;columnHeader42.Name" xml:space="preserve">
+    <value>columnHeader42</value>
+  </data>
+  <data name="&gt;&gt;columnHeader42.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader43.Name" xml:space="preserve">
+    <value>columnHeader43</value>
+  </data>
+  <data name="&gt;&gt;columnHeader43.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader44.Name" xml:space="preserve">
+    <value>columnHeader44</value>
+  </data>
+  <data name="&gt;&gt;columnHeader44.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;columnHeader31.Name" xml:space="preserve">
     <value>columnHeader31</value>
   </data>
@@ -18821,6 +18908,12 @@ Max:
     <value>columnHeader38</value>
   </data>
   <data name="&gt;&gt;columnHeader38.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnHeader41.Name" xml:space="preserve">
+    <value>columnHeader41</value>
+  </data>
+  <data name="&gt;&gt;columnHeader41.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;columnHeader40.Name" xml:space="preserve">
@@ -18936,12 +19029,6 @@ Max:
   </data>
   <data name="&gt;&gt;menuItemCancelPendingSavingEvent.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;columnHeader41.Name" xml:space="preserve">
-    <value>columnHeader41</value>
-  </data>
-  <data name="&gt;&gt;columnHeader41.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ClientForm</value>
