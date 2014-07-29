@@ -736,7 +736,7 @@ namespace OpenCBS.GUI.Clients
 
                     var item = new ListViewItem(new[] {
                     currentAccountProductHoldings.CurrentAccountContractCode,
-                    currentAccountProductHoldings.InitialAmount.GetFormatedValue(OCurrency.UseCents),
+                    currentAccountProductHoldings.Balance.GetFormatedValue(OCurrency.UseCents),
                     currentAccountProductHoldings.OpenDate.ToShortDateString(),
                     currentAccountProductHoldings.OpeningAccountingOfficer,
                     currentAccountProductHoldings.Status
@@ -794,8 +794,6 @@ namespace OpenCBS.GUI.Clients
             {
                 foreach (CurrentAccountTransactions currentAccountTransactions in currentAccountTransactionsList)
                 {
-                    
-
                     var item = new ListViewItem(new[] {
                     currentAccountTransactions.Id.ToString(),
                         currentAccountTransactions.FromAccount,
@@ -806,12 +804,9 @@ namespace OpenCBS.GUI.Clients
                         currentAccountTransactions.TransactionType,
                         currentAccountTransactions.TransactionFees.GetFormatedValue(true),
                         currentAccountTransactions.PurposeOfTransfer
+                    });
                     
-                    
-                    
-                });
                     lvTransactions.Items.Add(item);
-
                 }
             }
         }
@@ -10688,7 +10683,7 @@ namespace OpenCBS.GUI.Clients
 
             CurrentAccountProductHoldingServices _currentAccountProductHoldingService = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
 
-            _currentAccountProductHoldingService.CurrentAccountOverdraftInterestCalculation(calculationDate, _currentAccountProductHoldings);
+            _currentAccountProductHoldingService.CurrentAccountInterestCalculation(calculationDate, _currentAccountProductHoldings);
         }
 
         

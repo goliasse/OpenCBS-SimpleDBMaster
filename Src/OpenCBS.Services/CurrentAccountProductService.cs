@@ -133,6 +133,8 @@ namespace OpenCBS.Services
             if (currentAccountProduct.InitialAmountMin < currentAccountProduct.BalanceMin)
                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CAPInitialAmountMinLessThanBalanceMin);
 
+            
+
             if (currentAccountProduct.InitialAmountMax > currentAccountProduct.BalanceMax)
                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CAPInitialAmountMaxLessThanBalanceMax);
 
@@ -150,15 +152,7 @@ namespace OpenCBS.Services
                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.InterestMinMaxIsInvalid);
 
 
-            if (currentAccountProduct.OverdraftMin.HasValue && currentAccountProduct.OverdraftMin < 0)
-                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.OverdraftFeesMinIsInvalid);
-
-            if (currentAccountProduct.OverdraftMax.HasValue && currentAccountProduct.OverdraftMax <= 0)
-                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.OverdraftFeesMaxIsInvalid);
-
-            if (!ServicesHelper.CheckMinMaxAndValueCorrectlyFilled(currentAccountProduct.OverdraftMin, currentAccountProduct.OverdraftMax, currentAccountProduct.OverdraftValue))
-                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.OverdraftFeesMinMaxIsInvalid);
-            
+          
             //InterestCalculationFrequency can not be blank
 
             if (!currentAccountProduct.InterestFrequency.HasValue)
@@ -211,6 +205,17 @@ namespace OpenCBS.Services
 
             if (currentAccountProduct.ManagementFeesFrequency == "" && currentAccountProduct.ManagementFeesFrequency == OCurrentAccount.SelectFrequencyDefault)
                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.ManagementFeeFrequencyIsEmpty);
+
+
+            if (currentAccountProduct.OverdraftMin.HasValue && currentAccountProduct.OverdraftMin < 0)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.OverdraftFeesMinIsInvalid);
+
+            if (currentAccountProduct.OverdraftMax.HasValue && currentAccountProduct.OverdraftMax <= 0)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.OverdraftFeesMaxIsInvalid);
+
+            if (!ServicesHelper.CheckMinMaxAndValueCorrectlyFilled(currentAccountProduct.OverdraftMin, currentAccountProduct.OverdraftMax, currentAccountProduct.OverdraftValue))
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.OverdraftFeesMinMaxIsInvalid);
+            
 
 
             if (currentAccountProduct.OverdraftInterestMin.HasValue && currentAccountProduct.OverdraftInterestMin < 0)

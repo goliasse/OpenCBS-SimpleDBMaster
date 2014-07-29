@@ -67,7 +67,8 @@ namespace OpenCBS.Manager.Products
 [overdraft_commitment_fee_type],
 [overdraft_commitment_fee],
 [overdraft_applied],
-[overdraft_applied_date]
+[overdraft_applied_date],
+[alloted_overdraft_limit]
 )
                 VALUES
                 (@clientId,
@@ -103,7 +104,8 @@ namespace OpenCBS.Manager.Products
 @overdraftCommitmentFeeType,
 @overdraftCommitmentFee,
 @overdraftApplied,
-@overdraftAppliedDate
+@overdraftAppliedDate,
+@AllotedOverdraftLimit
 )
                 SELECT SCOPE_IDENTITY()";
 
@@ -166,6 +168,7 @@ namespace OpenCBS.Manager.Products
              c.AddParam("@overdraftCommitmentFee", product.OverdraftCommitmentFee);
              c.AddParam("@overdraftApplied", product.OverdraftApplied);
              c.AddParam("@overdraftAppliedDate", product.OverdraftAppliedDate);
+             c.AddParam("@AllotedOverdraftLimit", product.OverdraftLimit);
 
              
 
@@ -208,7 +211,8 @@ namespace OpenCBS.Manager.Products
 [overdraft_commitment_fee_type] = @overdraftCommitmentFeeType,
 [overdraft_commitment_fee] = @overdraftCommitmentFee,
 [overdraft_applied] = @overdraftApplied,
-[overdraft_applied_date] = @overdraftAppliedDate
+[overdraft_applied_date] = @overdraftAppliedDate,
+[alloted_overdraft_limit] = @AllotedOverdraftLimit
 WHERE id = @productId";
 
 
@@ -259,7 +263,8 @@ WHERE id = @productId";
 [overdraft_commitment_fee_type] = @overdraftCommitmentFeeType,
 [overdraft_commitment_fee] = @overdraftCommitmentFee,
 [overdraft_applied] = @overdraftApplied,
-[overdraft_applied_date] = @overdraftAppliedDate
+[overdraft_applied_date] = @overdraftAppliedDate,
+[alloted_overdraft_limit] = @AllotedOverdraftLimit
 WHERE current_account_contract_code = @contractCode";
 
 
@@ -537,6 +542,7 @@ WHERE current_account_contract_code = @contractCode";
 [dbo].[CurrentAccountProductHoldings].[overdraft_commitment_fee],
 [dbo].[CurrentAccountProductHoldings].[overdraft_applied],
 [dbo].[CurrentAccountProductHoldings].[overdraft_applied_date],
+[dbo].[CurrentAccountProductHoldings].[alloted_overdraft_limit],
 [dbo].[CurrentAccountProduct].[current_account_product_name],
 [dbo].[CurrentAccountProduct].[current_account_product_code],
 [dbo].[Persons].[first_name],
@@ -621,6 +627,7 @@ JOIN [dbo].Currencies AS cur ON [dbo].CurrentAccountProduct.currency = cur.id
 [dbo].[CurrentAccountProductHoldings].[overdraft_commitment_fee],
 [dbo].[CurrentAccountProductHoldings].[overdraft_applied],
 [dbo].[CurrentAccountProductHoldings].[overdraft_applied_date],
+[dbo].[CurrentAccountProductHoldings].[alloted_overdraft_limit],
 [dbo].[CurrentAccountProduct].[current_account_product_name],
 [dbo].[CurrentAccountProduct].[current_account_product_code],
 [dbo].[Persons].[first_name],
@@ -704,6 +711,7 @@ WHERE [dbo].[CurrentAccountProductHoldings].[client_id] = @ClientId AND [dbo].[C
 [dbo].[CurrentAccountProductHoldings].[overdraft_commitment_fee],
 [dbo].[CurrentAccountProductHoldings].[overdraft_applied],
 [dbo].[CurrentAccountProductHoldings].[overdraft_applied_date],
+[dbo].[CurrentAccountProductHoldings].[alloted_overdraft_limit],
 [dbo].[CurrentAccountProduct].[current_account_product_name],
 [dbo].[CurrentAccountProduct].[current_account_product_code],
 [dbo].[Persons].[first_name],
@@ -775,6 +783,7 @@ WHERE [dbo].[CurrentAccountProductHoldings].id = @id";
 [dbo].[CurrentAccountProductHoldings].[overdraft_commitment_fee],
 [dbo].[CurrentAccountProductHoldings].[overdraft_applied],
 [dbo].[CurrentAccountProductHoldings].[overdraft_applied_date],
+[dbo].[CurrentAccountProductHoldings].[alloted_overdraft_limit],
 [dbo].[CurrentAccountProduct].[current_account_product_name],
 [dbo].[CurrentAccountProduct].[current_account_product_code],
 [dbo].[Persons].[first_name],
@@ -881,6 +890,8 @@ currentAccountProductHolding.OverdraftCommitmentFeeType = r.GetString("overdraft
  currentAccountProductHolding.OverdraftCommitmentFee = r.GetNullDouble("overdraft_commitment_fee");
  currentAccountProductHolding.OverdraftApplied = r.GetNullInt("overdraft_applied");
  currentAccountProductHolding.OverdraftAppliedDate = r.GetDateTime("overdraft_applied_date");
+ currentAccountProductHolding.AllotedOverdraftLimit = r.GetNullDecimal("alloted_overdraft_limit");
+
 
 return currentAccountProductHolding;
          }
@@ -924,6 +935,9 @@ return currentAccountProductHolding;
 
         public decimal CurrentAccountOverdraftInterestCalculation(DateTime calculationDate, CurrentAccountProductHoldings productHolding)
         {
+            if (productHolding.OverdraftApplied != 1)
+                return 0;
+
             string contractCode = productHolding.CurrentAccountContractCode;
 
             string q = @" Select From_Account As Account, Transaction_Date, Amount, From_Account_Balance as Balance From CurrentAccountTransactions Where From_Account = @contractCode  And Month(Transaction_Date) = @month
@@ -1024,13 +1038,124 @@ return currentAccountProductHolding;
             interestTransaction.TransactionMode = "Debit";
             interestTransaction.TransactionType = "Interest";
 
-            currentAccountTransactionManager.MakeATransaction(interestTransaction, null);
+            currentAccountTransactionManager.DebitFeeTransaction(interestTransaction);
             return overdraftInterest;
         }
 
         public decimal CurrentAccountCommitmentFeeCalculation(DateTime calculationDate, CurrentAccountProductHoldings productHolding)
         {
-            return 10;
+            if (productHolding.OverdraftApplied != 1)
+                return 0;
+            
+            string contractCode = productHolding.CurrentAccountContractCode;
+
+            string q = @" Select From_Account As Account, Transaction_Date, Amount, From_Account_Balance as Balance From CurrentAccountTransactions Where From_Account = @contractCode  And Month(Transaction_Date) = @month
+                           UNION
+                           Select To_Account As Account, Transaction_Date, Amount, To_Account_Balance as Balance From CurrentAccountTransactions Where To_Account = @contractCode And Month(Transaction_Date) = @month order By Transaction_Date";
+
+            List<TransactionSearchResult> listTransaction = new List<TransactionSearchResult>();
+            listTransaction = SearchTransaction(q, calculationDate, contractCode);
+
+            //Fetch opening balance for the month
+
+            CurrentAccountTransactions currentAccountTransactions = currentAccountTransactionManager.FetchMonthClosingBalance(calculationDate.Month - 1, contractCode);
+            TransactionSearchResult openingBalanceTransaction = new TransactionSearchResult();
+
+            decimal openingBalance = 0;
+            if (currentAccountTransactions != null)
+            {
+                if (currentAccountTransactions.FromAccount == contractCode)
+                    openingBalance = currentAccountTransactions.FromBalance;
+
+                else if (currentAccountTransactions.ToAccount == contractCode)
+                    openingBalance = currentAccountTransactions.ToBalance;
+
+                openingBalanceTransaction.Amount = currentAccountTransactions.Amount.Value;
+                openingBalanceTransaction.Account = contractCode;
+                openingBalanceTransaction.Balance = openingBalance;
+
+
+                if (openingBalance < 0)
+                {
+                    openingBalanceTransaction.TransactionDate = new DateTime(calculationDate.Year, calculationDate.Month, 1);
+                    listTransaction.Insert(0, openingBalanceTransaction);
+                }
+            }
+
+            //Fetch closing balance for the month
+            currentAccountTransactions = currentAccountTransactionManager.FetchMonthClosingBalance(calculationDate.Month, contractCode);
+            TransactionSearchResult closingBalanceTransaction = new TransactionSearchResult();
+
+            decimal closingBalance = 0;
+            if (currentAccountTransactions != null)
+            {
+                if (currentAccountTransactions.FromAccount == contractCode)
+                    closingBalance = currentAccountTransactions.FromBalance;
+
+                else if (currentAccountTransactions.ToAccount == contractCode)
+                    closingBalance = currentAccountTransactions.ToBalance;
+
+                closingBalanceTransaction.Amount = currentAccountTransactions.Amount.Value;
+                closingBalanceTransaction.Account = contractCode;
+                closingBalanceTransaction.Balance = closingBalance;
+
+
+                if (closingBalance < 0)
+                {
+
+                    if ((productHolding.Status == "Closed") && (productHolding.CloseDate.Month == calculationDate.Month) && (productHolding.CloseDate.Year == calculationDate.Year))
+                        closingBalanceTransaction.TransactionDate = productHolding.CloseDate;
+                    else
+                        closingBalanceTransaction.TransactionDate = new DateTime(calculationDate.Year, calculationDate.Month, DateTime.DaysInMonth(calculationDate.Year, calculationDate.Month));
+
+                    listTransaction.Insert(listTransaction.Count, closingBalanceTransaction);
+                }
+            }
+
+
+
+
+            decimal commitmentFee = 0;
+
+            for (int i = 0; i < listTransaction.Count - 1; i++)
+            {
+                TransactionSearchResult firstTransaction = listTransaction[i];
+                TransactionSearchResult secondTransaction = listTransaction[i + 1];
+                decimal effectiveBalance = 0;
+                if (firstTransaction.Balance < 0)
+                {
+                    effectiveBalance = productHolding.AllotedOverdraftLimit.Value + firstTransaction.Balance;
+                }
+                else
+                {
+                    effectiveBalance = productHolding.AllotedOverdraftLimit.Value;
+                }
+
+                double effectiveDays = (secondTransaction.TransactionDate - firstTransaction.TransactionDate).TotalDays;
+
+                double commitmentFeeInterestRate = productHolding.InterestRate.Value;
+                if (i != (listTransaction.Count - 2))
+                    commitmentFee = commitmentFee + ((effectiveBalance * (decimal)commitmentFeeInterestRate * (decimal)effectiveDays) / (100 * 365));
+                else
+                    commitmentFee = commitmentFee + ((effectiveBalance * (decimal)commitmentFeeInterestRate * ((decimal)effectiveDays + 1)) / (100 * 365));
+            }
+
+
+
+            CurrentAccountTransactions interestTransaction = new CurrentAccountTransactions();
+            interestTransaction.Amount = commitmentFee;
+            interestTransaction.Checker = "Fees";
+            interestTransaction.FromAccount = productHolding.CurrentAccountContractCode;
+            interestTransaction.Maker = "Fees";
+            interestTransaction.PurposeOfTransfer = "Commitment Fees debit for month " + calculationDate.Month;
+            interestTransaction.ToAccount = FetchBranchAccountNumber(productHolding.CurrentAccountContractCode);
+            interestTransaction.TransactionDate = calculationDate;
+            interestTransaction.TransactionFees = -1;
+            interestTransaction.TransactionMode = "Debit";
+            interestTransaction.TransactionType = "Fee";
+
+            currentAccountTransactionManager.DebitFeeTransaction(interestTransaction);
+            return commitmentFee;
         }
         
 

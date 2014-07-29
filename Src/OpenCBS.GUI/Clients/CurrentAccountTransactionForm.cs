@@ -178,7 +178,7 @@ namespace OpenCBS.GUI.Clients
             currentAccountTransactions.Amount = ServicesHelper.ConvertStringToNullableDecimal(tbAmount.Text);
             currentAccountTransactions.Maker = cbMaker.SelectedItem.ToString();
             currentAccountTransactions.Checker = cbChecker.SelectedItem.ToString();
-            currentAccountTransactions.TransactionDate = DateTime.Today;
+            currentAccountTransactions.TransactionDate = DateTime.Now;
             currentAccountTransactions.PurposeOfTransfer = tbPurpose.Text;
             string[] data = null;
             string productCode = "";
@@ -229,8 +229,29 @@ namespace OpenCBS.GUI.Clients
             else if (ret == -1)
                 MessageBox.Show("Balance is less than amount to be withdrawn and account does not have Overdraft facility enabled.");
 
-            
-                
+
+            if ((cbTransactionType.SelectedItem.ToString() == "Transfer") && (cbFromAccount.Text != ""))
+            {
+               
+                currentAccountProductHoldings = _currentAccountProductHoldingServices.FetchProduct(cbFromAccount.Text);
+                CurrentAccountProduct currentAccountProduct = currentAccountProductHoldings.CurrentAccountProduct;
+                lblFromAccountBalance.Text = string.Format("{0}{1} {4}\r\n{2}{3} {4}",
+                                  "Balance ", (currentAccountProductHoldings.Balance.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
+                                  "Overdraft ", (currentAccountProductHoldings.OverdraftLimit.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
+                                  currentAccountProduct.Currency.Code);
+            }
+
+
+            if ((cbTransactionType.SelectedItem.ToString() == "Transfer") && (cbToAccount.Text != ""))
+            {
+              
+                currentAccountProductHoldings = _currentAccountProductHoldingServices.FetchProduct(cbToAccount.Text);
+                CurrentAccountProduct currentAccountProduct = currentAccountProductHoldings.CurrentAccountProduct;
+                lblToAccountBalance.Text = string.Format("{0}{1} {4}\r\n{2}{3} {4}",
+                                  "Balance ", (currentAccountProductHoldings.Balance.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
+                                  "Overdraft ", (currentAccountProductHoldings.OverdraftLimit.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
+                                  currentAccountProduct.Currency.Code);
+            }
             
 
 
@@ -324,12 +345,12 @@ namespace OpenCBS.GUI.Clients
         {
             KeyPressControl(e);
         }
-
+        CurrentAccountProductHoldingServices _currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
         private void cbFromAccount_SelectedIndexChanged(object sender, EventArgs e)
         {
             if ((cbTransactionType.SelectedItem.ToString() == "Transfer") && (cbFromAccount.Text != ""))
             {
-                CurrentAccountProductHoldingServices _currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
+                
                 CurrentAccountProductHoldings currentAccountProductHoldings = _currentAccountProductHoldingServices.FetchProduct(cbFromAccount.Text);
                 CurrentAccountProduct currentAccountProduct = currentAccountProductHoldings.CurrentAccountProduct;
                 lblFromAccountBalance.Text = string.Format("{0}{1} {4}\r\n{2}{3} {4}",
@@ -344,7 +365,7 @@ namespace OpenCBS.GUI.Clients
         {
             if ((cbTransactionType.SelectedItem.ToString() == "Transfer") && (cbToAccount.Text != ""))
             {
-                CurrentAccountProductHoldingServices _currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
+                
                 CurrentAccountProductHoldings currentAccountProductHoldings = _currentAccountProductHoldingServices.FetchProduct(cbToAccount.Text);
                 CurrentAccountProduct currentAccountProduct = currentAccountProductHoldings.CurrentAccountProduct;
                 lblToAccountBalance.Text = string.Format("{0}{1} {4}\r\n{2}{3} {4}",

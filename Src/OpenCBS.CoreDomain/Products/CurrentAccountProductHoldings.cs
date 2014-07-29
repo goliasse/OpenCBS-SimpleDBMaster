@@ -53,5 +53,7 @@ namespace OpenCBS.CoreDomain.Products
         public double? OverdraftCommitmentFee { get; set; }
         public int? OverdraftApplied { get; set; }
         public DateTime OverdraftAppliedDate { get; set; }
+
+        public OCurrency AllotedOverdraftLimit { get; set; }
     }
 }

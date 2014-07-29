@@ -205,7 +205,9 @@ public CurrentAccountTransactions FetchTransaction(int transactionId)
 [transaction_fees],
 [maker],
 [checker],
-[purpose_of_transfer]
+[purpose_of_transfer],
+[to_account_balance],
+[from_account_balance]
 
             FROM [dbo].[CurrentAccountTransactions]
             WHERE id = @transactionId";
@@ -273,7 +275,9 @@ public List<CurrentAccountTransactions> FetchTransactions(string accountNumber)
 [transaction_fees],
 [maker],
 [checker],
-[purpose_of_transfer]
+[purpose_of_transfer],
+[to_account_balance],
+[from_account_balance]
 
             FROM [dbo].[CurrentAccountTransactions]
             WHERE from_account = @accountNumber OR to_account = @accountNumber";
@@ -319,7 +323,9 @@ public List<CurrentAccountTransactions> FetchFeeTransactions(string accountNumbe
 [transaction_fees],
 [maker],
 [checker],
-[purpose_of_transfer]
+[purpose_of_transfer],
+[to_account_balance],
+[from_account_balance]
 
 FROM [dbo].[CurrentAccountTransactions]
 WHERE from_account = @accountNumber OR to_account = @accountNumber
