@@ -303,6 +303,26 @@ WHERE current_account_contract_code = @contractCode";
              
          }
 
+         public void TransferFinalAmount(CurrentAccountProductHoldings productHolding)
+         {
+             CurrentAccountTransactions finalAmountTransaction = new CurrentAccountTransactions();
+             finalAmountTransaction.Amount = productHolding.InitialAmount;
+             finalAmountTransaction.Checker = "Final Amount";
+             finalAmountTransaction.FromAccount = productHolding.CurrentAccountContractCode;
+             finalAmountTransaction.Maker = "Final Amount";
+             finalAmountTransaction.PurposeOfTransfer = "Final amount paid for " + productHolding.CurrentAccountContractCode;
+             if (productHolding.FinalAmountAccountNumber != null)
+                 finalAmountTransaction.ToAccount = productHolding.FinalAmountAccountNumber;
+             else
+                 finalAmountTransaction.ToAccount = productHolding.FinalAmountPaymentMethod;
+             finalAmountTransaction.TransactionDate = DateTime.Today;
+             finalAmountTransaction.TransactionFees = 0;
+             finalAmountTransaction.TransactionMode = "Debit";
+             finalAmountTransaction.TransactionType = productHolding.FinalAmountPaymentMethod;
+             currentAccountTransactionManager.MakeATransaction(finalAmountTransaction, null);
+
+         }
+
 
          public decimal CalculateClosingFees(CurrentAccountProductHoldings productHolding)
          {
@@ -827,9 +847,7 @@ currentAccountProductHolding.CurrentAccountContractCode =r.GetString("current_ac
 
 currentAccountProductHolding.CurrentAccountProduct = new CurrentAccountProduct();
 currentAccountProductHolding.CurrentAccountProduct = currentAccountProductManager.FetchProduct(r.GetInt("current_account_product_id"));
-//currentAccountProductHolding.CurrentAccountProduct.Id = r.GetInt("current_account_product_id");
-//currentAccountProductHolding.CurrentAccountProduct.CurrentAccountProductName = r.GetString("current_account_product_name");
-//currentAccountProductHolding.CurrentAccountProduct.CurrentAccountProductCode = r.GetString("current_account_product_code");
+
 
 currentAccountProductHolding.CurrentAccountProduct.Currency = new Currency()
 {

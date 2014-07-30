@@ -7,7 +7,7 @@ using OpenCBS.Shared;
 
 namespace OpenCBS.CoreDomain.Products
 {
-    public class FixedDepositProductHoldings
+    public class FixedDepositProductHoldings : IProductHolding
     {
         
         public int Id { get; set; }

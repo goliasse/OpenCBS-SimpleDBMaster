@@ -7,6 +7,7 @@ using OpenCBS.CoreDomain;
 using OpenCBS.CoreDomain.Products;
 using OpenCBS.ExceptionsHandler;
 using OpenCBS.Enums;
+using OpenCBS.Shared;
 
 namespace OpenCBS.Services
 {
@@ -151,6 +152,8 @@ namespace OpenCBS.Services
             if (Convert.ToInt32(fixedDepositProduct.InterestCalculationFrequency) <= 0)
                 throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInterestCalculationFrequencyIsInvalid);
 
+            if (ValidateMinMaxValue(fixedDepositProduct.PenalityRateMin, fixedDepositProduct.PenalityRateMax, fixedDepositProduct.PenalityValue))
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.PenaltyMinMaxValue);
 
             if (fixedDepositProduct.PenalityRateMin.HasValue && fixedDepositProduct.PenalityRateMin < 0)
                 throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHPenaltyIsInvalid);
@@ -160,6 +163,28 @@ namespace OpenCBS.Services
 
             if (!ServicesHelper.CheckMinMaxAndValueCorrectlyFilled(fixedDepositProduct.PenalityRateMin, fixedDepositProduct.PenalityRateMax, fixedDepositProduct.PenalityValue))
                 throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHPenaltyMinMaxIsInvalid);
+        }
+
+        private static bool ValidateMinMaxValue(double? min, double? max, double? value)
+        {
+            if (((min.HasValue) && (max.HasValue)) && (!value.HasValue))
+                return false;
+            else if (((!min.HasValue) && (!max.HasValue)) && (value.HasValue))
+                return false;
+
+            return true;
+
+        }
+
+        private static bool ValidateMinMaxValue(OCurrency min, OCurrency max, OCurrency value)
+        {
+            if (((min.HasValue) && (max.HasValue)) && (!value.HasValue))
+                return false;
+            else if (((!min.HasValue) && (!max.HasValue)) && (value.HasValue))
+                return false;
+
+            return true;
+
         }
 
     }

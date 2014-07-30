@@ -334,5 +334,9 @@ namespace OpenCBS.Services
                 return _currentAccountProductHoldingManager.CurrentAccountInterestCalculation(calculationDate, productHolding);
             }
 
+       public void TransferFinalAmount(CurrentAccountProductHoldings productHolding)
+       {
+           _currentAccountProductHoldingManager.TransferFinalAmount(productHolding);
+       }
     }
 }

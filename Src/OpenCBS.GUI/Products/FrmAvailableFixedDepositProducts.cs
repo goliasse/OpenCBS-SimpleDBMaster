@@ -97,11 +97,26 @@ namespace OpenCBS.GUI.Products
 
         private void buttonEditProduct_Click(object sender, System.EventArgs e)
         {
+            try{
             int i = lvFixedDepositProducts.SelectedIndices[0];
             string selectedProductId = lvFixedDepositProducts.Items[i].Text;
 
             FrmAddFixedDepositProduct _frmAddFixedDepositProduct = new FrmAddFixedDepositProduct(Convert.ToInt32(selectedProductId),true);
             _frmAddFixedDepositProduct.Show();
+
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FixedDepositProductSelectAProduct);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
         }
 
         private void checkBoxShowDeletedProduct_CheckedChanged(object sender, System.EventArgs e)
@@ -119,12 +134,28 @@ namespace OpenCBS.GUI.Products
 
         private void buttonDeleteProduct_Click(object sender, EventArgs e)
         {
+            try{
             int i = lvFixedDepositProducts.SelectedIndices[0];
             string selectedProductId = lvFixedDepositProducts.Items[i].Text;
 
             FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
             _fixedDepositProductService.DeleteFixedDepositProduct(Convert.ToInt32(selectedProductId));
             MessageBox.Show("Fixed Deposit Product Successfully Deleted.");
+
+
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FixedDepositProductSelectAProduct);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
         }
 
         private void btnViewProduct_Click(object sender, EventArgs e)

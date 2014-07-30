@@ -271,6 +271,7 @@
     <Compile Include="Products\FixedDepositProductHoldings.cs" />
     <Compile Include="Products\ICurrentAccountProduct.cs" />
     <Compile Include="Products\IFixedDepositProduct.cs" />
+    <Compile Include="Products\IProductHolding.cs" />
     <Compile Include="SearchResult\TransactionSearchResult.cs" />
     <Compile Include="Teller.cs" />
     <Compile Include="LoanCycles\Cycle.cs" />

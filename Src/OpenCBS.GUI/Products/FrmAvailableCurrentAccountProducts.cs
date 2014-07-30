@@ -88,7 +88,7 @@ namespace OpenCBS.GUI.Products
 
         private void buttonEditProduct_Click(object sender, EventArgs e)
         {
-
+            try{
             int i = lvCurrentAccountProducts.SelectedIndices[0];
             string selectedProductId = lvCurrentAccountProducts.Items[i].Text;
 
@@ -96,6 +96,22 @@ namespace OpenCBS.GUI.Products
 
             FrmAddCurrentAccountProduct _frmAddCurrentAccountProduct = new FrmAddCurrentAccountProduct(Convert.ToInt32(selectedProductId),true);
             _frmAddCurrentAccountProduct.Show();
+
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CurrentAccountProductSelectAProduct);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
+
+            
         }
 
         private void checkBoxShowDeletedProduct_CheckedChanged(object sender, EventArgs e)
@@ -113,12 +129,27 @@ namespace OpenCBS.GUI.Products
 
         private void buttonDeleteProduct_Click(object sender, EventArgs e)
         {
+            try{
             int i = lvCurrentAccountProducts.SelectedIndices[0];
             string selectedProductId = lvCurrentAccountProducts.Items[i].Text;
 
             CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
             _currentAccountProductService.DeleteCurrentAccountProduct(Convert.ToInt32(selectedProductId));
             MessageBox.Show("Current Account Product Successfully Deleted.");
+
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    
+                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CurrentAccountProductSelectAProduct);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
 
         }
 

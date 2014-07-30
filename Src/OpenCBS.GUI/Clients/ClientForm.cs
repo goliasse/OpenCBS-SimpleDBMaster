@@ -9303,6 +9303,8 @@ namespace OpenCBS.GUI.Clients
             label31.Visible = false;
             btnCloseFDContract.Visible = false;
             btnExtendPeriod.Visible = false;
+            tbFDInitialAmountNumber.Visible = false;
+            lblFDInitialAccount.Visible = false;
 
 
             cbFixedDepositProduct.SelectedIndex = 0;
@@ -9321,6 +9323,7 @@ namespace OpenCBS.GUI.Clients
             cbAccountingOfficer.ResetText();
             tbComment.ResetText();
             cbInitialAmountPaymentMethod.ResetText();
+            tbFDInitialAmountNumber.ResetText();
 
             cbFixedDepositProduct.Enabled = true;
             tbInitialAmount.Enabled = true;
@@ -9336,6 +9339,9 @@ namespace OpenCBS.GUI.Clients
             tbComment.Enabled = true;
             cbInitialAmountPaymentMethod.Enabled = true;
             btnAddFixedDepositProduct.Enabled = true;
+            tbFDInitialAmountNumber.Enabled = true;
+
+            cbInitialAmountPaymentMethod.SelectedIndex = 0;
 
            
 
@@ -9905,6 +9911,7 @@ namespace OpenCBS.GUI.Clients
                 _fixedDepositProductHoldings.FixedDepositProduct = product;
                 FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
                 _fixedDepositProductHoldingService.UpdateFixedDepositProductHolding(_fixedDepositProductHoldings, _fixedDepositProductHoldings.FixedDepositContractCode);
+                _fixedDepositProductHoldingService.TransferFinalAmount(_fixedDepositProductHoldings);
                 MessageBox.Show("Amount Transferred And Account Closed Successfully.");
 
             }
@@ -10017,7 +10024,13 @@ namespace OpenCBS.GUI.Clients
                 _currentAccountProductHoldingService.UpdateCurrentAccountProductHolding(_currentAccountProductHoldings, tbCAProductCode.Text);
 
                 _currentAccountProductHoldingService.CalculateClosingFees(_currentAccountProductHoldings);
-               
+                _currentAccountProductHoldingService.CalculateFixedOverdraftFees(DateTime.Today,_currentAccountProductHoldings);
+                _currentAccountProductHoldingService.CalculateManagementFees(DateTime.Today, _currentAccountProductHoldings);
+                _currentAccountProductHoldingService.CurrentAccountCommitmentFeeCalculation(DateTime.Today, _currentAccountProductHoldings);
+                _currentAccountProductHoldingService.CurrentAccountInterestCalculation(DateTime.Today, _currentAccountProductHoldings);
+                _currentAccountProductHoldingService.CurrentAccountOverdraftInterestCalculation(DateTime.Today, _currentAccountProductHoldings);
+                _currentAccountProductHoldingService.TransferFinalAmount(_currentAccountProductHoldings);
+
                 MessageBox.Show(tbCAProductCode.Text + " Successfully Closed.");
                 btnCloseAccount.Enabled = false;
                

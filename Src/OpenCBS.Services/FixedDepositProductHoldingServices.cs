@@ -115,9 +115,13 @@ namespace OpenCBS.Services
             if (Convert.ToInt32(productHolding.InterestCalculationFrequency) <= 0)
                 throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHInterestCalculationFrequencyIsInvalid);
 
-            if(!IsPenaltyCorrect(productHolding, product))
+            if (!IsPenaltyCorrect(productHolding, product))
                 throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHPenaltyIsInvalid);
 
+
+            if(!IsPenaltyCorrect(productHolding, product))
+                throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHPenaltyIsInvalid);
+            
 
             if (string.IsNullOrEmpty(productHolding.Comment))
                 throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHCommentIsBlank);
@@ -167,6 +171,24 @@ namespace OpenCBS.Services
                                                                     fixedDepositProductHolding.Penality);
             }
             
+        }
+
+
+        private static bool ValidateMinMaxValue(OCurrency min, OCurrency max, OCurrency value)
+        {
+            if (((min.HasValue) && (max.HasValue)) || (!value.HasValue))
+                return false;
+            else if (((!min.HasValue) && (!max.HasValue)) || (value.HasValue))
+                return false;
+
+            return true;
+
+        }
+
+
+        public void TransferFinalAmount(FixedDepositProductHoldings productHolding)
+        {
+            _fixedDepositProductHoldingManager.TransferFinalAmount(productHolding);
         }
 
 

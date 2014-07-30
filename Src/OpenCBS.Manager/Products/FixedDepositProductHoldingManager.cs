@@ -17,15 +17,21 @@ namespace OpenCBS.Manager.Products
     {
 
         FixedDepositProductManager fixedDepositProductManager = null;
+        
+        CurrentAccountTransactionManager currentAccountTransactionManager = null;
         public FixedDepositProductHoldingManager(User pUser) : base(pUser)
         {
             fixedDepositProductManager = new FixedDepositProductManager(pUser);
+            
+            currentAccountTransactionManager = new CurrentAccountTransactionManager(pUser);
         }
 
         public FixedDepositProductHoldingManager(string testDB)
             : base(testDB)
         {
             fixedDepositProductManager = new FixedDepositProductManager(testDB);
+
+            currentAccountTransactionManager = new CurrentAccountTransactionManager(testDB);
         }
 
 
@@ -98,10 +104,57 @@ namespace OpenCBS.Manager.Products
                 productName.Id = Convert.ToInt32(c.ExecuteScalar());
                 productName.FixedDepositContractCode = productName.FixedDepositContractCode + "/" + productName.Id;
                 UpdateFixedDepositProductHolding(productName,productName.Id);
+                
+                TransferInitialAmount(productName);
             }
 
 
             return productName.FixedDepositContractCode;
+        }
+
+
+        public void TransferFinalAmount(FixedDepositProductHoldings productHolding)
+        {
+            CurrentAccountTransactions finalAmountTransaction = new CurrentAccountTransactions();
+            finalAmountTransaction.Amount = productHolding.InitialAmount;
+            finalAmountTransaction.Checker = "Final Amount";
+            finalAmountTransaction.FromAccount = productHolding.FixedDepositContractCode;
+            finalAmountTransaction.Maker = "Final Amount";
+            finalAmountTransaction.PurposeOfTransfer = "Final amount paid for " + productHolding.FixedDepositContractCode;
+            if (productHolding.FinalAmountChequeAccount != null)
+                finalAmountTransaction.ToAccount = productHolding.FinalAmountChequeAccount;
+            else
+                finalAmountTransaction.ToAccount = productHolding.FinalAmountPaymentMethod;
+            finalAmountTransaction.TransactionDate = DateTime.Today;
+            finalAmountTransaction.TransactionFees = 0;
+            finalAmountTransaction.TransactionMode = "Debit";
+            finalAmountTransaction.TransactionType = productHolding.FinalAmountPaymentMethod;
+            currentAccountTransactionManager.MakeATransaction(finalAmountTransaction, null);
+
+        }
+
+        public void TransferInitialAmount(FixedDepositProductHoldings productHolding)
+        {
+
+
+
+            CurrentAccountTransactions initialAmountTransaction = new CurrentAccountTransactions();
+            initialAmountTransaction.Amount = productHolding.InitialAmount;
+            initialAmountTransaction.Checker = "Initial Amount";
+            if (productHolding.InitialAmountChequeAccount != null)
+                initialAmountTransaction.FromAccount = productHolding.InitialAmountChequeAccount;
+            else
+                initialAmountTransaction.FromAccount = productHolding.InitialAmountPaymentMethod;
+
+            initialAmountTransaction.Maker = "Initial Amount";
+            initialAmountTransaction.PurposeOfTransfer = "Initial amount paid for " + productHolding.FixedDepositContractCode;
+            initialAmountTransaction.ToAccount = productHolding.FixedDepositContractCode;
+            initialAmountTransaction.TransactionDate = DateTime.Today;
+            initialAmountTransaction.TransactionFees = 0;
+            initialAmountTransaction.TransactionMode = "Credit";
+            initialAmountTransaction.TransactionType = productHolding.InitialAmountPaymentMethod;
+            currentAccountTransactionManager.MakeATransaction(initialAmountTransaction, null);
+
         }
 
         private static void SetProduct(OpenCbsCommand c, FixedDepositProductHoldings product)

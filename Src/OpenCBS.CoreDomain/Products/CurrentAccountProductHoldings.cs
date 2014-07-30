@@ -6,7 +6,7 @@ using OpenCBS.Shared;
 
 namespace OpenCBS.CoreDomain.Products
 {
-    public class CurrentAccountProductHoldings
+    public class CurrentAccountProductHoldings : IProductHolding
     {
         public int Id { get; set; }
         public int ClientId { get; set; }

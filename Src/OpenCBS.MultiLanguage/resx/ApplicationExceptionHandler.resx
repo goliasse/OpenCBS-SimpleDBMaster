@@ -1934,10 +1934,55 @@ Enter another account number.
     <value>Please select a Transaction Type!!</value>
   </data>
   
+   <data name="FDPHCurrencyIsBlank" xml:space="preserve">
+    <value>Please select a Currency!!</value>
+  </data>
   
 
 <data name="CATBalanceLessThanMinBalance" xml:space="preserve">
     <value>Remaining balance would be less than Minimum Balance after transaction!!</value>
   </data>
+
+
+  <data name="PenaltyMinMaxValue" xml:space="preserve">
+    <value>Either provide Penalty Min and Penalty Max or Penalty Value !!</value>
+  </data>
+
+  <data name="InterestMinMaxValue" xml:space="preserve">
+    <value>Either provide Interest Min and Interest Max or Interest Value !!</value>
+  </data>
+
+  <data name="EntryFeesMinMaxValue" xml:space="preserve">
+    <value>Either provide Entry Fees Min and Entry Fees Max or Entry Fees Value !!</value>
+  </data>
+
+  <data name="ReopenFeesMinMaxValue" xml:space="preserve">
+    <value>Either provide Reopen Fees Min and Reopen Fees Max or Reopen Fees Value !!</value>
+  </data>
+
+  <data name="CloseFeesMinMaxValue" xml:space="preserve">
+    <value>Either provide Close Fees Min and Close Fees Max or Close Fees Value !!</value>
+  </data>
+
+  <data name="ManagementFeesMinMaxValue" xml:space="preserve">
+    <value>Either provide Management Fees Min and Management Fees Max or Management Fees Value !!</value>
+  </data>
+
+  <data name="OverdraftFeesMinMaxValue" xml:space="preserve">
+    <value>Either provide Overdraft Fees  Min and Overdraft Fees Max or Overdraft Fees Value !!</value>
+  </data>
+
+  <data name="OverdraftInterestRateMinMaxValue" xml:space="preserve">
+    <value>Either provide Overdraft Interest Rate Min and Overdraft Interest Rate Max or Overdraft Interest Rate Value !!</value>
+  </data>
+
+  <data name="CommitmentFeesMinMaxValue" xml:space="preserve">
+    <value>Either provide Commitment Fees Min and Commitment Fees Max or Penalty Value !!</value>
+  </data>
+
+  <data name="OverdraftLimitMinMaxValue" xml:space="preserve">
+    <value>Either provide Overdraft Limit Min and Overdraft Limit Max or Overdraft Limit Value !!</value>
+  </data>
+
 
 </root>

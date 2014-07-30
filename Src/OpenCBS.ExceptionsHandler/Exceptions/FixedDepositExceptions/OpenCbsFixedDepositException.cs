@@ -220,6 +220,10 @@ namespace OpenCBS.ExceptionsHandler
                 case OpenCbsFixedDepositExceptionEnum.FixedDepositProductSelectAProduct:
                     returned = "FixedDepositProductSelectAProduct";
                     break;
+
+                case OpenCbsFixedDepositExceptionEnum.PenaltyMinMaxValue:
+                    returned = "PenaltyMinMaxValue";
+                    break;
             }
             return returned;
         }
@@ -230,6 +234,7 @@ namespace OpenCBS.ExceptionsHandler
     [Serializable]
     public enum OpenCbsFixedDepositExceptionEnum
     {
+        PenaltyMinMaxValue,
         FDPHSelectAContract,
         FixedDepositProductSelectAProduct,
         FixedDepositProductNameAlreadyExist,

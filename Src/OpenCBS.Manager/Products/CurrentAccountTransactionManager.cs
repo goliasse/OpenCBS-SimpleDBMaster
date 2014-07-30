@@ -104,6 +104,13 @@ namespace OpenCBS.Manager.Products
                     feeTransaction.Amount = currentAccountTransactionFees.TransactionFees * currentAccountTransactions.Amount / 100;
                 }
 
+                if (feeTransaction.Amount < currentAccountTransactionFees.TransactionFeeMin)
+                    feeTransaction.Amount = currentAccountTransactionFees.TransactionFeeMin;
+
+                if (feeTransaction.Amount > currentAccountTransactionFees.TransactionFeeMax)
+                    feeTransaction.Amount = currentAccountTransactionFees.TransactionFeeMax;
+
+
                 feeTransaction.Checker = "Fees";
                 feeTransaction.FromAccount = currentAccountTransactions.FromAccount;
                 feeTransaction.Maker = "Fees";

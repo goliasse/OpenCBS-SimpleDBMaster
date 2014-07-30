@@ -378,6 +378,42 @@ namespace OpenCBS.ExceptionsHandler
                     returned = "CurrentAccountTransactionSelectATransaction";
                     break;
 
+                case OpenCbsCurrentAccountExceptionEnum.InterestMinMaxValue:
+                    returned = "InterestMinMaxValue";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.EntryFeesMinMaxValue:
+                    returned = "EntryFeesMinMaxValue";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.ReopenFeesMinMaxValue:
+                    returned = "ReopenFeesMinMaxValue";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CloseFeesMinMaxValue:
+                    returned = "CloseFeesMinMaxValue";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.ManagementFeesMinMaxValue:
+                    returned = "ManagementFeesMinMaxValue";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.OverdraftFeesMinMaxValue:
+                    returned = "OverdraftFeesMinMaxValue";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.OverdraftInterestRateMinMaxValue:
+                    returned = "OverdraftInterestRateMinMaxValue";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.CommitmentFeesMinMaxValue:
+                    returned = "CommitmentFeesMinMaxValue";
+                    break;
+
+                case OpenCbsCurrentAccountExceptionEnum.OverdraftLimitMinMaxValue:
+                    returned = "OverdraftLimitMinMaxValue";
+                    break;
+
 
             }
             return returned;
@@ -389,6 +425,15 @@ namespace OpenCBS.ExceptionsHandler
     [Serializable]
     public enum OpenCbsCurrentAccountExceptionEnum
     {
+        InterestMinMaxValue,
+        EntryFeesMinMaxValue,
+        ReopenFeesMinMaxValue,
+        CloseFeesMinMaxValue,
+        ManagementFeesMinMaxValue,
+        OverdraftFeesMinMaxValue,
+        OverdraftInterestRateMinMaxValue,
+        CommitmentFeesMinMaxValue,
+        OverdraftLimitMinMaxValue,
         CurrentAccountTransactionSelectATransaction,
         CAPHSelectAContract,
         CurrentAccountProductSelectAProduct,
