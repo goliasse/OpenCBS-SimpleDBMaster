@@ -57,6 +57,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.AcceptanceTest", "O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.ExceptionsHandler", "OpenCBS.ExceptionsHandler\OpenCBS.ExceptionsHandler.csproj", "{98B26AD8-D160-462B-B70F-982D8701154A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.CurrentAccountBatch", "CurrentAccountBatch\OpenCBS.CurrentAccountBatch.csproj", "{DE67E933-5011-4BAF-8D9E-B18D7B2E05A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -257,12 +259,22 @@ Global
 		{98B26AD8-D160-462B-B70F-982D8701154A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{98B26AD8-D160-462B-B70F-982D8701154A}.Test|Any CPU.ActiveCfg = Test|Any CPU
 		{98B26AD8-D160-462B-B70F-982D8701154A}.Test|Any CPU.Build.0 = Test|Any CPU
+		{DE67E933-5011-4BAF-8D9E-B18D7B2E05A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE67E933-5011-4BAF-8D9E-B18D7B2E05A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE67E933-5011-4BAF-8D9E-B18D7B2E05A1}.DebugWithTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE67E933-5011-4BAF-8D9E-B18D7B2E05A1}.DebugWithTest|Any CPU.Build.0 = Debug|Any CPU
+		{DE67E933-5011-4BAF-8D9E-B18D7B2E05A1}.FitNesse|Any CPU.ActiveCfg = Release|Any CPU
+		{DE67E933-5011-4BAF-8D9E-B18D7B2E05A1}.FitNesse|Any CPU.Build.0 = Release|Any CPU
+		{DE67E933-5011-4BAF-8D9E-B18D7B2E05A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE67E933-5011-4BAF-8D9E-B18D7B2E05A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE67E933-5011-4BAF-8D9E-B18D7B2E05A1}.Test|Any CPU.ActiveCfg = Release|Any CPU
+		{DE67E933-5011-4BAF-8D9E-B18D7B2E05A1}.Test|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		GreenPepperConfigServerUrl = http://wiki.octopusnetwork.org
 		GreenPepperConfigXmlRpcHandler = greenpepper1
+		GreenPepperConfigServerUrl = http://wiki.octopusnetwork.org
 	EndGlobalSection
 EndGlobal

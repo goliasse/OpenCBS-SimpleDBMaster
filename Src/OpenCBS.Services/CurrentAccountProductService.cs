@@ -336,8 +336,40 @@ namespace OpenCBS.Services
 
         public int SaveCurrentAccountTransactionFees(CurrentAccountTransactionFees currentAccountTransactionFees)
         {
+            ValidateCurrentAccountTransactionFees(currentAccountTransactionFees);
             return _currentAccountProductManager.SaveCurrentAccountTransactionFees(currentAccountTransactionFees);
         }
+
+
+        public void ValidateCurrentAccountTransactionFees(CurrentAccountTransactionFees currentAccountTransactionFees)
+        { 
+            if(currentAccountTransactionFees.TransactionType == OCurrentAccount.SelectPaymentMethodDefault)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CATFSelectTransactionType);
+
+            if (!currentAccountTransactionFees.TransactionFees.HasValue)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CATFValueIsBlank);
+
+            if (currentAccountTransactionFees.TransactionFees < 0)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CATFValueIsInvalid);
+
+            if (!currentAccountTransactionFees.TransactionFeeMin.HasValue)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CATFMinIsBlank);
+
+            if (currentAccountTransactionFees.TransactionFeeMin.Value < 0)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CATFMinIsInvalid);
+
+            if (!currentAccountTransactionFees.TransactionFeeMax.HasValue)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CATFMaxIsBlank);
+
+            if (currentAccountTransactionFees.TransactionFeeMax.Value < 0)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CATFMaxIsInvalid);
+
+            if (currentAccountTransactionFees.TransactionFeeMax.Value <= currentAccountTransactionFees.TransactionFeeMin.Value)
+                throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CATFMaxIsLessThanMin);
+
+
+        }
+
             public List<CurrentAccountTransactionFees> FetchTransactionFee(int productId)
             {
                return _currentAccountProductManager.FetchTransactionFee(productId);
@@ -351,6 +383,7 @@ namespace OpenCBS.Services
 
         public void UpdateCurrentAccountTransactionFees(CurrentAccountTransactionFees transactionFees, string transactionType, string transactionMode, int productId)
         {
+            ValidateCurrentAccountTransactionFees(transactionFees);
             _currentAccountProductManager.UpdateCurrentAccountTransactionFees(transactionFees, transactionType, transactionMode, productId);
         }
 

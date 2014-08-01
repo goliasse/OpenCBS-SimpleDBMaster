@@ -1985,4 +1985,28 @@ Enter another account number.
   </data>
 
 
+<data name="CATFSelectTransactionType" xml:space="preserve"> 
+  <value>Select Transaction Type !!</value> </data> 
+  
+  <data name="CATFValueIsBlank" xml:space="preserve"> 
+    <value>Value cannot be empty !! </value> </data> 
+  
+  <data name="CATFMinIsBlank" xml:space="preserve"> 
+    <value>Min value cannot be empty !!</value> </data> 
+  
+  <data name="CATFMaxIsBlank" xml:space="preserve"> 
+    <value>Max value cannot be empty !!</value> </data> 
+  
+  <data name="CATFValueIsInvalid" xml:space="preserve"> 
+    <value> Value Is Invalid !! </value> </data> 
+  
+  <data name="CATFMinIsInvalid" xml:space="preserve"> 
+    <value>Min cannot be less than zero !!</value> </data> 
+  
+  <data name="CATFMaxIsInvalid" xml:space="preserve"> 
+    <value>Max cannot be less than equal to zero !! </value> </data> 
+  
+  <data name="CATFMaxIsLessThanMin" xml:space="preserve"> 
+    <value>Min cannot be greater than Max !! </value> </data>
+
 </root>

@@ -414,6 +414,30 @@ namespace OpenCBS.ExceptionsHandler
                     returned = "OverdraftLimitMinMaxValue";
                     break;
 
+                case OpenCbsCurrentAccountExceptionEnum.CATFSelectTransactionType:
+                    returned = "CATFSelectTransactionType";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CATFValueIsBlank:
+                    returned = "CATFValueIsBlank";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CATFMinIsBlank:
+                    returned = "CATFMinIsBlank";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CATFMaxIsBlank:
+                    returned = "CATFMaxIsBlank";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CATFValueIsInvalid:
+                    returned = "CATFValueIsInvalid";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CATFMinIsInvalid:
+                    returned = "CATFMinIsInvalid";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CATFMaxIsInvalid:
+                    returned = "CATFMaxIsInvalid";
+                    break;
+                case OpenCbsCurrentAccountExceptionEnum.CATFMaxIsLessThanMin:
+                    returned = "CATFMaxIsLessThanMin";
+                    break;	
 
             }
             return returned;
@@ -425,6 +449,14 @@ namespace OpenCBS.ExceptionsHandler
     [Serializable]
     public enum OpenCbsCurrentAccountExceptionEnum
     {
+        CATFSelectTransactionType,
+CATFValueIsBlank,
+CATFMinIsBlank,
+CATFMaxIsBlank,
+CATFValueIsInvalid,
+CATFMinIsInvalid,
+CATFMaxIsInvalid,
+CATFMaxIsLessThanMin,
         InterestMinMaxValue,
         EntryFeesMinMaxValue,
         ReopenFeesMinMaxValue,
