@@ -324,6 +324,48 @@ CREATE TABLE [dbo].[FixedDepositProductsClientTypes](
 GO
 
 
+USE [Test]
+GO
+
+/****** Object:  Table [dbo].[CurrentAccountEvents]    Script Date: 07/30/2014 20:22:28 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CurrentAccountEvents](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[contract_code] [nvarchar](50) NOT NULL,
+	[event_code] [nchar](10) NOT NULL,
+	[description] [nvarchar](max) NOT NULL,
+	[creation_date] [date] NOT NULL
+) ON [PRIMARY]
+
+GO
+
+
+USE [Test]
+GO
+
+/****** Object:  Table [dbo].[FixedDepositEvents]    Script Date: 07/30/2014 20:24:14 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[FixedDepositEvents](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[contract_code] [nvarchar](50) NOT NULL,
+	[event_code] [nchar](10) NOT NULL,
+	[description] [nvarchar](max) NOT NULL,
+	[creation_date] [date] NOT NULL
+) ON [PRIMARY]
+
+GO
+
+
 
 
 

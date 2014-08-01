@@ -6427,11 +6427,11 @@ namespace OpenCBS.GUI.Clients
         private ComboBox cmbContractStatus;
         private TableLayoutPanel tlpSBDetails;
         private ColumnHeader colCancelDate;
-        private PrintButton btnPrintLoanDetails;
-        private PrintButton btnPrintCreditCommittee;
-        private PrintButton btnPrintGuarantors;
-        private PrintButton btnPrintSavings;
-        private EconomicActivityControl eacLoan;
+        private PrintButton btnPrintLoanDetails = new PrintButton();
+        private PrintButton btnPrintCreditCommittee = new PrintButton();
+        private PrintButton btnPrintGuarantors = new PrintButton();
+        private PrintButton btnPrintSavings = new PrintButton();
+        private EconomicActivityControl eacLoan = new EconomicActivityControl();
         private Label lbSavingAvBalanceValue;
         private Label lBSavingAvBalance;
         private Label lblEconomicActivity;

@@ -637,8 +637,8 @@ namespace OpenCBS.GUI.Clients
         void InitializeCurrentAccountStatus()
         {
             cbCAAccountStatus.Items.Clear();
-            cbCAAccountStatus.Items.Add("Opened");
-            cbCAAccountStatus.Items.Add("Reopened");
+          
+            cbCAAccountStatus.Items.Add("Reactive");
             cbCAAccountStatus.Items.Add("Active");
             cbCAAccountStatus.Items.Add("Dormant");
             cbCAAccountStatus.Items.Add("Closed");
@@ -5810,31 +5810,37 @@ namespace OpenCBS.GUI.Clients
 
         private void InitLoanDetailsPrintButton()
         {
+            btnPrintLoanDetails = new PrintButton();
             InitPrintButton(AttachmentPoint.LoanDetails, btnPrintLoanDetails);
         }
 
         private void InitLoanEventsPrintButton()
         {
+            btnPrintLoanEvents = new PrintButton();
             InitPrintButton(AttachmentPoint.LoanEvents, btnPrintLoanEvents);
         }
 
         private void InitLoanRepaymentPrintButton()
         {
+            btnPrintLoanRepayment = new PrintButton();
             InitPrintButton(AttachmentPoint.LoanRepayment, btnPrintLoanRepayment);
         }
 
         private void InitCreditCommitteePrintButton()
         {
+            btnPrintCreditCommittee = new PrintButton();
             InitPrintButton(AttachmentPoint.CreditCommittee, btnPrintCreditCommittee);
         }
 
         private void InitSavingsBookPrintButton()
         {
+            btnPrintSavings = new PrintButton();
             InitPrintButton(AttachmentPoint.SavingsBook, btnPrintSavings);
         }
 
         private void InitGuarantorsPrintButton()
         {
+            btnPrintGuarantors = new PrintButton();
             InitPrintButton(AttachmentPoint.Guarantors, btnPrintGuarantors);
         }
         private bool CheckDataInOpenFiscalYear()
@@ -9728,7 +9734,7 @@ namespace OpenCBS.GUI.Clients
 
                
             } 
-            if (_currentAccountProductHoldings.Status == "Reopened")
+            if (_currentAccountProductHoldings.Status == "Reactive")
             {
                 tabControlCurrentAccount.TabPages.Remove(tabPageReopenAccount);
                 tabControlCurrentAccount.TabPages.Add(tabPageReopenAccount);
@@ -10121,10 +10127,10 @@ namespace OpenCBS.GUI.Clients
                 }
 
             }
-            else if (accountStatus == "Reopened")
+            else if (accountStatus == "Reactive")
             {
                
-                _currentAccountProductHoldings.Status = "Reopened";
+                _currentAccountProductHoldings.Status = "Reactive";
                 _currentAccountProductHoldings.ReopenFees = ServicesHelper.ConvertStringToNullableDecimal(tbReopenFees.Text);
                 //_currentAccountProductHoldings.OpenDate = DateTime.Today;
                
