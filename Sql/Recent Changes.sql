@@ -365,8 +365,43 @@ CREATE TABLE [dbo].[FixedDepositEvents](
 
 GO
 
+USE [Test]
+GO
 
+/****** Object:  Table [dbo].[FixedDepositProductsClientTypes]    Script Date: 07/30/2014 19:52:27 ******/
+SET ANSI_NULLS ON
+GO
 
+SET QUOTED_IDENTIFIER ON
+GO
 
-
-
+INSERT INTO [Test].[dbo].[EventTypes]
+           ([event_type]
+           ,[description]
+           ,[sort_order]
+           ,[accounting])
+VALUES
+('CAOP', 'Current Account Open',800 ,1),
+('CACL', 'Current Account close',801 ,1),
+('CARE', 'Current Account Reopen',802 ,1),
+('CADO', 'Current Account Dormant',803 ,1),
+('ODAP', 'Current Account OD applied',804 ,1),
+('ODWT', 'Current Account OD withdrawn',805 ,1),
+('CACT', 'Current Account Credit transaction',806 ,1),
+('CADT', 'Current Account Debit transaction',807 ,1),
+('REFT', 'Reopen Fee debit transaction',808 ,1),
+('ENFT', 'Entry Fee debit transaction',809 ,1),
+('CLFT', 'Close Fee debit transaction',810 ,1),
+('TRFT', 'Transaction Fee debit transaction',811 ,1),
+('ODFT', 'Fixed OD Fee debit transaction',812 ,1),
+('RICT', 'Regular interest credit transaction',813 ,1),
+('ODDT', 'OD Interest debit transaction',814 ,1),
+('CFDT', 'Commitment fee debit transaction',815 ,1),
+('MGFT', 'Management Fee debit transaction',816 ,1),
+('FDOP', 'Fixed Deposit Open',817 ,1),
+('FDCL', 'Fixed Deposit Close',818 ,1), 
+('FDPR', 'Fixed Deposit Prematured',819 ,1),
+('FDPE', 'Fixed Deposit Maturity Period Extended',820 ,1),
+('FDCT', 'Fixed Deposit Credit transaction',821 ,1),
+('FDDT', 'Fixed Deposit Debit transaction',822 ,1)
+GO
