@@ -638,9 +638,9 @@ namespace OpenCBS.GUI.Clients
             cbCAAccountStatus.Items.Clear();
             cbCAAccountStatus.Items.Add("Opened");
             cbCAAccountStatus.Items.Add("Reopened");
-            cbCAAccountStatus.Items.Add("Closed");
             cbCAAccountStatus.Items.Add("Active");
             cbCAAccountStatus.Items.Add("Dormant");
+            cbCAAccountStatus.Items.Add("Closed");
         }
 
 
@@ -764,7 +764,11 @@ namespace OpenCBS.GUI.Clients
             {
                 foreach (CurrentAccountTransactions currentAccountTransactions in currentAccountTransactionsList)
                 {
-
+                    decimal balance = 0;
+                    if (accountNumber == currentAccountTransactions.FromAccount)
+                        balance = currentAccountTransactions.FromBalance.Value;
+                    else
+                        balance = currentAccountTransactions.ToBalance.Value;
 
                     var item = new ListViewItem(new[] {
                     currentAccountTransactions.Id.ToString(),
@@ -772,7 +776,8 @@ namespace OpenCBS.GUI.Clients
                         currentAccountTransactions.Amount.GetFormatedValue(true),
                         currentAccountTransactions.TransactionDate.ToShortDateString(),
                         currentAccountTransactions.PurposeOfTransfer,
-                        currentAccountTransactions.TransactionType
+                        currentAccountTransactions.TransactionType,
+                        balance.ToString()
                     
                     
                     
@@ -794,6 +799,13 @@ namespace OpenCBS.GUI.Clients
             {
                 foreach (CurrentAccountTransactions currentAccountTransactions in currentAccountTransactionsList)
                 {
+
+                    decimal balance = 0;
+                    if (accountNumber == currentAccountTransactions.FromAccount)
+                        balance = currentAccountTransactions.FromBalance.Value;
+                    else
+                        balance = currentAccountTransactions.ToBalance.Value;
+
                     var item = new ListViewItem(new[] {
                     currentAccountTransactions.Id.ToString(),
                         currentAccountTransactions.FromAccount,
@@ -803,7 +815,8 @@ namespace OpenCBS.GUI.Clients
                         currentAccountTransactions.TransactionMode,
                         currentAccountTransactions.TransactionType,
                         currentAccountTransactions.TransactionFees.GetFormatedValue(true),
-                        currentAccountTransactions.PurposeOfTransfer
+                        currentAccountTransactions.PurposeOfTransfer,
+                        balance.ToString()
                     });
                     
                     lvTransactions.Items.Add(item);
@@ -9478,6 +9491,8 @@ namespace OpenCBS.GUI.Clients
             btnAddFixedDepositProduct.Visible = false;
             cbFixedDepositProduct.Enabled = false;
 
+            btnCloseFDContract.Text = "Transfer Amount";
+
             }
             catch (Exception ex)
             {
@@ -9539,7 +9554,7 @@ namespace OpenCBS.GUI.Clients
             tbCAClosedDate.Visible = visible;
             gbReopenFees.Visible = visible;
             gbCloseFees.Visible = visible;
-            btnCloseAccount.Visible = visible;
+           // btnCloseAccount.Visible = visible;
             gbAmount.Visible = visible;
            
             lblCAProductCode.Visible = visible;
@@ -9590,7 +9605,7 @@ namespace OpenCBS.GUI.Clients
                 gbCloseFees.Visible = false;
                 gbReopenFees.Visible = false;
                 gbInitialPayment.Visible = true;
-                btnCloseAccount.Text = "Transfer Balance";
+                //btnCloseAccount.Text = "Transfer Balance";
                 if (currentAccountProduct.ClosingFeesType == "Flat")
                 {
                     rbFlatCloseFees.Checked = true;
@@ -9614,7 +9629,7 @@ namespace OpenCBS.GUI.Clients
             }
             else 
             {
-                if (_currentAccountProductHoldings.Status == "Closed")
+                if ((_currentAccountProductHoldings.Status == "Closed") || (_currentAccountProductHoldings.Status == "Dormant"))
                 {
                     tabControlCurrentAccount.TabPages.Remove(tabPageCloseAccount);
                     tabControlCurrentAccount.TabPages.Add(tabPageCloseAccount);
@@ -9637,7 +9652,7 @@ namespace OpenCBS.GUI.Clients
               
                 tbCAChequeAccount.Text = _currentAccountProductHoldings.FinalAmountAccountNumber;
                 gbReopenFees.Visible = true;
-                btnCloseAccount.Text = "Reopen Account";
+                //btnCloseAccount.Text = "Reopen Account";
                 tbCAClosedDate.Text = _currentAccountProductHoldings.CloseDate.ToShortDateString();
 
                 if (_currentAccountProductHoldings.ClosingFeesType == "Flat")
@@ -9684,7 +9699,7 @@ namespace OpenCBS.GUI.Clients
                 tbReopenFees.Enabled = false;
                 tbCloseFees.Text = _currentAccountProductHoldings.ClosingFees.GetFormatedValue(OCurrency.UseCents);
                 tbCloseFees.Enabled = false;
-                btnCloseAccount.Text = "Transfer Balance";
+                //btnCloseAccount.Text = "Transfer Balance";
 
                 if (_currentAccountProductHoldings.ReopenFeesType == "Flat")
                 {
@@ -9739,7 +9754,7 @@ namespace OpenCBS.GUI.Clients
             else
             rbRateManagementFees.Checked = true;
            // cbManagementFeeFreq.SelectedItem = _currentAccountProductHoldings.ManagementFeesFrequency;
-            tbManagementFees.Text = _currentAccountProductHoldings.ManagementFees.GetFormatedValue(OCurrency.UseCents);
+             tbManagementFees.Text = _currentAccountProductHoldings.ManagementFees.GetFormatedValue(OCurrency.UseCents);
 
             if(_currentAccountProductHoldings.OverdraftFeesType == "Flat")
             rbFlatOverdraftFees.Checked = true;
@@ -9834,7 +9849,7 @@ namespace OpenCBS.GUI.Clients
             tbCurrentAccountComment.Enabled = enabled;
             cbCAInitialAmountMethod.Enabled = enabled;
             tbCAOpenedDate.Enabled = enabled;
-            cbCAAccountStatus.Enabled = enabled;
+           // cbCAAccountStatus.Enabled = enabled;
             tbOverdraftFees.Enabled = enabled;
             cbCurrentAccountProducts.Enabled = enabled;
             tbCurrentInitialAmount.Enabled = enabled;
@@ -9911,6 +9926,7 @@ namespace OpenCBS.GUI.Clients
                 _fixedDepositProductHoldings.FixedDepositProduct = product;
                 FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
                 _fixedDepositProductHoldingService.UpdateFixedDepositProductHolding(_fixedDepositProductHoldings, _fixedDepositProductHoldings.FixedDepositContractCode);
+                
                 _fixedDepositProductHoldingService.TransferFinalAmount(_fixedDepositProductHoldings);
                 MessageBox.Show("Amount Transferred And Account Closed Successfully.");
 
@@ -9954,41 +9970,11 @@ namespace OpenCBS.GUI.Clients
 
         private void btnCloseAccount_Click(object sender, EventArgs e)
         {
+            string accountStatus = cbCAAccountStatus.SelectedItem.ToString();
+
             try{
-            if (btnCloseAccount.Text == "Transfer Balance")
-            {
-                gbAmount.Visible = true;
-                btnCloseAccount.Text = "Close Account";
-                gbCloseFees.Visible = true;
-                cbCAPaymentMethod.Enabled = true;
-                tbCAChequeAccount.Enabled = true;
-                cbCAPaymentMethod.SelectedIndex = 0;
-                tbReopenFees.Enabled = true;
-                tbCloseFees.ResetText();
-                tbReopenFees.ResetText();
-                tbCAChequeAccount.ResetText();
-                tabControlCurrentAccount.TabPages.Remove(tabPageCloseAccount);
-                tabControlCurrentAccount.TabPages.Add(tabPageCloseAccount);
-                tabControlCurrentAccount.SelectedTab = tabPageCloseAccount;
-
-                if (currentAccountProduct.ClosingFeesValue.HasValue)
-                {
-
-                    lblCACloseFeesMinMax.Text = string.Format("{0} {1}",
-                   (currentAccountProduct.ClosingFeesValue.GetFormatedValue(currentAccountProduct.Currency.UseCents)), currentAccountProduct.ClosingFeesType == "Flat" ? currentAccountProduct.Currency.Code : "%");
-
-                    tbCloseFees.Text = currentAccountProduct.ClosingFeesValue.GetFormatedValue(currentAccountProduct.Currency.UseCents);
-                    tbCloseFees.Enabled = false;
-                }
-                else
-                {
-                    lblCACloseFeesMinMax.Text = string.Format("{0}{1} {4}\r\n{2}{3} {4}",
-                          "Min ", (currentAccountProduct.ClosingFeesMin.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
-                          "Max ", (currentAccountProduct.ClosingFeesMax.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
-                          currentAccountProduct.ClosingFeesType == "Flat" ? currentAccountProduct.Currency.Code : "%");
-                }
-            }
-            else if (btnCloseAccount.Text == "Close Account")
+            
+            if (accountStatus == "Closed")
             {
                 
                 tbReopenFees.Enabled = true;
@@ -10055,7 +10041,7 @@ namespace OpenCBS.GUI.Clients
                 }
 
             }
-            else if (btnCloseAccount.Text == "Reopen Account")
+            else if (accountStatus == "Reopened")
             {
                
                 _currentAccountProductHoldings.Status = "Reopened";
@@ -10697,6 +10683,44 @@ namespace OpenCBS.GUI.Clients
             CurrentAccountProductHoldingServices _currentAccountProductHoldingService = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
 
             _currentAccountProductHoldingService.CurrentAccountInterestCalculation(calculationDate, _currentAccountProductHoldings);
+        }
+
+        private void cbCAAccountStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string accountStatus = cbCAAccountStatus.SelectedItem.ToString();
+            if (accountStatus == "Closed")
+            {
+                gbAmount.Visible = true;
+                //btnCloseAccount.Text = "Close Account";
+                gbCloseFees.Visible = true;
+                cbCAPaymentMethod.Enabled = true;
+                tbCAChequeAccount.Enabled = true;
+                cbCAPaymentMethod.SelectedIndex = 0;
+                tbReopenFees.Enabled = true;
+                tbCloseFees.ResetText();
+                tbReopenFees.ResetText();
+                tbCAChequeAccount.ResetText();
+                tabControlCurrentAccount.TabPages.Remove(tabPageCloseAccount);
+                tabControlCurrentAccount.TabPages.Add(tabPageCloseAccount);
+                tabControlCurrentAccount.SelectedTab = tabPageCloseAccount;
+
+                if (currentAccountProduct.ClosingFeesValue.HasValue)
+                {
+
+                    lblCACloseFeesMinMax.Text = string.Format("{0} {1}",
+                   (currentAccountProduct.ClosingFeesValue.GetFormatedValue(currentAccountProduct.Currency.UseCents)), currentAccountProduct.ClosingFeesType == "Flat" ? currentAccountProduct.Currency.Code : "%");
+
+                    tbCloseFees.Text = currentAccountProduct.ClosingFeesValue.GetFormatedValue(currentAccountProduct.Currency.UseCents);
+                    tbCloseFees.Enabled = false;
+                }
+                else
+                {
+                    lblCACloseFeesMinMax.Text = string.Format("{0}{1} {4}\r\n{2}{3} {4}",
+                          "Min ", (currentAccountProduct.ClosingFeesMin.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
+                          "Max ", (currentAccountProduct.ClosingFeesMax.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
+                          currentAccountProduct.ClosingFeesType == "Flat" ? currentAccountProduct.Currency.Code : "%");
+                }
+            }
         }
 
         

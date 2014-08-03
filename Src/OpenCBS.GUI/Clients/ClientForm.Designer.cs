@@ -674,11 +674,13 @@ namespace OpenCBS.GUI.Clients
             this.lbReopenFeesMin = new System.Windows.Forms.Label();
             this.tabPageFeesTransactions = new System.Windows.Forms.TabPage();
             this.listViewFeeTransactions = new System.Windows.Forms.ListView();
+            this.columnHeader39 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chToAccount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chFeeDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chPurposeOfTransfer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chTransactionType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chFeesBalance = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbCAInterestRate = new System.Windows.Forms.TextBox();
             this.tbCABalanceAmount = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
@@ -726,6 +728,7 @@ namespace OpenCBS.GUI.Clients
             this.columnHeader36 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader37 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader38 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader40 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label44 = new System.Windows.Forms.Label();
             this.menuBtnAddSavingOperation = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.savingDepositToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -758,7 +761,7 @@ namespace OpenCBS.GUI.Clients
             this.menuPendingSavingEvents = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemConfirmPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCancelPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
-            this.columnHeader39 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader41 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).BeginInit();
             this.splitContainer10.Panel1.SuspendLayout();
             this.splitContainer10.Panel2.SuspendLayout();
@@ -5229,12 +5232,17 @@ namespace OpenCBS.GUI.Clients
             this.chAmount,
             this.chFeeDate,
             this.chPurposeOfTransfer,
-            this.chTransactionType});
+            this.chTransactionType,
+            this.chFeesBalance});
             this.listViewFeeTransactions.GridLines = true;
             resources.ApplyResources(this.listViewFeeTransactions, "listViewFeeTransactions");
             this.listViewFeeTransactions.Name = "listViewFeeTransactions";
             this.listViewFeeTransactions.UseCompatibleStateImageBehavior = false;
             this.listViewFeeTransactions.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader39
+            // 
+            resources.ApplyResources(this.columnHeader39, "columnHeader39");
             // 
             // chToAccount
             // 
@@ -5255,6 +5263,10 @@ namespace OpenCBS.GUI.Clients
             // chTransactionType
             // 
             resources.ApplyResources(this.chTransactionType, "chTransactionType");
+            // 
+            // chFeesBalance
+            // 
+            resources.ApplyResources(this.chFeesBalance, "chFeesBalance");
             // 
             // tbCAInterestRate
             // 
@@ -5401,6 +5413,7 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.cbCAAccountStatus, "cbCAAccountStatus");
             this.cbCAAccountStatus.FormattingEnabled = true;
             this.cbCAAccountStatus.Name = "cbCAAccountStatus";
+            this.cbCAAccountStatus.SelectedIndexChanged += new System.EventHandler(this.cbCAAccountStatus_SelectedIndexChanged);
             // 
             // lblCAAcountStatus
             // 
@@ -5519,7 +5532,9 @@ namespace OpenCBS.GUI.Clients
             this.columnHeader35,
             this.columnHeader36,
             this.columnHeader37,
-            this.columnHeader38});
+            this.columnHeader38,
+            this.columnHeader41,
+            this.columnHeader40});
             this.lvTransactions.FullRowSelect = true;
             this.lvTransactions.GridLines = true;
             resources.ApplyResources(this.lvTransactions, "lvTransactions");
@@ -5559,6 +5574,10 @@ namespace OpenCBS.GUI.Clients
             // columnHeader38
             // 
             resources.ApplyResources(this.columnHeader38, "columnHeader38");
+            // 
+            // columnHeader40
+            // 
+            resources.ApplyResources(this.columnHeader40, "columnHeader40");
             // 
             // label44
             // 
@@ -5765,9 +5784,9 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.menuItemCancelPendingSavingEvent, "menuItemCancelPendingSavingEvent");
             this.menuItemCancelPendingSavingEvent.Click += new System.EventHandler(this.menuItemCancelPendingSavingEvent_Click);
             // 
-            // columnHeader39
+            // columnHeader41
             // 
-            resources.ApplyResources(this.columnHeader39, "columnHeader39");
+            resources.ApplyResources(this.columnHeader41, "columnHeader41");
             // 
             // ClientForm
             // 
@@ -6650,5 +6669,8 @@ namespace OpenCBS.GUI.Clients
         private Label label47;
         private Button button3;
         private ColumnHeader columnHeader39;
+        private ColumnHeader chFeesBalance;
+        private ColumnHeader columnHeader40;
+        private ColumnHeader columnHeader41;
     }
 }

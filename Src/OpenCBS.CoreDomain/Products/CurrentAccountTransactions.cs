@@ -19,8 +19,8 @@ namespace OpenCBS.CoreDomain.Products
         public string Maker { get; set; }
         public string Checker { get; set; }
         public string PurposeOfTransfer { get; set; }
-        public decimal FromBalance { get; set; }
-        public decimal ToBalance { get; set; }
+        public OCurrency FromBalance { get; set; }
+        public OCurrency ToBalance { get; set; }
 
 
     }

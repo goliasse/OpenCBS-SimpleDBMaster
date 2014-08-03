@@ -74,6 +74,7 @@ namespace OpenCBS.Services
             return _fixedDepositProductHoldingManager.CalculateFinalAmount(fdContractCode);
         }
 
+        
         private void ValidateProduct(FixedDepositProductHoldings productHolding, IFixedDepositProduct product)
         {
 

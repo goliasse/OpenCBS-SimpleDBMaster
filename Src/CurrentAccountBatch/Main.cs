@@ -163,6 +163,8 @@ namespace CurrentAccountBatch
             //If there are no activities recorded that are initiated by the customer for 2 years, 
             //we will classify the account as dormant. Interest or management fees automatically posted 
             //should not be taken into consideration. We will be referring to deposit or transfer out activities initiated by customer.
+
+
         }
     }
 }

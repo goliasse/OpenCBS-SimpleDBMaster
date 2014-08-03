@@ -974,10 +974,10 @@ return currentAccountProductHolding;
             if (currentAccountTransactions != null)
             {
                 if (currentAccountTransactions.FromAccount == contractCode)
-                    openingBalance = currentAccountTransactions.FromBalance;
+                    openingBalance = currentAccountTransactions.FromBalance.Value;
 
                 else if (currentAccountTransactions.ToAccount == contractCode)
-                    openingBalance = currentAccountTransactions.ToBalance;
+                    openingBalance = currentAccountTransactions.ToBalance.Value;
 
                 openingBalanceTransaction.Amount = currentAccountTransactions.Amount.Value;
                 openingBalanceTransaction.Account = contractCode;
@@ -999,10 +999,10 @@ return currentAccountProductHolding;
             if (currentAccountTransactions != null)
             {
                 if (currentAccountTransactions.FromAccount == contractCode)
-                    closingBalance = currentAccountTransactions.FromBalance;
+                    closingBalance = currentAccountTransactions.FromBalance.Value;
 
                 else if (currentAccountTransactions.ToAccount == contractCode)
-                    closingBalance = currentAccountTransactions.ToBalance;
+                    closingBalance = currentAccountTransactions.ToBalance.Value;
 
                 closingBalanceTransaction.Amount = currentAccountTransactions.Amount.Value;
                 closingBalanceTransaction.Account = contractCode;
@@ -1083,10 +1083,10 @@ return currentAccountProductHolding;
             if (currentAccountTransactions != null)
             {
                 if (currentAccountTransactions.FromAccount == contractCode)
-                    openingBalance = currentAccountTransactions.FromBalance;
+                    openingBalance = currentAccountTransactions.FromBalance.Value;
 
                 else if (currentAccountTransactions.ToAccount == contractCode)
-                    openingBalance = currentAccountTransactions.ToBalance;
+                    openingBalance = currentAccountTransactions.ToBalance.Value;
 
                 openingBalanceTransaction.Amount = currentAccountTransactions.Amount.Value;
                 openingBalanceTransaction.Account = contractCode;
@@ -1108,10 +1108,10 @@ return currentAccountProductHolding;
             if (currentAccountTransactions != null)
             {
                 if (currentAccountTransactions.FromAccount == contractCode)
-                    closingBalance = currentAccountTransactions.FromBalance;
+                    closingBalance = currentAccountTransactions.FromBalance.Value;
 
                 else if (currentAccountTransactions.ToAccount == contractCode)
-                    closingBalance = currentAccountTransactions.ToBalance;
+                    closingBalance = currentAccountTransactions.ToBalance.Value;
 
                 closingBalanceTransaction.Amount = currentAccountTransactions.Amount.Value;
                 closingBalanceTransaction.Account = contractCode;
@@ -1199,10 +1199,10 @@ return currentAccountProductHolding;
             if(currentAccountTransactions!=null)
             {
             if(currentAccountTransactions.FromAccount == contractCode)
-                openingBalance = currentAccountTransactions.FromBalance;
+                openingBalance = currentAccountTransactions.FromBalance.Value;
 
             else if(currentAccountTransactions.ToAccount == contractCode)
-                openingBalance = currentAccountTransactions.ToBalance;
+                openingBalance = currentAccountTransactions.ToBalance.Value;
 
             openingBalanceTransaction.Amount = currentAccountTransactions.Amount.Value;
             openingBalanceTransaction.Account = contractCode;
@@ -1224,10 +1224,10 @@ return currentAccountProductHolding;
             if(currentAccountTransactions!=null)
             {
                 if(currentAccountTransactions.FromAccount == contractCode)
-                    closingBalance = currentAccountTransactions.FromBalance;
+                    closingBalance = currentAccountTransactions.FromBalance.Value;
 
                 else if(currentAccountTransactions.ToAccount == contractCode)
-                    closingBalance = currentAccountTransactions.ToBalance;
+                    closingBalance = currentAccountTransactions.ToBalance.Value;
 
                 closingBalanceTransaction.Amount = currentAccountTransactions.Amount.Value;
                 closingBalanceTransaction.Account = contractCode;

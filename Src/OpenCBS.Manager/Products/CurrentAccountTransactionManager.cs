@@ -170,8 +170,8 @@ currentAccountTransactions.TransactionFees = r.GetNullDecimal("transaction_fees"
 currentAccountTransactions.Maker = r.GetString("maker");
 currentAccountTransactions.Checker = r.GetString("checker");
 currentAccountTransactions.PurposeOfTransfer = r.GetString("purpose_of_transfer");
-currentAccountTransactions.FromBalance = r.GetDecimal("from_account_balance");
-currentAccountTransactions.ToBalance = r.GetDecimal("to_account_balance");
+currentAccountTransactions.FromBalance = r.GetNullDecimal("from_account_balance");
+currentAccountTransactions.ToBalance = r.GetNullDecimal("to_account_balance");
 
 return currentAccountTransactions;
 }
@@ -436,6 +436,35 @@ public int DebitFeeTransaction(CurrentAccountTransactions currentAccountTransact
                 }
             }
         }
+
+
+public int MakeFDTransaction(CurrentAccountTransactions currentAccountTransactions)
+{
+    int ret = -99;
+    using (SqlConnection conn = GetConnection())
+    {
+        using (OpenCbsCommand command = new OpenCbsCommand("MakeFDTransaction", conn).AsStoredProcedure())
+        {
+
+            command.AddParam("@transaction_mode", currentAccountTransactions.TransactionMode);
+            command.AddParam("@transaction_type", currentAccountTransactions.TransactionType);
+            command.AddParam("@to_account", currentAccountTransactions.ToAccount);
+            command.AddParam("@from_account", currentAccountTransactions.FromAccount);
+            command.AddParam("@amount", currentAccountTransactions.Amount);
+            command.AddParam("@transaction_date", currentAccountTransactions.TransactionDate);
+            command.AddParam("@transaction_fees", 0);
+            command.AddParam("@maker", currentAccountTransactions.Maker);
+            command.AddParam("@checker", currentAccountTransactions.Checker);
+            command.AddParam("@purpose_of_transfer", currentAccountTransactions.PurposeOfTransfer);
+
+            ret = Convert.ToInt32(command.ExecuteScalar());
+          
+        }
+    }
+
+    return ret;
+}
+
 
     }
 }

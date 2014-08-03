@@ -98,6 +98,11 @@ namespace OpenCBS.Services
             return _currentAccountTransactionManager.FetchFeeTransactions(accountNumber, maker);
         }
 
+        public int MakeFDTransaction(CurrentAccountTransactions currentAccountTransactions)
+        {
+            return _currentAccountTransactionManager.MakeFDTransaction(currentAccountTransactions);
+        }
+
 
 
     }

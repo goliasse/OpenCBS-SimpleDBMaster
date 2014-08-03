@@ -113,10 +113,10 @@ namespace OpenCBS.Manager.Products
         }
 
 
-        public void TransferFinalAmount(FixedDepositProductHoldings productHolding)
+        public int TransferFinalAmount(FixedDepositProductHoldings productHolding)
         {
             CurrentAccountTransactions finalAmountTransaction = new CurrentAccountTransactions();
-            finalAmountTransaction.Amount = productHolding.InitialAmount;
+            finalAmountTransaction.Amount = productHolding.FinalAmount;
             finalAmountTransaction.Checker = "Final Amount";
             finalAmountTransaction.FromAccount = productHolding.FixedDepositContractCode;
             finalAmountTransaction.Maker = "Final Amount";
@@ -129,11 +129,11 @@ namespace OpenCBS.Manager.Products
             finalAmountTransaction.TransactionFees = 0;
             finalAmountTransaction.TransactionMode = "Debit";
             finalAmountTransaction.TransactionType = productHolding.FinalAmountPaymentMethod;
-            currentAccountTransactionManager.MakeATransaction(finalAmountTransaction, null);
+            return currentAccountTransactionManager.MakeFDTransaction(finalAmountTransaction);
 
         }
 
-        public void TransferInitialAmount(FixedDepositProductHoldings productHolding)
+        public int TransferInitialAmount(FixedDepositProductHoldings productHolding)
         {
 
 
@@ -153,7 +153,7 @@ namespace OpenCBS.Manager.Products
             initialAmountTransaction.TransactionFees = 0;
             initialAmountTransaction.TransactionMode = "Credit";
             initialAmountTransaction.TransactionType = productHolding.InitialAmountPaymentMethod;
-            currentAccountTransactionManager.MakeATransaction(initialAmountTransaction, null);
+            return currentAccountTransactionManager.MakeFDTransaction(initialAmountTransaction);
 
         }
 
