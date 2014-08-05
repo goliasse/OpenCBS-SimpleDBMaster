@@ -405,3 +405,34 @@ VALUES
 ('FDCT', 'Fixed Deposit Credit transaction',821 ,1),
 ('FDDT', 'Fixed Deposit Debit transaction',822 ,1)
 GO
+
+
+USE [Test]
+GO
+
+/****** Object:  StoredProcedure [dbo].[GetDormantAccount]   Script Date: 08/04/2014 08:34:22 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE Procedure[dbo].[GetDormantAccount]
+( @from_account	nvarchar(50)--,@error INT OUTPUT
+)
+AS
+BEGIN
+   DECLARE @date DATETIME 
+   DECLARE @dateDiff INT
+   SELECT @date=transaction_date FROM CurrentAccountTransactions where from_account=@from_account AND transaction_type
+   <> 'Fee' AND transaction_type <> 'Interest' 
+SELECT @dateDiff = DATEDIFF(day,@date ,GETDATE())
+IF @dateDiff < 730
+BEGIN
+RETURN 1
+END
+ELSE
+BEGIN
+RETURN -1
+END
+END
