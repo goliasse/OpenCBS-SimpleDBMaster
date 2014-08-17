@@ -11,18 +11,19 @@ namespace OpenCBS.Manager.Events
 {
     public class CurrentAccountEventManager : Manager
     {
-        private readonly CurrentAccountProductHoldingManager _currentAccountProductHoldingManager;
-
+        
+        User _pUser;
         public CurrentAccountEventManager(User pUser)
             : base(pUser)
         {
-           // _currentAccountProductHoldingManager = new CurrentAccountProductHoldingManager(pUser);
+            _pUser = pUser;
+           
         }
 
         public CurrentAccountEventManager(string db)
             : base(db)
         {
-           // _currentAccountProductHoldingManager = new CurrentAccountProductHoldingManager(db);
+           
         }
 
 
@@ -65,16 +66,16 @@ namespace OpenCBS.Manager.Events
         }
 
 
-        private static void SetEvent(OpenCbsCommand c, CurrentAccountEvent currentAccountEvent)
+        private void SetEvent(OpenCbsCommand c, CurrentAccountEvent currentAccountEvent)
         {
 
             c.AddParam("@contractCode", currentAccountEvent.ContractCode);
             c.AddParam("@eventCode", currentAccountEvent.EventCode);
             c.AddParam("@description", currentAccountEvent.Description);
             c.AddParam("@creationDate", DateTime.Today.ToShortDateString());
-            c.AddParam("@user_name", currentAccountEvent.UserName);
-            c.AddParam("@user_role", currentAccountEvent.UserRole.RoleName);
-            c.AddParam("@deleted", currentAccountEvent.Deleted);
+            c.AddParam("@user_name", _pUser.Id);
+            c.AddParam("@user_role", _pUser.UserRole.RoleName);
+            c.AddParam("@deleted", "0");
         }
 
 

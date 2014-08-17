@@ -10,11 +10,11 @@ namespace OpenCBS.Manager.Events
 {
     public class FixedDepositEventManager : Manager
     {
-        
 
+        User _pUser;
 		public FixedDepositEventManager(User pUser) : base(pUser)
 		{
-            
+            _pUser = pUser;
 		}
 
         public FixedDepositEventManager(string db)
@@ -62,16 +62,16 @@ namespace OpenCBS.Manager.Events
         }
 
 
-        private static void SetEvent(OpenCbsCommand c, FixedDepositEvent fixedDepositEvent)
+        private void SetEvent(OpenCbsCommand c, FixedDepositEvent fixedDepositEvent)
         {
 
             c.AddParam("@contractCode", fixedDepositEvent.ContractCode);
             c.AddParam("@eventCode", fixedDepositEvent.EventCode);
             c.AddParam("@description", fixedDepositEvent.Description);
             c.AddParam("@creationDate", DateTime.Today.ToShortDateString());
-            c.AddParam("@user_name", fixedDepositEvent.UserName);
-            c.AddParam("@user_role", fixedDepositEvent.UserRole.RoleName);
-            c.AddParam("@deleted", fixedDepositEvent.Deleted);
+            c.AddParam("@user_name", _pUser.Id);
+            c.AddParam("@user_role", _pUser.UserRole.RoleName);
+            c.AddParam("@deleted", "0");
         }
 
 

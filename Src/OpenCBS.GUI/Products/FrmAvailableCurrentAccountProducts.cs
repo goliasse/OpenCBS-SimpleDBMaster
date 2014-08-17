@@ -55,6 +55,8 @@ namespace OpenCBS.GUI.Products
                     lvCurrentAccountProducts.Items.Add(item);
 
                 }
+
+               // lvCurrentAccountProducts.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             }
 
 

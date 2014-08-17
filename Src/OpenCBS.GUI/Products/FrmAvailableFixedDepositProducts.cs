@@ -77,6 +77,8 @@ namespace OpenCBS.GUI.Products
                     lvFixedDepositProducts.Items.Add(item);
 
                 }
+
+                //lvFixedDepositProducts.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             }
 
           

@@ -755,6 +755,8 @@ namespace OpenCBS.GUI.Clients
             }
 
 
+           // lvFixedDeposits.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+
             CurrentAccountProductHoldingServices _currentAccountProductHoldingService = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
             List<CurrentAccountProductHoldings> currentAccountProductHoldingsList = _currentAccountProductHoldingService.FetchProduct(clientId, clientType);
             
@@ -775,6 +777,8 @@ namespace OpenCBS.GUI.Clients
                     lvCurrentAccountProducts.Items.Add(item);
 
                 }
+
+               // lvCurrentAccountProducts.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             }
              
 
@@ -797,6 +801,8 @@ namespace OpenCBS.GUI.Clients
                 });
                     lvCAEvents.Items.Add(item);
                 }
+
+               // lvCAEvents.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             }
         }
 
@@ -832,6 +838,8 @@ namespace OpenCBS.GUI.Clients
                     listViewFeeTransactions.Items.Add(item);
 
                 }
+
+              //  listViewFeeTransactions.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             }
         }
 
@@ -868,6 +876,8 @@ namespace OpenCBS.GUI.Clients
                     
                     lvTransactions.Items.Add(item);
                 }
+
+              //  lvTransactions.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             }
         }
 
@@ -8401,7 +8411,7 @@ namespace OpenCBS.GUI.Clients
             rbODCommitmentTypeFlat.Enabled = enabled;
             rbODCommitmentTypeRate.Enabled = enabled;
             tbCAODCommitmentFee.Enabled = enabled;
-            checkBoxOverdraftApplied.Enabled = enabled;
+            //checkBoxOverdraftApplied.Enabled = enabled;
 
             
         }
@@ -9114,7 +9124,7 @@ namespace OpenCBS.GUI.Clients
                     rbODInterestTypeRate.Checked = true;
 
                 if (currentAccountProduct.OverdraftInterestValue.HasValue)
-                    tbCAODInterestRate.Text = currentAccountProduct.InterestValue.ToString();
+                    tbCAODInterestRate.Text = currentAccountProduct.OverdraftInterestValue.ToString();
 
                 rbFlatOverdraftFees.Enabled = false;
                 rbRateOverdraftFees.Enabled = false;
