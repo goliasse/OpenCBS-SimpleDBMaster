@@ -58,9 +58,9 @@ namespace OpenCBS.GUI.Products
         {
             cbTransactionType.Items.Clear();
             cbTransactionType.Items.Add(OCurrentAccount.SelectPaymentMethodDefault);
-            cbTransactionType.Items.Add("Cash");
-            cbTransactionType.Items.Add("Cheque");
-            cbTransactionType.Items.Add("Transfer");
+            cbTransactionType.Items.Add(OCurrentAccount.PaymentMethodCash);
+            cbTransactionType.Items.Add(OCurrentAccount.PaymentMethodCheque);
+            cbTransactionType.Items.Add(OCurrentAccount.PaymentMethodTransfer);
             cbTransactionType.SelectedIndex = 0;
             
 
@@ -71,10 +71,10 @@ namespace OpenCBS.GUI.Products
         {
             cbManagementFeeFreq.Items.Clear();
             cbManagementFeeFreq.Items.Add(OCurrentAccount.SelectFrequencyDefault);
-            cbManagementFeeFreq.Items.Add("Monthly");
-            cbManagementFeeFreq.Items.Add("Quarterly");
-            cbManagementFeeFreq.Items.Add("Half Yearly");
-            cbManagementFeeFreq.Items.Add("Yearly");
+            cbManagementFeeFreq.Items.Add(OCurrentAccount.FeeTypeMonthly);
+            cbManagementFeeFreq.Items.Add(OCurrentAccount.FeeTypeQuarterly);
+            cbManagementFeeFreq.Items.Add(OCurrentAccount.FeeTypeHalfYearly);
+            cbManagementFeeFreq.Items.Add(OCurrentAccount.FeeTypeYearly);
             cbManagementFeeFreq.SelectedIndex = 0;
 
         }
@@ -113,7 +113,7 @@ namespace OpenCBS.GUI.Products
             tbName.Text = _currentAccountProduct.CurrentAccountProductName;
             
 
-            if(_currentAccountProduct.EntryFeesType == "Flat")
+            if(_currentAccountProduct.EntryFeesType == OCurrentAccount.FeeTypeFlat)
             {
                rbFlatEntryFees.Checked = true;
 
@@ -124,7 +124,7 @@ namespace OpenCBS.GUI.Products
    
             }
 
-            if(_currentAccountProduct.ReopenFeesType == "Flat")
+            if(_currentAccountProduct.ReopenFeesType == OCurrentAccount.FeeTypeFlat)
             {
                rbFlatReopenFees.Checked = true;
             }
@@ -134,7 +134,7 @@ namespace OpenCBS.GUI.Products
 
             }
 
-            if(_currentAccountProduct.ClosingFeesType == "Flat")
+            if(_currentAccountProduct.ClosingFeesType == OCurrentAccount.FeeTypeFlat)
             {
             rbFlatCloseFees.Checked = true;
             }
@@ -143,7 +143,7 @@ namespace OpenCBS.GUI.Products
             rbFlatCloseFees.Checked = true;
             }
 
-            if(_currentAccountProduct.ManagementFeesType == "Flat")
+            if(_currentAccountProduct.ManagementFeesType == OCurrentAccount.FeeTypeFlat)
             {
                rbFlatManagementFees.Checked = true ;
             }
@@ -152,7 +152,7 @@ namespace OpenCBS.GUI.Products
                rbRateManagementFees.Checked = true ;
             }
 
-            if(_currentAccountProduct.OverdraftType == "Flat")
+            if(_currentAccountProduct.OverdraftType == OCurrentAccount.FeeTypeFlat)
             {
             rbFlatOverdraftFees.Checked = true;
             }
@@ -222,25 +222,25 @@ namespace OpenCBS.GUI.Products
 
             string[] clientType = _currentAccountProduct.ClientType.Split(',');
 
-            if (clientType[0] == "All")
+            if (clientType[0] == OClientTypes.All+"")
                 clientTypeAllCheckBox.Checked = true;
             else
             {
                 for (int i = 0; i < clientType.Length; i++)
                 {
-                    if (clientType[i] == "Corporate")
+                    if (clientType[i] == OClientTypes.Corporate + "")
                         clientTypeCorpCheckBox.Checked = true;
-                    if (clientType[i] == "Person")
+                    if (clientType[i] == OClientTypes.Person + "")
                         clientTypeIndivCheckBox.Checked = true;
-                    if (clientType[i] == "Village")
+                    if (clientType[i] == OClientTypes.Village + "")
                         clientTypeVillageCheckBox.Checked = true;
-                    if (clientType[i] == "Group")
+                    if (clientType[i] == OClientTypes.Group + "")
                         clientTypeGroupCheckBox.Checked = true;
                 }
 
             }
 
-            if (_currentAccountProduct.InterestType == "Flat")
+            if (_currentAccountProduct.InterestType == OCurrentAccount.FeeTypeFlat)
             {
                 rbODInterestFlat.Checked = true;
             }
@@ -251,7 +251,7 @@ namespace OpenCBS.GUI.Products
 
             
 
-            if (_currentAccountProduct.CommitmentFeeType == "Flat")
+            if (_currentAccountProduct.CommitmentFeeType == OCurrentAccount.FeeTypeFlat)
             {
                 rbODCommitmentFlat.Checked = true;
             }
@@ -260,7 +260,7 @@ namespace OpenCBS.GUI.Products
                 rbODCommitmentRate.Checked = true;
             }
 
-            if (_currentAccountProduct.CommitmentFeeType == "Flat")
+            if (_currentAccountProduct.CommitmentFeeType == OCurrentAccount.FeeTypeFlat)
             {
                 rbODCommitmentFlat.Checked = true;
             }
@@ -420,17 +420,17 @@ namespace OpenCBS.GUI.Products
             string clientType = "";
 
             if (clientTypeAll == true)
-                clientType = "All";
+                clientType = OClientTypes.All + "";
             else
             {
                 if (clientTypeCorp == true)
-                    clientType = clientType + "Corporate,";
+                    clientType = clientType + OClientTypes.Corporate + "";
                 if (clientTypeIndiv == true)
-                    clientType = clientType + "Person,";
+                    clientType = clientType + OClientTypes.Person + "";
                 if (clientTypeVillage == true)
-                    clientType = clientType + "Village,";
+                    clientType = clientType + OClientTypes.Village + "";
                 if (clientTypeGroup == true)
-                    clientType = clientType + "Group,";
+                    clientType = clientType + OClientTypes.Group + "";
 
                 if (clientType.Length > 0)
                 clientType = clientType.Substring(0, clientType.Length - 1);
@@ -440,43 +440,43 @@ namespace OpenCBS.GUI.Products
 
             if (rbFlatEntryFees.Checked)
             {
-                _currentAccountProduct.EntryFeesType = "Flat";
+                _currentAccountProduct.EntryFeesType = OCurrentAccount.FeeTypeFlat;
             }
             else
             {
-                _currentAccountProduct.EntryFeesType = "Rate";
+                _currentAccountProduct.EntryFeesType = OCurrentAccount.FeeTypeRate;
             }
             if (rbFlatReopenFees.Checked)
             {
-                _currentAccountProduct.ReopenFeesType = "Flat";
+                _currentAccountProduct.ReopenFeesType = OCurrentAccount.FeeTypeFlat;
             }
             else
             {
-                _currentAccountProduct.ReopenFeesType = "Rate";
+                _currentAccountProduct.ReopenFeesType = OCurrentAccount.FeeTypeRate;
             }
             if (rbFlatCloseFees.Checked)
             {
-                _currentAccountProduct.ClosingFeesType = "Flat";
+                _currentAccountProduct.ClosingFeesType = OCurrentAccount.FeeTypeFlat;
             }
             else
             {
-                _currentAccountProduct.ClosingFeesType = "Rate";
+                _currentAccountProduct.ClosingFeesType = OCurrentAccount.FeeTypeRate;
             }
             if (rbFlatManagementFees.Checked)
             {
-                _currentAccountProduct.ManagementFeesType = "Flat";
+                _currentAccountProduct.ManagementFeesType = OCurrentAccount.FeeTypeFlat;
             }
             else
             {
-                _currentAccountProduct.ManagementFeesType = "Rate";
+                _currentAccountProduct.ManagementFeesType = OCurrentAccount.FeeTypeRate;
             }
             if (rbFlatOverdraftFees.Checked)
             {
-                _currentAccountProduct.OverdraftType = "Flat";
+                _currentAccountProduct.OverdraftType = OCurrentAccount.FeeTypeFlat;
             }
             else
             {
-                _currentAccountProduct.OverdraftType = "Rate";
+                _currentAccountProduct.OverdraftType = OCurrentAccount.FeeTypeRate;
             }
             decimal? InitialAmountMin = ServicesHelper.ConvertStringToNullableDecimal(tbInitialAmountMin.Text);
             decimal? InitialAmountMax = ServicesHelper.ConvertStringToNullableDecimal(tbInitialAmountMax.Text);
@@ -542,16 +542,16 @@ namespace OpenCBS.GUI.Products
             _currentAccountProduct.InterestValue = ServicesHelper.ConvertStringToNullableDouble(tbInterestValue.Text, false);
             _currentAccountProduct.InterestFrequency = ServicesHelper.ConvertStringToNullableInt32(tbInterestCalculationFrequency.Text);
             
-            _currentAccountProduct.InterestType = "Rate";
+            _currentAccountProduct.InterestType = OCurrentAccount.FeeTypeRate;
 
             
             if (rbODInterestFlat.Checked)
             {
-                _currentAccountProduct.OverdraftInterestType = "Flat";
+                _currentAccountProduct.OverdraftInterestType = OCurrentAccount.FeeTypeFlat;
             }
             else
             {
-                _currentAccountProduct.OverdraftInterestType = "Rate";
+                _currentAccountProduct.OverdraftInterestType = OCurrentAccount.FeeTypeRate;
             }
             
             
@@ -562,11 +562,11 @@ namespace OpenCBS.GUI.Products
 
             if (rbODCommitmentFlat.Checked)
             {
-                _currentAccountProduct.CommitmentFeeType = "Flat";
+                _currentAccountProduct.CommitmentFeeType = OCurrentAccount.FeeTypeFlat;
             }
             else
             {
-                _currentAccountProduct.CommitmentFeeType = "Rate";
+                _currentAccountProduct.CommitmentFeeType = OCurrentAccount.FeeTypeRate;
             }
 
             _currentAccountProduct.CommitmentFeeMin = ServicesHelper.ConvertStringToNullableDouble(tbODCommitmentMin.Text, false);
@@ -594,7 +594,8 @@ namespace OpenCBS.GUI.Products
                 int ret = _currentAccountProductService.SaveCurrentAccountProduct(_currentAccountProduct);
 
                 if (ret >= 1)
-                    MessageBox.Show("Current Account Product Successfully Added.");
+                    MessageBox.Show(MultiLanguageStrings.GetString(Ressource.FrmAddCurrentAccountProduct, "Current Account Product Success.Text"));
+                
 
                 tabControlSaving.TabPages.Remove(tabPageTransactions);
                 tabControlSaving.TabPages.Add(tabPageTransactions);
@@ -670,9 +671,9 @@ namespace OpenCBS.GUI.Products
             
             _currentAccountTransactionFees.TransactionType = cbTransactionType.SelectedItem.ToString();
             if(rbTranFeeFlat.Checked == true)
-            _currentAccountTransactionFees.TransactionFeesType = "Flat";
+            _currentAccountTransactionFees.TransactionFeesType = OCurrentAccount.FeeTypeFlat;
             else
-                _currentAccountTransactionFees.TransactionFeesType = "Rate";
+                _currentAccountTransactionFees.TransactionFeesType = OCurrentAccount.FeeTypeRate;
             if(rbCredit.Checked == true)
                 _currentAccountTransactionFees.TransactionMode = "Credit";
             else
@@ -702,10 +703,7 @@ namespace OpenCBS.GUI.Products
             }
         }
 
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
+        
 
 
         void FetchTransactionFees()
@@ -727,7 +725,7 @@ namespace OpenCBS.GUI.Products
 
                 if (_currentAccountTransactionFees != null)
                 {
-                    if (_currentAccountTransactionFees.TransactionFeesType == "Flat")
+                    if (_currentAccountTransactionFees.TransactionFeesType == OCurrentAccount.FeeTypeFlat)
                         rbTranFeeFlat.Checked = true;
                     else
                         rbTranFeeRate.Checked = true;

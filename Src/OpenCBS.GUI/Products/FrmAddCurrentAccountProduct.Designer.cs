@@ -1128,7 +1128,7 @@ namespace OpenCBS.GUI.Products
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            
             // 
             // panel1
             // 

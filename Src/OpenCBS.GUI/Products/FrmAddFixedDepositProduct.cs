@@ -21,7 +21,7 @@ namespace OpenCBS.GUI.Products
         {
             InitializeComponent();
             InitializeComboBoxCurrencies();
-            InitializeInterestCalculationFrequency();
+            
         }
 
 
@@ -30,7 +30,7 @@ namespace OpenCBS.GUI.Products
         {
             InitializeComponent();
             InitializeComboBoxCurrencies();
-            InitializeInterestCalculationFrequency();
+            
 
 
             if (enabled == true)
@@ -68,7 +68,7 @@ namespace OpenCBS.GUI.Products
             tbMinMaturityPeriod.Text = _fixedDepositProduct.MaturityPeriodMin.ToString();
             tbMaxMaturityPeriod.Text = _fixedDepositProduct.MaturityPeriodMax.ToString();
 
-            if (_fixedDepositProduct.PenalityType == "Rate")
+            if (_fixedDepositProduct.PenalityType == OCurrentAccount.FeeTypeRate)
                 rbPenalityTypeRate.Checked = true;
             else
                 rbPenalityTypeFlat.Checked = false;
@@ -76,19 +76,19 @@ namespace OpenCBS.GUI.Products
 
             string []clientType = _fixedDepositProduct.ClientType.Split(',');
 
-            if (clientType[0] == "All")
+            if (clientType[0] == OClientTypes.All+"")
                 clientTypeAllCheckBox.Checked = true;
             else
             {
                 for (int i = 0; i < clientType.Length; i++)
                 {
-                    if (clientType[i] == "Corporate")
+                    if (clientType[i] == OClientTypes.Corporate + "")
                         clientTypeCorpCheckBox.Checked = true;
-                    if (clientType[i] == "Person")
+                    if (clientType[i] == OClientTypes.Person + "")
                         clientTypeIndivCheckBox.Checked = true;
-                    if (clientType[i] == "Village")
+                    if (clientType[i] == OClientTypes.Village + "")
                         clientTypeVillageCheckBox.Checked = true;
-                    if (clientType[i] == "Group")
+                    if (clientType[i] == OClientTypes.Group + "")
                         clientTypeGroupCheckBox.Checked = true;
                 }
 
@@ -127,16 +127,7 @@ namespace OpenCBS.GUI.Products
             tbPenaltyValue.Enabled = enabled;
         }
 
-        private void lbCalculAmount_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void InitializeInterestCalculationFrequency()
-        {
-           
-
-        }
+        
 
         private void InitializeComboBoxCurrencies()
         {
@@ -226,9 +217,9 @@ namespace OpenCBS.GUI.Products
             _fixedDepositProduct.PenalityValue = ServicesHelper.ConvertStringToNullableDouble(tbPenaltyValue.Text, false);
 
             if (PenalityTypeRate == true)
-                _fixedDepositProduct.PenalityType = "Rate";
+                _fixedDepositProduct.PenalityType = OCurrentAccount.FeeTypeRate;
             else
-                _fixedDepositProduct.PenalityType = "Flat";
+                _fixedDepositProduct.PenalityType = OCurrentAccount.FeeTypeFlat;
 
             _fixedDepositProduct.MaturityPeriodMin = MaturityPeriodMin;
             _fixedDepositProduct.MaturityPeriodMax = MaturityPeriodMax;
@@ -236,19 +227,19 @@ namespace OpenCBS.GUI.Products
 
 
             string clientType = "";
-
+            
             if (clientTypeAll == true)
-                clientType = "All";
+                clientType = OClientTypes.All+"";
             else
             {
                 if (clientTypeCorp == true)
-                    clientType = clientType + "Corporate,";
+                    clientType = clientType + OClientTypes.Corporate+",";
                 if (clientTypeIndiv == true)
-                    clientType = clientType + "Person,";
+                    clientType = clientType + OClientTypes.Person + ",";
                 if (clientTypeVillage == true)
-                    clientType = clientType + "Village,";
+                    clientType = clientType + OClientTypes.Village + ",";
                 if (clientTypeGroup == true)
-                    clientType = clientType + "Group,";
+                    clientType = clientType + OClientTypes.Group + ",";
 
 
                 if (clientType.Length > 0)
@@ -316,235 +307,7 @@ namespace OpenCBS.GUI.Products
 
         
 
-        private void clientTypeGroupCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabControlSaving_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPageMainParameters_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbNameSavingProduct_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox4_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbMaxMaturityPeriod_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbMinMaturityPeriod_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbPenalityMax_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbPenalityMin_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gbFrequency_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbAccrual_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbInterestCalculationFrequency_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBoxCurrency_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbCurrency_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbCodeSavingProduct_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gbClientType_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void clientTypeCorpCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void clientTypeIndivCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void clientTypeVillageCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void clientTypeGroupCheckBox_CheckedChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbCodeFixedDepositProduct_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gbInitialAmount_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbInitialAmountMax_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbInitialAmountMin_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbInitialAmonutMax_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbInitialAmountMin_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gbInterestRate_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbYearlyInterestRateMax_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbYearlyInterestRateMin_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbInterestRateMax_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbInterestRateMin_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbInterestRateMax_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbInterestRateMin_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btSavingProduct_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bClose_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {

@@ -41,10 +41,14 @@ namespace OpenCBS.Services
            return _currentAccountEventManager.FetchEvents(contractCode);
        }
 
-       public void SaveCurrentAccountEvent(CurrentAccountEvent currentAccounEvent)
+       public void SaveCurrentAccountEvent(CurrentAccountEvent currentAccountEvent)
        {
-
-           _currentAccountEventManager.SaveCurrentAccountEvent(currentAccounEvent);
+           CurrentAccountProductHoldings _currentAccountProductHoldings = FetchProduct(currentAccountEvent.ContractCode);
+           User user = ServicesProvider.GetInstance().GetUserServices().Find(_currentAccountProductHoldings.OpeningAccountingOfficer);
+           currentAccountEvent.UserName = user.UserName;
+           currentAccountEvent.UserRole = user.UserRole;
+           currentAccountEvent.Deleted = 0;
+           _currentAccountEventManager.SaveCurrentAccountEvent(currentAccountEvent);
        }
 
        public decimal CalculateFixedOverdraftFees(DateTime calculationDate, CurrentAccountProductHoldings productHolding)

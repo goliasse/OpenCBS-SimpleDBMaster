@@ -35,14 +35,20 @@ namespace OpenCBS.Manager.Events
             [contract_code],
             [event_code],
             [description],
-            [creation_date]
+            [creation_date],
+            [user_name],
+            [user_role],
+            [deleted]
             )
             VALUES
             (
             @contractCode,
             @eventCode,
             @description,
-            @creationDate
+            @creationDate,
+            @user_name,
+            @user_role,
+            @deleted
             )
                 SELECT SCOPE_IDENTITY()";
 
@@ -66,7 +72,9 @@ namespace OpenCBS.Manager.Events
             c.AddParam("@eventCode", currentAccountEvent.EventCode);
             c.AddParam("@description", currentAccountEvent.Description);
             c.AddParam("@creationDate", DateTime.Today.ToShortDateString());
-            
+            c.AddParam("@user_name", currentAccountEvent.UserName);
+            c.AddParam("@user_role", currentAccountEvent.UserRole.RoleName);
+            c.AddParam("@deleted", currentAccountEvent.Deleted);
         }
 
 

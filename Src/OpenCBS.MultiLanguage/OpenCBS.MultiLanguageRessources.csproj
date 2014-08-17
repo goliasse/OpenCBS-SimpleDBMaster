@@ -223,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="resx\AddTrancheForm.es-ES.resx" />
     <EmbeddedResource Include="resx\DashboardForm.resx" />
+    <EmbeddedResource Include="resx\FrmAddCurrentAccountProduct.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="resx\ReschedulingForm.es-ES.resx" />
     <EmbeddedResource Include="resx\ReschedulingForm.fr.resx" />
     <EmbeddedResource Include="resx\ReschedulingForm.pt.resx" />
@@ -495,6 +498,7 @@
     <EmbeddedResource Include="resx\EventAttributes.ru-RU.resx" />
     <EmbeddedResource Include="resx\EventTypes.fr.resx" />
     <EmbeddedResource Include="resx\EventTypes.resx">
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="resx\FrmAddCollateralProduct.fr.resx" />
     <EmbeddedResource Include="resx\FrmAddCollateralProduct.resx">

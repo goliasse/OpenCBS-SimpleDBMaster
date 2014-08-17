@@ -342,4 +342,39 @@
   <data name="NonAccrual.Text" xml:space="preserve">
     <value>Non-accrual</value>
   </data>
+  <data name="Overdraft Success Update" xml:space="preserve">
+    <value>Overdraft Successfully Updated.</value>
+  </data>
+  
+<data name="Dormant account reactivate" xml:space="preserve">
+    <value>An account can be reactivated if it is Dormant.</value>
+  </data>
+
+  <data name="Reactivation Successfull" xml:space="preserve">
+    <value>Successfully Reactivated.</value>
+  </data>
+
+  <data name="Account with negative balance" xml:space="preserve">
+    <value>Account with negative balance cannot be closed.</value>
+  </data>
+
+  <data name="Closed Success" xml:space="preserve">
+    <value>Successfully Closed.</value>
+  </data>
+  <data name="account status as Active" xml:space="preserve">
+    <value>You can not set the account status as Active.</value>
+  </data>
+
+  <data name="fixed deposit account closed" xml:space="preserve">
+    <value>Amount Transferred And Account Closed Successfully.</value>
+  </data>
+  <data name="Period Extended" xml:space="preserve">
+    <value>Period Extended Successfully.</value>
+  </data>
+  <data name="Contract Successfull" xml:space="preserve">
+    <value>Contract Successfully Created. Contract Code Is </value>
+  </data>
+  
+
+
 </root>

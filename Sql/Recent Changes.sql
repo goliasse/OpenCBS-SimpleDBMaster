@@ -339,7 +339,14 @@ CREATE TABLE [dbo].[CurrentAccountEvents](
 	[contract_code] [nvarchar](50) NOT NULL,
 	[event_code] [nchar](10) NOT NULL,
 	[description] [nvarchar](max) NOT NULL,
-	[creation_date] [date] NOT NULL
+	[creation_date] [date] NOT NULL,
+	[user_name] [nvarchar](50) NULL,
+	[user_role] [nvarchar](50) NULL,
+	[deleted] [int] NULL,
+ CONSTRAINT [PK_CurrentAccountEvents] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
 GO
@@ -360,7 +367,14 @@ CREATE TABLE [dbo].[FixedDepositEvents](
 	[contract_code] [nvarchar](50) NOT NULL,
 	[event_code] [nchar](10) NOT NULL,
 	[description] [nvarchar](max) NOT NULL,
-	[creation_date] [date] NOT NULL
+	[creation_date] [date] NOT NULL,
+	[user_name] [nvarchar](50) NULL,
+	[user_role] [nvarchar](50) NULL,
+	[deleted] [int] NULL,
+ CONSTRAINT [PK_FixedDepositEvents] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
 GO
@@ -407,6 +421,9 @@ VALUES
 GO
 
 
+
+
+
 USE [Test]
 GO
 
@@ -430,9 +447,200 @@ SELECT @dateDiff = DATEDIFF(day,@date ,GETDATE())
 IF @dateDiff < 730
 BEGIN
 RETURN 1
+--Update Status in CurrentAccountProductHoldings as Dormant
+UPDATE CurrentAccountProductHoldings SET status = 'Dormant' WHERE
+current_account_contract_code = @from_account
+--Insert Event in CurrentAccountEvents
+INSERT INTO [Test].[dbo].[CurrentAccountEvents]
+           ([contract_code]
+           ,[event_code]
+           ,[description]
+           ,[creation_date])
+     VALUES
+           (@from_account
+           ,'CADO'
+           ,'Automated Account Dormancy'
+           ,GETDATE())
+
 END
 ELSE
 BEGIN
 RETURN -1
 END
+END
+
+
+USE [Test]
+GO
+/****** Object:  UserDefinedFunction [dbo].[AuditTrailEvents]    Script Date: 08/17/2014 11:04:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER FUNCTION [dbo].[AuditTrailEvents] (
+  @from    DATETIME, 
+  @to      DATETIME, 
+  @user_id INT, 
+  @branch_id INT,
+  @list    NVARCHAR(MAX), 
+  @include_deleted BIT)
+RETURNS @tbl TABLE (
+	event_type NVARCHAR(10) NOT NULL, 
+	event_date DATETIME NOT NULL, 
+	entry_date DATETIME NOT NULL, 
+	user_name  NVARCHAR(50) NULL, 
+	user_role  NVARCHAR(255) NULL, 
+	[description] NVARCHAR(255) NULL, 
+	deleted    BIT NOT NULL,
+	branch_name NVARCHAR(255) NULL
+)
+AS
+BEGIN
+	DECLARE @temp TABLE (
+		event_type  NVARCHAR(10) NOT NULL, 
+		event_date  DATETIME NOT NULL, 
+		entry_date  DATETIME NOT NULL, 
+		user_id     INT NULL, 
+		description NVARCHAR(255) NULL, 
+		deleted     BIT NOT NULL,
+		branch_name NVARCHAR(255) NULL)
+	
+	-- Loan events
+	INSERT INTO @temp
+	SELECT 
+	  ce.event_type, 
+	  ce.event_date, 
+	  ce.entry_date, 
+	  ce.user_id, 
+	  c.contract_code + '-' + CONVERT(NVARCHAR(50), ce.id), 
+	  ce.is_deleted,
+	  b.name
+	FROM dbo.ContractEvents AS ce
+	LEFT JOIN dbo.Contracts AS c ON c.id = ce.contract_id
+	LEFT JOIN dbo.Projects j ON j.id = c.project_id
+	LEFT JOIN dbo.Tiers t ON t.id = j.tiers_id
+	LEFT JOIN dbo.Branches b ON b.id = t.branch_id
+	WHERE (CONVERT(date, ce.event_date) >= @from OR @from IS NULL)
+	  AND (CONVERT(date, ce.event_date) <= @to OR @to IS NULL)
+	  AND (ce.user_id = @user_id OR 0 = @user_id)
+	  AND (ce.is_deleted = 0 OR 1 = @include_deleted)
+	  AND (0 = @branch_id OR t.branch_id = @branch_id)
+	
+	-- Saving events
+	INSERT INTO @temp
+	SELECT 
+	  se.code, 
+	  se.creation_date, 
+	  se.creation_date, 
+	  se.user_id, 
+	  sc.code + '-' + CONVERT(NVARCHAR(50), se.id), 
+	  se.deleted,
+	  b.name
+	FROM dbo.SavingEvents AS se
+	LEFT JOIN dbo.SavingContracts As sc ON sc.id = se.contract_id
+	LEFT JOIN dbo.Tiers t ON t.id = sc.tiers_id
+	LEFT JOIN dbo.Branches b ON b.id = t.branch_id
+	WHERE (CONVERT(date, se.creation_date) >= @from OR @from IS NULL)
+	  AND (CONVERT(date, se.creation_date) <= @to OR @to IS NULL)
+	  AND (se.user_id = @user_id OR 0 = @user_id)	
+	  AND (se.deleted = 0 OR 1 = @include_deleted)	
+	  AND (0 = @branch_id OR t.branch_id = @branch_id)
+	
+	-- Funding line events
+	INSERT INTO @temp
+	SELECT 
+	  'FLNE', 
+	  fle.creation_date, 
+	  fle.creation_date, 
+	  user_id, 
+	  fle.code, 
+	  fle.deleted,
+	  ''
+	FROM dbo.FundingLineEvents AS fle
+	WHERE (Convert(date, fle.creation_date) >= @from OR @from IS NULL)
+	  AND (CONVERT(date, fle.creation_date) <= @to OR @to IS NULL)
+	  AND (fle.deleted = 0 OR 1 = @include_deleted)
+    AND (fle.user_id = @user_id OR 0 = @user_id)
+	  AND 0 = @branch_id
+	
+	-- User activity events
+	INSERT INTO @temp
+	SELECT 
+	  tue.event_code, 
+	  tue.event_date, 
+	  tue.event_date, 
+	  tue.user_id, 
+	  tue.event_description, 
+	  0,
+	  ''
+	FROM
+	(
+		SELECT 
+		  event_code, 
+		  user_id, 
+		  event_description, 
+		  event_date
+		FROM dbo.TraceUserLogs
+	) AS tue
+	WHERE (CONVERT(date, tue.event_date) >= @from OR @from IS NULL)
+	AND (CONVERT(date, tue.event_date) <= @to OR @to IS NULL)
+	AND (tue.user_id = @user_id OR 0 = @user_id)
+	AND 0 = @branch_id
+	
+	
+	-- Fixed Deposit Events
+	INSERT INTO @temp
+	SELECT 
+	  fde.event_code, 
+	  fde.creation_date, 
+	  fde.creation_date, 
+	  fde.user_name, 
+	  
+	  fde.description,
+	  fde.deleted,
+	  SUBSTRING(fde.contract_code, 1, CHARINDEX('/', fde.contract_code, 1)-1)
+	FROM dbo.FixedDepositEvents AS fde
+	WHERE (Convert(date, fde.creation_date) >= @from OR @from IS NULL)
+	  AND (CONVERT(date, fde.creation_date) <= @to OR @to IS NULL)
+	  AND (fde.deleted = 0 OR 1 = @include_deleted)
+    AND (fde.user_name = @user_id OR 0 = @user_id)
+	  AND 0 = @branch_id
+	
+	
+	-- Current Account Events
+	INSERT INTO @temp
+	SELECT 
+	  cae.event_code, 
+	  cae.creation_date, 
+	  cae.creation_date, 
+	  cae.user_name, 
+	  cae.description,
+	  cae.deleted,
+	  SUBSTRING(cae.contract_code, 1, CHARINDEX('/', cae.contract_code, 1)-1)
+	FROM dbo.CurrentAccountEvents AS cae
+	WHERE (Convert(date, cae.creation_date) >= @from OR @from IS NULL)
+	  AND (CONVERT(date, cae.creation_date) <= @to OR @to IS NULL)
+	  AND (cae.deleted = 0 OR 1 = @include_deleted)
+    AND (cae.user_name = @user_id OR 0 = @user_id)
+	  AND 0 = @branch_id
+	
+	INSERT INTO @tbl
+	SELECT 
+	  t.event_type, 
+	  t.event_date, 
+	  t.entry_date, 
+	  u.first_name + ' ' + u.last_name, 
+	  r.code, 
+	  t.description, 
+	  t.deleted,
+	  t.branch_name
+	FROM @temp AS t
+	  LEFT JOIN dbo.Users AS u ON u.id = t.user_id
+	  LEFT JOIN dbo.UserRole AS ur ON ur.user_id = u.id
+	  LEFT JOIN dbo.Roles AS r ON r.id = ur.role_id
+	WHERE EXISTS (SELECT 1 
+	              FROM dbo.StringListToTable(@list) AS sl 
+	              WHERE sl.string = t.event_type)
+	
+    RETURN
 END

@@ -44,9 +44,14 @@ namespace OpenCBS.Services
             return _fixedDepositEventManager.FetchEvents(contractCode);
         }
 
-        public void SaveFixedDepositEvent(FixedDepositEvent currentAccounEvent)
+        public void SaveFixedDepositEvent(FixedDepositEvent fixedDepositEvent)
         {
-            _fixedDepositEventManager.SaveFixedDepositEvent(currentAccounEvent);
+            FixedDepositProductHoldings _fixedDepositProductHoldings = FetchProduct(fixedDepositEvent.ContractCode);
+            User user = ServicesProvider.GetInstance().GetUserServices().Find(_fixedDepositProductHoldings.OpeningAccountingOfficer);
+            fixedDepositEvent.UserName = user.UserName;
+            fixedDepositEvent.UserRole = user.UserRole;
+            fixedDepositEvent.Deleted = 0;
+            _fixedDepositEventManager.SaveFixedDepositEvent(fixedDepositEvent);
         }
        
 

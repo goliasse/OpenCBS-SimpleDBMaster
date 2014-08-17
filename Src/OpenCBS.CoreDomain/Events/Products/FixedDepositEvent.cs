@@ -12,5 +12,8 @@ namespace OpenCBS.CoreDomain.Events.Products
         public string EventCode { get; set; }
         public string Description { get; set; }
         public DateTime CreationDate { get; set; }
+        public string UserName { get; set; }
+        public Role UserRole { get; set; }
+        public int Deleted { get; set; }
     }
 }
