@@ -350,5 +350,112 @@
   </data>
   
   
+   <data name="CAOP" xml:space="preserve">
+
+    <value>Current Account Open</value>
+  </data>
+
+<data name="CACL" xml:space="preserve">
+    <value> Current Account close</value>
+  </data>
+
+<data name="CARE" xml:space="preserve">
+    <value>Current Account Reopen</value>
+  </data>
+
+<data name="CADO" xml:space="preserve">
+    <value>Current Account Dormant</value>
+  </data>
+
+<data name="ODAP" xml:space="preserve">
+    <value>Current Account OD applied</value>
+  </data>
+
+ 
+
+ 
+
+ <data name="ODWT" xml:space="preserve">
+    <value>Current Account OD withdrawn</value>
+  </data>
+
+<data name="CACT" xml:space="preserve">
+    <value>Current Account Credit transaction</value>
+  </data>
+
+<data name="CADT" xml:space="preserve">
+    <value>Current Account Debit transaction</value>
+  </data>
+
+<data name="REFT" xml:space="preserve">
+    <value>Fee - Reopen Fee debit transaction</value>
+  </data>
+
+<data name="ENFT" xml:space="preserve">
+    <value>Fee - Entry Fee debit transaction</value>
+  </data>
+
+ 
+
+ 
+
+ <data name="CLFT" xml:space="preserve">
+    <value>Fee - Close Fee debit transaction</value>
+  </data>
+
+<data name="TRFT" xml:space="preserve">
+    <value> Fee - Transaction Fee debit transaction</value>
+  </data>
+
+<data name="ODFT" xml:space="preserve">
+    <value>Fee - Fixed OD Fee debit transaction</value>
+  </data>
+
+<data name="RICT" xml:space="preserve">
+    <value>Interest - Regular interest credit transaction</value>
+  </data>
+
+<data name="ODDT" xml:space="preserve">
+    <value>Interest - OD Interest debit</value>
+  </data>
+
+ 
+
+ <data name="CFDT" xml:space="preserve">
+    <value>Fee - Commitment fee debit transaction</value>
+  </data>
+
+<data name="MGFT" xml:space="preserve">
+    <value>Fee - Management Fee debit transaction</value>
+  </data>
+
+<data name="FDOP" xml:space="preserve">
+    <value>Fixed Deposit Open</value>
+  </data>
+
+<data name="FDCL" xml:space="preserve">
+    <value>Fixed Deposit Close</value>
+  </data>
+
+<data name="FDPR" xml:space="preserve">
+    <value>Fixed Deposit Prematured</value>
+  </data>
+
+ 
+
+ 
+
+<data name="FDPE" xml:space="preserve">
+    <value>Fixed Deposit Maturity Period Extended</value>
+  </data>
+
+<data name="FDCT" xml:space="preserve">
+    <value>Fixed Deposit Credit transaction</value>
+  </data>
+
+<data name="FDDT" xml:space="preserve">
+    <value>Fixed Deposit Debit transaction</value>
+  </data>
+
   
 </root>

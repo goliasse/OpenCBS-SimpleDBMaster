@@ -1252,5 +1252,11 @@ namespace OpenCBS.GUI
             //FrmAddCurrentAccountProduct _frmAddCurrentAccountProduct = new FrmAddCurrentAccountProduct();
             //_frmAddCurrentAccountProduct.Show();
         }
+
+        private void configureTellersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TellersForm frm = new TellersForm() { MdiParent = this };
+            frm.Show();
+        }
     }
 }
