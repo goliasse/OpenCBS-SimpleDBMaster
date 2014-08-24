@@ -662,6 +662,24 @@
     <Compile Include="Export\StringFieldPropertiesForm.Designer.cs">
       <DependentUpon>StringFieldPropertiesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fixed Asset Register\AddFixedAsset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fixed Asset Register\AddFixedAsset.Designer.cs">
+      <DependentUpon>AddFixedAsset.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fixed Asset Register\FrmAvailableFixedAssets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fixed Asset Register\FrmAvailableFixedAssets.Designer.cs">
+      <DependentUpon>FrmAvailableFixedAssets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fixed Asset Register\ViewFixedAsset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fixed Asset Register\ViewFixedAsset.Designer.cs">
+      <DependentUpon>ViewFixedAsset.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2198,6 +2216,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DashboardForm.pt.resx">
       <DependentUpon>DashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fixed Asset Register\AddFixedAsset.resx">
+      <DependentUpon>AddFixedAsset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fixed Asset Register\FrmAvailableFixedAssets.resx">
+      <DependentUpon>FrmAvailableFixedAssets.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fixed Asset Register\ViewFixedAsset.resx">
+      <DependentUpon>ViewFixedAsset.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmShowError.es-ES.resx">
       <DependentUpon>frmShowError.cs</DependentUpon>

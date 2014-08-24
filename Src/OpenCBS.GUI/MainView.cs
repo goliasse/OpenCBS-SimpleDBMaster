@@ -1234,7 +1234,7 @@ namespace OpenCBS.GUI
 
         private void fixedDepositProductsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var _frmAvailableFixedDepositProduct = new FrmAvailableFixedDepositProducts { MdiParent = this };
+            var _frmAvailableFixedDepositProduct = new FrmAvailableFixedAssets { MdiParent = this };
             _frmAvailableFixedDepositProduct.Show();
             //FrmAvailableFixedDepositProducts _frmAvailableFixedDepositProduct = new FrmAvailableFixedDepositProducts();
             //_frmAvailableFixedDepositProduct.Show();

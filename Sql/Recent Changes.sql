@@ -644,3 +644,39 @@ BEGIN
 	
     RETURN
 END
+
+
+CREATE TABLE [dbo].[CounterBalance](
+[id] [int] IDENTITY(1,1) NOT NULL  ,
+[allocater_id] [int] NOT NULL  ,
+[branch] [nvarchar](100) NOT NULL,
+[cashier_id] [int] NOT NULL  ,
+[counter_id] [int] NOT NULL  ,
+[allocation_date] [date] NOT NULL  ,
+[amount] [money] NULL,
+[type] [nvarchar](100) NOT NULL,
+Primary Key(id)
+)
+
+
+CREATE TABLE [dbo].[FixedAssetRegister](
+[id] [int] IDENTITY(1,1) NOT NULL  ,
+[updater_id] int NOT NULL,
+[branch] [nvarchar](100) NOT NULL,
+[Asset_id] [nvarchar](100) NOT NULL  ,
+[Description] [nvarchar](1000) NOT NULL  ,
+[Asset_type] [nvarchar](100) NOT NULL  ,
+[No_of_assets] [int] NOT NULL  ,
+[Acquisition_date] [date] NOT NULL  ,
+[Original_cost] [money] NULL,
+[Annual_depreciation_rate] [Float] NOT NULL,
+[Accumulated_depreciation_charge] [money] NULL,
+[Net_book_value] [money] NULL,
+[Disposal_date] [date],
+[Profit_loss_disposal] [int] NOT NULL  ,
+[Acquisition_capital_finance] [nvarchar](100) NOT NULL,
+[Acquisition_capital_transaction] [nvarchar](100) NOT NULL,
+[Disposal_amount_transfer] [nvarchar](100),
+[Disposal_amount_transaction] [nvarchar](100) NOT NULL,
+Primary Key(id)
+)
