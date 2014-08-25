@@ -17,7 +17,7 @@ namespace OpenCBS.CoreDomain
         public int NoOfAssets { get; set; }
         public DateTime AcquisitionDate { get; set; }
         public OCurrency OriginalCost { get; set; }
-        double? AnnualDepreciationRate { get; set; }
+        public double? AnnualDepreciationRate { get; set; }
         public OCurrency AccumulatedDepreciationCharge { get; set; }
         public OCurrency NetBookValue { get; set; }
         public DateTime DisposalDate { get; set; }

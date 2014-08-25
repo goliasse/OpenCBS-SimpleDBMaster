@@ -68,6 +68,7 @@
             this.tbxAmount.Name = "tbxAmount";
             this.tbxAmount.Size = new System.Drawing.Size(183, 20);
             this.tbxAmount.TabIndex = 21;
+            this.tbxAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxAmount_KeyPress);
             // 
             // lblAmount
             // 

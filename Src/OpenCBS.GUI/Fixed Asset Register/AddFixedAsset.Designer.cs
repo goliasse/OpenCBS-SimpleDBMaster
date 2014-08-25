@@ -116,6 +116,7 @@
             this.txtNoOfAssets.Name = "txtNoOfAssets";
             this.txtNoOfAssets.Size = new System.Drawing.Size(183, 20);
             this.txtNoOfAssets.TabIndex = 29;
+            this.txtNoOfAssets.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNoOfAssets_KeyPress);
             // 
             // label2
             // 
@@ -133,6 +134,7 @@
             this.txtOriginalCost.Name = "txtOriginalCost";
             this.txtOriginalCost.Size = new System.Drawing.Size(183, 20);
             this.txtOriginalCost.TabIndex = 31;
+            this.txtOriginalCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNoOfAssets_KeyPress);
             // 
             // txtDepreciationRate
             // 
@@ -140,6 +142,7 @@
             this.txtDepreciationRate.Name = "txtDepreciationRate";
             this.txtDepreciationRate.Size = new System.Drawing.Size(183, 20);
             this.txtDepreciationRate.TabIndex = 33;
+            this.txtDepreciationRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNoOfAssets_KeyPress);
             // 
             // label4
             // 

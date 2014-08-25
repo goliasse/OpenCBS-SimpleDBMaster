@@ -7,18 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace OpenCBS.GUI.Fixed_Asset_Register
+namespace OpenCBS.GUI.Capital_Adequacy_Ratio
 {
-    public partial class AddFixedAsset : Form
+    public partial class CalculateCapitalAdequacyRatio : Form
     {
-        public AddFixedAsset()
+        public CalculateCapitalAdequacyRatio()
         {
             InitializeComponent();
-        }
-
-        private void lblAmount_Click(object sender, EventArgs e)
-        {
-
         }
 
         void KeyPressControl(KeyPressEventArgs e)
@@ -40,7 +35,7 @@ namespace OpenCBS.GUI.Fixed_Asset_Register
                 e.Handled = true;
         }
 
-        private void txtNoOfAssets_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtPaidupcapital_KeyPress(object sender, KeyPressEventArgs e)
         {
             KeyPressControl(e);
         }
