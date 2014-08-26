@@ -7,11 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace OpenCBS.GUI.Fixed_Asset_Register
+namespace OpenCBS.GUI.FixedAssetRegister
 {
     public partial class AddFixedAsset : Form
     {
         public AddFixedAsset()
+        {
+            InitializeComponent();
+        }
+
+        public AddFixedAsset(string assetId, bool flag)
         {
             InitializeComponent();
         }

@@ -96,9 +96,9 @@
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label1.Location = new System.Drawing.Point(51, 56);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 16);
+            this.label1.Size = new System.Drawing.Size(106, 16);
             this.label1.TabIndex = 45;
-            this.label1.Text = "Paid up capital :";
+            this.label1.Text = "Paid Up Capital :";
             // 
             // label2
             // 
@@ -108,9 +108,9 @@
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label2.Location = new System.Drawing.Point(51, 82);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(125, 16);
+            this.label2.Size = new System.Drawing.Size(130, 16);
             this.label2.TabIndex = 46;
-            this.label2.Text = "Statutory reserves  :";
+            this.label2.Text = "Statutory Reserves  :";
             // 
             // label3
             // 
@@ -120,9 +120,9 @@
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label3.Location = new System.Drawing.Point(51, 109);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 16);
+            this.label3.Size = new System.Drawing.Size(130, 16);
             this.label3.TabIndex = 47;
-            this.label3.Text = "Retained earnings   :";
+            this.label3.Text = "Retained Earnings   :";
             // 
             // label4
             // 
@@ -156,9 +156,9 @@
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label6.Location = new System.Drawing.Point(52, 214);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(255, 16);
+            this.label6.Size = new System.Drawing.Size(270, 16);
             this.label6.TabIndex = 50;
-            this.label6.Text = "Loan loss reserve / bad debts provisions   :";
+            this.label6.Text = "Loan Loss Reserve / Bad Debts Provisions   :";
             // 
             // label7
             // 
@@ -168,9 +168,9 @@
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label7.Location = new System.Drawing.Point(52, 242);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(129, 16);
+            this.label7.Size = new System.Drawing.Size(131, 16);
             this.label7.TabIndex = 51;
-            this.label7.Text = "Subordinated debt   :";
+            this.label7.Text = "Subordinated Debt   :";
             // 
             // label8
             // 
@@ -180,9 +180,9 @@
             this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label8.Location = new System.Drawing.Point(51, 268);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(127, 16);
+            this.label8.Size = new System.Drawing.Size(132, 16);
             this.label8.TabIndex = 52;
-            this.label8.Text = "Revaluation reserve :";
+            this.label8.Text = "Revaluation Reserve :";
             // 
             // label9
             // 
@@ -192,9 +192,9 @@
             this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label9.Location = new System.Drawing.Point(51, 294);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(125, 16);
+            this.label9.Size = new System.Drawing.Size(127, 16);
             this.label9.TabIndex = 53;
-            this.label9.Text = "Preference shares  :";
+            this.label9.Text = "Preference Shares  :";
             // 
             // label10
             // 
@@ -204,9 +204,9 @@
             this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label10.Location = new System.Drawing.Point(518, 25);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(136, 16);
+            this.label10.Size = new System.Drawing.Size(141, 16);
             this.label10.TabIndex = 54;
-            this.label10.Text = "Risk weighted assets ";
+            this.label10.Text = "Risk Weighted Assets ";
             // 
             // label11
             // 
@@ -216,9 +216,9 @@
             this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label11.Location = new System.Drawing.Point(518, 163);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(107, 16);
+            this.label11.Size = new System.Drawing.Size(109, 16);
             this.label11.TabIndex = 55;
-            this.label11.Text = "Letter of credit   :";
+            this.label11.Text = "Letter of Credit   :";
             // 
             // label12
             // 
@@ -228,9 +228,9 @@
             this.label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label12.Location = new System.Drawing.Point(517, 136);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(133, 16);
+            this.label12.Size = new System.Drawing.Size(136, 16);
             this.label12.TabIndex = 56;
-            this.label12.Text = "Financial guarantee  :";
+            this.label12.Text = "Financial Guarantee  :";
             // 
             // label13
             // 
@@ -240,9 +240,9 @@
             this.label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label13.Location = new System.Drawing.Point(518, 111);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(129, 16);
+            this.label13.Size = new System.Drawing.Size(131, 16);
             this.label13.TabIndex = 57;
-            this.label13.Text = "Performance bond   :";
+            this.label13.Text = "Performance Bond   :";
             // 
             // label14
             // 
@@ -252,9 +252,9 @@
             this.label14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label14.Location = new System.Drawing.Point(517, 86);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(71, 16);
+            this.label14.Size = new System.Drawing.Size(73, 16);
             this.label14.TabIndex = 58;
-            this.label14.Text = "Bid bond  :";
+            this.label14.Text = "Bid Bond  :";
             // 
             // label15
             // 
@@ -264,9 +264,9 @@
             this.label15.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label15.Location = new System.Drawing.Point(517, 56);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(184, 16);
+            this.label15.Size = new System.Drawing.Size(192, 16);
             this.label15.TabIndex = 59;
-            this.label15.Text = "Contract related transaction   :";
+            this.label15.Text = "Contract Related Transaction   :";
             // 
             // label16
             // 
@@ -276,9 +276,9 @@
             this.label16.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label16.Location = new System.Drawing.Point(519, 188);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(106, 16);
+            this.label16.Size = new System.Drawing.Size(110, 16);
             this.label16.TabIndex = 60;
-            this.label16.Text = "Mortgage loan   :";
+            this.label16.Text = "Mortgage Loan   :";
             // 
             // label17
             // 
@@ -288,9 +288,9 @@
             this.label17.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label17.Location = new System.Drawing.Point(518, 214);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(91, 16);
+            this.label17.Size = new System.Drawing.Size(95, 16);
             this.label17.TabIndex = 61;
-            this.label17.Text = "Other loans   :";
+            this.label17.Text = "Other Loans   :";
             // 
             // label18
             // 
@@ -310,7 +310,7 @@
             this.label19.BackColor = System.Drawing.Color.Transparent;
             this.label19.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label19.Location = new System.Drawing.Point(517, 265);
+            this.label19.Location = new System.Drawing.Point(519, 265);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(50, 16);
             this.label19.TabIndex = 63;
@@ -460,6 +460,7 @@
             this.btnCalculateCAR.Size = new System.Drawing.Size(107, 23);
             this.btnCalculateCAR.TabIndex = 81;
             this.btnCalculateCAR.Text = "Calculate CAR";
+            this.btnCalculateCAR.Click += new System.EventHandler(this.btnCalculateCAR_Click);
             // 
             // label20
             // 
@@ -517,9 +518,9 @@
             this.label24.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label24.Location = new System.Drawing.Point(519, 301);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(136, 16);
+            this.label24.Size = new System.Drawing.Size(141, 16);
             this.label24.TabIndex = 86;
-            this.label24.Text = "Risk weighted assets ";
+            this.label24.Text = "Risk Weighted Assets ";
             // 
             // lblTotalRWA
             // 
@@ -529,9 +530,9 @@
             this.lblTotalRWA.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.lblTotalRWA.Location = new System.Drawing.Point(714, 301);
             this.lblTotalRWA.Name = "lblTotalRWA";
-            this.lblTotalRWA.Size = new System.Drawing.Size(167, 16);
+            this.lblTotalRWA.Size = new System.Drawing.Size(172, 16);
             this.lblTotalRWA.TabIndex = 87;
-            this.lblTotalRWA.Text = "Total Risk weighted assets ";
+            this.lblTotalRWA.Text = "Total Risk Weighted Assets ";
             // 
             // label26
             // 

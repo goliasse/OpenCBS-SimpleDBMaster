@@ -21,7 +21,7 @@ using OpenCBS.Shared.Settings;
 
 
 
-namespace OpenCBS.GUI.Products
+namespace OpenCBS.GUI.FixedAssetRegister
 {
     [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
@@ -93,18 +93,18 @@ namespace OpenCBS.GUI.Products
 
         private void buttonAddProduct_Click(object sender, System.EventArgs e)
         {
-            FrmAddFixedDepositProduct _frmAddFixedDepositProduct = new FrmAddFixedDepositProduct();
-            _frmAddFixedDepositProduct.Show();
+            AddFixedAsset _frmAddFixedAsset = new AddFixedAsset();
+            _frmAddFixedAsset.Show();
         }
 
         private void buttonEditProduct_Click(object sender, System.EventArgs e)
         {
             try{
             int i = lvFixedAsset.SelectedIndices[0];
-            string selectedProductId = lvFixedAsset.Items[i].Text;
+            string selectedFixedAssetId = lvFixedAsset.Items[i].Text;
 
-            FrmAddFixedDepositProduct _frmAddFixedDepositProduct = new FrmAddFixedDepositProduct(Convert.ToInt32(selectedProductId),true);
-            _frmAddFixedDepositProduct.Show();
+            AddFixedAsset _frmAddFixedAsset = new AddFixedAsset(selectedFixedAssetId, true);
+            _frmAddFixedAsset.Show();
 
             }
             catch (Exception ex)
@@ -138,10 +138,10 @@ namespace OpenCBS.GUI.Products
         {
             try{
             int i = lvFixedAsset.SelectedIndices[0];
-            string selectedProductId = lvFixedAsset.Items[i].Text;
+            string selectedFixedAssetId = lvFixedAsset.Items[i].Text;
 
             FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
-            _fixedDepositProductService.DeleteFixedDepositProduct(Convert.ToInt32(selectedProductId));
+            _fixedDepositProductService.DeleteFixedDepositProduct(Convert.ToInt32(selectedFixedAssetId));
             MessageBox.Show("Fixed Deposit Product Successfully Deleted.");
 
 
@@ -166,8 +166,8 @@ namespace OpenCBS.GUI.Products
             int i = lvFixedAsset.SelectedIndices[0];
             string selectedProductId = lvFixedAsset.Items[i].Text;
 
-            FrmAddFixedDepositProduct _frmAddFixedDepositProduct = new FrmAddFixedDepositProduct(Convert.ToInt32(selectedProductId),false);
-            _frmAddFixedDepositProduct.Show();
+            AddFixedAsset _frmAddFixedAsset = new AddFixedAsset(selectedProductId, false);
+            _frmAddFixedAsset.Show();
 
             }
             catch (Exception ex)

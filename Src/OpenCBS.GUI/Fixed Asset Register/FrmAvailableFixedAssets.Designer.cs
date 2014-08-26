@@ -1,4 +1,4 @@
-﻿namespace OpenCBS.GUI.Products
+﻿namespace OpenCBS.GUI.FixedAssetRegister
 {
     partial class FrmAvailableFixedAssets
     {

@@ -1,4 +1,4 @@
-﻿namespace OpenCBS.GUI.Fixed_Asset_Register
+﻿namespace OpenCBS.GUI.FixedAssetRegister
 {
     partial class AddFixedAsset
     {
@@ -52,6 +52,8 @@
             this.cmbAssetStatus = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtAssetDescription
@@ -64,10 +66,11 @@
             // lblAmount
             // 
             this.lblAmount.AutoSize = true;
+            this.lblAmount.Font = new System.Drawing.Font("Arial", 9.75F);
             this.lblAmount.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblAmount.Location = new System.Drawing.Point(128, 99);
+            this.lblAmount.Location = new System.Drawing.Point(102, 103);
             this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(92, 13);
+            this.lblAmount.Size = new System.Drawing.Size(115, 16);
             this.lblAmount.TabIndex = 24;
             this.lblAmount.Text = "Asset Description:";
             this.lblAmount.Click += new System.EventHandler(this.lblAmount_Click);
@@ -84,20 +87,22 @@
             // lblBranch
             // 
             this.lblBranch.AutoSize = true;
+            this.lblBranch.Font = new System.Drawing.Font("Arial", 9.75F);
             this.lblBranch.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblBranch.Location = new System.Drawing.Point(176, 24);
+            this.lblBranch.Location = new System.Drawing.Point(164, 24);
             this.lblBranch.Name = "lblBranch";
-            this.lblBranch.Size = new System.Drawing.Size(44, 13);
+            this.lblBranch.Size = new System.Drawing.Size(53, 16);
             this.lblBranch.TabIndex = 22;
             this.lblBranch.Text = "Branch:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(154, 140);
+            this.label1.Location = new System.Drawing.Point(140, 138);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.Size = new System.Drawing.Size(77, 16);
             this.label1.TabIndex = 27;
             this.label1.Text = "Asset Type:";
             // 
@@ -121,10 +126,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(144, 180);
+            this.label2.Location = new System.Drawing.Point(128, 177);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.Size = new System.Drawing.Size(89, 16);
             this.label2.TabIndex = 28;
             this.label2.Text = "No Of Assets:";
             // 
@@ -147,20 +153,22 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(85, 252);
+            this.label4.Location = new System.Drawing.Point(57, 252);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(132, 13);
+            this.label4.Size = new System.Drawing.Size(159, 16);
             this.label4.TabIndex = 32;
             this.label4.Text = "Annual Depreciation Rate:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(41, 289);
+            this.label5.Location = new System.Drawing.Point(5, 315);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(176, 13);
+            this.label5.Size = new System.Drawing.Size(217, 16);
             this.label5.TabIndex = 34;
             this.label5.Text = "Acquisition Capital Finance Method:";
             // 
@@ -168,7 +176,7 @@
             // 
             this.cmbAcqCapFinMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAcqCapFinMethod.FormattingEnabled = true;
-            this.cmbAcqCapFinMethod.Location = new System.Drawing.Point(268, 286);
+            this.cmbAcqCapFinMethod.Location = new System.Drawing.Point(271, 315);
             this.cmbAcqCapFinMethod.Name = "cmbAcqCapFinMethod";
             this.cmbAcqCapFinMethod.Size = new System.Drawing.Size(183, 21);
             this.cmbAcqCapFinMethod.TabIndex = 35;
@@ -176,16 +184,17 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(62, 323);
+            this.label6.Location = new System.Drawing.Point(29, 353);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(155, 13);
+            this.label6.Size = new System.Drawing.Size(191, 16);
             this.label6.TabIndex = 37;
             this.label6.Text = "Acquisition Capital Transaction:";
             // 
             // txtAcqCapTranNum
             // 
-            this.txtAcqCapTranNum.Location = new System.Drawing.Point(268, 323);
+            this.txtAcqCapTranNum.Location = new System.Drawing.Point(271, 352);
             this.txtAcqCapTranNum.Name = "txtAcqCapTranNum";
             this.txtAcqCapTranNum.Size = new System.Drawing.Size(183, 20);
             this.txtAcqCapTranNum.TabIndex = 36;
@@ -193,16 +202,17 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(68, 398);
+            this.label7.Location = new System.Drawing.Point(39, 427);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(148, 13);
+            this.label7.Size = new System.Drawing.Size(181, 16);
             this.label7.TabIndex = 41;
             this.label7.Text = "Disposal Amount Transaction:";
             // 
             // txtDisAmtTranNum
             // 
-            this.txtDisAmtTranNum.Location = new System.Drawing.Point(268, 398);
+            this.txtDisAmtTranNum.Location = new System.Drawing.Point(271, 427);
             this.txtDisAmtTranNum.Name = "txtDisAmtTranNum";
             this.txtDisAmtTranNum.Size = new System.Drawing.Size(183, 20);
             this.txtDisAmtTranNum.TabIndex = 40;
@@ -211,7 +221,7 @@
             // 
             this.cmbDisAmtTranMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDisAmtTranMethod.FormattingEnabled = true;
-            this.cmbDisAmtTranMethod.Location = new System.Drawing.Point(268, 361);
+            this.cmbDisAmtTranMethod.Location = new System.Drawing.Point(271, 390);
             this.cmbDisAmtTranMethod.Name = "cmbDisAmtTranMethod";
             this.cmbDisAmtTranMethod.Size = new System.Drawing.Size(183, 21);
             this.cmbDisAmtTranMethod.TabIndex = 39;
@@ -219,17 +229,18 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label8.Location = new System.Drawing.Point(41, 364);
+            this.label8.Location = new System.Drawing.Point(15, 391);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(170, 13);
+            this.label8.Size = new System.Drawing.Size(207, 16);
             this.label8.TabIndex = 38;
             this.label8.Text = "Disposal Amount Transfer Method:";
             // 
             // btnUpdate
             // 
             this.btnUpdate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnUpdate.Location = new System.Drawing.Point(268, 435);
+            this.btnUpdate.Location = new System.Drawing.Point(271, 458);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(96, 23);
             this.btnUpdate.TabIndex = 43;
@@ -238,7 +249,7 @@
             // btnSubmit
             // 
             this.btnSubmit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSubmit.Location = new System.Drawing.Point(110, 435);
+            this.btnSubmit.Location = new System.Drawing.Point(113, 458);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(107, 23);
             this.btnSubmit.TabIndex = 42;
@@ -256,28 +267,50 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label9.Location = new System.Drawing.Point(176, 60);
+            this.label9.Location = new System.Drawing.Point(167, 60);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(40, 13);
+            this.label9.Size = new System.Drawing.Size(50, 16);
             this.label9.TabIndex = 46;
             this.label9.Text = "Status:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label10.Location = new System.Drawing.Point(90, 216);
+            this.label10.Location = new System.Drawing.Point(57, 213);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(126, 13);
+            this.label10.Size = new System.Drawing.Size(160, 16);
             this.label10.TabIndex = 53;
             this.label10.Text = "Original Cost (Per Asset) :";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(268, 284);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(183, 20);
+            this.textBox1.TabIndex = 55;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label3.Location = new System.Drawing.Point(110, 284);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(107, 16);
+            this.label3.TabIndex = 54;
+            this.label3.Text = "Acquisition Date:";
             // 
             // AddFixedAsset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(539, 535);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cmbAssetStatus);
             this.Controls.Add(this.label9);
@@ -335,5 +368,7 @@
         private System.Windows.Forms.ComboBox cmbAssetStatus;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label3;
     }
 }

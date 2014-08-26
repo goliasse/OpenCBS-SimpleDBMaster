@@ -1,6 +1,6 @@
 ﻿namespace OpenCBS.GUI.Products
 {
-    partial class FrmAvailableFixedAssets
+    partial class FrmAvailableFixedDepositProducts
     {
         /// <summary>
         /// Required designer variable.
@@ -31,18 +31,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pnlSavingsProducts = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lvFixedAsset = new System.Windows.Forms.ListView();
+            this.lvFixedDepositProducts = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnViewFixedAsset = new System.Windows.Forms.Button();
-            this.buttonEditFixedAsset = new System.Windows.Forms.Button();
+            this.btnViewProduct = new System.Windows.Forms.Button();
+            this.buttonEditProduct = new System.Windows.Forms.Button();
             this.checkBoxShowDeletedProduct = new System.Windows.Forms.CheckBox();
-            this.buttonAddFixedAsset = new System.Windows.Forms.Button();
-            this.buttonDeleteFixedAsset = new System.Windows.Forms.Button();
+            this.buttonAddProduct = new System.Windows.Forms.Button();
+            this.buttonDeleteProduct = new System.Windows.Forms.Button();
             this.pnlSavingsProducts.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -72,12 +72,12 @@
             // 
             this.groupBox1.AutoSize = true;
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox1.Controls.Add(this.lvFixedAsset);
-            this.groupBox1.Controls.Add(this.btnViewFixedAsset);
-            this.groupBox1.Controls.Add(this.buttonEditFixedAsset);
+            this.groupBox1.Controls.Add(this.lvFixedDepositProducts);
+            this.groupBox1.Controls.Add(this.btnViewProduct);
+            this.groupBox1.Controls.Add(this.buttonEditProduct);
             this.groupBox1.Controls.Add(this.checkBoxShowDeletedProduct);
-            this.groupBox1.Controls.Add(this.buttonAddFixedAsset);
-            this.groupBox1.Controls.Add(this.buttonDeleteFixedAsset);
+            this.groupBox1.Controls.Add(this.buttonAddProduct);
+            this.groupBox1.Controls.Add(this.buttonDeleteProduct);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -87,22 +87,22 @@
             // 
             // lvFixedDepositProducts
             // 
-            this.lvFixedAsset.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.lvFixedAsset.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvFixedDepositProducts.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.lvFixedDepositProducts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6});
-            this.lvFixedAsset.FullRowSelect = true;
-            this.lvFixedAsset.GridLines = true;
-            this.lvFixedAsset.Location = new System.Drawing.Point(0, 0);
-            this.lvFixedAsset.Name = "lvFixedDepositProducts";
-            this.lvFixedAsset.Size = new System.Drawing.Size(765, 339);
-            this.lvFixedAsset.TabIndex = 27;
-            this.lvFixedAsset.UseCompatibleStateImageBehavior = false;
-            this.lvFixedAsset.View = System.Windows.Forms.View.Details;
+            this.lvFixedDepositProducts.FullRowSelect = true;
+            this.lvFixedDepositProducts.GridLines = true;
+            this.lvFixedDepositProducts.Location = new System.Drawing.Point(0, 0);
+            this.lvFixedDepositProducts.Name = "lvFixedDepositProducts";
+            this.lvFixedDepositProducts.Size = new System.Drawing.Size(765, 339);
+            this.lvFixedDepositProducts.TabIndex = 27;
+            this.lvFixedDepositProducts.UseCompatibleStateImageBehavior = false;
+            this.lvFixedDepositProducts.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -140,27 +140,27 @@
             // 
             // btnViewProduct
             // 
-            this.btnViewFixedAsset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnViewFixedAsset.Font = new System.Drawing.Font("Arial", 9F);
-            this.btnViewFixedAsset.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnViewFixedAsset.Location = new System.Drawing.Point(771, 135);
-            this.btnViewFixedAsset.Name = "btnViewProduct";
-            this.btnViewFixedAsset.Size = new System.Drawing.Size(140, 28);
-            this.btnViewFixedAsset.TabIndex = 10;
-            this.btnViewFixedAsset.Text = "View product";
-            this.btnViewFixedAsset.Click += new System.EventHandler(this.btnViewProduct_Click);
+            this.btnViewProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnViewProduct.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnViewProduct.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnViewProduct.Location = new System.Drawing.Point(771, 135);
+            this.btnViewProduct.Name = "btnViewProduct";
+            this.btnViewProduct.Size = new System.Drawing.Size(140, 28);
+            this.btnViewProduct.TabIndex = 10;
+            this.btnViewProduct.Text = "View product";
+            this.btnViewProduct.Click += new System.EventHandler(this.btnViewProduct_Click);
             // 
             // buttonEditProduct
             // 
-            this.buttonEditFixedAsset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonEditFixedAsset.Font = new System.Drawing.Font("Arial", 9F);
-            this.buttonEditFixedAsset.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonEditFixedAsset.Location = new System.Drawing.Point(771, 70);
-            this.buttonEditFixedAsset.Name = "buttonEditProduct";
-            this.buttonEditFixedAsset.Size = new System.Drawing.Size(140, 28);
-            this.buttonEditFixedAsset.TabIndex = 9;
-            this.buttonEditFixedAsset.Text = "Edit product";
-            this.buttonEditFixedAsset.Click += new System.EventHandler(this.buttonEditProduct_Click);
+            this.buttonEditProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonEditProduct.Font = new System.Drawing.Font("Arial", 9F);
+            this.buttonEditProduct.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonEditProduct.Location = new System.Drawing.Point(771, 70);
+            this.buttonEditProduct.Name = "buttonEditProduct";
+            this.buttonEditProduct.Size = new System.Drawing.Size(140, 28);
+            this.buttonEditProduct.TabIndex = 9;
+            this.buttonEditProduct.Text = "Edit product";
+            this.buttonEditProduct.Click += new System.EventHandler(this.buttonEditProduct_Click);
             // 
             // checkBoxShowDeletedProduct
             // 
@@ -177,27 +177,27 @@
             // 
             // buttonAddProduct
             // 
-            this.buttonAddFixedAsset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAddFixedAsset.Font = new System.Drawing.Font("Arial", 9F);
-            this.buttonAddFixedAsset.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonAddFixedAsset.Location = new System.Drawing.Point(771, 39);
-            this.buttonAddFixedAsset.Name = "buttonAddProduct";
-            this.buttonAddFixedAsset.Size = new System.Drawing.Size(140, 28);
-            this.buttonAddFixedAsset.TabIndex = 7;
-            this.buttonAddFixedAsset.Text = "Add product";
-            this.buttonAddFixedAsset.Click += new System.EventHandler(this.buttonAddProduct_Click);
+            this.buttonAddProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAddProduct.Font = new System.Drawing.Font("Arial", 9F);
+            this.buttonAddProduct.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonAddProduct.Location = new System.Drawing.Point(771, 39);
+            this.buttonAddProduct.Name = "buttonAddProduct";
+            this.buttonAddProduct.Size = new System.Drawing.Size(140, 28);
+            this.buttonAddProduct.TabIndex = 7;
+            this.buttonAddProduct.Text = "Add product";
+            this.buttonAddProduct.Click += new System.EventHandler(this.buttonAddProduct_Click);
             // 
             // buttonDeleteProduct
             // 
-            this.buttonDeleteFixedAsset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDeleteFixedAsset.Font = new System.Drawing.Font("Arial", 9F);
-            this.buttonDeleteFixedAsset.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonDeleteFixedAsset.Location = new System.Drawing.Point(771, 101);
-            this.buttonDeleteFixedAsset.Name = "buttonDeleteProduct";
-            this.buttonDeleteFixedAsset.Size = new System.Drawing.Size(140, 28);
-            this.buttonDeleteFixedAsset.TabIndex = 6;
-            this.buttonDeleteFixedAsset.Text = "Delete product";
-            this.buttonDeleteFixedAsset.Click += new System.EventHandler(this.buttonDeleteProduct_Click);
+            this.buttonDeleteProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDeleteProduct.Font = new System.Drawing.Font("Arial", 9F);
+            this.buttonDeleteProduct.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonDeleteProduct.Location = new System.Drawing.Point(771, 101);
+            this.buttonDeleteProduct.Name = "buttonDeleteProduct";
+            this.buttonDeleteProduct.Size = new System.Drawing.Size(140, 28);
+            this.buttonDeleteProduct.TabIndex = 6;
+            this.buttonDeleteProduct.Text = "Delete product";
+            this.buttonDeleteProduct.Click += new System.EventHandler(this.buttonDeleteProduct_Click);
             // 
             // FrmAvailableFixedDepositProducts
             // 

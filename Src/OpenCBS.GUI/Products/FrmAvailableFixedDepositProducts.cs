@@ -25,11 +25,11 @@ namespace OpenCBS.GUI.Products
 {
     [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
-    public partial class FrmAvailableFixedAssets : Form
+    public partial class FrmAvailableFixedDepositProducts : Form
     {
         private int _idPackage;
         private LoanProduct _package;
-        public FrmAvailableFixedAssets()
+        public FrmAvailableFixedDepositProducts()
         {
             
             InitializeComponent();
@@ -51,7 +51,7 @@ namespace OpenCBS.GUI.Products
         private bool _showDeletedPackage = false;
         private void InitializeFixedDepositProductList(bool showAsDeleted)
         {
-            lvFixedAsset.Items.Clear();
+            lvFixedDepositProducts.Items.Clear();
             FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
             List<IFixedDepositProduct> fixedDepositProductList = _fixedDepositProductService.FetchProduct(showAsDeleted);
             if (fixedDepositProductList != null)
@@ -74,7 +74,7 @@ namespace OpenCBS.GUI.Products
 
                     
                 });
-                    lvFixedAsset.Items.Add(item);
+                    lvFixedDepositProducts.Items.Add(item);
 
                 }
 
@@ -100,8 +100,8 @@ namespace OpenCBS.GUI.Products
         private void buttonEditProduct_Click(object sender, System.EventArgs e)
         {
             try{
-            int i = lvFixedAsset.SelectedIndices[0];
-            string selectedProductId = lvFixedAsset.Items[i].Text;
+            int i = lvFixedDepositProducts.SelectedIndices[0];
+            string selectedProductId = lvFixedDepositProducts.Items[i].Text;
 
             FrmAddFixedDepositProduct _frmAddFixedDepositProduct = new FrmAddFixedDepositProduct(Convert.ToInt32(selectedProductId),true);
             _frmAddFixedDepositProduct.Show();
@@ -137,8 +137,8 @@ namespace OpenCBS.GUI.Products
         private void buttonDeleteProduct_Click(object sender, EventArgs e)
         {
             try{
-            int i = lvFixedAsset.SelectedIndices[0];
-            string selectedProductId = lvFixedAsset.Items[i].Text;
+            int i = lvFixedDepositProducts.SelectedIndices[0];
+            string selectedProductId = lvFixedDepositProducts.Items[i].Text;
 
             FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
             _fixedDepositProductService.DeleteFixedDepositProduct(Convert.ToInt32(selectedProductId));
@@ -163,8 +163,8 @@ namespace OpenCBS.GUI.Products
         private void btnViewProduct_Click(object sender, EventArgs e)
         {
             try{
-            int i = lvFixedAsset.SelectedIndices[0];
-            string selectedProductId = lvFixedAsset.Items[i].Text;
+            int i = lvFixedDepositProducts.SelectedIndices[0];
+            string selectedProductId = lvFixedDepositProducts.Items[i].Text;
 
             FrmAddFixedDepositProduct _frmAddFixedDepositProduct = new FrmAddFixedDepositProduct(Convert.ToInt32(selectedProductId),false);
             _frmAddFixedDepositProduct.Show();
