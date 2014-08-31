@@ -365,6 +365,21 @@ namespace OpenCBS.Services
             return new CurrentAccountTransactionService(CurrentUser);
         }
 
+        public CounterBalanceService GetCounterBalanceService()
+        {
+            return new CounterBalanceService(CurrentUser);
+        }
+
+        public FixedAssetRegisterService GetFixedAssetRegisterService()
+        {
+            return new FixedAssetRegisterService(CurrentUser);
+        }
+
+        public RWAPercentageService GetRWAPercentageService()
+        {
+            return new RWAPercentageService(CurrentUser);
+        }
+
         #region IServices Members
 
 

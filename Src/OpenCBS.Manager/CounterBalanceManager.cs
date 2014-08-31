@@ -40,26 +40,7 @@ namespace OpenCBS.Manager
             return ret;
         }
 
-        public int UpdateCounterBalance(CounterBalance counterBalance)
-        {
-            int ret = -99;
-            using (SqlConnection conn = GetConnection())
-            {
-                using (OpenCbsCommand c = new OpenCbsCommand("UpdateCounterBalance", conn).AsStoredProcedure())
-                {
-                    c.AddParam("@allocaterId", _user.Id);
-                    c.AddParam("@branch", counterBalance.Branch);
-                    c.AddParam("@cashierId", counterBalance.CashierId);
-                    c.AddParam("@counterId", counterBalance.CounterId);
-                    c.AddParam("@allocationDate", counterBalance.AllocationDate);
-                    c.AddParam("@amount", counterBalance.Amount);
-                    c.AddParam("@type", counterBalance.Type);
-                    ret = Convert.ToInt32(c.ExecuteScalar());
-
-                }
-            }
-            return ret;
-        }
+        
 
         public int SaveCounterBalance(CounterBalance counterBalance)
         {

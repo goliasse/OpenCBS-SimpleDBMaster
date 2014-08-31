@@ -39,15 +39,15 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
+            this.lblLetterofcredit = new System.Windows.Forms.Label();
+            this.lblFinancialguarantee = new System.Windows.Forms.Label();
+            this.lblPerformancebond = new System.Windows.Forms.Label();
+            this.lblBidbond = new System.Windows.Forms.Label();
+            this.lblContractrelatedtransaction = new System.Windows.Forms.Label();
+            this.lblMortgageloan = new System.Windows.Forms.Label();
+            this.lblOtherloans = new System.Windows.Forms.Label();
+            this.lblGovernmentLoans = new System.Windows.Forms.Label();
+            this.lblCash = new System.Windows.Forms.Label();
             this.txtPaidupcapital = new System.Windows.Forms.TextBox();
             this.txtStatutoryreserves = new System.Windows.Forms.TextBox();
             this.txtRetainedearnings = new System.Windows.Forms.TextBox();
@@ -208,113 +208,113 @@
             this.label10.TabIndex = 54;
             this.label10.Text = "Risk Weighted Assets ";
             // 
-            // label11
+            // lblLetterofcredit
             // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label11.Location = new System.Drawing.Point(518, 163);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(109, 16);
-            this.label11.TabIndex = 55;
-            this.label11.Text = "Letter of Credit   :";
+            this.lblLetterofcredit.AutoSize = true;
+            this.lblLetterofcredit.BackColor = System.Drawing.Color.Transparent;
+            this.lblLetterofcredit.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblLetterofcredit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblLetterofcredit.Location = new System.Drawing.Point(518, 163);
+            this.lblLetterofcredit.Name = "lblLetterofcredit";
+            this.lblLetterofcredit.Size = new System.Drawing.Size(109, 16);
+            this.lblLetterofcredit.TabIndex = 55;
+            this.lblLetterofcredit.Text = "Letter of Credit   :";
             // 
-            // label12
+            // lblFinancialguarantee
             // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label12.Location = new System.Drawing.Point(517, 136);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(136, 16);
-            this.label12.TabIndex = 56;
-            this.label12.Text = "Financial Guarantee  :";
+            this.lblFinancialguarantee.AutoSize = true;
+            this.lblFinancialguarantee.BackColor = System.Drawing.Color.Transparent;
+            this.lblFinancialguarantee.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblFinancialguarantee.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblFinancialguarantee.Location = new System.Drawing.Point(517, 136);
+            this.lblFinancialguarantee.Name = "lblFinancialguarantee";
+            this.lblFinancialguarantee.Size = new System.Drawing.Size(136, 16);
+            this.lblFinancialguarantee.TabIndex = 56;
+            this.lblFinancialguarantee.Text = "Financial Guarantee  :";
             // 
-            // label13
+            // lblPerformancebond
             // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label13.Location = new System.Drawing.Point(518, 111);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(131, 16);
-            this.label13.TabIndex = 57;
-            this.label13.Text = "Performance Bond   :";
+            this.lblPerformancebond.AutoSize = true;
+            this.lblPerformancebond.BackColor = System.Drawing.Color.Transparent;
+            this.lblPerformancebond.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblPerformancebond.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblPerformancebond.Location = new System.Drawing.Point(518, 111);
+            this.lblPerformancebond.Name = "lblPerformancebond";
+            this.lblPerformancebond.Size = new System.Drawing.Size(131, 16);
+            this.lblPerformancebond.TabIndex = 57;
+            this.lblPerformancebond.Text = "Performance Bond   :";
             // 
-            // label14
+            // lblBidbond
             // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label14.Location = new System.Drawing.Point(517, 86);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(73, 16);
-            this.label14.TabIndex = 58;
-            this.label14.Text = "Bid Bond  :";
+            this.lblBidbond.AutoSize = true;
+            this.lblBidbond.BackColor = System.Drawing.Color.Transparent;
+            this.lblBidbond.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblBidbond.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblBidbond.Location = new System.Drawing.Point(517, 86);
+            this.lblBidbond.Name = "lblBidbond";
+            this.lblBidbond.Size = new System.Drawing.Size(73, 16);
+            this.lblBidbond.TabIndex = 58;
+            this.lblBidbond.Text = "Bid Bond  :";
             // 
-            // label15
+            // lblContractrelatedtransaction
             // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label15.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label15.Location = new System.Drawing.Point(517, 56);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(192, 16);
-            this.label15.TabIndex = 59;
-            this.label15.Text = "Contract Related Transaction   :";
+            this.lblContractrelatedtransaction.AutoSize = true;
+            this.lblContractrelatedtransaction.BackColor = System.Drawing.Color.Transparent;
+            this.lblContractrelatedtransaction.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblContractrelatedtransaction.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblContractrelatedtransaction.Location = new System.Drawing.Point(517, 56);
+            this.lblContractrelatedtransaction.Name = "lblContractrelatedtransaction";
+            this.lblContractrelatedtransaction.Size = new System.Drawing.Size(192, 16);
+            this.lblContractrelatedtransaction.TabIndex = 59;
+            this.lblContractrelatedtransaction.Text = "Contract Related Transaction   :";
             // 
-            // label16
+            // lblMortgageloan
             // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label16.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label16.Location = new System.Drawing.Point(519, 188);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(110, 16);
-            this.label16.TabIndex = 60;
-            this.label16.Text = "Mortgage Loan   :";
+            this.lblMortgageloan.AutoSize = true;
+            this.lblMortgageloan.BackColor = System.Drawing.Color.Transparent;
+            this.lblMortgageloan.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblMortgageloan.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblMortgageloan.Location = new System.Drawing.Point(519, 188);
+            this.lblMortgageloan.Name = "lblMortgageloan";
+            this.lblMortgageloan.Size = new System.Drawing.Size(110, 16);
+            this.lblMortgageloan.TabIndex = 60;
+            this.lblMortgageloan.Text = "Mortgage Loan   :";
             // 
-            // label17
+            // lblOtherloans
             // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label17.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label17.Location = new System.Drawing.Point(518, 214);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(95, 16);
-            this.label17.TabIndex = 61;
-            this.label17.Text = "Other Loans   :";
+            this.lblOtherloans.AutoSize = true;
+            this.lblOtherloans.BackColor = System.Drawing.Color.Transparent;
+            this.lblOtherloans.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblOtherloans.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblOtherloans.Location = new System.Drawing.Point(518, 214);
+            this.lblOtherloans.Name = "lblOtherloans";
+            this.lblOtherloans.Size = new System.Drawing.Size(95, 16);
+            this.lblOtherloans.TabIndex = 61;
+            this.lblOtherloans.Text = "Other Loans   :";
             // 
-            // label18
+            // lblGovernmentLoans
             // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.Color.Transparent;
-            this.label18.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label18.Location = new System.Drawing.Point(518, 239);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(128, 16);
-            this.label18.TabIndex = 62;
-            this.label18.Text = "Government Loans  :";
+            this.lblGovernmentLoans.AutoSize = true;
+            this.lblGovernmentLoans.BackColor = System.Drawing.Color.Transparent;
+            this.lblGovernmentLoans.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblGovernmentLoans.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblGovernmentLoans.Location = new System.Drawing.Point(518, 239);
+            this.lblGovernmentLoans.Name = "lblGovernmentLoans";
+            this.lblGovernmentLoans.Size = new System.Drawing.Size(128, 16);
+            this.lblGovernmentLoans.TabIndex = 62;
+            this.lblGovernmentLoans.Text = "Government Loans  :";
             // 
-            // label19
+            // lblCash
             // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label19.Location = new System.Drawing.Point(519, 265);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(50, 16);
-            this.label19.TabIndex = 63;
-            this.label19.Text = "Cash  :";
+            this.lblCash.AutoSize = true;
+            this.lblCash.BackColor = System.Drawing.Color.Transparent;
+            this.lblCash.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblCash.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblCash.Location = new System.Drawing.Point(519, 265);
+            this.lblCash.Name = "lblCash";
+            this.lblCash.Size = new System.Drawing.Size(50, 16);
+            this.lblCash.TabIndex = 63;
+            this.lblCash.Text = "Cash  :";
             // 
             // txtPaidupcapital
             // 
@@ -589,15 +589,15 @@
             this.Controls.Add(this.txtRetainedearnings);
             this.Controls.Add(this.txtStatutoryreserves);
             this.Controls.Add(this.txtPaidupcapital);
-            this.Controls.Add(this.label19);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.lblCash);
+            this.Controls.Add(this.lblGovernmentLoans);
+            this.Controls.Add(this.lblOtherloans);
+            this.Controls.Add(this.lblMortgageloan);
+            this.Controls.Add(this.lblContractrelatedtransaction);
+            this.Controls.Add(this.lblBidbond);
+            this.Controls.Add(this.lblPerformancebond);
+            this.Controls.Add(this.lblFinancialguarantee);
+            this.Controls.Add(this.lblLetterofcredit);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -630,15 +630,15 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label lblLetterofcredit;
+        private System.Windows.Forms.Label lblFinancialguarantee;
+        private System.Windows.Forms.Label lblPerformancebond;
+        private System.Windows.Forms.Label lblBidbond;
+        private System.Windows.Forms.Label lblContractrelatedtransaction;
+        private System.Windows.Forms.Label lblMortgageloan;
+        private System.Windows.Forms.Label lblOtherloans;
+        private System.Windows.Forms.Label lblGovernmentLoans;
+        private System.Windows.Forms.Label lblCash;
         private System.Windows.Forms.TextBox txtPaidupcapital;
         private System.Windows.Forms.TextBox txtStatutoryreserves;
         private System.Windows.Forms.TextBox txtRetainedearnings;

@@ -70,6 +70,10 @@ namespace OpenCBS.Services
         CurrentAccountProductHoldingServices GetCurrentAccountProductHoldingServices();
         CurrentAccountProductService GetCurrentAccountProductService();
         CurrentAccountTransactionService GetCurrentAccountTransactionService();
+        CurrentAccountTransactionService CurrentAccountTransactionService(User user);
+        CounterBalanceService GetCounterBalanceService(User user);
+        FixedAssetRegisterService GetFixedAssetRegisterService(User user);
+        RWAPercentageService GetRWAPercentageService(User user);
         void SuppressAllRemotingInfos(string pComputerName, string pLoginName);
 
         string GetAuthentification(string pOctoUsername, string pOctoPass, string pDbName, string pComputerName, string pLoginName);

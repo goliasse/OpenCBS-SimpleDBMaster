@@ -68,7 +68,10 @@ namespace OpenCBS.Services
         FixedDepositProductHoldingServices GetFixedDepositProductHoldingServices(User user);
         CurrentAccountProductHoldingServices GetCurrentAccountProductHoldingServices(User user);
         CurrentAccountProductService GetCurrentAccountProductService(User user);
-        
+        CurrentAccountTransactionService CurrentAccountTransactionService(User user);
+        CounterBalanceService GetCounterBalanceService(User user);
+        FixedAssetRegisterService GetFixedAssetRegisterService(User user);
+        RWAPercentageService GetRWAPercentageService(User user);
         bool TestRemoting();
 
         void SuppressAllRemotingInfos(User pUser, string pComputerName, string pLoginName);

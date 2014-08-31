@@ -213,6 +213,7 @@
     <Compile Include="FixedDepositProductService.cs" />
     <Compile Include="MenuItemServices.cs" />
     <Compile Include="PaymentMethodServices.cs" />
+    <Compile Include="RWAPercentageService.cs" />
     <Compile Include="TellerService.cs" />
     <Compile Include="Currencies\CurrencyServices.cs" />
     <Compile Include="Currencies\ExchangeRateServices.cs" />

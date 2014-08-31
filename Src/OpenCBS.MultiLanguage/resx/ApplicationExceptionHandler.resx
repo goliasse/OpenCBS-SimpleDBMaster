@@ -2008,5 +2008,195 @@ Enter another account number.
   
   <data name="CATFMaxIsLessThanMin" xml:space="preserve"> 
     <value>Min cannot be greater than Max !! </value> </data>
+  
+  
+<data name="CounterBalanceBranchIsNotSelected" xml:space="preserve">
+    <value>Please Select a Branch</value>
+  </data>
+<data name="CounterBalanceCashierIsNotSelected" xml:space="preserve">
+    <value>Please Select a Cashier</value>
+  </data>
+<data name="CounterBalanceCounterIsNotSelected" xml:space="preserve">
+    <value>Please Select a Counter</value>
+  </data>
+
+<data name="CounterBalanceOpeningAmountIsInvalid" xml:space="preserve">
+    <value>Opening Amount cannot be less than zero and Should be in the range of 1000</value>
+  </data>
+
+<data name="CounterBalanceTopUpAmountIsInvalid" xml:space="preserve">
+    <value>Top Up Amount cannot be less than zero and Should be in the range of 1000</value>
+  </data>
+
+ <data name="DefineRWAContractRelatedTransactionIsEmpty" xml:space="preserve">
+    <value>Contract Related Transaction cannot be empty</value>
+  </data>
+  <data name="DefineRWAContractRelatedTransactionIsLessThanZero" xml:space="preserve">
+    <value>Contract Related Transaction cannot be less than zero</value>
+  </data>
+ <data name="DefineRWAContractRelatedTransactionIsGreaterThanHundred" xml:space="preserve">
+    <value>Contract Related Transaction cannot be greater than hundred</value>
+  </data>
+ 
+
+ <data name="DefineRWABidBondIsEmpty" xml:space="preserve">
+    <value>Bid Bond cannot be empty</value>
+  </data>
+  <data name="DefineRWABidBondIsLessThanZero" xml:space="preserve">
+    <value>Bid Bond cannot be less than zero</value>
+  </data>
+ <data name="DefineRWABidBondIsGreaterThanHundred" xml:space="preserve">
+    <value>Bid Bond cannot be greater than hundred</value>
+  </data>
+ 
+
+
+ <data name="DefineRWAPerformanceBondIsEmpty" xml:space="preserve">
+    <value>Performance Bond cannot be empty</value>
+  </data>
+  <data name="DefineRWAPerformanceBondIsLessThanZero" xml:space="preserve">
+    <value>Performance Bond cannot be less than zero</value>
+  </data>
+ <data name="DefineRWAPerformanceBondIsGreaterThanHundred" xml:space="preserve">
+    <value>Performance Bond cannot be greater than hundred</value>
+  </data>
+ 
+
+
+
+ <data name="DefineRWAFinancialGuaranteeIsEmpty" xml:space="preserve">
+    <value>Financial Guarantee cannot be empty</value>
+  </data>
+  <data name="DefineRWAFinancialGuaranteeIsLessThanZero" xml:space="preserve">
+    <value>Financial Guarantee cannot be less than zero</value>
+  </data>
+ <data name="DefineRWAFinancialGuaranteeIsGreaterThanHundred" xml:space="preserve">
+    <value>Financial Guarantee cannot be greater than hundred</value>
+  </data>
+ 
+
+
+ <data name="DefineRWALetterOfCreditIsEmpty" xml:space="preserve">
+    <value>Letter Of Credit cannot be empty</value>
+  </data>
+  <data name="DefineRWALetterOfCreditIsLessThanZero" xml:space="preserve">
+    <value>Letter Of Credit cannot be less than zero</value>
+  </data>
+ <data name="DefineRWALetterOfCreditIsGreaterThanHundred" xml:space="preserve">
+    <value>Letter Of Credit cannot be greater than hundred</value>
+  </data>
+ 
+
+
+
+ <data name="DefineRWAMortgageLoanIsEmpty" xml:space="preserve">
+    <value>Mortgage Loan cannot be empty</value>
+  </data>
+  <data name="DefineRWAMortgageLoanIsLessThanZero" xml:space="preserve">
+    <value>Mortgage Loan cannot be less than zero</value>
+  </data>
+ <data name="DefineRWAMortgageLoanIsGreaterThanHundred" xml:space="preserve">
+    <value>Mortgage Loan cannot be greater than hundred</value>
+  </data>
+
+
+ <data name="DefineRWAOtherLoansIsEmpty" xml:space="preserve">
+    <value>Other Loans cannot be empty</value>
+  </data>
+  <data name="DefineRWAOtherLoansIsLessThanZero" xml:space="preserve">
+    <value>Other Loans cannot be less than zero</value>
+  </data>
+ <data name="DefineRWAOtherLoansIsGreaterThanHundred" xml:space="preserve">
+    <value>Other Loans cannot be greater than hundred</value>
+  </data>
+
+
+ <data name="DefineRWAGovernmentLoansIsEmpty" xml:space="preserve">
+    <value>Government Loans cannot be empty</value>
+  </data>
+  <data name="DefineRWAGovernmentLoansIsLessThanZero" xml:space="preserve">
+    <value>Government Loans cannot be less than zero</value>
+  </data>
+ <data name="DefineRWAGovernmentLoansIsGreaterThanHundred" xml:space="preserve">
+    <value>Government Loans cannot be greater than hundred</value>
+  </data>
+
+
+
+ <data name="DefineRWACashIsEmpty" xml:space="preserve">
+    <value>Cash cannot be empty</value>
+  </data>
+  <data name="DefineRWACashIsLessThanZero" xml:space="preserve">
+    <value>Cash cannot be less than zero</value>
+  </data>
+ <data name="DefineRWACashIsGreaterThanHundred" xml:space="preserve">
+    <value>Cash cannot be greater than hundred</value>
+  </data>
+  
+  
+<data name="FixedAssetRegisterBranchIsNotSelected" xml:space="preserve">
+    <value>Please Select a Branch</value>
+  </data>
+<data name="FixedAssetRegisterAssetDescriptionIsEmpty" xml:space="preserve">
+    <value>Asset Description cannot be empty</value>
+  </data>
+
+<data name="FixedAssetRegisterAssetTypeIsNotSelected" xml:space="preserve">
+    <value>Please Select an Asset Type</value>
+  </data>
+
+<data name="FixedAssetRegisterNoOfAssetsIsEmpty" xml:space="preserve">
+    <value>No of assets cannot be empty</value>
+  </data>
+
+<data name="FixedAssetRegisterNoOfAssetsIsInvalid" xml:space="preserve">
+    <value>No of assets cannot be zero or less than zero</value>
+  </data>
+
+<data name="FixedAssetRegisterOriginalCostIsEmpty" xml:space="preserve">
+    <value>Original Cost cannot be empty</value>
+  </data>
+
+<data name="FixedAssetRegisterOriginalCostIsInvalid" xml:space="preserve">
+    <value>Original Cost cannot be zero or less than zero</value>
+  </data>
+
+
+<data name="FixedAssetRegisterAnnualDepreciationRateIsEmpty" xml:space="preserve">
+    <value>Annual Depreciation Rate cannot be empty</value>
+  </data>
+
+<data name="FixedAssetRegisterAnnualDepreciationRateIsInvalid" xml:space="preserve">
+    <value>Annual Depreciation Rate cannot be zero or less than zero</value>
+  </data>
+
+
+
+<data name="FixedAssetRegisterAcquisitionCapitalFinanceMethodIsNotSelected" xml:space="preserve">
+    <value>Please Select an Acquisition Capital Finance Method</value>
+  </data>
+
+<data name="FixedAssetRegisterAcquisitionCapitalTransactionIsEmpty" xml:space="preserve">
+    <value>Acquisition Capital Transaction cannot be empty</value>
+  </data>
+
+<data name="FixedAssetRegisterAcquisitionCapitalTransactionIsInvalid" xml:space="preserve">
+    <value>Acquisition Capital Transaction cannot be zero or less than zero</value>
+  </data>
+
+
+
+
+<data name="FixedAssetRegisterDisposalAmountTransferMethodIsNotSelected" xml:space="preserve">
+    <value>Please Select an Disposal Amount Transfer Method</value>
+  </data>
+
+<data name="FixedAssetRegisterDisposalAmountTransactionIsEmpty" xml:space="preserve">
+    <value>Disposal Amount Transaction cannot be empty</value>
+  </data>
+
+<data name="FixedAssetRegisterDisposalAmountTransactionIsInvalid" xml:space="preserve">
+    <value>Disposal Amount Transaction cannot be zero or less than zero</value>
+  </data>
 
 </root>
