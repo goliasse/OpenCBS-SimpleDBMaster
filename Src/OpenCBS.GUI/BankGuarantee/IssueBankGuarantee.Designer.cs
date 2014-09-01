@@ -50,6 +50,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
+            this.txtIssuingDate = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtStatus = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cmbBranch
@@ -245,7 +249,7 @@
             // btnUpdate
             // 
             this.btnUpdate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnUpdate.Location = new System.Drawing.Point(212, 347);
+            this.btnUpdate.Location = new System.Drawing.Point(212, 393);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(96, 23);
             this.btnUpdate.TabIndex = 75;
@@ -255,18 +259,58 @@
             // btnSubmit
             // 
             this.btnSubmit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSubmit.Location = new System.Drawing.Point(54, 347);
+            this.btnSubmit.Location = new System.Drawing.Point(56, 393);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(107, 23);
             this.btnSubmit.TabIndex = 74;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
+            // txtIssuingDate
+            // 
+            this.txtIssuingDate.Location = new System.Drawing.Point(212, 321);
+            this.txtIssuingDate.Name = "txtIssuingDate";
+            this.txtIssuingDate.Size = new System.Drawing.Size(183, 20);
+            this.txtIssuingDate.TabIndex = 77;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label10.Location = new System.Drawing.Point(77, 322);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(84, 16);
+            this.label10.TabIndex = 76;
+            this.label10.Text = "Issuing Date:";
+            // 
+            // txtStatus
+            // 
+            this.txtStatus.Location = new System.Drawing.Point(212, 350);
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.Size = new System.Drawing.Size(183, 20);
+            this.txtStatus.TabIndex = 79;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label11.Location = new System.Drawing.Point(117, 354);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(50, 16);
+            this.label11.TabIndex = 78;
+            this.label11.Text = "Status:";
+            // 
             // IssueBankGuarantee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(444, 474);
+            this.Controls.Add(this.txtStatus);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txtIssuingDate);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.txtValue);
@@ -320,5 +364,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.TextBox txtIssuingDate;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtStatus;
+        private System.Windows.Forms.Label label11;
     }
 }

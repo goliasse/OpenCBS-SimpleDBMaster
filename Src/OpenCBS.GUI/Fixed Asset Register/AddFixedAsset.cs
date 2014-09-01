@@ -82,6 +82,27 @@ namespace OpenCBS.GUI.FixedAssetRegister
             txtProfitLoss.Visible = flag;
             lblProfitLoss.Visible = flag;
 
+
+            cmbDisAmtTranMethod.Enabled = flag;
+            txtDisAmtTranNum.Enabled = flag;
+            txtDisDate.Enabled = flag;
+            txtNetBookValue.Enabled = flag;
+            txtAccDepCharge.Enabled = flag;
+            txtProfitLoss.Enabled = flag;
+            txtAssetDescription.Enabled = flag;
+            cmbBranch.Enabled = flag;
+            cmbAssetType.Enabled = flag;
+            txtNoOfAssets.Enabled = flag;
+            txtOriginalCost.Enabled = flag;
+            txtDepreciationRate.Enabled = flag;
+            cmbAcqCapFinMethod.Enabled = flag;
+            txtAcqCapTranNum.Enabled = flag;
+
+
+
+
+            
+
         }
 
         private void InitializeFinanceMethod(ComboBox cmbFinMethod)

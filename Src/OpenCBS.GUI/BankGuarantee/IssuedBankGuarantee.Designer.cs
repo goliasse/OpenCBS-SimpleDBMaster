@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.lvFixedAsset = new System.Windows.Forms.ListView();
+            this.lvBankGuarantee = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -58,10 +58,10 @@
             this.label1.Text = "Bank Guarantees";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lvFixedAsset
+            // lvBankGuarantee
             // 
-            this.lvFixedAsset.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.lvFixedAsset.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvBankGuarantee.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.lvBankGuarantee.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
@@ -70,14 +70,14 @@
             this.columnHeader6,
             this.columnHeader7,
             this.columnHeader8});
-            this.lvFixedAsset.FullRowSelect = true;
-            this.lvFixedAsset.GridLines = true;
-            this.lvFixedAsset.Location = new System.Drawing.Point(1, 39);
-            this.lvFixedAsset.Name = "lvFixedAsset";
-            this.lvFixedAsset.Size = new System.Drawing.Size(765, 339);
-            this.lvFixedAsset.TabIndex = 27;
-            this.lvFixedAsset.UseCompatibleStateImageBehavior = false;
-            this.lvFixedAsset.View = System.Windows.Forms.View.Details;
+            this.lvBankGuarantee.FullRowSelect = true;
+            this.lvBankGuarantee.GridLines = true;
+            this.lvBankGuarantee.Location = new System.Drawing.Point(1, 39);
+            this.lvBankGuarantee.Name = "lvBankGuarantee";
+            this.lvBankGuarantee.Size = new System.Drawing.Size(765, 339);
+            this.lvBankGuarantee.TabIndex = 27;
+            this.lvBankGuarantee.UseCompatibleStateImageBehavior = false;
+            this.lvBankGuarantee.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -140,7 +140,7 @@
             // 
             this.groupBox1.AutoSize = true;
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox1.Controls.Add(this.lvFixedAsset);
+            this.groupBox1.Controls.Add(this.lvBankGuarantee);
             this.groupBox1.Controls.Add(this.btnViewFixedAsset);
             this.groupBox1.Controls.Add(this.buttonEditFixedAsset);
             this.groupBox1.Controls.Add(this.buttonAddFixedAsset);
@@ -191,7 +191,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView lvFixedAsset;
+        private System.Windows.Forms.ListView lvBankGuarantee;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;

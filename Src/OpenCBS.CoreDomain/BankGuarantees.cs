@@ -11,12 +11,13 @@ namespace OpenCBS.CoreDomain
 
         public int Id { get; set; }
         public string BankGuaranteeCode { get; set; }
+        public string Branch { get; set; }
         public DateTime IssuingDate { get; set; }
         public DateTime ExpiryDate { get; set; }
         public string ApplicantId { get; set; }
         public string BeneficiaryParty { get; set; }
         public string GuarnteeType { get; set; }
-        double? FeePerPeriod { get; set; }
+        public OCurrency FeePerPeriod { get; set; }
         public string FeePeriod { get; set; }
         public string InstrumentDetails { get; set; }
         public OCurrency Value { get; set; }

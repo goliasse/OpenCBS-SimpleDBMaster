@@ -143,32 +143,28 @@ namespace OpenCBS.GUI.Capital_Adequacy_Ratio
                 Cash = 0;
 
             int ContractrelatedtransactionPercentage = FetchRWAPercentage(lblContractrelatedtransaction.Text);
-int BidbondPercentage = FetchRWAPercentage(lblBidbond.Text);
-int PerformancebondPercentage = FetchRWAPercentage(lblPerformancebond.Text);
-int FinancialguaranteePercentage = FetchRWAPercentage(lblFinancialguarantee.Text);
-int LetterofcreditPercentage = FetchRWAPercentage(lblLetterofcredit.Text);
-int MortgageloanPercentage = FetchRWAPercentage(lblMortgageloan.Text);
-int OtherloansPercentage = FetchRWAPercentage(lblOtherloans.Text);
-int GovernmentLoansPercentage = FetchRWAPercentage(lblGovernmentLoans.Text);
-int CashPercentage = FetchRWAPercentage(lblCash.Text);
+            int BidbondPercentage = FetchRWAPercentage(lblBidbond.Text);
+            int PerformancebondPercentage = FetchRWAPercentage(lblPerformancebond.Text);
+            int FinancialguaranteePercentage = FetchRWAPercentage(lblFinancialguarantee.Text);
+            int LetterofcreditPercentage = FetchRWAPercentage(lblLetterofcredit.Text);
+            int MortgageloanPercentage = FetchRWAPercentage(lblMortgageloan.Text);
+            int OtherloansPercentage = FetchRWAPercentage(lblOtherloans.Text);
+            int GovernmentLoansPercentage = FetchRWAPercentage(lblGovernmentLoans.Text);
+            int CashPercentage = FetchRWAPercentage(lblCash.Text);
 
 
-Contractrelatedtransaction = (Contractrelatedtransaction* ContractrelatedtransactionPercentage)/100;
-Bidbond = (Bidbond * BidbondPercentage)/100;
-Performancebond = (Performancebond * PerformancebondPercentage)/100;
-Financialguarantee = (Financialguarantee * FinancialguaranteePercentage)/100;
-Letterofcredit = (Letterofcredit * LetterofcreditPercentage)/100;
-Mortgageloan = (Mortgageloan * MortgageloanPercentage)/100;
-Otherloans = (Otherloans * OtherloansPercentage)/100;
-GovernmentLoans = (GovernmentLoans * GovernmentLoansPercentage)/100;
-Cash = (Cash * CashPercentage)/100;
+            Contractrelatedtransaction = (Contractrelatedtransaction* ContractrelatedtransactionPercentage)/100;
+            Bidbond = (Bidbond * BidbondPercentage)/100;
+            Performancebond = (Performancebond * PerformancebondPercentage)/100;
+            Financialguarantee = (Financialguarantee * FinancialguaranteePercentage)/100;
+            Letterofcredit = (Letterofcredit * LetterofcreditPercentage)/100;
+            Mortgageloan = (Mortgageloan * MortgageloanPercentage)/100;
+            Otherloans = (Otherloans * OtherloansPercentage)/100;
+            GovernmentLoans = (GovernmentLoans * GovernmentLoansPercentage)/100;
+            Cash = (Cash * CashPercentage)/100;
 
-lblTotalRWA.Text = (Contractrelatedtransaction + Bidbond + Performancebond + Financialguarantee + Letterofcredit + Mortgageloan + Otherloans + GovernmentLoans + Cash).ToString();
+            lblTotalRWA.Text = (Contractrelatedtransaction + Bidbond + Performancebond + Financialguarantee + Letterofcredit + Mortgageloan + Otherloans + GovernmentLoans + Cash).ToString();
 
-
-
-//lblTotalRWA.Text
-//lblCAR.Text
         }
 
         public static int FetchRWAPercentage(string RWA)

@@ -200,6 +200,7 @@
     </Compile>
     <Compile Include="ActionItemObject.cs" />
     <Compile Include="BankGuarantees.cs" />
+    <Compile Include="BranchCounter.cs" />
     <Compile Include="Clients\GroupMembership.cs" />
     <Compile Include="Contracts\FlatRoundingSchedule.cs" />
     <Compile Include="Contracts\Loans\LoanRepayment\RepaymentConfiguration.cs" />

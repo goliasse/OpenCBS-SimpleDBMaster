@@ -16,6 +16,8 @@ namespace OpenCBS.CoreDomain
         public OCurrency Mortgageloan { get; set; }
         public OCurrency Otherloans { get; set; }
         public OCurrency GovernmentLoans { get; set; }
-        public OCurrency Cash { get; set; } 
+        public OCurrency Cash { get; set; }
+        public string RWA{ get; set; }
+        public double Percentage { get; set; } 
     }
 }

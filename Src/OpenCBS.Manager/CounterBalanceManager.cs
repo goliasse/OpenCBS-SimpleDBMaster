@@ -10,12 +10,14 @@ namespace OpenCBS.Manager
     public class CounterBalanceManager : Manager
     {
         User _user;
-        public CounterBalanceManager(User pUser) : base(pUser)
+        public CounterBalanceManager(User pUser)
+            : base(pUser)
         {
             _user = pUser;
         }
 
-        public CounterBalanceManager(string testDB) : base(testDB)
+        public CounterBalanceManager(string testDB)
+            : base(testDB)
         {
         }
 
@@ -40,7 +42,7 @@ namespace OpenCBS.Manager
             return ret;
         }
 
-        
+
 
         public int SaveCounterBalance(CounterBalance counterBalance)
         {
@@ -134,5 +136,76 @@ namespace OpenCBS.Manager
             }
             return counterBalanceList;
         }
+
+
+        
+    public List<BranchCounter> FetchCounters(string branch)
+    {
+    List<BranchCounter> branchCounterList = new List<BranchCounter>();
+    string q = @"SELECT *
+    FROM [dbo].[BranchCounters]
+    WHERE branch = @branch";
+
+    using (SqlConnection conn = GetConnection())
+    using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+    {
+    c.AddParam("@branch", branch);
+        using (OpenCbsReader r = c.ExecuteReader())
+        {
+        if (r == null || r.Empty) return new List<BranchCounter>();
+            while (r.Read())
+            {
+                BranchCounter branchCounter = new BranchCounter();
+                branchCounter.Branch = r.GetString("branch");
+                branchCounter.CounterId =  r.GetString("counterid");
+                branchCounter.Description =  r.GetString("description");
+                branchCounterList.Add(branchCounter);
+            }
+        }
+    }
+    return branchCounterList;
+    }
+
+
+
+    public int SaveBranchCounter(BranchCounter branchCounter)
+    {
+    const string q = @"INSERT INTO [BranchCounter]
+    ([Branch],
+    [description]
+    )
+    VALUES
+    (@branch,
+    @description
+    )
+    SELECT SCOPE_IDENTITY()";
+    using (SqlConnection conn = GetConnection())
+    using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+    {
+        c.AddParam("@branch", branchCounter.Branch);
+        c.AddParam("@description", branchCounter.Description);
+        branchCounter.Id = Convert.ToInt32(c.ExecuteScalar());
+
+        UpdateBranchCounter(branchCounter);
+    }
+    return branchCounter.Id;
+    }
+
+
+    public void UpdateBranchCounter(BranchCounter branchCounter)
+    {
+    const string q = @"UPDATE TABLE [BranchCounter]
+    SET [counterId] = @counterId WHERE id = @id";
+
+    using (SqlConnection conn = GetConnection())
+        using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+        {
+        c.AddParam("@contractId", branchCounter.Branch+"/Counter/"+branchCounter.Id);
+        c.AddParam("@id", branchCounter.Id);
+        c.ExecuteScalar();
+
+        }
+    }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using OpenCBS.CoreDomain;
@@ -19,6 +20,48 @@ namespace OpenCBS.Manager
         {
 
         }
+
+        public double FetchRWAPercentage (string RWA)
+{
+double percentage = 0;
+string q = @"SELECT risk_weighted_percentage
+FROM [dbo].[RiskWeightedAssetPercenatge]
+WHERE RWA = @RWA";
+
+using (SqlConnection conn = GetConnection())
+using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+{
+c.AddParam("@RWA", RWA);
+using (OpenCbsReader r = c.ExecuteReader())
+{
+if (r == null || r.Empty) return 0;
+r.Read();
+percentage = r.GetDouble("percentage");
+}
+}
+return percentage;
+}
+
+
+public int SaveRWAPercentage(RWAPercentage RWAPercentage)
+{
+const string q = @"INSERT INTO [RiskWeightedAssetPercenatge]
+([risk_weighted_asset],
+[risk_weighted_percentage]
+)
+VALUES
+(@RWA,
+@percentage
+)
+SELECT SCOPE_IDENTITY()";
+using (SqlConnection conn = GetConnection())
+using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+{
+c.AddParam("@RWA", RWAPercentage.RWA);
+c.AddParam("@percentage", RWAPercentage.Percentage);
+return Convert.ToInt32(c.ExecuteScalar());
+}
+}
 
     }
 }

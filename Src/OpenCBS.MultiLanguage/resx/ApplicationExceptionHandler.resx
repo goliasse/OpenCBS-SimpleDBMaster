@@ -2199,4 +2199,51 @@ Enter another account number.
     <value>Disposal Amount Transaction cannot be zero or less than zero</value>
   </data>
 
+
+
+<data name="BankGuaranteesIssuingDateIsEmpty" xml:space="preserve">
+    <value>Issuing Date cannot be empty</value>
+  </data>
+
+<data name="BankGuaranteesIssuingDateIsInvalid" xml:space="preserve">
+    <value>Issuing Date cannot be less than today's date</value>
+  </data>
+
+<data name="BankGuaranteesExpiryDateIsEmpty" xml:space="preserve">
+    <value>Expiry Date  cannot be empty</value>
+  </data>
+<data name="BankGuaranteesBeneficiaryPartyIsEmpty" xml:space="preserve">
+    <value>Beneficiary Party  cannot be empty</value>
+  </data>
+<data name="BankGuaranteesInstrumentDetailsIsEmpty" xml:space="preserve">
+    <value>Instrument Details  cannot be empty</value>
+  </data>
+<data name="BankGuaranteesValueIsEmpty" xml:space="preserve">
+    <value>Value cannot be empty</value>
+  </data>
+<data name="BankGuaranteesValueIsInvalid" xml:space="preserve">
+    <value>Value  cannot be negative</value>
+  </data>
+
+
+
+<data name="BankGuaranteesCurrencyIsEmpty" xml:space="preserve">
+    <value>Currency cannot be empty</value>
+  </data>
+<data name="BankGuaranteesStatusIsDefault" xml:space="preserve">
+    <value>Please select a Status</value>
+  </data>
+<data name="BankGuaranteesGuarnteeTypeIsDefault" xml:space="preserve">
+    <value>Please select a Guarntee Type</value>
+  </data>
+<data name="BankGuaranteesFeePerPeriodIsEmpty" xml:space="preserve">
+    <value>Please select a Fee Per Period</value>
+  </data>
+<data name="BankGuaranteesFeePerPeriodIsInvalid" xml:space="preserve">
+    <value>Fee Per Period cannot be negative</value>
+  </data>
+<data name="BankGuaranteesFeePeriodIsDefault" xml:space="preserve">
+    <value>Please select a Fee Period</value>
+  </data>
+
 </root>

@@ -135,6 +135,7 @@
     <Compile Include="..\SolutionInfo.cs">
       <Link>Properties\SolutionInfo.cs</Link>
     </Compile>
+    <Compile Include="Exceptions\BankGuaranteeExceptions\OpenCbsBankGuaranteeException.cs" />
     <Compile Include="Exceptions\CARExceptions\OpenCbsCARException.cs" />
     <Compile Include="Exceptions\CARExceptions\OpenCbsRWAPercentageException.cs" />
     <Compile Include="Exceptions\CounterBalanceExceptions\OpenCbsCounterBalanceException.cs" />
@@ -224,7 +225,9 @@
       <Name>OpenCBS.Shared</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Exceptions\LetterOfCreditExceptions\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
