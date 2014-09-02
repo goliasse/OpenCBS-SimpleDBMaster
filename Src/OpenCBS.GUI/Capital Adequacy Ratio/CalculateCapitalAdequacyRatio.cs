@@ -174,7 +174,7 @@ lblTotalRWA.Text = (Contractrelatedtransaction + Bidbond + Performancebond + Fin
         public static int FetchRWAPercentage(string RWA)
         {
         int len = RWA.IndexOf('%') - RWA.IndexOf('(');
-        return Convert.ToInt32(RWA.Substring(RWA.IndexOf('(')+1, len-1)));
+        return Convert.ToInt32(RWA.Substring(RWA.IndexOf('(')+1, len-1));
         }
     }
 }

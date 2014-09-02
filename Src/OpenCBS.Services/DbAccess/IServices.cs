@@ -26,6 +26,7 @@ using OpenCBS.Services.Rules;
 using OpenCBS.Shared;
 using OpenCBS.Shared.Settings;
 using OpenCBS.Services.Export;
+using OpenCBS.CoreDomain;
 
 namespace OpenCBS.Services
 {
@@ -70,10 +71,10 @@ namespace OpenCBS.Services
         CurrentAccountProductHoldingServices GetCurrentAccountProductHoldingServices();
         CurrentAccountProductService GetCurrentAccountProductService();
         CurrentAccountTransactionService GetCurrentAccountTransactionService();
-        CurrentAccountTransactionService CurrentAccountTransactionService(User user);
-        CounterBalanceService GetCounterBalanceService(User user);
-        FixedAssetRegisterService GetFixedAssetRegisterService(User user);
-        RWAPercentageService GetRWAPercentageService(User user);
+        
+        CounterBalanceService GetCounterBalanceService();
+        FixedAssetRegisterService GetFixedAssetRegisterService();
+        RWAPercentageService GetRWAPercentageService();
         void SuppressAllRemotingInfos(string pComputerName, string pLoginName);
 
         string GetAuthentification(string pOctoUsername, string pOctoPass, string pDbName, string pComputerName, string pLoginName);

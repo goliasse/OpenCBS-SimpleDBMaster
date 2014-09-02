@@ -125,7 +125,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB0
-        CwAAAk1TRnQBSQFMAgEBBQEAATQBEQE0AREBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBBQEAATwBEQE8AREBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -999,6 +999,12 @@
   <data name="fiscalYearToolStripMenuItem.Text" xml:space="preserve">
     <value>Fiscal Year</value>
   </data>
+  <data name="mnuConfiguration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 20</value>
+  </data>
+  <data name="mnuConfiguration.Text" xml:space="preserve">
+    <value>Configuration</value>
+  </data>
   <data name="branchesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 22</value>
   </data>
@@ -1083,12 +1089,6 @@
   <data name="configureCountersToolStripMenuItem.Text" xml:space="preserve">
     <value>Configure Counters</value>
   </data>
-  <data name="mnuConfiguration.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 20</value>
-  </data>
-  <data name="mnuConfiguration.Text" xml:space="preserve">
-    <value>Configuration</value>
-  </data>
   <data name="mnuWindow.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 20</value>
   </data>
@@ -1102,13 +1102,13 @@
     <value>Help</value>
   </data>
   <data name="contactMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="contactMenuItem.Text" xml:space="preserve">
     <value>Contact us...</value>
   </data>
   <data name="aboutMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="aboutMenuItem.Text" xml:space="preserve">
     <value>About</value>
@@ -1127,6 +1127,48 @@
   </data>
   <data name="mnuSecurity.Text" xml:space="preserve">
     <value>Security</value>
+  </data>
+  <data name="mnuPackages.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="mnuPackages.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 22</value>
+  </data>
+  <data name="mnuPackages.Text" xml:space="preserve">
+    <value>Loan products</value>
+  </data>
+  <data name="savingProductsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 22</value>
+  </data>
+  <data name="savingProductsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Savings products</value>
+  </data>
+  <data name="menuItemCollateralProducts.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="menuItemCollateralProducts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 22</value>
+  </data>
+  <data name="menuItemCollateralProducts.Text" xml:space="preserve">
+    <value>Collateral products</value>
+  </data>
+  <data name="fixedDepositProductsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 22</value>
+  </data>
+  <data name="fixedDepositProductsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Fixed Deposit products</value>
+  </data>
+  <data name="currentAccountProductsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 22</value>
+  </data>
+  <data name="currentAccountProductsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Current Account Products</value>
+  </data>
+  <data name="fixedAssetRegisterToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 22</value>
+  </data>
+  <data name="fixedAssetRegisterToolStripMenuItem.Text" xml:space="preserve">
+    <value>Fixed Asset Register</value>
   </data>
   <data name="mnuProducts.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 20</value>
@@ -1277,42 +1319,6 @@
   </data>
   <data name="changePasswordToolStripMenuItem.Text" xml:space="preserve">
     <value>Change password</value>
-  </data>
-  <data name="mnuPackages.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="mnuPackages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
-  </data>
-  <data name="mnuPackages.Text" xml:space="preserve">
-    <value>Loan products</value>
-  </data>
-  <data name="savingProductsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
-  </data>
-  <data name="savingProductsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Savings products</value>
-  </data>
-  <data name="menuItemCollateralProducts.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="menuItemCollateralProducts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
-  </data>
-  <data name="menuItemCollateralProducts.Text" xml:space="preserve">
-    <value>Collateral products</value>
-  </data>
-  <data name="fixedDepositProductsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
-  </data>
-  <data name="fixedDepositProductsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Fixed Deposit products</value>
-  </data>
-  <data name="currentAccountProductsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 22</value>
-  </data>
-  <data name="currentAccountProductsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Current Account Products</value>
   </data>
   <data name="_aboutModulesMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>165, 22</value>
@@ -2299,6 +2305,12 @@
   <data name="&gt;&gt;tellersToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;configureCountersToolStripMenuItem.Name" xml:space="preserve">
+    <value>configureCountersToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;configureCountersToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;mnuWindow.Name" xml:space="preserve">
     <value>mnuWindow</value>
   </data>
@@ -2509,10 +2521,10 @@
   <data name="&gt;&gt;alertBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;configureCountersToolStripMenuItem.Name" xml:space="preserve">
-    <value>configureCountersToolStripMenuItem</value>
+  <data name="&gt;&gt;fixedAssetRegisterToolStripMenuItem.Name" xml:space="preserve">
+    <value>fixedAssetRegisterToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;configureCountersToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;fixedAssetRegisterToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

@@ -46,6 +46,7 @@ using OpenCBS.GUI.Clients;
 using OpenCBS.GUI.Configuration;
 using OpenCBS.GUI.Contracts;
 using OpenCBS.GUI.Database;
+using OpenCBS.GUI.FixedAssetRegister;
 using OpenCBS.GUI.Products;
 using OpenCBS.GUI.Projets;
 using OpenCBS.GUI.Report_Browser;
@@ -1257,6 +1258,12 @@ namespace OpenCBS.GUI
         {
             TellersForm frm = new TellersForm() { MdiParent = this };
             frm.Show();
+        }
+
+        private void fixedAssetRegisterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddFixedAsset addFixedAsset = new AddFixedAsset();
+            addFixedAsset.Show();
         }
     }
 }
