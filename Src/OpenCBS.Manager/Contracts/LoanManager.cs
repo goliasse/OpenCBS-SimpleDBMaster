@@ -2414,5 +2414,68 @@ namespace OpenCBS.Manager.Contracts
                 return connection.Query<WriteOffOption>(@"select Id, Name from WriteOffOptions", null).ToList().AsReadOnly();
             }
         }
+
+        public List<StraightLineBasedRepaymentSchedule> StraightLineBasedRepaymentSchedule(double principalAmount,double yearlyInterestRate,string interestPeriod,DateTime firstRepaymentDate)
+        {
+            List<StraightLineBasedRepaymentSchedule> listStraightLineBasedRepaymentSchedule = new List<StraightLineBasedRepaymentSchedule>();
+        
+            int unit = 0;
+            if (interestPeriod == "Monthly")
+            {
+                unit = 12;
+            }
+            else if (interestPeriod == "Quarterly")
+            {
+                unit = 6;
+            }
+            else if (interestPeriod == "Half Yearly")
+            {
+                unit = 2;
+            }
+            else if (interestPeriod == "Yearly")
+            {
+                unit = 1;
+            }
+
+            Double periodPrincipal = principalAmount / unit;
+            Double remainingPrincipal = principalAmount; 
+            DateTime repaymentDate = firstRepaymentDate; 
+
+            for (int i = 1; i <= unit; i++)
+            {
+
+                Double monthlyInterest = (remainingPrincipal * yearlyInterestRate * 1) / (100 * unit);
+                remainingPrincipal = remainingPrincipal - periodPrincipal;
+                Double monthlyInstallment = periodPrincipal + monthlyInterest;
+
+                if (interestPeriod == "Monthly")
+                {
+                    repaymentDate = repaymentDate.AddMonths(1);
+                }
+                else if (interestPeriod == "Quarterly")
+                {
+                    repaymentDate = repaymentDate.AddMonths(3);
+                }
+                else if (interestPeriod == "Half Yearly")
+                {
+                    repaymentDate = repaymentDate.AddMonths(6);
+                }
+                else if (interestPeriod == "Yearly")
+                {
+                    repaymentDate = repaymentDate.AddMonths(12);
+                }
+                //where do you want to print the below values? 
+                StraightLineBasedRepaymentSchedule straightLineBasedRepaymentSchedule = new StraightLineBasedRepaymentSchedule();
+                straightLineBasedRepaymentSchedule.MonthlyInterest = monthlyInterest;
+                straightLineBasedRepaymentSchedule.RemainingPrincipal = remainingPrincipal;
+                straightLineBasedRepaymentSchedule.MonthlyInstallment = monthlyInstallment;
+                straightLineBasedRepaymentSchedule.RepaymentDate = repaymentDate;
+
+                listStraightLineBasedRepaymentSchedule.Add(straightLineBasedRepaymentSchedule);
+            }
+
+            return listStraightLineBasedRepaymentSchedule;
+
+        }
     }
 }
