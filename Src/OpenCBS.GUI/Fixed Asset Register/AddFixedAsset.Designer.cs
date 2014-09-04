@@ -43,22 +43,28 @@
             this.cmbAcqCapFinMethod = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtAcqCapTranNum = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblDisAmtTran = new System.Windows.Forms.Label();
             this.txtDisAmtTranNum = new System.Windows.Forms.TextBox();
             this.cmbDisAmtTranMethod = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblDisAmtTransMethod = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
-            this.cmbAssetStatus = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtAcquisitionDate = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtDisDate = new System.Windows.Forms.TextBox();
+            this.lblDisDate = new System.Windows.Forms.Label();
+            this.txtNetBookValue = new System.Windows.Forms.TextBox();
+            this.lblNetBookValue = new System.Windows.Forms.Label();
+            this.txtAccDepCharge = new System.Windows.Forms.TextBox();
+            this.lblAccDepCharge = new System.Windows.Forms.Label();
+            this.lblProfitLoss = new System.Windows.Forms.Label();
+            this.txtProfitLoss = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtAssetDescription
             // 
-            this.txtAssetDescription.Location = new System.Drawing.Point(268, 99);
+            this.txtAssetDescription.Location = new System.Drawing.Point(268, 60);
             this.txtAssetDescription.Name = "txtAssetDescription";
             this.txtAssetDescription.Size = new System.Drawing.Size(183, 20);
             this.txtAssetDescription.TabIndex = 25;
@@ -68,7 +74,7 @@
             this.lblAmount.AutoSize = true;
             this.lblAmount.Font = new System.Drawing.Font("Arial", 9.75F);
             this.lblAmount.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblAmount.Location = new System.Drawing.Point(102, 103);
+            this.lblAmount.Location = new System.Drawing.Point(102, 64);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(115, 16);
             this.lblAmount.TabIndex = 24;
@@ -100,7 +106,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(140, 138);
+            this.label1.Location = new System.Drawing.Point(140, 99);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 16);
             this.label1.TabIndex = 27;
@@ -110,14 +116,14 @@
             // 
             this.cmbAssetType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAssetType.FormattingEnabled = true;
-            this.cmbAssetType.Location = new System.Drawing.Point(268, 137);
+            this.cmbAssetType.Location = new System.Drawing.Point(268, 98);
             this.cmbAssetType.Name = "cmbAssetType";
             this.cmbAssetType.Size = new System.Drawing.Size(183, 21);
             this.cmbAssetType.TabIndex = 26;
             // 
             // txtNoOfAssets
             // 
-            this.txtNoOfAssets.Location = new System.Drawing.Point(268, 177);
+            this.txtNoOfAssets.Location = new System.Drawing.Point(268, 138);
             this.txtNoOfAssets.Name = "txtNoOfAssets";
             this.txtNoOfAssets.Size = new System.Drawing.Size(183, 20);
             this.txtNoOfAssets.TabIndex = 29;
@@ -128,7 +134,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(128, 177);
+            this.label2.Location = new System.Drawing.Point(128, 138);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 16);
             this.label2.TabIndex = 28;
@@ -136,7 +142,7 @@
             // 
             // txtOriginalCost
             // 
-            this.txtOriginalCost.Location = new System.Drawing.Point(268, 213);
+            this.txtOriginalCost.Location = new System.Drawing.Point(268, 174);
             this.txtOriginalCost.Name = "txtOriginalCost";
             this.txtOriginalCost.Size = new System.Drawing.Size(183, 20);
             this.txtOriginalCost.TabIndex = 31;
@@ -144,7 +150,7 @@
             // 
             // txtDepreciationRate
             // 
-            this.txtDepreciationRate.Location = new System.Drawing.Point(268, 252);
+            this.txtDepreciationRate.Location = new System.Drawing.Point(268, 213);
             this.txtDepreciationRate.Name = "txtDepreciationRate";
             this.txtDepreciationRate.Size = new System.Drawing.Size(183, 20);
             this.txtDepreciationRate.TabIndex = 33;
@@ -155,7 +161,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(57, 252);
+            this.label4.Location = new System.Drawing.Point(57, 213);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(159, 16);
             this.label4.TabIndex = 32;
@@ -166,7 +172,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(5, 315);
+            this.label5.Location = new System.Drawing.Point(-1, 274);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(217, 16);
             this.label5.TabIndex = 34;
@@ -176,7 +182,7 @@
             // 
             this.cmbAcqCapFinMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAcqCapFinMethod.FormattingEnabled = true;
-            this.cmbAcqCapFinMethod.Location = new System.Drawing.Point(271, 315);
+            this.cmbAcqCapFinMethod.Location = new System.Drawing.Point(268, 273);
             this.cmbAcqCapFinMethod.Name = "cmbAcqCapFinMethod";
             this.cmbAcqCapFinMethod.Size = new System.Drawing.Size(183, 21);
             this.cmbAcqCapFinMethod.TabIndex = 35;
@@ -186,7 +192,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(29, 353);
+            this.label6.Location = new System.Drawing.Point(25, 311);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(191, 16);
             this.label6.TabIndex = 37;
@@ -194,133 +200,205 @@
             // 
             // txtAcqCapTranNum
             // 
-            this.txtAcqCapTranNum.Location = new System.Drawing.Point(271, 352);
+            this.txtAcqCapTranNum.Location = new System.Drawing.Point(268, 310);
             this.txtAcqCapTranNum.Name = "txtAcqCapTranNum";
             this.txtAcqCapTranNum.Size = new System.Drawing.Size(183, 20);
             this.txtAcqCapTranNum.TabIndex = 36;
             // 
-            // label7
+            // lblDisAmtTran
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(39, 427);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(181, 16);
-            this.label7.TabIndex = 41;
-            this.label7.Text = "Disposal Amount Transaction:";
+            this.lblDisAmtTran.AutoSize = true;
+            this.lblDisAmtTran.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblDisAmtTran.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblDisAmtTran.Location = new System.Drawing.Point(31, 375);
+            this.lblDisAmtTran.Name = "lblDisAmtTran";
+            this.lblDisAmtTran.Size = new System.Drawing.Size(181, 16);
+            this.lblDisAmtTran.TabIndex = 41;
+            this.lblDisAmtTran.Text = "Disposal Amount Transaction:";
+            this.lblDisAmtTran.Visible = false;
             // 
             // txtDisAmtTranNum
             // 
-            this.txtDisAmtTranNum.Location = new System.Drawing.Point(271, 427);
+            this.txtDisAmtTranNum.Location = new System.Drawing.Point(268, 375);
             this.txtDisAmtTranNum.Name = "txtDisAmtTranNum";
             this.txtDisAmtTranNum.Size = new System.Drawing.Size(183, 20);
             this.txtDisAmtTranNum.TabIndex = 40;
+            this.txtDisAmtTranNum.Visible = false;
             // 
             // cmbDisAmtTranMethod
             // 
             this.cmbDisAmtTranMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDisAmtTranMethod.FormattingEnabled = true;
-            this.cmbDisAmtTranMethod.Location = new System.Drawing.Point(271, 390);
+            this.cmbDisAmtTranMethod.Location = new System.Drawing.Point(268, 338);
             this.cmbDisAmtTranMethod.Name = "cmbDisAmtTranMethod";
             this.cmbDisAmtTranMethod.Size = new System.Drawing.Size(183, 21);
             this.cmbDisAmtTranMethod.TabIndex = 39;
+            this.cmbDisAmtTranMethod.Visible = false;
             // 
-            // label8
+            // lblDisAmtTransMethod
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label8.Location = new System.Drawing.Point(15, 391);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(207, 16);
-            this.label8.TabIndex = 38;
-            this.label8.Text = "Disposal Amount Transfer Method:";
+            this.lblDisAmtTransMethod.AutoSize = true;
+            this.lblDisAmtTransMethod.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblDisAmtTransMethod.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblDisAmtTransMethod.Location = new System.Drawing.Point(9, 339);
+            this.lblDisAmtTransMethod.Name = "lblDisAmtTransMethod";
+            this.lblDisAmtTransMethod.Size = new System.Drawing.Size(207, 16);
+            this.lblDisAmtTransMethod.TabIndex = 38;
+            this.lblDisAmtTransMethod.Text = "Disposal Amount Transfer Method:";
+            this.lblDisAmtTransMethod.Visible = false;
             // 
             // btnUpdate
             // 
             this.btnUpdate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnUpdate.Location = new System.Drawing.Point(271, 458);
+            this.btnUpdate.Location = new System.Drawing.Point(263, 546);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(96, 23);
             this.btnUpdate.TabIndex = 43;
             this.btnUpdate.Text = "Update";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnSubmit
             // 
             this.btnSubmit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSubmit.Location = new System.Drawing.Point(113, 458);
+            this.btnSubmit.Location = new System.Drawing.Point(105, 546);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(107, 23);
             this.btnSubmit.TabIndex = 42;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
-            // cmbAssetStatus
-            // 
-            this.cmbAssetStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAssetStatus.FormattingEnabled = true;
-            this.cmbAssetStatus.Location = new System.Drawing.Point(268, 60);
-            this.cmbAssetStatus.Name = "cmbAssetStatus";
-            this.cmbAssetStatus.Size = new System.Drawing.Size(183, 21);
-            this.cmbAssetStatus.TabIndex = 47;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label9.Location = new System.Drawing.Point(167, 60);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(50, 16);
-            this.label9.TabIndex = 46;
-            this.label9.Text = "Status:";
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label10.Location = new System.Drawing.Point(57, 213);
+            this.label10.Location = new System.Drawing.Point(57, 174);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(160, 16);
             this.label10.TabIndex = 53;
             this.label10.Text = "Original Cost (Per Asset) :";
             // 
-            // textBox1
+            // txtAcquisitionDate
             // 
-            this.textBox1.Location = new System.Drawing.Point(268, 284);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(183, 20);
-            this.textBox1.TabIndex = 55;
+            this.txtAcquisitionDate.Location = new System.Drawing.Point(268, 245);
+            this.txtAcquisitionDate.Name = "txtAcquisitionDate";
+            this.txtAcquisitionDate.Size = new System.Drawing.Size(183, 20);
+            this.txtAcquisitionDate.TabIndex = 55;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(110, 284);
+            this.label3.Location = new System.Drawing.Point(110, 245);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 16);
             this.label3.TabIndex = 54;
             this.label3.Text = "Acquisition Date:";
             // 
+            // txtDisDate
+            // 
+            this.txtDisDate.Location = new System.Drawing.Point(268, 405);
+            this.txtDisDate.Name = "txtDisDate";
+            this.txtDisDate.Size = new System.Drawing.Size(183, 20);
+            this.txtDisDate.TabIndex = 59;
+            this.txtDisDate.Visible = false;
+            this.txtDisDate.TextChanged += new System.EventHandler(this.txtDisDate_TextChanged);
+            // 
+            // lblDisDate
+            // 
+            this.lblDisDate.AutoSize = true;
+            this.lblDisDate.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblDisDate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblDisDate.Location = new System.Drawing.Point(119, 407);
+            this.lblDisDate.Name = "lblDisDate";
+            this.lblDisDate.Size = new System.Drawing.Size(93, 16);
+            this.lblDisDate.TabIndex = 58;
+            this.lblDisDate.Text = "Disposal Date:";
+            this.lblDisDate.Visible = false;
+            // 
+            // txtNetBookValue
+            // 
+            this.txtNetBookValue.Location = new System.Drawing.Point(268, 435);
+            this.txtNetBookValue.Name = "txtNetBookValue";
+            this.txtNetBookValue.Size = new System.Drawing.Size(183, 20);
+            this.txtNetBookValue.TabIndex = 61;
+            this.txtNetBookValue.Visible = false;
+            // 
+            // lblNetBookValue
+            // 
+            this.lblNetBookValue.AutoSize = true;
+            this.lblNetBookValue.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblNetBookValue.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblNetBookValue.Location = new System.Drawing.Point(106, 437);
+            this.lblNetBookValue.Name = "lblNetBookValue";
+            this.lblNetBookValue.Size = new System.Drawing.Size(102, 16);
+            this.lblNetBookValue.TabIndex = 60;
+            this.lblNetBookValue.Text = "Net Book Value:";
+            this.lblNetBookValue.Visible = false;
+            // 
+            // txtAccDepCharge
+            // 
+            this.txtAccDepCharge.Location = new System.Drawing.Point(268, 461);
+            this.txtAccDepCharge.Name = "txtAccDepCharge";
+            this.txtAccDepCharge.Size = new System.Drawing.Size(183, 20);
+            this.txtAccDepCharge.TabIndex = 63;
+            this.txtAccDepCharge.Visible = false;
+            // 
+            // lblAccDepCharge
+            // 
+            this.lblAccDepCharge.AutoSize = true;
+            this.lblAccDepCharge.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblAccDepCharge.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblAccDepCharge.Location = new System.Drawing.Point(-1, 463);
+            this.lblAccDepCharge.Name = "lblAccDepCharge";
+            this.lblAccDepCharge.Size = new System.Drawing.Size(209, 16);
+            this.lblAccDepCharge.TabIndex = 62;
+            this.lblAccDepCharge.Text = "Accumulated Depreciation Charge:";
+            this.lblAccDepCharge.Visible = false;
+            // 
+            // lblProfitLoss
+            // 
+            this.lblProfitLoss.AutoSize = true;
+            this.lblProfitLoss.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblProfitLoss.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblProfitLoss.Location = new System.Drawing.Point(59, 492);
+            this.lblProfitLoss.Name = "lblProfitLoss";
+            this.lblProfitLoss.Size = new System.Drawing.Size(149, 16);
+            this.lblProfitLoss.TabIndex = 64;
+            this.lblProfitLoss.Text = "Profit\\Loss On Disposal:";
+            this.lblProfitLoss.Visible = false;
+            // 
+            // txtProfitLoss
+            // 
+            this.txtProfitLoss.Location = new System.Drawing.Point(268, 493);
+            this.txtProfitLoss.Name = "txtProfitLoss";
+            this.txtProfitLoss.Size = new System.Drawing.Size(183, 20);
+            this.txtProfitLoss.TabIndex = 65;
+            this.txtProfitLoss.Visible = false;
+            // 
             // AddFixedAsset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 535);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(539, 590);
+            this.Controls.Add(this.txtProfitLoss);
+            this.Controls.Add(this.lblProfitLoss);
+            this.Controls.Add(this.txtAccDepCharge);
+            this.Controls.Add(this.lblAccDepCharge);
+            this.Controls.Add(this.txtNetBookValue);
+            this.Controls.Add(this.lblNetBookValue);
+            this.Controls.Add(this.txtDisDate);
+            this.Controls.Add(this.lblDisDate);
+            this.Controls.Add(this.txtAcquisitionDate);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.cmbAssetStatus);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnSubmit);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblDisAmtTran);
             this.Controls.Add(this.txtDisAmtTranNum);
             this.Controls.Add(this.cmbDisAmtTranMethod);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.lblDisAmtTransMethod);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtAcqCapTranNum);
             this.Controls.Add(this.cmbAcqCapFinMethod);
@@ -360,16 +438,22 @@
         private System.Windows.Forms.ComboBox cmbAcqCapFinMethod;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtAcqCapTranNum;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblDisAmtTran;
         private System.Windows.Forms.TextBox txtDisAmtTranNum;
         private System.Windows.Forms.ComboBox cmbDisAmtTranMethod;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblDisAmtTransMethod;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.ComboBox cmbAssetStatus;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtAcquisitionDate;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtDisDate;
+        private System.Windows.Forms.Label lblDisDate;
+        private System.Windows.Forms.TextBox txtNetBookValue;
+        private System.Windows.Forms.Label lblNetBookValue;
+        private System.Windows.Forms.TextBox txtAccDepCharge;
+        private System.Windows.Forms.Label lblAccDepCharge;
+        private System.Windows.Forms.Label lblProfitLoss;
+        private System.Windows.Forms.TextBox txtProfitLoss;
     }
 }

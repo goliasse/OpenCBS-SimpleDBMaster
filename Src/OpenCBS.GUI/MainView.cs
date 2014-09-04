@@ -1262,8 +1262,8 @@ namespace OpenCBS.GUI
 
         private void fixedAssetRegisterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddFixedAsset addFixedAsset = new AddFixedAsset();
-            addFixedAsset.Show();
+            FrmAvailableFixedAssets frmAvailableFixedAssets = new FrmAvailableFixedAssets();
+            frmAvailableFixedAssets.Show();
         }
     }
 }

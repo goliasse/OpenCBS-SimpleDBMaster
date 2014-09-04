@@ -18,6 +18,7 @@ using OpenCBS.Services;
 using System.Security.Permissions;
 using OpenCBS.MultiLanguageRessources;
 using OpenCBS.Shared.Settings;
+using OpenCBS.CoreDomain;
 
 
 
@@ -33,8 +34,8 @@ namespace OpenCBS.GUI.FixedAssetRegister
         {
             
             InitializeComponent();
-            _package = new LoanProduct();
-            InitializeFixedDepositProductList(false);
+            
+            InitializeFixedAssetList(false);
             
         }
 
@@ -48,30 +49,32 @@ namespace OpenCBS.GUI.FixedAssetRegister
             set { _idPackage = value; }
             get { return _idPackage; }
         }
-        private bool _showDeletedPackage = false;
-        private void InitializeFixedDepositProductList(bool showAsDeleted)
+       
+        private void InitializeFixedAssetList(bool showAsDeleted)
         {
             lvFixedAsset.Items.Clear();
-            FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
-            List<IFixedDepositProduct> fixedDepositProductList = _fixedDepositProductService.FetchProduct(showAsDeleted);
-            if (fixedDepositProductList != null)
+            FixedAssetRegisterService _fixedAssetRegisterService = ServicesProvider.GetInstance().GetFixedAssetRegisterService();
+            List<OpenCBS.CoreDomain.FixedAssetRegister> fixedAssetList = _fixedAssetRegisterService.FetchFixedAssetRegister("Default");
+            if (fixedAssetList != null)
             {
-                foreach (FixedDepositProduct fixedDepositProduct in fixedDepositProductList)
+                foreach (OpenCBS.CoreDomain.FixedAssetRegister fixedAsset in fixedAssetList)
                 {
-                    string deleted = "";
-                    if(fixedDepositProduct.Delete == 0)
-                        deleted = "Active";
+                    string status = "";
+                    if(fixedAsset.DisposalDate == null)
+                        status = "Acquired";
                     else
-                           deleted = "Deleted";
+                        status = "Disposed";
+
                     var item = new ListViewItem(new[] {
-                    fixedDepositProduct.Id.ToString(),
-                    deleted,
-                    fixedDepositProduct.Name,
-                    fixedDepositProduct.Code,                    
-		            fixedDepositProduct.ClientType,
-                    fixedDepositProduct.Currency.Name.ToString()
-
-
+                    fixedAsset.AssetId,
+                    fixedAsset.Branch,
+                    fixedAsset.Description,
+                    fixedAsset.AssetType,
+                    fixedAsset.NoOfAssets.ToString(),
+                    fixedAsset.AcquisitionDate.ToShortDateString(),
+                    fixedAsset.OriginalCost.GetFormatedValue(false),
+                    fixedAsset.AnnualDepreciationRate.ToString(),
+                    status
                     
                 });
                     lvFixedAsset.Items.Add(item);
@@ -123,10 +126,7 @@ namespace OpenCBS.GUI.FixedAssetRegister
 
         private void checkBoxShowDeletedProduct_CheckedChanged(object sender, System.EventArgs e)
         {
-            if(checkBoxShowDeletedProduct.Checked == true)
-                InitializeFixedDepositProductList(true);
-            else
-                InitializeFixedDepositProductList(false);
+           
         }
 
         private void lvFixedDepositProducts_SelectedIndexChanged(object sender, EventArgs e)

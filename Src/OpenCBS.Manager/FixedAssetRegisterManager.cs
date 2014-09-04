@@ -9,41 +9,44 @@ namespace OpenCBS.Manager
 {
     public class FixedAssetRegisterManager : Manager
     {
-        public FixedAssetRegisterManager(User pUser) : base(pUser) { }
+        User _user;
+        public FixedAssetRegisterManager(User pUser) : base(pUser) {
+            _user = pUser;
+        }
 
         public FixedAssetRegisterManager(string testDB) : base(testDB) { }
 
         private static FixedAssetRegister GetProduct(OpenCbsReader reader)
         {
-            return new FixedAssetRegister
-            {
-                Id = reader.GetInt("id"),
-                UpdaterId = reader.GetInt("updater_id"),
-                Branch = reader.GetString("branch"),
-                AssetId = reader.GetString("Asset_id"),
+            FixedAssetRegister fixedAssetRegister = new FixedAssetRegister();
+            fixedAssetRegister.Id = reader.GetInt("id");
+            fixedAssetRegister.UpdaterId = reader.GetInt("updater_id");
+            fixedAssetRegister.Branch = reader.GetString("branch");
+            fixedAssetRegister.AssetId = reader.GetString("Asset_id");
 
-                Description = reader.GetString("Description"),
-                AssetType = reader.GetString("Asset_type"),
-                NoOfAssets = reader.GetInt("No_of_assets"),
-                AcquisitionDate = reader.GetDateTime("Acquisition_date"),
-                OriginalCost = reader.GetMoney("Original_cost"),
-                AnnualDepreciationRate = reader.GetDouble("Annual_depreciation_rate"),
-                AccumulatedDepreciationCharge = reader.GetMoney("Accumulated_depreciation_charge"),
-                NetBookValue = reader.GetMoney("Net_book_value"),
-                DisposalDate = reader.GetDateTime("Disposal_date"),
-                ProfitLossDisposal = reader.GetInt("Profit_loss_disposal"),
-                AcquisitionCapitalFinance = reader.GetString("Acquisition_capital_finance"),
+            fixedAssetRegister.Description = reader.GetString("Description");
+            fixedAssetRegister.AssetType = reader.GetString("Asset_type");
+            fixedAssetRegister.NoOfAssets = reader.GetInt("No_of_assets");
+            fixedAssetRegister.AcquisitionDate = reader.GetDateTime("Acquisition_date");
+            fixedAssetRegister.OriginalCost = reader.GetMoney("Original_cost");
+            fixedAssetRegister.AnnualDepreciationRate = reader.GetDouble("Annual_depreciation_rate");
+            fixedAssetRegister.AccumulatedDepreciationCharge = reader.GetMoney("Accumulated_depreciation_charge");
+            fixedAssetRegister.NetBookValue = reader.GetMoney("Net_book_value");
+            fixedAssetRegister.DisposalDate = reader.GetDateTime("Disposal_date");
+            fixedAssetRegister.ProfitLossDisposal = reader.GetNullInt("Profit_loss_disposal");
+            fixedAssetRegister.AcquisitionCapitalFinance = reader.GetString("Acquisition_capital_finance");
 
-                AcquisitionCapitalTransaction = reader.GetString("Acquisition_capital_transaction"),
-                DisposalAmountTransfer = reader.GetString("Disposal_amount_transfer"),
-                DisposalAmountTransaction = reader.GetString("Disposal_amount_transaction"),
+            fixedAssetRegister.AcquisitionCapitalTransaction = reader.GetString("Acquisition_capital_transaction");
+            fixedAssetRegister.DisposalAmountTransfer = reader.GetString("Disposal_amount_transfer");
+            fixedAssetRegister.DisposalAmountTransaction = reader.GetString("Disposal_amount_transaction");
+            return fixedAssetRegister;
 
-            };
+            
         }
 
         private static void SetProduct(OpenCbsCommand c, FixedAssetRegister fixedAssetRegister)
         {
-            c.AddParam("@updaterId", fixedAssetRegister.UpdaterId);
+            c.AddParam("@updaterId", User.CurrentUser.Id);
             c.AddParam("@branch", fixedAssetRegister.Branch);
             c.AddParam("@assetId", fixedAssetRegister.AssetId);
             c.AddParam("@Description", fixedAssetRegister.Description);
@@ -68,7 +71,7 @@ namespace OpenCBS.Manager
 
         public int InsertFixedAssetRecord(FixedAssetRegister fixedAssetRegister)
         {
-            const string q = @"INSERT INTO [Test].[dbo].[FixedAssetRegister]
+            const string q = @"INSERT INTO [FixedAssetRegister]
            ([updater_id]
            ,[branch]
            ,[Asset_id]
@@ -76,16 +79,11 @@ namespace OpenCBS.Manager
            ,[Asset_type]
            ,[No_of_assets]
            ,[Acquisition_date]
+           ,[Disposal_date]
            ,[Original_cost]
            ,[Annual_depreciation_rate]
-           ,[Accumulated_depreciation_charge]
-           ,[Net_book_value]
-           ,[Disposal_date]
-           ,[Profit_loss_disposal]
            ,[Acquisition_capital_finance]
-           ,[Acquisition_capital_transaction]
-           ,[Disposal_amount_transfer]
-           ,[Disposal_amount_transaction])
+           ,[Acquisition_capital_transaction])
      
              VALUES(@updaterId, 
                     @branch,
@@ -93,29 +91,51 @@ namespace OpenCBS.Manager
                     @Description, 
                     @assetType, 
                     @noOfAssets,
-                    @acquisitionDate, 
-                    @originalCost, 
-                    @annualDepreciationRate, 
-                    @accumulatedDepreciationCharge,
-                    @netBookValue, 
+                    @acquisitionDate,
                     @disposalDate, 
-                    @profitLossDisposal,
+                    @originalCost, 
+                    @annualDepreciationRate,
                     @acquisitionCapitalFinance,
-                    @acquisitionCapitalTransaction,
-                    @disposalAmountTransfer, 
-                    @disposalAmountTransaction )";
+                    @acquisitionCapitalTransaction)
+                    SELECT SCOPE_IDENTITY()";
 
             using (SqlConnection conn = GetConnection())
             using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
             {
                 SetProduct(c, fixedAssetRegister);
-                return int.Parse(c.ExecuteScalar().ToString());
+                int id = Convert.ToInt32(c.ExecuteScalar());
+                fixedAssetRegister.Id = id;
+                fixedAssetRegister.AssetId = fixedAssetRegister.Branch + "/" + "FAR" + "/" +id;
+                UpdateAssetId(fixedAssetRegister);
+                return id;
             }
         }
 
-        public void UpdateFixedAssetRegister(FixedAssetRegister fixedAssetRegister)
+
+        public void UpdateAssetId(FixedAssetRegister fixedAssetRegister)
         {
-            const string q = @"UPDATE [Test].[dbo].[FixedAssetRegister]
+            const string q = @"UPDATE [FixedAssetRegister]
+       SET 
+      [Asset_id] = @assetId
+      
+        WHERE id = @id";
+
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                
+                c.AddParam("@id", fixedAssetRegister.Id);
+                c.AddParam("@assetId", fixedAssetRegister.AssetId);
+
+                c.ExecuteNonQuery();
+            }
+
+        }
+
+        public int UpdateFixedAssetRegister(FixedAssetRegister fixedAssetRegister)
+        {
+            const string q = @"UPDATE [FixedAssetRegister]
        SET [updater_id] = @updaterId
       ,[branch] = @branch
       ,[Asset_id] = @assetId
@@ -145,6 +165,8 @@ namespace OpenCBS.Manager
                 c.ExecuteNonQuery();
             }
 
+            return 1;
+
         }
         public FixedAssetRegister FetchFixedAssetRecord(string assetId)
         {
@@ -173,10 +195,11 @@ namespace OpenCBS.Manager
             using (SqlConnection conn = GetConnection())
             using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
             {
-
+                c.AddParam("@branch", branch);
 
                 using (OpenCbsReader r = c.ExecuteReader())
                 {
+
                     if (r == null || r.Empty) return null;
 
                     while (r.Read())

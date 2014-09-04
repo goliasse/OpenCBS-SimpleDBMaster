@@ -241,7 +241,7 @@ public CurrentAccountTransactions FetchTransaction(int transactionId)
                 c.AddParam("@transactionId", transactionId);
                 using (OpenCbsReader r = c.ExecuteReader())
                 {
-                    if (r == null || r.Empty) return new CurrentAccountTransactions();
+                    if (r == null || r.Empty) return null;
                     r.Read();
 
                     CurrentAccountTransactions currentAccountTransactions = new CurrentAccountTransactions ();

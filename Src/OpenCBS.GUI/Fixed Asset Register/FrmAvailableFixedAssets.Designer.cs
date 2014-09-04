@@ -38,13 +38,12 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnViewFixedAsset = new System.Windows.Forms.Button();
-            this.buttonEditFixedAsset = new System.Windows.Forms.Button();
-            this.checkBoxShowDeletedProduct = new System.Windows.Forms.CheckBox();
-            this.buttonAddFixedAsset = new System.Windows.Forms.Button();
-            this.buttonDeleteFixedAsset = new System.Windows.Forms.Button();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnViewFixedAsset = new System.Windows.Forms.Button();
+            this.buttonEditFixedAsset = new System.Windows.Forms.Button();
+            this.buttonAddFixedAsset = new System.Windows.Forms.Button();
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlSavingsProducts.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -77,9 +76,7 @@
             this.groupBox1.Controls.Add(this.lvFixedAsset);
             this.groupBox1.Controls.Add(this.btnViewFixedAsset);
             this.groupBox1.Controls.Add(this.buttonEditFixedAsset);
-            this.groupBox1.Controls.Add(this.checkBoxShowDeletedProduct);
             this.groupBox1.Controls.Add(this.buttonAddFixedAsset);
-            this.groupBox1.Controls.Add(this.buttonDeleteFixedAsset);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -98,7 +95,8 @@
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7,
-            this.columnHeader8});
+            this.columnHeader8,
+            this.columnHeader9});
             this.lvFixedAsset.FullRowSelect = true;
             this.lvFixedAsset.GridLines = true;
             this.lvFixedAsset.Location = new System.Drawing.Point(0, 0);
@@ -142,12 +140,23 @@
             this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader6.Width = 114;
             // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Original Cost";
+            this.columnHeader7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader7.Width = 87;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Annual Depreciation Rate";
+            this.columnHeader8.Width = 145;
+            // 
             // btnViewFixedAsset
             // 
             this.btnViewFixedAsset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnViewFixedAsset.Font = new System.Drawing.Font("Arial", 9F);
             this.btnViewFixedAsset.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnViewFixedAsset.Location = new System.Drawing.Point(771, 135);
+            this.btnViewFixedAsset.Location = new System.Drawing.Point(774, 104);
             this.btnViewFixedAsset.Name = "btnViewFixedAsset";
             this.btnViewFixedAsset.Size = new System.Drawing.Size(140, 28);
             this.btnViewFixedAsset.TabIndex = 10;
@@ -163,21 +172,8 @@
             this.buttonEditFixedAsset.Name = "buttonEditFixedAsset";
             this.buttonEditFixedAsset.Size = new System.Drawing.Size(140, 28);
             this.buttonEditFixedAsset.TabIndex = 9;
-            this.buttonEditFixedAsset.Text = "Edit Fixed Asset";
+            this.buttonEditFixedAsset.Text = "Dispose Fixed Asset";
             this.buttonEditFixedAsset.Click += new System.EventHandler(this.buttonEditProduct_Click);
-            // 
-            // checkBoxShowDeletedProduct
-            // 
-            this.checkBoxShowDeletedProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxShowDeletedProduct.AutoSize = true;
-            this.checkBoxShowDeletedProduct.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.checkBoxShowDeletedProduct.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBoxShowDeletedProduct.Location = new System.Drawing.Point(782, 16);
-            this.checkBoxShowDeletedProduct.Name = "checkBoxShowDeletedProduct";
-            this.checkBoxShowDeletedProduct.Size = new System.Drawing.Size(114, 20);
-            this.checkBoxShowDeletedProduct.TabIndex = 8;
-            this.checkBoxShowDeletedProduct.Text = "Deleted assets";
-            this.checkBoxShowDeletedProduct.CheckedChanged += new System.EventHandler(this.checkBoxShowDeletedProduct_CheckedChanged);
             // 
             // buttonAddFixedAsset
             // 
@@ -191,28 +187,10 @@
             this.buttonAddFixedAsset.Text = "Add Fixed Asset";
             this.buttonAddFixedAsset.Click += new System.EventHandler(this.buttonAddProduct_Click);
             // 
-            // buttonDeleteFixedAsset
+            // columnHeader9
             // 
-            this.buttonDeleteFixedAsset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDeleteFixedAsset.Font = new System.Drawing.Font("Arial", 9F);
-            this.buttonDeleteFixedAsset.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonDeleteFixedAsset.Location = new System.Drawing.Point(771, 101);
-            this.buttonDeleteFixedAsset.Name = "buttonDeleteFixedAsset";
-            this.buttonDeleteFixedAsset.Size = new System.Drawing.Size(140, 28);
-            this.buttonDeleteFixedAsset.TabIndex = 6;
-            this.buttonDeleteFixedAsset.Text = "Delete Fixed Asset";
-            this.buttonDeleteFixedAsset.Click += new System.EventHandler(this.buttonDeleteProduct_Click);
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Original Cost";
-            this.columnHeader7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader7.Width = 87;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Annual Depreciation Rate";
-            this.columnHeader8.Width = 145;
+            this.columnHeader9.Text = "Status";
+            this.columnHeader9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FrmAvailableFixedAssets
             // 
@@ -226,7 +204,6 @@
             this.pnlSavingsProducts.ResumeLayout(false);
             this.pnlSavingsProducts.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -237,9 +214,7 @@
         private System.Windows.Forms.Panel pnlSavingsProducts;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonEditFixedAsset;
-        private System.Windows.Forms.CheckBox checkBoxShowDeletedProduct;
         private System.Windows.Forms.Button buttonAddFixedAsset;
-        private System.Windows.Forms.Button buttonDeleteFixedAsset;
         private System.Windows.Forms.Button btnViewFixedAsset;
         private System.Windows.Forms.ListView lvFixedAsset;
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -250,6 +225,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
 
 
     }
