@@ -59,6 +59,59 @@ namespace OpenCBS.ExceptionsHandler
             string returned = String.Empty;
             switch (exceptionId)
             {
+                case OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterBranchIsNotSelected:
+                    returned = "FixedAssetRegisterBranchIsNotSelected";
+                    break;
+                case OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterAssetDescriptionIsEmpty:
+                    returned = "FixedAssetRegisterAssetDescriptionIsEmpty";
+                    break;
+                case OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterAssetTypeIsNotSelected:
+                    returned = "FixedAssetRegisterAssetTypeIsNotSelected";
+                    break;
+                case OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterNoOfAssetsIsEmpty:
+                    returned = "FixedAssetRegisterNoOfAssetsIsEmpty";
+                    break;
+                case OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterNoOfAssetsIsInvalid:
+                    returned = "FixedAssetRegisterNoOfAssetsIsInvalid";
+                    break;
+
+                case OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterOriginalCostIsEmpty:
+                    returned = "FixedAssetRegisterOriginalCostIsEmpty";
+                    break;
+                case OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterOriginalCostIsInvalid:
+                    returned = "FixedAssetRegisterOriginalCostIsInvalid";
+                    break;
+
+                case OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterAnnualDepreciationRateIsEmpty:
+                    returned = "FixedAssetRegisterAnnualDepreciationRateIsEmpty";
+                    break;
+                case OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterAnnualDepreciationRateIsInvalid:
+                    returned = "FixedAssetRegisterAnnualDepreciationRateIsInvalid";
+                    break;
+
+
+
+                case OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterAcquisitionCapitalFinanceMethodIsNotSelected:
+                    returned = "FixedAssetRegisterAcquisitionCapitalFinanceMethodIsNotSelected";
+                    break;
+                case OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterAcquisitionCapitalTransactionIsEmpty:
+                    returned = "FixedAssetRegisterAcquisitionCapitalTransactionIsEmpty";
+                    break;
+
+                case OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterAcquisitionCapitalTransactionIsInvalid:
+                    returned = "FixedAssetRegisterAcquisitionCapitalTransactionIsInvalid";
+                    break;
+                case OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterDisposalAmountTransferMethodIsNotSelected:
+                    returned = "FixedAssetRegisterDisposalAmountTransferMethodIsNotSelected";
+                    break;
+
+                case OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterDisposalAmountTransactionIsEmpty:
+                    returned = "FixedAssetRegisterDisposalAmountTransactionIsEmpty";
+                    break;
+                case OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterDisposalAmountTransactionIsInvalid:
+                    returned = "FixedAssetRegisterDisposalAmountTransactionIsInvalid";
+                    break;
+
 
             }
             return returned;
@@ -71,6 +124,21 @@ namespace OpenCBS.ExceptionsHandler
     public enum OpenCbsFixedAssetExceptionEnum
     {
 
+        FixedAssetRegisterBranchIsNotSelected,
+        FixedAssetRegisterAssetDescriptionIsEmpty,
+        FixedAssetRegisterAssetTypeIsNotSelected,
+        FixedAssetRegisterNoOfAssetsIsEmpty,
+        FixedAssetRegisterNoOfAssetsIsInvalid,
+        FixedAssetRegisterOriginalCostIsEmpty,
+        FixedAssetRegisterOriginalCostIsInvalid,
+        FixedAssetRegisterAnnualDepreciationRateIsEmpty,
+        FixedAssetRegisterAnnualDepreciationRateIsInvalid,
+        FixedAssetRegisterAcquisitionCapitalFinanceMethodIsNotSelected,
+        FixedAssetRegisterAcquisitionCapitalTransactionIsEmpty,
+        FixedAssetRegisterAcquisitionCapitalTransactionIsInvalid,
+        FixedAssetRegisterDisposalAmountTransferMethodIsNotSelected,
+        FixedAssetRegisterDisposalAmountTransactionIsEmpty,
+        FixedAssetRegisterDisposalAmountTransactionIsInvalid
 
     }
 }

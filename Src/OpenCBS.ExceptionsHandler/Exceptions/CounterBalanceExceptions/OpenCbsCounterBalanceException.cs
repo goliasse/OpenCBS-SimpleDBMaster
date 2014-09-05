@@ -59,7 +59,23 @@ namespace OpenCBS.ExceptionsHandler
             string returned = String.Empty;
             switch (exceptionId)
             {
+                case OpenCbsAllocateCounterExceptionEnum.CounterBalanceBranchIsNotSelected:
+                    returned = "CounterBalanceBranchIsNotSelected";
+                    break;
+                case OpenCbsAllocateCounterExceptionEnum.CounterBalanceCashierIsNotSelected:
+                    returned = "CounterBalanceCashierIsNotSelected";
+                    break;
 
+                case OpenCbsAllocateCounterExceptionEnum.CounterBalanceCounterIsNotSelected:
+                    returned = "CounterBalanceCounterIsNotSelected";
+                    break;
+                case OpenCbsAllocateCounterExceptionEnum.CounterBalanceOpeningAmountIsInvalid:
+                    returned = "CounterBalanceOpeningAmountIsInvalid";
+                    break;
+
+                case OpenCbsAllocateCounterExceptionEnum.CounterBalanceTopUpAmountIsInvalid:
+                    returned = "CounterBalanceTopUpAmountIsInvalid";
+                    break;
             }
             return returned;
         }
@@ -71,6 +87,11 @@ namespace OpenCBS.ExceptionsHandler
     public enum OpenCbsAllocateCounterExceptionEnum
     {
 
+        CounterBalanceBranchIsNotSelected,
+        CounterBalanceCashierIsNotSelected,
+        CounterBalanceCounterIsNotSelected,
+        CounterBalanceOpeningAmountIsInvalid,
+        CounterBalanceTopUpAmountIsInvalid
 
     }
 }

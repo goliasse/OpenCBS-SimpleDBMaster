@@ -47,26 +47,26 @@ namespace OpenCBS.Services
         private void ValidateProduct(CounterBalance counterBalance)
         {
 
-            //if (string.IsNullOrEmpty(counterBalance.Branch))
-            //    throw new OpenCbsAllocateCounterException (OpenCbsAllocateCounterExceptionEnum.CounterBalanceBranchIsNotSelected);
+            if (string.IsNullOrEmpty(counterBalance.Branch))
+                throw new OpenCbsAllocateCounterException(OpenCbsAllocateCounterExceptionEnum.CounterBalanceBranchIsNotSelected);
 
 
-            //if (!counterBalance.CashierId.HasValue)
-            //    throw new OpenCbsAllocateCounterException (OpenCbsAllocateCounterExceptionEnum.CounterBalanceCashierIsNotSelected);
+            if (!counterBalance.CashierId.HasValue)
+                throw new OpenCbsAllocateCounterException(OpenCbsAllocateCounterExceptionEnum.CounterBalanceCashierIsNotSelected);
 
 
-            //if (!counterBalance.CounterId.HasValue)
-            //    throw new OpenCbsAllocateCounterException (OpenCbsAllocateCounterExceptionEnum.CounterBalanceCounterIsNotSelected);
-
-
-
-            //if (counterBalance.Amount < 0 || (counterBalance.Amount.Value% 1000) !=0 || counterBalance.Type=="Opening Amount")
-            //    throw new OpenCbsAllocateCounterException (OpenCbsAllocateCounterExceptionEnum. CounterBalanceOpeningAmountIsInvalid);
+            if (!counterBalance.CounterId.HasValue)
+                throw new OpenCbsAllocateCounterException(OpenCbsAllocateCounterExceptionEnum.CounterBalanceCounterIsNotSelected);
 
 
 
-            //if (counterBalance.Amount < 0 || (counterBalance.Amount.Value% 1000) !=0 || counterBalance.Type=="TopUp Amount")
-            //    throw new OpenCbsAllocateCounterException (OpenCbsAllocateCounterExceptionEnum.CounterBalanceTopUpAmountIsInvalid);
+            if (counterBalance.Amount < 0 || (counterBalance.Amount.Value % 1000) != 0 || counterBalance.Type == "Opening Amount")
+                throw new OpenCbsAllocateCounterException(OpenCbsAllocateCounterExceptionEnum.CounterBalanceOpeningAmountIsInvalid);
+
+
+
+            if (counterBalance.Amount < 0 || (counterBalance.Amount.Value % 1000) != 0 || counterBalance.Type == "TopUp Amount")
+                throw new OpenCbsAllocateCounterException(OpenCbsAllocateCounterExceptionEnum.CounterBalanceTopUpAmountIsInvalid);
 
 
 }

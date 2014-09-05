@@ -91,7 +91,7 @@ namespace OpenCBS.GUI.FixedAssetRegister
             cmbFinMethod.Items.Add(OFixedAssetRegister.FinanceMethodDeCash);
             cmbFinMethod.Items.Add(OFixedAssetRegister.FinanceMethodDeCheque);
             cmbFinMethod.Items.Add(OFixedAssetRegister.FinanceMethodDeTransfer);
-            
+            cmbFinMethod.SelectedIndex = 0;
 
         }
 
@@ -110,6 +110,7 @@ namespace OpenCBS.GUI.FixedAssetRegister
             cmbAssetType.Items.Add("Fittings");
             cmbAssetType.Items.Add("Renovation works");
             cmbAssetType.Items.Add("Building and land lease");
+            cmbAssetType.SelectedIndex = 0;
         }
 
         private void InitializeBranch()

@@ -659,24 +659,46 @@ Primary Key(id)
 )
 
 
-CREATE TABLE [dbo].[FixedAssetRegister](
+REATE TABLE [dbo].[FixedAssetRegister](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[branch] [nvarchar](100) NOT NULL,
+	[updater_id] [int] NULL,
+	[Asset_id] [nvarchar](100) NULL,
+	[Description] [nvarchar](1000) NOT NULL,
+	[Asset_type] [nvarchar](100) NOT NULL,
+	[No_of_assets] [int] NOT NULL,
+	[Acquisition_date] [date] NOT NULL,
+	[Original_cost] [money] NULL,
+	[Annual_depreciation_rate] [float] NOT NULL,
+	[Accumulated_depreciation_charge] [money] NULL,
+	[Net_book_value] [money] NULL,
+	[Disposal_date] [date] NULL,
+	[Profit_loss_disposal] [int] NULL,
+	[Acquisition_capital_finance] [nvarchar](100) NOT NULL,
+	[Acquisition_capital_transaction] [nvarchar](100) NOT NULL,
+	[Disposal_amount_transfer] [nvarchar](100) NULL,
+	[Disposal_amount_transaction] [nvarchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+
+CREATE TABLE [dbo].[BankGuarantees](
 [id] [int] IDENTITY(1,1) NOT NULL  ,
-[updater_id] int NOT NULL,
-[branch] [nvarchar](100) NOT NULL,
-[Asset_id] [nvarchar](100) NOT NULL  ,
-[Description] [nvarchar](1000) NOT NULL  ,
-[Asset_type] [nvarchar](100) NOT NULL  ,
-[No_of_assets] [int] NOT NULL  ,
-[Acquisition_date] [date] NOT NULL  ,
-[Original_cost] [money] NULL,
-[Annual_depreciation_rate] [Float] NOT NULL,
-[Accumulated_depreciation_charge] [money] NULL,
-[Net_book_value] [money] NULL,
-[Disposal_date] [date],
-[Profit_loss_disposal] [int] NOT NULL  ,
-[Acquisition_capital_finance] [nvarchar](100) NOT NULL,
-[Acquisition_capital_transaction] [nvarchar](100) NOT NULL,
-[Disposal_amount_transfer] [nvarchar](100),
-[Disposal_amount_transaction] [nvarchar](100) NOT NULL,
+[bankGuaranteeCode] [nvarchar](100) NOT NULL,
+issuingDate datetime,
+expiryDate datetime,
+applicantId [nvarchar](100) NOT NULL  ,
+beneficiaryParty [nvarchar](1000) NOT NULL  ,
+guarnteeType [nvarchar](100) NOT NULL  ,
+feePerPeriod [money] NOT NULL  ,
+BankGuarantees [nvarchar](100) NOT NULL  ,
+instrumentDetails [nvarchar](1000) NOT NULL  ,
+value [money] NOT NULL  ,
+currency [nvarchar](100) NOT NULL  ,
+status [nvarchar](100) NOT NULL  ,
 Primary Key(id)
 )

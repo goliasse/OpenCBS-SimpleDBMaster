@@ -22,6 +22,7 @@ namespace OpenCBS.Enums
         public static readonly string PaymentMethodCash = "Cash";
         public static readonly string PaymentMethodCheque = "Cheque";
         public static readonly string PaymentMethodTransfer = "Transfer";
+        public static readonly string FeeTypeDaily = "Daily";
         public static readonly string FeeTypeMonthly = "Monthly";
         public static readonly string FeeTypeQuarterly = "Quarterly";
         public static readonly string FeeTypeHalfYearly = "Half Yearly";

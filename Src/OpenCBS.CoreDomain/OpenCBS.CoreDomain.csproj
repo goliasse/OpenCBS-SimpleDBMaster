@@ -199,6 +199,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ActionItemObject.cs" />
+    <Compile Include="BankGuarantees.cs" />
     <Compile Include="Clients\GroupMembership.cs" />
     <Compile Include="Contracts\FlatRoundingSchedule.cs" />
     <Compile Include="Contracts\Loans\LoanRepayment\RepaymentConfiguration.cs" />
@@ -265,6 +266,7 @@
     <Compile Include="Events\Teller\TellerCashOutEvent.cs" />
     <Compile Include="Events\Teller\TellerEvent.cs" />
     <Compile Include="FixedAssetRegister.cs" />
+    <Compile Include="LetterOfCredit.cs" />
     <Compile Include="MyInformation.cs" />
     <Compile Include="PingInfo.cs" />
     <Compile Include="Products\CurrentAccountProduct.cs" />

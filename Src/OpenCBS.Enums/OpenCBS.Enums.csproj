@@ -52,10 +52,12 @@
       <Link>Properties\SolutionInfo.cs</Link>
     </Compile>
     <Compile Include="EnumExtensions.cs" />
+    <Compile Include="OBankGuarantee.cs" />
     <Compile Include="OCurrentAccount.cs" />
     <Compile Include="ODocumentObjectType.cs" />
     <Compile Include="OFixedAssetRegister.cs" />
     <Compile Include="OGender.cs" />
+    <Compile Include="OLetterOfCredit.cs" />
     <Compile Include="OMovementType.cs" />
     <Compile Include="OPaymentMethods.cs" />
     <Compile Include="OCollateralPropertyTypes.cs" />
