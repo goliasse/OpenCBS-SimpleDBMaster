@@ -218,7 +218,7 @@ namespace OpenCBS.Manager.Clients
                             [povertylevel_healthsituation],
                             [unemployment_months],
                             [kyc_status],
-                            [estimated_work],
+                            [estimated_worth],
                             [type_of_facilities],
                             [marital_status]            
                             ) 
@@ -263,7 +263,7 @@ namespace OpenCBS.Manager.Clients
                             ,@povertyLevelHealthSituation
                             ,@unemploymentMonths
                             ,@kycstatus
-                            ,@estimated_work
+                            ,@estimated_worth
                             ,@type_of_facilities
                             ,@marital_status   
                         )";
@@ -314,7 +314,7 @@ namespace OpenCBS.Manager.Clients
                 c.AddParam("@family_situation", pPerson.FamilySituation);
                 //4 new fields
                 c.AddParam("@kycstatus",pPerson.KYCStatus);
-                c.AddParam("@estimated_work",pPerson.EstimatedWork);
+                c.AddParam("@estimated_worth",pPerson.EstimatedWorth);
                 c.AddParam("@type_of_facilities",pPerson.TypeOfFacilities);
                 c.AddParam("@marital_status", pPerson.MaritalStatus);  
 
@@ -433,7 +433,7 @@ namespace OpenCBS.Manager.Clients
                                  Persons.povertylevel_healthsituation,
                                  Persons.loan_officer_id,      
                                  Persons.kyc_status,
-                                 Persons.estimated_work,
+                                 Persons.estimated_worth,
                                  Persons.type_of_facilities,
                                  Persons.marital_status
                             FROM Tiers 
@@ -555,9 +555,12 @@ namespace OpenCBS.Manager.Clients
                              StudyLevel = r.GetString("study_level"),
                              BirthPlace = r.GetString("birth_place"),
                              MaritalStatus = r.GetString("marital_status"),
-                             EstimatedWork = r.GetString("estimated_work"),
+                             //Get the value from stored procedue
+                             EstimatedWorth = EstimatedWorthCalculation(r.GetInt("tiers_id")),
                              KYCStatus = r.GetString("kyc_status"),
-                             TypeOfFacilities = r.GetString("type_of_facilities"),
+                             //Get the value from stored procedue
+                             TypeOfFacilities = DetermineTypeOfFacilities(r.GetInt("tiers_id")),
+                             LoanFacilityLimit = DetermineLoanFacilityLimit(r.GetInt("tiers_id")),
                              Nationality = r.GetString("nationality"),
                              UnemploymentMonths = r.GetNullInt("unemployment_months"),
                              SSNumber = r.GetString("SS"),
@@ -580,6 +583,67 @@ namespace OpenCBS.Manager.Clients
                                  }
                          };
             return person;
+        }
+
+
+
+        public string DetermineTypeOfFacilities(int clientId)
+        {
+            string ret = "";
+            using (SqlConnection conn = GetConnection())
+            {
+                using (OpenCbsCommand command = new OpenCbsCommand("DetermineTypeOfFacilities", conn).AsStoredProcedure())
+                {
+
+                    command.AddParam("@clientId", clientId);
+                   
+
+                    ret = Convert.ToString(command.ExecuteScalar());
+
+                }
+            }
+
+            return ret;
+        }
+
+
+        public string EstimatedWorthCalculation(int clientId)
+        {
+            string ret = "";
+            //using (SqlConnection conn = GetConnection())
+            //{
+            //    using (OpenCbsCommand command = new OpenCbsCommand("EstimatedWorthCalculation", conn).AsStoredProcedure())
+            //    {
+
+            //        command.AddParam("@clientId", clientId);
+
+
+            //        ret = Convert.ToString(command.ExecuteScalar());
+
+            //    }
+            //}
+
+            return ret;
+        }
+
+
+        public string DetermineLoanFacilityLimit(int clientId)
+        {
+            string ret = "";
+            //using (SqlConnection conn = GetConnection())
+            //{
+            //    using (OpenCbsCommand command = new OpenCbsCommand("DetermineLoanFacilityLimit", conn).AsStoredProcedure())
+            //    {
+
+            //        command.AddParam("@clientId", clientId);
+
+
+            //        ret = Convert.ToString(command.ExecuteScalar());
+
+            //    }
+            //}
+
+            return ret;
         }
 
         public Person SelectPersonByName(string name)
@@ -672,7 +736,7 @@ namespace OpenCBS.Manager.Clients
                                 ,[povertylevel_socialparticipation]=@povertyLevelSocialParticipation
                                 ,[povertylevel_economiceducation]= @povertyLevelEconomicEducation  
                                 ,[kyc_status]=@kycstatus
-                                ,[estimated_work]=@estimatedwork
+                                ,[estimated_worth]=@estimatedwork
                                 ,[type_of_facilities]=@typeoffacilities
                                 ,[marital_status]=@maritalstatus
                                 WHERE id = @id";
@@ -729,7 +793,7 @@ namespace OpenCBS.Manager.Clients
                 c.AddParam("@povertyLevelSocialParticipation", person.PovertyLevelIndicators.SocialParticipation);
                 c.AddParam("@povertyLevelEconomicEducation", person.PovertyLevelIndicators.EconomicEducation);
                 c.AddParam("@kycstatus", person.KYCStatus);
-                c.AddParam("@estimatedwork", person.EstimatedWork);
+                c.AddParam("@estimatedwork", person.EstimatedWorth);
                 c.AddParam("@typeoffacilities", person.TypeOfFacilities);
                 c.AddParam("@maritalstatus", person.MaritalStatus);
                 if (person.Activity != null)
@@ -1967,7 +2031,7 @@ namespace OpenCBS.Manager.Clients
                                  Persons.povertylevel_healthsituation,
                                  Persons.loan_officer_id,
                                  Persons.kyc_status,
-                                 Persons.estimated_work,
+                                 Persons.estimated_worth,
                                  Persons.type_of_facilities,
                                  Persons.marital_status         
                             FROM Tiers 

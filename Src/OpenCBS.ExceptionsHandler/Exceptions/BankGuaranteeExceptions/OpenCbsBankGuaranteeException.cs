@@ -121,7 +121,7 @@ namespace OpenCBS.ExceptionsHandler.Exceptions.BankGuaranteeExceptions
     public enum OpenCbsBankGuaranteesExceptionEnum
     {
         BankGuaranteesIssuingDateIsEmpty,
-        BankGuaranteesIssuingDateIsInvalid
+        BankGuaranteesIssuingDateIsInvalid,
         BankGuaranteesExpiryDateIsEmpty,
         BankGuaranteesBeneficiaryPartyIsEmpty,
         BankGuaranteesInstrumentDetailsIsEmpty,

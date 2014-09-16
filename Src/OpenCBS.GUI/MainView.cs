@@ -45,6 +45,7 @@ using OpenCBS.GUI.AuditTrail;
 using OpenCBS.GUI.Clients;
 using OpenCBS.GUI.Configuration;
 using OpenCBS.GUI.Contracts;
+using OpenCBS.GUI.Counter_Balance;
 using OpenCBS.GUI.Database;
 using OpenCBS.GUI.FixedAssetRegister;
 using OpenCBS.GUI.Products;
@@ -1264,6 +1265,12 @@ namespace OpenCBS.GUI
         {
             FrmAvailableFixedAssets frmAvailableFixedAssets = new FrmAvailableFixedAssets();
             frmAvailableFixedAssets.Show();
+        }
+
+        private void manageCountersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AvailableCounterAndAllocatedBalance availableCounterAndAllocatedBalance = new AvailableCounterAndAllocatedBalance();
+            availableCounterAndAllocatedBalance.Show();
         }
     }
 }

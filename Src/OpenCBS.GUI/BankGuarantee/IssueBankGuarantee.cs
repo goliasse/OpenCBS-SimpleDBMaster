@@ -8,29 +8,78 @@ using System.Text;
 using System.Windows.Forms;
 using OpenCBS.CoreDomain;
 using OpenCBS.CoreDomain.Accounting;
+using OpenCBS.CoreDomain.Clients;
 using OpenCBS.Enums;
 using OpenCBS.MultiLanguageRessources;
 using OpenCBS.Services;
+using OpenCBS.CoreDomain.Contracts.Loans;
+using OpenCBS.CoreDomain.Contracts.Savings;
 
 namespace OpenCBS.GUI.BankGuarantee
 {
     public partial class IssueBankGuarantee : Form
     {
-        public IssueBankGuarantee()
+        Client _client;
+        public IssueBankGuarantee(Client client)
         {
+            _client = client;
             InitializeComponent();
             InitializeBranch();
+            InitializeBankGuaranteeFeePeriod();
+            InitializeGuaranteeType();
+            InitializeComboBoxCurrencies();
+            txtApplicantId.Text = client.Id.ToString();
+            txtIssuingDate.Text = DateTime.Today.ToShortDateString();
         }
 
-        void InitializeManagementFeeFrequency()
+        BankGuarantees bankGuarantees = new BankGuarantees();
+        public IssueBankGuarantee(string bankGuaranteeCode, bool flag)
+        {
+            
+            InitializeComponent();
+            InitializeBranch();
+            InitializeBankGuaranteeFeePeriod();
+            InitializeGuaranteeType();
+            InitializeComboBoxCurrencies();
+            InitializeControls(flag);
+            InitializeBankGuaranteeStatus();
+            BankGuaranteesService _bankGuaranteeService = ServicesProvider.GetInstance().GetBankGuaranteesService();
+            bankGuarantees = _bankGuaranteeService.FetchBankGuarantee(bankGuaranteeCode);
+
+            txtIssuingDate.Text = bankGuarantees.IssuingDate.ToShortDateString();
+            txtExpiryDate.Text = bankGuarantees.ExpiryDate.ToShortDateString();
+            txtApplicantId.Text = bankGuarantees.ApplicantId.ToString();
+            txtBeneficiaryParty.Text = bankGuarantees.BeneficiaryParty;
+            cmbGuaranteeType.SelectedItem = bankGuarantees.GuarnteeType;
+            txtFeePerPeriod.Text = bankGuarantees.FeePerPeriod.GetFormatedValue(false);
+            cmbFeePeriod.SelectedItem = bankGuarantees.FeePeriod;
+            txtInstrumentDetails.Text = bankGuarantees.InstrumentDetails;
+            txtValue.Text = bankGuarantees.Value.GetFormatedValue(false);
+            cmbCurrency.SelectedItem = bankGuarantees.Currency;
+            cmbStatus.SelectedItem = bankGuarantees.Status;
+            txtValidity.Text = GetValidity(bankGuarantees.IssuingDate, bankGuarantees.ExpiryDate, bankGuarantees.FeePeriod).ToString();
+            txtTotalFee.Text = (GetValidity(bankGuarantees.IssuingDate, bankGuarantees.ExpiryDate, bankGuarantees.FeePeriod) * Convert.ToInt32(txtFeePerPeriod.Text)).ToString();
+        }
+
+
+        void InitializeBankGuaranteeStatus()
+        {
+            cmbStatus.Items.Clear();
+            cmbStatus.Items.Add("Issued");
+            cmbStatus.Items.Add("Availed");
+            
+
+        }
+
+        void InitializeBankGuaranteeFeePeriod()
         {
             cmbFeePeriod.Items.Clear();
-            cmbFeePeriod.Items.Add(OCurrentAccount.SelectFrequencyDefault);
-            cmbFeePeriod.Items.Add(OCurrentAccount.FeeTypeDaily);
-            cmbFeePeriod.Items.Add(OCurrentAccount.FeeTypeMonthly);
-            cmbFeePeriod.Items.Add(OCurrentAccount.FeeTypeQuarterly);
-            cmbFeePeriod.Items.Add(OCurrentAccount.FeeTypeHalfYearly);
-            cmbFeePeriod.Items.Add(OCurrentAccount.FeeTypeYearly);
+            cmbFeePeriod.Items.Add("Days");
+            cmbFeePeriod.Items.Add("Months");
+            cmbFeePeriod.Items.Add("Quarters");
+            cmbFeePeriod.Items.Add("Bi-Annuals");
+            cmbFeePeriod.Items.Add("Years");
+            
             cmbFeePeriod.SelectedIndex = 0;
 
         }
@@ -47,10 +96,10 @@ namespace OpenCBS.GUI.BankGuarantee
 
         private void InitializeBranch()
         {
-            cmbBranch.ValueMember = "Code";
-            cmbBranch.DisplayMember = "Name";
-            cmbBranch.DataSource =
-                ServicesProvider.GetInstance().GetBranchService().FindAllNonDeleted().OrderBy(item => item.Id).ToList();
+            //cmbBranch.ValueMember = "Code";
+            //cmbBranch.DisplayMember = "Name";
+            //cmbBranch.DataSource =
+            //    ServicesProvider.GetInstance().GetBranchService().FindAllNonDeleted().OrderBy(item => item.Id).ToList();
         }
 
         private void InitializeComboBoxCurrencies()
@@ -97,42 +146,65 @@ namespace OpenCBS.GUI.BankGuarantee
 
         private void InitializeControls(bool flag)
         {
-            cmbBranch.Enabled = flag;
-            txtExpiryDate.Enabled = flag;
-            txtApplicantId.Enabled = flag;
-            txtBeneficiaryParty.Enabled = flag;
-            cmbGuaranteeType.Enabled = flag;
-            txtFeePerPeriod.Enabled = flag;
-            cmbFeePeriod.Enabled = flag;
-            txtInstrumentDetails.Enabled = flag;
-            cmbCurrency.Enabled = flag;
-            txtValue.Enabled = flag;
-            btnUpdate.Enabled = flag;
-            btnSubmit.Enabled = flag;
+            if (flag == true)
+            {
+                txtExpiryDate.Enabled = !flag;
+                txtApplicantId.Enabled = !flag;
+                txtBeneficiaryParty.Enabled = !flag;
+                cmbGuaranteeType.Enabled = !flag;
+                txtFeePerPeriod.Enabled = !flag;
+                cmbFeePeriod.Enabled = !flag;
+                txtInstrumentDetails.Enabled = !flag;
+                cmbCurrency.Enabled = !flag;
+                txtValue.Enabled = !flag;
+                btnUpdate.Enabled = flag;
+                btnSubmit.Enabled = !flag;
+                cmbStatus.Enabled = flag;
+                txtTotalFee.Enabled = !flag;
+                txtExpiryDate.Enabled = !flag;
+                txtValidity.Enabled = !flag;
+
+                btnSubmit.Visible = !flag;
+                lblStatus.Visible = flag;
+                lblTotalFee.Visible = flag;
+                lblExpiryDate.Visible = flag;
+                cmbStatus.Visible = flag;
+                txtTotalFee.Visible = flag;
+                txtExpiryDate.Visible = flag;
+            }
+            else
+            {
+                txtExpiryDate.Enabled = flag;
+                txtApplicantId.Enabled = flag;
+                txtBeneficiaryParty.Enabled = flag;
+                cmbGuaranteeType.Enabled = flag;
+                txtFeePerPeriod.Enabled = flag;
+                cmbFeePeriod.Enabled = flag;
+                txtInstrumentDetails.Enabled = flag;
+                cmbCurrency.Enabled = flag;
+                txtValue.Enabled = flag;
+                btnSubmit.Enabled = flag;
+                cmbStatus.Enabled = flag;
+                txtTotalFee.Enabled = flag;
+                txtExpiryDate.Enabled = flag;
+                txtValidity.Enabled = flag;
+
+                btnUpdate.Visible = flag;
+                btnSubmit.Visible = flag;
+                lblStatus.Visible = !flag;
+                lblTotalFee.Visible = !flag;
+                lblExpiryDate.Visible = !flag;
+                cmbStatus.Visible = !flag;
+                txtTotalFee.Visible = !flag;
+                txtExpiryDate.Visible = !flag;
+            }
         }
 
-        private void InitializeBankGuarantee()
-        {
-            BankGuarantees bankGuarantees = new BankGuarantees();
-
-            cmbBranch.SelectedItem = bankGuarantees.Branch;
-            txtIssuingDate.Text = bankGuarantees.IssuingDate.ToShortDateString();
-            txtExpiryDate.Text = bankGuarantees.ExpiryDate.ToShortDateString();
-            txtApplicantId.Text = bankGuarantees.ApplicantId;
-            txtBeneficiaryParty.Text = bankGuarantees.BeneficiaryParty;
-            cmbGuaranteeType.SelectedItem = bankGuarantees.GuarnteeType;
-            txtFeePerPeriod.Text = bankGuarantees.FeePerPeriod.GetFormatedValue(false);
-            cmbFeePeriod.SelectedItem = bankGuarantees.FeePeriod;
-            txtInstrumentDetails.Text = bankGuarantees.InstrumentDetails;
-            txtValue.Text = bankGuarantees.Value.GetFormatedValue(false);
-            cmbCurrency.SelectedItem = bankGuarantees.Currency;
-            txtStatus.Text = bankGuarantees.Status;
-        }
-
+        
         public static DateTime CalculateExpiryDate(int validity, string validityPeriod)
         {
-            DateTime issuingDate = DateTime.Now;
-            DateTime expiryDate = DateTime.Now;
+            DateTime issuingDate = DateTime.Today;
+            DateTime expiryDate = DateTime.Today;
 
             if (validityPeriod == "Days")
                 return expiryDate = issuingDate.AddDays(validity);
@@ -156,17 +228,30 @@ namespace OpenCBS.GUI.BankGuarantee
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            BankGuaranteesService _bankGuaranteeService = ServicesProvider.GetInstance().GetBankGuaranteesService();
+            bankGuarantees.Status = cmbStatus.SelectedItem.ToString();
+            _bankGuaranteeService.UpdateBankGuarantee(bankGuarantees);
+            MessageBox.Show("Bank Guarantee " + bankGuarantees.BankGuaranteeCode + " Successfully Updated!");
+            btnUpdate.Enabled = false;
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             BankGuarantees bankGuarantees = new BankGuarantees();
-
-            bankGuarantees.Branch = cmbBranch.SelectedItem.ToString();
+            decimal balance = 0;
+            bankGuarantees.Branch = _client.Branch.Code;
+            
+            //This method will be used for categorising the loan as one of the three category
+            //new Loan().CalculatePastDueSinceLastRepayment();
+            //Code for getting the consolidated balance of all the saving accounts held by the customer
+            IList<ISavingsContract> listSavingContract = _client.Savings;
+            foreach (ISavingsContract iSavingsContract in listSavingContract)
+            {
+                balance = balance + iSavingsContract.GetBalance().Value;
+            }
             bankGuarantees.IssuingDate = DateTime.Today;
-            bankGuarantees.ExpiryDate = Convert.ToDateTime(txtExpiryDate.Text);
-            bankGuarantees.ApplicantId =
+            bankGuarantees.ExpiryDate = CalculateExpiryDate(Convert.ToInt32(txtValidity.Text), cmbFeePeriod.SelectedItem.ToString());
+            bankGuarantees.ApplicantId = _client.Id;
             bankGuarantees.BeneficiaryParty = txtBeneficiaryParty.Text;
             bankGuarantees.GuarnteeType = cmbGuaranteeType.SelectedItem.ToString();
             bankGuarantees.FeePerPeriod = ServicesHelper.ConvertStringToNullableDecimal(txtFeePerPeriod.Text);
@@ -175,11 +260,72 @@ namespace OpenCBS.GUI.BankGuarantee
             bankGuarantees.Value = ServicesHelper.ConvertStringToNullableDecimal(txtValue.Text);
             bankGuarantees.Currency = cmbCurrency.SelectedItem.ToString();
             bankGuarantees.Status = "Issued";
+            bankGuarantees.AccountNumber = txtAccountNumber.Text;
+            bankGuarantees.TotalFee = Convert.ToInt32(txtValidity.Text) * ServicesHelper.ConvertStringToNullableDecimal(txtFeePerPeriod.Text);
+
+            BankGuaranteesService _bankGuaranteeService = ServicesProvider.GetInstance().GetBankGuaranteesService();
+            string ret = _bankGuaranteeService.SaveBankGuarantee(bankGuarantees);
+            if (ret != "")
+            {
+                MessageBox.Show("Bank Guarantee Successfully Issued. Code is " + ret);
+            }
+            else
+            {
+                MessageBox.Show("Some Error Ocurred.");
+            }
         }
 
         private void txtFeePerPeriod_KeyPress(object sender, KeyPressEventArgs e)
         {
             KeyPressControl(e);
+        }
+
+        public static double GetValidity(DateTime IssuingDate, DateTime ExpiryDate, string ValidityPeriod)
+        {
+            if (ValidityPeriod == "Days")
+            {
+                return ExpiryDate.Subtract(IssuingDate).TotalDays;
+            }
+            else if (ValidityPeriod == "Months")
+            {
+                return GetMonthsBetween(IssuingDate, ExpiryDate);
+            }
+            else if (ValidityPeriod == "Quarters")
+            {
+                return GetMonthsBetween(IssuingDate, ExpiryDate) / 3;
+            }
+            else if (ValidityPeriod == "Bi-Annuals")
+            {
+                return GetMonthsBetween(IssuingDate, ExpiryDate) / 6;
+            }
+            else if (ValidityPeriod == "Years")
+            {
+                return GetMonthsBetween(IssuingDate, ExpiryDate) / 12;
+            }
+            else
+                return -1;
+        }
+
+        public static int GetMonthsBetween(DateTime from, DateTime to)
+        {
+            if (from > to) return GetMonthsBetween(to, from);
+
+            var monthDiff = Math.Abs((to.Year * 12 + (to.Month - 1)) - (from.Year * 12 + (from.Month - 1)));
+
+            if (from.AddMonths(monthDiff) > to || to.Day < from.Day)
+            {
+                return monthDiff - 1;
+            }
+            else
+            {
+                return monthDiff;
+            }
+        }
+
+        private void txtFeePerPeriod_TextChanged(object sender, EventArgs e)
+        {
+            txtTotalFee.Text = (Convert.ToInt32(txtValidity.Text) * ServicesHelper.ConvertStringToNullableDecimal(txtFeePerPeriod.Text)).ToString();
+            txtTotalFee.Enabled = false;
         }
     }
 }

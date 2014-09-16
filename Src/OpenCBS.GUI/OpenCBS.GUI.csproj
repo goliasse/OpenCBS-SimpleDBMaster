@@ -384,12 +384,6 @@
     <Compile Include="BankGuarantee\IssueBankGuarantee.Designer.cs">
       <DependentUpon>IssueBankGuarantee.cs</DependentUpon>
     </Compile>
-    <Compile Include="BankGuarantee\IssuedBankGuarantee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BankGuarantee\IssuedBankGuarantee.Designer.cs">
-      <DependentUpon>IssuedBankGuarantee.cs</DependentUpon>
-    </Compile>
     <Compile Include="Capital Adequacy Ratio\CalculateCapitalAdequacyRatio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -570,11 +564,23 @@
     <Compile Include="Contracts\VillageCreditCommitteeForm.designer.cs">
       <DependentUpon>VillageCreditCommitteeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Counter Balance\AddCounter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Counter Balance\AddCounter.Designer.cs">
+      <DependentUpon>AddCounter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Counter Balance\AllocateCounter.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Counter Balance\AllocateCounter.Designer.cs">
       <DependentUpon>AllocateCounter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Counter Balance\AvailableCounterAndAllocatedBalance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Counter Balance\AvailableCounterAndAllocatedBalance.Designer.cs">
+      <DependentUpon>AvailableCounterAndAllocatedBalance.cs</DependentUpon>
     </Compile>
     <Compile Include="Database\FrmDatabaseName.cs">
       <SubType>Form</SubType>
@@ -1430,9 +1436,6 @@
     <EmbeddedResource Include="BankGuarantee\IssueBankGuarantee.resx">
       <DependentUpon>IssueBankGuarantee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BankGuarantee\IssuedBankGuarantee.resx">
-      <DependentUpon>IssuedBankGuarantee.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Capital Adequacy Ratio\CalculateCapitalAdequacyRatio.resx">
       <DependentUpon>CalculateCapitalAdequacyRatio.cs</DependentUpon>
     </EmbeddedResource>
@@ -1971,8 +1974,14 @@
       <DependentUpon>VillageDisburseLoanForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Counter Balance\AddCounter.resx">
+      <DependentUpon>AddCounter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Counter Balance\AllocateCounter.resx">
       <DependentUpon>AllocateCounter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Counter Balance\AvailableCounterAndAllocatedBalance.resx">
+      <DependentUpon>AvailableCounterAndAllocatedBalance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Database\FrmDatabaseName.es-ES.resx">
       <DependentUpon>FrmDatabaseName.cs</DependentUpon>

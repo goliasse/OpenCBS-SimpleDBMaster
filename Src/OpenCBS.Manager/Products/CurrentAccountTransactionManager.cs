@@ -19,8 +19,10 @@ namespace OpenCBS.Manager.Products
        
         CurrentAccountEventManager currentAccountEventManager = null;
         FixedDepositEventManager fixedDepositEventManager = null;
+        User user = null;
         public CurrentAccountTransactionManager(User pUser) : base(pUser)
         {
+            user = pUser;
             currentAccountEventManager = new CurrentAccountEventManager(pUser);
             fixedDepositEventManager = new FixedDepositEventManager(pUser);
         }
@@ -394,7 +396,7 @@ AND maker = @maker";
                     command.AddParam("@amount",currentAccountTransactions.Amount);
                     command.AddParam("@transaction_date",currentAccountTransactions.TransactionDate);
                     command.AddParam("@transaction_fees",0);
-                    command.AddParam("@maker",currentAccountTransactions.Maker);
+                    command.AddParam("@maker",user.UserName);
                     command.AddParam("@checker",currentAccountTransactions.Checker);
                     command.AddParam("@purpose_of_transfer", currentAccountTransactions.PurposeOfTransfer);
                     ret = Convert.ToInt32(command.ExecuteScalar());
@@ -455,7 +457,7 @@ public int DebitFeeTransaction(CurrentAccountTransactions currentAccountTransact
                     command.AddParam("@amount", currentAccountTransactions.Amount);
                     command.AddParam("@transaction_date", currentAccountTransactions.TransactionDate);
                     command.AddParam("@transaction_fees", 0);
-                    command.AddParam("@maker", currentAccountTransactions.Maker);
+                    command.AddParam("@maker", user.UserName);
                     command.AddParam("@checker", currentAccountTransactions.Checker);
                     command.AddParam("@purpose_of_transfer", currentAccountTransactions.PurposeOfTransfer);
 
@@ -482,12 +484,12 @@ public int MakeFDTransaction(CurrentAccountTransactions fixedDepositTransactions
             command.AddParam("@amount", fixedDepositTransactions.Amount);
             command.AddParam("@transaction_date", fixedDepositTransactions.TransactionDate);
             command.AddParam("@transaction_fees", 0);
-            command.AddParam("@maker", fixedDepositTransactions.Maker);
+            command.AddParam("@maker", user.UserName);
             command.AddParam("@checker", fixedDepositTransactions.Checker);
             command.AddParam("@purpose_of_transfer", fixedDepositTransactions.PurposeOfTransfer);
 
             ret = Convert.ToInt32(command.ExecuteScalar());
-
+            
 
             FixedDepositEvent fixedDepositEvent = new FixedDepositEvent();
             if (fixedDepositTransactions.TransactionMode == "Credit")

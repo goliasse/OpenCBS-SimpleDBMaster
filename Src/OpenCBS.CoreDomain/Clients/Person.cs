@@ -81,9 +81,10 @@ namespace OpenCBS.CoreDomain.Clients
         public int? FavouriteLoanOfficerId { get; set; }
 
         public string  MaritalStatus { get; set; }
-        public string  EstimatedWork { get; set; }
+        public string  EstimatedWorth { get; set; }
         public string  KYCStatus { get; set; }
         public string  TypeOfFacilities { get; set; }
+        public string LoanFacilityLimit { get; set; }
 
         public PovertyLevelIndicators PovertyLevelIndicators { get; set; }
 

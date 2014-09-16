@@ -6,38 +6,50 @@ using System.Data.SqlClient;
 using OpenCBS.CoreDomain;
 using OpenCBS.CoreDomain.Products;
 using OpenCBS.Manager.Currencies;
+using OpenCBS.Manager.Products;
+using OpenCBS.CoreDomain.Events.Products;
+using OpenCBS.Manager.Events;
+using OpenCBS.Shared;
 
 namespace OpenCBS.Manager
 {
-    class BankGuaranteesManager : Manager
+    public class BankGuaranteesManager : Manager
     {
-        public BankGuaranteesManager(User pUser) : base(pUser) { 
+        CurrentAccountTransactionManager currentAccountTransactionManager = null;
+        CurrentAccountEventManager currentAccountEventManager = null;
+        public BankGuaranteesManager(User pUser) : base(pUser) {
+            currentAccountTransactionManager = new CurrentAccountTransactionManager(pUser);
+            currentAccountEventManager = new CurrentAccountEventManager(pUser);
         }
 
-        public BankGuaranteesManager(string testDB) : base(testDB) { 
+        public BankGuaranteesManager(string testDB) : base(testDB) {
+            currentAccountTransactionManager = new CurrentAccountTransactionManager(testDB);
+            currentAccountEventManager = new CurrentAccountEventManager(testDB);
         }
        
 
-        // Your definition is FetchBankGuarantee(string branch) but there is no branch field in the table. 
+        
         private static BankGuarantees GetBankGuarantee(OpenCbsReader reader)
         {
-            return new BankGuarantees
-            {
-                Id = reader.GetInt("id"),
-                BankGuaranteeCode = reader.GetString("bankGuaranteeCode"),
-                IssuingDate = reader.GetDateTime("issuingDate"),
-                ExpiryDate = reader.GetDateTime("expiryDate"),
-                ApplicantId = reader.GetString("applicantId"),
-                BeneficiaryParty = reader.GetString("beneficiaryParty"),
-                GuarnteeType = reader.GetString("guarnteeType"),
-                FeePerPeriod = reader.GetMoney("feePerPeriod"),
-                FeePeriod = reader.GetString("feePeriod"),
-                InstrumentDetails = reader.GetString("instrumentDetails"),
-                Value = reader.GetMoney("value"),
-                Currency = reader.GetString("currency"),
-                Status = reader.GetString("status"),
+            BankGuarantees bankGuarantees = new BankGuarantees();
 
-            };
+            bankGuarantees.Id = reader.GetInt("id");
+            bankGuarantees.BankGuaranteeCode = reader.GetString("bankGuaranteeCode");
+            bankGuarantees.IssuingDate = reader.GetDateTime("issuingDate");
+            bankGuarantees.ExpiryDate = reader.GetDateTime("expiryDate");
+            bankGuarantees.ApplicantId = reader.GetInt("applicantId");
+            bankGuarantees.BeneficiaryParty = reader.GetString("beneficiaryParty");
+            bankGuarantees.GuarnteeType = reader.GetString("guarnteeType");
+            bankGuarantees.FeePerPeriod = reader.GetMoney("feePerPeriod");
+            bankGuarantees.FeePeriod = reader.GetString("feePeriod");
+            bankGuarantees.InstrumentDetails = reader.GetString("instrumentDetails");
+            bankGuarantees.Value = reader.GetMoney("value");
+            bankGuarantees.Currency = reader.GetString("currency");
+            bankGuarantees.Status = reader.GetString("status");
+            bankGuarantees.Branch = reader.GetString("branch");
+
+                return bankGuarantees;
+            
         }
 
         private static void SetBankGuarantee(OpenCbsCommand c, BankGuarantees bankGuarantee)
@@ -55,6 +67,26 @@ namespace OpenCBS.Manager
             c.AddParam("@value", bankGuarantee.Value);
             c.AddParam("@currency", bankGuarantee.Currency);
             c.AddParam("@status", bankGuarantee.Status);
+            c.AddParam("@branch", bankGuarantee.Branch);
+
+        }
+
+
+        public void UpdateBankGuaranteeCode(BankGuarantees bankGuarantee)
+        {
+            const string q = @"UPDATE [Test].[dbo].[BankGuarantees]
+               SET [bankGuaranteeCode] = @bankGuaranteeCode
+                  WHERE id = @id";
+
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@bankGuaranteeCode", bankGuarantee.BankGuaranteeCode);
+                c.AddParam("@id", bankGuarantee.Id);
+                
+                c.ExecuteNonQuery();
+            }
 
         }
 
@@ -73,6 +105,7 @@ namespace OpenCBS.Manager
                   ,[value] = @value
                   ,[currency] = @currency
                   ,[status] = @status
+                  ,[branch] = @branch
                                      WHERE id = @id";
 
 
@@ -80,6 +113,7 @@ namespace OpenCBS.Manager
             using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
             {
                 SetBankGuarantee(c, bankGuarantee);
+                c.AddParam("@id", bankGuarantee.Id);
                 c.ExecuteNonQuery();
             }
 
@@ -105,24 +139,32 @@ namespace OpenCBS.Manager
 
         }
 
-        public BankGuarantees FetchAll()
+        public List<BankGuarantees> FetchBranchAllBankGuarantee(int clientID)
         {
-            const string q = @"SELECT * FROM [BankGuarantees]";
+            List<BankGuarantees> listBankGuarantees = new List<BankGuarantees>();
+            const string q = @"SELECT * FROM [BankGuarantees] WHERE applicantId = @clientId";
 
             using (SqlConnection conn = GetConnection())
             using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
             {
+                c.AddParam("@clientId", clientID);
                 using (OpenCbsReader r = c.ExecuteReader())
                 {
-                    if (r == null || r.Empty) return null;
+                    
+                    if (r == null || r.Empty) return new List<BankGuarantees>();
 
-                    r.Read();
-                    return (BankGuarantees)GetBankGuarantee(r);
+                    while (r.Read())
+                    {
+                        listBankGuarantees.Add((BankGuarantees)GetBankGuarantee(r));
+                    }
+                    return listBankGuarantees;
                 }
             }
 
         }
-        public int SaveBankGuarantee(BankGuarantees bankGuarantee)
+
+
+        public string SaveBankGuarantee(BankGuarantees bankGuarantee)
         {
 
             const string q = @"INSERT INTO [Test].[dbo].[BankGuarantees]
@@ -137,7 +179,9 @@ namespace OpenCBS.Manager
            ,[instrumentDetails]
            ,[value]
            ,[currency]
-           ,[status])
+           ,[status]
+           ,[branch]
+            )
         VALUES
                 (@bankGuaranteeCode,
                 @issuingDate,
@@ -150,7 +194,8 @@ namespace OpenCBS.Manager
                 @instrumentDetails,
                 @value,
                 @currency,
-                @status
+                @status,
+                @branch
                 )
                 SELECT SCOPE_IDENTITY()";
 
@@ -160,9 +205,67 @@ namespace OpenCBS.Manager
             {
                 SetBankGuarantee(c, bankGuarantee);
                 bankGuarantee.Id = Convert.ToInt32(c.ExecuteScalar());
+                bankGuarantee.BankGuaranteeCode = bankGuarantee.Branch + "/BG/" + bankGuarantee.Id;
+                UpdateBankGuaranteeCode(bankGuarantee);
+                MakeBankGuaranteeFeeTransaction(bankGuarantee);
 
             }
-            return bankGuarantee.Id;
+            return bankGuarantee.Branch + "/BG/" + bankGuarantee.Id;
         }
+
+        public string GetChartOfAccountNumber(string COA)
+        {
+            string ret = "";
+            using (SqlConnection conn = GetConnection())
+            {
+                using (OpenCbsCommand command = new OpenCbsCommand("GetChartOfAccounts", conn).AsStoredProcedure())
+                {
+
+                    command.AddParam("@name", COA);
+
+
+                    ret = Convert.ToString(command.ExecuteScalar());
+
+                }
+            }
+
+            return ret;
+        }
+
+        private OCurrency MakeBankGuaranteeFeeTransaction(BankGuarantees bankGuarantee)
+        {
+
+            CurrentAccountTransactions feeTransaction = new CurrentAccountTransactions();
+          
+                feeTransaction.Amount = bankGuarantee.TotalFee;
+
+
+                feeTransaction.Checker = "Fees";
+                feeTransaction.FromAccount = bankGuarantee.AccountNumber;
+                feeTransaction.Maker = "Fees";
+                feeTransaction.PurposeOfTransfer = "Bank Guarantee fee paid for " + bankGuarantee.BankGuaranteeCode;
+                feeTransaction.ToAccount = GetChartOfAccountNumber("ProfitAndLossIncome");
+                feeTransaction.TransactionDate = DateTime.Today;
+                feeTransaction.TransactionFees = -1;
+                feeTransaction.TransactionMode = "Debit";
+                feeTransaction.TransactionType = "Fee";
+                int ret = currentAccountTransactionManager.DebitFeeTransaction(feeTransaction);
+                if (ret > 0)
+                {
+                    CurrentAccountEvent currentAccountEvent = new CurrentAccountEvent();
+                    currentAccountEvent.ContractCode = bankGuarantee.AccountNumber;
+                    currentAccountEvent.EventCode = "TRFT";
+                    currentAccountEvent.Description = "Bank Guarantee Fee debit transaction #" + ret;
+                    currentAccountEventManager.SaveCurrentAccountEvent(currentAccountEvent);
+                }
+
+            return bankGuarantee.TotalFee.Value;
+            }
+
+
+
+            
+
+        }
+            
     }
-}

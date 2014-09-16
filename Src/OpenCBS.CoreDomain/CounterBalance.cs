@@ -13,8 +13,8 @@ namespace OpenCBS.CoreDomain
         public int Id { get; set; }
         public int AllocaterId { get; set; }
         public string Branch { get; set; }
-        public int? CashierId { get; set; }
-        public int? CounterId { get; set; }
+        public string CashierId { get; set; }
+        public string CounterId { get; set; }
         public DateTime AllocationDate { get; set; }
         public OCurrency Amount { get; set; }
         public string Type { get; set; }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using OpenCBS.CoreDomain;
+using OpenCBS.Enums;
 using OpenCBS.ExceptionsHandler;
 using OpenCBS.Manager;
 using OpenCBS.Manager.Products;
@@ -39,7 +40,7 @@ namespace OpenCBS.Services
         public int InsertFixedAssetRecord(FixedAssetRegister fixedAssetRegister)
         {
 
-            ValidateProduct(fixedAssetRegister);
+           // ValidateProduct(fixedAssetRegister);
             return _fixedAssetRegisterManager.InsertFixedAssetRecord(fixedAssetRegister);
         }
 
@@ -81,7 +82,7 @@ namespace OpenCBS.Services
             //if (fixedAsset.AnnualDepreciationRate <= 0)
             //    throw new OpenCbsFixedAssetException(OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterAnnualDepreciationRateIsInvalid);
 
-            if (fixedAsset.AcquisitionCapitalFinance == null)
+            if (fixedAsset.AcquisitionCapitalFinance == OFixedAssetRegister.SelectFinanceMethodDefault)
                 throw new OpenCbsFixedAssetException(OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterAcquisitionCapitalFinanceMethodIsNotSelected);
 
             if (string.IsNullOrEmpty(fixedAsset.AcquisitionCapitalTransaction))
@@ -91,7 +92,7 @@ namespace OpenCBS.Services
             if (_currentAccountTransactionManager.FetchTransaction(Convert.ToInt32(fixedAsset.AcquisitionCapitalTransaction)) == null)
                 throw new OpenCbsFixedAssetException(OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterAcquisitionCapitalTransactionIsInvalid);
 
-            if (string.IsNullOrEmpty(fixedAsset.DisposalAmountTransfer))
+            if (fixedAsset.DisposalAmountTransfer == OFixedAssetRegister.SelectFinanceMethodDefault)
                 throw new OpenCbsFixedAssetException(OpenCbsFixedAssetExceptionEnum.FixedAssetRegisterDisposalAmountTransferMethodIsNotSelected);
 
             if (string.IsNullOrEmpty(fixedAsset.DisposalAmountTransaction))

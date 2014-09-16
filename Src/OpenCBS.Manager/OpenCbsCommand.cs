@@ -297,7 +297,7 @@ namespace OpenCBS.Manager
         {
             return new OpenCbsReader(_cmd.ExecuteReader());
         }
-
+       
         public OpenCbsReader ExecuteReader(CommandType commandType)
         {
             _cmd.CommandType = commandType;

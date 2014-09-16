@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCancel = new System.Windows.Forms.Button();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.tbxAmount = new System.Windows.Forms.TextBox();
             this.lblAmount = new System.Windows.Forms.Label();
@@ -43,19 +42,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // btnCancel
-            // 
-            this.btnCancel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnCancel.Location = new System.Drawing.Point(216, 262);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(96, 23);
-            this.btnCancel.TabIndex = 25;
-            this.btnCancel.Text = "Cancel";
-            // 
             // btnConfirm
             // 
             this.btnConfirm.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnConfirm.Location = new System.Drawing.Point(40, 262);
+            this.btnConfirm.Location = new System.Drawing.Point(129, 253);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(107, 23);
             this.btnConfirm.TabIndex = 24;
@@ -177,7 +167,6 @@
             this.Controls.Add(this.cmbCounter);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rbtnTopUp);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.tbxAmount);
             this.Controls.Add(this.lblAmount);
@@ -196,7 +185,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.TextBox tbxAmount;
         private System.Windows.Forms.Label lblAmount;

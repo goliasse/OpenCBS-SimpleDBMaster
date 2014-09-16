@@ -160,11 +160,13 @@ namespace OpenCBS.GUI.UserControl
             this.buttonSave = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBoxCivilities = new System.Windows.Forms.GroupBox();
-            this.cbTypeOfFacilities = new System.Windows.Forms.ComboBox();
+            this.txtLoanFacilityLimit = new OpenCBS.GUI.UserControl.TextBoxLimit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtTypeOfFacilities = new OpenCBS.GUI.UserControl.TextBoxLimit();
             this.lblTypeOfFacilities = new System.Windows.Forms.Label();
             this.cbKYCStatus = new System.Windows.Forms.ComboBox();
             this.lblKYCStatus = new System.Windows.Forms.Label();
-            this.tbEstimatedWork = new OpenCBS.GUI.UserControl.TextBoxLimit();
+            this.tbEstimatedWorth = new OpenCBS.GUI.UserControl.TextBoxLimit();
             this.lblEstimatedWork = new System.Windows.Forms.Label();
             this.cbMaritalStatus = new System.Windows.Forms.ComboBox();
             this.lblMaritalStatus = new System.Windows.Forms.Label();
@@ -713,11 +715,13 @@ namespace OpenCBS.GUI.UserControl
             // 
             // groupBoxCivilities
             // 
-            this.groupBoxCivilities.Controls.Add(this.cbTypeOfFacilities);
+            this.groupBoxCivilities.Controls.Add(this.txtLoanFacilityLimit);
+            this.groupBoxCivilities.Controls.Add(this.label1);
+            this.groupBoxCivilities.Controls.Add(this.txtTypeOfFacilities);
             this.groupBoxCivilities.Controls.Add(this.lblTypeOfFacilities);
             this.groupBoxCivilities.Controls.Add(this.cbKYCStatus);
             this.groupBoxCivilities.Controls.Add(this.lblKYCStatus);
-            this.groupBoxCivilities.Controls.Add(this.tbEstimatedWork);
+            this.groupBoxCivilities.Controls.Add(this.tbEstimatedWorth);
             this.groupBoxCivilities.Controls.Add(this.lblEstimatedWork);
             this.groupBoxCivilities.Controls.Add(this.cbMaritalStatus);
             this.groupBoxCivilities.Controls.Add(this.lblMaritalStatus);
@@ -753,17 +757,23 @@ namespace OpenCBS.GUI.UserControl
             this.groupBoxCivilities.Name = "groupBoxCivilities";
             this.groupBoxCivilities.TabStop = false;
             // 
-            // cbTypeOfFacilities
+            // txtLoanFacilityLimit
             // 
-            this.cbTypeOfFacilities.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTypeOfFacilities.FormattingEnabled = true;
-            this.cbTypeOfFacilities.Items.AddRange(new object[] {
-            resources.GetString("cbTypeOfFacilities.Items"),
-            resources.GetString("cbTypeOfFacilities.Items1"),
-            resources.GetString("cbTypeOfFacilities.Items2"),
-            resources.GetString("cbTypeOfFacilities.Items3")});
-            resources.ApplyResources(this.cbTypeOfFacilities, "cbTypeOfFacilities");
-            this.cbTypeOfFacilities.Name = "cbTypeOfFacilities";
+            this.txtLoanFacilityLimit.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.txtLoanFacilityLimit, "txtLoanFacilityLimit");
+            this.txtLoanFacilityLimit.Name = "txtLoanFacilityLimit";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Name = "label1";
+            // 
+            // txtTypeOfFacilities
+            // 
+            this.txtTypeOfFacilities.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.txtTypeOfFacilities, "txtTypeOfFacilities");
+            this.txtTypeOfFacilities.Name = "txtTypeOfFacilities";
             // 
             // lblTypeOfFacilities
             // 
@@ -789,11 +799,11 @@ namespace OpenCBS.GUI.UserControl
             this.lblKYCStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblKYCStatus.Name = "lblKYCStatus";
             // 
-            // tbEstimatedWork
+            // tbEstimatedWorth
             // 
-            this.tbEstimatedWork.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.tbEstimatedWork, "tbEstimatedWork");
-            this.tbEstimatedWork.Name = "tbEstimatedWork";
+            this.tbEstimatedWorth.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.tbEstimatedWorth, "tbEstimatedWorth");
+            this.tbEstimatedWorth.Name = "tbEstimatedWorth";
             // 
             // lblEstimatedWork
             // 
@@ -1434,13 +1444,15 @@ namespace OpenCBS.GUI.UserControl
         private EconomicActivityControl eacPerson;
         private Label lblEconomicActivity;
         private Label lblBranch;
-        private TextBoxLimit tbEstimatedWork;
+        private TextBoxLimit tbEstimatedWorth;
         private Label lblEstimatedWork;
         private ComboBox cbKYCStatus;
         private Label lblKYCStatus;
         private ComboBox cbMaritalStatus;
         private Label lblMaritalStatus;
         private Label lblTypeOfFacilities;
-        private ComboBox cbTypeOfFacilities;
+        private TextBoxLimit txtTypeOfFacilities;
+        private TextBoxLimit txtLoanFacilityLimit;
+        private Label label1;
     }
 }

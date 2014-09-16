@@ -157,6 +157,7 @@ namespace OpenCBS.GUI
             this.menuItemCollateralProducts = new System.Windows.Forms.ToolStripMenuItem();
             this.fixedDepositProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.currentAccountProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fixedAssetRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._modulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._aboutModulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -168,7 +169,7 @@ namespace OpenCBS.GUI
             this.toolStripStatusLblBranchCode = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLblDB = new System.Windows.Forms.ToolStripStatusLabel();
             this.alertBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fixedAssetRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageCountersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvAlerts)).BeginInit();
             this.tabFilter.SuspendLayout();
@@ -829,7 +830,8 @@ namespace OpenCBS.GUI
             this.menuItemCollateralProducts,
             this.fixedDepositProductsToolStripMenuItem,
             this.currentAccountProductsToolStripMenuItem,
-            this.fixedAssetRegisterToolStripMenuItem});
+            this.fixedAssetRegisterToolStripMenuItem,
+            this.manageCountersToolStripMenuItem});
             this.mnuProducts.Name = "mnuProducts";
             resources.ApplyResources(this.mnuProducts, "mnuProducts");
             // 
@@ -867,6 +869,13 @@ namespace OpenCBS.GUI
             this.currentAccountProductsToolStripMenuItem.Name = "currentAccountProductsToolStripMenuItem";
             resources.ApplyResources(this.currentAccountProductsToolStripMenuItem, "currentAccountProductsToolStripMenuItem");
             this.currentAccountProductsToolStripMenuItem.Click += new System.EventHandler(this.currentAccountProductsToolStripMenuItem_Click);
+            // 
+            // fixedAssetRegisterToolStripMenuItem
+            // 
+            this.fixedAssetRegisterToolStripMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.package;
+            this.fixedAssetRegisterToolStripMenuItem.Name = "fixedAssetRegisterToolStripMenuItem";
+            resources.ApplyResources(this.fixedAssetRegisterToolStripMenuItem, "fixedAssetRegisterToolStripMenuItem");
+            this.fixedAssetRegisterToolStripMenuItem.Click += new System.EventHandler(this.fixedAssetRegisterToolStripMenuItem_Click);
             // 
             // _modulesMenuItem
             // 
@@ -954,12 +963,12 @@ namespace OpenCBS.GUI
             // 
             this.alertBindingSource.DataSource = typeof(OpenCBS.CoreDomain.Alert);
             // 
-            // fixedAssetRegisterToolStripMenuItem
+            // manageCountersToolStripMenuItem
             // 
-            this.fixedAssetRegisterToolStripMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.package;
-            this.fixedAssetRegisterToolStripMenuItem.Name = "fixedAssetRegisterToolStripMenuItem";
-            resources.ApplyResources(this.fixedAssetRegisterToolStripMenuItem, "fixedAssetRegisterToolStripMenuItem");
-            this.fixedAssetRegisterToolStripMenuItem.Click += new System.EventHandler(this.fixedAssetRegisterToolStripMenuItem_Click);
+            this.manageCountersToolStripMenuItem.Image = global::OpenCBS.GUI.Properties.Resources.package;
+            this.manageCountersToolStripMenuItem.Name = "manageCountersToolStripMenuItem";
+            resources.ApplyResources(this.manageCountersToolStripMenuItem, "manageCountersToolStripMenuItem");
+            this.manageCountersToolStripMenuItem.Click += new System.EventHandler(this.manageCountersToolStripMenuItem_Click);
             // 
             // MainView
             // 
@@ -1063,6 +1072,7 @@ namespace OpenCBS.GUI
         private ToolStripMenuItem tellersToolStripMenuItem;
         private ToolStripMenuItem configureCountersToolStripMenuItem;
         private ToolStripMenuItem fixedAssetRegisterToolStripMenuItem;
+        private ToolStripMenuItem manageCountersToolStripMenuItem;
 
 
     }

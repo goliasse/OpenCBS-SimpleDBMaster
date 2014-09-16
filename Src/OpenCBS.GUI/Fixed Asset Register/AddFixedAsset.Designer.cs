@@ -192,7 +192,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(25, 311);
+            this.label6.Location = new System.Drawing.Point(21, 310);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(191, 16);
             this.label6.TabIndex = 37;
@@ -254,7 +254,8 @@
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(96, 23);
             this.btnUpdate.TabIndex = 43;
-            this.btnUpdate.Text = "Update";
+            this.btnUpdate.Text = "Dispose";
+            this.btnUpdate.Visible = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnSubmit
@@ -330,7 +331,7 @@
             this.lblNetBookValue.AutoSize = true;
             this.lblNetBookValue.Font = new System.Drawing.Font("Arial", 9.75F);
             this.lblNetBookValue.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblNetBookValue.Location = new System.Drawing.Point(106, 437);
+            this.lblNetBookValue.Location = new System.Drawing.Point(110, 439);
             this.lblNetBookValue.Name = "lblNetBookValue";
             this.lblNetBookValue.Size = new System.Drawing.Size(102, 16);
             this.lblNetBookValue.TabIndex = 60;
@@ -339,7 +340,7 @@
             // 
             // txtAccDepCharge
             // 
-            this.txtAccDepCharge.Location = new System.Drawing.Point(268, 461);
+            this.txtAccDepCharge.Location = new System.Drawing.Point(268, 466);
             this.txtAccDepCharge.Name = "txtAccDepCharge";
             this.txtAccDepCharge.Size = new System.Drawing.Size(183, 20);
             this.txtAccDepCharge.TabIndex = 63;
@@ -350,7 +351,7 @@
             this.lblAccDepCharge.AutoSize = true;
             this.lblAccDepCharge.Font = new System.Drawing.Font("Arial", 9.75F);
             this.lblAccDepCharge.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblAccDepCharge.Location = new System.Drawing.Point(-1, 463);
+            this.lblAccDepCharge.Location = new System.Drawing.Point(3, 466);
             this.lblAccDepCharge.Name = "lblAccDepCharge";
             this.lblAccDepCharge.Size = new System.Drawing.Size(209, 16);
             this.lblAccDepCharge.TabIndex = 62;
@@ -362,7 +363,7 @@
             this.lblProfitLoss.AutoSize = true;
             this.lblProfitLoss.Font = new System.Drawing.Font("Arial", 9.75F);
             this.lblProfitLoss.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblProfitLoss.Location = new System.Drawing.Point(59, 492);
+            this.lblProfitLoss.Location = new System.Drawing.Point(63, 498);
             this.lblProfitLoss.Name = "lblProfitLoss";
             this.lblProfitLoss.Size = new System.Drawing.Size(149, 16);
             this.lblProfitLoss.TabIndex = 64;
@@ -371,7 +372,7 @@
             // 
             // txtProfitLoss
             // 
-            this.txtProfitLoss.Location = new System.Drawing.Point(268, 493);
+            this.txtProfitLoss.Location = new System.Drawing.Point(268, 498);
             this.txtProfitLoss.Name = "txtProfitLoss";
             this.txtProfitLoss.Size = new System.Drawing.Size(183, 20);
             this.txtProfitLoss.TabIndex = 65;

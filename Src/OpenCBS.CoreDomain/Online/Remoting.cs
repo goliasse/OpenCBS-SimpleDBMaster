@@ -77,5 +77,7 @@ namespace OpenCBS.CoreDomain.Online
         {
             return _remoteOperation.GetLoanScaleTable(User.CurrentUser);
         }
+
+        
     }
 }

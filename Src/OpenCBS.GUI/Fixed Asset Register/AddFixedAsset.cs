@@ -34,11 +34,11 @@ namespace OpenCBS.GUI.FixedAssetRegister
             InitializeFixedAssetType();
             InitializeFinanceMethod(cmbAcqCapFinMethod);
             InitializeFinanceMethod(cmbDisAmtTranMethod);
-            InitializeControls(flag);
+            
 
             FixedAssetRegisterService _fixedAssetRegisterService = ServicesProvider.GetInstance().GetFixedAssetRegisterService();
             fixedAssetRegister = _fixedAssetRegisterService.FetchFixedAssetRecord(assetId);
-
+            int depChargePerAsset = 0;
             txtAssetDescription.Text  = fixedAssetRegister.Description;
             cmbBranch.SelectedItem =  fixedAssetRegister.Branch;
             cmbAssetType.SelectedItem  = fixedAssetRegister.AssetType ;
@@ -51,9 +51,18 @@ namespace OpenCBS.GUI.FixedAssetRegister
             cmbDisAmtTranMethod.SelectedItem  =fixedAssetRegister.DisposalAmountTransfer;
             
             txtAcquisitionDate.Text  = fixedAssetRegister.AcquisitionDate.ToShortDateString();
-            txtDisDate.Text = DateTime.Today.ToShortDateString();
-            int depChargePerAsset = CalculateAccumulatedDepriciation(fixedAssetRegister.AnnualDepreciationRate.Value, 
-            fixedAssetRegister.OriginalCost.Value, fixedAssetRegister.AcquisitionDate, DateTime.Today);
+            if (fixedAssetRegister.ProfitLossDisposal == null)
+            {
+                txtDisDate.Text = DateTime.Today.ToShortDateString();
+                depChargePerAsset = CalculateAccumulatedDepriciation(fixedAssetRegister.AnnualDepreciationRate.Value,
+                fixedAssetRegister.OriginalCost.Value, fixedAssetRegister.AcquisitionDate, DateTime.Today);
+            }
+            else
+            {
+                txtDisDate.Text = fixedAssetRegister.DisposalDate.ToShortDateString();
+                depChargePerAsset = CalculateAccumulatedDepriciation(fixedAssetRegister.AnnualDepreciationRate.Value,
+                fixedAssetRegister.OriginalCost.Value, fixedAssetRegister.AcquisitionDate, fixedAssetRegister.DisposalDate);
+            }
             txtAccDepCharge.Text = depChargePerAsset.ToString();
             txtNetBookValue.Text = ((fixedAssetRegister.OriginalCost.Value - depChargePerAsset)*fixedAssetRegister.NoOfAssets).ToString();
 
@@ -63,41 +72,108 @@ namespace OpenCBS.GUI.FixedAssetRegister
                 txtProfitLoss.Text = "Profit";
             if (depChargePerAsset == 0)
                 txtProfitLoss.Text = "No Profit No Loss";
+            InitializeControls(flag);
+
         }
 
         private void InitializeControls(bool flag)
         {
-            lblDisAmtTransMethod.Visible = flag;
-            cmbDisAmtTranMethod.Visible = flag;
-            lblDisAmtTran.Visible = flag;
-            txtDisAmtTranNum.Visible = flag;
-            btnSubmit.Visible = !flag;
-            btnUpdate.Visible = flag;
-            lblDisDate.Visible = flag;
-            txtDisDate.Visible = flag;
-            lblNetBookValue.Visible = flag;
-            txtNetBookValue.Visible = flag;
-            lblAccDepCharge.Visible = flag;
-            txtAccDepCharge.Visible = flag;
-            txtProfitLoss.Visible = flag;
-            lblProfitLoss.Visible = flag;
+            if (flag == true)
+            {
+                lblDisAmtTransMethod.Visible = flag;
+                cmbDisAmtTranMethod.Visible = flag;
+                lblDisAmtTran.Visible = flag;
+                txtDisAmtTranNum.Visible = flag;
+                btnSubmit.Visible = !flag;
+                if (fixedAssetRegister.ProfitLossDisposal == null)
+                {
+                    btnUpdate.Visible = flag;
+                    cmbDisAmtTranMethod.Enabled = flag;
+                    txtDisAmtTranNum.Enabled = flag;
+                }
+                else
+                {
+                    btnUpdate.Visible = !flag;
+                    cmbDisAmtTranMethod.Enabled = !flag;
+                    txtDisAmtTranNum.Enabled = !flag;
+                }
+                lblDisDate.Visible = flag;
+                txtDisDate.Visible = flag;
+                lblNetBookValue.Visible = flag;
+                txtNetBookValue.Visible = flag;
+                lblAccDepCharge.Visible = flag;
+                txtAccDepCharge.Visible = flag;
+                txtProfitLoss.Visible = flag;
+                lblProfitLoss.Visible = flag;
 
+                
+                txtDisDate.Enabled = !flag;
+                txtNetBookValue.Enabled = !flag;
+                txtAccDepCharge.Enabled = !flag;
+                txtProfitLoss.Enabled = !flag;
+                txtAssetDescription.Enabled = !flag;
+                cmbBranch.Enabled = !flag;
+                cmbAssetType.Enabled = !flag;
+                txtNoOfAssets.Enabled = !flag;
+                txtOriginalCost.Enabled = !flag;
+                txtDepreciationRate.Enabled = !flag;
+                cmbAcqCapFinMethod.Enabled = !flag;
+                txtAcqCapTranNum.Enabled = !flag;
+                txtAcquisitionDate.Enabled = !flag;
 
-            cmbDisAmtTranMethod.Enabled = flag;
-            txtDisAmtTranNum.Enabled = flag;
-            txtDisDate.Enabled = flag;
-            txtNetBookValue.Enabled = flag;
-            txtAccDepCharge.Enabled = flag;
-            txtProfitLoss.Enabled = flag;
-            txtAssetDescription.Enabled = flag;
-            cmbBranch.Enabled = flag;
-            cmbAssetType.Enabled = flag;
-            txtNoOfAssets.Enabled = flag;
-            txtOriginalCost.Enabled = flag;
-            txtDepreciationRate.Enabled = flag;
-            cmbAcqCapFinMethod.Enabled = flag;
-            txtAcqCapTranNum.Enabled = flag;
+            }
+            else
+            {
+                btnSubmit.Visible = flag;
+                btnUpdate.Visible = flag;
+                if (fixedAssetRegister.ProfitLossDisposal != null)
+                {
+                    lblDisAmtTransMethod.Visible = !flag;
+                    cmbDisAmtTranMethod.Visible = !flag;
+                    lblDisAmtTran.Visible = !flag;
+                    txtDisAmtTranNum.Visible = !flag;
+                    
+                    lblDisDate.Visible = !flag;
+                    txtDisDate.Visible = !flag;
+                    lblNetBookValue.Visible = !flag;
+                    txtNetBookValue.Visible = !flag;
+                    lblAccDepCharge.Visible = !flag;
+                    txtAccDepCharge.Visible = !flag;
+                    txtProfitLoss.Visible = !flag;
+                    lblProfitLoss.Visible = !flag;
+                }
+                else
+                {
+                    lblDisAmtTransMethod.Visible = flag;
+                    cmbDisAmtTranMethod.Visible = flag;
+                    lblDisAmtTran.Visible = flag;
+                    txtDisAmtTranNum.Visible = flag;
+                    lblDisDate.Visible = flag;
+                    txtDisDate.Visible = flag;
+                    lblNetBookValue.Visible = flag;
+                    txtNetBookValue.Visible = flag;
+                    lblAccDepCharge.Visible = flag;
+                    txtAccDepCharge.Visible = flag;
+                    txtProfitLoss.Visible = flag;
+                    lblProfitLoss.Visible = flag;
+                }
 
+                cmbDisAmtTranMethod.Enabled = flag;
+                txtDisAmtTranNum.Enabled = flag;
+                txtDisDate.Enabled = flag;
+                txtNetBookValue.Enabled = flag;
+                txtAccDepCharge.Enabled = flag;
+                txtProfitLoss.Enabled = flag;
+                txtAssetDescription.Enabled = flag;
+                cmbBranch.Enabled = flag;
+                cmbAssetType.Enabled = flag;
+                txtNoOfAssets.Enabled = flag;
+                txtOriginalCost.Enabled = flag;
+                txtDepreciationRate.Enabled = flag;
+                cmbAcqCapFinMethod.Enabled = flag;
+                txtAcqCapTranNum.Enabled = flag;
+                txtAcquisitionDate.Enabled = flag;
+            }
 
 
 
@@ -184,10 +260,10 @@ namespace OpenCBS.GUI.FixedAssetRegister
             fixedAssetRegister.AnnualDepreciationRate = ServicesHelper.ConvertStringToNullableDouble(txtDepreciationRate.Text, false);
             fixedAssetRegister.AcquisitionCapitalFinance = cmbAcqCapFinMethod.SelectedItem.ToString();
             fixedAssetRegister.AcquisitionCapitalTransaction = txtAcqCapTranNum.Text;
-            //fixedAssetRegister.DisposalAmountTransaction = txtDisAmtTranNum.Text;
-            //fixedAssetRegister.DisposalAmountTransfer = cmbDisAmtTranMethod.SelectedItem.ToString();
+      
 
-            fixedAssetRegister.AcquisitionDate = DateTime.Today;
+             
+            fixedAssetRegister.AcquisitionDate = Convert.ToDateTime(txtAcquisitionDate.Text);
             fixedAssetRegister.DisposalDate = DateTime.MaxValue;
 
             FixedAssetRegisterService _fixedAssetRegisterService = ServicesProvider.GetInstance().GetFixedAssetRegisterService();
@@ -203,6 +279,7 @@ namespace OpenCBS.GUI.FixedAssetRegister
 
         static int CalculateAccumulatedDepriciation(double depreciationRate, decimal originalCost, DateTime acquiredDate, DateTime disposalDate)
         {
+            //double days = acquiredDate.Subtract(disposalDate).TotalDays;
             double days = disposalDate.Subtract(acquiredDate).TotalDays;
             int totalDepreciation = (int)((double)originalCost * depreciationRate * days) / (100 * 360);
             return totalDepreciation;
@@ -222,10 +299,10 @@ namespace OpenCBS.GUI.FixedAssetRegister
             fixedAssetRegister.DisposalAmountTransaction = txtDisAmtTranNum.Text;
             fixedAssetRegister.DisposalAmountTransfer = cmbDisAmtTranMethod.SelectedItem.ToString();
 
-            //Need to update
-            fixedAssetRegister.AcquisitionDate = DateTime.Today;
-            //Need to update
-            fixedAssetRegister.DisposalDate = DateTime.Today;
+            
+            fixedAssetRegister.AcquisitionDate = Convert.ToDateTime(txtAcquisitionDate.Text);
+            
+            fixedAssetRegister.DisposalDate = Convert.ToDateTime(txtDisDate.Text);
             int depChargePerAsset = CalculateAccumulatedDepriciation(fixedAssetRegister.AnnualDepreciationRate.Value,
            fixedAssetRegister.OriginalCost.Value, fixedAssetRegister.AcquisitionDate, fixedAssetRegister.DisposalDate);
             fixedAssetRegister.NetBookValue = depChargePerAsset;

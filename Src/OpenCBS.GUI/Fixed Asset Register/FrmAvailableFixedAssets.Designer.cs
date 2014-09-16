@@ -40,10 +40,11 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnViewFixedAsset = new System.Windows.Forms.Button();
             this.buttonEditFixedAsset = new System.Windows.Forms.Button();
             this.buttonAddFixedAsset = new System.Windows.Forms.Button();
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnGenerateFAR = new System.Windows.Forms.Button();
             this.pnlSavingsProducts.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -73,6 +74,7 @@
             // 
             this.groupBox1.AutoSize = true;
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox1.Controls.Add(this.btnGenerateFAR);
             this.groupBox1.Controls.Add(this.lvFixedAsset);
             this.groupBox1.Controls.Add(this.btnViewFixedAsset);
             this.groupBox1.Controls.Add(this.buttonEditFixedAsset);
@@ -151,12 +153,17 @@
             this.columnHeader8.Text = "Annual Depreciation Rate";
             this.columnHeader8.Width = 145;
             // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Status";
+            this.columnHeader9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // btnViewFixedAsset
             // 
             this.btnViewFixedAsset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnViewFixedAsset.Font = new System.Drawing.Font("Arial", 9F);
             this.btnViewFixedAsset.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnViewFixedAsset.Location = new System.Drawing.Point(774, 104);
+            this.btnViewFixedAsset.Location = new System.Drawing.Point(771, 104);
             this.btnViewFixedAsset.Name = "btnViewFixedAsset";
             this.btnViewFixedAsset.Size = new System.Drawing.Size(140, 28);
             this.btnViewFixedAsset.TabIndex = 10;
@@ -187,10 +194,17 @@
             this.buttonAddFixedAsset.Text = "Add Fixed Asset";
             this.buttonAddFixedAsset.Click += new System.EventHandler(this.buttonAddProduct_Click);
             // 
-            // columnHeader9
+            // btnGenerateFAR
             // 
-            this.columnHeader9.Text = "Status";
-            this.columnHeader9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnGenerateFAR.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerateFAR.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnGenerateFAR.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnGenerateFAR.Location = new System.Drawing.Point(771, 138);
+            this.btnGenerateFAR.Name = "btnGenerateFAR";
+            this.btnGenerateFAR.Size = new System.Drawing.Size(140, 28);
+            this.btnGenerateFAR.TabIndex = 28;
+            this.btnGenerateFAR.Text = "Generate FAR";
+            this.btnGenerateFAR.Click += new System.EventHandler(this.btnGenerateFAR_Click);
             // 
             // FrmAvailableFixedAssets
             // 
@@ -226,6 +240,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.Button btnGenerateFAR;
 
 
     }

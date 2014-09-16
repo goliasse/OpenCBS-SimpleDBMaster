@@ -170,12 +170,14 @@
     </Compile>
     <Compile Include="Accounting\AccountingRuleManager.cs" />
     <Compile Include="Accounting\AccountManager.cs" />
+    <Compile Include="BankGuaranteeManager.cs" />
     <Compile Include="BranchManager.cs" />
     <Compile Include="CollateralProductManager.cs" />
     <Compile Include="CounterBalanceManager.cs" />
     <Compile Include="Events\CurrentAccountEventManager.cs" />
     <Compile Include="Events\FixedDepositEventManager.cs" />
     <Compile Include="FixedAssetRegisterManager.cs" />
+    <Compile Include="LetterOfCreditManager.cs" />
     <Compile Include="MenuItemManager.cs" />
     <Compile Include="PaymentMethodManager.cs" />
     <Compile Include="Products\CurrentAccountProductHoldingManager.cs" />

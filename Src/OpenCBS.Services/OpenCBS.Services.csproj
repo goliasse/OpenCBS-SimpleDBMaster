@@ -202,6 +202,7 @@
     </Compile>
     <Compile Include="Accounting\AccountingRuleServices.cs" />
     <Compile Include="Accounting\AccountingServices.cs" />
+    <Compile Include="BankGuaranteesService.cs" />
     <Compile Include="BranchService.cs" />
     <Compile Include="CollateralProductServices.cs" />
     <Compile Include="CounterBalanceService.cs" />
@@ -211,6 +212,7 @@
     <Compile Include="FixedAssetRegisterService.cs" />
     <Compile Include="FixedDepositProductHoldingServices.cs" />
     <Compile Include="FixedDepositProductService.cs" />
+    <Compile Include="LetterOfCreditService.cs" />
     <Compile Include="MenuItemServices.cs" />
     <Compile Include="PaymentMethodServices.cs" />
     <Compile Include="RWAPercentageService.cs" />

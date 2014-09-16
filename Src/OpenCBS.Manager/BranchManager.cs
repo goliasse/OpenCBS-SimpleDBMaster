@@ -45,7 +45,7 @@ namespace OpenCBS.Manager
                     id, 
                     name, 
                     deleted
-                    , code, address, description
+                    ,code, address, description
             FROM dbo.Branches";
             using (SqlConnection conn = GetConnection())
             using (OpenCbsCommand c = new OpenCbsCommand(q, conn))

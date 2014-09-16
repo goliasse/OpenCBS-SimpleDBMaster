@@ -75,6 +75,8 @@ namespace OpenCBS.Services
         CounterBalanceService GetCounterBalanceService();
         FixedAssetRegisterService GetFixedAssetRegisterService();
         RWAPercentageService GetRWAPercentageService();
+        BankGuaranteesService GetBankGuaranteesService();
+        LetterOfCreditService GetLetterOfCreditService();
         void SuppressAllRemotingInfos(string pComputerName, string pLoginName);
 
         string GetAuthentification(string pOctoUsername, string pOctoPass, string pDbName, string pComputerName, string pLoginName);

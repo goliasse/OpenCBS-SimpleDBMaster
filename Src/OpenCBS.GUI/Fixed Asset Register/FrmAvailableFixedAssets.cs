@@ -29,7 +29,7 @@ namespace OpenCBS.GUI.FixedAssetRegister
     public partial class FrmAvailableFixedAssets : Form
     {
         private int _idPackage;
-        private LoanProduct _package;
+        
         public FrmAvailableFixedAssets()
         {
             
@@ -44,11 +44,6 @@ namespace OpenCBS.GUI.FixedAssetRegister
 
         }
 
-        private int PackageFormId
-        {
-            set { _idPackage = value; }
-            get { return _idPackage; }
-        }
        
         private void InitializeFixedAssetList(bool showAsDeleted)
         {
@@ -60,7 +55,9 @@ namespace OpenCBS.GUI.FixedAssetRegister
                 foreach (OpenCBS.CoreDomain.FixedAssetRegister fixedAsset in fixedAssetList)
                 {
                     string status = "";
-                    if(fixedAsset.DisposalDate == null)
+                    DateTime disposalDate = fixedAsset.DisposalDate.AddSeconds(-1).AddDays(1);
+                    int  days = (int)disposalDate.Subtract(DateTime.MaxValue.Date).TotalDays;
+                    if (days == 0)
                         status = "Acquired";
                     else
                         status = "Disposed";
@@ -81,7 +78,6 @@ namespace OpenCBS.GUI.FixedAssetRegister
 
                 }
 
-                //lvFixedDepositProducts.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             }
 
           
@@ -185,6 +181,11 @@ namespace OpenCBS.GUI.FixedAssetRegister
         }
 
         private void lvFixedDepositProducts_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGenerateFAR_Click(object sender, EventArgs e)
         {
 
         }

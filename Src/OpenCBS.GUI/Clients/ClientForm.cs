@@ -58,6 +58,7 @@ using OpenCBS.Reports;
 using OpenCBS.Services;
 using OpenCBS.Shared;
 using OpenCBS.Shared.Settings;
+using OpenCBS.GUI.BankGuarantee;
 using Group = OpenCBS.CoreDomain.Clients.Group;
 
 namespace OpenCBS.GUI.Clients
@@ -575,7 +576,7 @@ namespace OpenCBS.GUI.Clients
                 panelSavingsContracts.Controls.Add(_personUserControl.PanelSavings);
                 InitializeFixedAndCurrentAccountProduct();
                 InitializeCurrentAccountStatus("");
-                
+                InitializeBankGuaranteeList();
                 
 
             }
@@ -679,67 +680,70 @@ namespace OpenCBS.GUI.Clients
 
         void InitializeFixedAndCurrentAccountProduct()
         {
-
-            tabControlPerson.TabPages.Remove(tabPageFixedDeposit);
-            tabControlPerson.TabPages.Remove(tabPageCurrentAccount);
-
-            lvFixedDeposits.Items.Clear();
-            lvCurrentAccountProducts.Items.Clear();
-
-            tabControlCurrentAccount.TabPages.Remove(tabPageFeesTransactions);
-            tabControlCurrentAccount.TabPages.Remove(tabPageCloseAccount);
-            tabControlCurrentAccount.TabPages.Remove(tabPageReopenAccount);
-            tabControlCurrentAccount.TabPages.Remove(tabPageOverdraft);
-            
-            List<User> users = ServicesProvider.GetInstance().GetUserServices().FindAll(true);
-            cbAccountingOfficer.ValueMember = "Name";
-            cbAccountingOfficer.DisplayMember = "";
-            cbAccountingOfficer.DataSource = users;
-            
-           
-            cbCurrentAccountingOfficer.ValueMember = "Name";
-            cbCurrentAccountingOfficer.DisplayMember = "";
-            cbCurrentAccountingOfficer.DataSource = users;
-
-            cbFixedDepositProduct.Items.Clear();
-            cbFixedDepositProduct.Items.Add(OCurrentAccount.SelectProductDefault);
-            FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
-            List<IFixedDepositProduct> fixedDepositProductList = _fixedDepositProductService.FetchProduct(false);
-            if (fixedDepositProductList != null)
+            if (_client != null)
             {
-                foreach (FixedDepositProduct fixedDepositProduct in fixedDepositProductList)
-                    cbFixedDepositProduct.Items.Add(fixedDepositProduct.Name + " " + fixedDepositProduct.Code);
-            }
+                tabControlPerson.TabPages.Remove(tabPageFixedDeposit);
+                tabControlPerson.TabPages.Remove(tabPageCurrentAccount);
 
-            cbCurrentAccountProducts.Items.Clear();
-            cbCurrentAccountProducts.Items.Add(OCurrentAccount.SelectProductDefault);
-            CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
-            List<ICurrentAccountProduct> currentAccountProductList = _currentAccountProductService.FetchProduct(false);
-            if (currentAccountProductList != null)
-            {
-                foreach (CurrentAccountProduct currentAccountProduct in currentAccountProductList)
-                    cbCurrentAccountProducts.Items.Add(currentAccountProduct.CurrentAccountProductName + " " + currentAccountProduct.CurrentAccountProductCode);
-            }
-            
-            int clientId = _client.Id;
-            string clientType = "";
-            if (_client is Person)
-                clientType = OClientTypes.Person.ToString();
-            if (_client is Village)
-                clientType = OClientTypes.Village.ToString();
-            if (_client is Group)
-                clientType = OClientTypes.Group.ToString();
-            if (_client is Corporate)
-                clientType = OClientTypes.Corporate.ToString();
+                lvFixedDeposits.Items.Clear();
+                lvCurrentAccountProducts.Items.Clear();
 
-            FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
-            List<FixedDepositProductHoldings> fixedDepositProductHoldingsList = _fixedDepositProductHoldingService.FetchProduct(true, clientId, clientType);
-            if (fixedDepositProductHoldingsList != null)
-            {
-                foreach (FixedDepositProductHoldings fixedDepositProductHoldings in fixedDepositProductHoldingsList)
+                tabControlCurrentAccount.TabPages.Remove(tabPageFeesTransactions);
+                tabControlCurrentAccount.TabPages.Remove(tabPageCloseAccount);
+                tabControlCurrentAccount.TabPages.Remove(tabPageReopenAccount);
+                tabControlCurrentAccount.TabPages.Remove(tabPageOverdraft);
+
+                List<User> users = ServicesProvider.GetInstance().GetUserServices().FindAll(true);
+                cbAccountingOfficer.ValueMember = "Name";
+                cbAccountingOfficer.DisplayMember = "";
+                cbAccountingOfficer.DataSource = users;
+
+
+                cbCurrentAccountingOfficer.ValueMember = "Name";
+                cbCurrentAccountingOfficer.DisplayMember = "";
+                cbCurrentAccountingOfficer.DataSource = users;
+
+                cbFixedDepositProduct.Items.Clear();
+                cbFixedDepositProduct.Items.Add(OCurrentAccount.SelectProductDefault);
+                FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
+                List<IFixedDepositProduct> fixedDepositProductList = _fixedDepositProductService.FetchProduct(false);
+                if (fixedDepositProductList != null)
                 {
+                    foreach (FixedDepositProduct fixedDepositProduct in fixedDepositProductList)
+                        cbFixedDepositProduct.Items.Add(fixedDepositProduct.Name + " " + fixedDepositProduct.Code);
+                }
 
-                    var item = new ListViewItem(new[] {
+                cbCurrentAccountProducts.Items.Clear();
+                cbCurrentAccountProducts.Items.Add(OCurrentAccount.SelectProductDefault);
+                CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
+                List<ICurrentAccountProduct> currentAccountProductList = _currentAccountProductService.FetchProduct(false);
+                if (currentAccountProductList != null)
+                {
+                    foreach (CurrentAccountProduct currentAccountProduct in currentAccountProductList)
+                        cbCurrentAccountProducts.Items.Add(currentAccountProduct.CurrentAccountProductName + " " + currentAccountProduct.CurrentAccountProductCode);
+
+                   
+                }
+
+                int clientId = _client.Id;
+                string clientType = "";
+                if (_client is Person)
+                    clientType = OClientTypes.Person.ToString();
+                if (_client is Village)
+                    clientType = OClientTypes.Village.ToString();
+                if (_client is Group)
+                    clientType = OClientTypes.Group.ToString();
+                if (_client is Corporate)
+                    clientType = OClientTypes.Corporate.ToString();
+
+                FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
+                List<FixedDepositProductHoldings> fixedDepositProductHoldingsList = _fixedDepositProductHoldingService.FetchProduct(true, clientId, clientType);
+                if (fixedDepositProductHoldingsList != null)
+                {
+                    foreach (FixedDepositProductHoldings fixedDepositProductHoldings in fixedDepositProductHoldingsList)
+                    {
+
+                        var item = new ListViewItem(new[] {
                     fixedDepositProductHoldings.FixedDepositContractCode,
                     fixedDepositProductHoldings.InitialAmount.GetFormatedValue(OCurrency.UseCents),
                     fixedDepositProductHoldings.InterestRate.ToString(),
@@ -749,23 +753,23 @@ namespace OpenCBS.GUI.Clients
                     fixedDepositProductHoldings.Status
                     
                 });
-                    lvFixedDeposits.Items.Add(item);
+                        lvFixedDeposits.Items.Add(item);
 
+                    }
                 }
-            }
 
 
-           // lvFixedDeposits.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                // lvFixedDeposits.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
 
-            CurrentAccountProductHoldingServices _currentAccountProductHoldingService = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
-            List<CurrentAccountProductHoldings> currentAccountProductHoldingsList = _currentAccountProductHoldingService.FetchProduct(clientId, clientType);
-            
-            if (currentAccountProductHoldingsList != null)
-            {
-                foreach (CurrentAccountProductHoldings currentAccountProductHoldings in currentAccountProductHoldingsList)
+                CurrentAccountProductHoldingServices _currentAccountProductHoldingService = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
+                List<CurrentAccountProductHoldings> currentAccountProductHoldingsList = _currentAccountProductHoldingService.FetchProduct(clientId, clientType);
+
+                if (currentAccountProductHoldingsList != null)
                 {
+                    foreach (CurrentAccountProductHoldings currentAccountProductHoldings in currentAccountProductHoldingsList)
+                    {
 
-                    var item = new ListViewItem(new[] {
+                        var item = new ListViewItem(new[] {
                     currentAccountProductHoldings.CurrentAccountContractCode,
                     currentAccountProductHoldings.Balance.GetFormatedValue(OCurrency.UseCents),
                     currentAccountProductHoldings.OpenDate.ToShortDateString(),
@@ -774,13 +778,13 @@ namespace OpenCBS.GUI.Clients
                     
                     
                 });
-                    lvCurrentAccountProducts.Items.Add(item);
+                        lvCurrentAccountProducts.Items.Add(item);
 
+                    }
+
+                    // lvCurrentAccountProducts.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
                 }
-
-               // lvCurrentAccountProducts.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             }
-             
 
         }
 
@@ -9247,6 +9251,92 @@ namespace OpenCBS.GUI.Clients
                           currentAccountProduct.ClosingFeesType == OCurrentAccount.FeeTypeFlat ? currentAccountProduct.Currency.Code : "%");
                 }
             }
+        }
+
+        private void InitializeBankGuaranteeList()
+        {
+            lvBankGuarantee.Items.Clear();
+            BankGuaranteesService _bankGuaranteeService = ServicesProvider.GetInstance().GetBankGuaranteesService();
+            List<BankGuarantees> bankGuaranteeList = _bankGuaranteeService.FetchBranchAllBankGuarantee(_client.Id);
+            if (bankGuaranteeList != null)
+            {
+                foreach (BankGuarantees bankGuarantee in bankGuaranteeList)
+                {
+
+                    var item = new ListViewItem(new[] {
+                    bankGuarantee.BankGuaranteeCode,
+                    
+                    bankGuarantee.IssuingDate.ToShortDateString(),
+                    bankGuarantee.ExpiryDate.ToShortDateString(),
+                    bankGuarantee.ApplicantId.ToString(),
+                    bankGuarantee.BeneficiaryParty,
+                    bankGuarantee.Value.GetFormatedValue(false),
+                    bankGuarantee.Currency,
+                    bankGuarantee.Status,
+                    });
+                    lvBankGuarantee.Items.Add(item);
+                }
+
+            }
+        }
+
+        private void btnAddBankGuarantee_Click(object sender, EventArgs e)
+        {
+            IssueBankGuarantee issueBankGuarantee = new IssueBankGuarantee(_client);
+            issueBankGuarantee.Show();
+        }
+
+        private void btnUpdateBankGuarantee_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int i = lvBankGuarantee.SelectedIndices[0];
+                string bankGuaranteeCode = lvBankGuarantee.Items[i].Text;
+
+                IssueBankGuarantee issueBankGuarantee = new IssueBankGuarantee(bankGuaranteeCode, true);
+                issueBankGuarantee.Show();
+
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FixedDepositProductSelectAProduct);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
+
+            
+        }
+
+        private void btnViewBankGuarantee_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int i = lvBankGuarantee.SelectedIndices[0];
+                string bankGuaranteeCode = lvBankGuarantee.Items[i].Text;
+
+                IssueBankGuarantee issueBankGuarantee = new IssueBankGuarantee(bankGuaranteeCode, false);
+                issueBankGuarantee.Show();
+
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FixedDepositProductSelectAProduct);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
+            
         }
 
        

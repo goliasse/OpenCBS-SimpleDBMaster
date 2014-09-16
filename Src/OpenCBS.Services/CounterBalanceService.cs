@@ -43,6 +43,26 @@ namespace OpenCBS.Services
             return _counterBalanceManager.FetchCounterBalance(branch,allocationDate);
         }
 
+        public List<string> FetchCashiers()
+        {
+            return _counterBalanceManager.FetchCashiers();
+        }
+
+
+        public List<BranchCounter> FetchCounters(string branch)
+        {
+            return _counterBalanceManager.FetchCounters(branch);
+        }
+
+        public int SaveBranchCounter(BranchCounter branchCounter)
+        {
+            return _counterBalanceManager.SaveBranchCounter(branchCounter);
+        }
+
+        public void UpdateBranchCounter(BranchCounter branchCounter)
+        {
+            _counterBalanceManager.UpdateBranchCounter(branchCounter);
+        }
 
         private void ValidateProduct(CounterBalance counterBalance)
         {
@@ -51,11 +71,11 @@ namespace OpenCBS.Services
                 throw new OpenCbsAllocateCounterException(OpenCbsAllocateCounterExceptionEnum.CounterBalanceBranchIsNotSelected);
 
 
-            if (!counterBalance.CashierId.HasValue)
+            if (string.IsNullOrEmpty(counterBalance.CashierId))
                 throw new OpenCbsAllocateCounterException(OpenCbsAllocateCounterExceptionEnum.CounterBalanceCashierIsNotSelected);
 
 
-            if (!counterBalance.CounterId.HasValue)
+            if (string.IsNullOrEmpty(counterBalance.CounterId))
                 throw new OpenCbsAllocateCounterException(OpenCbsAllocateCounterExceptionEnum.CounterBalanceCounterIsNotSelected);
 
 

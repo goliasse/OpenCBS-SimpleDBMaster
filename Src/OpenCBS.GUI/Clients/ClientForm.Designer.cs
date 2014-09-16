@@ -736,6 +736,33 @@ namespace OpenCBS.GUI.Clients
             this.columnHeader41 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader40 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label44 = new System.Windows.Forms.Label();
+            this.tabPageBGLC = new System.Windows.Forms.TabPage();
+            this.btnViewLetterOfCredit = new System.Windows.Forms.Button();
+            this.btnUpdateLetterOfCredit = new System.Windows.Forms.Button();
+            this.btnAddLetterOfCredit = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader53 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader54 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader55 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader56 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader57 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader58 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader59 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader60 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label46 = new System.Windows.Forms.Label();
+            this.btnViewBankGuarantee = new System.Windows.Forms.Button();
+            this.btnUpdateBankGuarantee = new System.Windows.Forms.Button();
+            this.btnAddBankGuarantee = new System.Windows.Forms.Button();
+            this.lvBankGuarantee = new System.Windows.Forms.ListView();
+            this.columnHeader45 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader46 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader47 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader48 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader49 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader50 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader51 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader52 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label22 = new System.Windows.Forms.Label();
             this.menuBtnAddSavingOperation = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.savingDepositToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.savingWithdrawToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -914,6 +941,7 @@ namespace OpenCBS.GUI.Clients
             this.gbInitialPayment.SuspendLayout();
             this.gbAmount.SuspendLayout();
             this.tabPageTransactions.SuspendLayout();
+            this.tabPageBGLC.SuspendLayout();
             this.menuBtnAddSavingOperation.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuPendingSavingEvents.SuspendLayout();
@@ -1402,6 +1430,7 @@ namespace OpenCBS.GUI.Clients
             this.tabControlPerson.Controls.Add(this.tabPageFixedDeposit);
             this.tabControlPerson.Controls.Add(this.tabPageCurrentAccount);
             this.tabControlPerson.Controls.Add(this.tabPageTransactions);
+            this.tabControlPerson.Controls.Add(this.tabPageBGLC);
             resources.ApplyResources(this.tabControlPerson, "tabControlPerson");
             this.tabControlPerson.ImageList = this.imageListTab;
             this.tabControlPerson.Multiline = true;
@@ -5323,6 +5352,171 @@ namespace OpenCBS.GUI.Clients
             this.label44.ForeColor = System.Drawing.Color.White;
             this.label44.Name = "label44";
             // 
+            // tabPageBGLC
+            // 
+            this.tabPageBGLC.Controls.Add(this.btnViewLetterOfCredit);
+            this.tabPageBGLC.Controls.Add(this.btnUpdateLetterOfCredit);
+            this.tabPageBGLC.Controls.Add(this.btnAddLetterOfCredit);
+            this.tabPageBGLC.Controls.Add(this.listView1);
+            this.tabPageBGLC.Controls.Add(this.label46);
+            this.tabPageBGLC.Controls.Add(this.btnViewBankGuarantee);
+            this.tabPageBGLC.Controls.Add(this.btnUpdateBankGuarantee);
+            this.tabPageBGLC.Controls.Add(this.btnAddBankGuarantee);
+            this.tabPageBGLC.Controls.Add(this.lvBankGuarantee);
+            this.tabPageBGLC.Controls.Add(this.label22);
+            resources.ApplyResources(this.tabPageBGLC, "tabPageBGLC");
+            this.tabPageBGLC.Name = "tabPageBGLC";
+            this.tabPageBGLC.UseVisualStyleBackColor = true;
+            // 
+            // btnViewLetterOfCredit
+            // 
+            resources.ApplyResources(this.btnViewLetterOfCredit, "btnViewLetterOfCredit");
+            this.btnViewLetterOfCredit.Name = "btnViewLetterOfCredit";
+            // 
+            // btnUpdateLetterOfCredit
+            // 
+            resources.ApplyResources(this.btnUpdateLetterOfCredit, "btnUpdateLetterOfCredit");
+            this.btnUpdateLetterOfCredit.Name = "btnUpdateLetterOfCredit";
+            // 
+            // btnAddLetterOfCredit
+            // 
+            resources.ApplyResources(this.btnAddLetterOfCredit, "btnAddLetterOfCredit");
+            this.btnAddLetterOfCredit.Name = "btnAddLetterOfCredit";
+            // 
+            // listView1
+            // 
+            this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader53,
+            this.columnHeader54,
+            this.columnHeader55,
+            this.columnHeader56,
+            this.columnHeader57,
+            this.columnHeader58,
+            this.columnHeader59,
+            this.columnHeader60});
+            this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
+            resources.ApplyResources(this.listView1, "listView1");
+            this.listView1.Name = "listView1";
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader53
+            // 
+            resources.ApplyResources(this.columnHeader53, "columnHeader53");
+            // 
+            // columnHeader54
+            // 
+            resources.ApplyResources(this.columnHeader54, "columnHeader54");
+            // 
+            // columnHeader55
+            // 
+            resources.ApplyResources(this.columnHeader55, "columnHeader55");
+            // 
+            // columnHeader56
+            // 
+            resources.ApplyResources(this.columnHeader56, "columnHeader56");
+            // 
+            // columnHeader57
+            // 
+            resources.ApplyResources(this.columnHeader57, "columnHeader57");
+            // 
+            // columnHeader58
+            // 
+            resources.ApplyResources(this.columnHeader58, "columnHeader58");
+            // 
+            // columnHeader59
+            // 
+            resources.ApplyResources(this.columnHeader59, "columnHeader59");
+            // 
+            // columnHeader60
+            // 
+            resources.ApplyResources(this.columnHeader60, "columnHeader60");
+            // 
+            // label46
+            // 
+            this.label46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(81)))), ((int)(((byte)(152)))));
+            resources.ApplyResources(this.label46, "label46");
+            this.label46.ForeColor = System.Drawing.Color.White;
+            this.label46.Name = "label46";
+            // 
+            // btnViewBankGuarantee
+            // 
+            resources.ApplyResources(this.btnViewBankGuarantee, "btnViewBankGuarantee");
+            this.btnViewBankGuarantee.Name = "btnViewBankGuarantee";
+            this.btnViewBankGuarantee.Click += new System.EventHandler(this.btnViewBankGuarantee_Click);
+            // 
+            // btnUpdateBankGuarantee
+            // 
+            resources.ApplyResources(this.btnUpdateBankGuarantee, "btnUpdateBankGuarantee");
+            this.btnUpdateBankGuarantee.Name = "btnUpdateBankGuarantee";
+            this.btnUpdateBankGuarantee.Click += new System.EventHandler(this.btnUpdateBankGuarantee_Click);
+            // 
+            // btnAddBankGuarantee
+            // 
+            resources.ApplyResources(this.btnAddBankGuarantee, "btnAddBankGuarantee");
+            this.btnAddBankGuarantee.Name = "btnAddBankGuarantee";
+            this.btnAddBankGuarantee.Click += new System.EventHandler(this.btnAddBankGuarantee_Click);
+            // 
+            // lvBankGuarantee
+            // 
+            this.lvBankGuarantee.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.lvBankGuarantee.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader45,
+            this.columnHeader46,
+            this.columnHeader47,
+            this.columnHeader48,
+            this.columnHeader49,
+            this.columnHeader50,
+            this.columnHeader51,
+            this.columnHeader52});
+            this.lvBankGuarantee.FullRowSelect = true;
+            this.lvBankGuarantee.GridLines = true;
+            resources.ApplyResources(this.lvBankGuarantee, "lvBankGuarantee");
+            this.lvBankGuarantee.Name = "lvBankGuarantee";
+            this.lvBankGuarantee.UseCompatibleStateImageBehavior = false;
+            this.lvBankGuarantee.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader45
+            // 
+            resources.ApplyResources(this.columnHeader45, "columnHeader45");
+            // 
+            // columnHeader46
+            // 
+            resources.ApplyResources(this.columnHeader46, "columnHeader46");
+            // 
+            // columnHeader47
+            // 
+            resources.ApplyResources(this.columnHeader47, "columnHeader47");
+            // 
+            // columnHeader48
+            // 
+            resources.ApplyResources(this.columnHeader48, "columnHeader48");
+            // 
+            // columnHeader49
+            // 
+            resources.ApplyResources(this.columnHeader49, "columnHeader49");
+            // 
+            // columnHeader50
+            // 
+            resources.ApplyResources(this.columnHeader50, "columnHeader50");
+            // 
+            // columnHeader51
+            // 
+            resources.ApplyResources(this.columnHeader51, "columnHeader51");
+            // 
+            // columnHeader52
+            // 
+            resources.ApplyResources(this.columnHeader52, "columnHeader52");
+            // 
+            // label22
+            // 
+            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(81)))), ((int)(((byte)(152)))));
+            resources.ApplyResources(this.label22, "label22");
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Name = "label22";
+            // 
             // menuBtnAddSavingOperation
             // 
             this.menuBtnAddSavingOperation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -5725,6 +5919,7 @@ namespace OpenCBS.GUI.Clients
             this.gbAmount.ResumeLayout(false);
             this.gbAmount.PerformLayout();
             this.tabPageTransactions.ResumeLayout(false);
+            this.tabPageBGLC.ResumeLayout(false);
             this.menuBtnAddSavingOperation.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.menuPendingSavingEvents.ResumeLayout(false);
@@ -6396,5 +6591,32 @@ namespace OpenCBS.GUI.Clients
         private ColumnHeader columnHeader42;
         private ColumnHeader columnHeader43;
         private ColumnHeader columnHeader44;
+        private TabPage tabPageBGLC;
+        private Label label22;
+        private ListView lvBankGuarantee;
+        private ColumnHeader columnHeader45;
+        private ColumnHeader columnHeader46;
+        private ColumnHeader columnHeader47;
+        private ColumnHeader columnHeader48;
+        private ColumnHeader columnHeader49;
+        private ColumnHeader columnHeader50;
+        private ColumnHeader columnHeader51;
+        private ColumnHeader columnHeader52;
+        private Button btnViewBankGuarantee;
+        private Button btnUpdateBankGuarantee;
+        private Button btnAddBankGuarantee;
+        private Label label46;
+        private Button btnViewLetterOfCredit;
+        private Button btnUpdateLetterOfCredit;
+        private Button btnAddLetterOfCredit;
+        private ListView listView1;
+        private ColumnHeader columnHeader53;
+        private ColumnHeader columnHeader54;
+        private ColumnHeader columnHeader55;
+        private ColumnHeader columnHeader56;
+        private ColumnHeader columnHeader57;
+        private ColumnHeader columnHeader58;
+        private ColumnHeader columnHeader59;
+        private ColumnHeader columnHeader60;
     }
 }

@@ -278,12 +278,13 @@ namespace OpenCBS.GUI.UserControl
                 textBoxBirthPlace.Text = _tempPerson.BirthPlace ?? String.Empty;
                 textBoxNationality.Text = _tempPerson.Nationality ?? ServicesProvider.GetInstance().GetGeneralSettings().Country;
                 richTextBoxCommentsActivity.Text = _tempPerson.FollowUpComment;
+
                 //4 new fields to be added
                 cbMaritalStatus.SelectedItem = _tempPerson.MaritalStatus;
-                    cbKYCStatus.SelectedItem = _tempPerson.KYCStatus;
-                    tbEstimatedWork.Text = _tempPerson.EstimatedWork;
-                    cbTypeOfFacilities.SelectedItem = _tempPerson.TypeOfFacilities;
-
+                cbKYCStatus.SelectedItem = _tempPerson.KYCStatus;
+                tbEstimatedWorth.Text = _tempPerson.EstimatedWorth;
+                txtTypeOfFacilities.Text = _tempPerson.TypeOfFacilities;
+                txtLoanFacilityLimit.Text = _tempPerson.LoanFacilityLimit;
 
                 comboBoxSex.SelectGender(_tempPerson.Sex);
 
@@ -387,9 +388,9 @@ namespace OpenCBS.GUI.UserControl
             _tempPerson.Branch = (Branch)cbBranch.SelectedItem;
             //4 New Fields MariralStatus, KYC Status, Type Of Facilities, Estimated Work
             _tempPerson.MaritalStatus = cbMaritalStatus.SelectedItem.ToString();
-            _tempPerson.EstimatedWork = tbEstimatedWork.Text;
+            _tempPerson.EstimatedWorth = tbEstimatedWorth.Text;
             _tempPerson.KYCStatus = cbKYCStatus.SelectedItem.ToString();
-            _tempPerson.TypeOfFacilities = cbTypeOfFacilities.SelectedItem.ToString();
+            _tempPerson.TypeOfFacilities = txtTypeOfFacilities.Text;
 
             try
             {

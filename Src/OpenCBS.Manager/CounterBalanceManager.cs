@@ -95,13 +95,14 @@ namespace OpenCBS.Manager
         {
             CounterBalance counterBalance = new CounterBalance();
             counterBalance.Id = r.GetInt("id");
-            counterBalance.AllocaterId = r.GetInt("allocater_id");
+            
             counterBalance.Branch = r.GetString("branch");
-            counterBalance.CashierId = r.GetInt("cashier_id");
-            counterBalance.CounterId = r.GetInt("counter_id");
+            counterBalance.CashierId = r.GetString("cashier_id");
+            counterBalance.CounterId = r.GetString("counter_id");
             counterBalance.AllocationDate = r.GetDateTime("allocation_date");
             counterBalance.Amount = r.GetMoney("amount");
             counterBalance.Type = r.GetString("type");
+            counterBalance.AllocaterId = r.GetInt("allocater_id");
             return counterBalance;
         }
 
@@ -143,7 +144,7 @@ namespace OpenCBS.Manager
     {
     List<BranchCounter> branchCounterList = new List<BranchCounter>();
     string q = @"SELECT *
-    FROM [dbo].[BranchCounters]
+    FROM [dbo].[BranchCounter]
     WHERE branch = @branch";
 
     using (SqlConnection conn = GetConnection())
@@ -164,6 +165,31 @@ namespace OpenCBS.Manager
         }
     }
     return branchCounterList;
+    }
+
+    public List<string> FetchCashiers()
+    {
+        List<string> CashierList = new List<string>();
+        string q = @"SELECT user_name
+    FROM [dbo].[Users]
+    WHERE role_code = 'CASHI'";
+
+        using (SqlConnection conn = GetConnection())
+        using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+        {
+            
+            using (OpenCbsReader r = c.ExecuteReader())
+            {
+                if (r == null || r.Empty) return new List<string>();
+                while (r.Read())
+                {
+                    
+                    CashierList.Add(r.GetString("user_name"));
+                    
+                }
+            }
+        }
+        return CashierList;
     }
 
 
@@ -194,13 +220,13 @@ namespace OpenCBS.Manager
 
     public void UpdateBranchCounter(BranchCounter branchCounter)
     {
-    const string q = @"UPDATE TABLE [BranchCounter]
+    const string q = @"UPDATE [BranchCounter]
     SET [counterId] = @counterId WHERE id = @id";
 
     using (SqlConnection conn = GetConnection())
         using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
         {
-        c.AddParam("@contractId", branchCounter.Branch+"/Counter/"+branchCounter.Id);
+        c.AddParam("@counterId", branchCounter.Branch + "/Counter/" + branchCounter.Id);
         c.AddParam("@id", branchCounter.Id);
         c.ExecuteScalar();
 

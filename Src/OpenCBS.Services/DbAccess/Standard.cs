@@ -280,6 +280,15 @@ namespace OpenCBS.Services
             return new RWAPercentageService(CurrentUser);
         }
 
+        public BankGuaranteesService GetBankGuaranteesService()
+        {
+            return new BankGuaranteesService(CurrentUser);
+        }
+
+        public LetterOfCreditService GetLetterOfCreditService()
+        {
+            return new LetterOfCreditService(CurrentUser);
+        }
 
         #region IServices Members
 

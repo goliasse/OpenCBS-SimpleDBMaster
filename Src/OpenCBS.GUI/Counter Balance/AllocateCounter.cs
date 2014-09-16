@@ -17,14 +17,46 @@ namespace OpenCBS.GUI.Counter
         {
             InitializeComponent();
             InitializeBranch();
+            InitializeCashiers();
+            InitializeCounters();
         }
+
+        private void InitializeCashiers()
+        {
+            cmbCashier.Items.Clear();
+            cmbCashier.Items.Add("Select cashier..");
+            CounterBalanceService _counterBalanceService = ServicesProvider.GetInstance().GetCounterBalanceService();
+            List<string> cashiers = _counterBalanceService.FetchCashiers();
+            foreach (string s in cashiers)
+            {
+                
+                cmbCashier.Items.Add(s);
+            }
+            cmbCashier.SelectedIndex = 0;
+        }
+
+        private void InitializeCounters()
+        {
+            cmbCounter.Items.Clear();
+            cmbCounter.Items.Add("Select counter..");
+            CounterBalanceService _counterBalanceService = ServicesProvider.GetInstance().GetCounterBalanceService();
+            List<BranchCounter> counters = _counterBalanceService.FetchCounters(cmbBranch.SelectedItem.ToString());
+            foreach (BranchCounter branchCounter in counters)
+            {
+                
+                cmbCounter.Items.Add(branchCounter.CounterId);
+            }
+
+            cmbCounter.SelectedIndex = 0;
+        }
+
 
         private void InitializeBranch()
         {
-            cmbBranch.ValueMember = "Name";
-            cmbBranch.DisplayMember = "";
+            cmbBranch.ValueMember = "Code";
+            cmbBranch.DisplayMember = "Code";
             cmbBranch.DataSource =
-                ServicesProvider.GetInstance().GetBranchService().FindAllNonDeletedWithVault().OrderBy(item => item.Id).ToList();
+                ServicesProvider.GetInstance().GetBranchService().FindAllNonDeleted().OrderBy(item => item.Id).ToList();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -32,11 +64,25 @@ namespace OpenCBS.GUI.Counter
             CounterBalance counterBalance = new CounterBalance();
 
             
-            counterBalance.Branch = cmbBranch.SelectedItem.ToString();
-            counterBalance.CashierId = Convert.ToInt32(cmbCashier.SelectedValue);
-            counterBalance.CounterId = Convert.ToInt32(cmbCounter.SelectedValue);
+            counterBalance.Branch = cmbBranch.SelectedValue.ToString();
+            counterBalance.CashierId = cmbCashier.SelectedItem.ToString();
+            counterBalance.CounterId = cmbCounter.SelectedItem.ToString();
             counterBalance.Amount = ServicesHelper.ConvertStringToNullableDecimal(tbxAmount.Text);
             counterBalance.AllocationDate = DateTime.Today;
+
+            if (rbtnOpeningAmt.Checked == true)
+                counterBalance.Type = "Opening Amount";
+            if (rbtnClosingAmt.Checked == true)
+                counterBalance.Type = "Closing Amount";
+            if (rbtnTopUp.Checked == true)
+                counterBalance.Type = "TopUp Amount";
+
+            CounterBalanceService _counterBalanceService = ServicesProvider.GetInstance().GetCounterBalanceService();
+            int ret = _counterBalanceService.SaveCounterBalance(counterBalance);
+            if (ret >= 1)
+                MessageBox.Show("Counter Balance Successfully Updated.");
+            else
+                MessageBox.Show("Some Error Ocurred.");
             
         }
 

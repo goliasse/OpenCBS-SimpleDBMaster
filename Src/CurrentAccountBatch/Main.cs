@@ -19,143 +19,172 @@ namespace CurrentAccountBatch
         public Main()
         {
             InitializeComponent();
+            
+
+
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs ex)
+        {
+
+            CurrentAccountProductHoldingServices currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
+            List<CurrentAccountProductHoldings> currentAccountProductHoldingList = currentAccountProductHoldingServices.FetchProduct(false);
+            
+            string excludedAccountList = txtExcludedNumbers.Text;
+
+            string[] accounts = excludedAccountList.Split(',');
+
+            for (int i = 0; i < accounts.Length; i++)
+            {
+                CurrentAccountProductHoldings currentAccountProductHoldings = new CurrentAccountProductHoldings();
+                currentAccountProductHoldings.CurrentAccountContractCode = accounts[i];
+                if (currentAccountProductHoldingList.Contains(currentAccountProductHoldings))
+                {
+                    currentAccountProductHoldingList.Remove(currentAccountProductHoldings);
+                }
+
+
+
+            }
+
+
+
             int batchMode = 0;
             DateTime calculationDate = DateTime.Today;
             string inputLogFile = "";
             string outputLogFile = "";
 
-            if(batchMode == 0)
+            if (batchMode == 0)
             {
-            CurrentAccountProductHoldingServices currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
-            List<CurrentAccountProductHoldings> currentAccountProductHoldingList = currentAccountProductHoldingServices.FetchProduct(false);
-            
-            string status = "";
-            if (currentAccountProductHoldingList != null)
-            {
-                foreach (CurrentAccountProductHoldings currentAccountProductHoldings in currentAccountProductHoldingList)
+               
+
+                string status = "";
+                if (currentAccountProductHoldingList != null)
                 {
-                    try
+                    foreach (CurrentAccountProductHoldings currentAccountProductHoldings in currentAccountProductHoldingList)
                     {
-                        currentAccountProductHoldingServices.CalculateFixedOverdraftFees(calculationDate, currentAccountProductHoldings);
-                        status = status + "0";
-
-                    }
-                    catch (Exception e)
-                    {
-                    }
-
-                    try
-                    {
-                        currentAccountProductHoldingServices.CalculateManagementFees(calculationDate, currentAccountProductHoldings);
-                        status = status + "1";
-                    }
-                    catch (Exception e)
-                    {
-                    }
-
-                    try
-                    {
-                        currentAccountProductHoldingServices.CurrentAccountCommitmentFeeCalculation(calculationDate, currentAccountProductHoldings);
-                        status = status + "2";
-                    }
-                    catch (Exception e)
-                    {
-                    }
-
-                    try
-                    {
-                        currentAccountProductHoldingServices.CurrentAccountInterestCalculation(calculationDate, currentAccountProductHoldings);
-                        status = status + "3";
-                    }
-                    catch (Exception e)
-                    {
-                    }
-
-                    try
-                    {
-                        currentAccountProductHoldingServices.CurrentAccountOverdraftInterestCalculation(calculationDate, currentAccountProductHoldings);
-                        status = status + "4";
-                    }
-                    catch (Exception e)
-                    {
-                    }
-
-                    //Write Contract code and status code to output log file in format contractcode,statuscode
-
-                }
-            }
-            }
-            else if(batchMode == 1)
-            {
-                //Analyse the inputlog file and fetch the records for which status code is not success, reexecute the remaining methods for failed contractCode.
-                string contractCode = "";
-            CurrentAccountProductHoldingServices currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
-            CurrentAccountProductHoldings currentAccountProductHoldings = currentAccountProductHoldingServices.FetchProduct(contractCode);
-            
-            string status = "";
-            
-                    try
-                    {
-                        if (!status.Contains("0"))
+                        try
                         {
                             currentAccountProductHoldingServices.CalculateFixedOverdraftFees(calculationDate, currentAccountProductHoldings);
                             status = status + "0";
+
+                        }
+                        catch (Exception e)
+                        {
                         }
 
-                    }
-                    catch (Exception e)
-                    {
-                    }
-
-                    try
-                    {
-                        if (!status.Contains("1"))
+                        try
                         {
                             currentAccountProductHoldingServices.CalculateManagementFees(calculationDate, currentAccountProductHoldings);
                             status = status + "1";
                         }
-                    }
-                    catch (Exception e)
-                    {
-                    }
+                        catch (Exception e)
+                        {
+                        }
 
-                    try
-                    {
-                        if (!status.Contains("2"))
+                        try
                         {
                             currentAccountProductHoldingServices.CurrentAccountCommitmentFeeCalculation(calculationDate, currentAccountProductHoldings);
                             status = status + "2";
                         }
-                    }
-                    catch (Exception e)
-                    {
-                    }
+                        catch (Exception e)
+                        {
+                        }
 
-                    try
-                    {
-                        if (!status.Contains("3"))
+                        try
                         {
                             currentAccountProductHoldingServices.CurrentAccountInterestCalculation(calculationDate, currentAccountProductHoldings);
                             status = status + "3";
                         }
-                    }
-                    catch (Exception e)
-                    {
-                    }
+                        catch (Exception e)
+                        {
+                        }
 
-                    try
-                    {
-                        if (!status.Contains("4"))
+                        try
                         {
                             currentAccountProductHoldingServices.CurrentAccountOverdraftInterestCalculation(calculationDate, currentAccountProductHoldings);
                             status = status + "4";
                         }
+                        catch (Exception e)
+                        {
+                        }
+
+                        //Write Contract code and status code to output log file in format contractcode,statuscode
+
                     }
-                    catch (Exception e)
+                }
+            }
+            else if (batchMode == 1)
+            {
+                //Analyse the inputlog file and fetch the records for which status code is not success, reexecute the remaining methods for failed contractCode.
+                string contractCode = "";
+                currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
+                CurrentAccountProductHoldings currentAccountProductHoldings = currentAccountProductHoldingServices.FetchProduct(contractCode);
+
+                string status = "";
+
+                try
+                {
+                    if (!status.Contains("0"))
                     {
+                        currentAccountProductHoldingServices.CalculateFixedOverdraftFees(calculationDate, currentAccountProductHoldings);
+                        status = status + "0";
                     }
 
-                    //Write Contract code and status code to a output log file in format contractcode,statuscode
+                }
+                catch (Exception e)
+                {
+                }
+
+                try
+                {
+                    if (!status.Contains("1"))
+                    {
+                        currentAccountProductHoldingServices.CalculateManagementFees(calculationDate, currentAccountProductHoldings);
+                        status = status + "1";
+                    }
+                }
+                catch (Exception e)
+                {
+                }
+
+                try
+                {
+                    if (!status.Contains("2"))
+                    {
+                        currentAccountProductHoldingServices.CurrentAccountCommitmentFeeCalculation(calculationDate, currentAccountProductHoldings);
+                        status = status + "2";
+                    }
+                }
+                catch (Exception e)
+                {
+                }
+
+                try
+                {
+                    if (!status.Contains("3"))
+                    {
+                        currentAccountProductHoldingServices.CurrentAccountInterestCalculation(calculationDate, currentAccountProductHoldings);
+                        status = status + "3";
+                    }
+                }
+                catch (Exception e)
+                {
+                }
+
+                try
+                {
+                    if (!status.Contains("4"))
+                    {
+                        currentAccountProductHoldingServices.CurrentAccountOverdraftInterestCalculation(calculationDate, currentAccountProductHoldings);
+                        status = status + "4";
+                    }
+                }
+                catch (Exception e)
+                {
+                }
+
+                //Write Contract code and status code to a output log file in format contractcode,statuscode
 
             }
 
@@ -163,8 +192,6 @@ namespace CurrentAccountBatch
             //If there are no activities recorded that are initiated by the customer for 2 years, 
             //we will classify the account as dormant. Interest or management fees automatically posted 
             //should not be taken into consideration. We will be referring to deposit or transfer out activities initiated by customer.
-
-
         }
     }
 }

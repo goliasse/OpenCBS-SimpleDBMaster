@@ -14,7 +14,7 @@ namespace OpenCBS.CoreDomain
         public string Branch { get; set; }
         public DateTime IssuingDate { get; set; }
         public DateTime ExpiryDate { get; set; }
-        public string ApplicantId { get; set; }
+        public int ApplicantId { get; set; }
         public string BeneficiaryParty { get; set; }
         public string GuarnteeType { get; set; }
         public OCurrency FeePerPeriod { get; set; }
@@ -23,5 +23,7 @@ namespace OpenCBS.CoreDomain
         public OCurrency Value { get; set; }
         public string Currency { get; set; }
         public string Status { get; set; }
+        public string AccountNumber { get; set; }
+        public OCurrency TotalFee { get; set; }
     }
 }

@@ -7,10 +7,11 @@ using OpenCBS.Enums;
 using OpenCBS.Shared;
 using System;
 using OpenCBS.ExceptionsHandler.Exceptions.BankGuaranteeExceptions;
+using System.Collections.Generic;
 
 namespace OpenCBS.Services
 {
-    class BankGuaranteesService
+    public class BankGuaranteesService
     {
         private readonly BankGuaranteesManager _bankGuaranteesManager;
         private User _user;
@@ -36,12 +37,12 @@ namespace OpenCBS.Services
             return _bankGuaranteesManager.FetchBankGuarantee(bankGuaranteeCode);
         }
 
-        public BankGuarantees FetchAll()
+        public List<BankGuarantees> FetchBranchAllBankGuarantee(int clientID)
         {
-            return _bankGuaranteesManager.FetchAll();
+            return _bankGuaranteesManager.FetchBranchAllBankGuarantee(clientID);
         }
 
-        public int SaveBankGuarantee(BankGuarantees bankGuarantee)
+        public string SaveBankGuarantee(BankGuarantees bankGuarantee)
         {
             return _bankGuaranteesManager.SaveBankGuarantee(bankGuarantee);
         }
