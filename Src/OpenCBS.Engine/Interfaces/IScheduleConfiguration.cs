@@ -13,5 +13,6 @@ namespace OpenCBS.Engine.Interfaces
         IDateShiftPolicy DateShiftPolicy { get; set; }
         bool ChargeInterestDuringGracePeriod { get; set; }
         bool ChargeActualInterestForFirstInstallment { get; set; }
+        string ScheduleType { get; set; }
     }
 }

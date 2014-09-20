@@ -610,18 +610,18 @@ namespace OpenCBS.Manager.Clients
         public string EstimatedWorthCalculation(int clientId)
         {
             string ret = "";
-            //using (SqlConnection conn = GetConnection())
-            //{
-            //    using (OpenCbsCommand command = new OpenCbsCommand("EstimatedWorthCalculation", conn).AsStoredProcedure())
-            //    {
+            using (SqlConnection conn = GetConnection())
+            {
+                using (OpenCbsCommand command = new OpenCbsCommand("EstimatedWorthCalculation", conn).AsStoredProcedure())
+                {
 
-            //        command.AddParam("@clientId", clientId);
+                    command.AddParam("@clientId", clientId);
 
 
-            //        ret = Convert.ToString(command.ExecuteScalar());
+                    ret = Convert.ToString(command.ExecuteScalar());
 
-            //    }
-            //}
+                }
+            }
 
             return ret;
         }

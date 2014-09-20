@@ -42,6 +42,7 @@ using OpenCBS.Enums;
 using OpenCBS.Extensions;
 using OpenCBS.GUI.Accounting;
 using OpenCBS.GUI.AuditTrail;
+using OpenCBS.GUI.Capital_Adequacy_Ratio;
 using OpenCBS.GUI.Clients;
 using OpenCBS.GUI.Configuration;
 using OpenCBS.GUI.Contracts;
@@ -1271,6 +1272,18 @@ namespace OpenCBS.GUI
         {
             AvailableCounterAndAllocatedBalance availableCounterAndAllocatedBalance = new AvailableCounterAndAllocatedBalance();
             availableCounterAndAllocatedBalance.Show();
+        }
+
+        private void capitalAdequacyRatioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CalculateCapitalAdequacyRatio calculateCapitalAdequacyRatio = new CalculateCapitalAdequacyRatio();
+            calculateCapitalAdequacyRatio.Show();
+        }
+
+        private void riskWeightedAssetsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DefineRiskWeightedAssetPercentage defineRiskWeightedAssetPercentage = new DefineRiskWeightedAssetPercentage();
+            defineRiskWeightedAssetPercentage.Show();
         }
     }
 }

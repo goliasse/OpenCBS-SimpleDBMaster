@@ -66,13 +66,13 @@
             this.txtGovernmentLoans = new System.Windows.Forms.TextBox();
             this.txtCash = new System.Windows.Forms.TextBox();
             this.btnCalculateCAR = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
+            this.lblTierOneCapital = new System.Windows.Forms.Label();
             this.lblTotalTierOneCapital = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
+            this.lblTierTwoCapital = new System.Windows.Forms.Label();
             this.lblTotalTierTwoCapital = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
+            this.lblRWA = new System.Windows.Forms.Label();
             this.lblTotalRWA = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
+            this.lblCapitalAdequacyRatio = new System.Windows.Forms.Label();
             this.lblCAR = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -382,7 +382,7 @@
             // 
             // txtContractrelatedtransaction
             // 
-            this.txtContractrelatedtransaction.Location = new System.Drawing.Point(717, 56);
+            this.txtContractrelatedtransaction.Location = new System.Drawing.Point(745, 55);
             this.txtContractrelatedtransaction.Name = "txtContractrelatedtransaction";
             this.txtContractrelatedtransaction.Size = new System.Drawing.Size(183, 20);
             this.txtContractrelatedtransaction.TabIndex = 72;
@@ -390,7 +390,7 @@
             // 
             // txtBidbond
             // 
-            this.txtBidbond.Location = new System.Drawing.Point(717, 85);
+            this.txtBidbond.Location = new System.Drawing.Point(745, 84);
             this.txtBidbond.Name = "txtBidbond";
             this.txtBidbond.Size = new System.Drawing.Size(183, 20);
             this.txtBidbond.TabIndex = 73;
@@ -398,7 +398,7 @@
             // 
             // txtPerformancebond
             // 
-            this.txtPerformancebond.Location = new System.Drawing.Point(717, 111);
+            this.txtPerformancebond.Location = new System.Drawing.Point(745, 110);
             this.txtPerformancebond.Name = "txtPerformancebond";
             this.txtPerformancebond.Size = new System.Drawing.Size(183, 20);
             this.txtPerformancebond.TabIndex = 74;
@@ -406,7 +406,7 @@
             // 
             // txtFinancialguarantee
             // 
-            this.txtFinancialguarantee.Location = new System.Drawing.Point(717, 136);
+            this.txtFinancialguarantee.Location = new System.Drawing.Point(745, 135);
             this.txtFinancialguarantee.Name = "txtFinancialguarantee";
             this.txtFinancialguarantee.Size = new System.Drawing.Size(183, 20);
             this.txtFinancialguarantee.TabIndex = 75;
@@ -414,7 +414,7 @@
             // 
             // txtLetterofcredit
             // 
-            this.txtLetterofcredit.Location = new System.Drawing.Point(716, 163);
+            this.txtLetterofcredit.Location = new System.Drawing.Point(744, 162);
             this.txtLetterofcredit.Name = "txtLetterofcredit";
             this.txtLetterofcredit.Size = new System.Drawing.Size(183, 20);
             this.txtLetterofcredit.TabIndex = 76;
@@ -422,7 +422,7 @@
             // 
             // txtMortgageloan
             // 
-            this.txtMortgageloan.Location = new System.Drawing.Point(717, 188);
+            this.txtMortgageloan.Location = new System.Drawing.Point(745, 187);
             this.txtMortgageloan.Name = "txtMortgageloan";
             this.txtMortgageloan.Size = new System.Drawing.Size(183, 20);
             this.txtMortgageloan.TabIndex = 77;
@@ -430,7 +430,7 @@
             // 
             // txtOtherloans
             // 
-            this.txtOtherloans.Location = new System.Drawing.Point(717, 214);
+            this.txtOtherloans.Location = new System.Drawing.Point(745, 213);
             this.txtOtherloans.Name = "txtOtherloans";
             this.txtOtherloans.Size = new System.Drawing.Size(183, 20);
             this.txtOtherloans.TabIndex = 78;
@@ -438,7 +438,7 @@
             // 
             // txtGovernmentLoans
             // 
-            this.txtGovernmentLoans.Location = new System.Drawing.Point(717, 239);
+            this.txtGovernmentLoans.Location = new System.Drawing.Point(745, 238);
             this.txtGovernmentLoans.Name = "txtGovernmentLoans";
             this.txtGovernmentLoans.Size = new System.Drawing.Size(183, 20);
             this.txtGovernmentLoans.TabIndex = 79;
@@ -446,7 +446,7 @@
             // 
             // txtCash
             // 
-            this.txtCash.Location = new System.Drawing.Point(717, 265);
+            this.txtCash.Location = new System.Drawing.Point(745, 264);
             this.txtCash.Name = "txtCash";
             this.txtCash.Size = new System.Drawing.Size(183, 20);
             this.txtCash.TabIndex = 80;
@@ -462,17 +462,17 @@
             this.btnCalculateCAR.Text = "Calculate CAR";
             this.btnCalculateCAR.Click += new System.EventHandler(this.btnCalculateCAR_Click);
             // 
-            // label20
+            // lblTierOneCapital
             // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label20.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label20.Location = new System.Drawing.Point(52, 163);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(132, 16);
-            this.label20.TabIndex = 82;
-            this.label20.Text = "Total Tier One Capital";
+            this.lblTierOneCapital.AutoSize = true;
+            this.lblTierOneCapital.BackColor = System.Drawing.Color.Transparent;
+            this.lblTierOneCapital.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblTierOneCapital.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblTierOneCapital.Location = new System.Drawing.Point(52, 163);
+            this.lblTierOneCapital.Name = "lblTierOneCapital";
+            this.lblTierOneCapital.Size = new System.Drawing.Size(132, 16);
+            this.lblTierOneCapital.TabIndex = 82;
+            this.lblTierOneCapital.Text = "Total Tier One Capital";
             // 
             // lblTotalTierOneCapital
             // 
@@ -482,21 +482,20 @@
             this.lblTotalTierOneCapital.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.lblTotalTierOneCapital.Location = new System.Drawing.Point(318, 163);
             this.lblTotalTierOneCapital.Name = "lblTotalTierOneCapital";
-            this.lblTotalTierOneCapital.Size = new System.Drawing.Size(132, 16);
+            this.lblTotalTierOneCapital.Size = new System.Drawing.Size(0, 16);
             this.lblTotalTierOneCapital.TabIndex = 83;
-            this.lblTotalTierOneCapital.Text = "Total Tier One Capital";
             // 
-            // label22
+            // lblTierTwoCapital
             // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.Transparent;
-            this.label22.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label22.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label22.Location = new System.Drawing.Point(51, 320);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(130, 16);
-            this.label22.TabIndex = 84;
-            this.label22.Text = "Total Tier Two Capital";
+            this.lblTierTwoCapital.AutoSize = true;
+            this.lblTierTwoCapital.BackColor = System.Drawing.Color.Transparent;
+            this.lblTierTwoCapital.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblTierTwoCapital.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblTierTwoCapital.Location = new System.Drawing.Point(51, 320);
+            this.lblTierTwoCapital.Name = "lblTierTwoCapital";
+            this.lblTierTwoCapital.Size = new System.Drawing.Size(130, 16);
+            this.lblTierTwoCapital.TabIndex = 84;
+            this.lblTierTwoCapital.Text = "Total Tier Two Capital";
             // 
             // lblTotalTierTwoCapital
             // 
@@ -506,21 +505,20 @@
             this.lblTotalTierTwoCapital.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.lblTotalTierTwoCapital.Location = new System.Drawing.Point(318, 320);
             this.lblTotalTierTwoCapital.Name = "lblTotalTierTwoCapital";
-            this.lblTotalTierTwoCapital.Size = new System.Drawing.Size(130, 16);
+            this.lblTotalTierTwoCapital.Size = new System.Drawing.Size(0, 16);
             this.lblTotalTierTwoCapital.TabIndex = 85;
-            this.lblTotalTierTwoCapital.Text = "Total Tier Two Capital";
             // 
-            // label24
+            // lblRWA
             // 
-            this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.Color.Transparent;
-            this.label24.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label24.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label24.Location = new System.Drawing.Point(519, 301);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(141, 16);
-            this.label24.TabIndex = 86;
-            this.label24.Text = "Risk Weighted Assets ";
+            this.lblRWA.AutoSize = true;
+            this.lblRWA.BackColor = System.Drawing.Color.Transparent;
+            this.lblRWA.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblRWA.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblRWA.Location = new System.Drawing.Point(519, 301);
+            this.lblRWA.Name = "lblRWA";
+            this.lblRWA.Size = new System.Drawing.Size(141, 16);
+            this.lblRWA.TabIndex = 86;
+            this.lblRWA.Text = "Risk Weighted Assets ";
             // 
             // lblTotalRWA
             // 
@@ -528,23 +526,22 @@
             this.lblTotalRWA.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalRWA.Font = new System.Drawing.Font("Arial", 9.75F);
             this.lblTotalRWA.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblTotalRWA.Location = new System.Drawing.Point(714, 301);
+            this.lblTotalRWA.Location = new System.Drawing.Point(742, 300);
             this.lblTotalRWA.Name = "lblTotalRWA";
-            this.lblTotalRWA.Size = new System.Drawing.Size(172, 16);
+            this.lblTotalRWA.Size = new System.Drawing.Size(0, 16);
             this.lblTotalRWA.TabIndex = 87;
-            this.lblTotalRWA.Text = "Total Risk Weighted Assets ";
             // 
-            // label26
+            // lblCapitalAdequacyRatio
             // 
-            this.label26.AutoSize = true;
-            this.label26.BackColor = System.Drawing.Color.Transparent;
-            this.label26.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label26.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label26.Location = new System.Drawing.Point(519, 332);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(39, 16);
-            this.label26.TabIndex = 88;
-            this.label26.Text = "CAR ";
+            this.lblCapitalAdequacyRatio.AutoSize = true;
+            this.lblCapitalAdequacyRatio.BackColor = System.Drawing.Color.Transparent;
+            this.lblCapitalAdequacyRatio.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblCapitalAdequacyRatio.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblCapitalAdequacyRatio.Location = new System.Drawing.Point(519, 332);
+            this.lblCapitalAdequacyRatio.Name = "lblCapitalAdequacyRatio";
+            this.lblCapitalAdequacyRatio.Size = new System.Drawing.Size(39, 16);
+            this.lblCapitalAdequacyRatio.TabIndex = 88;
+            this.lblCapitalAdequacyRatio.Text = "CAR ";
             // 
             // lblCAR
             // 
@@ -552,11 +549,10 @@
             this.lblCAR.BackColor = System.Drawing.Color.Transparent;
             this.lblCAR.Font = new System.Drawing.Font("Arial", 9.75F);
             this.lblCAR.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblCAR.Location = new System.Drawing.Point(714, 332);
+            this.lblCAR.Location = new System.Drawing.Point(742, 331);
             this.lblCAR.Name = "lblCAR";
-            this.lblCAR.Size = new System.Drawing.Size(35, 16);
+            this.lblCAR.Size = new System.Drawing.Size(0, 16);
             this.lblCAR.TabIndex = 89;
-            this.lblCAR.Text = "CAR";
             // 
             // CalculateCapitalAdequacyRatio
             // 
@@ -564,13 +560,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(940, 437);
             this.Controls.Add(this.lblCAR);
-            this.Controls.Add(this.label26);
+            this.Controls.Add(this.lblCapitalAdequacyRatio);
             this.Controls.Add(this.lblTotalRWA);
-            this.Controls.Add(this.label24);
+            this.Controls.Add(this.lblRWA);
             this.Controls.Add(this.lblTotalTierTwoCapital);
-            this.Controls.Add(this.label22);
+            this.Controls.Add(this.lblTierTwoCapital);
             this.Controls.Add(this.lblTotalTierOneCapital);
-            this.Controls.Add(this.label20);
+            this.Controls.Add(this.lblTierOneCapital);
             this.Controls.Add(this.btnCalculateCAR);
             this.Controls.Add(this.txtCash);
             this.Controls.Add(this.txtGovernmentLoans);
@@ -657,13 +653,13 @@
         private System.Windows.Forms.TextBox txtGovernmentLoans;
         private System.Windows.Forms.TextBox txtCash;
         private System.Windows.Forms.Button btnCalculateCAR;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lblTierOneCapital;
         private System.Windows.Forms.Label lblTotalTierOneCapital;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label lblTierTwoCapital;
         private System.Windows.Forms.Label lblTotalTierTwoCapital;
-        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label lblRWA;
         private System.Windows.Forms.Label lblTotalRWA;
-        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label lblCapitalAdequacyRatio;
         private System.Windows.Forms.Label lblCAR;
     }
 }

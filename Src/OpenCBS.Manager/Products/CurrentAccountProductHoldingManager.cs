@@ -1333,16 +1333,16 @@ return currentAccountProductHolding;
             CurrentAccountTransactions interestTransaction = new CurrentAccountTransactions();
             interestTransaction.Amount = interest;
             interestTransaction.Checker = "Interest";
-            interestTransaction.FromAccount = productHolding.CurrentAccountContractCode;
+            interestTransaction.FromAccount = FetchBranchAccountNumber(productHolding.CurrentAccountContractCode);
             interestTransaction.Maker = "Interest";
             interestTransaction.PurposeOfTransfer = "Regular interest credit for month " + calculationDate.Month;
-            interestTransaction.ToAccount = FetchBranchAccountNumber(productHolding.CurrentAccountContractCode);
+            interestTransaction.ToAccount = productHolding.CurrentAccountContractCode; 
             interestTransaction.TransactionDate = calculationDate;
             interestTransaction.TransactionFees = -1;
             interestTransaction.TransactionMode = "Credit";
             interestTransaction.TransactionType = "Interest";
 
-            currentAccountTransactionManager.MakeATransaction(interestTransaction, null);
+            currentAccountTransactionManager.DebitFeeTransaction(interestTransaction);
              return interest;
 }
 

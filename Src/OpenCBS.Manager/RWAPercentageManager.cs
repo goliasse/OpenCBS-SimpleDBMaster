@@ -24,9 +24,9 @@ namespace OpenCBS.Manager
         public double FetchRWAPercentage (string RWA)
 {
 double percentage = 0;
-string q = @"SELECT risk_weighted_percentage
+string q = @"SELECT [risk_weighted_percentage]
 FROM [dbo].[RiskWeightedAssetPercenatge]
-WHERE RWA = @RWA";
+WHERE [risk_weighted_asset] = @RWA";
 
 using (SqlConnection conn = GetConnection())
 using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
@@ -36,7 +36,7 @@ using (OpenCbsReader r = c.ExecuteReader())
 {
 if (r == null || r.Empty) return 0;
 r.Read();
-percentage = r.GetDouble("percentage");
+percentage = r.GetDouble("risk_weighted_percentage");
 }
 }
 return percentage;
@@ -62,6 +62,22 @@ c.AddParam("@percentage", RWAPercentage.Percentage);
 return Convert.ToInt32(c.ExecuteScalar());
 }
 }
+
+
+public int UpdateRWAPercentage(RWAPercentage RWAPercentage)
+{
+    const string q = @"UPDATE [RiskWeightedAssetPercenatge]
+SET [risk_weighted_percentage]=@risk_weighted_percentage
+WHERE [risk_weighted_asset]=@RWA";
+    using (SqlConnection conn = GetConnection())
+    using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+    {
+        c.AddParam("@RWA", RWAPercentage.RWA);
+        c.AddParam("@risk_weighted_percentage", RWAPercentage.Percentage);
+        return Convert.ToInt32(c.ExecuteScalar());
+    }
+}
+
 
     }
 }

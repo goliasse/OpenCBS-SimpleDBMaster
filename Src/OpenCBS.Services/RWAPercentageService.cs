@@ -24,6 +24,21 @@ namespace OpenCBS.Services
             _RWAPercentageManager = new RWAPercentageManager(user);
 		}
 
+        public double FetchRWAPercentage(string RWA)
+        {
+            return _RWAPercentageManager.FetchRWAPercentage(RWA);
+        }
+
+        public int SaveRWAPercentage(RWAPercentage RWAPercentage)
+        {
+            return _RWAPercentageManager.SaveRWAPercentage(RWAPercentage);
+        }
+
+        public int UpdateRWAPercentage(RWAPercentage RWAPercentage)
+        {
+            return _RWAPercentageManager.UpdateRWAPercentage(RWAPercentage);
+        }
+
         private void ValidateProduct(RWAPercentage rwaPercentage)
         {
 

@@ -21,14 +21,42 @@ namespace OpenCBS.Manager
         {
         }
 
+
+
+        public int GetRemainingCounterCash(CounterBalance counterBalance)
+        {
+            int ret = -99;
+
+            using (SqlConnection conn = GetConnection())
+            {
+                using (OpenCbsCommand c = new OpenCbsCommand("GetRemainingCounterCash", conn).AsStoredProcedure())
+                {
+                    c.AddParam("@cashierId", counterBalance.CashierId);
+                    c.AddParam("@dateInput", counterBalance.AllocationDate);
+                    
+                    ret = Convert.ToInt32(c.ExecuteScalar());
+
+                }
+            }
+            return ret;
+        }
+
         public int UpdateCounterBalance(CounterBalance counterBalance)
         {
             int ret = -99;
+            decimal remainingCounterBalance = GetRemainingCounterCash(counterBalance);
+
+            if ((remainingCounterBalance > counterBalance.Amount) && (counterBalance.Type == "Closing Amount"))
+                return -1;
+
+            if ((remainingCounterBalance < counterBalance.Amount) && (counterBalance.Type == "Closing Amount"))
+                return -2;
+
             using (SqlConnection conn = GetConnection())
             {
                 using (OpenCbsCommand c = new OpenCbsCommand("UpdateCounterBalance", conn).AsStoredProcedure())
                 {
-                    c.AddParam("@allocaterId", counterBalance.AllocaterId);
+                    c.AddParam("@allocaterId", _user.Id);
                     c.AddParam("@branch", counterBalance.Branch);
                     c.AddParam("@cashierId", counterBalance.CashierId);
                     c.AddParam("@counterId", counterBalance.CounterId);
@@ -41,6 +69,7 @@ namespace OpenCBS.Manager
             }
             return ret;
         }
+
 
 
 

@@ -190,6 +190,7 @@ namespace OpenCBS.GUI.Clients
             this.columnHeaderCreationDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderStartDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderCloseDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderLoanCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonProjectAddContract = new System.Windows.Forms.Button();
             this.buttonProjectViewContract = new System.Windows.Forms.Button();
@@ -250,6 +251,7 @@ namespace OpenCBS.GUI.Clients
             this.textBoxLoanPurpose = new System.Windows.Forms.TextBox();
             this.nudLoanAmount = new System.Windows.Forms.NumericUpDown();
             this.nudInterestRate = new System.Windows.Forms.NumericUpDown();
+            this.rbAmortisationSchedule = new System.Windows.Forms.RadioButton();
             this.tabPageAdvancedSettings = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
@@ -794,6 +796,7 @@ namespace OpenCBS.GUI.Clients
             this.menuPendingSavingEvents = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemConfirmPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCancelPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
+            this.rbStraightSchedule = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).BeginInit();
             this.splitContainer10.Panel1.SuspendLayout();
             this.splitContainer10.Panel2.SuspendLayout();
@@ -1591,7 +1594,8 @@ namespace OpenCBS.GUI.Clients
             this.columnHeaderNbOfInstallments,
             this.columnHeaderCreationDate,
             this.columnHeaderStartDate,
-            this.columnHeaderCloseDate});
+            this.columnHeaderCloseDate,
+            this.columnHeaderLoanCategory});
             resources.ApplyResources(this.lvContracts, "lvContracts");
             this.lvContracts.FullRowSelect = true;
             this.lvContracts.GridLines = true;
@@ -1649,6 +1653,10 @@ namespace OpenCBS.GUI.Clients
             // columnHeaderCloseDate
             // 
             resources.ApplyResources(this.columnHeaderCloseDate, "columnHeaderCloseDate");
+            // 
+            // columnHeaderLoanCategory
+            // 
+            resources.ApplyResources(this.columnHeaderLoanCategory, "columnHeaderLoanCategory");
             // 
             // flowLayoutPanel1
             // 
@@ -1879,6 +1887,8 @@ namespace OpenCBS.GUI.Clients
             this.tableLayoutPanel4.Controls.Add(this.textBoxLoanPurpose, 4, 4);
             this.tableLayoutPanel4.Controls.Add(this.nudLoanAmount, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.nudInterestRate, 1, 2);
+            this.tableLayoutPanel4.Controls.Add(this.rbAmortisationSchedule, 3, 5);
+            this.tableLayoutPanel4.Controls.Add(this.rbStraightSchedule, 3, 6);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             // 
             // lblEconomicActivity
@@ -2071,6 +2081,13 @@ namespace OpenCBS.GUI.Clients
             this.nudInterestRate.Name = "nudInterestRate";
             this.nudInterestRate.ValueChanged += new System.EventHandler(this.nudInterestRate_ValueChanged);
             this.nudInterestRate.EnabledChanged += new System.EventHandler(this.nudLoanAmount_EnabledChanged);
+            // 
+            // rbAmortisationSchedule
+            // 
+            resources.ApplyResources(this.rbAmortisationSchedule, "rbAmortisationSchedule");
+            this.rbAmortisationSchedule.Name = "rbAmortisationSchedule";
+            this.rbAmortisationSchedule.TabStop = true;
+            this.rbAmortisationSchedule.UseVisualStyleBackColor = true;
             // 
             // tabPageAdvancedSettings
             // 
@@ -5700,6 +5717,13 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.menuItemCancelPendingSavingEvent, "menuItemCancelPendingSavingEvent");
             this.menuItemCancelPendingSavingEvent.Click += new System.EventHandler(this.menuItemCancelPendingSavingEvent_Click);
             // 
+            // rbStraightSchedule
+            // 
+            resources.ApplyResources(this.rbStraightSchedule, "rbStraightSchedule");
+            this.rbStraightSchedule.Name = "rbStraightSchedule";
+            this.rbStraightSchedule.TabStop = true;
+            this.rbStraightSchedule.UseVisualStyleBackColor = true;
+            // 
             // ClientForm
             // 
             resources.ApplyResources(this, "$this");
@@ -6618,5 +6642,8 @@ namespace OpenCBS.GUI.Clients
         private ColumnHeader columnHeader58;
         private ColumnHeader columnHeader59;
         private ColumnHeader columnHeader60;
+        private ColumnHeader columnHeaderLoanCategory;
+        private RadioButton rbAmortisationSchedule;
+        private RadioButton rbStraightSchedule;
     }
 }

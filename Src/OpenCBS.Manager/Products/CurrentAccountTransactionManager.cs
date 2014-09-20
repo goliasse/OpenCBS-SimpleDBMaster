@@ -441,6 +441,24 @@ AND maker = @maker";
 
             return ret;
         }
+        public string GetChartOfAccountNumber(string COA)
+        {
+            string ret = "";
+            using (SqlConnection conn = GetConnection())
+            {
+                using (OpenCbsCommand command = new OpenCbsCommand("GetChartOfAccounts", conn).AsStoredProcedure())
+                {
+
+                    command.AddParam("@name", COA);
+
+
+                    ret = Convert.ToString(command.ExecuteScalar());
+
+                }
+            }
+
+            return ret;
+        }
 
 
 public int DebitFeeTransaction(CurrentAccountTransactions currentAccountTransactions)
@@ -450,10 +468,19 @@ public int DebitFeeTransaction(CurrentAccountTransactions currentAccountTransact
             {
                 using (OpenCbsCommand command = new OpenCbsCommand("DebitFeeTransaction", conn).AsStoredProcedure())
                 {
+                    if (currentAccountTransactions.TransactionMode == "Debit")
+                    {
+                        command.AddParam("@to_account", GetChartOfAccountNumber("ProfitAndLossIncome"));
+                        command.AddParam("@from_account", currentAccountTransactions.FromAccount);
+                    }
+                    else
+                    {
+                        command.AddParam("@to_account", currentAccountTransactions.ToAccount);
+                        command.AddParam("@from_account", GetChartOfAccountNumber("ProfitAndLossExpense"));
+                    }
+
                     command.AddParam("@transaction_mode", currentAccountTransactions.TransactionMode);
                     command.AddParam("@transaction_type", currentAccountTransactions.TransactionType);
-                    command.AddParam("@to_account", currentAccountTransactions.ToAccount);
-                    command.AddParam("@from_account", currentAccountTransactions.FromAccount);
                     command.AddParam("@amount", currentAccountTransactions.Amount);
                     command.AddParam("@transaction_date", currentAccountTransactions.TransactionDate);
                     command.AddParam("@transaction_fees", 0);

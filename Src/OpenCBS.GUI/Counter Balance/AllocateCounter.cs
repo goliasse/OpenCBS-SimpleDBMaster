@@ -78,9 +78,16 @@ namespace OpenCBS.GUI.Counter
                 counterBalance.Type = "TopUp Amount";
 
             CounterBalanceService _counterBalanceService = ServicesProvider.GetInstance().GetCounterBalanceService();
-            int ret = _counterBalanceService.SaveCounterBalance(counterBalance);
+            int ret = _counterBalanceService.UpdateCounterBalance(counterBalance);
+            
             if (ret >= 1)
                 MessageBox.Show("Counter Balance Successfully Updated.");
+            else if (ret == 0)
+                MessageBox.Show(counterBalance.CounterId+ " Does Not Have Opening Balance for "+ counterBalance.AllocationDate +".");
+            else if (ret == -1)
+                MessageBox.Show("Closing Balance Is Less Than Expected.");
+            else if (ret == -2)
+                MessageBox.Show("Closing Balance Is More Than Expected.");
             else
                 MessageBox.Show("Some Error Ocurred.");
             

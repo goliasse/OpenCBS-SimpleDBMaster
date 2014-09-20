@@ -33,6 +33,7 @@ namespace OpenCBS.Engine
         public decimal PreviousInterestRate { get; set; }
 
         public IDateShiftPolicy DateShiftPolicy { get; set; }
+        public string ScheduleType { get; set; }
 
         public ScheduleConfiguration()
         {

@@ -17,16 +17,24 @@ namespace OpenCBS.GUI.Capital_Adequacy_Ratio
         {
             InitializeComponent();
 
-            RWAPercentage RWAPercentage = new RWAPercentage();
-            lblContractrelatedtransaction.Text = lblContractrelatedtransaction.Text + "(" + RWAPercentage.Contractrelatedtransaction + "%)";
-            lblBidbond.Text = lblBidbond.Text + "(" + RWAPercentage.Bidbond + "%)";
-            lblPerformancebond.Text = lblPerformancebond.Text + "(" + RWAPercentage.Performancebond + "%)";
-            lblFinancialguarantee.Text = lblFinancialguarantee.Text + "(" + RWAPercentage.Financialguarantee + "%)";
-            lblLetterofcredit.Text = lblLetterofcredit.Text + "(" + RWAPercentage.Letterofcredit + "%)";
-            lblMortgageloan.Text = lblMortgageloan.Text + "(" + RWAPercentage.Mortgageloan + "%)";
-            lblOtherloans.Text = lblOtherloans.Text + "(" + RWAPercentage.Otherloans + "%)";
-            lblGovernmentLoans.Text = lblGovernmentLoans.Text + "(" + RWAPercentage.GovernmentLoans + "%)";
-            lblCash.Text = lblCash.Text + "(" + RWAPercentage.Cash + "%)";
+            lblCapitalAdequacyRatio.Visible = false;
+            lblTierOneCapital.Visible = false;
+            lblTierTwoCapital.Visible = false;
+            lblRWA.Visible = false;
+            lblCapitalAdequacyRatio.Visible = false;
+
+            RWAPercentageService _RWAPercentageService = ServicesProvider.GetInstance().GetRWAPercentageService();
+            
+            
+            lblContractrelatedtransaction.Text = lblContractrelatedtransaction.Text + "(" + _RWAPercentageService.FetchRWAPercentage("Contract related transaction") + "%)";
+            lblBidbond.Text = lblBidbond.Text + "(" + _RWAPercentageService.FetchRWAPercentage("Bid bond") + "%)";
+            lblPerformancebond.Text = lblPerformancebond.Text + "(" + _RWAPercentageService.FetchRWAPercentage("performance bond") + "%)";
+            lblFinancialguarantee.Text = lblFinancialguarantee.Text + "(" + _RWAPercentageService.FetchRWAPercentage("Financial guarantee") + "%)";
+            lblLetterofcredit.Text = lblLetterofcredit.Text + "(" + _RWAPercentageService.FetchRWAPercentage("letter of credit") + "%)";
+            lblMortgageloan.Text = lblMortgageloan.Text + "(" + _RWAPercentageService.FetchRWAPercentage("Mortgage loan") + "%)";
+            lblOtherloans.Text = lblOtherloans.Text + "(" + _RWAPercentageService.FetchRWAPercentage("Other loans") + "%)";
+            lblGovernmentLoans.Text = lblGovernmentLoans.Text + "(" + _RWAPercentageService.FetchRWAPercentage("Government Loans") + "%)";
+            lblCash.Text = lblCash.Text + "(" + _RWAPercentageService.FetchRWAPercentage("Cash") + "%)";
         }
 
         void KeyPressControl(KeyPressEventArgs e)
@@ -72,7 +80,7 @@ namespace OpenCBS.GUI.Capital_Adequacy_Ratio
             if (Goodwill == null)
                 Goodwill = 0;
 
-
+            decimal tierOneCapital = (decimal)(Paidupcapital + Statutoryreserves + Retainedearnings + Goodwill); 
             lblTotalTierOneCapital.Text = (Paidupcapital + Statutoryreserves + Retainedearnings + Goodwill).ToString();
 
             decimal? Loanlossreserve = ServicesHelper.ConvertStringToNullableDecimal(txtLoanlossreserve.Text);
@@ -94,7 +102,7 @@ namespace OpenCBS.GUI.Capital_Adequacy_Ratio
             if (Preferenceshares == null)
                 Preferenceshares = 0;
 
-
+            decimal tierTwoCapital = (decimal)(Loanlossreserve + Subordinateddebt + Revaluationreserve + Preferenceshares);
             lblTotalTierTwoCapital.Text = (Loanlossreserve + Subordinateddebt + Revaluationreserve + Preferenceshares).ToString();
 
 
@@ -163,7 +171,17 @@ namespace OpenCBS.GUI.Capital_Adequacy_Ratio
             GovernmentLoans = (GovernmentLoans * GovernmentLoansPercentage)/100;
             Cash = (Cash * CashPercentage)/100;
 
+
+            lblCapitalAdequacyRatio.Visible = true;
+            lblTierOneCapital.Visible = true;
+            lblTierTwoCapital.Visible = true;
+            lblRWA.Visible = true;
+            lblCapitalAdequacyRatio.Visible = true;
+
+            decimal RWA = (decimal)(Contractrelatedtransaction + Bidbond + Performancebond + Financialguarantee + Letterofcredit + Mortgageloan + Otherloans + GovernmentLoans + Cash);
             lblTotalRWA.Text = (Contractrelatedtransaction + Bidbond + Performancebond + Financialguarantee + Letterofcredit + Mortgageloan + Otherloans + GovernmentLoans + Cash).ToString();
+            double CAR = (double)((tierOneCapital + tierTwoCapital) / RWA);
+            lblCAR.Text = CAR.ToString();
 
         }
 

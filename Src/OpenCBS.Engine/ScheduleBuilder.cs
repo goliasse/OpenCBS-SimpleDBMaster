@@ -53,44 +53,49 @@ namespace OpenCBS.Engine
 
         private static Installment BuildFirst(IScheduleConfiguration configuration)
         {
-            var installment = new Installment
-            {
-                Number = 1,
-                StartDate = configuration.StartDate,
-                ExpectedDate = configuration.PreferredFirstInstallmentDate,
-                OLB = configuration.Amount,
-                CapitalRepayment = 0m,
-                InterestsRepayment =  0m,
-                FeesUnpaid = 0
-            };
-            if (configuration.GracePeriod == 0)
-            {
-                configuration.CalculationPolicy.Calculate(installment, configuration);
-            }
+           
+                var installment = new Installment
+                {
+                    Number = 1,
+                    StartDate = configuration.StartDate,
+                    ExpectedDate = configuration.PreferredFirstInstallmentDate,
+                    OLB = configuration.Amount,
+                    CapitalRepayment = 0m,
+                    InterestsRepayment = 0m,
+                    FeesUnpaid = 0
+                };
+                if (configuration.GracePeriod == 0)
+                {
+                    configuration.CalculationPolicy.Calculate(installment, configuration);
+                }
 
-            return installment;
+                return installment;
+          
         }
 
         private static Installment BuildNext(Installment previous, IScheduleConfiguration configuration)
         {
-            if (previous == null) throw new ArgumentException("Previous installment cannot be null.");
+            
+                if (previous == null) throw new ArgumentException("Previous installment cannot be null.");
 
-            if (previous.Number == configuration.NumberOfInstallments) return null;
-            var installment = new Installment
-            {
-                Number = previous.Number + 1,
-                StartDate = previous.ExpectedDate,
-                ExpectedDate = configuration.PeriodPolicy.GetNextDate(previous.ExpectedDate),
-                InterestsRepayment = 0m,
-                CapitalRepayment = 0m,
-                OLB = previous.OLB - previous.CapitalRepayment,
-                FeesUnpaid = 0
-            };
-            if (configuration.GracePeriod < installment.Number)
-            {
-                configuration.CalculationPolicy.Calculate(installment, configuration);
-            }
-            return installment;
+                if (previous.Number == configuration.NumberOfInstallments) return null;
+                var installment = new Installment
+                {
+                    Number = previous.Number + 1,
+                    StartDate = previous.ExpectedDate,
+                    ExpectedDate = configuration.PeriodPolicy.GetNextDate(previous.ExpectedDate),
+                    InterestsRepayment = 0m,
+                    CapitalRepayment = 0m,
+                    OLB = previous.OLB - previous.CapitalRepayment,
+                    FeesUnpaid = 0
+                };
+                if (configuration.GracePeriod < installment.Number)
+                {
+                    configuration.CalculationPolicy.Calculate(installment, configuration);
+                }
+                return installment;
+            
+           
         }
 
         private static decimal CalculateInterest(Installment installment, IScheduleConfiguration configuration)

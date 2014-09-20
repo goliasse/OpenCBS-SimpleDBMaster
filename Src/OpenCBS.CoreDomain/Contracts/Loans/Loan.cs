@@ -124,6 +124,8 @@ namespace OpenCBS.CoreDomain.Contracts.Loans
 
         public List<TrancheEvent> GivenTranches = new List<TrancheEvent>();
 
+        public string ScheduleType { get; set; }
+
         public Loan()
         {
         }

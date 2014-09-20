@@ -250,6 +250,7 @@
             this.btnUpdate.Size = new System.Drawing.Size(107, 23);
             this.btnUpdate.TabIndex = 100;
             this.btnUpdate.Text = "Update";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // DefineRiskWeightedAssetPercentage
             // 

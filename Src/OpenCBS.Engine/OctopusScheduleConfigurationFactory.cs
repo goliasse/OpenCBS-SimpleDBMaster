@@ -73,6 +73,7 @@ namespace OpenCBS.Engine
             _scheduleConfiguration.PreferredFirstInstallmentDate = _loan.FirstInstallmentDate;
             _scheduleConfiguration.ChargeInterestDuringGracePeriod = _loan.Product.ChargeInterestWithinGracePeriod;
             _scheduleConfiguration.ChargeActualInterestForFirstInstallment = _settings.PayFirstInterestRealValue;
+            _scheduleConfiguration.ScheduleType = _loan.ScheduleType;
             return this;
         }
 

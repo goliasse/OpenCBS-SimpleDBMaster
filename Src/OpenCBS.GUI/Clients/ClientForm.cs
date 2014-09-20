@@ -1765,6 +1765,22 @@ namespace OpenCBS.GUI.Clients
             
         }
 
+        public static int GetMonthsBetween(DateTime from, DateTime to)
+        {
+            if (from > to) return GetMonthsBetween(to, from);
+
+            var monthDiff = Math.Abs((to.Year * 12 + (to.Month - 1)) - (from.Year * 12 + (from.Month - 1)));
+
+            if (from.AddMonths(monthDiff) > to || to.Day < from.Day)
+            {
+                return monthDiff - 1;
+            }
+            else
+            {
+                return monthDiff;
+            }
+        }
+
         private void DisplayContracts(IEnumerable<Loan> loans)
         {
             OCurrency totalOlb = 0;
@@ -1784,6 +1800,9 @@ namespace OpenCBS.GUI.Clients
 
             foreach (Loan credit in loans)
             {
+                
+                
+                
 
                 // it will be done for the first credit
                 if (currencyCodeHolder == null) currencyCodeHolder = credit.Product.Currency.Code;
@@ -1850,10 +1869,30 @@ namespace OpenCBS.GUI.Clients
                     }
                 }
 
+
+                if (MultiLanguageStrings.GetString(Ressource.ClientForm, credit.ContractStatus + ".Text") == "Active")
+                {
+                    DateTime lastRepaymentDate = credit.GetLastRepaymentDate();
+                    if (GetMonthsBetween(lastRepaymentDate, DateTime.Today) <= 3)
+                        item.SubItems.Add("Performing Loan");
+                    else if (GetMonthsBetween(lastRepaymentDate, DateTime.Today) <= 6)
+                        item.SubItems.Add("Doubtful Loan");
+                    else if (GetMonthsBetween(lastRepaymentDate, DateTime.Today) <= 12)
+                        item.SubItems.Add("Non-Performing Loan");
+                }
+                else
+                {
+                    item.SubItems.Add(MultiLanguageStrings.GetString(Ressource.ClientForm, credit.ContractStatus + ".Text"));
+                }
                 lvContracts.Items.Add(item);
 
                 if (credit.UseCents)
                     usedCents = credit.UseCents;
+
+                
+                
+                   
+
             }
 
             var totalItem = new ListViewItem("");
@@ -1879,6 +1918,11 @@ namespace OpenCBS.GUI.Clients
                 totalItem.SubItems.Add(currencyCodeHolder);
             }
 
+
+        
+
+
+        
             lvContracts.Items.Add(totalItem);
         }
 
@@ -3688,6 +3732,12 @@ namespace OpenCBS.GUI.Clients
                 credit.InstallmentList = _credit.InstallmentList;
             }
             credit.EconomicActivity = eacLoan.Activity;
+
+            if (rbAmortisationSchedule.Checked == true)
+                credit.ScheduleType = "Amortisation Schedule";
+            else
+                credit.ScheduleType = "Straight Schedule";
+
             return credit;
         }
 
@@ -3739,11 +3789,16 @@ namespace OpenCBS.GUI.Clients
                 _credit.LoanPurpose = textBoxLoanPurpose.Text;
                 _credit.Comments = textBoxComments.Text;
 
+                
+
                 _credit.CompulsorySavings = GetSelectedSavingProduct();
                 _credit.CompulsorySavingsPercentage = (int)numCompulsoryAmountPercent.Value;
                 _credit.Insurance = decimal.Parse(tbInsurance.Text);
 
                 _credit.LoanEntryFeesList = new List<LoanEntryFee>();
+
+
+
                 foreach (ListViewItem item in lvEntryFees.Items)
                 {
                     if (item.Tag is LoanEntryFee)
@@ -9255,15 +9310,17 @@ namespace OpenCBS.GUI.Clients
 
         private void InitializeBankGuaranteeList()
         {
-            lvBankGuarantee.Items.Clear();
-            BankGuaranteesService _bankGuaranteeService = ServicesProvider.GetInstance().GetBankGuaranteesService();
-            List<BankGuarantees> bankGuaranteeList = _bankGuaranteeService.FetchBranchAllBankGuarantee(_client.Id);
-            if (bankGuaranteeList != null)
+            if (_client != null)
             {
-                foreach (BankGuarantees bankGuarantee in bankGuaranteeList)
+                lvBankGuarantee.Items.Clear();
+                BankGuaranteesService _bankGuaranteeService = ServicesProvider.GetInstance().GetBankGuaranteesService();
+                List<BankGuarantees> bankGuaranteeList = _bankGuaranteeService.FetchBranchAllBankGuarantee(_client.Id);
+                if (bankGuaranteeList != null)
                 {
+                    foreach (BankGuarantees bankGuarantee in bankGuaranteeList)
+                    {
 
-                    var item = new ListViewItem(new[] {
+                        var item = new ListViewItem(new[] {
                     bankGuarantee.BankGuaranteeCode,
                     
                     bankGuarantee.IssuingDate.ToShortDateString(),
@@ -9274,9 +9331,10 @@ namespace OpenCBS.GUI.Clients
                     bankGuarantee.Currency,
                     bankGuarantee.Status,
                     });
-                    lvBankGuarantee.Items.Add(item);
-                }
+                        lvBankGuarantee.Items.Add(item);
+                    }
 
+                }
             }
         }
 
