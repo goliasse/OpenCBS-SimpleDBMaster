@@ -762,6 +762,7 @@ namespace OpenCBS.GUI.UserControl
             this.txtLoanFacilityLimit.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this.txtLoanFacilityLimit, "txtLoanFacilityLimit");
             this.txtLoanFacilityLimit.Name = "txtLoanFacilityLimit";
+            this.txtLoanFacilityLimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLoanFacilityLimit_KeyPress);
             // 
             // label1
             // 
@@ -804,6 +805,7 @@ namespace OpenCBS.GUI.UserControl
             this.tbEstimatedWorth.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this.tbEstimatedWorth, "tbEstimatedWorth");
             this.tbEstimatedWorth.Name = "tbEstimatedWorth";
+            this.tbEstimatedWorth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLoanFacilityLimit_KeyPress);
             // 
             // lblEstimatedWork
             // 

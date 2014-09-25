@@ -22,7 +22,7 @@ namespace OpenCBS.Engine.InstallmentCalculationPolicy
             }
             else
             {
-                installment.InterestsRepayment = CalculateInterest(installment, configuration, installment.OLB.Value);
+                installment.InterestsRepayment = CalculateInterest(installment, configuration, configuration.Amount);
                 installment.CapitalRepayment = configuration.Amount / configuration.NumberOfInstallments;
                 var annuity = installment.CapitalRepayment + installment.InterestsRepayment;
                 

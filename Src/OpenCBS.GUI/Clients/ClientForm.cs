@@ -4347,6 +4347,9 @@ namespace OpenCBS.GUI.Clients
             }
 
             Disburse();
+            
+            //Update loan facility limit
+            ServicesProvider.GetInstance().GetClientServices().UpdateLoanFacilityLimit(_client.Id,nudLoanAmount.Value.ToString());
         }
 
         private void Disburse()

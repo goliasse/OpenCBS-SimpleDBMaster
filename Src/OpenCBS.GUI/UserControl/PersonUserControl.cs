@@ -23,6 +23,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 using OpenCBS.ArchitectureV2.Interface;
 using OpenCBS.CoreDomain;
@@ -391,7 +392,7 @@ namespace OpenCBS.GUI.UserControl
             _tempPerson.EstimatedWorth = tbEstimatedWorth.Text;
             _tempPerson.KYCStatus = cbKYCStatus.SelectedItem.ToString();
             _tempPerson.TypeOfFacilities = txtTypeOfFacilities.Text;
-
+            _tempPerson.LoanFacilityLimit = txtLoanFacilityLimit.Text;
             try
             {
                 bool save = 0 == _tempPerson.Id;
@@ -738,6 +739,31 @@ namespace OpenCBS.GUI.UserControl
         private void EacPersonActivityChange(object sender, EconomicActivtyEventArgs e)
         {
             if (_tempPerson != null) _tempPerson.Activity = eacPerson.Activity;
+        }
+
+
+        void KeyPressControl(KeyPressEventArgs e)
+        {
+            int keyCode = e.KeyChar;
+
+            if (
+                (keyCode >= 48 && keyCode <= 57) ||
+                (keyCode == 8) ||
+                (Char.IsControl(e.KeyChar) && e.KeyChar != ((char)Keys.V | (char)Keys.ControlKey))
+                ||
+                (Char.IsControl(e.KeyChar) && e.KeyChar != ((char)Keys.C | (char)Keys.ControlKey))
+                ||
+                (e.KeyChar.ToString() == NumberFormatInfo.CurrentInfo.NumberDecimalSeparator))
+            {
+                e.Handled = false;
+            }
+            else
+                e.Handled = true;
+        }
+
+        private void txtLoanFacilityLimit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            KeyPressControl(e);
         }
     }
 }

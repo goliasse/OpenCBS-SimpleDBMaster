@@ -611,6 +611,11 @@ namespace OpenCBS.Services
             return _clientManagement.IsThereSimilardentificationDataAlreadyUsed(pIdentificationData, pID);
         }
 
+        public void UpdateLoanFacilityLimit(int pPersonId, string loanFaciltyLimit)
+        {
+            _clientManagement.UpdateLoanFacilityLimit(pPersonId, loanFaciltyLimit);
+        }
+
         private int AddPerson(Person pPerson, Action<SqlTransaction, int> action)
         {
             using (SqlConnection connection = _clientManagement.GetConnection())

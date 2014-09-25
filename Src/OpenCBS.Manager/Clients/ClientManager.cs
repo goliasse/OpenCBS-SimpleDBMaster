@@ -220,7 +220,8 @@ namespace OpenCBS.Manager.Clients
                             [kyc_status],
                             [estimated_worth],
                             [type_of_facilities],
-                            [marital_status]            
+                            [marital_status],
+                            [loan_facility_limit]
                             ) 
                 VALUES(
                             @id
@@ -265,7 +266,8 @@ namespace OpenCBS.Manager.Clients
                             ,@kycstatus
                             ,@estimated_worth
                             ,@type_of_facilities
-                            ,@marital_status   
+                            ,@marital_status
+                            ,@loan_facility_limit   
                         )";
 
 
@@ -316,7 +318,9 @@ namespace OpenCBS.Manager.Clients
                 c.AddParam("@kycstatus",pPerson.KYCStatus);
                 c.AddParam("@estimated_worth",pPerson.EstimatedWorth);
                 c.AddParam("@type_of_facilities",pPerson.TypeOfFacilities);
-                c.AddParam("@marital_status", pPerson.MaritalStatus);  
+                c.AddParam("@marital_status", pPerson.MaritalStatus);
+                c.AddParam("@loan_facility_limit", pPerson.LoanFacilityLimit);  
+                
 
                 if (pPerson.Activity != null)
                     c.AddParam("@activityId", pPerson.Activity.Id);
@@ -328,6 +332,22 @@ namespace OpenCBS.Manager.Clients
             pPerson.Id = tiersId;
 
             return tiersId;
+        }
+
+
+        public void UpdateLoanFacilityLimit(int pPersonId, string loanFaciltyLimit)
+        {
+            string q =
+                @"UPDATE Persons SET loan_facility_limit = @loan_facility_limit
+                               WHERE id = @id";
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@id", pPersonId);
+                c.AddParam("@loan_facility_limit", loanFaciltyLimit);
+                c.ExecuteScalar();
+            }
         }
 
         public void UpdatePersonIdentificationData(int pPersonId, SqlTransaction sqlTransac)
@@ -435,7 +455,8 @@ namespace OpenCBS.Manager.Clients
                                  Persons.kyc_status,
                                  Persons.estimated_worth,
                                  Persons.type_of_facilities,
-                                 Persons.marital_status
+                                 Persons.marital_status,
+                                 Persons.loan_facility_limit
                             FROM Tiers 
                             INNER JOIN Persons ON Tiers.id = Persons.id 
                             WHERE Persons.id = @id";
@@ -560,7 +581,7 @@ namespace OpenCBS.Manager.Clients
                              KYCStatus = r.GetString("kyc_status"),
                              //Get the value from stored procedue
                              TypeOfFacilities = DetermineTypeOfFacilities(r.GetInt("tiers_id")),
-                             LoanFacilityLimit = DetermineLoanFacilityLimit(r.GetInt("tiers_id")),
+                             LoanFacilityLimit = r.GetString("loan_facility_limit"),
                              Nationality = r.GetString("nationality"),
                              UnemploymentMonths = r.GetNullInt("unemployment_months"),
                              SSNumber = r.GetString("SS"),
@@ -739,6 +760,7 @@ namespace OpenCBS.Manager.Clients
                                 ,[estimated_worth]=@estimatedwork
                                 ,[type_of_facilities]=@typeoffacilities
                                 ,[marital_status]=@maritalstatus
+                                ,[loan_facility_limit]=@loan_facility_limit
                                 WHERE id = @id";
 
 
@@ -796,6 +818,8 @@ namespace OpenCBS.Manager.Clients
                 c.AddParam("@estimatedwork", person.EstimatedWorth);
                 c.AddParam("@typeoffacilities", person.TypeOfFacilities);
                 c.AddParam("@maritalstatus", person.MaritalStatus);
+                c.AddParam("@loan_facility_limit", person.LoanFacilityLimit);
+                
                 if (person.Activity != null)
                     c.AddParam("@activityId", person.Activity.Id);
                 else
@@ -2033,7 +2057,8 @@ namespace OpenCBS.Manager.Clients
                                  Persons.kyc_status,
                                  Persons.estimated_worth,
                                  Persons.type_of_facilities,
-                                 Persons.marital_status         
+                                 Persons.marital_status,    
+                                 Persons.loan_facility_limit
                             FROM Tiers 
                             INNER JOIN Persons ON Tiers.id = Persons.id";
 

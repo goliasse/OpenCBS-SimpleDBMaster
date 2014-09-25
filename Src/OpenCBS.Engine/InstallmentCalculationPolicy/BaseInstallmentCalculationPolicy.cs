@@ -2,16 +2,17 @@
 using System.Linq.Expressions;
 using OpenCBS.CoreDomain.Contracts.Loans.Installments;
 using OpenCBS.Engine.Interfaces;
+using OpenCBS.Shared;
 
 namespace OpenCBS.Engine.InstallmentCalculationPolicy
 {
     public class BaseInstallmentCalculationPolicy
     {
-        protected decimal CalculateInterest(Installment installment, IScheduleConfiguration configuration, decimal amount)
+        protected decimal CalculateInterest(Installment installment, IScheduleConfiguration configuration, OCurrency amount)
         {
             var daysInPeriod = configuration.PeriodPolicy.GetNumberOfDays(installment.ExpectedDate);//, configuration.DateShiftPolicy);
             var daysInYear = configuration.YearPolicy.GetNumberOfDays(installment.ExpectedDate);
-            var interest = installment.OLB * configuration.InterestRate / 100 * daysInPeriod / daysInYear;
+            var interest = amount * configuration.InterestRate / 100 * daysInPeriod / daysInYear;
             //if schedule is flat
             if (configuration.CalculationPolicy.GetType() == typeof(FlatInstallmentCalculationPolicy))
             {
