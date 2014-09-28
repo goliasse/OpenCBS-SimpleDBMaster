@@ -531,7 +531,19 @@ namespace OpenCBS.GUI.Contracts
                                                                                            pending);
                     }
                 }
+
+
                 DialogResult = DialogResult.OK;
+                //Update Chart of account
+                string[] a = lbInterest.Text.Split(' ');
+                string interest = a[0];
+                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Interest", "Debit", Convert.ToDecimal(interest), "L");
+                decimal amount = Convert.ToDecimal(nudICAmount.Value - Convert.ToDecimal(interest));
+                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Loan", "Debit", amount, "L");
+                
+
+                 
+
                 Close();
             }
             catch (Exception ex)

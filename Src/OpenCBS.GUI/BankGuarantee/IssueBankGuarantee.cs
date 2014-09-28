@@ -19,7 +19,7 @@ namespace OpenCBS.GUI.BankGuarantee
 {
     public partial class IssueBankGuarantee : Form
     {
-        Client _client;
+        Client _client = null;
         public IssueBankGuarantee(Client client)
         {
             _client = client;
@@ -57,6 +57,7 @@ namespace OpenCBS.GUI.BankGuarantee
             txtValue.Text = bankGuarantees.Value.GetFormatedValue(false);
             cmbCurrency.SelectedItem = bankGuarantees.Currency;
             cmbStatus.SelectedItem = bankGuarantees.Status;
+            txtTransactionNumber.Text = bankGuarantees.FeeTransactionNumber;
             txtValidity.Text = GetValidity(bankGuarantees.IssuingDate, bankGuarantees.ExpiryDate, bankGuarantees.FeePeriod).ToString();
             txtTotalFee.Text = (GetValidity(bankGuarantees.IssuingDate, bankGuarantees.ExpiryDate, bankGuarantees.FeePeriod) * Convert.ToInt32(txtFeePerPeriod.Text)).ToString();
         }
@@ -163,7 +164,7 @@ namespace OpenCBS.GUI.BankGuarantee
                 txtTotalFee.Enabled = !flag;
                 txtExpiryDate.Enabled = !flag;
                 txtValidity.Enabled = !flag;
-
+                txtTransactionNumber.Enabled = !flag;
                 btnSubmit.Visible = !flag;
                 lblStatus.Visible = flag;
                 lblTotalFee.Visible = flag;
@@ -188,7 +189,7 @@ namespace OpenCBS.GUI.BankGuarantee
                 txtTotalFee.Enabled = flag;
                 txtExpiryDate.Enabled = flag;
                 txtValidity.Enabled = flag;
-
+                txtTransactionNumber.Enabled = flag;
                 btnUpdate.Visible = flag;
                 btnSubmit.Visible = flag;
                 lblStatus.Visible = !flag;
@@ -238,17 +239,10 @@ namespace OpenCBS.GUI.BankGuarantee
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             BankGuarantees bankGuarantees = new BankGuarantees();
-            decimal balance = 0;
+           
             bankGuarantees.Branch = _client.Branch.Code;
             
-            //This method will be used for categorising the loan as one of the three category
-            //new Loan().CalculatePastDueSinceLastRepayment();
-            //Code for getting the consolidated balance of all the saving accounts held by the customer
-            IList<ISavingsContract> listSavingContract = _client.Savings;
-            foreach (ISavingsContract iSavingsContract in listSavingContract)
-            {
-                balance = balance + iSavingsContract.GetBalance().Value;
-            }
+           
             bankGuarantees.IssuingDate = DateTime.Today;
             bankGuarantees.ExpiryDate = CalculateExpiryDate(Convert.ToInt32(txtValidity.Text), cmbFeePeriod.SelectedItem.ToString());
             bankGuarantees.ApplicantId = _client.Id;
@@ -260,7 +254,7 @@ namespace OpenCBS.GUI.BankGuarantee
             bankGuarantees.Value = ServicesHelper.ConvertStringToNullableDecimal(txtValue.Text);
             bankGuarantees.Currency = cmbCurrency.SelectedItem.ToString();
             bankGuarantees.Status = "Issued";
-            bankGuarantees.AccountNumber = txtAccountNumber.Text;
+            bankGuarantees.FeeTransactionNumber = txtTransactionNumber.Text;
             bankGuarantees.TotalFee = Convert.ToInt32(txtValidity.Text) * ServicesHelper.ConvertStringToNullableDecimal(txtFeePerPeriod.Text);
 
             BankGuaranteesService _bankGuaranteeService = ServicesProvider.GetInstance().GetBankGuaranteesService();
@@ -324,8 +318,11 @@ namespace OpenCBS.GUI.BankGuarantee
 
         private void txtFeePerPeriod_TextChanged(object sender, EventArgs e)
         {
-            txtTotalFee.Text = (Convert.ToInt32(txtValidity.Text) * ServicesHelper.ConvertStringToNullableDecimal(txtFeePerPeriod.Text)).ToString();
-            txtTotalFee.Enabled = false;
+            if (_client != null)
+            {
+                txtTotalFee.Text = (Convert.ToInt32(txtValidity.Text) * ServicesHelper.ConvertStringToNullableDecimal(txtFeePerPeriod.Text)).ToString();
+                txtTotalFee.Enabled = false;
+            }
         }
     }
 }

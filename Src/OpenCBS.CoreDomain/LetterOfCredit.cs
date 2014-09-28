@@ -19,12 +19,13 @@ namespace OpenCBS.CoreDomain
         public string InstrumentType { get; set; }
         public string InstrumentDescription { get; set; }
         public OCurrency Value { get; set; }
-
+        public OCurrency TotalFee { get; set; }
+        public string FeeTransactionNumber { get; set; }
         public string Currency { get; set; }
         public string BeneficiaryParty { get; set; }
-        double? FeePerPeriod { get; set; }
+        public OCurrency FeePerPeriod { get; set; }
 
-        public int FeePeriod { get; set; } //This data type is string in the entity BankGuarantees.
+        public string FeePeriod { get; set; } 
         public string Status { get; set; }
 
     }

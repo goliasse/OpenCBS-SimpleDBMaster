@@ -206,5 +206,10 @@ namespace OpenCBS.GUI.Contracts
 
             cmbPaymentMethod.SelectedItem = paymentMethods[0];
         }
+
+        private void okButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

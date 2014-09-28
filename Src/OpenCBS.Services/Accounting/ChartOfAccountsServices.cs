@@ -85,6 +85,12 @@ namespace OpenCBS.Services.Accounting
             return _accountManagement.SelectAllAccountsWithoutTeller(accountId);
         }
 
+
+        public int UpdateChartOfAccount(string transactionType, string transactionMode, decimal amount, string accountType)
+        {
+            return _accountManagement.UpdateChartOfAccount(transactionType, transactionMode, amount, accountType);
+        }
+
         public DataSet GetAccountsDataset()
         {
             return _accountManagement.GetAccountsDataset();

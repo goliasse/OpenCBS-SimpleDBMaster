@@ -252,6 +252,7 @@ namespace OpenCBS.GUI.Clients
             this.nudLoanAmount = new System.Windows.Forms.NumericUpDown();
             this.nudInterestRate = new System.Windows.Forms.NumericUpDown();
             this.rbAmortisationSchedule = new System.Windows.Forms.RadioButton();
+            this.rbStraightSchedule = new System.Windows.Forms.RadioButton();
             this.tabPageAdvancedSettings = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
@@ -742,7 +743,7 @@ namespace OpenCBS.GUI.Clients
             this.btnViewLetterOfCredit = new System.Windows.Forms.Button();
             this.btnUpdateLetterOfCredit = new System.Windows.Forms.Button();
             this.btnAddLetterOfCredit = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lvLetterOfCredit = new System.Windows.Forms.ListView();
             this.columnHeader53 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader54 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader55 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -796,7 +797,6 @@ namespace OpenCBS.GUI.Clients
             this.menuPendingSavingEvents = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemConfirmPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCancelPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
-            this.rbStraightSchedule = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).BeginInit();
             this.splitContainer10.Panel1.SuspendLayout();
             this.splitContainer10.Panel2.SuspendLayout();
@@ -2088,6 +2088,13 @@ namespace OpenCBS.GUI.Clients
             this.rbAmortisationSchedule.Name = "rbAmortisationSchedule";
             this.rbAmortisationSchedule.TabStop = true;
             this.rbAmortisationSchedule.UseVisualStyleBackColor = true;
+            // 
+            // rbStraightSchedule
+            // 
+            resources.ApplyResources(this.rbStraightSchedule, "rbStraightSchedule");
+            this.rbStraightSchedule.Name = "rbStraightSchedule";
+            this.rbStraightSchedule.TabStop = true;
+            this.rbStraightSchedule.UseVisualStyleBackColor = true;
             // 
             // tabPageAdvancedSettings
             // 
@@ -5374,7 +5381,7 @@ namespace OpenCBS.GUI.Clients
             this.tabPageBGLC.Controls.Add(this.btnViewLetterOfCredit);
             this.tabPageBGLC.Controls.Add(this.btnUpdateLetterOfCredit);
             this.tabPageBGLC.Controls.Add(this.btnAddLetterOfCredit);
-            this.tabPageBGLC.Controls.Add(this.listView1);
+            this.tabPageBGLC.Controls.Add(this.lvLetterOfCredit);
             this.tabPageBGLC.Controls.Add(this.label46);
             this.tabPageBGLC.Controls.Add(this.btnViewBankGuarantee);
             this.tabPageBGLC.Controls.Add(this.btnUpdateBankGuarantee);
@@ -5389,21 +5396,24 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.btnViewLetterOfCredit, "btnViewLetterOfCredit");
             this.btnViewLetterOfCredit.Name = "btnViewLetterOfCredit";
+            this.btnViewLetterOfCredit.Click += new System.EventHandler(this.btnViewLetterOfCredit_Click);
             // 
             // btnUpdateLetterOfCredit
             // 
             resources.ApplyResources(this.btnUpdateLetterOfCredit, "btnUpdateLetterOfCredit");
             this.btnUpdateLetterOfCredit.Name = "btnUpdateLetterOfCredit";
+            this.btnUpdateLetterOfCredit.Click += new System.EventHandler(this.btnUpdateLetterOfCredit_Click);
             // 
             // btnAddLetterOfCredit
             // 
             resources.ApplyResources(this.btnAddLetterOfCredit, "btnAddLetterOfCredit");
             this.btnAddLetterOfCredit.Name = "btnAddLetterOfCredit";
+            this.btnAddLetterOfCredit.Click += new System.EventHandler(this.btnAddLetterOfCredit_Click);
             // 
-            // listView1
+            // lvLetterOfCredit
             // 
-            this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvLetterOfCredit.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.lvLetterOfCredit.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader53,
             this.columnHeader54,
             this.columnHeader55,
@@ -5412,12 +5422,12 @@ namespace OpenCBS.GUI.Clients
             this.columnHeader58,
             this.columnHeader59,
             this.columnHeader60});
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            resources.ApplyResources(this.listView1, "listView1");
-            this.listView1.Name = "listView1";
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.lvLetterOfCredit.FullRowSelect = true;
+            this.lvLetterOfCredit.GridLines = true;
+            resources.ApplyResources(this.lvLetterOfCredit, "lvLetterOfCredit");
+            this.lvLetterOfCredit.Name = "lvLetterOfCredit";
+            this.lvLetterOfCredit.UseCompatibleStateImageBehavior = false;
+            this.lvLetterOfCredit.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader53
             // 
@@ -5716,13 +5726,6 @@ namespace OpenCBS.GUI.Clients
             this.menuItemCancelPendingSavingEvent.Name = "menuItemCancelPendingSavingEvent";
             resources.ApplyResources(this.menuItemCancelPendingSavingEvent, "menuItemCancelPendingSavingEvent");
             this.menuItemCancelPendingSavingEvent.Click += new System.EventHandler(this.menuItemCancelPendingSavingEvent_Click);
-            // 
-            // rbStraightSchedule
-            // 
-            resources.ApplyResources(this.rbStraightSchedule, "rbStraightSchedule");
-            this.rbStraightSchedule.Name = "rbStraightSchedule";
-            this.rbStraightSchedule.TabStop = true;
-            this.rbStraightSchedule.UseVisualStyleBackColor = true;
             // 
             // ClientForm
             // 
@@ -6633,7 +6636,7 @@ namespace OpenCBS.GUI.Clients
         private Button btnViewLetterOfCredit;
         private Button btnUpdateLetterOfCredit;
         private Button btnAddLetterOfCredit;
-        private ListView listView1;
+        private ListView lvLetterOfCredit;
         private ColumnHeader columnHeader53;
         private ColumnHeader columnHeader54;
         private ColumnHeader columnHeader55;

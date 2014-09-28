@@ -169,6 +169,11 @@ namespace OpenCBS.Services.Accounting
             }
         }
 
+
+
+        
+
+
         public void DoSavingMovement(Booking booking)
         {
             using (SqlConnection conn = _movementSetManagement.GetConnection())

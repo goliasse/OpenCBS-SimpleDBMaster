@@ -524,6 +524,34 @@ namespace OpenCBS.Manager.Accounting
             cmd.AddParam("@rgt", pAccount.Right);
         }
 
+
+
+        public int UpdateChartOfAccount(string transactionType, string transactionMode, decimal amount, string accountType)
+        {
+            int ret = -1;
+            using (SqlConnection conn = GetConnection())
+            {
+                using (OpenCbsCommand command = new OpenCbsCommand("UpdateChartOfAccounts", conn).AsStoredProcedure())
+                {
+
+                    command.AddParam("@TransactionType", transactionType);
+                    command.AddParam("@TransactionMode", transactionMode);
+                    command.AddParam("@amount", amount);
+                    command.AddParam("@accountType", accountType);
+
+
+                    ret = Convert.ToInt32(command.ExecuteScalar());
+
+                }
+            }
+
+            return ret;
+        }
+
+
+
+
+
         public bool SelectAccountingRuleByChartOfAccountsId(Account account)
         {
             const string sqlText = @"SELECT TOP 1 id

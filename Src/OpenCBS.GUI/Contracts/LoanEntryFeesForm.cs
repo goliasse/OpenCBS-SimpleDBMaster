@@ -55,5 +55,10 @@ namespace OpenCBS.GUI.Contracts
                 entryFee.FeeValue = amount;
             };
         }
+
+        private void okButton_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

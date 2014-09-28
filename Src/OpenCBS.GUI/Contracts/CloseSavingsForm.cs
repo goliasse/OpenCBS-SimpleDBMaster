@@ -24,6 +24,7 @@ using System.Windows.Forms;
 using OpenCBS.Shared;
 using OpenCBS.CoreDomain.SearchResult;
 using OpenCBS.CoreDomain.Products;
+using OpenCBS.Services;
 
 namespace OpenCBS.GUI.Contracts
 {
@@ -182,6 +183,33 @@ namespace OpenCBS.GUI.Contracts
         private void bSave_Click(object sender, EventArgs e)
         {
             _closeFees = udCloseFees.Value;
+
+            if (checkBoxDesactivateFees.Checked)
+            {
+                if (rbWithdraw.Checked == true)
+                {
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Fee", "Debit", udCloseFees.Value, "S");
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Cash", "Debit", Amount.Value, "S");
+                }
+                else
+                {
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Fee", "Debit", udCloseFees.Value, "S");
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Transfer", "Debit", Amount.Value, "S");
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Transfer", "Credit", Amount.Value, "S");
+                }
+            }
+            else
+            {
+                if (rbWithdraw.Checked == true)
+                {
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Cash", "Debit", Amount.Value, "S");
+                }
+                else
+                {
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Transfer", "Debit", Amount.Value, "S");
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Transfer", "Credit", Amount.Value, "S");
+                }
+            }
         }
     }
 }

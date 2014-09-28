@@ -2245,5 +2245,49 @@ Enter another account number.
 <data name="BankGuaranteesFeePeriodIsDefault" xml:space="preserve">
     <value>Please select a Fee Period</value>
   </data>
+  
+<data name="LOCBeneficiaryPartyIsBlank" xml:space="preserve">
+    <value>Beneficiary Party cannot be empty</value>
+  </data>
+  <data name="LOCInstrumentTypeIsInvalid" xml:space="preserve">
+    <value>Please select an Instrument Type</value>
+  </data>
+
+<data name="LOCValidityIsBlank" xml:space="preserve">
+    <value>Validity cannot be empty</value>
+  </data>
+  <data name="LOCValidityIsInvalid" xml:space="preserve">
+    <value>Validity cannot be negative</value>
+  </data>
+
+<data name="LOCFeePerPeriodIsBlank" xml:space="preserve">
+    <value>Fee Per Period cannot be empty</value>
+  </data>
+  <data name="LOCFeePerPeriodIsInvalid" xml:space="preserve">
+    <value> Fee Per Period cannot be negative</value>
+  </data>
+
+<data name="LOCInstrumentDescriptionIsBlank" xml:space="preserve">
+    <value>Instrument Description cannot be empty</value>
+  </data>
+
+<data name="LOCValueIsBlank" xml:space="preserve">
+    <value>Value cannot be empty</value>
+  </data>
+  <data name="LOCValueIsInvalid" xml:space="preserve">
+    <value>Value cannot be negative</value>
+  </data>
+
+  <data name="LOCCurrencyIsInvalid" xml:space="preserve">
+    <value>Please select a Currency</value>
+  </data>
+
+<data name="LOCAccountNumberIsBlank" xml:space="preserve">
+    <value> Account Number cannot be empty</value>
+  </data>
+  <data name="LOCAccountNumberIsInvalid" xml:space="preserve">
+    <value> Account Number cannot be negative</value>
+  </data>
+
 
 </root>

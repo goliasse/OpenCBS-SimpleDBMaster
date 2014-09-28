@@ -314,6 +314,12 @@
     <Compile Include="Accounting\EditFiscalYear.Designer.cs">
       <DependentUpon>EditFiscalYear.cs</DependentUpon>
     </Compile>
+    <Compile Include="Accounting\FeeEarnedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\FeeEarnedForm.Designer.cs">
+      <DependentUpon>FeeEarnedForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Accounting\FiscalYear.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -346,6 +352,12 @@
     </Compile>
     <Compile Include="Accounting\FrmAddContractAccountingRule.Designer.cs">
       <DependentUpon>FrmAddContractAccountingRule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\LoanCOAForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\LoanCOAForm.Designer.cs">
+      <DependentUpon>LoanCOAForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Accounting\ManualEntries.cs">
       <SubType>Form</SubType>
@@ -1282,6 +1294,9 @@
     <EmbeddedResource Include="Accounting\ExportBookingsForm.pt.resx">
       <DependentUpon>ExportBookingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\FeeEarnedForm.resx">
+      <DependentUpon>FeeEarnedForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Accounting\FiscalYear.fr.resx">
       <DependentUpon>FiscalYear.cs</DependentUpon>
     </EmbeddedResource>
@@ -1373,6 +1388,9 @@
     <EmbeddedResource Include="Accounting\FrmAddContractAccountingRule.resx">
       <DependentUpon>FrmAddContractAccountingRule.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\LoanCOAForm.resx">
+      <DependentUpon>LoanCOAForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Accounting\ManualEntries.fr.resx">
       <DependentUpon>ManualEntries.cs</DependentUpon>

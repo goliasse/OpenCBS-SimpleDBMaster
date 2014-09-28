@@ -47,6 +47,7 @@ namespace OpenCBS.Manager
             bankGuarantees.Currency = reader.GetString("currency");
             bankGuarantees.Status = reader.GetString("status");
             bankGuarantees.Branch = reader.GetString("branch");
+            bankGuarantees.FeeTransactionNumber = reader.GetString("feeTransactionNumber");
 
                 return bankGuarantees;
             
@@ -68,6 +69,8 @@ namespace OpenCBS.Manager
             c.AddParam("@currency", bankGuarantee.Currency);
             c.AddParam("@status", bankGuarantee.Status);
             c.AddParam("@branch", bankGuarantee.Branch);
+            c.AddParam("@feeTransactionNumber", bankGuarantee.FeeTransactionNumber);
+            
 
         }
 
@@ -181,6 +184,7 @@ namespace OpenCBS.Manager
            ,[currency]
            ,[status]
            ,[branch]
+           ,[feeTransactionNumber]
             )
         VALUES
                 (@bankGuaranteeCode,
@@ -195,7 +199,8 @@ namespace OpenCBS.Manager
                 @value,
                 @currency,
                 @status,
-                @branch
+                @branch,
+                @feeTransactionNumber
                 )
                 SELECT SCOPE_IDENTITY()";
 
@@ -241,7 +246,7 @@ namespace OpenCBS.Manager
 
 
                 feeTransaction.Checker = "Fees";
-                feeTransaction.FromAccount = bankGuarantee.AccountNumber;
+                feeTransaction.FromAccount = bankGuarantee.FeeTransactionNumber;
                 feeTransaction.Maker = "Fees";
                 feeTransaction.PurposeOfTransfer = "Bank Guarantee fee paid for " + bankGuarantee.BankGuaranteeCode;
                 feeTransaction.ToAccount = GetChartOfAccountNumber("ProfitAndLossIncome");
@@ -253,7 +258,7 @@ namespace OpenCBS.Manager
                 if (ret > 0)
                 {
                     CurrentAccountEvent currentAccountEvent = new CurrentAccountEvent();
-                    currentAccountEvent.ContractCode = bankGuarantee.AccountNumber;
+                    currentAccountEvent.ContractCode = bankGuarantee.FeeTransactionNumber;
                     currentAccountEvent.EventCode = "TRFT";
                     currentAccountEvent.Description = "Bank Guarantee Fee debit transaction #" + ret;
                     currentAccountEventManager.SaveCurrentAccountEvent(currentAccountEvent);

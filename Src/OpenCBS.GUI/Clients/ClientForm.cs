@@ -65,6 +65,7 @@ namespace OpenCBS.GUI.Clients
 {
     using OpenCBS.CoreDomain.Events.Products;
     using ML = MultiLanguageStrings;
+    using OpenCBS.GUI.LetterOfCredit;
     public partial class ClientForm : SweetForm
     {
         #region *** Fields ***
@@ -9338,6 +9339,33 @@ namespace OpenCBS.GUI.Clients
                     }
 
                 }
+
+                lvLetterOfCredit.Items.Clear();
+                LetterOfCreditService _letterOfCreditService = ServicesProvider.GetInstance().GetLetterOfCreditService();
+                List<OpenCBS.CoreDomain.LetterOfCredit> letterOfCreditList = _letterOfCreditService.FetchAllLetterOfCredit();
+                if (letterOfCreditList != null)
+                {
+                    foreach (OpenCBS.CoreDomain.LetterOfCredit letterOfCredit in letterOfCreditList)
+                    {
+
+                        var item = new ListViewItem(new[] {
+					letterOfCredit.LetterOfCreditCode,
+					
+					letterOfCredit.IssuingDate.ToShortDateString(),
+					letterOfCredit.ExpiryDate.ToShortDateString(),
+					letterOfCredit.ClientId.ToString(),
+					letterOfCredit.BeneficiaryParty,
+					letterOfCredit.Value.GetFormatedValue(false),
+					letterOfCredit.Currency,
+					letterOfCredit.Status,
+					});
+                        lvLetterOfCredit.Items.Add(item);
+                    }
+
+                }
+
+
+                
             }
         }
 
@@ -9400,9 +9428,62 @@ namespace OpenCBS.GUI.Clients
             
         }
 
-       
+        private void btnAddLetterOfCredit_Click(object sender, EventArgs e)
+        {
+            IssueALetterOfCredit IssueALetterOfCredit = new IssueALetterOfCredit(_client);
+            IssueALetterOfCredit.Show();
+        }
 
-        
+        private void btnUpdateLetterOfCredit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int i = lvLetterOfCredit.SelectedIndices[0];
+                string letterOfCreditCode = lvLetterOfCredit.Items[i].Text;
+
+                IssueALetterOfCredit IssueALetterOfCredit = new IssueALetterOfCredit(letterOfCreditCode, true);
+                IssueALetterOfCredit.Show();
+
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FixedDepositProductSelectAProduct);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
+        }
+
+        private void btnViewLetterOfCredit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int i = lvLetterOfCredit.SelectedIndices[0];
+                string letterOfCreditCode = lvLetterOfCredit.Items[i].Text;
+
+                IssueALetterOfCredit IssueALetterOfCredit = new IssueALetterOfCredit(letterOfCreditCode, false);
+                IssueALetterOfCredit.Show();
+
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FixedDepositProductSelectAProduct);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
+        }
+
    }
     
 }

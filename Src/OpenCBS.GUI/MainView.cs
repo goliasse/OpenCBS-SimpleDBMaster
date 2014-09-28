@@ -1285,5 +1285,15 @@ namespace OpenCBS.GUI
             DefineRiskWeightedAssetPercentage defineRiskWeightedAssetPercentage = new DefineRiskWeightedAssetPercentage();
             defineRiskWeightedAssetPercentage.Show();
         }
+
+        private void loanCOAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void feeEarnedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

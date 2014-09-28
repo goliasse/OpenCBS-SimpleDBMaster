@@ -23,6 +23,7 @@ using System;
 using OpenCBS.Shared;
 using OpenCBS.CoreDomain.Products;
 using OpenCBS.GUI.UserControl;
+using OpenCBS.Services;
 
 namespace OpenCBS.GUI.Contracts
 {
@@ -134,6 +135,9 @@ namespace OpenCBS.GUI.Contracts
         {
             _entryFees = udEntryFees.Value;
             _initialAmount = nudInitialAmount.Value;
+
+            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Cash", "Credit", nudInitialAmount.Value, "S");
+            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Fee", "Debit", udEntryFees.Value, "S");
         }
 
         private void udEntryFees_ValueChanged(object sender, EventArgs e)

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtAccountNumber = new System.Windows.Forms.TextBox();
+            this.txtTransactionNumber = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.txtExpiryDate = new System.Windows.Forms.TextBox();
@@ -60,29 +60,29 @@
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // txtAccountNumber
+            // txtTransactionNumber
             // 
-            this.txtAccountNumber.Location = new System.Drawing.Point(177, 334);
-            this.txtAccountNumber.Name = "txtAccountNumber";
-            this.txtAccountNumber.Size = new System.Drawing.Size(183, 20);
-            this.txtAccountNumber.TabIndex = 118;
+            this.txtTransactionNumber.Location = new System.Drawing.Point(206, 333);
+            this.txtTransactionNumber.Name = "txtTransactionNumber";
+            this.txtTransactionNumber.Size = new System.Drawing.Size(183, 20);
+            this.txtTransactionNumber.TabIndex = 118;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(32, 334);
+            this.label3.Location = new System.Drawing.Point(16, 333);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 16);
+            this.label3.Size = new System.Drawing.Size(154, 16);
             this.label3.TabIndex = 117;
-            this.label3.Text = "Account Number:";
+            this.label3.Text = "Fee Transaction Number:";
             // 
             // cmbStatus
             // 
             this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(177, 412);
+            this.cmbStatus.Location = new System.Drawing.Point(206, 411);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(183, 21);
             this.cmbStatus.TabIndex = 116;
@@ -90,7 +90,7 @@
             // 
             // txtExpiryDate
             // 
-            this.txtExpiryDate.Location = new System.Drawing.Point(177, 386);
+            this.txtExpiryDate.Location = new System.Drawing.Point(206, 385);
             this.txtExpiryDate.Name = "txtExpiryDate";
             this.txtExpiryDate.Size = new System.Drawing.Size(183, 20);
             this.txtExpiryDate.TabIndex = 115;
@@ -101,7 +101,7 @@
             this.lblExpiryDate.AutoSize = true;
             this.lblExpiryDate.Font = new System.Drawing.Font("Arial", 9.75F);
             this.lblExpiryDate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblExpiryDate.Location = new System.Drawing.Point(65, 390);
+            this.lblExpiryDate.Location = new System.Drawing.Point(94, 389);
             this.lblExpiryDate.Name = "lblExpiryDate";
             this.lblExpiryDate.Size = new System.Drawing.Size(80, 16);
             this.lblExpiryDate.TabIndex = 114;
@@ -110,17 +110,19 @@
             // 
             // txtTotalFee
             // 
-            this.txtTotalFee.Location = new System.Drawing.Point(177, 360);
+            this.txtTotalFee.Location = new System.Drawing.Point(206, 359);
             this.txtTotalFee.Name = "txtTotalFee";
             this.txtTotalFee.Size = new System.Drawing.Size(183, 20);
             this.txtTotalFee.TabIndex = 113;
+            this.txtTotalFee.TextChanged += new System.EventHandler(this.txtTotalFee_TextChanged);
+            this.txtTotalFee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApplicantId_KeyPress);
             // 
             // lblTotalFee
             // 
             this.lblTotalFee.AutoSize = true;
             this.lblTotalFee.Font = new System.Drawing.Font("Arial", 9.75F);
             this.lblTotalFee.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblTotalFee.Location = new System.Drawing.Point(76, 364);
+            this.lblTotalFee.Location = new System.Drawing.Point(105, 363);
             this.lblTotalFee.Name = "lblTotalFee";
             this.lblTotalFee.Size = new System.Drawing.Size(65, 16);
             this.lblTotalFee.TabIndex = 112;
@@ -128,17 +130,18 @@
             // 
             // txtValidity
             // 
-            this.txtValidity.Location = new System.Drawing.Point(179, 133);
+            this.txtValidity.Location = new System.Drawing.Point(208, 132);
             this.txtValidity.Name = "txtValidity";
             this.txtValidity.Size = new System.Drawing.Size(183, 20);
             this.txtValidity.TabIndex = 111;
+            this.txtValidity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApplicantId_KeyPress);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label12.Location = new System.Drawing.Point(91, 136);
+            this.label12.Location = new System.Drawing.Point(120, 135);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(54, 16);
             this.label12.TabIndex = 110;
@@ -149,7 +152,7 @@
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Arial", 9.75F);
             this.lblStatus.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblStatus.Location = new System.Drawing.Point(91, 417);
+            this.lblStatus.Location = new System.Drawing.Point(120, 416);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(50, 16);
             this.lblStatus.TabIndex = 109;
@@ -159,7 +162,7 @@
             // txtIssuingDate
             // 
             this.txtIssuingDate.Enabled = false;
-            this.txtIssuingDate.Location = new System.Drawing.Point(177, 305);
+            this.txtIssuingDate.Location = new System.Drawing.Point(206, 304);
             this.txtIssuingDate.Name = "txtIssuingDate";
             this.txtIssuingDate.Size = new System.Drawing.Size(183, 20);
             this.txtIssuingDate.TabIndex = 108;
@@ -169,7 +172,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label10.Location = new System.Drawing.Point(59, 309);
+            this.label10.Location = new System.Drawing.Point(88, 308);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(84, 16);
             this.label10.TabIndex = 107;
@@ -178,34 +181,37 @@
             // btnUpdate
             // 
             this.btnUpdate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnUpdate.Location = new System.Drawing.Point(179, 462);
+            this.btnUpdate.Location = new System.Drawing.Point(208, 461);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(96, 23);
             this.btnUpdate.TabIndex = 106;
             this.btnUpdate.Text = "Update";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnSubmit
             // 
             this.btnSubmit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSubmit.Location = new System.Drawing.Point(38, 462);
+            this.btnSubmit.Location = new System.Drawing.Point(67, 461);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(107, 23);
             this.btnSubmit.TabIndex = 105;
             this.btnSubmit.Text = "Submit";
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // txtValue
             // 
-            this.txtValue.Location = new System.Drawing.Point(177, 242);
+            this.txtValue.Location = new System.Drawing.Point(206, 241);
             this.txtValue.Name = "txtValue";
             this.txtValue.Size = new System.Drawing.Size(183, 20);
             this.txtValue.TabIndex = 104;
+            this.txtValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApplicantId_KeyPress);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label9.Location = new System.Drawing.Point(99, 249);
+            this.label9.Location = new System.Drawing.Point(128, 248);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 16);
             this.label9.TabIndex = 103;
@@ -215,7 +221,7 @@
             // 
             this.cmbCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCurrency.FormattingEnabled = true;
-            this.cmbCurrency.Location = new System.Drawing.Point(177, 273);
+            this.cmbCurrency.Location = new System.Drawing.Point(206, 272);
             this.cmbCurrency.Name = "cmbCurrency";
             this.cmbCurrency.Size = new System.Drawing.Size(183, 21);
             this.cmbCurrency.TabIndex = 102;
@@ -225,7 +231,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label8.Location = new System.Drawing.Point(79, 277);
+            this.label8.Location = new System.Drawing.Point(108, 276);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(64, 16);
             this.label8.TabIndex = 101;
@@ -233,7 +239,7 @@
             // 
             // txtInstrumentDescription
             // 
-            this.txtInstrumentDescription.Location = new System.Drawing.Point(177, 216);
+            this.txtInstrumentDescription.Location = new System.Drawing.Point(206, 215);
             this.txtInstrumentDescription.Name = "txtInstrumentDescription";
             this.txtInstrumentDescription.Size = new System.Drawing.Size(183, 20);
             this.txtInstrumentDescription.TabIndex = 100;
@@ -243,7 +249,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(3, 217);
+            this.label7.Location = new System.Drawing.Point(32, 216);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(142, 16);
             this.label7.TabIndex = 99;
@@ -253,7 +259,7 @@
             // 
             this.cmbFeePeriod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFeePeriod.FormattingEnabled = true;
-            this.cmbFeePeriod.Location = new System.Drawing.Point(177, 159);
+            this.cmbFeePeriod.Location = new System.Drawing.Point(206, 158);
             this.cmbFeePeriod.Name = "cmbFeePeriod";
             this.cmbFeePeriod.Size = new System.Drawing.Size(183, 21);
             this.cmbFeePeriod.TabIndex = 98;
@@ -263,7 +269,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(50, 164);
+            this.label6.Location = new System.Drawing.Point(79, 163);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(95, 16);
             this.label6.TabIndex = 97;
@@ -271,17 +277,19 @@
             // 
             // txtFeePerPeriod
             // 
-            this.txtFeePerPeriod.Location = new System.Drawing.Point(179, 186);
+            this.txtFeePerPeriod.Location = new System.Drawing.Point(208, 185);
             this.txtFeePerPeriod.Name = "txtFeePerPeriod";
             this.txtFeePerPeriod.Size = new System.Drawing.Size(183, 20);
             this.txtFeePerPeriod.TabIndex = 96;
+            this.txtFeePerPeriod.TextChanged += new System.EventHandler(this.txtFeePerPeriod_TextChanged);
+            this.txtFeePerPeriod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApplicantId_KeyPress);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(46, 189);
+            this.label5.Location = new System.Drawing.Point(75, 188);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(99, 16);
             this.label5.TabIndex = 95;
@@ -291,7 +299,7 @@
             // 
             this.cmbInstrumentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbInstrumentType.FormattingEnabled = true;
-            this.cmbInstrumentType.Location = new System.Drawing.Point(179, 106);
+            this.cmbInstrumentType.Location = new System.Drawing.Point(208, 105);
             this.cmbInstrumentType.Name = "cmbInstrumentType";
             this.cmbInstrumentType.Size = new System.Drawing.Size(183, 21);
             this.cmbInstrumentType.TabIndex = 94;
@@ -301,7 +309,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(42, 107);
+            this.label4.Location = new System.Drawing.Point(71, 106);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 16);
             this.label4.TabIndex = 93;
@@ -309,7 +317,7 @@
             // 
             // txtBeneficiaryParty
             // 
-            this.txtBeneficiaryParty.Location = new System.Drawing.Point(179, 76);
+            this.txtBeneficiaryParty.Location = new System.Drawing.Point(208, 75);
             this.txtBeneficiaryParty.Name = "txtBeneficiaryParty";
             this.txtBeneficiaryParty.Size = new System.Drawing.Size(183, 20);
             this.txtBeneficiaryParty.TabIndex = 92;
@@ -319,7 +327,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(34, 76);
+            this.label2.Location = new System.Drawing.Point(63, 75);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(111, 16);
             this.label2.TabIndex = 91;
@@ -328,17 +336,18 @@
             // txtApplicantId
             // 
             this.txtApplicantId.Enabled = false;
-            this.txtApplicantId.Location = new System.Drawing.Point(179, 45);
+            this.txtApplicantId.Location = new System.Drawing.Point(208, 44);
             this.txtApplicantId.Name = "txtApplicantId";
             this.txtApplicantId.Size = new System.Drawing.Size(183, 20);
             this.txtApplicantId.TabIndex = 90;
+            this.txtApplicantId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApplicantId_KeyPress);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(63, 46);
+            this.label1.Location = new System.Drawing.Point(92, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 16);
             this.label1.TabIndex = 89;
@@ -348,8 +357,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 531);
-            this.Controls.Add(this.txtAccountNumber);
+            this.ClientSize = new System.Drawing.Size(429, 531);
+            this.Controls.Add(this.txtTransactionNumber);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbStatus);
             this.Controls.Add(this.txtExpiryDate);
@@ -388,7 +397,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtAccountNumber;
+        private System.Windows.Forms.TextBox txtTransactionNumber;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.TextBox txtExpiryDate;

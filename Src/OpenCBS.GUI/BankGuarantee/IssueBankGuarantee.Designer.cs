@@ -56,7 +56,7 @@
             this.txtExpiryDate = new System.Windows.Forms.TextBox();
             this.lblExpiryDate = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
-            this.txtAccountNumber = new System.Windows.Forms.TextBox();
+            this.txtTransactionNumber = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -332,30 +332,30 @@
             this.cmbStatus.TabIndex = 86;
             this.cmbStatus.Visible = false;
             // 
-            // txtAccountNumber
+            // txtTransactionNumber
             // 
-            this.txtAccountNumber.Location = new System.Drawing.Point(191, 316);
-            this.txtAccountNumber.Name = "txtAccountNumber";
-            this.txtAccountNumber.Size = new System.Drawing.Size(183, 20);
-            this.txtAccountNumber.TabIndex = 88;
+            this.txtTransactionNumber.Location = new System.Drawing.Point(191, 316);
+            this.txtTransactionNumber.Name = "txtTransactionNumber";
+            this.txtTransactionNumber.Size = new System.Drawing.Size(183, 20);
+            this.txtTransactionNumber.TabIndex = 88;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 9.75F);
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(46, 316);
+            this.label3.Location = new System.Drawing.Point(5, 317);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 16);
+            this.label3.Size = new System.Drawing.Size(154, 16);
             this.label3.TabIndex = 87;
-            this.label3.Text = "Account Number:";
+            this.label3.Text = "Fee Transaction Number:";
             // 
             // IssueBankGuarantee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(444, 509);
-            this.Controls.Add(this.txtAccountNumber);
+            this.Controls.Add(this.txtTransactionNumber);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbStatus);
             this.Controls.Add(this.txtExpiryDate);
@@ -422,7 +422,7 @@
         private System.Windows.Forms.TextBox txtExpiryDate;
         private System.Windows.Forms.Label lblExpiryDate;
         private System.Windows.Forms.ComboBox cmbStatus;
-        private System.Windows.Forms.TextBox txtAccountNumber;
+        private System.Windows.Forms.TextBox txtTransactionNumber;
         private System.Windows.Forms.Label label3;
     }
 }

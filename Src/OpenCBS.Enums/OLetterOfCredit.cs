@@ -7,6 +7,6 @@ namespace OpenCBS.Enums
 {
     public static class OLetterOfCredit
     {
-
+        public static string SelectGuaranteeTypeDefault = "Select Guarantee type..";
     }
 }

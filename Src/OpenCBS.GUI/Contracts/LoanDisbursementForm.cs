@@ -252,6 +252,7 @@ namespace OpenCBS.GUI.Contracts
                                                                                             "Disbursement of the loan: " +
                                                                                             _loan.Code, User.CurrentUser,
                                                                                             checkBoxFees.Checked);
+                       
                     }
                     else
                     {
@@ -266,6 +267,12 @@ namespace OpenCBS.GUI.Contracts
                                                                                           (PaymentMethod)
                                                                                           cmbPaymentMethod.SelectedItem);
                 }
+
+                //Update chart of account
+                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Loan", "Credit", _loan.Amount.Value, "L");
+                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Fee", "Debit", Convert.ToDecimal(tbEntryFee.Text), "L");
+
+
             }
             catch (Exception ex)
             {

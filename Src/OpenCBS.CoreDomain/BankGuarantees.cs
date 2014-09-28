@@ -23,7 +23,7 @@ namespace OpenCBS.CoreDomain
         public OCurrency Value { get; set; }
         public string Currency { get; set; }
         public string Status { get; set; }
-        public string AccountNumber { get; set; }
+        public string FeeTransactionNumber { get; set; }
         public OCurrency TotalFee { get; set; }
     }
 }
