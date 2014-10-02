@@ -162,6 +162,33 @@ namespace OpenCBS.Manager.Accounting
             }
         }
 
+
+        public decimal SearchChartOfAccount(string accountType, string transactionType, string transactionMode)
+        {
+            const string q = @"SELECT SUM([amount]) as amount ,[transaction_type] ,[transaction_mode], 
+[account_type] FROM [Test].[dbo].[ChartOfAccountTransactions] WHERE account_type = @accountType AND  
+transaction_type = @transactionType AND transaction_mode= @transactionMode  GROUP by  
+[transaction_type],[transaction_mode],[account_type]";
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@accountType", accountType);
+                c.AddParam("@transactionType", transactionType);
+                c.AddParam("@transactionMode", transactionMode);
+
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+                    if (r == null || r.Empty) return 0;
+
+                    r.Read();
+                    return r.GetDecimal("amount");
+                }
+            }
+
+        }
+
+
         public List<Account> SelectAllAccountsWithoutTeller(int accountId)
         {
             List<Account> list = new List<Account>();

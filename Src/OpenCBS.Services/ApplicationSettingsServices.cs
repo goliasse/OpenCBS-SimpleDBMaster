@@ -112,6 +112,17 @@ namespace OpenCBS.Services
             _loanScaleManager.SelectLoanScales();
         }
 
+        public int SetLIBORRate(DateTime date, double LIBORRate, string period)
+        {
+            return _dataParamManager.SetLIBORRate(date,LIBORRate, period);
+        }
+
+
+        public double GetLIBORRate(DateTime date, string period)
+        {
+           return _dataParamManager.GetLIBORRate(date, period);
+        }
+
         private void FillProvisioningRule()
         {
             var table = ProvisionTable.GetInstance(_user);

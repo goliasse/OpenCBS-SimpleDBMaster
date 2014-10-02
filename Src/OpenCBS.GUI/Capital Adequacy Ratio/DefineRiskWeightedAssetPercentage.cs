@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using OpenCBS.CoreDomain;
+using OpenCBS.ExceptionsHandler;
 using OpenCBS.Services;
 
 namespace OpenCBS.GUI.Capital_Adequacy_Ratio
@@ -58,37 +59,45 @@ namespace OpenCBS.GUI.Capital_Adequacy_Ratio
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            RWAPercentageService _RWAPercentageService = ServicesProvider.GetInstance().GetRWAPercentageService();
-            RWAPercentage rwa = new RWAPercentage();
-            rwa.RWA = "Contract related transaction";
-            rwa.Percentage = Convert.ToDouble(txtContractrelatedtransaction.Text);
-            _RWAPercentageService.UpdateRWAPercentage(rwa);
-            rwa.RWA = "performance bond";
-            rwa.Percentage = Convert.ToDouble(txtPerformancebond.Text);
-            _RWAPercentageService.UpdateRWAPercentage(rwa);
-            rwa.RWA = "Financial guarantee";
-            rwa.Percentage = Convert.ToDouble(txtFinancialguarantee.Text);
-            _RWAPercentageService.UpdateRWAPercentage(rwa);
-            rwa.RWA = "letter of credit";
-            rwa.Percentage = Convert.ToDouble(txtLetterofcredit.Text);
-            _RWAPercentageService.UpdateRWAPercentage(rwa);
-            rwa.RWA = "Bid bond";
-            rwa.Percentage = Convert.ToDouble(txtBidbond.Text);
-            _RWAPercentageService.UpdateRWAPercentage(rwa);
-            rwa.RWA = "Mortgage loan";
-            rwa.Percentage = Convert.ToDouble(txtMortgageloan.Text);
-            _RWAPercentageService.UpdateRWAPercentage(rwa);
-            rwa.RWA = "Other loans";
-            rwa.Percentage = Convert.ToDouble(txtOtherloans.Text);
-            _RWAPercentageService.UpdateRWAPercentage(rwa);
-            rwa.RWA = "Government Loans";
-            rwa.Percentage = Convert.ToDouble(txtGovernmentLoans.Text);
-            _RWAPercentageService.UpdateRWAPercentage(rwa);
-            rwa.RWA = "Cash";
-            rwa.Percentage = Convert.ToDouble(txtCash.Text);
-            _RWAPercentageService.UpdateRWAPercentage(rwa);
+             try{
 
-            MessageBox.Show("RWA Percentage Successfully Updated.");
+                RWAPercentageService _RWAPercentageService = ServicesProvider.GetInstance().GetRWAPercentageService();
+                RWAPercentage rwa = new RWAPercentage();
+                rwa.RWA = "Contract related transaction";
+                rwa.Percentage = Convert.ToDouble(txtContractrelatedtransaction.Text);
+                _RWAPercentageService.UpdateRWAPercentage(rwa);
+                rwa.RWA = "performance bond";
+                rwa.Percentage = Convert.ToDouble(txtPerformancebond.Text);
+                _RWAPercentageService.UpdateRWAPercentage(rwa);
+                rwa.RWA = "Financial guarantee";
+                rwa.Percentage = Convert.ToDouble(txtFinancialguarantee.Text);
+                _RWAPercentageService.UpdateRWAPercentage(rwa);
+                rwa.RWA = "letter of credit";
+                rwa.Percentage = Convert.ToDouble(txtLetterofcredit.Text);
+                _RWAPercentageService.UpdateRWAPercentage(rwa);
+                rwa.RWA = "Bid bond";
+                rwa.Percentage = Convert.ToDouble(txtBidbond.Text);
+                _RWAPercentageService.UpdateRWAPercentage(rwa);
+                rwa.RWA = "Mortgage loan";
+                rwa.Percentage = Convert.ToDouble(txtMortgageloan.Text);
+                _RWAPercentageService.UpdateRWAPercentage(rwa);
+                rwa.RWA = "Other loans";
+                rwa.Percentage = Convert.ToDouble(txtOtherloans.Text);
+                _RWAPercentageService.UpdateRWAPercentage(rwa);
+                rwa.RWA = "Government Loans";
+                rwa.Percentage = Convert.ToDouble(txtGovernmentLoans.Text);
+                _RWAPercentageService.UpdateRWAPercentage(rwa);
+                rwa.RWA = "Cash";
+                rwa.Percentage = Convert.ToDouble(txtCash.Text);
+                _RWAPercentageService.UpdateRWAPercentage(rwa);
+
+                MessageBox.Show("RWA Percentage Successfully Updated.");
+
+             }
+             catch (Exception ex)
+             {
+                 new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
+             }
         }
     }
 }

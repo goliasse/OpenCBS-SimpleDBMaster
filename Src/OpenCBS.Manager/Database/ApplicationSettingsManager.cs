@@ -64,6 +64,53 @@ namespace OpenCBS.Manager.Database
             }
         }
 
+        public int SetLIBORRate(DateTime date, double LIBORRate, string period)
+        {
+            if (GetLIBORRate(date,period) == -1)
+            {
+                string query = "INSERT INTO [LIBORRate] ([rate], [date], [period]) VALUES (@rate, @date, @period)";
+                using (SqlConnection conn = GetConnection())
+                using (OpenCbsCommand c = new OpenCbsCommand(query, conn))
+                {
+                    c.AddParam("@date", date);
+                    c.AddParam("@rate", LIBORRate);
+                    c.AddParam("@period", period);
+                    c.ExecuteNonQuery();
+                    return 1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+
+
+        public double GetLIBORRate(DateTime date, string period)
+        {
+            string sqlText = "SELECT rate,date,period FROM LIBORRate WHERE date = @date AND period = @period";
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(sqlText, conn))
+            {
+                c.AddParam("@date", date);
+                c.AddParam("@period", period);
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+                    if (!r.Empty)
+                    {
+                        r.Read();
+                        return r.GetDouble("rate");
+                    }
+                    else
+                        return -1;
+                }
+            }
+            
+        }
+
+
         public object SelectParameterValue(string key)
         {
             string sqlText = "SELECT [value] FROM GeneralParameters WHERE [key] = @name";

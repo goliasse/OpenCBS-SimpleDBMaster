@@ -76,6 +76,14 @@ namespace OpenCBS.ExceptionsHandler
                 case OpenCbsAllocateCounterExceptionEnum.CounterBalanceTopUpAmountIsInvalid:
                     returned = "CounterBalanceTopUpAmountIsInvalid";
                     break;
+
+                case OpenCbsAllocateCounterExceptionEnum.AddCounterDescriptionIsEmpty:
+                    returned = "AddCounterDescriptionIsEmpty";
+                    break;
+
+                case OpenCbsAllocateCounterExceptionEnum.AddCounterSelectBranch:
+                    returned = "AddCounterSelectBranch";
+                    break;
             }
             return returned;
         }
@@ -86,7 +94,8 @@ namespace OpenCBS.ExceptionsHandler
     [Serializable]
     public enum OpenCbsAllocateCounterExceptionEnum
     {
-
+        AddCounterDescriptionIsEmpty,
+        AddCounterSelectBranch,
         CounterBalanceBranchIsNotSelected,
         CounterBalanceCashierIsNotSelected,
         CounterBalanceCounterIsNotSelected,

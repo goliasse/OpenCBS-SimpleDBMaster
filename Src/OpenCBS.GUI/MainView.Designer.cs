@@ -119,6 +119,7 @@ namespace OpenCBS.GUI
             this.fiscalYearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.capitalAdequacyRatioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.riskWeightedAssetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chartOfAccountsBalanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuConfiguration = new System.Windows.Forms.ToolStripMenuItem();
             this.branchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparatorConfig1 = new System.Windows.Forms.ToolStripSeparator();
@@ -133,6 +134,7 @@ namespace OpenCBS.GUI
             this.miContractCode = new System.Windows.Forms.ToolStripMenuItem();
             this.tellersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configureCountersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lIBORRateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.contactMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -165,6 +167,8 @@ namespace OpenCBS.GUI
             this._aboutModulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noticesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loanCOAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.feeEarnedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainStatusBar = new System.Windows.Forms.StatusStrip();
             this.mainStatusBarLblUpdateVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainStatusBarLblUserName = new System.Windows.Forms.ToolStripStatusLabel();
@@ -172,8 +176,6 @@ namespace OpenCBS.GUI
             this.toolStripStatusLblBranchCode = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLblDB = new System.Windows.Forms.ToolStripStatusLabel();
             this.alertBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.loanCOAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.feeEarnedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvAlerts)).BeginInit();
             this.tabFilter.SuspendLayout();
@@ -510,7 +512,8 @@ namespace OpenCBS.GUI
             this.mnuNewclosure,
             this.fiscalYearToolStripMenuItem,
             this.capitalAdequacyRatioToolStripMenuItem,
-            this.riskWeightedAssetsToolStripMenuItem});
+            this.riskWeightedAssetsToolStripMenuItem,
+            this.chartOfAccountsBalanceToolStripMenuItem});
             this.mnuAccounting.Name = "mnuAccounting";
             resources.ApplyResources(this.mnuAccounting, "mnuAccounting");
             // 
@@ -586,6 +589,12 @@ namespace OpenCBS.GUI
             resources.ApplyResources(this.riskWeightedAssetsToolStripMenuItem, "riskWeightedAssetsToolStripMenuItem");
             this.riskWeightedAssetsToolStripMenuItem.Click += new System.EventHandler(this.riskWeightedAssetsToolStripMenuItem_Click);
             // 
+            // chartOfAccountsBalanceToolStripMenuItem
+            // 
+            this.chartOfAccountsBalanceToolStripMenuItem.Name = "chartOfAccountsBalanceToolStripMenuItem";
+            resources.ApplyResources(this.chartOfAccountsBalanceToolStripMenuItem, "chartOfAccountsBalanceToolStripMenuItem");
+            this.chartOfAccountsBalanceToolStripMenuItem.Click += new System.EventHandler(this.chartOfAccountsBalanceToolStripMenuItem_Click);
+            // 
             // mnuConfiguration
             // 
             this.mnuConfiguration.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -601,7 +610,8 @@ namespace OpenCBS.GUI
             this.toolStripSeparatorConfig3,
             this.miContractCode,
             this.tellersToolStripMenuItem,
-            this.configureCountersToolStripMenuItem});
+            this.configureCountersToolStripMenuItem,
+            this.lIBORRateToolStripMenuItem});
             this.mnuConfiguration.Name = "mnuConfiguration";
             resources.ApplyResources(this.mnuConfiguration, "mnuConfiguration");
             // 
@@ -679,6 +689,12 @@ namespace OpenCBS.GUI
             // 
             this.configureCountersToolStripMenuItem.Name = "configureCountersToolStripMenuItem";
             resources.ApplyResources(this.configureCountersToolStripMenuItem, "configureCountersToolStripMenuItem");
+            // 
+            // lIBORRateToolStripMenuItem
+            // 
+            this.lIBORRateToolStripMenuItem.Name = "lIBORRateToolStripMenuItem";
+            resources.ApplyResources(this.lIBORRateToolStripMenuItem, "lIBORRateToolStripMenuItem");
+            this.lIBORRateToolStripMenuItem.Click += new System.EventHandler(this.lIBORRateToolStripMenuItem_Click);
             // 
             // mnuWindow
             // 
@@ -928,6 +944,18 @@ namespace OpenCBS.GUI
             this.noticesToolStripMenuItem.Name = "noticesToolStripMenuItem";
             resources.ApplyResources(this.noticesToolStripMenuItem, "noticesToolStripMenuItem");
             // 
+            // loanCOAToolStripMenuItem
+            // 
+            this.loanCOAToolStripMenuItem.Name = "loanCOAToolStripMenuItem";
+            resources.ApplyResources(this.loanCOAToolStripMenuItem, "loanCOAToolStripMenuItem");
+            this.loanCOAToolStripMenuItem.Click += new System.EventHandler(this.loanCOAToolStripMenuItem_Click);
+            // 
+            // feeEarnedToolStripMenuItem
+            // 
+            this.feeEarnedToolStripMenuItem.Name = "feeEarnedToolStripMenuItem";
+            resources.ApplyResources(this.feeEarnedToolStripMenuItem, "feeEarnedToolStripMenuItem");
+            this.feeEarnedToolStripMenuItem.Click += new System.EventHandler(this.feeEarnedToolStripMenuItem_Click);
+            // 
             // mainStatusBar
             // 
             resources.ApplyResources(this.mainStatusBar, "mainStatusBar");
@@ -990,18 +1018,6 @@ namespace OpenCBS.GUI
             // alertBindingSource
             // 
             this.alertBindingSource.DataSource = typeof(OpenCBS.CoreDomain.Alert);
-            // 
-            // loanCOAToolStripMenuItem
-            // 
-            this.loanCOAToolStripMenuItem.Name = "loanCOAToolStripMenuItem";
-            resources.ApplyResources(this.loanCOAToolStripMenuItem, "loanCOAToolStripMenuItem");
-            this.loanCOAToolStripMenuItem.Click += new System.EventHandler(this.loanCOAToolStripMenuItem_Click);
-            // 
-            // feeEarnedToolStripMenuItem
-            // 
-            this.feeEarnedToolStripMenuItem.Name = "feeEarnedToolStripMenuItem";
-            resources.ApplyResources(this.feeEarnedToolStripMenuItem, "feeEarnedToolStripMenuItem");
-            this.feeEarnedToolStripMenuItem.Click += new System.EventHandler(this.feeEarnedToolStripMenuItem_Click);
             // 
             // MainView
             // 
@@ -1110,6 +1126,8 @@ namespace OpenCBS.GUI
         private ToolStripMenuItem riskWeightedAssetsToolStripMenuItem;
         private ToolStripMenuItem loanCOAToolStripMenuItem;
         private ToolStripMenuItem feeEarnedToolStripMenuItem;
+        private ToolStripMenuItem lIBORRateToolStripMenuItem;
+        private ToolStripMenuItem chartOfAccountsBalanceToolStripMenuItem;
 
 
     }

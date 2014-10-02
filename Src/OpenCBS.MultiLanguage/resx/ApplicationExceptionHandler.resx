@@ -2288,6 +2288,14 @@ Enter another account number.
   <data name="LOCAccountNumberIsInvalid" xml:space="preserve">
     <value> Account Number cannot be negative</value>
   </data>
+  
+  <data name="AddCounterSelectBranch" xml:space="preserve">
+    <value>Please select a Branch</value>
+  </data>
+  
+  <data name="AddCounterDescriptionIsEmpty" xml:space="preserve">
+    <value>Please enter a description</value>
+  </data>
 
 
 </root>

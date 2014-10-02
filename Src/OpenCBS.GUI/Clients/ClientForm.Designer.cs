@@ -1,3 +1,5 @@
+
+
 using System.Globalization;
 using System.Windows.Forms;
 using OpenCBS.CoreDomain.FundingLines;
@@ -505,11 +507,11 @@ namespace OpenCBS.GUI.Clients
             this.tBSavingCode = new System.Windows.Forms.TextBox();
             this.cmbSavingsOfficer = new System.Windows.Forms.ComboBox();
             this.labelInterestRate = new System.Windows.Forms.Label();
-            this.nudDownInterestRate = new System.Windows.Forms.NumericUpDown();
             this.lbWithdrawFees = new System.Windows.Forms.Label();
             this.nudWithdrawFees = new System.Windows.Forms.NumericUpDown();
             this.lbInterestRateMinMax = new System.Windows.Forms.Label();
             this.lbWithdrawFeesMinMax = new System.Windows.Forms.Label();
+            this.nudDownInterestRate = new System.Windows.Forms.NumericUpDown();
             this.tabPageContracts = new System.Windows.Forms.TabPage();
             this.tabPageFPCAContracts = new System.Windows.Forms.TabPage();
             this.lvFixedDeposits = new System.Windows.Forms.ListView();
@@ -797,6 +799,10 @@ namespace OpenCBS.GUI.Clients
             this.menuPendingSavingEvents = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemConfirmPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCancelPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbLIBOR = new System.Windows.Forms.CheckBox();
+            this.lblLIBOR = new System.Windows.Forms.Label();
+            this.lblFDLIBOR = new System.Windows.Forms.Label();
+            this.cbFDLibor = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).BeginInit();
             this.splitContainer10.Panel1.SuspendLayout();
             this.splitContainer10.Panel2.SuspendLayout();
@@ -911,8 +917,8 @@ namespace OpenCBS.GUI.Clients
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudEntryFees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDownInitialAmount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDownInterestRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWithdrawFees)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDownInterestRate)).BeginInit();
             this.tabPageContracts.SuspendLayout();
             this.tabPageFPCAContracts.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -3710,11 +3716,11 @@ namespace OpenCBS.GUI.Clients
             this.tableLayoutPanel5.Controls.Add(this.tBSavingCode, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.cmbSavingsOfficer, 1, 3);
             this.tableLayoutPanel5.Controls.Add(this.labelInterestRate, 3, 2);
-            this.tableLayoutPanel5.Controls.Add(this.nudDownInterestRate, 4, 2);
             this.tableLayoutPanel5.Controls.Add(this.lbWithdrawFees, 3, 3);
             this.tableLayoutPanel5.Controls.Add(this.nudWithdrawFees, 4, 3);
             this.tableLayoutPanel5.Controls.Add(this.lbInterestRateMinMax, 5, 2);
             this.tableLayoutPanel5.Controls.Add(this.lbWithdrawFeesMinMax, 5, 3);
+            this.tableLayoutPanel5.Controls.Add(this.nudDownInterestRate, 4, 2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             // 
             // lbSavingAvBalanceValue
@@ -3811,22 +3817,6 @@ namespace OpenCBS.GUI.Clients
             this.labelInterestRate.BackColor = System.Drawing.Color.Transparent;
             this.labelInterestRate.Name = "labelInterestRate";
             // 
-            // nudDownInterestRate
-            // 
-            this.nudDownInterestRate.DecimalPlaces = 4;
-            this.nudDownInterestRate.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            262144});
-            resources.ApplyResources(this.nudDownInterestRate, "nudDownInterestRate");
-            this.nudDownInterestRate.Maximum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.nudDownInterestRate.Name = "nudDownInterestRate";
-            // 
             // lbWithdrawFees
             // 
             resources.ApplyResources(this.lbWithdrawFees, "lbWithdrawFees");
@@ -3851,6 +3841,22 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.lbWithdrawFeesMinMax, "lbWithdrawFeesMinMax");
             this.lbWithdrawFeesMinMax.Name = "lbWithdrawFeesMinMax";
+            // 
+            // nudDownInterestRate
+            // 
+            this.nudDownInterestRate.DecimalPlaces = 4;
+            this.nudDownInterestRate.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            262144});
+            resources.ApplyResources(this.nudDownInterestRate, "nudDownInterestRate");
+            this.nudDownInterestRate.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.nudDownInterestRate.Name = "nudDownInterestRate";
             // 
             // tabPageContracts
             // 
@@ -4437,6 +4443,8 @@ namespace OpenCBS.GUI.Clients
             // 
             // gbInterestRate
             // 
+            this.gbInterestRate.Controls.Add(this.cbFDLibor);
+            this.gbInterestRate.Controls.Add(this.lblFDLIBOR);
             this.gbInterestRate.Controls.Add(this.lblFDInterestMinMax);
             this.gbInterestRate.Controls.Add(this.lbYearlyInterestRateMin);
             this.gbInterestRate.Controls.Add(this.tbInterestRate);
@@ -4469,6 +4477,8 @@ namespace OpenCBS.GUI.Clients
             // tabPageCurrentAccount
             // 
             this.tabPageCurrentAccount.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageCurrentAccount.Controls.Add(this.lblLIBOR);
+            this.tabPageCurrentAccount.Controls.Add(this.cbLIBOR);
             this.tabPageCurrentAccount.Controls.Add(this.button3);
             this.tabPageCurrentAccount.Controls.Add(this.lblCAInterestRateMinMax);
             this.tabPageCurrentAccount.Controls.Add(this.lblCAInitialAmountMinMax);
@@ -5727,6 +5737,28 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.menuItemCancelPendingSavingEvent, "menuItemCancelPendingSavingEvent");
             this.menuItemCancelPendingSavingEvent.Click += new System.EventHandler(this.menuItemCancelPendingSavingEvent_Click);
             // 
+            // cbLIBOR
+            // 
+            resources.ApplyResources(this.cbLIBOR, "cbLIBOR");
+            this.cbLIBOR.Name = "cbLIBOR";
+            this.cbLIBOR.UseVisualStyleBackColor = true;
+            // 
+            // lblLIBOR
+            // 
+            resources.ApplyResources(this.lblLIBOR, "lblLIBOR");
+            this.lblLIBOR.Name = "lblLIBOR";
+            // 
+            // lblFDLIBOR
+            // 
+            resources.ApplyResources(this.lblFDLIBOR, "lblFDLIBOR");
+            this.lblFDLIBOR.Name = "lblFDLIBOR";
+            // 
+            // cbFDLibor
+            // 
+            resources.ApplyResources(this.cbFDLibor, "cbFDLibor");
+            this.cbFDLibor.Name = "cbFDLibor";
+            this.cbFDLibor.UseVisualStyleBackColor = true;
+            // 
             // ClientForm
             // 
             resources.ApplyResources(this, "$this");
@@ -5894,8 +5926,8 @@ namespace OpenCBS.GUI.Clients
             this.tableLayoutPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudEntryFees)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDownInitialAmount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDownInterestRate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWithdrawFees)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDownInterestRate)).EndInit();
             this.tabPageContracts.ResumeLayout(false);
             this.tabPageFPCAContracts.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -6648,5 +6680,9 @@ namespace OpenCBS.GUI.Clients
         private ColumnHeader columnHeaderLoanCategory;
         private RadioButton rbAmortisationSchedule;
         private RadioButton rbStraightSchedule;
+        private CheckBox cbLIBOR;
+        private Label lblLIBOR;
+        private Label lblFDLIBOR;
+        private CheckBox cbFDLibor;
     }
 }

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using OpenCBS.Enums;
 using OpenCBS.Services;
 using OpenCBS.CoreDomain;
+using OpenCBS.ExceptionsHandler;
 
 namespace OpenCBS.GUI.FixedAssetRegister
 {
@@ -250,30 +251,37 @@ namespace OpenCBS.GUI.FixedAssetRegister
         private void btnSubmit_Click(object sender, EventArgs e)
         {
 
+              try{
 
-            OpenCBS.CoreDomain.FixedAssetRegister fixedAssetRegister = new OpenCBS.CoreDomain.FixedAssetRegister();
-            fixedAssetRegister.Description = txtAssetDescription.Text;
-            fixedAssetRegister.Branch = cmbBranch.SelectedValue.ToString();
-            fixedAssetRegister.AssetType = cmbAssetType.SelectedItem.ToString();
-            fixedAssetRegister.NoOfAssets = ServicesHelper.ConvertStringToNullableInt32(txtNoOfAssets.Text);
-            fixedAssetRegister.OriginalCost = ServicesHelper.ConvertStringToNullableDecimal(txtOriginalCost.Text);
-            fixedAssetRegister.AnnualDepreciationRate = ServicesHelper.ConvertStringToNullableDouble(txtDepreciationRate.Text, false);
-            fixedAssetRegister.AcquisitionCapitalFinance = cmbAcqCapFinMethod.SelectedItem.ToString();
-            fixedAssetRegister.AcquisitionCapitalTransaction = txtAcqCapTranNum.Text;
+                    OpenCBS.CoreDomain.FixedAssetRegister fixedAssetRegister = new OpenCBS.CoreDomain.FixedAssetRegister();
+                    fixedAssetRegister.Description = txtAssetDescription.Text;
+                    fixedAssetRegister.Branch = cmbBranch.SelectedValue.ToString();
+                    fixedAssetRegister.AssetType = cmbAssetType.SelectedItem.ToString();
+                    fixedAssetRegister.NoOfAssets = ServicesHelper.ConvertStringToNullableInt32(txtNoOfAssets.Text);
+                    fixedAssetRegister.OriginalCost = ServicesHelper.ConvertStringToNullableDecimal(txtOriginalCost.Text);
+                    fixedAssetRegister.AnnualDepreciationRate = ServicesHelper.ConvertStringToNullableDouble(txtDepreciationRate.Text, false);
+                    fixedAssetRegister.AcquisitionCapitalFinance = cmbAcqCapFinMethod.SelectedItem.ToString();
+                    fixedAssetRegister.AcquisitionCapitalTransaction = txtAcqCapTranNum.Text;
       
 
              
-            fixedAssetRegister.AcquisitionDate = Convert.ToDateTime(txtAcquisitionDate.Text);
-            fixedAssetRegister.DisposalDate = DateTime.MaxValue;
+                    fixedAssetRegister.AcquisitionDate = Convert.ToDateTime(txtAcquisitionDate.Text);
+                    fixedAssetRegister.DisposalDate = DateTime.MaxValue;
 
-            FixedAssetRegisterService _fixedAssetRegisterService = ServicesProvider.GetInstance().GetFixedAssetRegisterService();
+                    FixedAssetRegisterService _fixedAssetRegisterService = ServicesProvider.GetInstance().GetFixedAssetRegisterService();
 
-            int ret = _fixedAssetRegisterService.InsertFixedAssetRecord(fixedAssetRegister);
+                    int ret = _fixedAssetRegisterService.InsertFixedAssetRecord(fixedAssetRegister);
 
-            if(ret >= 1)
-                MessageBox.Show("Fixed Asset Added Successfully.");
-            else
-                MessageBox.Show("Some error ocurred.");
+                    if(ret >= 1)
+                        MessageBox.Show("Fixed Asset Added Successfully.");
+                    else
+                        MessageBox.Show("Some error ocurred.");
+
+              }
+              catch (Exception ex)
+              {
+                  new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
+              }
 
         }
 
@@ -287,44 +295,51 @@ namespace OpenCBS.GUI.FixedAssetRegister
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            
-            fixedAssetRegister.Description = txtAssetDescription.Text;
-            fixedAssetRegister.Branch = cmbBranch.SelectedValue.ToString();
-            fixedAssetRegister.AssetType = cmbAssetType.SelectedItem.ToString();
-            fixedAssetRegister.NoOfAssets = ServicesHelper.ConvertStringToNullableInt32(txtNoOfAssets.Text);
-            fixedAssetRegister.OriginalCost = ServicesHelper.ConvertStringToNullableDecimal(txtOriginalCost.Text);
-            fixedAssetRegister.AnnualDepreciationRate = ServicesHelper.ConvertStringToNullableDouble(txtDepreciationRate.Text, false);
-            fixedAssetRegister.AcquisitionCapitalFinance = cmbAcqCapFinMethod.SelectedItem.ToString();
-            fixedAssetRegister.AcquisitionCapitalTransaction = txtAcqCapTranNum.Text;
-            fixedAssetRegister.DisposalAmountTransaction = txtDisAmtTranNum.Text;
-            fixedAssetRegister.DisposalAmountTransfer = cmbDisAmtTranMethod.SelectedItem.ToString();
+            try{
+
+                fixedAssetRegister.Description = txtAssetDescription.Text;
+                fixedAssetRegister.Branch = cmbBranch.SelectedValue.ToString();
+                fixedAssetRegister.AssetType = cmbAssetType.SelectedItem.ToString();
+                fixedAssetRegister.NoOfAssets = ServicesHelper.ConvertStringToNullableInt32(txtNoOfAssets.Text);
+                fixedAssetRegister.OriginalCost = ServicesHelper.ConvertStringToNullableDecimal(txtOriginalCost.Text);
+                fixedAssetRegister.AnnualDepreciationRate = ServicesHelper.ConvertStringToNullableDouble(txtDepreciationRate.Text, false);
+                fixedAssetRegister.AcquisitionCapitalFinance = cmbAcqCapFinMethod.SelectedItem.ToString();
+                fixedAssetRegister.AcquisitionCapitalTransaction = txtAcqCapTranNum.Text;
+                fixedAssetRegister.DisposalAmountTransaction = txtDisAmtTranNum.Text;
+                fixedAssetRegister.DisposalAmountTransfer = cmbDisAmtTranMethod.SelectedItem.ToString();
 
             
-            fixedAssetRegister.AcquisitionDate = Convert.ToDateTime(txtAcquisitionDate.Text);
+                fixedAssetRegister.AcquisitionDate = Convert.ToDateTime(txtAcquisitionDate.Text);
             
-            fixedAssetRegister.DisposalDate = Convert.ToDateTime(txtDisDate.Text);
-            int depChargePerAsset = CalculateAccumulatedDepriciation(fixedAssetRegister.AnnualDepreciationRate.Value,
-           fixedAssetRegister.OriginalCost.Value, fixedAssetRegister.AcquisitionDate, fixedAssetRegister.DisposalDate);
-            fixedAssetRegister.NetBookValue = depChargePerAsset;
-            fixedAssetRegister.AccumulatedDepreciationCharge = ((fixedAssetRegister.OriginalCost.Value - depChargePerAsset) * fixedAssetRegister.NoOfAssets);
-            string ProfitLoss=  txtProfitLoss.Text.ToString();
+                fixedAssetRegister.DisposalDate = Convert.ToDateTime(txtDisDate.Text);
+                int depChargePerAsset = CalculateAccumulatedDepriciation(fixedAssetRegister.AnnualDepreciationRate.Value,
+               fixedAssetRegister.OriginalCost.Value, fixedAssetRegister.AcquisitionDate, fixedAssetRegister.DisposalDate);
+                fixedAssetRegister.NetBookValue = depChargePerAsset;
+                fixedAssetRegister.AccumulatedDepreciationCharge = ((fixedAssetRegister.OriginalCost.Value - depChargePerAsset) * fixedAssetRegister.NoOfAssets);
+                string ProfitLoss=  txtProfitLoss.Text.ToString();
 
-            if (ProfitLoss == "Loss")
-                fixedAssetRegister.ProfitLossDisposal = -1;
-            if (ProfitLoss == "Profit")
-                fixedAssetRegister.ProfitLossDisposal = 1;
-            if (ProfitLoss == "No Profit No Loss")
-                fixedAssetRegister.ProfitLossDisposal = 0;
+                if (ProfitLoss == "Loss")
+                    fixedAssetRegister.ProfitLossDisposal = -1;
+                if (ProfitLoss == "Profit")
+                    fixedAssetRegister.ProfitLossDisposal = 1;
+                if (ProfitLoss == "No Profit No Loss")
+                    fixedAssetRegister.ProfitLossDisposal = 0;
             
 
-            FixedAssetRegisterService _fixedAssetRegisterService = ServicesProvider.GetInstance().GetFixedAssetRegisterService();
+                FixedAssetRegisterService _fixedAssetRegisterService = ServicesProvider.GetInstance().GetFixedAssetRegisterService();
 
-            int ret = _fixedAssetRegisterService.UpdateFixedAssetRegister(fixedAssetRegister);
+                int ret = _fixedAssetRegisterService.UpdateFixedAssetRegister(fixedAssetRegister);
 
-            if (ret >= 1)
-                MessageBox.Show("Fixed Asset Updated Successfully.");
-            else
-                MessageBox.Show("Some error ocurred.");
+                if (ret >= 1)
+                    MessageBox.Show("Fixed Asset Updated Successfully.");
+                else
+                    MessageBox.Show("Some error ocurred.");
+
+            }
+            catch (Exception ex)
+            {
+                new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
+            }
         }
 
         private void txtDisDate_TextChanged(object sender, EventArgs e)

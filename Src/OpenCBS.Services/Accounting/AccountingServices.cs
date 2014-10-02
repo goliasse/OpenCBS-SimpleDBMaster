@@ -110,6 +110,8 @@ namespace OpenCBS.Services.Accounting
             }
         }
 
+       
+
         public List<Account> GetTrialBalance(DateTime pBeginDate, DateTime pEndDate, int currencyId, int pBranchId)
         {
             return _movementSetManagement.GetTrialBalance(pEndDate, pEndDate, currencyId, pBranchId);

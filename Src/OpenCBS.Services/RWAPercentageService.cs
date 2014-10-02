@@ -36,6 +36,7 @@ namespace OpenCBS.Services
 
         public int UpdateRWAPercentage(RWAPercentage RWAPercentage)
         {
+            ValidateProduct(RWAPercentage);
             return _RWAPercentageManager.UpdateRWAPercentage(RWAPercentage);
         }
 

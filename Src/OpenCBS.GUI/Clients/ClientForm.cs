@@ -7485,7 +7485,16 @@ namespace OpenCBS.GUI.Clients
             bool PenalityTypeRate = rbPenalityTypeRate.Checked;
             bool PenalityTypeFlat = rbPenalityTypeFlat.Checked;
             _fixedDepositProductHoldings.InitialAmount = ServicesHelper.ConvertStringToNullableDecimal(tbInitialAmount.Text);
-            _fixedDepositProductHoldings.InterestRate = ServicesHelper.ConvertStringToNullableDouble(tbInterestRate.Text,false);
+            if (cbFDLibor.Checked == true)
+            {
+                ApplicationSettingsServices applicationSettingsServices = ServicesProvider.GetInstance().GetApplicationSettingsServices();
+                double libor =  applicationSettingsServices.GetLIBORRate(DateTime.Today, "Yearly");
+                _fixedDepositProductHoldings.InterestRate = libor + ServicesHelper.ConvertStringToNullableDouble(tbInterestRate.Text, false);
+            }
+            else
+            {
+                _fixedDepositProductHoldings.InterestRate = ServicesHelper.ConvertStringToNullableDouble(tbInterestRate.Text, false);
+            }
             _fixedDepositProductHoldings.MaturityPeriod = ServicesHelper.ConvertStringToNullableInt32(tbMaturityPeriod.Text);
             _fixedDepositProductHoldings.InterestCalculationFrequency = tbFrequencyMonths.Text;
             if (PenalityTypeRate == true)
@@ -7596,8 +7605,18 @@ namespace OpenCBS.GUI.Clients
             
                 
             _currentAccountProductHoldings.InitialAmountPaymentMethod = cbCAInitialAmountMethod.SelectedItem.ToString();
-            
-            _currentAccountProductHoldings.InterestRate = ServicesHelper.ConvertStringToNullableDouble(tbCAInterestRate.Text,false);
+
+
+            if (cbLIBOR.Checked == true)
+            {
+                ApplicationSettingsServices applicationSettingsServices = ServicesProvider.GetInstance().GetApplicationSettingsServices();
+                double libor = applicationSettingsServices.GetLIBORRate(DateTime.Today, "Yearly");
+                _currentAccountProductHoldings.InterestRate = libor + ServicesHelper.ConvertStringToNullableDouble(tbCAInterestRate.Text, false);
+            }
+            else
+            {
+                _currentAccountProductHoldings.InterestRate = ServicesHelper.ConvertStringToNullableDouble(tbCAInterestRate.Text, false);
+            }
 
             _currentAccountProductHoldings.InterestCalculationFrequency = ServicesHelper.ConvertStringToNullableInt32(tbCalculationFrequency.Text);
             if (cbCAInitialAmountMethod.SelectedItem.ToString() != OCurrentAccount.PaymentMethodCash)
@@ -7898,6 +7917,9 @@ namespace OpenCBS.GUI.Clients
                
                 lblFDPenaltyMinMax.Text = "";
             }
+
+            ApplicationSettingsServices applicationSettingsServices = ServicesProvider.GetInstance().GetApplicationSettingsServices();
+            lblFDLIBOR.Text = "LIBOR: " + applicationSettingsServices.GetLIBORRate(DateTime.Today, "Yearly");
 
            }
 
@@ -8955,9 +8977,10 @@ namespace OpenCBS.GUI.Clients
                               "Max ", (currentAccountProduct.ClosingFeesMax.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
                               currentAccountProduct.ClosingFeesType == OCurrentAccount.FeeTypeFlat ? currentAccountProduct.Currency.Code : "%");
                     }
+
+                    ApplicationSettingsServices applicationSettingsServices = ServicesProvider.GetInstance().GetApplicationSettingsServices();
+                    lblLIBOR.Text = "LIBOR: "+applicationSettingsServices.GetLIBORRate(DateTime.Today, "Yearly");
                     
-
-
                    
 
                     //    cbCAInitialAmountPaymentMethod.SelectedIndex = 0;
@@ -9482,6 +9505,11 @@ namespace OpenCBS.GUI.Clients
                     new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
                 }
             }
+        }
+
+        private void tableLayoutPanel5_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
    }

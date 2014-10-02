@@ -71,13 +71,13 @@ namespace OpenCBS.Services
             if (Convert.ToDecimal(bankGuarantee.Value) < 0)
                 throw new OpenCbsBankGuaranteeException(OpenCbsBankGuaranteesExceptionEnum.BankGuaranteesValueIsInvalid);
 
-            if (string.IsNullOrEmpty(bankGuarantee.Currency))
+            if (bankGuarantee.Currency=="Select currency...")
                 throw new OpenCbsBankGuaranteeException(OpenCbsBankGuaranteesExceptionEnum.BankGuaranteesCurrencyIsEmpty);
 
             if (string.IsNullOrEmpty(bankGuarantee.Status)) //or if (bankGuarantee.Status=="Default")
                 throw new OpenCbsBankGuaranteeException(OpenCbsBankGuaranteesExceptionEnum.BankGuaranteesStatusIsDefault);
 
-            if (string.IsNullOrEmpty(bankGuarantee.GuarnteeType))//Same as above
+            if (bankGuarantee.GuarnteeType=="Select guarantee type..")//Same as above
                 throw new OpenCbsBankGuaranteeException(OpenCbsBankGuaranteesExceptionEnum.BankGuaranteesGuarnteeTypeIsDefault);
 
             if (!bankGuarantee.FeePerPeriod.HasValue)

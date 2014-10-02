@@ -1295,5 +1295,18 @@ namespace OpenCBS.GUI
         {
 
         }
+
+        private void chartOfAccountsBalanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoanCOAForm coa = new LoanCOAForm();
+            coa.Show();
+        }
+
+        private void lIBORRateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetLIBORRate setLIBORRate = new SetLIBORRate();
+            setLIBORRate.Show();
+
+        }
     }
 }

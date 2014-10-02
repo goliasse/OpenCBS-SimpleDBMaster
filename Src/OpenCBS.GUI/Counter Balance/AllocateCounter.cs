@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using OpenCBS.CoreDomain;
+using OpenCBS.ExceptionsHandler;
 using OpenCBS.Services;
 
 namespace OpenCBS.GUI.Counter
@@ -61,6 +62,7 @@ namespace OpenCBS.GUI.Counter
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            try{
             CounterBalance counterBalance = new CounterBalance();
 
             
@@ -90,6 +92,12 @@ namespace OpenCBS.GUI.Counter
                 MessageBox.Show("Closing Balance Is More Than Expected.");
             else
                 MessageBox.Show("Some Error Ocurred.");
+
+            }
+            catch (Exception ex)
+            {
+                new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
+            }
             
         }
 

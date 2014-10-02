@@ -56,6 +56,13 @@ namespace OpenCBS.Services
 
         public int SaveBranchCounter(BranchCounter branchCounter)
         {
+
+            if (branchCounter.Branch == "Select Branch..")
+                throw new OpenCbsAllocateCounterException(OpenCbsAllocateCounterExceptionEnum.AddCounterSelectBranch);
+
+            if (string.IsNullOrEmpty(branchCounter.Description))
+                throw new OpenCbsAllocateCounterException(OpenCbsAllocateCounterExceptionEnum.AddCounterDescriptionIsEmpty);
+
             return _counterBalanceManager.SaveBranchCounter(branchCounter);
         }
 

@@ -14,6 +14,7 @@ using OpenCBS.MultiLanguageRessources;
 using OpenCBS.Services;
 using OpenCBS.CoreDomain.Contracts.Loans;
 using OpenCBS.CoreDomain.Contracts.Savings;
+using OpenCBS.ExceptionsHandler;
 
 namespace OpenCBS.GUI.BankGuarantee
 {
@@ -30,6 +31,7 @@ namespace OpenCBS.GUI.BankGuarantee
             InitializeComboBoxCurrencies();
             txtApplicantId.Text = client.Id.ToString();
             txtIssuingDate.Text = DateTime.Today.ToShortDateString();
+            btnUpdate.Visible = false;
         }
 
         BankGuarantees bankGuarantees = new BankGuarantees();
@@ -228,44 +230,59 @@ namespace OpenCBS.GUI.BankGuarantee
 
 
         private void btnUpdate_Click(object sender, EventArgs e)
-        {
+        { try{
             BankGuaranteesService _bankGuaranteeService = ServicesProvider.GetInstance().GetBankGuaranteesService();
             bankGuarantees.Status = cmbStatus.SelectedItem.ToString();
             _bankGuaranteeService.UpdateBankGuarantee(bankGuarantees);
             MessageBox.Show("Bank Guarantee " + bankGuarantees.BankGuaranteeCode + " Successfully Updated!");
             btnUpdate.Enabled = false;
         }
+        catch (Exception ex)
+        {
+            new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
+        }
+        }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            BankGuarantees bankGuarantees = new BankGuarantees();
+            
+            try{
+
+                BankGuarantees bankGuarantees = new BankGuarantees();
            
-            bankGuarantees.Branch = _client.Branch.Code;
+                bankGuarantees.Branch = _client.Branch.Code;
             
            
-            bankGuarantees.IssuingDate = DateTime.Today;
-            bankGuarantees.ExpiryDate = CalculateExpiryDate(Convert.ToInt32(txtValidity.Text), cmbFeePeriod.SelectedItem.ToString());
-            bankGuarantees.ApplicantId = _client.Id;
-            bankGuarantees.BeneficiaryParty = txtBeneficiaryParty.Text;
-            bankGuarantees.GuarnteeType = cmbGuaranteeType.SelectedItem.ToString();
-            bankGuarantees.FeePerPeriod = ServicesHelper.ConvertStringToNullableDecimal(txtFeePerPeriod.Text);
-            bankGuarantees.FeePeriod = cmbFeePeriod.SelectedItem.ToString();
-            bankGuarantees.InstrumentDetails = txtInstrumentDetails.Text;
-            bankGuarantees.Value = ServicesHelper.ConvertStringToNullableDecimal(txtValue.Text);
-            bankGuarantees.Currency = cmbCurrency.SelectedItem.ToString();
-            bankGuarantees.Status = "Issued";
-            bankGuarantees.FeeTransactionNumber = txtTransactionNumber.Text;
-            bankGuarantees.TotalFee = Convert.ToInt32(txtValidity.Text) * ServicesHelper.ConvertStringToNullableDecimal(txtFeePerPeriod.Text);
+                bankGuarantees.IssuingDate = DateTime.Today;
+                bankGuarantees.ExpiryDate = CalculateExpiryDate(Convert.ToInt32(txtValidity.Text), cmbFeePeriod.SelectedItem.ToString());
+                bankGuarantees.ApplicantId = _client.Id;
+                bankGuarantees.BeneficiaryParty = txtBeneficiaryParty.Text;
+                bankGuarantees.GuarnteeType = cmbGuaranteeType.SelectedItem.ToString();
+                bankGuarantees.FeePerPeriod = ServicesHelper.ConvertStringToNullableDecimal(txtFeePerPeriod.Text);
+                bankGuarantees.FeePeriod = cmbFeePeriod.SelectedItem.ToString();
+                bankGuarantees.InstrumentDetails = txtInstrumentDetails.Text;
+                bankGuarantees.Value = ServicesHelper.ConvertStringToNullableDecimal(txtValue.Text);
+                bankGuarantees.Currency = cmbCurrency.SelectedItem.ToString();
+                bankGuarantees.Status = "Issued";
+                bankGuarantees.FeeTransactionNumber = txtTransactionNumber.Text;
+                bankGuarantees.TotalFee = Convert.ToInt32(txtValidity.Text) * ServicesHelper.ConvertStringToNullableDecimal(txtFeePerPeriod.Text);
 
-            BankGuaranteesService _bankGuaranteeService = ServicesProvider.GetInstance().GetBankGuaranteesService();
-            string ret = _bankGuaranteeService.SaveBankGuarantee(bankGuarantees);
-            if (ret != "")
-            {
-                MessageBox.Show("Bank Guarantee Successfully Issued. Code is " + ret);
+                BankGuaranteesService _bankGuaranteeService = ServicesProvider.GetInstance().GetBankGuaranteesService();
+                string ret = _bankGuaranteeService.SaveBankGuarantee(bankGuarantees);
+                if (ret != "")
+                {
+                    MessageBox.Show("Bank Guarantee Successfully Issued. Code is " + ret);
+                }
+                else
+                {
+                    MessageBox.Show("Some Error Ocurred.");
+                }
+
+                
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Some Error Ocurred.");
+                new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
             }
         }
 

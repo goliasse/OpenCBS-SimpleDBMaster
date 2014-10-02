@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using OpenCBS.CoreDomain;
+using OpenCBS.ExceptionsHandler;
 using OpenCBS.Services;
 
 namespace OpenCBS.GUI.Counter_Balance
@@ -32,6 +33,7 @@ namespace OpenCBS.GUI.Counter_Balance
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            try{
             BranchCounter branchCounter = new BranchCounter();
             branchCounter.Branch = cmbBranch.SelectedItem.ToString();
             branchCounter.Description = txtDescription.Text;
@@ -41,6 +43,12 @@ namespace OpenCBS.GUI.Counter_Balance
             MessageBox.Show("Branch Counter Successfully Added.");
             else
             MessageBox.Show("Some Error Ocurred.");
+
+            }
+            catch (Exception ex)
+            {
+                new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
+            }
 
         }
     }

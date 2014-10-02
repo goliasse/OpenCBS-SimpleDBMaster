@@ -86,6 +86,12 @@ namespace OpenCBS.Services.Accounting
         }
 
 
+        public decimal SearchChartOfAccount(string accountType, string transactionType, string transactionMode)
+        {
+            
+            return _accountManagement.SearchChartOfAccount(accountType, transactionType, transactionMode);
+        }
+
         public int UpdateChartOfAccount(string transactionType, string transactionMode, decimal amount, string accountType)
         {
             return _accountManagement.UpdateChartOfAccount(transactionType, transactionMode, amount, accountType);
