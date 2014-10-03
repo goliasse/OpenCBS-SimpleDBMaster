@@ -1880,6 +1880,8 @@ namespace OpenCBS.GUI.Clients
                         item.SubItems.Add("Doubtful Loan");
                     else if (GetMonthsBetween(lastRepaymentDate, DateTime.Today) <= 12)
                         item.SubItems.Add("Non-Performing Loan");
+                    else
+                        item.SubItems.Add("Active");
                 }
                 else
                 {
@@ -9365,7 +9367,7 @@ namespace OpenCBS.GUI.Clients
 
                 lvLetterOfCredit.Items.Clear();
                 LetterOfCreditService _letterOfCreditService = ServicesProvider.GetInstance().GetLetterOfCreditService();
-                List<OpenCBS.CoreDomain.LetterOfCredit> letterOfCreditList = _letterOfCreditService.FetchAllLetterOfCredit();
+                List<OpenCBS.CoreDomain.LetterOfCredit> letterOfCreditList = _letterOfCreditService.FetchClientLetterOfCredit(_client.Id);
                 if (letterOfCreditList != null)
                 {
                     foreach (OpenCBS.CoreDomain.LetterOfCredit letterOfCredit in letterOfCreditList)
@@ -9510,6 +9512,61 @@ namespace OpenCBS.GUI.Clients
         private void tableLayoutPanel5_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnGenerateFDStatement_Click(object sender, EventArgs e)
+        {
+
+
+            try{
+
+            int i = lvFixedDeposits.SelectedIndices[0];
+            string selectedContractCode = lvFixedDeposits.Items[i].Text;
+
+            SelectStatementPeriod selectStatementPeriod = new SelectStatementPeriod(selectedContractCode, "FD");
+            selectStatementPeriod.Show();
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHSelectAContract);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
+
+           
+        }
+
+        private void btnCAGenerateStatement_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                int i = lvCurrentAccountProducts.SelectedIndices[0];
+                string selectedContractCode = lvCurrentAccountProducts.Items[i].Text;
+
+                SelectStatementPeriod selectStatementPeriod = new SelectStatementPeriod(selectedContractCode, "CA");
+                selectStatementPeriod.Show();
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CAPHSelectAContract);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
+
+            
         }
 
    }

@@ -28,7 +28,7 @@ namespace OpenCBS.GUI.FixedAssetRegister
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class FrmAvailableFixedAssets : Form
     {
-        private int _idPackage;
+        
         
         public FrmAvailableFixedAssets()
         {

@@ -679,7 +679,11 @@ return currentAccountProduct;
 
         public int SaveCurrentAccountTransactionFees(CurrentAccountTransactionFees currentAccountTransactionFees)
 {
- const string q = @"INSERT INTO [CurrentAccountTransactionFees]
+
+    if (CheckForDuplicate(currentAccountTransactionFees.CurrentAccountProductId, currentAccountTransactionFees.TransactionMode, currentAccountTransactionFees.TransactionType) == null)
+    {
+
+        const string q = @"INSERT INTO [CurrentAccountTransactionFees]
            ([current_account_product_id],
 		[transaction_type],
 		[transaction_fees_type],
@@ -698,17 +702,22 @@ return currentAccountProduct;
          
                 SELECT SCOPE_IDENTITY()";
 
-            using (SqlConnection conn = GetConnection())
-            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
-            {
+        using (SqlConnection conn = GetConnection())
+        using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+        {
 
 
-                SetTransactionFee(c, currentAccountTransactionFees);
-                currentAccountTransactionFees.Id = Convert.ToInt32(c.ExecuteScalar());
-            }
+            SetTransactionFee(c, currentAccountTransactionFees);
+            currentAccountTransactionFees.Id = Convert.ToInt32(c.ExecuteScalar());
+        }
 
 
-            return currentAccountTransactionFees.Id;
+        return currentAccountTransactionFees.Id;
+    }
+    else
+    {
+        return -1;
+    }
 }
 
 
@@ -779,6 +788,44 @@ public List<CurrentAccountTransactionFees> FetchTransactionFee(int productId)
 
 }
 
+
+
+public CurrentAccountTransactionFees CheckForDuplicate(int currentAccountProductId, string transactionMode, string transactionType)
+{
+
+
+    string q = @"SELECT
+		[id],
+	        [current_account_product_id],
+		[transaction_type],
+		[transaction_fees_type],
+		[transaction_fees],
+		[transaction_fees_min],
+		[transaction_fees_max],
+		[transaction_mode] FROM [dbo].[CurrentAccountTransactionFees]
+            WHERE current_account_product_id = @currentAccountProductId AND transaction_type = @transactionType AND transaction_mode = @transactionMode";
+
+
+
+
+
+    using (SqlConnection conn = GetConnection())
+    using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+    {
+        c.AddParam("@currentAccountProductId", currentAccountProductId);
+        c.AddParam("@transactionType", transactionType);
+        c.AddParam("@transactionMode", transactionMode);
+
+        using (OpenCbsReader r = c.ExecuteReader())
+        {
+            if (r == null || r.Empty) return null;
+
+            r.Read();
+            return (CurrentAccountTransactionFees)GetTransactionFee(r);
+        }
+    }
+
+}
 
 
 public CurrentAccountTransactionFees FetchTransaction(int transactionId)

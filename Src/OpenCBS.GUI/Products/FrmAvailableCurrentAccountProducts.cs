@@ -25,7 +25,7 @@ namespace OpenCBS.GUI.Products
         }
 
 
-        private void InitializeCurrentAccountProductList(bool showAsDeleted)
+        public void InitializeCurrentAccountProductList(bool showAsDeleted)
         {
             lvCurrentAccountProducts.Items.Clear();
             CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
@@ -135,10 +135,19 @@ namespace OpenCBS.GUI.Products
             int i = lvCurrentAccountProducts.SelectedIndices[0];
             string selectedProductId = lvCurrentAccountProducts.Items[i].Text;
 
-            CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
-            _currentAccountProductService.DeleteCurrentAccountProduct(Convert.ToInt32(selectedProductId));
-            MessageBox.Show("Current Account Product Successfully Deleted.");
+                DialogResult result = MessageBox.Show("DO you want to delete this product?",
+                "Delete Confirmation",
+                MessageBoxButtons.YesNo);
 
+                if (result == DialogResult.Yes)
+                {
+                    CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
+                    _currentAccountProductService.DeleteCurrentAccountProduct(Convert.ToInt32(selectedProductId));
+                    MessageBox.Show("Current Account Product Successfully Deleted.");
+
+                    FrmAvailableCurrentAccountProducts frmAvailableCurrentAccountProducts = (FrmAvailableCurrentAccountProducts)Application.OpenForms["FrmAvailableCurrentAccountProducts"];
+                    frmAvailableCurrentAccountProducts.InitializeCurrentAccountProductList(false);
+                }
             }
             catch (Exception ex)
             {

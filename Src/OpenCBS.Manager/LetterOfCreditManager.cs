@@ -142,6 +142,31 @@ namespace OpenCBS.Manager
         }
 
 
+        public List<LetterOfCredit> FetchClientLetterOfCredit(int applicantId)
+        {
+            List<LetterOfCredit> listLetterOfCredit = new List<LetterOfCredit>();
+            const string q = @"SELECT * FROM [LetterOfCredit] WHERE clientId = @clientId";
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@clientId", applicantId);
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+
+                    if (r == null || r.Empty) return new List<LetterOfCredit>();
+
+                    while (r.Read())
+                    {
+                        listLetterOfCredit.Add((LetterOfCredit)GetLetterOfCredit(r));
+                    }
+                    return listLetterOfCredit;
+                }
+            }
+
+        }
+
+
         public string SaveLetterOfCredit(LetterOfCredit letterOfCredit)
         {
 

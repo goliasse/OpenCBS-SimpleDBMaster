@@ -262,6 +262,14 @@ namespace OpenCBS.ExceptionsHandler
                 case OpenCbsTiersSaveExceptionEnum.GuarantorMaxLoansCoveredExceed:
 			        returned = "GuarantorMaxLoansCoveredExceed.Text";
                     break;
+
+                case OpenCbsTiersSaveExceptionEnum.MaritalStatusIsBlank:
+                    returned = "MaritalStatusIsBlank.Text";
+                    break;
+
+                case OpenCbsTiersSaveExceptionEnum.KYCStatusIsBlank:
+                    returned = "KYCStatusIsBlank.Text";
+                    break;
 			}
 			return returned;
 		}
@@ -270,6 +278,8 @@ namespace OpenCBS.ExceptionsHandler
     [Serializable]
     public enum OpenCbsTiersSaveExceptionEnum
     {
+        KYCStatusIsBlank,
+        MaritalStatusIsBlank,
         TiersIsNull,
         CommentsNeedFullIfBadClient,
         TiersIsGroup,

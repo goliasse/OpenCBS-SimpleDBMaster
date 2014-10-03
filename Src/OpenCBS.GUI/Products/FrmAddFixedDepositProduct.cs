@@ -71,7 +71,7 @@ namespace OpenCBS.GUI.Products
             if (_fixedDepositProduct.PenalityType == OCurrentAccount.FeeTypeRate)
                 rbPenalityTypeRate.Checked = true;
             else
-                rbPenalityTypeFlat.Checked = false;
+                rbPenalityTypeFlat.Checked = true;
 
 
             string []clientType = _fixedDepositProduct.ClientType.Split(',');
@@ -163,6 +163,11 @@ namespace OpenCBS.GUI.Products
            int ret = _fixedDepositProductService.SaveFixedDepositProduct(_fixedDepositProduct);
            if (ret >= 1)
                MessageBox.Show("Fixed Deposit Product Successfully Added.");
+
+           FrmAvailableFixedDepositProducts frmAvailableFixedDepositProducts = (FrmAvailableFixedDepositProducts)Application.OpenForms["FrmAvailableFixedDepositProducts"];
+                frmAvailableFixedDepositProducts.InitializeFixedDepositProductList(false);
+
+                btnSave.Enabled = false;
 
              }
             catch (Exception ex)
@@ -318,6 +323,10 @@ namespace OpenCBS.GUI.Products
             _fixedDepositProductService.UpdateFixedDepositProduct(_fixedDepositProduct, _fixedDepositProduct.Id);
             
                 MessageBox.Show("Fixed Deposit Product Successfully Updated.");
+                FrmAvailableFixedDepositProducts frmAvailableFixedDepositProducts = (FrmAvailableFixedDepositProducts)Application.OpenForms["FrmAvailableFixedDepositProducts"];
+                frmAvailableFixedDepositProducts.InitializeFixedDepositProductList(false);
+
+                btnUpdate.Enabled = false;
             }
             catch (Exception ex)
             {

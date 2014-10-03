@@ -104,7 +104,7 @@ namespace OpenCBS.Manager.Database
                         return r.GetDouble("rate");
                     }
                     else
-                        return -1;
+                        return 0;
                 }
             }
             

@@ -163,6 +163,20 @@ namespace OpenCBS.Services
 
             if (!ServicesHelper.CheckMinMaxAndValueCorrectlyFilled(fixedDepositProduct.PenalityRateMin, fixedDepositProduct.PenalityRateMax, fixedDepositProduct.PenalityValue))
                 throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FDPHPenaltyMinMaxIsInvalid);
+
+            if (fixedDepositProduct.PenalityType == "Rate")
+            {
+                if (fixedDepositProduct.PenalityRateMin > fixedDepositProduct.InterestRateMin)
+                {
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.PenaltyRateMinInvalid);
+                }
+                if (fixedDepositProduct.PenalityRateMax > fixedDepositProduct.InterestRateMax)
+                {
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.PenaltyRateMaxInvalid);
+                }
+
+            }
+
         }
 
         private static bool ValidateMinMaxValue(double? min, double? max, double? value)

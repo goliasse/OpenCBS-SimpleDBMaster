@@ -155,7 +155,6 @@ namespace OpenCBS.GUI.UserControl
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.imageListEconomicInfo = new System.Windows.Forms.ImageList(this.components);
             this.panelEconomicActivity = new System.Windows.Forms.Panel();
-            this.btnPrint = new OpenCBS.GUI.UserControl.PrintButton();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -678,20 +677,10 @@ namespace OpenCBS.GUI.UserControl
             // 
             // panelEconomicActivity
             // 
-            this.panelEconomicActivity.Controls.Add(this.btnPrint);
             this.panelEconomicActivity.Controls.Add(this.buttonCancel);
             this.panelEconomicActivity.Controls.Add(this.buttonSave);
             resources.ApplyResources(this.panelEconomicActivity, "panelEconomicActivity");
             this.panelEconomicActivity.Name = "panelEconomicActivity";
-            // 
-            // btnPrint
-            // 
-            resources.ApplyResources(this.btnPrint, "btnPrint");
-            this.btnPrint.AttachmentPoint = OpenCBS.Reports.AttachmentPoint.PersonDetails;
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.ReportInitializer = null;
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Visibility = OpenCBS.Reports.Visibility.Individual;
             // 
             // buttonCancel
             // 
@@ -775,6 +764,7 @@ namespace OpenCBS.GUI.UserControl
             this.txtTypeOfFacilities.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this.txtTypeOfFacilities, "txtTypeOfFacilities");
             this.txtTypeOfFacilities.Name = "txtTypeOfFacilities";
+            this.txtTypeOfFacilities.ReadOnly = true;
             // 
             // lblTypeOfFacilities
             // 
@@ -790,7 +780,8 @@ namespace OpenCBS.GUI.UserControl
             resources.GetString("cbKYCStatus.Items"),
             resources.GetString("cbKYCStatus.Items1"),
             resources.GetString("cbKYCStatus.Items2"),
-            resources.GetString("cbKYCStatus.Items3")});
+            resources.GetString("cbKYCStatus.Items3"),
+            resources.GetString("cbKYCStatus.Items4")});
             resources.ApplyResources(this.cbKYCStatus, "cbKYCStatus");
             this.cbKYCStatus.Name = "cbKYCStatus";
             // 
@@ -820,7 +811,8 @@ namespace OpenCBS.GUI.UserControl
             this.cbMaritalStatus.Items.AddRange(new object[] {
             resources.GetString("cbMaritalStatus.Items"),
             resources.GetString("cbMaritalStatus.Items1"),
-            resources.GetString("cbMaritalStatus.Items2")});
+            resources.GetString("cbMaritalStatus.Items2"),
+            resources.GetString("cbMaritalStatus.Items3")});
             resources.ApplyResources(this.cbMaritalStatus, "cbMaritalStatus");
             this.cbMaritalStatus.Name = "cbMaritalStatus";
             // 
@@ -1402,7 +1394,6 @@ namespace OpenCBS.GUI.UserControl
         private ComboBox cbBranch;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonCancel;
-        private PrintButton btnPrint;
         private TabControl tabControlEconomicInfo;
         private TabPage tabPageAddress;
         private TableLayoutPanel tableLayoutPanelAddress;

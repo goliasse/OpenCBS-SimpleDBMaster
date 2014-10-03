@@ -42,6 +42,11 @@ namespace OpenCBS.Services
             return _LetterOfCreditManager.FetchAllLetterOfCredit();
         }
 
+        public List<LetterOfCredit> FetchClientLetterOfCredit(int applicantId)
+        {
+            return _LetterOfCreditManager.FetchClientLetterOfCredit(applicantId);
+        }
+
         public string SaveLetterOfCredit(LetterOfCredit letterOfCredit)
         {
             return _LetterOfCreditManager.SaveLetterOfCredit(letterOfCredit);

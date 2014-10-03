@@ -224,6 +224,14 @@ namespace OpenCBS.ExceptionsHandler
                 case OpenCbsFixedDepositExceptionEnum.PenaltyMinMaxValue:
                     returned = "PenaltyMinMaxValue";
                     break;
+
+                case OpenCbsFixedDepositExceptionEnum.PenaltyRateMaxInvalid:
+                    returned = "PenaltyRateMaxInvalid";
+                    break;
+
+                case OpenCbsFixedDepositExceptionEnum.PenaltyRateMinInvalid:
+                    returned = "PenaltyRateMinInvalid";
+                    break;
             }
             return returned;
         }
@@ -234,6 +242,8 @@ namespace OpenCBS.ExceptionsHandler
     [Serializable]
     public enum OpenCbsFixedDepositExceptionEnum
     {
+        PenaltyRateMaxInvalid,
+        PenaltyRateMinInvalid,
         PenaltyMinMaxValue,
         FDPHSelectAContract,
         FixedDepositProductSelectAProduct,

@@ -8,6 +8,8 @@ using OpenCBS.CoreDomain.Products;
 using OpenCBS.ExceptionsHandler;
 using OpenCBS.CoreDomain.Events.Products;
 using OpenCBS.Manager.Events;
+using System.Data;
+using OpenCBS.CoreDomain.SearchResult;
 
 namespace OpenCBS.Services
 {
@@ -39,6 +41,11 @@ namespace OpenCBS.Services
        public List<CurrentAccountEvent> FetchEvents(string contractCode)
        {
            return _currentAccountEventManager.FetchEvents(contractCode);
+       }
+
+       public List<TransactionSearchResult> GenerateCurrentAccountStatement(string contractCode, DateTime fromDate, DateTime toDate)
+       {
+           return _currentAccountProductHoldingManager.GenerateCurrentAccountStatement(contractCode, fromDate, toDate);
        }
 
        public void SaveCurrentAccountEvent(CurrentAccountEvent currentAccountEvent)

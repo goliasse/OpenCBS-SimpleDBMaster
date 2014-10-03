@@ -54,6 +54,7 @@ namespace OpenCBS.GUI.UserControl
         public event EventHandler ViewSelectedSaving;
 
         private Form _mdiParent;
+        PrintButton btnPrint = new PrintButton();
 
         private readonly IApplicationController _applicationController;
 
@@ -264,6 +265,8 @@ namespace OpenCBS.GUI.UserControl
 
         private void InitializePerson()
         {
+            cbMaritalStatus.SelectedIndex = 0;
+            cbKYCStatus.SelectedIndex = 0;
             if (_tempPerson.Id != 0)
             {
                 buttonSave.Text = MultiLanguageStrings.GetString(Ressource.PersonUserControl, "Update");
@@ -733,7 +736,7 @@ namespace OpenCBS.GUI.UserControl
         private void InitPrintButton()
         {
             btnPrint.ReportInitializer = report => report.SetParamValue("person_id", _tempPerson.Id);
-            btnPrint.LoadReports();
+           btnPrint.LoadReports();
         }
 
         private void EacPersonActivityChange(object sender, EconomicActivtyEventArgs e)

@@ -91,7 +91,7 @@ namespace OpenCBS.Services
 
             if (currentAccountProduct.CurrentAccountProductCode.Length < 6)
                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CodeIsLessThanThree);
-
+            
             if (currentAccountProduct.ClientType == "")
                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.OneCheckBoxMustBeSeleted);
 
@@ -216,7 +216,7 @@ namespace OpenCBS.Services
             if (!ServicesHelper.CheckMinMaxAndValueCorrectlyFilled(currentAccountProduct.ManagementFeesMin, currentAccountProduct.ManagementFeesMax, currentAccountProduct.ManagementFeesValue))
                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.ManagementFeesMinMaxIsInvalid);
 
-            if (currentAccountProduct.ManagementFeesFrequency == "" && currentAccountProduct.ManagementFeesFrequency == OCurrentAccount.SelectFrequencyDefault)
+            if (currentAccountProduct.ManagementFeesFrequency == "" || currentAccountProduct.ManagementFeesFrequency == OCurrentAccount.SelectFrequencyDefault)
                 throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.ManagementFeeFrequencyIsEmpty);
 
             if (ValidateMinMaxValue(currentAccountProduct.OverdraftMin, currentAccountProduct.OverdraftMax, currentAccountProduct.OverdraftValue))

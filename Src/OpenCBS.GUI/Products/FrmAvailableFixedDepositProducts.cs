@@ -33,7 +33,7 @@ namespace OpenCBS.GUI.Products
         {
             
             InitializeComponent();
-            _package = new LoanProduct();
+            
             InitializeFixedDepositProductList(false);
             
         }
@@ -49,7 +49,7 @@ namespace OpenCBS.GUI.Products
             get { return _idPackage; }
         }
         private bool _showDeletedPackage = false;
-        private void InitializeFixedDepositProductList(bool showAsDeleted)
+        public void InitializeFixedDepositProductList(bool showAsDeleted)
         {
             lvFixedDepositProducts.Items.Clear();
             FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
@@ -80,6 +80,8 @@ namespace OpenCBS.GUI.Products
 
                 //lvFixedDepositProducts.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             }
+
+            lvFixedDepositProducts.Refresh();
 
           
         }
@@ -140,9 +142,20 @@ namespace OpenCBS.GUI.Products
             int i = lvFixedDepositProducts.SelectedIndices[0];
             string selectedProductId = lvFixedDepositProducts.Items[i].Text;
 
-            FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
-            _fixedDepositProductService.DeleteFixedDepositProduct(Convert.ToInt32(selectedProductId));
-            MessageBox.Show("Fixed Deposit Product Successfully Deleted.");
+
+            DialogResult result = MessageBox.Show("DO you want to delete this product?",
+            "Delete Confirmation",
+            MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
+                _fixedDepositProductService.DeleteFixedDepositProduct(Convert.ToInt32(selectedProductId));
+                MessageBox.Show("Fixed Deposit Product Successfully Deleted.");
+
+                FrmAvailableFixedDepositProducts frmAvailableFixedDepositProducts = (FrmAvailableFixedDepositProducts)Application.OpenForms["FrmAvailableFixedDepositProducts"];
+                frmAvailableFixedDepositProducts.InitializeFixedDepositProductList(false);
+            }
 
 
             }

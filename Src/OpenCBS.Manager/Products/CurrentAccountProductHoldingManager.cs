@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using OpenCBS.CoreDomain.SearchResult;
 using OpenCBS.CoreDomain.Events.Products;
 using OpenCBS.Manager.Events;
+using System.Data;
 
 namespace OpenCBS.Manager.Products
 {
@@ -540,6 +541,48 @@ WHERE current_account_contract_code = @contractCode";
          }
 
 
+
+         public List<TransactionSearchResult> GenerateCurrentAccountStatement(string contractCode, DateTime fromDate, DateTime toDate)
+         {
+
+             List<TransactionSearchResult> listTransaction = new List<TransactionSearchResult>();
+             string q = "Select From_Account As Account, Transaction_Date, Amount, From_Account_Balance as balance, purpose_of_transfer   From CurrentAccountTransactions Where From_Account = @contractCode And (Transaction_Date BETWEEN @fromDate AND @toDate) " +
+            "UNION "+
+            "Select To_Account  As Account, Transaction_Date, Amount, To_Account_Balance AS Balance, purpose_of_transfer From CurrentAccountTransactions Where To_Account = @contractCode And (Transaction_Date BETWEEN @fromDate AND @toDate)";
+
+
+             using (SqlConnection conn = GetConnection())
+             using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+             {
+                 c.AddParam("@contractCode", contractCode);
+                 c.AddParam("@fromDate",fromDate);
+                 c.AddParam("@toDate",toDate);
+                 using (OpenCbsReader r = c.ExecuteReader())
+                 {
+
+                     if (r == null || r.Empty) return null;
+
+                     while (r.Read())
+                     {
+
+                         listTransaction.Add(GetTransactionSearchResult(r));
+
+                     }
+                 }
+             }
+
+             
+
+                     
+             return listTransaction;
+
+             
+
+
+
+         }
+
+
          public string FetchBranchAccountNumber(string productCode)
          {
              string[] data = productCode.Split('/');
@@ -549,9 +592,10 @@ WHERE current_account_contract_code = @contractCode";
              using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
              {
                  c.AddParam("@branchCode", data[0]);
-
+                 
                  using (OpenCbsReader r = c.ExecuteReader())
                  {
+                     
                      if (r == null || r.Empty) return null;
 
                      while (r.Read())
@@ -972,6 +1016,7 @@ return currentAccountProductHolding;
              transactionSearchResult.TransactionDate = r.GetDateTime("Transaction_Date");
              transactionSearchResult.Amount = r.GetDecimal("Amount");
              transactionSearchResult.Balance = r.GetDecimal("Balance");
+             transactionSearchResult.Description = r.GetString("purpose_of_transfer");
              return transactionSearchResult;
          }
 

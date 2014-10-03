@@ -1460,7 +1460,7 @@ Enter another account number.
   </data>
 
  <data name="ManagementFeeFrequencyIsEmpty" xml:space="preserve">
-    <value>Management fee frequency can not be empty</value>
+    <value>Please select Management fee frequency</value>
   </data>
   
 
@@ -2296,6 +2296,24 @@ Enter another account number.
   <data name="AddCounterDescriptionIsEmpty" xml:space="preserve">
     <value>Please enter a description</value>
   </data>
+  
+  
+  <data name="PenaltyRateMinInvalid" xml:space="preserve">
+    <value>Penalty Rate Min is greater than Interest Rate Min</value>
+  </data>
+  
+  <data name="PenaltyRateMaxInvalid" xml:space="preserve">
+    <value>Penalty Rate Max is greater than Interest Rate Max</value>
+  </data>
+  
+  <data name="KYCStatusIsBlank.Text" xml:space="preserve">
+    <value>Please select KYC Status</value>
+  </data>
+  
+  <data name="MaritalStatusIsBlank.Text" xml:space="preserve">
+    <value>Please select Marital Status</value>
+  </data>
 
+  
 
 </root>

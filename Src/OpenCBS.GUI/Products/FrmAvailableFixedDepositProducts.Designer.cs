@@ -43,6 +43,7 @@
             this.checkBoxShowDeletedProduct = new System.Windows.Forms.CheckBox();
             this.buttonAddProduct = new System.Windows.Forms.Button();
             this.buttonDeleteProduct = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.pnlSavingsProducts.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -199,11 +200,26 @@
             this.buttonDeleteProduct.Text = "Delete product";
             this.buttonDeleteProduct.Click += new System.EventHandler(this.buttonDeleteProduct_Click);
             // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnClose.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnClose.Location = new System.Drawing.Point(774, 5);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(140, 28);
+            this.btnClose.TabIndex = 28;
+            this.btnClose.Text = "Close";
+            // 
             // FrmAvailableFixedDepositProducts
             // 
+            this.AcceptButton = this.buttonAddProduct;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(926, 572);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pnlSavingsProducts);
             this.Controls.Add(this.label1);
             this.Name = "FrmAvailableFixedDepositProducts";
@@ -233,6 +249,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.Button btnClose;
 
 
     }

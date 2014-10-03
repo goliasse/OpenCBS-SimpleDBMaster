@@ -51,6 +51,8 @@ namespace OpenCBS.GUI.Products
             InitializeComboBoxCurrencies();
             InitializeManagementFeeFrequency();
             InitializeTransactionType();
+            tabControlSaving.TabPages.Remove(tabPageTransactions);
+            btnUpdateTran.Visible = false;
            
         }
 
@@ -85,6 +87,9 @@ namespace OpenCBS.GUI.Products
             InitializeComboBoxCurrencies();
             InitializeManagementFeeFrequency();
             InitializeTransactionType();
+
+            
+           
             if (enabled == true)
             {
                 btnUpdate.Visible = true;
@@ -180,7 +185,7 @@ namespace OpenCBS.GUI.Products
             else
             {
                 tbReopenFeesMax.Text = _currentAccountProduct.ReopenFeesMax.GetFormatedValue(true);
-                tbReopenFees.Text = _currentAccountProduct.ReopenFeesValue.GetFormatedValue(true);
+                tbReopenFeesMin.Text = _currentAccountProduct.ReopenFeesMin.GetFormatedValue(true);
             }
 
             if (_currentAccountProduct.ClosingFeesValue.HasValue)
@@ -288,7 +293,7 @@ namespace OpenCBS.GUI.Products
             else
             {
                 tbODLimitMin.Text = _currentAccountProduct.OverdraftLimitMin.GetFormatedValue(true);
-                tbODLimitMax.Text = _currentAccountProduct.OverdraftMax.GetFormatedValue(true);
+                tbODLimitMax.Text = _currentAccountProduct.OverdraftLimitMax.GetFormatedValue(true);
             }
             
 
@@ -424,16 +429,16 @@ namespace OpenCBS.GUI.Products
             else
             {
                 if (clientTypeCorp == true)
-                    clientType = clientType + OClientTypes.Corporate + "";
+                    clientType = clientType + OClientTypes.Corporate + " ";
                 if (clientTypeIndiv == true)
-                    clientType = clientType + OClientTypes.Person + "";
+                    clientType = clientType + OClientTypes.Person + " ";
                 if (clientTypeVillage == true)
-                    clientType = clientType + OClientTypes.Village + "";
+                    clientType = clientType + OClientTypes.Village + " ";
                 if (clientTypeGroup == true)
-                    clientType = clientType + OClientTypes.Group + "";
+                    clientType = clientType + OClientTypes.Group + " ";
 
                 if (clientType.Length > 0)
-                clientType = clientType.Substring(0, clientType.Length - 1);
+                clientType = clientType.Substring(0, clientType.Length);
             }
 
 
@@ -603,6 +608,11 @@ namespace OpenCBS.GUI.Products
 
                 _currentAccountTransactionFees = new CurrentAccountTransactionFees();
                 _currentAccountTransactionFees.CurrentAccountProductId = ret;
+
+                FrmAvailableCurrentAccountProducts frmAvailableCurrentAccountProducts = (FrmAvailableCurrentAccountProducts)Application.OpenForms["FrmAvailableCurrentAccountProducts"];
+                frmAvailableCurrentAccountProducts.InitializeCurrentAccountProductList(false);
+
+                btnCurrentAccountProduct.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -653,6 +663,12 @@ namespace OpenCBS.GUI.Products
             CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
             _currentAccountProductService.UpdateCurrentAccountProduct(_currentAccountProduct, _currentAccountProduct.Id);
             MessageBox.Show("Current Account Product Successfully Updated.");
+
+            FrmAvailableCurrentAccountProducts frmAvailableCurrentAccountProducts = (FrmAvailableCurrentAccountProducts)Application.OpenForms["FrmAvailableCurrentAccountProducts"];
+            frmAvailableCurrentAccountProducts.InitializeCurrentAccountProductList(false);
+
+            btnUpdate.Enabled = false;
+
             }
             catch (Exception ex)
             {
@@ -696,6 +712,8 @@ namespace OpenCBS.GUI.Products
 
             if (ret >= 1)
                 MessageBox.Show("Transaction Fee Successfully Specified.");
+            else if(ret == -1)
+                MessageBox.Show("Transaction Fee Already Specified.");
             }
             catch (Exception ex)
             {
@@ -730,16 +748,23 @@ namespace OpenCBS.GUI.Products
                     else
                         rbTranFeeRate.Checked = true;
 
-
-
                     tbTranFeeValue.Text = _currentAccountTransactionFees.TransactionFees.GetFormatedValue(true);
                     tbTranFeeMin.Text = _currentAccountTransactionFees.TransactionFeeMin.GetFormatedValue(true);
 
                     tbTranFeeMax.Text = _currentAccountTransactionFees.TransactionFeeMax.GetFormatedValue(true);
+                    btnSaveTranFee.Visible = false;
+                    btnUpdateTran.Visible = true;
                 }
                 else
                 {
                     _currentAccountTransactionFees = new CurrentAccountTransactionFees();
+                    tbTranFeeValue.Text = "";
+                    tbTranFeeMin.Text = "";
+
+                    tbTranFeeMax.Text = "";
+                    btnSaveTranFee.Visible = true;
+                    btnUpdateTran.Visible = false;
+
                 }
 
             }

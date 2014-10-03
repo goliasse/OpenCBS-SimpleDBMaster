@@ -438,6 +438,9 @@ namespace OpenCBS.Services
 
         private void CheckPersonFilling(Person person)
         {
+
+
+
             if (person.Activity == null)
                 throw new OpenCbsTiersSaveException(OpenCbsTiersSaveExceptionEnum.EconomicActivityIsNull);
             /*
@@ -458,6 +461,16 @@ namespace OpenCBS.Services
 
             if (person.FirstName == null)
                 throw new OpenCbsTiersSaveException(OpenCbsTiersSaveExceptionEnum.FirstNameIsNull);
+
+            if ((person.MaritalStatus == "") || (person.MaritalStatus == "Select Marital Status..."))
+                throw new OpenCbsTiersSaveException(OpenCbsTiersSaveExceptionEnum.MaritalStatusIsBlank);
+
+
+            if ((person.KYCStatus == "") || (person.KYCStatus == "Select KYC..."))
+                throw new OpenCbsTiersSaveException(OpenCbsTiersSaveExceptionEnum.KYCStatusIsBlank);
+
+
+
 
 
             if (person.Sex == 0)

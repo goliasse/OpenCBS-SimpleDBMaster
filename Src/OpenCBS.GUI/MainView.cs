@@ -1250,10 +1250,7 @@ namespace OpenCBS.GUI
             var _frmAvailableCurrentAccountProducts = new FrmAvailableCurrentAccountProducts { MdiParent = this };
             _frmAvailableCurrentAccountProducts.Show();
 
-//            FrmAvailableCurrentAccountProducts _frmAvailableCurrentAccountProducts = new FrmAvailableCurrentAccountProducts();
-  //          _frmAvailableCurrentAccountProducts.Show();
-            //FrmAddCurrentAccountProduct _frmAddCurrentAccountProduct = new FrmAddCurrentAccountProduct();
-            //_frmAddCurrentAccountProduct.Show();
+
         }
 
         private void configureTellersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1264,13 +1261,13 @@ namespace OpenCBS.GUI
 
         private void fixedAssetRegisterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmAvailableFixedAssets frmAvailableFixedAssets = new FrmAvailableFixedAssets();
+            var frmAvailableFixedAssets = new FrmAvailableFixedAssets { MdiParent = this };
             frmAvailableFixedAssets.Show();
         }
 
         private void manageCountersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AvailableCounterAndAllocatedBalance availableCounterAndAllocatedBalance = new AvailableCounterAndAllocatedBalance();
+            var availableCounterAndAllocatedBalance = new AvailableCounterAndAllocatedBalance { MdiParent = this };
             availableCounterAndAllocatedBalance.Show();
         }
 
