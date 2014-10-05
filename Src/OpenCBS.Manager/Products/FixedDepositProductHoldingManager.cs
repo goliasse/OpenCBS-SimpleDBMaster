@@ -8,6 +8,7 @@ using OpenCBS.CoreDomain.Contracts.Loans.Installments;
 using OpenCBS.CoreDomain.Products;
 using OpenCBS.Enums;
 using System.Data.SqlClient;
+using OpenCBS.Manager.Accounting;
 
 
 
@@ -19,11 +20,13 @@ namespace OpenCBS.Manager.Products
         FixedDepositProductManager fixedDepositProductManager = null;
         
         CurrentAccountTransactionManager currentAccountTransactionManager = null;
+        AccountManager accountManager = null;
         public FixedDepositProductHoldingManager(User pUser) : base(pUser)
         {
             fixedDepositProductManager = new FixedDepositProductManager(pUser);
             
             currentAccountTransactionManager = new CurrentAccountTransactionManager(pUser);
+            accountManager = new AccountManager(pUser);
         }
 
         public FixedDepositProductHoldingManager(string testDB)
@@ -131,6 +134,11 @@ namespace OpenCBS.Manager.Products
             finalAmountTransaction.TransactionFees = 0;
             finalAmountTransaction.TransactionMode = "Debit";
             finalAmountTransaction.TransactionType = productHolding.FinalAmountPaymentMethod;
+
+            accountManager.UpdateChartOfAccount("Interest", "Credit", productHolding.FinalAmount.Value-productHolding.InitialAmount.Value,"F");
+            accountManager.UpdateChartOfAccount(finalAmountTransaction.TransactionType, finalAmountTransaction.TransactionMode, productHolding.InitialAmount.Value, "F");
+                
+
             return currentAccountTransactionManager.MakeFDTransaction(finalAmountTransaction);
 
         }
@@ -643,10 +651,10 @@ return fixedDepositProductHoldings;
         {
             
             // (1 + r/n)
-            decimal body = (decimal)(1 + (interestRate / (timesPerYear*100)));
+            decimal body = (decimal)(1 + (interestRate / ((12/timesPerYear)*100)));
 
             // nt
-            decimal exponent = (decimal)(timesPerYear * years);
+            decimal exponent = (decimal)((12/timesPerYear) * years);
 
             // P(1 + r/n)^nt
             return Convert.ToDecimal((double)principal * Math.Pow((double)body, (double)exponent));
@@ -667,7 +675,7 @@ return fixedDepositProductHoldings;
              int? maturityPeriod = _fixedDepositProductHoldings.MaturityPeriod;
             string penalityType = _fixedDepositProductHoldings.PenalityType;
             DateTime openingDate = _fixedDepositProductHoldings.OpenDate.Date;
-            DateTime maturityDate = openingDate.AddMonths((int)maturityPeriod);
+            DateTime maturityDate = openingDate.AddDays((int)maturityPeriod);
             decimal? interestRate = Convert.ToDecimal(_fixedDepositProductHoldings.InterestRate);
              string interestCalculationFrequency = _fixedDepositProductHoldings.InterestCalculationFrequency;
              decimal? initialAmount = _fixedDepositProductHoldings.InitialAmount.Value;
@@ -685,7 +693,7 @@ return fixedDepositProductHoldings;
                 effectiveDepositPeriod = Convert.ToDecimal(((DateTime.Now.Date - openingDate).TotalDays) / 360);
             else
                 effectiveDepositPeriod = Convert.ToDecimal(((DateTime.Now.Date - openingDate).TotalDays) / 365);
-
+            effectiveInterestRate = interestRate;
                        
             
                         if (DateTime.Now.Date >= maturityDate)

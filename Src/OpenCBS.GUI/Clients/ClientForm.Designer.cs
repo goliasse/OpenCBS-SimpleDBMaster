@@ -615,7 +615,6 @@ namespace OpenCBS.GUI.Clients
             this.lblCAInterestRateMinMax = new System.Windows.Forms.Label();
             this.lblCAInitialAmountMinMax = new System.Windows.Forms.Label();
             this.checkBoxOverdraftApplied = new System.Windows.Forms.CheckBox();
-            this.label37 = new System.Windows.Forms.Label();
             this.tbCurrentInitialAmount = new System.Windows.Forms.TextBox();
             this.tbCalculationFrequency = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
@@ -4512,7 +4511,6 @@ namespace OpenCBS.GUI.Clients
             this.tabPageCurrentAccount.Controls.Add(this.lblCAInterestRateMinMax);
             this.tabPageCurrentAccount.Controls.Add(this.lblCAInitialAmountMinMax);
             this.tabPageCurrentAccount.Controls.Add(this.checkBoxOverdraftApplied);
-            this.tabPageCurrentAccount.Controls.Add(this.label37);
             this.tabPageCurrentAccount.Controls.Add(this.tbCurrentInitialAmount);
             this.tabPageCurrentAccount.Controls.Add(this.tbCalculationFrequency);
             this.tabPageCurrentAccount.Controls.Add(this.label43);
@@ -4583,11 +4581,6 @@ namespace OpenCBS.GUI.Clients
             this.checkBoxOverdraftApplied.Name = "checkBoxOverdraftApplied";
             this.checkBoxOverdraftApplied.UseVisualStyleBackColor = true;
             this.checkBoxOverdraftApplied.CheckedChanged += new System.EventHandler(this.checkBoxOverdraftApplied_CheckedChanged);
-            // 
-            // label37
-            // 
-            resources.ApplyResources(this.label37, "label37");
-            this.label37.Name = "label37";
             // 
             // tbCurrentInitialAmount
             // 
@@ -6594,7 +6587,6 @@ namespace OpenCBS.GUI.Clients
         private TextBox tbInitialPaymentNumber;
         private Label lblInitialChequeNumber;
         private ComboBox cbCAInitialAmountMethod;
-        private Label label37;
         private TabControl tabControlCurrentAccount;
         private TabPage tabPageFees;
         private TabPage tabPageOverdraft;

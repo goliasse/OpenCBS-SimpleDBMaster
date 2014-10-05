@@ -10,7 +10,7 @@
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU Lesser General Public License for more details.
+// GNU Lesser General Public LictbOpenedDateense for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License along
 // with this program; if not, write to the Free Software Foundation, Inc.,
@@ -8010,7 +8010,7 @@ namespace OpenCBS.GUI.Clients
 
             lbEffectiveInterestRate.Text = _fixedDepositInterest.EffectiveInterestRate.ToString();
             lbEffectiveInterest.Text = _fixedDepositInterest.FinalInterest.GetFormatedValue(OCurrency.UseCents);
-            lbEffectiveDepositPeriod.Text = _fixedDepositInterest.EffectiveDepositPeriod.ToString() + " Years";
+            lbEffectiveDepositPeriod.Text = Math.Round(_fixedDepositInterest.EffectiveDepositPeriod.Value, 2).ToString() + " Years";
             lbEffectivePenalty.Text = _fixedDepositInterest.Penalty.ToString() + " " + _fixedDepositInterest.PenaltyType;
             lbTotalAmount.Text = _fixedDepositInterest.FinalAmount.GetFormatedValue(OCurrency.UseCents);
             if (_fixedDepositInterest.PreMatured == 0)
@@ -8046,7 +8046,7 @@ namespace OpenCBS.GUI.Clients
             tbComment.Text = _fixedDepositProductHoldings.Comment;
             cbInitialAmountPaymentMethod.SelectedItem = _fixedDepositProductHoldings.InitialAmountPaymentMethod;
             tbFDInitialAmountNumber.Text = _fixedDepositProductHoldings.InitialAmountChequeAccount;
-            tbOpenedDate.Text = _fixedDepositProductHoldings.OpenDate.Date.ToString();
+            tbOpenedDate.Text = _fixedDepositProductHoldings.OpenDate.Date.ToShortDateString();
             cbAccountStatus.SelectedItem = _fixedDepositProductHoldings.Status;
 
             if (_fixedDepositProductHoldings.Status == OCurrentAccount.AccountStatusClosed)
@@ -8981,7 +8981,7 @@ namespace OpenCBS.GUI.Clients
                     }
 
                     ApplicationSettingsServices applicationSettingsServices = ServicesProvider.GetInstance().GetApplicationSettingsServices();
-                    lblLIBOR.Text = "LIBOR: "+applicationSettingsServices.GetLIBORRate(DateTime.Today, "Yearly");
+                    lblLIBOR.Text = "LIBOR "+applicationSettingsServices.GetLIBORRate(DateTime.Today, "Yearly");
                     
                    
 
