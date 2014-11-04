@@ -8121,6 +8121,7 @@ namespace OpenCBS.GUI.Clients
             cbFixedDepositProduct.Enabled = false;
 
             btnCloseFDContract.Text = "Transfer Amount";
+            btnCloseFDContract.Enabled = true;
 
             }
             catch (Exception ex)

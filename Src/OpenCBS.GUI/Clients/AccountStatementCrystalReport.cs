@@ -16,14 +16,14 @@ namespace OpenCBS.GUI.Clients {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CrystalReport1 : ReportClass {
+    public class AccountStatementCrystalReport : ReportClass {
         
-        public CrystalReport1() {
+        public AccountStatementCrystalReport() {
         }
         
         public override string ResourceName {
             get {
-                return "CrystalReport1.rpt";
+                return "AccountStatementCrystalReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace OpenCBS.GUI.Clients {
         
         public override string FullResourceName {
             get {
-                return "OpenCBS.GUI.Clients.CrystalReport1.rpt";
+                return "OpenCBS.GUI.Clients.AccountStatementCrystalReport.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace OpenCBS.GUI.Clients {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCrystalReport1 : Component, ICachedReport {
+    public class CachedAccountStatementCrystalReport : Component, ICachedReport {
         
-        public CachedCrystalReport1() {
+        public CachedAccountStatementCrystalReport() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace OpenCBS.GUI.Clients {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CrystalReport1 rpt = new CrystalReport1();
+            AccountStatementCrystalReport rpt = new AccountStatementCrystalReport();
             rpt.Site = this.Site;
             return rpt;
         }

@@ -267,7 +267,6 @@ WHERE id = @productId";
 [overdraft_limit] = @overdraftLimit,
 [interest_rate] = @interestRate,
 [interest_calculation_frequency] = @interestCalculationFrequency,
-[balance] = @balance,
 [overdraft_interest] = @overdraftInterest,
 [overdraft_interest_type] = @overdraftInterestType,
 [overdraft_commitment_fee_type] = @overdraftCommitmentFeeType,
@@ -546,9 +545,9 @@ WHERE current_account_contract_code = @contractCode";
          {
 
              List<TransactionSearchResult> listTransaction = new List<TransactionSearchResult>();
-             string q = "Select From_Account As Account, Transaction_Date, Amount, From_Account_Balance as balance, purpose_of_transfer   From CurrentAccountTransactions Where From_Account = @contractCode And (Transaction_Date BETWEEN @fromDate AND @toDate) " +
+             string q = "Select From_Account As Account, Transaction_Date, Amount, From_Account_Balance as balance, purpose_of_transfer, transaction_mode as mode   From CurrentAccountTransactions Where From_Account = @contractCode And (Transaction_Date BETWEEN @fromDate AND @toDate) " +
             "UNION "+
-            "Select To_Account  As Account, Transaction_Date, Amount, To_Account_Balance AS Balance, purpose_of_transfer From CurrentAccountTransactions Where To_Account = @contractCode And (Transaction_Date BETWEEN @fromDate AND @toDate)";
+            "Select To_Account  As Account, Transaction_Date, Amount, To_Account_Balance AS Balance, purpose_of_transfer, transaction_mode as mode From CurrentAccountTransactions Where To_Account = @contractCode And (Transaction_Date BETWEEN @fromDate AND @toDate)";
 
 
              using (SqlConnection conn = GetConnection())
@@ -1017,6 +1016,7 @@ return currentAccountProductHolding;
              transactionSearchResult.Amount = r.GetDecimal("Amount");
              transactionSearchResult.Balance = r.GetDecimal("Balance");
              transactionSearchResult.Description = r.GetString("purpose_of_transfer");
+             transactionSearchResult.Mode = r.GetString("mode");
              return transactionSearchResult;
          }
 

@@ -430,7 +430,7 @@ AND maker = @maker";
                    
                     currentAccountTransactions.Id = ret;
                     decimal transactionFee = 0;
-                    if(currentAccountTransactionFees!=null)
+                    if ((currentAccountTransactionFees != null) && (ret >= 1))
                     transactionFee = CalculateTransactionFees(currentAccountTransactions, currentAccountTransactionFees);
                     UpdateCurrentAccountTransactions(transactionFee, ret);
 

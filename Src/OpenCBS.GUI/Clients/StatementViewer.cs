@@ -26,22 +26,23 @@ namespace OpenCBS.GUI.Clients
         {
             InitializeComponent();
 
-           
-           
-                rpt.Load(@"H:\OpenCBS-SimpleDB\Src\OpenCBS.GUI\Clients\CrystalReport1.rpt");
 
 
-                crystalReportViewer1.ReportSource = rpt;
-                crystalReportViewer1.Refresh();
+            rpt.Load(@"H:\OpenCBS-SimpleDB\Src\OpenCBS.GUI\Clients\AccountStatementCrystalReport.rpt");
 
 
-                DataSet1 ds = new DataSet1();
+                AccountStatementCrystalReportViewer.ReportSource = rpt;
+                AccountStatementCrystalReportViewer.Refresh();
+
+
+                AccountStatementDataSet ds = new AccountStatementDataSet();
                 DataTable t = ds.Tables.Add("Items");
                 t.Columns.Add("Account", Type.GetType("System.String"));
                 t.Columns.Add("Date", Type.GetType("System.String"));
                 t.Columns.Add("Amount", Type.GetType("System.String"));
                 t.Columns.Add("Balance", Type.GetType("System.String"));
                 t.Columns.Add("Description", Type.GetType("System.String"));
+                t.Columns.Add("Mode", Type.GetType("System.String"));
                 DataRow r;
                 int i = 0;
 
@@ -54,14 +55,15 @@ namespace OpenCBS.GUI.Clients
                     r["Amount"] = tsr.Amount;
                     r["Balance"] = tsr.Balance;
                     r["Description"] = tsr.Description;
+                    r["Mode"] = tsr.Mode;
                     t.Rows.Add(r);
                 }
 
 
-                CrystalReport1 objRpt = new CrystalReport1();
+                AccountStatementCrystalReport objRpt = new AccountStatementCrystalReport();
                 objRpt.SetDataSource(ds.Tables[1]);
-                crystalReportViewer1.ReportSource = objRpt;
-                crystalReportViewer1.Refresh();
+                AccountStatementCrystalReportViewer.ReportSource = objRpt;
+                AccountStatementCrystalReportViewer.Refresh();
 
 
          

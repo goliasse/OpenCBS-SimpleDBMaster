@@ -7369,7 +7369,7 @@ Max:
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAS
-        HQAAAk1TRnQBSQFMAgEBBQEAARQBJwEUAScBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        HQAAAk1TRnQBSQFMAgEBBQEAASQBJwEkAScBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAAUADAAEBAQABCAYAASAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -17679,7 +17679,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>906, 109</value>
+    <value>885, 109</value>
   </data>
   <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 35</value>
@@ -17706,7 +17706,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>906, 53</value>
+    <value>885, 53</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
     <value>156, 35</value>
@@ -17820,7 +17820,7 @@ Max:
     <value>4, 38</value>
   </data>
   <data name="lvTransactions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>896, 525</value>
+    <value>875, 541</value>
   </data>
   <data name="lvTransactions.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>

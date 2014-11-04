@@ -58,10 +58,13 @@ namespace OpenCBS.Services
             if (string.IsNullOrEmpty(currentAccountTransactions.PurposeOfTransfer))
                 throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.PurposeOfTransferIsBlank);
 
-            if (currentAccountProductHoldings.OverdraftApplied == 0)
+            if ((currentAccountTransactions.TransactionType == "Transfer") || (currentAccountTransactions.TransactionMode == "Debit"))
             {
-                if (_currentAccountProduct.BalanceMin > (currentAccountProductHoldings.Balance - currentAccountTransactions.Amount))
-                    throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.CATBalanceLessThanMinBalance);
+                if (currentAccountProductHoldings.OverdraftApplied == 0)
+                {
+                    if (_currentAccountProduct.BalanceMin > (currentAccountProductHoldings.Balance - currentAccountTransactions.Amount))
+                        throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.CATBalanceLessThanMinBalance);
+                }
             }
             
         }

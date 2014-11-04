@@ -99,16 +99,16 @@ namespace OpenCBS.GUI.Clients
         {
             cbFromAccount.Items.Clear();
             cbToAccount.Items.Clear();
-            FixedDepositProductHoldingServices _fixedDepositProductHoldingServices = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
-            List<FixedDepositProductHoldings> fixedDepositProductHoldingsList = _fixedDepositProductHoldingServices.FetchProduct(false);
-            if (fixedDepositProductHoldingsList != null)
-            {
-                foreach (FixedDepositProductHoldings fixedDepositProductHoldings in fixedDepositProductHoldingsList)
-                {
-                    cbFromAccount.Items.Add(fixedDepositProductHoldings.FixedDepositContractCode);
-                    // cbToAccount.Items.Add(fixedDepositProductHoldings.FixedDepositContractCode);
-                }
-            }
+            //FixedDepositProductHoldingServices _fixedDepositProductHoldingServices = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
+            //List<FixedDepositProductHoldings> fixedDepositProductHoldingsList = _fixedDepositProductHoldingServices.FetchProduct(false);
+            //if (fixedDepositProductHoldingsList != null)
+            //{
+            //    foreach (FixedDepositProductHoldings fixedDepositProductHoldings in fixedDepositProductHoldingsList)
+            //    {
+            //        cbFromAccount.Items.Add(fixedDepositProductHoldings.FixedDepositContractCode);
+            //        // cbToAccount.Items.Add(fixedDepositProductHoldings.FixedDepositContractCode);
+            //    }
+            //}
 
 
             CurrentAccountProductHoldingServices _currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
@@ -185,7 +185,9 @@ namespace OpenCBS.GUI.Clients
             string productCode = "";
             CurrentAccountProductHoldingServices _currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
             CurrentAccountProductHoldings currentAccountProductHoldings = null;
-            if (currentAccountTransactions.TransactionType == "Transfer")
+            CurrentAccountProduct _currentAccountProduct = null;
+            CurrentAccountTransactionFees _currentAccountTransactionFees = null;
+            if ((currentAccountTransactions.TransactionType == "Transfer") || (currentAccountTransactions.TransactionMode == "Debit"))
             {
                 if (currentAccountTransactions.FromAccount != "")
                 {
@@ -193,29 +195,33 @@ namespace OpenCBS.GUI.Clients
                     productCode = data[1];
                     
                     currentAccountProductHoldings = _currentAccountProductHoldingServices.FetchProduct(currentAccountTransactions.FromAccount);
+
+                    CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
+                    _currentAccountProduct = _currentAccountProductService.FetchProduct(productCode);
+                    _currentAccountTransactionFees = _currentAccountProductService.FetchTransactionFee(currentAccountTransactions.TransactionType, currentAccountTransactions.TransactionMode, _currentAccountProduct.Id);
                 }
             }
-            else
-            {
-                if (currentAccountTransactions.TransactionMode == "Debit")
-                {
-                    currentAccountProductHoldings = _currentAccountProductHoldingServices.FetchProduct(currentAccountTransactions.FromAccount);
+            //else
+            //{
+            //    if ()
+            //    {
+            //        currentAccountProductHoldings = _currentAccountProductHoldingServices.FetchProduct(currentAccountTransactions.FromAccount);
 
-                    data = currentAccountTransactions.FromAccount.Split('/');
-                    productCode = data[1];
-                }
-                else
-                {
-                    if (currentAccountTransactions.ToAccount != "")
-                    {
-                        data = currentAccountTransactions.ToAccount.Split('/');
-                        productCode = data[1];
+            //        data = currentAccountTransactions.FromAccount.Split('/');
+            //        productCode = data[1];
+            //    }
+            //    //else
+            //    //{
+            //    //    if (currentAccountTransactions.ToAccount != "")
+            //    //    {
+            //    //        data = currentAccountTransactions.ToAccount.Split('/');
+            //    //        productCode = data[1];
 
-                        currentAccountProductHoldings = _currentAccountProductHoldingServices.FetchProduct(currentAccountTransactions.ToAccount);
-                    }
-                }
+            //    //        currentAccountProductHoldings = _currentAccountProductHoldingServices.FetchProduct(currentAccountTransactions.ToAccount);
+            //    //    }
+            //    //}
                 
-            }
+            //}
 
             if (string.IsNullOrEmpty(currentAccountTransactions.FromAccount))
                 throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.FromAccountNotSelected);
@@ -223,24 +229,23 @@ namespace OpenCBS.GUI.Clients
             if (string.IsNullOrEmpty(currentAccountTransactions.ToAccount))
                 throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.ToAccountNotSelected);
 
-            CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
-            CurrentAccountProduct _currentAccountProduct = _currentAccountProductService.FetchProduct(productCode);
+            
 
             if (currentAccountTransactions.TransactionType == OCurrentAccount.SelectPaymentMethodDefault)
                 throw new OpenCbsCurrentAcccountTransactionException(OpenCbsCurrentAcccountTransactionExceptionEnum.CATSelectATransactionType);
 
-            CurrentAccountTransactionFees _currentAccountTransactionFees = _currentAccountProductService.FetchTransactionFee(currentAccountTransactions.TransactionType, currentAccountTransactions.TransactionMode, _currentAccountProduct.Id);
+            
             CurrentAccountTransactionService _currentAccountTransactionService = ServicesProvider.GetInstance().GetCurrentAccountTransactionService();
 
             int ret = _currentAccountTransactionService.MakeATransaction(currentAccountTransactions, _currentAccountTransactionFees, _currentAccountProduct, currentAccountProductHoldings);
             if (ret >= 1)
             {
                
-                MessageBox.Show("Transaction Successfull.");
+                MessageBox.Show("Transaction Successful.");
             }
 
             else if (ret == -1)
-                MessageBox.Show("Balance is less than amount to be withdrawn and account does not have Overdraft facility enabled.");
+                MessageBox.Show("Balance and overdraft is less than amount to be withdrawn.");
 
 
             if ((cbTransactionType.SelectedItem.ToString() == "Transfer") && (cbFromAccount.Text != ""))

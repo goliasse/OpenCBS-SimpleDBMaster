@@ -12,5 +12,6 @@ namespace OpenCBS.CoreDomain.SearchResult
         public decimal Amount { get; set; }
         public decimal Balance { get; set; }
         public string Description { get; set; }
+        public string Mode { get; set; }
     }
 }

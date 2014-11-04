@@ -414,14 +414,14 @@
     <Compile Include="Capital Adequacy Ratio\DefineRiskWeightedAssetPercentage.Designer.cs">
       <DependentUpon>DefineRiskWeightedAssetPercentage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Clients\ClientForm.Designer.cs">
-      <DependentUpon>ClientForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Clients\CrystalReport1.cs">
+    <Compile Include="Clients\AccountStatementCrystalReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <DependentUpon>AccountStatementCrystalReport.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Clients\ClientForm.Designer.cs">
+      <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Clients\CurrentAccountTransactionForm.cs">
       <SubType>Form</SubType>
@@ -429,10 +429,10 @@
     <Compile Include="Clients\CurrentAccountTransactionForm.Designer.cs">
       <DependentUpon>CurrentAccountTransactionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Clients\DataSet1.Designer.cs">
+    <Compile Include="Clients\AccountStatementDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+      <DependentUpon>AccountStatementDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Clients\LoanSharesForm.cs">
       <SubType>Form</SubType>
@@ -1495,6 +1495,10 @@
     <EmbeddedResource Include="Capital Adequacy Ratio\DefineRiskWeightedAssetPercentage.resx">
       <DependentUpon>DefineRiskWeightedAssetPercentage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Clients\AccountStatementCrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AccountStatementCrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clients\ClientForm.es-ES.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1502,10 +1506,6 @@
     <EmbeddedResource Include="Clients\ClientForm.pt.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Clients\CrystalReport1.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Clients\CurrentAccountTransactionForm.resx">
       <DependentUpon>CurrentAccountTransactionForm.cs</DependentUpon>
@@ -3063,16 +3063,16 @@
       <DependentUpon>WriteOffOkCancelForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
-    <None Include="Clients\DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+    <None Include="Clients\AccountStatementDataSet.xsc">
+      <DependentUpon>AccountStatementDataSet.xsd</DependentUpon>
     </None>
-    <None Include="Clients\DataSet1.xsd">
+    <None Include="Clients\AccountStatementDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>AccountStatementDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Clients\DataSet1.xss">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+    <None Include="Clients\AccountStatementDataSet.xss">
+      <DependentUpon>AccountStatementDataSet.xsd</DependentUpon>
     </None>
     <None Include="dump.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
