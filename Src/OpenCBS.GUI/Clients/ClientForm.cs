@@ -21,12 +21,23 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+//using Microsoft.Office.Interop.Word;
+
+
 using System.ComponentModel.Composition;
 using System.Diagnostics;
-using System.Drawing;
+
 using System.Globalization;
-using System.Linq;
-using System.Windows.Forms;
+
+
+using System.Reflection;
 using OpenCBS.ArchitectureV2.CommandData;
 using OpenCBS.ArchitectureV2.Interface;
 using OpenCBS.CoreDomain;
@@ -60,12 +71,15 @@ using OpenCBS.Shared;
 using OpenCBS.Shared.Settings;
 using OpenCBS.GUI.BankGuarantee;
 using Group = OpenCBS.CoreDomain.Clients.Group;
+using OpenCBS.CoreDomain.Events.Products;
+using OpenCBS.GUI.LetterOfCredit;
+using Microsoft.Office.Interop.Word;
+
 
 namespace OpenCBS.GUI.Clients
 {
-    using OpenCBS.CoreDomain.Events.Products;
+
     using ML = MultiLanguageStrings;
-    using OpenCBS.GUI.LetterOfCredit;
     public partial class ClientForm : SweetForm
     {
         #region *** Fields ***
@@ -288,7 +302,7 @@ namespace OpenCBS.GUI.Clients
 
             tabControlPerson.SelectTab(selectedTab);
             InitializeTabPageAdvancedSettings();
-           
+
             bool active = _credit != null && _credit.ContractStatus == OContractStatus.Active;
             //InitializeCustomizableFields(OCustomizableFieldEntities.Loan, pContractId, active);
             LoadLoanDetailsExtensions();
@@ -578,7 +592,7 @@ namespace OpenCBS.GUI.Clients
                 InitializeFixedAndCurrentAccountProduct();
                 InitializeCurrentAccountStatus("");
                 InitializeBankGuaranteeList();
-                
+
 
             }
             else if (pClientType == OClientTypes.Group)
@@ -669,11 +683,11 @@ namespace OpenCBS.GUI.Clients
                 cbCAAccountStatus.Items.Add(OCurrentAccount.AccountStatusDormant);
                 cbCAAccountStatus.Items.Add(OCurrentAccount.AccountStatusClosed);
             }
-           
+
         }
 
 
-        
+
 
 
 
@@ -723,7 +737,7 @@ namespace OpenCBS.GUI.Clients
                     foreach (CurrentAccountProduct currentAccountProduct in currentAccountProductList)
                         cbCurrentAccountProducts.Items.Add(currentAccountProduct.CurrentAccountProductName + " " + currentAccountProduct.CurrentAccountProductCode);
 
-                   
+
                 }
 
                 int clientId = _client.Id;
@@ -807,7 +821,7 @@ namespace OpenCBS.GUI.Clients
                     lvCAEvents.Items.Add(item);
                 }
 
-               // lvCAEvents.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                // lvCAEvents.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             }
         }
 
@@ -815,7 +829,7 @@ namespace OpenCBS.GUI.Clients
         {
             listViewFeeTransactions.Items.Clear();
             CurrentAccountTransactionService _currentAccountTransactionService = ServicesProvider.GetInstance().GetCurrentAccountTransactionService();
-            List<CurrentAccountTransactions> currentAccountTransactionsList = _currentAccountTransactionService.FetchFeeTransactions(accountNumber,"Fees");
+            List<CurrentAccountTransactions> currentAccountTransactionsList = _currentAccountTransactionService.FetchFeeTransactions(accountNumber, "Fees");
 
 
             if (currentAccountTransactionsList != null)
@@ -844,7 +858,7 @@ namespace OpenCBS.GUI.Clients
 
                 }
 
-              //  listViewFeeTransactions.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                //  listViewFeeTransactions.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             }
         }
 
@@ -853,7 +867,7 @@ namespace OpenCBS.GUI.Clients
             lvTransactions.Items.Clear();
             CurrentAccountTransactionService _currentAccountTransactionService = ServicesProvider.GetInstance().GetCurrentAccountTransactionService();
             List<CurrentAccountTransactions> currentAccountTransactionsList = _currentAccountTransactionService.FetchTransactions(accountNumber);
-                
+
 
             if (currentAccountTransactionsList != null)
             {
@@ -878,11 +892,11 @@ namespace OpenCBS.GUI.Clients
                         currentAccountTransactions.PurposeOfTransfer,
                         balance.ToString()
                     });
-                    
+
                     lvTransactions.Items.Add(item);
                 }
 
-              //  lvTransactions.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                //  lvTransactions.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             }
         }
 
@@ -1727,43 +1741,43 @@ namespace OpenCBS.GUI.Clients
 
         private void AddProject(Project pProject)
         {
-            
-                tabControlPerson.TabPages.Remove(tabPageProject);
 
-                bool IsTabContractsExists = false;
+            tabControlPerson.TabPages.Remove(tabPageProject);
 
-                foreach (TabPage tab in tabControlPerson.TabPages)
+            bool IsTabContractsExists = false;
+
+            foreach (TabPage tab in tabControlPerson.TabPages)
+            {
+                if (tab == tabPageContracts)
+                    IsTabContractsExists = true;
+            }
+
+            if (!IsTabContractsExists && _client != null)
+            {
+                tabControlPerson.TabPages.Add(tabPageContracts);
+                panelLoansContracts.Controls.Add(pnlLoans);
+
+                if (_project != null)
                 {
-                    if (tab == tabPageContracts)
-                        IsTabContractsExists = true;
+                    tabControlPerson.SelectedTab = tabPageContracts;
                 }
 
-                if (!IsTabContractsExists && _client != null)
+                if (_personUserControl != null)
                 {
-                    tabControlPerson.TabPages.Add(tabPageContracts);
-                    panelLoansContracts.Controls.Add(pnlLoans);
-
-                    if (_project != null)
-                    {
-                        tabControlPerson.SelectedTab = tabPageContracts;
-                    }
-
-                    if (_personUserControl != null)
-                    {
-                        FillProjectLoans(_personUserControl.Person.Projects, _personUserControl.Person.FirstName);
-                    }
-
-                    if (_groupUserControl != null)
-                    {
-                        FillProjectLoans(_groupUserControl.Group.Projects, _groupUserControl.Group.Name);
-                    }
-
-                    if (_corporateUserControl != null)
-                    {
-                        FillProjectLoans(_corporateUserControl.Corporate.Projects, _corporateUserControl.Corporate.Name);
-                    }
+                    FillProjectLoans(_personUserControl.Person.Projects, _personUserControl.Person.FirstName);
                 }
-            
+
+                if (_groupUserControl != null)
+                {
+                    FillProjectLoans(_groupUserControl.Group.Projects, _groupUserControl.Group.Name);
+                }
+
+                if (_corporateUserControl != null)
+                {
+                    FillProjectLoans(_corporateUserControl.Corporate.Projects, _corporateUserControl.Corporate.Name);
+                }
+            }
+
         }
 
         public static int GetMonthsBetween(DateTime from, DateTime to)
@@ -1801,9 +1815,9 @@ namespace OpenCBS.GUI.Clients
 
             foreach (Loan credit in loans)
             {
-                
-                
-                
+
+
+
 
                 // it will be done for the first credit
                 if (currencyCodeHolder == null) currencyCodeHolder = credit.Product.Currency.Code;
@@ -1892,14 +1906,14 @@ namespace OpenCBS.GUI.Clients
                 if (credit.UseCents)
                     usedCents = credit.UseCents;
 
-                
-                
-                   
+
+
+
 
             }
 
             var totalItem = new ListViewItem("");
-            totalItem.Font = new Font(totalItem.Font, FontStyle.Bold);
+            totalItem.Font = new System.Drawing.Font(totalItem.Font, FontStyle.Bold);
             totalItem.SubItems.Add("");
             totalItem.SubItems.Add("");
 
@@ -1922,10 +1936,10 @@ namespace OpenCBS.GUI.Clients
             }
 
 
-        
 
 
-        
+
+
             lvContracts.Items.Add(totalItem);
         }
 
@@ -2414,7 +2428,7 @@ namespace OpenCBS.GUI.Clients
                                              UseItemStyleForSubItems = true,
                                              Tag = "TotalFees"
                                          };
-            itemTotal.Font = new Font("Arial", 9F, FontStyle.Bold);
+            itemTotal.Font = new System.Drawing.Font("Arial", 9F, FontStyle.Bold);
 
             itemTotal.SubItems.Add("");
             itemTotal.SubItems.Add(total);
@@ -2683,7 +2697,7 @@ namespace OpenCBS.GUI.Clients
         {
             cmbFundingCorporateDetails.Enabled = true;
             cmbFundingCorporateDetails.ForeColor = Color.Black;
-            cmbFundingCorporateDetails.Font = new Font(Font, FontStyle.Regular);
+            cmbFundingCorporateDetails.Font = new System.Drawing.Font(Font, FontStyle.Regular);
 
             if (pForCreation)
             {
@@ -2706,7 +2720,7 @@ namespace OpenCBS.GUI.Clients
             }
             cmbFundingCorporateDetails.Text = MultiLanguageStrings.GetString(Ressource.ClientForm, "ContractIsReadOnly.Text");
             cmbFundingCorporateDetails.ForeColor = System.Drawing.Color.Red;
-            cmbFundingCorporateDetails.Font = new Font(this.Font, FontStyle.Bold);
+            cmbFundingCorporateDetails.Font = new System.Drawing.Font(this.Font, FontStyle.Bold);
             MessageBox.Show(MultiLanguageStrings.GetString(Ressource.ClientForm, "ContractIsReadOnly.Text"));
             cmbFundingCorporateDetails.Tag = null;
         }
@@ -3792,7 +3806,7 @@ namespace OpenCBS.GUI.Clients
                 _credit.LoanPurpose = textBoxLoanPurpose.Text;
                 _credit.Comments = textBoxComments.Text;
 
-                
+
 
                 _credit.CompulsorySavings = GetSelectedSavingProduct();
                 _credit.CompulsorySavingsPercentage = (int)numCompulsoryAmountPercent.Value;
@@ -3884,7 +3898,7 @@ namespace OpenCBS.GUI.Clients
             // Add totals to the list view
             ListViewItem total = new ListViewItem
                                      {
-                                         Font = new Font(listViewLoanInstallments.Font, FontStyle.Bold)
+                                         Font = new System.Drawing.Font(listViewLoanInstallments.Font, FontStyle.Bold)
                                      };
             total.SubItems.Add("");
             total.SubItems.Add(interestTotal.GetFormatedValue(pCredit.UseCents));
@@ -4350,9 +4364,9 @@ namespace OpenCBS.GUI.Clients
             }
 
             Disburse();
-            
+
             //Update loan facility limit
-            ServicesProvider.GetInstance().GetClientServices().UpdateLoanFacilityLimit(_client.Id,nudLoanAmount.Value.ToString());
+            ServicesProvider.GetInstance().GetClientServices().UpdateLoanFacilityLimit(_client.Id, nudLoanAmount.Value.ToString());
         }
 
         private void Disburse()
@@ -4558,7 +4572,7 @@ namespace OpenCBS.GUI.Clients
 
             var totalItem = new ListViewItem("");
             totalItem.Font = listViewGuarantors.Font;
-            totalItem.Font = new Font(totalItem.Font, FontStyle.Bold);
+            totalItem.Font = new System.Drawing.Font(totalItem.Font, FontStyle.Bold);
             totalItem.SubItems.Add(_totalGuarantorAmount.GetFormatedValue(_credit.UseCents));
             totalItem.SubItems.Add(totalGuarantorAmountPercent.GetFormatedValue(true));
             listViewGuarantors.Items.Add(totalItem);
@@ -5080,7 +5094,7 @@ namespace OpenCBS.GUI.Clients
             if (!_fundingLine.Deleted)
             {
                 comboBoxLoanFundingLine.ForeColor = Color.Black;
-                comboBoxLoanFundingLine.Font = new Font(Font, FontStyle.Regular);
+                comboBoxLoanFundingLine.Font = new System.Drawing.Font(Font, FontStyle.Regular);
                 buttonLoanRepaymentRepay.Enabled = true;
                 if (_credit != null && !_credit.WrittenOff)
                     btnWriteOff.Enabled = true;
@@ -6672,7 +6686,7 @@ namespace OpenCBS.GUI.Clients
         private void tabControlPerson_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectedTab = tabControlPerson.SelectedTab;
-             
+
             if (selectedTab == tabPageTransactions)
             {
                 InitializeCurrentAccountTransactions(tbCAProductCode.Text);
@@ -6808,7 +6822,7 @@ namespace OpenCBS.GUI.Clients
 
             var totalItem = new ListViewItem("");
             totalItem.Font = listViewCollaterals.Font;
-            totalItem.Font = new Font(totalItem.Font, FontStyle.Bold);
+            totalItem.Font = new System.Drawing.Font(totalItem.Font, FontStyle.Bold);
             totalItem.SubItems.Add(_totalCollateralAmount.GetFormatedValue(_credit.UseCents));
             totalItem.SubItems.Add(totalCollateralAmountPercent.GetFormatedValue(true));
             listViewCollaterals.Items.Add(totalItem);
@@ -7458,204 +7472,206 @@ namespace OpenCBS.GUI.Clients
             _credit.ScheduleChangedManually = false;
         }
 
-       
+
 
         private void btnAddFixedDepositProduct_Click(object sender, EventArgs e)
         {
-            try{
-
-           
-            FixedDepositProductHoldings _fixedDepositProductHoldings = new FixedDepositProductHoldings();
-
-
-            _fixedDepositProductHoldings.ClientId = _client.Id;
-            if (_client is Person)
-                _fixedDepositProductHoldings.ClientType = OClientTypes.Person.ToString();
-            if (_client is Village)
-                _fixedDepositProductHoldings.ClientType = OClientTypes.Village.ToString();
-            if (_client is Group)
-                _fixedDepositProductHoldings.ClientType = OClientTypes.Group.ToString();
-            if (_client is Corporate)
-                _fixedDepositProductHoldings.ClientType = OClientTypes.Corporate.ToString();
-            string[] fixedDepositProduct = cbFixedDepositProduct.SelectedItem.ToString().Split();
-
-            //BranchCode(_client.Branch.Code)/ProductCode(will be fetched from database)/ClientId(_client.Id)/ProductHoldingId(Will be fetched from database after insertion)
-            _fixedDepositProductHoldings.FixedDepositContractCode = _client.Branch.Code + "/" + fixedDepositProduct[1] + "/" + _client.Id;
-
-
-
-            bool PenalityTypeRate = rbPenalityTypeRate.Checked;
-            bool PenalityTypeFlat = rbPenalityTypeFlat.Checked;
-            _fixedDepositProductHoldings.InitialAmount = ServicesHelper.ConvertStringToNullableDecimal(tbInitialAmount.Text);
-            if (cbFDLibor.Checked == true)
+            try
             {
-                ApplicationSettingsServices applicationSettingsServices = ServicesProvider.GetInstance().GetApplicationSettingsServices();
-                double libor =  applicationSettingsServices.GetLIBORRate(DateTime.Today, "Yearly");
-                _fixedDepositProductHoldings.InterestRate = libor + ServicesHelper.ConvertStringToNullableDouble(tbInterestRate.Text, false);
+
+
+                FixedDepositProductHoldings _fixedDepositProductHoldings = new FixedDepositProductHoldings();
+
+
+                _fixedDepositProductHoldings.ClientId = _client.Id;
+                if (_client is Person)
+                    _fixedDepositProductHoldings.ClientType = OClientTypes.Person.ToString();
+                if (_client is Village)
+                    _fixedDepositProductHoldings.ClientType = OClientTypes.Village.ToString();
+                if (_client is Group)
+                    _fixedDepositProductHoldings.ClientType = OClientTypes.Group.ToString();
+                if (_client is Corporate)
+                    _fixedDepositProductHoldings.ClientType = OClientTypes.Corporate.ToString();
+                string[] fixedDepositProduct = cbFixedDepositProduct.SelectedItem.ToString().Split();
+
+                //BranchCode(_client.Branch.Code)/ProductCode(will be fetched from database)/ClientId(_client.Id)/ProductHoldingId(Will be fetched from database after insertion)
+                _fixedDepositProductHoldings.FixedDepositContractCode = _client.Branch.Code + "/" + fixedDepositProduct[1] + "/" + _client.Id;
+
+
+
+                bool PenalityTypeRate = rbPenalityTypeRate.Checked;
+                bool PenalityTypeFlat = rbPenalityTypeFlat.Checked;
+                _fixedDepositProductHoldings.InitialAmount = ServicesHelper.ConvertStringToNullableDecimal(tbInitialAmount.Text);
+                if (cbFDLibor.Checked == true)
+                {
+                    ApplicationSettingsServices applicationSettingsServices = ServicesProvider.GetInstance().GetApplicationSettingsServices();
+                    double libor = applicationSettingsServices.GetLIBORRate(DateTime.Today, "Yearly");
+                    _fixedDepositProductHoldings.InterestRate = libor + ServicesHelper.ConvertStringToNullableDouble(tbInterestRate.Text, false);
+                }
+                else
+                {
+                    _fixedDepositProductHoldings.InterestRate = ServicesHelper.ConvertStringToNullableDouble(tbInterestRate.Text, false);
+                }
+                _fixedDepositProductHoldings.MaturityPeriod = ServicesHelper.ConvertStringToNullableInt32(tbMaturityPeriod.Text);
+                _fixedDepositProductHoldings.InterestCalculationFrequency = tbFrequencyMonths.Text;
+                if (PenalityTypeRate == true)
+                    _fixedDepositProductHoldings.PenalityType = OCurrentAccount.FeeTypeRate;
+                else
+                    _fixedDepositProductHoldings.PenalityType = OCurrentAccount.FeeTypeFlat;
+
+
+                _fixedDepositProductHoldings.Penality = ServicesHelper.ConvertStringToNullableDouble(tbPenality.Text, false);
+                _fixedDepositProductHoldings.Comment = tbComment.Text;
+                _fixedDepositProductHoldings.PreMatured = 0;
+                _fixedDepositProductHoldings.Status = OCurrentAccount.AccountStatusOpened;
+                _fixedDepositProductHoldings.OpeningAccountingOfficer = cbAccountingOfficer.SelectedItem.ToString();
+
+                _fixedDepositProductHoldings.OpenDate = DateTime.Today;
+                _fixedDepositProductHoldings.CloseDate = DateTime.MaxValue;
+                _fixedDepositProductHoldings.InitialAmountPaymentMethod = cbInitialAmountPaymentMethod.SelectedItem.ToString();
+                if (cbInitialAmountPaymentMethod.SelectedItem.ToString() != OCurrentAccount.PaymentMethodCash)
+                    _fixedDepositProductHoldings.InitialAmountChequeAccount = tbFDInitialAmountNumber.Text;
+
+                FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
+                _fixedDepositProductHoldings.FixedDepositProduct = _fixedDepositProductService.FetchProduct(fixedDepositProduct[0], fixedDepositProduct[1]);
+                _fixedDepositProductHoldings.FixedDepositProduct.Id = _fixedDepositProductService.FetchProduct(fixedDepositProduct[0], fixedDepositProduct[1]).Id;
+
+
+
+
+
+                FixedDepositProductHoldingServices _fixedDepositProductHoldingServices = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
+                string contractCode = _fixedDepositProductHoldingServices.SaveFixedDepositProductHolding(_fixedDepositProductHoldings);
+
+                FixedDepositEvent fixedDepositEvent = new FixedDepositEvent();
+
+                fixedDepositEvent.ContractCode = contractCode;
+                fixedDepositEvent.EventCode = "FDOP";
+                fixedDepositEvent.Description = "Fixed Deposit Account Opened";
+
+                _fixedDepositProductHoldingServices.SaveFixedDepositEvent(fixedDepositEvent);
+
+
+                MessageBox.Show(MultiLanguageStrings.GetString(Ressource.ClientForm, "Contract Successfull") + contractCode);
+                btnAddFixedDepositProduct.Enabled = false;
+
             }
-            else
-            {
-                _fixedDepositProductHoldings.InterestRate = ServicesHelper.ConvertStringToNullableDouble(tbInterestRate.Text, false);
-            }
-            _fixedDepositProductHoldings.MaturityPeriod = ServicesHelper.ConvertStringToNullableInt32(tbMaturityPeriod.Text);
-            _fixedDepositProductHoldings.InterestCalculationFrequency = tbFrequencyMonths.Text;
-            if (PenalityTypeRate == true)
-                _fixedDepositProductHoldings.PenalityType = OCurrentAccount.FeeTypeRate;
-            else
-                _fixedDepositProductHoldings.PenalityType = OCurrentAccount.FeeTypeFlat;
-                
-
-            _fixedDepositProductHoldings.Penality = ServicesHelper.ConvertStringToNullableDouble(tbPenality.Text, false);
-            _fixedDepositProductHoldings.Comment = tbComment.Text;
-            _fixedDepositProductHoldings.PreMatured = 0;
-            _fixedDepositProductHoldings.Status = OCurrentAccount.AccountStatusOpened;
-            _fixedDepositProductHoldings.OpeningAccountingOfficer = cbAccountingOfficer.SelectedItem.ToString();
-            
-            _fixedDepositProductHoldings.OpenDate = DateTime.Today;
-            _fixedDepositProductHoldings.CloseDate = DateTime.MaxValue;
-            _fixedDepositProductHoldings.InitialAmountPaymentMethod = cbInitialAmountPaymentMethod.SelectedItem.ToString();
-            if (cbInitialAmountPaymentMethod.SelectedItem.ToString() != OCurrentAccount.PaymentMethodCash)
-            _fixedDepositProductHoldings.InitialAmountChequeAccount = tbFDInitialAmountNumber.Text;
-
-            FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
-            _fixedDepositProductHoldings.FixedDepositProduct = _fixedDepositProductService.FetchProduct(fixedDepositProduct[0], fixedDepositProduct[1]);
-            _fixedDepositProductHoldings.FixedDepositProduct.Id = _fixedDepositProductService.FetchProduct(fixedDepositProduct[0], fixedDepositProduct[1]).Id;
-
-
-
-
-
-            FixedDepositProductHoldingServices _fixedDepositProductHoldingServices = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
-            string contractCode = _fixedDepositProductHoldingServices.SaveFixedDepositProductHolding(_fixedDepositProductHoldings);
-             
-            FixedDepositEvent fixedDepositEvent = new FixedDepositEvent();
-            
-            fixedDepositEvent.ContractCode = contractCode;
-            fixedDepositEvent.EventCode = "FDOP";
-            fixedDepositEvent.Description = "Fixed Deposit Account Opened";
-
-            _fixedDepositProductHoldingServices.SaveFixedDepositEvent(fixedDepositEvent);
-
-
-            MessageBox.Show(MultiLanguageStrings.GetString(Ressource.ClientForm, "Contract Successfull") + contractCode);
-            btnAddFixedDepositProduct.Enabled = false;
-
-             }
             catch (Exception ex)
             {
                 new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
             }
-        
-        
+
+
 
         }
         CurrentAccountProductHoldings _currentAccountProductHoldings = null;
         private void btnAddCurrentAccountProduct_Click(object sender, EventArgs e)
         {
-            try{
-            _currentAccountProductHoldings = new CurrentAccountProductHoldings();
-
-
-            _currentAccountProductHoldings.ClientId = _client.Id;
-            if (_client is Person)
-                _currentAccountProductHoldings.ClientType = OClientTypes.Person.ToString();
-            if (_client is Village)
-                _currentAccountProductHoldings.ClientType = OClientTypes.Village.ToString();
-            if (_client is Group)
-                _currentAccountProductHoldings.ClientType = OClientTypes.Group.ToString();
-            if (_client is Corporate)
-                _currentAccountProductHoldings.ClientType = OClientTypes.Corporate.ToString();
-
-            _currentAccountProductHoldings.InitialAmount = ServicesHelper.ConvertStringToNullableDecimal(tbCurrentInitialAmount.Text);
-
-            //BranchCode(_client.Branch.Code)/ProductCode(will be fetched from database)/ClientId(_client.Id)/ProductHoldingId(Will be fetched from database after insertion)
-            _currentAccountProductHoldings.CurrentAccountContractCode = _client.Branch.Code + "/" + tbCurrentAccountProductCode.Text + "/" + _client.Id;
-
-            //Fetch the product id from database CurrentAccountProduct name will be provided
-           
-            _currentAccountProductHoldings.CurrentAccountProduct = currentAccountProduct;
-           
-
-
-            if (rbRateEntryFees.Checked == true)
-                _currentAccountProductHoldings.EntryFeesType = OCurrentAccount.FeeTypeRate;
-            else
-                _currentAccountProductHoldings.EntryFeesType = OCurrentAccount.FeeTypeFlat;
-
-            _currentAccountProductHoldings.EntryFees = ServicesHelper.ConvertStringToNullableDecimal(tbEntryFees.Text);
-
-
-
-            if (rbRateManagementFees.Checked == true)
-                _currentAccountProductHoldings.ManagementFeesType = OCurrentAccount.FeeTypeRate;
-            else
-                _currentAccountProductHoldings.ManagementFeesType = OCurrentAccount.FeeTypeFlat;
-
-
-            _currentAccountProductHoldings.ManagementFeesFrequency = "Monthly";
-            _currentAccountProductHoldings.ManagementFees = ServicesHelper.ConvertStringToNullableDecimal(tbManagementFees.Text);
-
-            
-
-            _currentAccountProductHoldings.Status = OCurrentAccount.AccountStatusOpened;
-
-            _currentAccountProductHoldings.Comment = tbCurrentAccountComment.Text;
-            _currentAccountProductHoldings.OpeningAccountingOfficer = cbCurrentAccountingOfficer.SelectedItem.ToString();
-
-            _currentAccountProductHoldings.OpenDate = DateTime.Today;
-            _currentAccountProductHoldings.CloseDate = DateTime.MaxValue;
-            
-                
-            _currentAccountProductHoldings.InitialAmountPaymentMethod = cbCAInitialAmountMethod.SelectedItem.ToString();
-
-
-            if (cbLIBOR.Checked == true)
+            try
             {
-                ApplicationSettingsServices applicationSettingsServices = ServicesProvider.GetInstance().GetApplicationSettingsServices();
-                double libor = applicationSettingsServices.GetLIBORRate(DateTime.Today, "Yearly");
-                _currentAccountProductHoldings.InterestRate = libor + ServicesHelper.ConvertStringToNullableDouble(tbCAInterestRate.Text, false);
-            }
-            else
-            {
-                _currentAccountProductHoldings.InterestRate = ServicesHelper.ConvertStringToNullableDouble(tbCAInterestRate.Text, false);
-            }
-
-            _currentAccountProductHoldings.InterestCalculationFrequency = ServicesHelper.ConvertStringToNullableInt32(tbCalculationFrequency.Text);
-            if (cbCAInitialAmountMethod.SelectedItem.ToString() != OCurrentAccount.PaymentMethodCash)
-                _currentAccountProductHoldings.InitialAmountAccountNumber = tbInitialPaymentNumber.Text;
+                _currentAccountProductHoldings = new CurrentAccountProductHoldings();
 
 
-            UpdateOverdraft();
+                _currentAccountProductHoldings.ClientId = _client.Id;
+                if (_client is Person)
+                    _currentAccountProductHoldings.ClientType = OClientTypes.Person.ToString();
+                if (_client is Village)
+                    _currentAccountProductHoldings.ClientType = OClientTypes.Village.ToString();
+                if (_client is Group)
+                    _currentAccountProductHoldings.ClientType = OClientTypes.Group.ToString();
+                if (_client is Corporate)
+                    _currentAccountProductHoldings.ClientType = OClientTypes.Corporate.ToString();
 
-            CurrentAccountProductHoldingServices _currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
-            string contractCode = _currentAccountProductHoldingServices.SaveCurrentAccountPoductHolding(_currentAccountProductHoldings);
+                _currentAccountProductHoldings.InitialAmount = ServicesHelper.ConvertStringToNullableDecimal(tbCurrentInitialAmount.Text);
 
-            CurrentAccountEvent currentAccountEvent = new CurrentAccountEvent();
-            currentAccountEvent.ContractCode = contractCode;
-            currentAccountEvent.EventCode = "CAOP";
-            currentAccountEvent.Description = "Current Account Opened";
-            _currentAccountProductHoldingServices.SaveCurrentAccountEvent(currentAccountEvent);
+                //BranchCode(_client.Branch.Code)/ProductCode(will be fetched from database)/ClientId(_client.Id)/ProductHoldingId(Will be fetched from database after insertion)
+                _currentAccountProductHoldings.CurrentAccountContractCode = _client.Branch.Code + "/" + tbCurrentAccountProductCode.Text + "/" + _client.Id;
 
-            if (_currentAccountProductHoldings.OverdraftApplied == 1)
-            {
-                currentAccountEvent = new CurrentAccountEvent();
-                currentAccountEvent.ContractCode = _currentAccountProductHoldings.CurrentAccountContractCode;
-                currentAccountEvent.EventCode = "ODAP";
-                currentAccountEvent.Description = "Current Account OD applied";
+                //Fetch the product id from database CurrentAccountProduct name will be provided
+
+                _currentAccountProductHoldings.CurrentAccountProduct = currentAccountProduct;
+
+
+
+                if (rbRateEntryFees.Checked == true)
+                    _currentAccountProductHoldings.EntryFeesType = OCurrentAccount.FeeTypeRate;
+                else
+                    _currentAccountProductHoldings.EntryFeesType = OCurrentAccount.FeeTypeFlat;
+
+                _currentAccountProductHoldings.EntryFees = ServicesHelper.ConvertStringToNullableDecimal(tbEntryFees.Text);
+
+
+
+                if (rbRateManagementFees.Checked == true)
+                    _currentAccountProductHoldings.ManagementFeesType = OCurrentAccount.FeeTypeRate;
+                else
+                    _currentAccountProductHoldings.ManagementFeesType = OCurrentAccount.FeeTypeFlat;
+
+
+                _currentAccountProductHoldings.ManagementFeesFrequency = "Monthly";
+                _currentAccountProductHoldings.ManagementFees = ServicesHelper.ConvertStringToNullableDecimal(tbManagementFees.Text);
+
+
+
+                _currentAccountProductHoldings.Status = OCurrentAccount.AccountStatusOpened;
+
+                _currentAccountProductHoldings.Comment = tbCurrentAccountComment.Text;
+                _currentAccountProductHoldings.OpeningAccountingOfficer = cbCurrentAccountingOfficer.SelectedItem.ToString();
+
+                _currentAccountProductHoldings.OpenDate = DateTime.Today;
+                _currentAccountProductHoldings.CloseDate = DateTime.MaxValue;
+
+
+                _currentAccountProductHoldings.InitialAmountPaymentMethod = cbCAInitialAmountMethod.SelectedItem.ToString();
+
+
+                if (cbLIBOR.Checked == true)
+                {
+                    ApplicationSettingsServices applicationSettingsServices = ServicesProvider.GetInstance().GetApplicationSettingsServices();
+                    double libor = applicationSettingsServices.GetLIBORRate(DateTime.Today, "Yearly");
+                    _currentAccountProductHoldings.InterestRate = libor + ServicesHelper.ConvertStringToNullableDouble(tbCAInterestRate.Text, false);
+                }
+                else
+                {
+                    _currentAccountProductHoldings.InterestRate = ServicesHelper.ConvertStringToNullableDouble(tbCAInterestRate.Text, false);
+                }
+
+                _currentAccountProductHoldings.InterestCalculationFrequency = ServicesHelper.ConvertStringToNullableInt32(tbCalculationFrequency.Text);
+                if (cbCAInitialAmountMethod.SelectedItem.ToString() != OCurrentAccount.PaymentMethodCash)
+                    _currentAccountProductHoldings.InitialAmountAccountNumber = tbInitialPaymentNumber.Text;
+
+
+                UpdateOverdraft();
+
+                CurrentAccountProductHoldingServices _currentAccountProductHoldingServices = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
+                string contractCode = _currentAccountProductHoldingServices.SaveCurrentAccountPoductHolding(_currentAccountProductHoldings);
+
+                CurrentAccountEvent currentAccountEvent = new CurrentAccountEvent();
+                currentAccountEvent.ContractCode = contractCode;
+                currentAccountEvent.EventCode = "CAOP";
+                currentAccountEvent.Description = "Current Account Opened";
                 _currentAccountProductHoldingServices.SaveCurrentAccountEvent(currentAccountEvent);
+
+                if (_currentAccountProductHoldings.OverdraftApplied == 1)
+                {
+                    currentAccountEvent = new CurrentAccountEvent();
+                    currentAccountEvent.ContractCode = _currentAccountProductHoldings.CurrentAccountContractCode;
+                    currentAccountEvent.EventCode = "ODAP";
+                    currentAccountEvent.Description = "Current Account OD applied";
+                    _currentAccountProductHoldingServices.SaveCurrentAccountEvent(currentAccountEvent);
+                }
+                else
+                {
+                    currentAccountEvent = new CurrentAccountEvent();
+                    currentAccountEvent.ContractCode = _currentAccountProductHoldings.CurrentAccountContractCode;
+                    currentAccountEvent.EventCode = "ODWT";
+                    currentAccountEvent.Description = "Current Account OD withdrawn";
+                    _currentAccountProductHoldingServices.SaveCurrentAccountEvent(currentAccountEvent);
+                }
+                MessageBox.Show(MultiLanguageStrings.GetString(Ressource.ClientForm, "Contract Successfull") + contractCode);
+                btnAddCurrentAccountProduct.Enabled = false;
+
             }
-            else
-            {
-                currentAccountEvent = new CurrentAccountEvent();
-                currentAccountEvent.ContractCode = _currentAccountProductHoldings.CurrentAccountContractCode;
-                currentAccountEvent.EventCode = "ODWT";
-                currentAccountEvent.Description = "Current Account OD withdrawn";
-                _currentAccountProductHoldingServices.SaveCurrentAccountEvent(currentAccountEvent);
-            }
-            MessageBox.Show(MultiLanguageStrings.GetString(Ressource.ClientForm, "Contract Successfull") + contractCode);
-            btnAddCurrentAccountProduct.Enabled = false;
-                
-             }
             catch (Exception ex)
             {
                 new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
@@ -7712,7 +7728,7 @@ namespace OpenCBS.GUI.Clients
             }
         }
 
-        
+
 
         private void rbRateEntryFees_CheckedChanged_1(object sender, EventArgs e)
         {
@@ -7812,7 +7828,7 @@ namespace OpenCBS.GUI.Clients
             }
         }
 
-        
+
 
         private void rbFlatOverdraftFees_CheckedChanged(object sender, EventArgs e)
         {
@@ -7843,7 +7859,7 @@ namespace OpenCBS.GUI.Clients
 
         }
 
-        
+
 
         private void cbFixedDepositProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -7916,16 +7932,16 @@ namespace OpenCBS.GUI.Clients
                 lblFDInitialAmountMinMax.Text = "";
                 lblFDInterestMinMax.Text = "";
                 lblFDMaturityMinMax.Text = "";
-               
+
                 lblFDPenaltyMinMax.Text = "";
             }
 
             ApplicationSettingsServices applicationSettingsServices = ServicesProvider.GetInstance().GetApplicationSettingsServices();
             lblFDLIBOR.Text = "LIBOR: " + applicationSettingsServices.GetLIBORRate(DateTime.Today, "Yearly");
 
-           }
+        }
 
-       
+
 
         private void btnAddFixedDeposit_Click(object sender, EventArgs e)
         {
@@ -7947,7 +7963,7 @@ namespace OpenCBS.GUI.Clients
 
 
             cbFixedDepositProduct.SelectedIndex = 0;
-            
+
             tbInitialAmount.ResetText();
             tbInterestRate.ResetText();
             tbMaturityPeriod.ResetText();
@@ -7982,146 +7998,147 @@ namespace OpenCBS.GUI.Clients
 
             cbInitialAmountPaymentMethod.SelectedIndex = 0;
 
-           
 
-       
+
+
         }
 
 
 
         FixedDepositProductHoldings _fixedDepositProductHoldings = null;
 
-        
+
 
         private void btnViewFixedDeposit_Click(object sender, EventArgs e)
         {
-            try{
-
-            int i = lvFixedDeposits.SelectedIndices[0];
-            string selectedContractCode = lvFixedDeposits.Items[i].Text;
-
-
-
-            FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
-            _fixedDepositProductHoldings = _fixedDepositProductHoldingService.FetchProduct(selectedContractCode);
-
-
-            FixedDepositInterest _fixedDepositInterest = _fixedDepositProductHoldingService.CalculateFinalAmount(selectedContractCode);
-
-            lbEffectiveInterestRate.Text = _fixedDepositInterest.EffectiveInterestRate.ToString();
-            lbEffectiveInterest.Text = _fixedDepositInterest.FinalInterest.GetFormatedValue(OCurrency.UseCents);
-            lbEffectiveDepositPeriod.Text = Math.Round(_fixedDepositInterest.EffectiveDepositPeriod.Value, 2).ToString() + " Years";
-            lbEffectivePenalty.Text = _fixedDepositInterest.Penalty.ToString() + " " + _fixedDepositInterest.PenaltyType;
-            lbTotalAmount.Text = _fixedDepositInterest.FinalAmount.GetFormatedValue(OCurrency.UseCents);
-            if (_fixedDepositInterest.PreMatured == 0)
+            try
             {
-                lblPreMatured.Text = "No";
-                lbEffectivePenalty.Text = "0";
-            }
-            else
-                lblPreMatured.Text = "Yes";
 
-            _fixedDepositProductHoldings.EffectiveInterestRate = _fixedDepositInterest.EffectiveInterestRate;
-            _fixedDepositProductHoldings.FinalInterest = _fixedDepositInterest.FinalInterest;
-            _fixedDepositProductHoldings.EffectiveDepositPeriod = _fixedDepositInterest.EffectiveDepositPeriod;
-            _fixedDepositProductHoldings.FinalPenality = _fixedDepositInterest.Penalty;
-            _fixedDepositProductHoldings.FinalAmount = _fixedDepositInterest.FinalAmount;
-            _fixedDepositProductHoldings.PreMatured = _fixedDepositInterest.PreMatured;
+                int i = lvFixedDeposits.SelectedIndices[0];
+                string selectedContractCode = lvFixedDeposits.Items[i].Text;
 
-            cbFixedDepositProduct.SelectedItem = _fixedDepositProductHoldings.FixedDepositProduct.Name + " " + _fixedDepositProductHoldings.FixedDepositProduct.Code;
-            tbInitialAmount.Text = _fixedDepositProductHoldings.InitialAmount.GetFormatedValue(OCurrency.UseCents);
-            tbInterestRate.Text = _fixedDepositProductHoldings.InterestRate.ToString();
-            tbMaturityPeriod.Text = _fixedDepositProductHoldings.MaturityPeriod.ToString();
-            tbFrequencyMonths.Text = _fixedDepositProductHoldings.InterestCalculationFrequency;
-            
-            if (_fixedDepositProductHoldings.PenalityType == OCurrentAccount.FeeTypeFlat)
-                rbPenalityTypeFlat.Checked = true;
-            else
-                rbPenalityTypeRate.Checked = true;
 
-            tbPenality.Text = _fixedDepositProductHoldings.Penality.ToString();
-            tbFDContractCode.Text = _fixedDepositProductHoldings.FixedDepositContractCode;
-            tbProductCode.Text = _fixedDepositProductHoldings.FixedDepositProduct.Code;
-            cbAccountingOfficer.SelectedItem = _fixedDepositProductHoldings.OpeningAccountingOfficer;
-            tbComment.Text = _fixedDepositProductHoldings.Comment;
-            cbInitialAmountPaymentMethod.SelectedItem = _fixedDepositProductHoldings.InitialAmountPaymentMethod;
-            tbFDInitialAmountNumber.Text = _fixedDepositProductHoldings.InitialAmountChequeAccount;
-            tbOpenedDate.Text = _fixedDepositProductHoldings.OpenDate.Date.ToShortDateString();
-            cbAccountStatus.SelectedItem = _fixedDepositProductHoldings.Status;
 
-            if (_fixedDepositProductHoldings.Status == OCurrentAccount.AccountStatusClosed)
-            {
-                btnCloseFDContract.Visible = false;
-                btnExtendPeriod.Visible = false;
-                lblAmountTransferMethod.Visible = true;
-                cbAmountTransferMethod.Visible = true;
-                cbAmountTransferMethod.SelectedItem = _fixedDepositProductHoldings.FinalAmountPaymentMethod;
-                cbAmountTransferMethod.Enabled = false;
-                if (_fixedDepositProductHoldings.FinalAmountPaymentMethod == OCurrentAccount.PaymentMethodCheque)
+                FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
+                _fixedDepositProductHoldings = _fixedDepositProductHoldingService.FetchProduct(selectedContractCode);
+
+
+                FixedDepositInterest _fixedDepositInterest = _fixedDepositProductHoldingService.CalculateFinalAmount(selectedContractCode);
+
+                lbEffectiveInterestRate.Text = _fixedDepositInterest.EffectiveInterestRate.ToString();
+                lbEffectiveInterest.Text = _fixedDepositInterest.FinalInterest.GetFormatedValue(OCurrency.UseCents);
+                lbEffectiveDepositPeriod.Text = Math.Round(_fixedDepositInterest.EffectiveDepositPeriod.Value, 2).ToString() + " Years";
+                lbEffectivePenalty.Text = _fixedDepositInterest.Penalty.ToString() + " " + _fixedDepositInterest.PenaltyType;
+                lbTotalAmount.Text = _fixedDepositInterest.FinalAmount.GetFormatedValue(OCurrency.UseCents);
+                if (_fixedDepositInterest.PreMatured == 0)
                 {
-                    lblChequeNumber.Visible = true;
-                    tbTransferNumber.Visible = true;
-                    lblChequeNumber.Text = "To Cheque Number:";
-                    tbTransferNumber.Text = _fixedDepositProductHoldings.FinalAmountChequeAccount;
-                    tbTransferNumber.Enabled = false;
+                    lblPreMatured.Text = "No";
+                    lbEffectivePenalty.Text = "0";
                 }
-                else if (_fixedDepositProductHoldings.FinalAmountPaymentMethod == OCurrentAccount.PaymentMethodTransfer)
+                else
+                    lblPreMatured.Text = "Yes";
+
+                _fixedDepositProductHoldings.EffectiveInterestRate = _fixedDepositInterest.EffectiveInterestRate;
+                _fixedDepositProductHoldings.FinalInterest = _fixedDepositInterest.FinalInterest;
+                _fixedDepositProductHoldings.EffectiveDepositPeriod = _fixedDepositInterest.EffectiveDepositPeriod;
+                _fixedDepositProductHoldings.FinalPenality = _fixedDepositInterest.Penalty;
+                _fixedDepositProductHoldings.FinalAmount = _fixedDepositInterest.FinalAmount;
+                _fixedDepositProductHoldings.PreMatured = _fixedDepositInterest.PreMatured;
+
+                cbFixedDepositProduct.SelectedItem = _fixedDepositProductHoldings.FixedDepositProduct.Name + " " + _fixedDepositProductHoldings.FixedDepositProduct.Code;
+                tbInitialAmount.Text = _fixedDepositProductHoldings.InitialAmount.GetFormatedValue(OCurrency.UseCents);
+                tbInterestRate.Text = _fixedDepositProductHoldings.InterestRate.ToString();
+                tbMaturityPeriod.Text = _fixedDepositProductHoldings.MaturityPeriod.ToString();
+                tbFrequencyMonths.Text = _fixedDepositProductHoldings.InterestCalculationFrequency;
+
+                if (_fixedDepositProductHoldings.PenalityType == OCurrentAccount.FeeTypeFlat)
+                    rbPenalityTypeFlat.Checked = true;
+                else
+                    rbPenalityTypeRate.Checked = true;
+
+                tbPenality.Text = _fixedDepositProductHoldings.Penality.ToString();
+                tbFDContractCode.Text = _fixedDepositProductHoldings.FixedDepositContractCode;
+                tbProductCode.Text = _fixedDepositProductHoldings.FixedDepositProduct.Code;
+                cbAccountingOfficer.SelectedItem = _fixedDepositProductHoldings.OpeningAccountingOfficer;
+                tbComment.Text = _fixedDepositProductHoldings.Comment;
+                cbInitialAmountPaymentMethod.SelectedItem = _fixedDepositProductHoldings.InitialAmountPaymentMethod;
+                tbFDInitialAmountNumber.Text = _fixedDepositProductHoldings.InitialAmountChequeAccount;
+                tbOpenedDate.Text = _fixedDepositProductHoldings.OpenDate.Date.ToShortDateString();
+                cbAccountStatus.SelectedItem = _fixedDepositProductHoldings.Status;
+
+                if (_fixedDepositProductHoldings.Status == OCurrentAccount.AccountStatusClosed)
                 {
-                    lblChequeNumber.Visible = true;
-                    tbTransferNumber.Visible = true;
-                    lblChequeNumber.Text = "To Account Number:";
-                    tbTransferNumber.Text = _fixedDepositProductHoldings.FinalAmountChequeAccount;
-                    tbTransferNumber.Enabled = false;
+                    btnCloseFDContract.Visible = false;
+                    btnExtendPeriod.Visible = false;
+                    lblAmountTransferMethod.Visible = true;
+                    cbAmountTransferMethod.Visible = true;
+                    cbAmountTransferMethod.SelectedItem = _fixedDepositProductHoldings.FinalAmountPaymentMethod;
+                    cbAmountTransferMethod.Enabled = false;
+                    if (_fixedDepositProductHoldings.FinalAmountPaymentMethod == OCurrentAccount.PaymentMethodCheque)
+                    {
+                        lblChequeNumber.Visible = true;
+                        tbTransferNumber.Visible = true;
+                        lblChequeNumber.Text = "To Cheque Number:";
+                        tbTransferNumber.Text = _fixedDepositProductHoldings.FinalAmountChequeAccount;
+                        tbTransferNumber.Enabled = false;
+                    }
+                    else if (_fixedDepositProductHoldings.FinalAmountPaymentMethod == OCurrentAccount.PaymentMethodTransfer)
+                    {
+                        lblChequeNumber.Visible = true;
+                        tbTransferNumber.Visible = true;
+                        lblChequeNumber.Text = "To Account Number:";
+                        tbTransferNumber.Text = _fixedDepositProductHoldings.FinalAmountChequeAccount;
+                        tbTransferNumber.Enabled = false;
+                    }
                 }
-            }
-            else
-            {
-                lblAmountTransferMethod.Visible = false;
-                cbAmountTransferMethod.Visible = false;
-                lblChequeNumber.Visible = false;
-                tbTransferNumber.Visible = false;
-                btnCloseFDContract.Visible = true;
-                btnExtendPeriod.Visible = true;
-            }
+                else
+                {
+                    lblAmountTransferMethod.Visible = false;
+                    cbAmountTransferMethod.Visible = false;
+                    lblChequeNumber.Visible = false;
+                    tbTransferNumber.Visible = false;
+                    btnCloseFDContract.Visible = true;
+                    btnExtendPeriod.Visible = true;
+                }
 
 
 
-            tbInitialAmount.Enabled = false;
-            tbInterestRate.Enabled = false;
-            tbMaturityPeriod.Enabled = false;
-            tbFrequencyMonths.Enabled = false;
-            rbPenalityTypeFlat.Enabled = false;
-            rbPenalityTypeRate.Enabled = false;
-            tbPenality.Enabled = false;
-            tbFDContractCode.Enabled = false;
-            tbProductCode.Enabled = false;
-            cbAccountingOfficer.Enabled = false;
-            tbComment.Enabled = false;
-            cbInitialAmountPaymentMethod.Enabled = false;
-            tbOpenedDate.Enabled = false;
-            cbAccountStatus.Enabled = false;
-            tbFDInitialAmountNumber.Enabled = false;
+                tbInitialAmount.Enabled = false;
+                tbInterestRate.Enabled = false;
+                tbMaturityPeriod.Enabled = false;
+                tbFrequencyMonths.Enabled = false;
+                rbPenalityTypeFlat.Enabled = false;
+                rbPenalityTypeRate.Enabled = false;
+                tbPenality.Enabled = false;
+                tbFDContractCode.Enabled = false;
+                tbProductCode.Enabled = false;
+                cbAccountingOfficer.Enabled = false;
+                tbComment.Enabled = false;
+                cbInitialAmountPaymentMethod.Enabled = false;
+                tbOpenedDate.Enabled = false;
+                cbAccountStatus.Enabled = false;
+                tbFDInitialAmountNumber.Enabled = false;
 
 
-            tabControlPerson.TabPages.Remove(tabPageFixedDeposit);
-            tabControlPerson.TabPages.Add(tabPageFixedDeposit);
-            tabControlPerson.SelectedTab = tabPageFixedDeposit;
-            gbInterestCalculation.Visible = true;
-            lblProductContractCode.Visible = true;
-            tbFDContractCode.Visible = true;
-            tbFDContractCode.ReadOnly = true;
-            tbOpenedDate.Visible = true;
-            cbAccountStatus.Visible = true;
+                tabControlPerson.TabPages.Remove(tabPageFixedDeposit);
+                tabControlPerson.TabPages.Add(tabPageFixedDeposit);
+                tabControlPerson.SelectedTab = tabPageFixedDeposit;
+                gbInterestCalculation.Visible = true;
+                lblProductContractCode.Visible = true;
+                tbFDContractCode.Visible = true;
+                tbFDContractCode.ReadOnly = true;
+                tbOpenedDate.Visible = true;
+                cbAccountStatus.Visible = true;
 
-            label30.Visible = true;
-            label31.Visible = true;
+                label30.Visible = true;
+                label31.Visible = true;
 
 
-            btnAddFixedDepositProduct.Visible = false;
-            cbFixedDepositProduct.Enabled = false;
+                btnAddFixedDepositProduct.Visible = false;
+                cbFixedDepositProduct.Enabled = false;
 
-            btnCloseFDContract.Text = "Transfer Amount";
-            btnCloseFDContract.Enabled = true;
+                btnCloseFDContract.Text = "Transfer Amount";
+                btnCloseFDContract.Enabled = true;
 
             }
             catch (Exception ex)
@@ -8136,23 +8153,23 @@ namespace OpenCBS.GUI.Clients
                     new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
                 }
             }
-           
+
         }
 
         private void btnAddCurrentAccount_Click(object sender, EventArgs e)
         {
-           
+
             tabControlPerson.TabPages.Remove(tabPageCurrentAccount);
             tabControlPerson.TabPages.Add(tabPageCurrentAccount);
             tabControlPerson.SelectedTab = tabPageCurrentAccount;
-            
+
 
             ResetCurrentAccountControls(false);
 
             EnableCurrentAccountControls(true);
             btnAddCurrentAccountProduct.Visible = true;
             btnAddCurrentAccountProduct.Enabled = true;
-            
+
         }
 
         void ResetCurrentAccountControls(bool visible)
@@ -8184,9 +8201,9 @@ namespace OpenCBS.GUI.Clients
             tbCAClosedDate.Visible = visible;
             gbReopenFees.Visible = visible;
             gbCloseFees.Visible = visible;
-           // btnCloseAccount.Visible = visible;
+            // btnCloseAccount.Visible = visible;
             gbAmount.Visible = visible;
-           
+
             lblCAProductCode.Visible = visible;
             tbCAProductCode.Visible = visible;
 
@@ -8199,7 +8216,7 @@ namespace OpenCBS.GUI.Clients
 
             cbCAAccountStatus.SelectedIndex = 0;
             tbCAChequeAccount.ResetText();
-            
+
             tbCAProductCode.ResetText();
 
             checkBoxOverdraftApplied.Checked = false;
@@ -8211,250 +8228,251 @@ namespace OpenCBS.GUI.Clients
 
         private void btnViewCurrentAccount_Click(object sender, EventArgs e)
         {
-            try{
-            
-           
-            int i = lvCurrentAccountProducts.SelectedIndices[0];
-            string selectedContractCode = lvCurrentAccountProducts.Items[i].Text;
-            
-            CurrentAccountProductHoldingServices _currentAccountProductHoldingService = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
-            _currentAccountProductHoldings = _currentAccountProductHoldingService.FetchProduct(selectedContractCode);
-
-
-            CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
-            currentAccountProduct = _currentAccountProductService.FetchProduct(_currentAccountProductHoldings.CurrentAccountProduct.Id);
-
-            btnCloseAccount.Enabled = true;
-
-            tabControlCurrentAccount.TabPages.Add(tabPageFeesTransactions);
-            InitializeCurrentAccountStatus(_currentAccountProductHoldings.Status);
-            if (_currentAccountProductHoldings.Status == OCurrentAccount.AccountStatusOpened)
+            try
             {
-                btnCloseAccount.Visible = true;
-                btnAddCurrentAccountProduct.Visible = false;
-                gbCloseFees.Visible = false;
-                gbReopenFees.Visible = false;
-                gbInitialPayment.Visible = true;
-                //btnCloseAccount.Text = "Transfer Balance";
-                if (currentAccountProduct.ClosingFeesType == OCurrentAccount.FeeTypeFlat)
-                {
-                    rbFlatCloseFees.Checked = true;
-                    rbFlatCloseFees.Enabled = false;
-                    rbRateCloseFees.Enabled = false;
-                }
-                else
-                {
-                    rbRateCloseFees.Checked = true;
-                    rbRateCloseFees.Enabled = false;
-                    rbFlatCloseFees.Enabled = false;
-                }
 
-                if (_currentAccountProductHoldings.InitialAmountPaymentMethod == OCurrentAccount.PaymentMethodTransfer)
-                {
-                    lblInitialChequeNumber.Visible = true;
-                    tbInitialPaymentNumber.Visible = true;
-                    tbInitialPaymentNumber.Text = _currentAccountProductHoldings.InitialAmountAccountNumber;
-                }
 
-            }
-            else 
-            {
-                if ((_currentAccountProductHoldings.Status == OCurrentAccount.AccountStatusClosed) || (_currentAccountProductHoldings.Status == OCurrentAccount.AccountStatusDormant))
-                {
-                    tabControlCurrentAccount.TabPages.Remove(tabPageCloseAccount);
-                    tabControlCurrentAccount.TabPages.Add(tabPageCloseAccount);
+                int i = lvCurrentAccountProducts.SelectedIndices[0];
+                string selectedContractCode = lvCurrentAccountProducts.Items[i].Text;
 
-                    tabControlCurrentAccount.TabPages.Remove(tabPageReopenAccount);
-                    tabControlCurrentAccount.TabPages.Add(tabPageReopenAccount);
+                CurrentAccountProductHoldingServices _currentAccountProductHoldingService = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
+                _currentAccountProductHoldings = _currentAccountProductHoldingService.FetchProduct(selectedContractCode);
 
-                lblCAClosedDate.Visible = true;
-                tbCAClosedDate.Visible = true;
-                tbCAClosedDate.Enabled = false;
-                tbCloseFees.Text = _currentAccountProductHoldings.ClosingFees.GetFormatedValue(OCurrency.UseCents);
-                tbCloseFees.Enabled = false;
-                gbReopenFees.Visible = true;
-                btnAddCurrentAccountProduct.Visible = false;
+
+                CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
+                currentAccountProduct = _currentAccountProductService.FetchProduct(_currentAccountProductHoldings.CurrentAccountProduct.Id);
+
                 btnCloseAccount.Enabled = true;
-                gbInitialPayment.Visible = true;
-                gbAmount.Visible = true;
-                gbCloseFees.Visible = true;
-                tbReopenFees.Enabled = true;
-              
-                tbCAChequeAccount.Text = _currentAccountProductHoldings.FinalAmountAccountNumber;
-                gbReopenFees.Visible = true;
-                //btnCloseAccount.Text = "Reopen Account";
-                tbCAClosedDate.Text = _currentAccountProductHoldings.CloseDate.ToShortDateString();
 
-                if (_currentAccountProductHoldings.ClosingFeesType == OCurrentAccount.FeeTypeFlat)
+                tabControlCurrentAccount.TabPages.Add(tabPageFeesTransactions);
+                InitializeCurrentAccountStatus(_currentAccountProductHoldings.Status);
+                if (_currentAccountProductHoldings.Status == OCurrentAccount.AccountStatusOpened)
                 {
-                    rbFlatCloseFees.Checked = true;
-                    rbFlatCloseFees.Enabled = false;
-                    rbRateCloseFees.Enabled = false;
+                    btnCloseAccount.Visible = true;
+                    btnAddCurrentAccountProduct.Visible = false;
+                    gbCloseFees.Visible = false;
+                    gbReopenFees.Visible = false;
+                    gbInitialPayment.Visible = true;
+                    //btnCloseAccount.Text = "Transfer Balance";
+                    if (currentAccountProduct.ClosingFeesType == OCurrentAccount.FeeTypeFlat)
+                    {
+                        rbFlatCloseFees.Checked = true;
+                        rbFlatCloseFees.Enabled = false;
+                        rbRateCloseFees.Enabled = false;
+                    }
+                    else
+                    {
+                        rbRateCloseFees.Checked = true;
+                        rbRateCloseFees.Enabled = false;
+                        rbFlatCloseFees.Enabled = false;
+                    }
+
+                    if (_currentAccountProductHoldings.InitialAmountPaymentMethod == OCurrentAccount.PaymentMethodTransfer)
+                    {
+                        lblInitialChequeNumber.Visible = true;
+                        tbInitialPaymentNumber.Visible = true;
+                        tbInitialPaymentNumber.Text = _currentAccountProductHoldings.InitialAmountAccountNumber;
+                    }
+
                 }
                 else
                 {
-                    rbRateCloseFees.Checked = true;
-                    rbRateCloseFees.Enabled = false;
-                    rbFlatCloseFees.Enabled = false;
+                    if ((_currentAccountProductHoldings.Status == OCurrentAccount.AccountStatusClosed) || (_currentAccountProductHoldings.Status == OCurrentAccount.AccountStatusDormant))
+                    {
+                        tabControlCurrentAccount.TabPages.Remove(tabPageCloseAccount);
+                        tabControlCurrentAccount.TabPages.Add(tabPageCloseAccount);
+
+                        tabControlCurrentAccount.TabPages.Remove(tabPageReopenAccount);
+                        tabControlCurrentAccount.TabPages.Add(tabPageReopenAccount);
+
+                        lblCAClosedDate.Visible = true;
+                        tbCAClosedDate.Visible = true;
+                        tbCAClosedDate.Enabled = false;
+                        tbCloseFees.Text = _currentAccountProductHoldings.ClosingFees.GetFormatedValue(OCurrency.UseCents);
+                        tbCloseFees.Enabled = false;
+                        gbReopenFees.Visible = true;
+                        btnAddCurrentAccountProduct.Visible = false;
+                        btnCloseAccount.Enabled = true;
+                        gbInitialPayment.Visible = true;
+                        gbAmount.Visible = true;
+                        gbCloseFees.Visible = true;
+                        tbReopenFees.Enabled = true;
+
+                        tbCAChequeAccount.Text = _currentAccountProductHoldings.FinalAmountAccountNumber;
+                        gbReopenFees.Visible = true;
+                        //btnCloseAccount.Text = "Reopen Account";
+                        tbCAClosedDate.Text = _currentAccountProductHoldings.CloseDate.ToShortDateString();
+
+                        if (_currentAccountProductHoldings.ClosingFeesType == OCurrentAccount.FeeTypeFlat)
+                        {
+                            rbFlatCloseFees.Checked = true;
+                            rbFlatCloseFees.Enabled = false;
+                            rbRateCloseFees.Enabled = false;
+                        }
+                        else
+                        {
+                            rbRateCloseFees.Checked = true;
+                            rbRateCloseFees.Enabled = false;
+                            rbFlatCloseFees.Enabled = false;
+                        }
+
+                        if (currentAccountProduct.ReopenFeesType == OCurrentAccount.FeeTypeFlat)
+                        {
+                            rbFlatReopenFees.Checked = true;
+                            rbFlatReopenFees.Enabled = false;
+                            rbRateReopenFees.Enabled = false;
+                        }
+                        else
+                        {
+                            rbRateReopenFees.Checked = true;
+                            rbRateReopenFees.Enabled = false;
+                            rbFlatReopenFees.Enabled = false;
+                        }
+
+
+                    }
+                    if (_currentAccountProductHoldings.Status == OCurrentAccount.AccountStatusReactive)
+                    {
+                        tabControlCurrentAccount.TabPages.Remove(tabPageReopenAccount);
+                        tabControlCurrentAccount.TabPages.Add(tabPageReopenAccount);
+
+                        tabControlCurrentAccount.SelectedTab = tabPageReopenAccount;
+                        btnCloseAccount.Visible = true;
+                        btnAddCurrentAccountProduct.Visible = false;
+                        gbCloseFees.Visible = true;
+                        gbInitialPayment.Visible = true;
+                        gbAmount.Visible = true;
+                        gbReopenFees.Visible = true;
+                        tbReopenFees.Text = _currentAccountProductHoldings.ReopenFees.GetFormatedValue(OCurrency.UseCents);
+                        tbReopenFees.Enabled = false;
+                        tbCloseFees.Text = _currentAccountProductHoldings.ClosingFees.GetFormatedValue(OCurrency.UseCents);
+                        tbCloseFees.Enabled = false;
+                        //btnCloseAccount.Text = "Transfer Balance";
+
+                        if (_currentAccountProductHoldings.ReopenFeesType == OCurrentAccount.FeeTypeFlat)
+                        {
+                            rbFlatReopenFees.Checked = true;
+                            rbFlatReopenFees.Enabled = false;
+                            rbRateReopenFees.Enabled = false;
+                        }
+                        else
+                        {
+                            rbRateReopenFees.Checked = true;
+                            rbRateReopenFees.Enabled = false;
+                            rbFlatReopenFees.Enabled = false;
+                        }
+
+                        if (_currentAccountProductHoldings.ClosingFeesType == OCurrentAccount.FeeTypeFlat)
+                        {
+                            rbFlatCloseFees.Checked = true;
+                            rbFlatCloseFees.Enabled = false;
+                            rbRateCloseFees.Enabled = false;
+                        }
+                        else
+                        {
+                            rbRateCloseFees.Checked = true;
+                            rbRateCloseFees.Enabled = false;
+                            rbFlatCloseFees.Enabled = false;
+                        }
+
+
+                        tbReopenFees.Text = _currentAccountProductHoldings.ReopenFees.GetFormatedValue(OCurrency.UseCents);
+
+                    }
+
+                    if (_currentAccountProductHoldings.FinalAmountPaymentMethod != OCurrentAccount.PaymentMethodCash)
+                    {
+                        lblCAChequeNumber.Visible = true;
+                        tbCAChequeAccount.Visible = true;
+                        tbCAChequeAccount.Text = _currentAccountProductHoldings.FinalAmountAccountNumber;
+                    }
+
                 }
 
-                if (currentAccountProduct.ReopenFeesType == OCurrentAccount.FeeTypeFlat)
+                cbCurrentAccountProducts.SelectedItem = _currentAccountProductHoldings.CurrentAccountProduct.CurrentAccountProductName + " " + _currentAccountProductHoldings.CurrentAccountProduct.CurrentAccountProductCode;
+                tbCurrentInitialAmount.Text = _currentAccountProductHoldings.InitialAmount.GetFormatedValue(OCurrency.UseCents);
+                if (_currentAccountProductHoldings.EntryFeesType == OCurrentAccount.FeeTypeFlat)
+                    rbFlatEntryFees.Checked = true;
+                else
+                    rbRateEntryFees.Checked = true;
+                tbEntryFees.Text = _currentAccountProductHoldings.EntryFees.GetFormatedValue(OCurrency.UseCents);
+
+                if (_currentAccountProductHoldings.ManagementFeesType == OCurrentAccount.FeeTypeFlat)
+                    rbFlatManagementFees.Checked = true;
+                else
+                    rbRateManagementFees.Checked = true;
+                // cbManagementFeeFreq.SelectedItem = _currentAccountProductHoldings.ManagementFeesFrequency;
+                tbManagementFees.Text = _currentAccountProductHoldings.ManagementFees.GetFormatedValue(OCurrency.UseCents);
+
+                if (_currentAccountProductHoldings.OverdraftFeesType == OCurrentAccount.FeeTypeFlat)
+                    rbFlatOverdraftFees.Checked = true;
+                else
+                    rbRateOverdraftFees.Checked = true;
+                tbOverdraftFees.Text = _currentAccountProductHoldings.OverdraftFees.GetFormatedValue(OCurrency.UseCents);
+
+
+
+
+
+                tbCAProductCode.Visible = true;
+                lblCAProductCode.Visible = true;
+                tbCAProductCode.Text = _currentAccountProductHoldings.CurrentAccountContractCode;
+                tbCurrentAccountProductCode.Text = _currentAccountProductHoldings.CurrentAccountProduct.CurrentAccountProductCode;
+                cbCurrentAccountingOfficer.SelectedItem = _currentAccountProductHoldings.OpeningAccountingOfficer;
+                tbCurrentAccountComment.Text = _currentAccountProductHoldings.Comment;
+                cbCAInitialAmountMethod.SelectedItem = _currentAccountProductHoldings.InitialAmountPaymentMethod;
+                tbCAOpenedDate.Visible = true;
+                lblCAOpenedDate.Visible = true;
+                tbCAOpenedDate.Text = _currentAccountProductHoldings.OpenDate.ToShortDateString();
+                cbCAAccountStatus.Visible = true;
+                lblCAAcountStatus.Visible = true;
+                cbCAAccountStatus.SelectedItem = _currentAccountProductHoldings.Status;
+
+                tbCABalanceAmount.Visible = true;
+                lblBalanceAmount.Visible = true;
+
+                tbCABalanceAmount.Text = _currentAccountProductHoldings.Balance.GetFormatedValue(OCurrency.UseCents);
+
+                tbOverdraftAmount.Text = _currentAccountProductHoldings.OverdraftLimit.GetFormatedValue(OCurrency.UseCents);
+                tbCAInterestRate.Text = _currentAccountProductHoldings.InterestRate.ToString();
+                tbCalculationFrequency.Text = _currentAccountProductHoldings.InterestCalculationFrequency.ToString();
+
+
+                if (_currentAccountProductHoldings.OverdraftInterestType == OCurrentAccount.FeeTypeFlat)
+                    rbODInterestTypeFlat.Checked = true;
+                else
+                    rbODInterestTypeRate.Checked = true;
+                tbCAODInterestRate.Text = _currentAccountProductHoldings.OverdraftInterest.ToString();
+
+
+                if (_currentAccountProductHoldings.OverdraftCommitmentFeeType == OCurrentAccount.FeeTypeFlat)
+                    rbODCommitmentTypeFlat.Checked = true;
+                else
+                    rbODCommitmentTypeRate.Checked = true;
+                tbCAODCommitmentFee.Text = _currentAccountProductHoldings.OverdraftCommitmentFee.ToString();
+
+                if (_currentAccountProductHoldings.OverdraftApplied == 1)
                 {
-                    rbFlatReopenFees.Checked = true;
-                    rbFlatReopenFees.Enabled = false;
-                    rbRateReopenFees.Enabled = false;
+                    tabControlCurrentAccount.TabPages.Remove(tabPageOverdraft);
+                    tabControlCurrentAccount.TabPages.Add(tabPageOverdraft);
+
+                    checkBoxOverdraftApplied.Checked = true;
+                    tbOverdraftDate.Text = _currentAccountProductHoldings.OverdraftAppliedDate.ToShortDateString();
+                    tbOverdraftDate.Visible = true;
+                    lblOverdraftAppliedDate.Visible = true;
                 }
                 else
-                {
-                    rbRateReopenFees.Checked = true;
-                    rbRateReopenFees.Enabled = false;
-                    rbFlatReopenFees.Enabled = false;
-                }
-
-               
-            } 
-            if (_currentAccountProductHoldings.Status == OCurrentAccount.AccountStatusReactive)
-            {
-                tabControlCurrentAccount.TabPages.Remove(tabPageReopenAccount);
-                tabControlCurrentAccount.TabPages.Add(tabPageReopenAccount);
-              
-                tabControlCurrentAccount.SelectedTab = tabPageReopenAccount;
-                btnCloseAccount.Visible = true;
-                btnAddCurrentAccountProduct.Visible = false;
-                gbCloseFees.Visible = true;
-                gbInitialPayment.Visible = true;
-                gbAmount.Visible = true;
-                gbReopenFees.Visible = true;
-                tbReopenFees.Text = _currentAccountProductHoldings.ReopenFees.GetFormatedValue(OCurrency.UseCents);
-                tbReopenFees.Enabled = false;
-                tbCloseFees.Text = _currentAccountProductHoldings.ClosingFees.GetFormatedValue(OCurrency.UseCents);
-                tbCloseFees.Enabled = false;
-                //btnCloseAccount.Text = "Transfer Balance";
-
-                if (_currentAccountProductHoldings.ReopenFeesType == OCurrentAccount.FeeTypeFlat)
-                {
-                    rbFlatReopenFees.Checked = true;
-                    rbFlatReopenFees.Enabled = false;
-                    rbRateReopenFees.Enabled = false;
-                }
-                else
-                {
-                    rbRateReopenFees.Checked = true;
-                    rbRateReopenFees.Enabled = false;
-                    rbFlatReopenFees.Enabled = false;
-                }
-
-                if (_currentAccountProductHoldings.ClosingFeesType == OCurrentAccount.FeeTypeFlat)
-                {
-                    rbFlatCloseFees.Checked = true;
-                    rbFlatCloseFees.Enabled = false;
-                    rbRateCloseFees.Enabled = false;
-                }
-                else
-                {
-                    rbRateCloseFees.Checked = true;
-                    rbRateCloseFees.Enabled = false;
-                    rbFlatCloseFees.Enabled = false;
-                }
+                    checkBoxOverdraftApplied.Checked = false;
 
 
-                tbReopenFees.Text = _currentAccountProductHoldings.ReopenFees.GetFormatedValue(OCurrency.UseCents);
+                EnableCurrentAccountControls(false);
 
-            }
+                tabControlPerson.TabPages.Remove(tabPageCurrentAccount);
+                tabControlPerson.TabPages.Add(tabPageCurrentAccount);
+                tabControlPerson.SelectedTab = tabPageCurrentAccount;
 
-            if (_currentAccountProductHoldings.FinalAmountPaymentMethod != OCurrentAccount.PaymentMethodCash)
-            {
-                lblCAChequeNumber.Visible = true;
-                tbCAChequeAccount.Visible = true;
-                tbCAChequeAccount.Text = _currentAccountProductHoldings.FinalAmountAccountNumber;
-            }
-            
-        }
-
-            cbCurrentAccountProducts.SelectedItem = _currentAccountProductHoldings.CurrentAccountProduct.CurrentAccountProductName+" "+_currentAccountProductHoldings.CurrentAccountProduct.CurrentAccountProductCode;
-            tbCurrentInitialAmount.Text = _currentAccountProductHoldings.InitialAmount.GetFormatedValue(OCurrency.UseCents);
-            if(_currentAccountProductHoldings.EntryFeesType == OCurrentAccount.FeeTypeFlat)
-            rbFlatEntryFees.Checked = true;
-            else
-            rbRateEntryFees.Checked = true;
-            tbEntryFees.Text = _currentAccountProductHoldings.EntryFees.GetFormatedValue(OCurrency.UseCents);
-
-            if(_currentAccountProductHoldings.ManagementFeesType == OCurrentAccount.FeeTypeFlat)
-            rbFlatManagementFees.Checked = true;
-            else
-            rbRateManagementFees.Checked = true;
-           // cbManagementFeeFreq.SelectedItem = _currentAccountProductHoldings.ManagementFeesFrequency;
-             tbManagementFees.Text = _currentAccountProductHoldings.ManagementFees.GetFormatedValue(OCurrency.UseCents);
-
-            if(_currentAccountProductHoldings.OverdraftFeesType == OCurrentAccount.FeeTypeFlat)
-            rbFlatOverdraftFees.Checked = true;
-            else
-            rbRateOverdraftFees.Checked = true;
-            tbOverdraftFees.Text = _currentAccountProductHoldings.OverdraftFees.GetFormatedValue(OCurrency.UseCents);
-
-
-            
-            
-            
-            tbCAProductCode.Visible = true;
-            lblCAProductCode.Visible = true;
-            tbCAProductCode.Text = _currentAccountProductHoldings.CurrentAccountContractCode;
-            tbCurrentAccountProductCode.Text = _currentAccountProductHoldings.CurrentAccountProduct.CurrentAccountProductCode;
-            cbCurrentAccountingOfficer.SelectedItem = _currentAccountProductHoldings.OpeningAccountingOfficer;
-            tbCurrentAccountComment.Text = _currentAccountProductHoldings.Comment;
-            cbCAInitialAmountMethod.SelectedItem = _currentAccountProductHoldings.InitialAmountPaymentMethod;
-            tbCAOpenedDate.Visible = true;
-            lblCAOpenedDate.Visible = true;
-            tbCAOpenedDate.Text = _currentAccountProductHoldings.OpenDate.ToShortDateString();
-            cbCAAccountStatus.Visible = true;
-            lblCAAcountStatus.Visible = true;
-            cbCAAccountStatus.SelectedItem = _currentAccountProductHoldings.Status;
-
-            tbCABalanceAmount.Visible = true;
-            lblBalanceAmount.Visible = true;
-
-            tbCABalanceAmount.Text = _currentAccountProductHoldings.Balance.GetFormatedValue(OCurrency.UseCents);
-
-            tbOverdraftAmount.Text = _currentAccountProductHoldings.OverdraftLimit.GetFormatedValue(OCurrency.UseCents);
-			tbCAInterestRate.Text = _currentAccountProductHoldings.InterestRate .ToString();
-            tbCalculationFrequency.Text = _currentAccountProductHoldings.InterestCalculationFrequency.ToString();
-
-
-            if (_currentAccountProductHoldings.OverdraftInterestType == OCurrentAccount.FeeTypeFlat)
-                rbODInterestTypeFlat.Checked = true;
-            else
-                rbODInterestTypeRate.Checked = true;
-            tbCAODInterestRate.Text = _currentAccountProductHoldings.OverdraftInterest.ToString();
-
-
-            if (_currentAccountProductHoldings.OverdraftCommitmentFeeType == OCurrentAccount.FeeTypeFlat)
-                rbODCommitmentTypeFlat.Checked = true;
-            else
-                rbODCommitmentTypeRate.Checked = true;
-            tbCAODCommitmentFee.Text = _currentAccountProductHoldings.OverdraftCommitmentFee.ToString();
-
-            if (_currentAccountProductHoldings.OverdraftApplied == 1)
-            {
-                tabControlCurrentAccount.TabPages.Remove(tabPageOverdraft);
-                tabControlCurrentAccount.TabPages.Add(tabPageOverdraft);
-                
-                checkBoxOverdraftApplied.Checked = true;
-                tbOverdraftDate.Text = _currentAccountProductHoldings.OverdraftAppliedDate.ToShortDateString();
-                tbOverdraftDate.Visible = true;
-                lblOverdraftAppliedDate.Visible = true;
-            }
-            else
-                checkBoxOverdraftApplied.Checked = false;
-
-     
-           EnableCurrentAccountControls(false);
-
-            tabControlPerson.TabPages.Remove(tabPageCurrentAccount);
-            tabControlPerson.TabPages.Add(tabPageCurrentAccount);
-            tabControlPerson.SelectedTab = tabPageCurrentAccount;
-
-            InitializeCurrentAccountFeeTransactions(_currentAccountProductHoldings.CurrentAccountContractCode);
-            InitializeCurrentAccountEvents(_currentAccountProductHoldings.CurrentAccountContractCode);
+                InitializeCurrentAccountFeeTransactions(_currentAccountProductHoldings.CurrentAccountContractCode);
+                InitializeCurrentAccountEvents(_currentAccountProductHoldings.CurrentAccountContractCode);
             }
             catch (Exception ex)
             {
@@ -8479,13 +8497,13 @@ namespace OpenCBS.GUI.Clients
             tbCurrentAccountComment.Enabled = enabled;
             cbCAInitialAmountMethod.Enabled = enabled;
             tbCAOpenedDate.Enabled = enabled;
-           // cbCAAccountStatus.Enabled = enabled;
+            // cbCAAccountStatus.Enabled = enabled;
             tbOverdraftFees.Enabled = enabled;
             cbCurrentAccountProducts.Enabled = enabled;
             tbCurrentInitialAmount.Enabled = enabled;
             tbEntryFees.Enabled = enabled;
             tbManagementFees.Enabled = enabled;
-           // cbManagementFeeFreq.Enabled = enabled;
+            // cbManagementFeeFreq.Enabled = enabled;
             cbCAPaymentMethod.Enabled = enabled;
             tbCAChequeAccount.Enabled = enabled;
             tbOverdraftAmount.Enabled = enabled;
@@ -8501,40 +8519,41 @@ namespace OpenCBS.GUI.Clients
             tbCAODCommitmentFee.Enabled = enabled;
             //checkBoxOverdraftApplied.Enabled = enabled;
 
-            
+
         }
 
         private void btnExtendPeriod_Click(object sender, EventArgs e)
         {
-            try{
-            tbMaturityPeriod.Enabled = true;
-            if (btnExtendPeriod.Text == "Extend Period")
-            btnExtendPeriod.Text = "Submit";
-
-
-            else  if (btnExtendPeriod.Text == "Submit")
+            try
             {
-                string old = _fixedDepositProductHoldings.MaturityPeriod.ToString();
-                _fixedDepositProductHoldings.MaturityPeriod = ServicesHelper.ConvertStringToNullableInt32(tbMaturityPeriod.Text);
-
-                string[] fixedDepositProduct = cbFixedDepositProduct.SelectedItem.ToString().Split();
-
-                FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
-                _fixedDepositProductHoldings.FixedDepositProduct = _fixedDepositProductService.FetchProduct(fixedDepositProduct[0], fixedDepositProduct[1]);
-
-                FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
-                _fixedDepositProductHoldingService.UpdateFixedDepositProductHolding(_fixedDepositProductHoldings, _fixedDepositProductHoldings.FixedDepositContractCode);
-
-                FixedDepositEvent fixedDepositEvent = new FixedDepositEvent();
-                fixedDepositEvent.ContractCode = _fixedDepositProductHoldings.FixedDepositContractCode;
-                fixedDepositEvent.EventCode = "FDPE";
-                fixedDepositEvent.Description = "Fixed Deposit maturity period changed from " + old + " to " + _fixedDepositProductHoldings.MaturityPeriod;
-                _fixedDepositProductHoldingService.SaveFixedDepositEvent(fixedDepositEvent);
+                tbMaturityPeriod.Enabled = true;
+                if (btnExtendPeriod.Text == "Extend Period")
+                    btnExtendPeriod.Text = "Submit";
 
 
-                MessageBox.Show(MultiLanguageStrings.GetString(Ressource.ClientForm, "Period Extended"));
-               // btnExtendPeriod.Enabled = false;
-            }
+                else if (btnExtendPeriod.Text == "Submit")
+                {
+                    string old = _fixedDepositProductHoldings.MaturityPeriod.ToString();
+                    _fixedDepositProductHoldings.MaturityPeriod = ServicesHelper.ConvertStringToNullableInt32(tbMaturityPeriod.Text);
+
+                    string[] fixedDepositProduct = cbFixedDepositProduct.SelectedItem.ToString().Split();
+
+                    FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
+                    _fixedDepositProductHoldings.FixedDepositProduct = _fixedDepositProductService.FetchProduct(fixedDepositProduct[0], fixedDepositProduct[1]);
+
+                    FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
+                    _fixedDepositProductHoldingService.UpdateFixedDepositProductHolding(_fixedDepositProductHoldings, _fixedDepositProductHoldings.FixedDepositContractCode);
+
+                    FixedDepositEvent fixedDepositEvent = new FixedDepositEvent();
+                    fixedDepositEvent.ContractCode = _fixedDepositProductHoldings.FixedDepositContractCode;
+                    fixedDepositEvent.EventCode = "FDPE";
+                    fixedDepositEvent.Description = "Fixed Deposit maturity period changed from " + old + " to " + _fixedDepositProductHoldings.MaturityPeriod;
+                    _fixedDepositProductHoldingService.SaveFixedDepositEvent(fixedDepositEvent);
+
+
+                    MessageBox.Show(MultiLanguageStrings.GetString(Ressource.ClientForm, "Period Extended"));
+                    // btnExtendPeriod.Enabled = false;
+                }
 
             }
             catch (Exception ex)
@@ -8545,59 +8564,60 @@ namespace OpenCBS.GUI.Clients
 
         private void btnCloseFDContract_Click(object sender, EventArgs e)
         {
-            try{
-            if (btnCloseFDContract.Text == "Transfer Amount")
+            try
             {
-                btnCloseFDContract.Text = "Close Account";
-                cbAccountStatus.SelectedItem = OCurrentAccount.AccountStatusClosed;
-                lblAmountTransferMethod.Visible = true;
-                cbAmountTransferMethod.Visible = true;
-                
-
-
-            }
-            else if (btnCloseFDContract.Text == "Close Account")
-            {
-                cbAccountStatus.SelectedItem = OCurrentAccount.AccountStatusClosed;
-
-                _fixedDepositProductHoldings.Status = OCurrentAccount.AccountStatusClosed;
-                _fixedDepositProductHoldings.FinalAmountPaymentMethod = cbAmountTransferMethod.SelectedItem.ToString();
-                _fixedDepositProductHoldings.FinalAmountChequeAccount = tbTransferNumber.Text;
-                _fixedDepositProductHoldings.CloseDate = DateTime.Today;
-                FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
-                IFixedDepositProduct product = _fixedDepositProductService.FetchProduct(_fixedDepositProductHoldings.FixedDepositProduct.Id);
-                _fixedDepositProductHoldings.FixedDepositProduct = product;
-                FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
-                _fixedDepositProductHoldingService.UpdateFixedDepositProductHolding(_fixedDepositProductHoldings, _fixedDepositProductHoldings.FixedDepositContractCode);
-
-                FixedDepositEvent fixedDepositEvent = new FixedDepositEvent();
-                fixedDepositEvent.ContractCode = _fixedDepositProductHoldings.FixedDepositContractCode;
-                fixedDepositEvent.EventCode = "FDCL";
-                fixedDepositEvent.Description = "Fixed Deposit Account Closed";
-                _fixedDepositProductHoldingService.SaveFixedDepositEvent(fixedDepositEvent);
-
-                if (lblPreMatured.Text == "Yes")
+                if (btnCloseFDContract.Text == "Transfer Amount")
                 {
-                    fixedDepositEvent = new FixedDepositEvent();
+                    btnCloseFDContract.Text = "Close Account";
+                    cbAccountStatus.SelectedItem = OCurrentAccount.AccountStatusClosed;
+                    lblAmountTransferMethod.Visible = true;
+                    cbAmountTransferMethod.Visible = true;
+
+
+
+                }
+                else if (btnCloseFDContract.Text == "Close Account")
+                {
+                    cbAccountStatus.SelectedItem = OCurrentAccount.AccountStatusClosed;
+
+                    _fixedDepositProductHoldings.Status = OCurrentAccount.AccountStatusClosed;
+                    _fixedDepositProductHoldings.FinalAmountPaymentMethod = cbAmountTransferMethod.SelectedItem.ToString();
+                    _fixedDepositProductHoldings.FinalAmountChequeAccount = tbTransferNumber.Text;
+                    _fixedDepositProductHoldings.CloseDate = DateTime.Today;
+                    FixedDepositProductService _fixedDepositProductService = ServicesProvider.GetInstance().GetFixedDepositProductService();
+                    IFixedDepositProduct product = _fixedDepositProductService.FetchProduct(_fixedDepositProductHoldings.FixedDepositProduct.Id);
+                    _fixedDepositProductHoldings.FixedDepositProduct = product;
+                    FixedDepositProductHoldingServices _fixedDepositProductHoldingService = ServicesProvider.GetInstance().GetFixedDepositProductHoldingServices();
+                    _fixedDepositProductHoldingService.UpdateFixedDepositProductHolding(_fixedDepositProductHoldings, _fixedDepositProductHoldings.FixedDepositContractCode);
+
+                    FixedDepositEvent fixedDepositEvent = new FixedDepositEvent();
                     fixedDepositEvent.ContractCode = _fixedDepositProductHoldings.FixedDepositContractCode;
-                    fixedDepositEvent.EventCode = "FDPR";
-                    fixedDepositEvent.Description = "Fixed Deposit Account Prematured";
+                    fixedDepositEvent.EventCode = "FDCL";
+                    fixedDepositEvent.Description = "Fixed Deposit Account Closed";
                     _fixedDepositProductHoldingService.SaveFixedDepositEvent(fixedDepositEvent);
+
+                    if (lblPreMatured.Text == "Yes")
+                    {
+                        fixedDepositEvent = new FixedDepositEvent();
+                        fixedDepositEvent.ContractCode = _fixedDepositProductHoldings.FixedDepositContractCode;
+                        fixedDepositEvent.EventCode = "FDPR";
+                        fixedDepositEvent.Description = "Fixed Deposit Account Prematured";
+                        _fixedDepositProductHoldingService.SaveFixedDepositEvent(fixedDepositEvent);
+                    }
+
+                    _fixedDepositProductHoldingService.TransferFinalAmount(_fixedDepositProductHoldings);
+                    MessageBox.Show(MultiLanguageStrings.GetString(Ressource.ClientForm, "fixed deposit account closed"));
+
+                    btnCloseFDContract.Enabled = false;
+
                 }
 
-                _fixedDepositProductHoldingService.TransferFinalAmount(_fixedDepositProductHoldings);
-                MessageBox.Show(MultiLanguageStrings.GetString(Ressource.ClientForm, "fixed deposit account closed"));
-                
-                btnCloseFDContract.Enabled = false;
-
             }
-
-             }
             catch (Exception ex)
             {
                 new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
             }
-            
+
         }
 
         private void cbAmountTransferMethod_SelectedIndexChanged(object sender, EventArgs e)
@@ -8618,7 +8638,7 @@ namespace OpenCBS.GUI.Clients
             else if (transferMethod == OCurrentAccount.PaymentMethodTransfer)
             {
                 lblChequeNumber.Text = "Account Number";
-                   lblChequeNumber.Visible = true;
+                lblChequeNumber.Visible = true;
                 tbTransferNumber.Visible = true;
             }
 
@@ -8626,14 +8646,15 @@ namespace OpenCBS.GUI.Clients
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnCloseAccount_Click(object sender, EventArgs e)
         {
             string accountStatus = cbCAAccountStatus.SelectedItem.ToString();
 
-            try{
+            try
+            {
 
                 if (accountStatus == OCurrentAccount.AccountStatusActive)
                 {
@@ -8690,7 +8711,7 @@ namespace OpenCBS.GUI.Clients
                         _currentAccountProductHoldingService.SaveCurrentAccountEvent(currentAccountEvent);
 
                         MessageBox.Show(tbCAProductCode.Text + " " + MultiLanguageStrings.GetString(Ressource.ClientForm, "Closed Success"));
-                        
+
                         btnCloseAccount.Enabled = false;
 
 
@@ -8764,14 +8785,14 @@ namespace OpenCBS.GUI.Clients
                     }
                 }
 
-             }
+            }
             catch (Exception ex)
             {
                 new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
             }
         }
 
-       
+
 
         CurrentAccountProduct currentAccountProduct = null;
         private void cbCurrentAccountProducts_SelectedIndexChanged(object sender, EventArgs e)
@@ -8982,9 +9003,9 @@ namespace OpenCBS.GUI.Clients
                     }
 
                     ApplicationSettingsServices applicationSettingsServices = ServicesProvider.GetInstance().GetApplicationSettingsServices();
-                    lblLIBOR.Text = "LIBOR "+applicationSettingsServices.GetLIBORRate(DateTime.Today, "Yearly");
-                    
-                   
+                    lblLIBOR.Text = "LIBOR " + applicationSettingsServices.GetLIBORRate(DateTime.Today, "Yearly");
+
+
 
                     //    cbCAInitialAmountPaymentMethod.SelectedIndex = 0;
 
@@ -9009,7 +9030,7 @@ namespace OpenCBS.GUI.Clients
             }
         }
 
-      
+
 
         private void cbCAPaymentMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -9018,53 +9039,54 @@ namespace OpenCBS.GUI.Clients
             tbCAChequeAccount.Text = "";
             if (paymentMethod == OCurrentAccount.PaymentMethodCash)
             {
-               lblCAChequeNumber.Visible = false;
-               tbCAChequeAccount.Visible = false;
+                lblCAChequeNumber.Visible = false;
+                tbCAChequeAccount.Visible = false;
             }
             else if (paymentMethod == OCurrentAccount.PaymentMethodCheque)
             {
                 lblCAChequeNumber.Text = "To Cheque Number:";
-               
+
                 lblCAChequeNumber.Visible = true;
-                tbCAChequeAccount.Visible = true; 
+                tbCAChequeAccount.Visible = true;
             }
             else if (paymentMethod == OCurrentAccount.PaymentMethodTransfer)
             {
                 lblCAChequeNumber.Text = "To Account Number:";
-               
+
                 lblCAChequeNumber.Visible = true;
                 tbCAChequeAccount.Visible = true;
             }
         }
 
-       
+
 
         private void btnOverdraft_Click(object sender, EventArgs e)
         {
-            try{
-            if (btnOverdraft.Text == "Overdraft")
+            try
             {
-                btnOverdraft.Text = "Update";
-                checkBoxOverdraftApplied.Enabled = true;
-                tbOverdraftAmount.Enabled = true;
-                tbOverdraftFees.Enabled = true;
-                tbCAODInterestRate.Enabled = true;
-                tbOverdraftDate.Enabled = true;
-                tbCAODCommitmentFee.Enabled = true;
-            }
-            else
-            {
-                btnOverdraft.Text = "Overdraft";
-                UpdateOverdraft();
-                CurrentAccountProductHoldingServices _currentAccountProductHoldingService = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
-                CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
+                if (btnOverdraft.Text == "Overdraft")
+                {
+                    btnOverdraft.Text = "Update";
+                    checkBoxOverdraftApplied.Enabled = true;
+                    tbOverdraftAmount.Enabled = true;
+                    tbOverdraftFees.Enabled = true;
+                    tbCAODInterestRate.Enabled = true;
+                    tbOverdraftDate.Enabled = true;
+                    tbCAODCommitmentFee.Enabled = true;
+                }
+                else
+                {
+                    btnOverdraft.Text = "Overdraft";
+                    UpdateOverdraft();
+                    CurrentAccountProductHoldingServices _currentAccountProductHoldingService = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
+                    CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
 
-                currentAccountProduct = _currentAccountProductService.FetchProduct(_currentAccountProductHoldings.CurrentAccountProduct.Id);
-                _currentAccountProductHoldings.CurrentAccountProduct = currentAccountProduct;
-                _currentAccountProductHoldingService.UpdateCurrentAccountProductHolding(_currentAccountProductHoldings, tbCAProductCode.Text);
-                MessageBox.Show(MultiLanguageStrings.GetString(Ressource.ClientForm, "Overdraft Success Update"));
+                    currentAccountProduct = _currentAccountProductService.FetchProduct(_currentAccountProductHoldings.CurrentAccountProduct.Id);
+                    _currentAccountProductHoldings.CurrentAccountProduct = currentAccountProduct;
+                    _currentAccountProductHoldingService.UpdateCurrentAccountProductHolding(_currentAccountProductHoldings, tbCAProductCode.Text);
+                    MessageBox.Show(MultiLanguageStrings.GetString(Ressource.ClientForm, "Overdraft Success Update"));
+                }
             }
-             }
             catch (Exception ex)
             {
                 new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
@@ -9080,21 +9102,22 @@ namespace OpenCBS.GUI.Clients
             string contractCode = tbCAProductCode.Text;
 
             InitializeCurrentAccountTransactions(contractCode);
-            
+
 
         }
 
-      
+
 
         CurrentAccountTransactionForm currentAccountTransactionForm = null;
         private void button2_Click(object sender, EventArgs e)
         {
-            try{
-            int i = lvTransactions.SelectedIndices[0];
-            int selectedTransactionId = Convert.ToInt32(lvTransactions.Items[i].Text);
+            try
+            {
+                int i = lvTransactions.SelectedIndices[0];
+                int selectedTransactionId = Convert.ToInt32(lvTransactions.Items[i].Text);
 
-            currentAccountTransactionForm = new CurrentAccountTransactionForm(selectedTransactionId);
-            currentAccountTransactionForm.Show();
+                currentAccountTransactionForm = new CurrentAccountTransactionForm(selectedTransactionId);
+                currentAccountTransactionForm.Show();
 
             }
             catch (Exception ex)
@@ -9109,7 +9132,7 @@ namespace OpenCBS.GUI.Clients
                     new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
                 }
             }
-          
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -9118,13 +9141,13 @@ namespace OpenCBS.GUI.Clients
             currentAccountTransactionForm.Show();
         }
 
-        
+
 
         private void cbCAInitialAmountMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
             string paymentMethod = cbCAInitialAmountMethod.SelectedItem.ToString();
             tbInitialPaymentNumber.Text = "";
-          
+
             if (paymentMethod == OCurrentAccount.PaymentMethodCash)
             {
                 lblInitialChequeNumber.Visible = false;
@@ -9133,20 +9156,20 @@ namespace OpenCBS.GUI.Clients
             else if (paymentMethod == OCurrentAccount.PaymentMethodCheque)
             {
                 lblInitialChequeNumber.Text = "From Cheque Number:";
-                
+
                 lblInitialChequeNumber.Visible = true;
                 tbInitialPaymentNumber.Visible = true;
             }
             else if (paymentMethod == OCurrentAccount.PaymentMethodTransfer)
             {
                 lblInitialChequeNumber.Text = "From Account Number:";
-              
+
                 lblInitialChequeNumber.Visible = true;
                 tbInitialPaymentNumber.Visible = true;
             }
         }
 
-       
+
 
 
         void KeyPressControl(KeyPressEventArgs e)
@@ -9173,9 +9196,9 @@ namespace OpenCBS.GUI.Clients
             KeyPressControl(e);
         }
 
-        
 
-       
+
+
 
         private void tbCAChequeAccount_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -9234,9 +9257,9 @@ namespace OpenCBS.GUI.Clients
             }
         }
 
-       
 
-        
+
+
 
         private void tbPenality_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -9263,11 +9286,11 @@ namespace OpenCBS.GUI.Clients
             KeyPressControl(e);
         }
 
-       
+
 
         private void cbInitialAmountPaymentMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
 
 
             string transferMethod = cbInitialAmountPaymentMethod.SelectedItem.ToString();
@@ -9391,7 +9414,7 @@ namespace OpenCBS.GUI.Clients
                 }
 
 
-                
+
             }
         }
 
@@ -9425,7 +9448,7 @@ namespace OpenCBS.GUI.Clients
                 }
             }
 
-            
+
         }
 
         private void btnViewBankGuarantee_Click(object sender, EventArgs e)
@@ -9451,7 +9474,7 @@ namespace OpenCBS.GUI.Clients
                     new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
                 }
             }
-            
+
         }
 
         private void btnAddLetterOfCredit_Click(object sender, EventArgs e)
@@ -9519,13 +9542,14 @@ namespace OpenCBS.GUI.Clients
         {
 
 
-            try{
+            try
+            {
 
-            int i = lvFixedDeposits.SelectedIndices[0];
-            string selectedContractCode = lvFixedDeposits.Items[i].Text;
+                int i = lvFixedDeposits.SelectedIndices[0];
+                string selectedContractCode = lvFixedDeposits.Items[i].Text;
 
-            SelectStatementPeriod selectStatementPeriod = new SelectStatementPeriod(selectedContractCode, "FD");
-            selectStatementPeriod.Show();
+                SelectStatementPeriod selectStatementPeriod = new SelectStatementPeriod(selectedContractCode, "FD");
+                selectStatementPeriod.Show();
             }
             catch (Exception ex)
             {
@@ -9540,7 +9564,7 @@ namespace OpenCBS.GUI.Clients
                 }
             }
 
-           
+
         }
 
         private void btnCAGenerateStatement_Click(object sender, EventArgs e)
@@ -9567,9 +9591,341 @@ namespace OpenCBS.GUI.Clients
                 }
             }
 
-            
+
         }
 
-   }
-    
+        private void btnGenerateBGLetter_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                int i = lvBankGuarantee.SelectedIndices[0];
+                string bankGuaranteeCode = lvBankGuarantee.Items[i].Text;
+
+                BankGuaranteesService _bankGuaranteeService = ServicesProvider.GetInstance().GetBankGuaranteesService();
+                OpenCBS.CoreDomain.BankGuarantees bankGuarantees = _bankGuaranteeService.FetchBankGuarantee(bankGuaranteeCode);
+                ClientServices _clientServices = ServicesProvider.GetInstance().GetClientServices();
+                Person applicant = (Person)_clientServices.FindTiers(bankGuarantees.ApplicantId, OClientTypes.Person);
+
+                //Create an instance for word app
+                Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
+
+                //Set animation status for word application
+                //winword.ShowAnimation = false;
+
+                //Set status for word application is to be visible or not.
+                winword.Visible = false;
+
+                //Create a missing variable for missing value
+                object missing = System.Reflection.Missing.Value;
+
+                //Create a new document
+                Microsoft.Office.Interop.Word.Document document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+
+                //Add header into the document
+                foreach (Microsoft.Office.Interop.Word.Section section in document.Sections)
+                {
+                    //Get the header range and add the header details.
+                    Microsoft.Office.Interop.Word.Range headerRange = section.Headers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                    headerRange.Fields.Add(headerRange, Microsoft.Office.Interop.Word.WdFieldType.wdFieldPage);
+                    headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                    headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
+                    headerRange.Font.Size = 10;
+                    headerRange.Text = "<Bank Name Goes here>";
+                }
+
+                //Add the footers into the document
+                foreach (Microsoft.Office.Interop.Word.Section wordSection in document.Sections)
+                {
+                    //Get the footer range and add the footer details.
+                    Microsoft.Office.Interop.Word.Range footerRange = wordSection.Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                    footerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdDarkRed;
+                    footerRange.Font.Size = 10;
+                    footerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                    footerRange.Text = "Bank Guarantee Letter";
+                }
+
+                //adding text to document
+
+                document.Content.SetRange(0, 0);
+                document.Content.Text = document.Content.Text + "Beneficiary Party  : " + bankGuarantees.BeneficiaryParty;
+
+                document.Content.Text = document.Content.Text + "Bank Guarantee Code: " + bankGuarantees.BankGuaranteeCode;
+                document.Content.Text = document.Content.Text + "Issued On Date     : " + bankGuarantees.IssuingDate.ToShortDateString();
+                document.Content.Text = document.Content.Text + "Status             : " + bankGuarantees.Status;
+                document.Content.Text = document.Content.Text + "Issued By          : " + "<Bank name>";
+                document.Content.Text = document.Content.Text + Environment.NewLine;
+
+                document.Content.Text = document.Content.Text + "To whom it may concern:" + Environment.NewLine;
+
+                document.Content.Text = document.Content.Text + "Mr./Mrs. " + applicant.FirstName + " " + applicant.LastName + " is a customer of our bank. <Bank Name> will irrevocably honor and guarantee payment on any check(s) written by Mr./Mrs. " + applicant.FirstName + " " + applicant.LastName + " up to the amount of " + bankGuarantees.Currency + " " + bankGuarantees.Value + ". This commitment to assure payment expires on" + bankGuarantees.ExpiryDate.ToShortDateString() + "." + Environment.NewLine;
+                document.Content.Text = document.Content.Text + Environment.NewLine;
+                document.Content.Text = document.Content.Text + Environment.NewLine;
+                document.Content.Text = document.Content.Text + Environment.NewLine;
+                document.Content.Text = document.Content.Text + "Regards,";
+                document.Content.Text = document.Content.Text + "Bank Representative";
+                document.Content.Text = document.Content.Text + "Name of bank";
+
+
+
+                //Save the document
+                object filename = @"E:\temp1.docx";
+                document.SaveAs2(ref filename);
+                document.Close(ref missing, ref missing, ref missing);
+                document = null;
+                winword.Quit(ref missing, ref missing, ref missing);
+                winword = null;
+                MessageBox.Show("Document created successfully !");
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FixedDepositProductSelectAProduct);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
+
+
+        }
+
+        private void btnGenerateLOCLetter_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                int i = lvLetterOfCredit.SelectedIndices[0];
+                string letterOfCreditCode = lvLetterOfCredit.Items[i].Text;
+
+                LetterOfCreditService _LetterOfCreditervice = ServicesProvider.GetInstance().GetLetterOfCreditService();
+                OpenCBS.CoreDomain.LetterOfCredit letterOfCredit = _LetterOfCreditervice.FetchLetterOfCredit(letterOfCreditCode);
+
+                ClientServices _clientServices = ServicesProvider.GetInstance().GetClientServices();
+                Person applicant = (Person)_clientServices.FindTiers(letterOfCredit.ClientId, OClientTypes.Person);
+
+                //Create an instance for word app
+                Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
+
+                //Set animation status for word application
+                //winword.ShowAnimation = false;
+
+                //Set status for word application is to be visible or not.
+                winword.Visible = false;
+
+                //Create a missing variable for missing value
+                object missing = System.Reflection.Missing.Value;
+
+                //Create a new document
+                Microsoft.Office.Interop.Word.Document document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+
+                //Add header into the document
+                foreach (Microsoft.Office.Interop.Word.Section section in document.Sections)
+                {
+                    //Get the header range and add the header details.
+                    Microsoft.Office.Interop.Word.Range headerRange = section.Headers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                    headerRange.Fields.Add(headerRange, Microsoft.Office.Interop.Word.WdFieldType.wdFieldPage);
+                    headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                    headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
+                    headerRange.Font.Size = 10;
+                    headerRange.Text = "<Bank Name>";
+                }
+
+                //Add the footers into the document
+                foreach (Microsoft.Office.Interop.Word.Section wordSection in document.Sections)
+                {
+                    //Get the footer range and add the footer details.
+                    Microsoft.Office.Interop.Word.Range footerRange = wordSection.Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                    footerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdDarkRed;
+                    footerRange.Font.Size = 10;
+                    footerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                    footerRange.Text = "Letter Of Credit";
+                }
+
+                //adding text to document
+
+                document.Content.SetRange(0, 0);
+                document.Content.Text = document.Content.Text + "Beneficiary Party    : " + letterOfCredit.BeneficiaryParty;
+
+                document.Content.Text = document.Content.Text + "Letter Of Credit Code: " + letterOfCredit.LetterOfCreditCode;
+                document.Content.Text = document.Content.Text + "Issued On Date       : " + letterOfCredit.IssuingDate.ToShortDateString();
+                document.Content.Text = document.Content.Text + "Status               : " + letterOfCredit.Status;
+                document.Content.Text = document.Content.Text + "Issued By            : " + "<Bank name>";
+                document.Content.Text = document.Content.Text + Environment.NewLine;
+
+                document.Content.Text = document.Content.Text + "To whom it may concern:" + Environment.NewLine;
+
+                document.Content.Text = document.Content.Text + "Mr./Mrs. " + applicant.FirstName + " " + applicant.LastName + " is a customer of our bank. <Bank Name> will irrevocably honor and guarantee payment on any check(s) written by Mr./Mrs. " + applicant.FirstName + " " + applicant.LastName + " up to the amount of " + letterOfCredit.Currency + " " + letterOfCredit.Value + ". This commitment to assure payment expires on" + letterOfCredit.ExpiryDate.ToShortDateString() + "." + Environment.NewLine;
+                document.Content.Text = document.Content.Text + Environment.NewLine;
+                document.Content.Text = document.Content.Text + Environment.NewLine;
+                document.Content.Text = document.Content.Text + Environment.NewLine;
+                document.Content.Text = document.Content.Text + "Regards,";
+                document.Content.Text = document.Content.Text + "Bank Representative";
+                document.Content.Text = document.Content.Text + "Name of bank";
+
+
+                //Save the document
+                object filename = @"E:\temp1.docx";
+                document.SaveAs2(ref filename);
+                document.Close(ref missing, ref missing, ref missing);
+                document = null;
+                winword.Quit(ref missing, ref missing, ref missing);
+                winword = null;
+                MessageBox.Show("Document created successfully !");
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FixedDepositProductSelectAProduct);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
+
+
+        }
+
+        private void btnRepaymentNotice_Click(object sender, EventArgs e)
+        {
+            lvLoansRepayments.Items.Clear();
+            OCurrency OLBDue = 0;
+            OCurrency interestsDue = 0;
+            Installment lateInstallment = null;
+            int lateDays = 0;
+            foreach (Installment installment in _credit.InstallmentList)
+            {
+                
+                var listViewItem = new ListViewItem(installment.Number.ToString());
+
+                // late installation mark as red
+                if ((installment.CapitalRepayment + installment.InterestsRepayment >
+                    installment.PaidCapital + installment.PaidInterests) || !installment.IsRepaid)
+                {
+                    if (installment.PaidDate.HasValue)
+                    {
+                        lateDays = Convert.ToInt32(installment.PaidDate.Value.Subtract(installment.ExpectedDate).TotalDays);
+                        if (Math.Abs(lateDays) > 0)
+                        {
+                            listViewItem.BackColor = Color.White;
+                            listViewItem.ForeColor = Color.Red;
+                            lateInstallment = installment;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        DateTime now = TimeProvider.Now;
+                        //DateTime dt = new DateTime(now.Year, now.Month, now.Day, 0, 0, 0, 0);
+                       lateDays = (now.Date - installment.ExpectedDate).Days;
+                        if (lateDays > 0)
+                        {
+                            listViewItem.BackColor = Color.White;
+                            listViewItem.ForeColor = Color.Red;
+                            lateInstallment = installment;
+                            break;
+                        }
+                    }
+                }
+            }
+
+
+
+            try
+            {
+                
+                //Create an instance for word app
+                Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
+
+                //Set animation status for word application
+                //winword.ShowAnimation = false;
+
+                //Set status for word application is to be visible or not.
+                winword.Visible = false;
+
+                //Create a missing variable for missing value
+                object missing = System.Reflection.Missing.Value;
+
+                //Create a new document
+                Microsoft.Office.Interop.Word.Document document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+
+                //Add header into the document
+                foreach (Microsoft.Office.Interop.Word.Section section in document.Sections)
+                {
+                    //Get the header range and add the header details.
+                    Microsoft.Office.Interop.Word.Range headerRange = section.Headers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                    headerRange.Fields.Add(headerRange, Microsoft.Office.Interop.Word.WdFieldType.wdFieldPage);
+                    headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                    headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
+                    headerRange.Font.Size = 10;
+                    headerRange.Text = "<Bank Name>";
+                }
+
+                //Add the footers into the document
+                foreach (Microsoft.Office.Interop.Word.Section wordSection in document.Sections)
+                {
+                    //Get the footer range and add the footer details.
+                    Microsoft.Office.Interop.Word.Range footerRange = wordSection.Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                    footerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdDarkRed;
+                    footerRange.Font.Size = 10;
+                    footerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                    footerRange.Text = "Loan Repayment Notice";
+                }
+
+                //adding text to document
+
+                document.Content.SetRange(0, 0);
+                document.Content.Text = document.Content.Text + "Customer Name    : " + _client.Name;
+
+                document.Content.Text = document.Content.Text + "Loan Contract Code: " + _credit.Code;
+                document.Content.Text = document.Content.Text + "Disbursed On Date       : " + _credit.StartDate.ToShortDateString();
+                document.Content.Text = document.Content.Text + "Expected Installment Date:" + lateInstallment.ExpectedDate.ToShortDateString();
+                document.Content.Text = document.Content.Text + "Installment Late By Days:            : " + lateDays;
+                document.Content.Text = document.Content.Text + "Contract Status:            : " + _credit.ContractStatus;
+                document.Content.Text = document.Content.Text + Environment.NewLine;
+
+                document.Content.Text = document.Content.Text + "To whom it may concern:" + Environment.NewLine;
+
+                document.Content.Text = document.Content.Text + "Mr./Mrs. " + applicant.FirstName + " " + applicant.LastName + " is a customer of our bank. <Bank Name> will irrevocably honor and guarantee payment on any check(s) written by Mr./Mrs. " + applicant.FirstName + " " + applicant.LastName + " up to the amount of " + letterOfCredit.Currency + " " + letterOfCredit.Value + ". This commitment to assure payment expires on" + letterOfCredit.ExpiryDate.ToShortDateString() + "." + Environment.NewLine;
+                document.Content.Text = document.Content.Text + Environment.NewLine;
+                document.Content.Text = document.Content.Text + Environment.NewLine;
+                document.Content.Text = document.Content.Text + Environment.NewLine;
+                document.Content.Text = document.Content.Text + "Regards,";
+                document.Content.Text = document.Content.Text + "Bank Representative";
+                document.Content.Text = document.Content.Text + "Name of bank";
+
+
+                //Save the document
+                object filename = @"E:\temp1.docx";
+                document.SaveAs2(ref filename);
+                document.Close(ref missing, ref missing, ref missing);
+                document = null;
+                winword.Quit(ref missing, ref missing, ref missing);
+                winword = null;
+                MessageBox.Show("Document created successfully !");
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FixedDepositProductSelectAProduct);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
+
+
+
+        }
+
+    }
 }

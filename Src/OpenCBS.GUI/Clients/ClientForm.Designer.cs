@@ -747,6 +747,8 @@ namespace OpenCBS.GUI.Clients
             this.columnHeader40 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label44 = new System.Windows.Forms.Label();
             this.tabPageBGLC = new System.Windows.Forms.TabPage();
+            this.btnGenerateLOCLetter = new System.Windows.Forms.Button();
+            this.btnGenerateBGLetter = new System.Windows.Forms.Button();
             this.btnViewLetterOfCredit = new System.Windows.Forms.Button();
             this.btnUpdateLetterOfCredit = new System.Windows.Forms.Button();
             this.btnAddLetterOfCredit = new System.Windows.Forms.Button();
@@ -804,6 +806,7 @@ namespace OpenCBS.GUI.Clients
             this.menuPendingSavingEvents = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemConfirmPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCancelPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRepaymentNotice = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).BeginInit();
             this.splitContainer10.Panel1.SuspendLayout();
             this.splitContainer10.Panel2.SuspendLayout();
@@ -2761,6 +2764,7 @@ namespace OpenCBS.GUI.Clients
             this.flowLayoutPanel8.Controls.Add(this.buttonManualSchedule);
             this.flowLayoutPanel8.Controls.Add(this.buttonAddTranche);
             this.flowLayoutPanel8.Controls.Add(this.btnWriteOff);
+            this.flowLayoutPanel8.Controls.Add(this.btnRepaymentNotice);
             this.flowLayoutPanel8.Name = "flowLayoutPanel8";
             // 
             // buttonLoanRepaymentRepay
@@ -5421,6 +5425,8 @@ namespace OpenCBS.GUI.Clients
             // 
             // tabPageBGLC
             // 
+            this.tabPageBGLC.Controls.Add(this.btnGenerateLOCLetter);
+            this.tabPageBGLC.Controls.Add(this.btnGenerateBGLetter);
             this.tabPageBGLC.Controls.Add(this.btnViewLetterOfCredit);
             this.tabPageBGLC.Controls.Add(this.btnUpdateLetterOfCredit);
             this.tabPageBGLC.Controls.Add(this.btnAddLetterOfCredit);
@@ -5434,6 +5440,18 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.tabPageBGLC, "tabPageBGLC");
             this.tabPageBGLC.Name = "tabPageBGLC";
             this.tabPageBGLC.UseVisualStyleBackColor = true;
+            // 
+            // btnGenerateLOCLetter
+            // 
+            resources.ApplyResources(this.btnGenerateLOCLetter, "btnGenerateLOCLetter");
+            this.btnGenerateLOCLetter.Name = "btnGenerateLOCLetter";
+            this.btnGenerateLOCLetter.Click += new System.EventHandler(this.btnGenerateLOCLetter_Click);
+            // 
+            // btnGenerateBGLetter
+            // 
+            resources.ApplyResources(this.btnGenerateBGLetter, "btnGenerateBGLetter");
+            this.btnGenerateBGLetter.Name = "btnGenerateBGLetter";
+            this.btnGenerateBGLetter.Click += new System.EventHandler(this.btnGenerateBGLetter_Click);
             // 
             // btnViewLetterOfCredit
             // 
@@ -5769,6 +5787,12 @@ namespace OpenCBS.GUI.Clients
             this.menuItemCancelPendingSavingEvent.Name = "menuItemCancelPendingSavingEvent";
             resources.ApplyResources(this.menuItemCancelPendingSavingEvent, "menuItemCancelPendingSavingEvent");
             this.menuItemCancelPendingSavingEvent.Click += new System.EventHandler(this.menuItemCancelPendingSavingEvent_Click);
+            // 
+            // btnRepaymentNotice
+            // 
+            resources.ApplyResources(this.btnRepaymentNotice, "btnRepaymentNotice");
+            this.btnRepaymentNotice.Name = "btnRepaymentNotice";
+            this.btnRepaymentNotice.Click += new System.EventHandler(this.btnRepaymentNotice_Click);
             // 
             // ClientForm
             // 
@@ -6696,5 +6720,8 @@ namespace OpenCBS.GUI.Clients
         private CheckBox cbFDLibor;
         private Button btnCAGenerateStatement;
         private Button btnGenerateFDStatement;
+        private Button btnGenerateLOCLetter;
+        private Button btnGenerateBGLetter;
+        private Button btnRepaymentNotice;
     }
 }
