@@ -9802,7 +9802,7 @@ namespace OpenCBS.GUI.Clients
             foreach (Installment installment in _credit.InstallmentList)
             {
                 
-                var listViewItem = new ListViewItem(installment.Number.ToString());
+               
 
                 // late installation mark as red
                 if ((installment.CapitalRepayment + installment.InterestsRepayment >
@@ -9813,8 +9813,6 @@ namespace OpenCBS.GUI.Clients
                         lateDays = Convert.ToInt32(installment.PaidDate.Value.Subtract(installment.ExpectedDate).TotalDays);
                         if (Math.Abs(lateDays) > 0)
                         {
-                            listViewItem.BackColor = Color.White;
-                            listViewItem.ForeColor = Color.Red;
                             lateInstallment = installment;
                             break;
                         }
@@ -9826,8 +9824,6 @@ namespace OpenCBS.GUI.Clients
                        lateDays = (now.Date - installment.ExpectedDate).Days;
                         if (lateDays > 0)
                         {
-                            listViewItem.BackColor = Color.White;
-                            listViewItem.ForeColor = Color.Red;
                             lateInstallment = installment;
                             break;
                         }
@@ -9882,20 +9878,23 @@ namespace OpenCBS.GUI.Clients
 
                 document.Content.SetRange(0, 0);
                 document.Content.Text = document.Content.Text + "Customer Name    : " + _client.Name;
-
+                document.Content.Text = document.Content.Text + "Customer Address    : " + _client.Address;
                 document.Content.Text = document.Content.Text + "Loan Contract Code: " + _credit.Code;
                 document.Content.Text = document.Content.Text + "Disbursed On Date       : " + _credit.StartDate.ToShortDateString();
                 document.Content.Text = document.Content.Text + "Expected Installment Date:" + lateInstallment.ExpectedDate.ToShortDateString();
                 document.Content.Text = document.Content.Text + "Installment Late By Days:            : " + lateDays;
                 document.Content.Text = document.Content.Text + "Contract Status:            : " + _credit.ContractStatus;
+                document.Content.Text = document.Content.Text + "Notice Date :            : " + DateTime.Today.ToShortDateString();
                 document.Content.Text = document.Content.Text + Environment.NewLine;
 
-                document.Content.Text = document.Content.Text + "To whom it may concern:" + Environment.NewLine;
+                document.Content.Text = document.Content.Text + "Dear Sir,";
 
-                document.Content.Text = document.Content.Text + "Mr./Mrs. " + applicant.FirstName + " " + applicant.LastName + " is a customer of our bank. <Bank Name> will irrevocably honor and guarantee payment on any check(s) written by Mr./Mrs. " + applicant.FirstName + " " + applicant.LastName + " up to the amount of " + letterOfCredit.Currency + " " + letterOfCredit.Value + ". This commitment to assure payment expires on" + letterOfCredit.ExpiryDate.ToShortDateString() + "." + Environment.NewLine;
+                document.Content.Text = document.Content.Text + "It is our pleasure to find you as one of our old and valued clients. We hope, you will continue enjoying our loan services as to your banking needs.";
+                document.Content.Text = document.Content.Text + "You have applied for loan of " + _credit.Product.Currency + " " + _credit.Amount + " under our Scheme " + _credit.Product.Name + ". Your next installment was due on " + lateInstallment.ExpectedDate.ToShortDateString() + ", which has already passed. We urge you to clear the due installment as soon as possible.";
+                document.Content.Text = document.Content.Text + "We are proud to serve you. Thank you Sir.";
+
                 document.Content.Text = document.Content.Text + Environment.NewLine;
-                document.Content.Text = document.Content.Text + Environment.NewLine;
-                document.Content.Text = document.Content.Text + Environment.NewLine;
+                
                 document.Content.Text = document.Content.Text + "Regards,";
                 document.Content.Text = document.Content.Text + "Bank Representative";
                 document.Content.Text = document.Content.Text + "Name of bank";
