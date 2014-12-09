@@ -768,5 +768,10 @@ namespace OpenCBS.GUI.UserControl
         {
             KeyPressControl(e);
         }
+
+        private void clSavingList_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

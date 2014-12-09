@@ -31,19 +31,21 @@ namespace OpenCBS.GUI.UserControl
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SavingsListUserControl));
             this.lvSavings = new System.Windows.Forms.ListView();
-            this.columnHeaderSavingCode = new System.Windows.Forms.ColumnHeader();
-            this.columnHeaderSavingType = new System.Windows.Forms.ColumnHeader();
-            this.columnHeaderSavingDescription = new System.Windows.Forms.ColumnHeader();
-            this.columnHeaderSavingBalance = new System.Windows.Forms.ColumnHeader();
-            this.columnHeaderCurrency = new System.Windows.Forms.ColumnHeader();
-            this.columnHeaderSavingCreationDate = new System.Windows.Forms.ColumnHeader();
-            this.columnHeaderSavingLastActionDate = new System.Windows.Forms.ColumnHeader();
-            this.columnHeaderSavingStatus = new System.Windows.Forms.ColumnHeader();
-            this.columnHeaderSavingCloseDate = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderSavingCode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderSavingType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderSavingDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderSavingBalance = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderCurrency = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderSavingCreationDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderSavingLastActionDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderSavingStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderSavingCloseDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStripSaving = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonAddSaving = new System.Windows.Forms.Button();
             this.buttonViewSaving = new System.Windows.Forms.Button();
+            this.btnGenerateSavingStatement = new System.Windows.Forms.Button();
+            this.btnSAChargesNotice = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,6 +115,8 @@ namespace OpenCBS.GUI.UserControl
             resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
             this.flowLayoutPanel1.Controls.Add(this.buttonAddSaving);
             this.flowLayoutPanel1.Controls.Add(this.buttonViewSaving);
+            this.flowLayoutPanel1.Controls.Add(this.btnGenerateSavingStatement);
+            this.flowLayoutPanel1.Controls.Add(this.btnSAChargesNotice);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // buttonAddSaving
@@ -126,6 +130,18 @@ namespace OpenCBS.GUI.UserControl
             resources.ApplyResources(this.buttonViewSaving, "buttonViewSaving");
             this.buttonViewSaving.Name = "buttonViewSaving";
             this.buttonViewSaving.Click += new System.EventHandler(this.buttonViewSaving_Click);
+            // 
+            // btnGenerateSavingStatement
+            // 
+            resources.ApplyResources(this.btnGenerateSavingStatement, "btnGenerateSavingStatement");
+            this.btnGenerateSavingStatement.Name = "btnGenerateSavingStatement";
+            this.btnGenerateSavingStatement.Click += new System.EventHandler(this.btnGenerateSavingStatement_Click);
+            // 
+            // btnSAChargesNotice
+            // 
+            resources.ApplyResources(this.btnSAChargesNotice, "btnSAChargesNotice");
+            this.btnSAChargesNotice.Name = "btnSAChargesNotice";
+            this.btnSAChargesNotice.Click += new System.EventHandler(this.btnSAChargesNotice_Click);
             // 
             // SavingsListUserControl
             // 
@@ -156,5 +172,7 @@ namespace OpenCBS.GUI.UserControl
         private System.Windows.Forms.ContextMenuStrip contextMenuStripSaving;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.ColumnHeader columnHeaderCurrency;
+        private System.Windows.Forms.Button btnGenerateSavingStatement;
+        private System.Windows.Forms.Button btnSAChargesNotice;
     }
 }

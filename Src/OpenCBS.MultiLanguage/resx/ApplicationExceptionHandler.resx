@@ -2314,6 +2314,69 @@ Enter another account number.
     <value>Please select Marital Status</value>
   </data>
 
-  
+
+  <data name="ExpenseDateIsEmpty" xml:space="preserve">
+    <value>Expense Date cannot be empty</value>
+  </data>
+
+  <data name="ExpenseDateIsInvalid" xml:space="preserve">
+    <value>Expense Date cannot be greater than today's date</value>
+  </data>
+
+  <data name="ExpenseCategoryIsEmpty" xml:space="preserve">
+    <value>Expense Category  is not selected</value>
+  </data>
+
+  <data name="ExpenseDescriptionIsEmpty" xml:space="preserve">
+    <value>Expense Description cannot be empty</value>
+  </data>
+  <data name="ExpenseAmountIsEmpty" xml:space="preserve">
+    <value>Expense Amount cannot be empty</value>
+  </data>
+  <data name="ReferenceIsEmpty" xml:space="preserve">
+    <value>Reference cannot be empty</value>
+  </data>
+
+  <data name="AssetDateIsEmpty" xml:space="preserve">
+
+    <value>Asset Date cannot be empty</value>
+
+  </data>
+
+
+
+  <data name="AssetDateIsInvalid" xml:space="preserve">
+
+    <value>Asset Date cannot be greater than today's date</value>
+
+  </data>
+
+
+
+  <data name="AssetCategoryIsEmpty" xml:space="preserve">
+
+    <value>Asset Category  is not selected</value>
+
+  </data>
+
+
+
+  <data name="AssetDescriptionIsEmpty" xml:space="preserve">
+
+    <value>Asset Description cannot be empty</value>
+
+  </data>
+
+  <data name="AssetAmountIsEmpty" xml:space="preserve">
+
+    <value>Asset Amount cannot be empty</value>
+
+  </data>
+
+  <data name="ReferenceIsEmpty" xml:space="preserve">
+
+    <value>Reference cannot be empty</value>
+
+  </data>
 
 </root>

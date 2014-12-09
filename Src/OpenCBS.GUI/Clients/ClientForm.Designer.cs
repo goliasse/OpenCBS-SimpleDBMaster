@@ -196,6 +196,7 @@ namespace OpenCBS.GUI.Clients
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonProjectAddContract = new System.Windows.Forms.Button();
             this.buttonProjectViewContract = new System.Windows.Forms.Button();
+            this.btnGenerateLoanStatement = new System.Windows.Forms.Button();
             this.tabPageProjectAnalyses = new System.Windows.Forms.TabPage();
             this.textBoxProjectConcurrence = new System.Windows.Forms.TextBox();
             this.textBoxProjectMarket = new System.Windows.Forms.TextBox();
@@ -353,6 +354,7 @@ namespace OpenCBS.GUI.Clients
             this.buttonManualSchedule = new System.Windows.Forms.Button();
             this.buttonAddTranche = new System.Windows.Forms.Button();
             this.btnWriteOff = new System.Windows.Forms.Button();
+            this.btnRepaymentNotice = new System.Windows.Forms.Button();
             this.tabPageEvents = new System.Windows.Forms.TabPage();
             this.lvEvents = new OpenCBS.GUI.UserControl.ListViewEx();
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -529,10 +531,12 @@ namespace OpenCBS.GUI.Clients
             this.chOpenAO = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnFDChargesNotice = new System.Windows.Forms.Button();
             this.btnCAGenerateStatement = new System.Windows.Forms.Button();
             this.btnViewCurrentAccount = new System.Windows.Forms.Button();
             this.btnAddCurrentAccount = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnCAChargesNotice = new System.Windows.Forms.Button();
             this.btnGenerateFDStatement = new System.Windows.Forms.Button();
             this.btnViewFixedDeposit = new System.Windows.Forms.Button();
             this.btnAddFixedDeposit = new System.Windows.Forms.Button();
@@ -806,7 +810,7 @@ namespace OpenCBS.GUI.Clients
             this.menuPendingSavingEvents = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemConfirmPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCancelPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRepaymentNotice = new System.Windows.Forms.Button();
+            this.btnCurrentChargesNotice = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).BeginInit();
             this.splitContainer10.Panel1.SuspendLayout();
             this.splitContainer10.Panel2.SuspendLayout();
@@ -1673,6 +1677,8 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
             this.flowLayoutPanel1.Controls.Add(this.buttonProjectAddContract);
             this.flowLayoutPanel1.Controls.Add(this.buttonProjectViewContract);
+            this.flowLayoutPanel1.Controls.Add(this.btnGenerateLoanStatement);
+            this.flowLayoutPanel1.Controls.Add(this.btnCurrentChargesNotice);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // buttonProjectAddContract
@@ -1686,6 +1692,12 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.buttonProjectViewContract, "buttonProjectViewContract");
             this.buttonProjectViewContract.Name = "buttonProjectViewContract";
             this.buttonProjectViewContract.Click += new System.EventHandler(this.buttonProjectViewContract_Click);
+            // 
+            // btnGenerateLoanStatement
+            // 
+            resources.ApplyResources(this.btnGenerateLoanStatement, "btnGenerateLoanStatement");
+            this.btnGenerateLoanStatement.Name = "btnGenerateLoanStatement";
+            this.btnGenerateLoanStatement.Click += new System.EventHandler(this.btnGenerateLoanStatement_Click);
             // 
             // tabPageProjectAnalyses
             // 
@@ -2796,6 +2808,12 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.btnWriteOff, "btnWriteOff");
             this.btnWriteOff.Name = "btnWriteOff";
             this.btnWriteOff.Click += new System.EventHandler(this.btnWriteOff_Click);
+            // 
+            // btnRepaymentNotice
+            // 
+            resources.ApplyResources(this.btnRepaymentNotice, "btnRepaymentNotice");
+            this.btnRepaymentNotice.Name = "btnRepaymentNotice";
+            this.btnRepaymentNotice.Click += new System.EventHandler(this.btnRepaymentNotice_Click);
             // 
             // tabPageEvents
             // 
@@ -3964,11 +3982,19 @@ namespace OpenCBS.GUI.Clients
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.btnFDChargesNotice);
             this.panel5.Controls.Add(this.btnCAGenerateStatement);
             this.panel5.Controls.Add(this.btnViewCurrentAccount);
             this.panel5.Controls.Add(this.btnAddCurrentAccount);
             resources.ApplyResources(this.panel5, "panel5");
             this.panel5.Name = "panel5";
+            // 
+            // btnFDChargesNotice
+            // 
+            resources.ApplyResources(this.btnFDChargesNotice, "btnFDChargesNotice");
+            this.btnFDChargesNotice.Name = "btnFDChargesNotice";
+            this.btnFDChargesNotice.UseVisualStyleBackColor = true;
+            this.btnFDChargesNotice.Click += new System.EventHandler(this.btnFDChargesNotice_Click);
             // 
             // btnCAGenerateStatement
             // 
@@ -3993,11 +4019,19 @@ namespace OpenCBS.GUI.Clients
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.btnCAChargesNotice);
             this.panel4.Controls.Add(this.btnGenerateFDStatement);
             this.panel4.Controls.Add(this.btnViewFixedDeposit);
             this.panel4.Controls.Add(this.btnAddFixedDeposit);
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
+            // 
+            // btnCAChargesNotice
+            // 
+            resources.ApplyResources(this.btnCAChargesNotice, "btnCAChargesNotice");
+            this.btnCAChargesNotice.Name = "btnCAChargesNotice";
+            this.btnCAChargesNotice.UseVisualStyleBackColor = true;
+            this.btnCAChargesNotice.Click += new System.EventHandler(this.btnCAChargesNotice_Click);
             // 
             // btnGenerateFDStatement
             // 
@@ -5788,11 +5822,11 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.menuItemCancelPendingSavingEvent, "menuItemCancelPendingSavingEvent");
             this.menuItemCancelPendingSavingEvent.Click += new System.EventHandler(this.menuItemCancelPendingSavingEvent_Click);
             // 
-            // btnRepaymentNotice
+            // btnCurrentChargesNotice
             // 
-            resources.ApplyResources(this.btnRepaymentNotice, "btnRepaymentNotice");
-            this.btnRepaymentNotice.Name = "btnRepaymentNotice";
-            this.btnRepaymentNotice.Click += new System.EventHandler(this.btnRepaymentNotice_Click);
+            resources.ApplyResources(this.btnCurrentChargesNotice, "btnCurrentChargesNotice");
+            this.btnCurrentChargesNotice.Name = "btnCurrentChargesNotice";
+            this.btnCurrentChargesNotice.Click += new System.EventHandler(this.btnCurrentChargesNotice_Click);
             // 
             // ClientForm
             // 
@@ -6723,5 +6757,9 @@ namespace OpenCBS.GUI.Clients
         private Button btnGenerateLOCLetter;
         private Button btnGenerateBGLetter;
         private Button btnRepaymentNotice;
+        private Button btnFDChargesNotice;
+        private Button btnCAChargesNotice;
+        private Button btnGenerateLoanStatement;
+        private Button btnCurrentChargesNotice;
     }
 }

@@ -2079,6 +2079,660 @@
   <data name="&gt;&gt;tabPageDetails.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;dateTimePickerProjectBeginDate.Name" xml:space="preserve">
+    <value>dateTimePickerProjectBeginDate</value>
+  </data>
+  <data name="&gt;&gt;dateTimePickerProjectBeginDate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dateTimePickerProjectBeginDate.Parent" xml:space="preserve">
+    <value>groupBoxProjectDetails</value>
+  </data>
+  <data name="&gt;&gt;dateTimePickerProjectBeginDate.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;labelProjectDate.Name" xml:space="preserve">
+    <value>labelProjectDate</value>
+  </data>
+  <data name="&gt;&gt;labelProjectDate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelProjectDate.Parent" xml:space="preserve">
+    <value>groupBoxProjectDetails</value>
+  </data>
+  <data name="&gt;&gt;labelProjectDate.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;buttonProjectSelectPurpose.Name" xml:space="preserve">
+    <value>buttonProjectSelectPurpose</value>
+  </data>
+  <data name="&gt;&gt;buttonProjectSelectPurpose.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonProjectSelectPurpose.Parent" xml:space="preserve">
+    <value>groupBoxProjectDetails</value>
+  </data>
+  <data name="&gt;&gt;buttonProjectSelectPurpose.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectPurpose.Name" xml:space="preserve">
+    <value>textBoxProjectPurpose</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectPurpose.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectPurpose.Parent" xml:space="preserve">
+    <value>groupBoxProjectDetails</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectPurpose.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;labelProjectPurpose.Name" xml:space="preserve">
+    <value>labelProjectPurpose</value>
+  </data>
+  <data name="&gt;&gt;labelProjectPurpose.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelProjectPurpose.Parent" xml:space="preserve">
+    <value>groupBoxProjectDetails</value>
+  </data>
+  <data name="&gt;&gt;labelProjectPurpose.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;labelProjectName.Name" xml:space="preserve">
+    <value>labelProjectName</value>
+  </data>
+  <data name="&gt;&gt;labelProjectName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelProjectName.Parent" xml:space="preserve">
+    <value>groupBoxProjectDetails</value>
+  </data>
+  <data name="&gt;&gt;labelProjectName.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectName.Name" xml:space="preserve">
+    <value>textBoxProjectName</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectName.Parent" xml:space="preserve">
+    <value>groupBoxProjectDetails</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectName.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;labelProjectCode.Name" xml:space="preserve">
+    <value>labelProjectCode</value>
+  </data>
+  <data name="&gt;&gt;labelProjectCode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelProjectCode.Parent" xml:space="preserve">
+    <value>groupBoxProjectDetails</value>
+  </data>
+  <data name="&gt;&gt;labelProjectCode.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectCode.Name" xml:space="preserve">
+    <value>textBoxProjectCode</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectCode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectCode.Parent" xml:space="preserve">
+    <value>groupBoxProjectDetails</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectCode.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;labelFirstProjectName.Name" xml:space="preserve">
+    <value>labelFirstProjectName</value>
+  </data>
+  <data name="&gt;&gt;labelFirstProjectName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelFirstProjectName.Parent" xml:space="preserve">
+    <value>groupBoxProjectDetails</value>
+  </data>
+  <data name="&gt;&gt;labelFirstProjectName.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectAim.Name" xml:space="preserve">
+    <value>textBoxProjectAim</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectAim.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectAim.Parent" xml:space="preserve">
+    <value>groupBoxProjectDetails</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectAim.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="groupBoxProjectDetails.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="groupBoxProjectDetails.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="groupBoxProjectDetails.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1263, 187</value>
+  </data>
+  <data name="groupBoxProjectDetails.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;groupBoxProjectDetails.Name" xml:space="preserve">
+    <value>groupBoxProjectDetails</value>
+  </data>
+  <data name="&gt;&gt;groupBoxProjectDetails.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxProjectDetails.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;groupBoxProjectDetails.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;buttonProjectSave.Name" xml:space="preserve">
+    <value>buttonProjectSave</value>
+  </data>
+  <data name="&gt;&gt;buttonProjectSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonProjectSave.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;buttonProjectSave.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 196</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1263, 59</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lvContracts.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="lvContracts.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9pt</value>
+  </data>
+  <data name="lvContracts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="lvContracts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1063, 296</value>
+  </data>
+  <data name="lvContracts.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;lvContracts.Name" xml:space="preserve">
+    <value>lvContracts</value>
+  </data>
+  <data name="&gt;&gt;lvContracts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lvContracts.Parent" xml:space="preserve">
+    <value>pnlLoans</value>
+  </data>
+  <data name="&gt;&gt;lvContracts.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonProjectAddContract.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonProjectAddContract.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="buttonProjectAddContract.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonProjectAddContract.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="buttonProjectAddContract.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 28</value>
+  </data>
+  <data name="buttonProjectAddContract.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonProjectAddContract.Text" xml:space="preserve">
+    <value>Add loan</value>
+  </data>
+  <data name="&gt;&gt;buttonProjectAddContract.Name" xml:space="preserve">
+    <value>buttonProjectAddContract</value>
+  </data>
+  <data name="&gt;&gt;buttonProjectAddContract.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonProjectAddContract.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonProjectAddContract.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonProjectViewContract.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonProjectViewContract.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="buttonProjectViewContract.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonProjectViewContract.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 37</value>
+  </data>
+  <data name="buttonProjectViewContract.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 28</value>
+  </data>
+  <data name="buttonProjectViewContract.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="buttonProjectViewContract.Text" xml:space="preserve">
+    <value>View contract</value>
+  </data>
+  <data name="&gt;&gt;buttonProjectViewContract.Name" xml:space="preserve">
+    <value>buttonProjectViewContract</value>
+  </data>
+  <data name="&gt;&gt;buttonProjectViewContract.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonProjectViewContract.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonProjectViewContract.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnGenerateLoanStatement.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnGenerateLoanStatement.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="btnGenerateLoanStatement.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnGenerateLoanStatement.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 71</value>
+  </data>
+  <data name="btnGenerateLoanStatement.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 28</value>
+  </data>
+  <data name="btnGenerateLoanStatement.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnGenerateLoanStatement.Text" xml:space="preserve">
+    <value>Generate Loan Statement</value>
+  </data>
+  <data name="&gt;&gt;btnGenerateLoanStatement.Name" xml:space="preserve">
+    <value>btnGenerateLoanStatement</value>
+  </data>
+  <data name="&gt;&gt;btnGenerateLoanStatement.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnGenerateLoanStatement.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;btnGenerateLoanStatement.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnCurrentChargesNotice.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnCurrentChargesNotice.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="btnCurrentChargesNotice.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCurrentChargesNotice.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 105</value>
+  </data>
+  <data name="btnCurrentChargesNotice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 28</value>
+  </data>
+  <data name="btnCurrentChargesNotice.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="btnCurrentChargesNotice.Text" xml:space="preserve">
+    <value>Charges Notice</value>
+  </data>
+  <data name="&gt;&gt;btnCurrentChargesNotice.Name" xml:space="preserve">
+    <value>btnCurrentChargesNotice</value>
+  </data>
+  <data name="&gt;&gt;btnCurrentChargesNotice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCurrentChargesNotice.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;btnCurrentChargesNotice.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="flowLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="flowLayoutPanel1.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1063, 0</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 296</value>
+  </data>
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>pnlLoans</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlLoans.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pnlLoans.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="pnlLoans.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1249, 296</value>
+  </data>
+  <data name="pnlLoans.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;pnlLoans.Name" xml:space="preserve">
+    <value>pnlLoans</value>
+  </data>
+  <data name="&gt;&gt;pnlLoans.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlLoans.Parent" xml:space="preserve">
+    <value>tabPageProjectLoans</value>
+  </data>
+  <data name="&gt;&gt;pnlLoans.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPageProjectLoans.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 36</value>
+  </data>
+  <data name="tabPageProjectLoans.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageProjectLoans.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1255, 302</value>
+  </data>
+  <data name="tabPageProjectLoans.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tabPageProjectLoans.Text" xml:space="preserve">
+    <value>Contracts</value>
+  </data>
+  <data name="&gt;&gt;tabPageProjectLoans.Name" xml:space="preserve">
+    <value>tabPageProjectLoans</value>
+  </data>
+  <data name="&gt;&gt;tabPageProjectLoans.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageProjectLoans.Parent" xml:space="preserve">
+    <value>tabControlProject</value>
+  </data>
+  <data name="&gt;&gt;tabPageProjectLoans.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectConcurrence.Name" xml:space="preserve">
+    <value>textBoxProjectConcurrence</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectConcurrence.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectConcurrence.Parent" xml:space="preserve">
+    <value>tabPageProjectAnalyses</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectConcurrence.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectMarket.Name" xml:space="preserve">
+    <value>textBoxProjectMarket</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectMarket.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectMarket.Parent" xml:space="preserve">
+    <value>tabPageProjectAnalyses</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectMarket.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;labelProjectConcurrence.Name" xml:space="preserve">
+    <value>labelProjectConcurrence</value>
+  </data>
+  <data name="&gt;&gt;labelProjectConcurrence.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelProjectConcurrence.Parent" xml:space="preserve">
+    <value>tabPageProjectAnalyses</value>
+  </data>
+  <data name="&gt;&gt;labelProjectConcurrence.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;labelProjectMarket.Name" xml:space="preserve">
+    <value>labelProjectMarket</value>
+  </data>
+  <data name="&gt;&gt;labelProjectMarket.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelProjectMarket.Parent" xml:space="preserve">
+    <value>tabPageProjectAnalyses</value>
+  </data>
+  <data name="&gt;&gt;labelProjectMarket.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectAbilities.Name" xml:space="preserve">
+    <value>textBoxProjectAbilities</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectAbilities.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectAbilities.Parent" xml:space="preserve">
+    <value>tabPageProjectAnalyses</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectAbilities.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectExperience.Name" xml:space="preserve">
+    <value>textBoxProjectExperience</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectExperience.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectExperience.Parent" xml:space="preserve">
+    <value>tabPageProjectAnalyses</value>
+  </data>
+  <data name="&gt;&gt;textBoxProjectExperience.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;labelProjectExperience.Name" xml:space="preserve">
+    <value>labelProjectExperience</value>
+  </data>
+  <data name="&gt;&gt;labelProjectExperience.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelProjectExperience.Parent" xml:space="preserve">
+    <value>tabPageProjectAnalyses</value>
+  </data>
+  <data name="&gt;&gt;labelProjectExperience.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;labelProjectAbilities.Name" xml:space="preserve">
+    <value>labelProjectAbilities</value>
+  </data>
+  <data name="&gt;&gt;labelProjectAbilities.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelProjectAbilities.Parent" xml:space="preserve">
+    <value>tabPageProjectAnalyses</value>
+  </data>
+  <data name="&gt;&gt;labelProjectAbilities.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="tabPageProjectAnalyses.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 36</value>
+  </data>
+  <data name="tabPageProjectAnalyses.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageProjectAnalyses.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1255, 302</value>
+  </data>
+  <data name="tabPageProjectAnalyses.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPageProjectAnalyses.Text" xml:space="preserve">
+    <value>Analyses</value>
+  </data>
+  <data name="&gt;&gt;tabPageProjectAnalyses.Name" xml:space="preserve">
+    <value>tabPageProjectAnalyses</value>
+  </data>
+  <data name="&gt;&gt;tabPageProjectAnalyses.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageProjectAnalyses.Parent" xml:space="preserve">
+    <value>tabControlProject</value>
+  </data>
+  <data name="&gt;&gt;tabPageProjectAnalyses.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPageCorporate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 36</value>
+  </data>
+  <data name="tabPageCorporate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1255, 302</value>
+  </data>
+  <data name="tabPageCorporate.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tabPageCorporate.Text" xml:space="preserve">
+    <value>Created Company</value>
+  </data>
+  <data name="&gt;&gt;tabPageCorporate.Name" xml:space="preserve">
+    <value>tabPageCorporate</value>
+  </data>
+  <data name="&gt;&gt;tabPageCorporate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageCorporate.Parent" xml:space="preserve">
+    <value>tabControlProject</value>
+  </data>
+  <data name="&gt;&gt;tabPageCorporate.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabPageFollowUp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 36</value>
+  </data>
+  <data name="tabPageFollowUp.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageFollowUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1255, 302</value>
+  </data>
+  <data name="tabPageFollowUp.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tabPageFollowUp.Text" xml:space="preserve">
+    <value>Follow-up</value>
+  </data>
+  <data name="&gt;&gt;tabPageFollowUp.Name" xml:space="preserve">
+    <value>tabPageFollowUp</value>
+  </data>
+  <data name="&gt;&gt;tabPageFollowUp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageFollowUp.Parent" xml:space="preserve">
+    <value>tabControlProject</value>
+  </data>
+  <data name="&gt;&gt;tabPageFollowUp.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabControlProject.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControlProject.ItemSize" type="System.Drawing.Size, System.Drawing">
+    <value>58, 32</value>
+  </data>
+  <data name="tabControlProject.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 261</value>
+  </data>
+  <data name="tabControlProject.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1263, 342</value>
+  </data>
+  <data name="tabControlProject.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tabControlProject.Name" xml:space="preserve">
+    <value>tabControlProject</value>
+  </data>
+  <data name="&gt;&gt;tabControlProject.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControlProject.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tabControlProject.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1269, 606</value>
+  </data>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
@@ -2295,537 +2949,6 @@
   <data name="&gt;&gt;tabPageCreditCommitee.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="columnHeader1.Text" xml:space="preserve">
-    <value>N°</value>
-  </data>
-  <data name="columnHeader1.Width" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="columnHeader2.Text" xml:space="preserve">
-    <value>Date</value>
-  </data>
-  <data name="columnHeader2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="columnHeader2.Width" type="System.Int32, mscorlib">
-    <value>110</value>
-  </data>
-  <data name="columnHeader3.Text" xml:space="preserve">
-    <value>Expected interests</value>
-  </data>
-  <data name="columnHeader3.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="columnHeader3.Width" type="System.Int32, mscorlib">
-    <value>137</value>
-  </data>
-  <data name="columnHeader4.Text" xml:space="preserve">
-    <value>Expected principal</value>
-  </data>
-  <data name="columnHeader4.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="columnHeader4.Width" type="System.Int32, mscorlib">
-    <value>149</value>
-  </data>
-  <data name="columnHeader5.Text" xml:space="preserve">
-    <value>Installment total</value>
-  </data>
-  <data name="columnHeader5.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="columnHeader5.Width" type="System.Int32, mscorlib">
-    <value>148</value>
-  </data>
-  <data name="columnHeader6.Text" xml:space="preserve">
-    <value>OLB</value>
-  </data>
-  <data name="columnHeader6.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="columnHeader6.Width" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="columnHeader7.Text" xml:space="preserve">
-    <value>Paid interests</value>
-  </data>
-  <data name="columnHeader7.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="columnHeader7.Width" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="columnHeader8.Text" xml:space="preserve">
-    <value>Paid principal</value>
-  </data>
-  <data name="columnHeader8.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="columnHeader8.Width" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="columnHeader9.Text" xml:space="preserve">
-    <value>Paid date</value>
-  </data>
-  <data name="columnHeader9.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="columnHeader9.Width" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="columnHeaderLateDays.Text" xml:space="preserve">
-    <value>Late days</value>
-  </data>
-  <data name="columnHeaderLateDays.Width" type="System.Int32, mscorlib">
-    <value>83</value>
-  </data>
-  <data name="columnHeaderComment.Text" xml:space="preserve">
-    <value>Comment</value>
-  </data>
-  <data name="columnHeaderComment.Width" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="lvLoansRepayments.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="lvLoansRepayments.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
-  </data>
-  <data name="lvLoansRepayments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="lvLoansRepayments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1267, 381</value>
-  </data>
-  <data name="lvLoansRepayments.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;lvLoansRepayments.Name" xml:space="preserve">
-    <value>lvLoansRepayments</value>
-  </data>
-  <data name="&gt;&gt;lvLoansRepayments.Type" xml:space="preserve">
-    <value>OpenCBS.GUI.UserControl.ListViewEx, OpenCBS.GUI, Version=14.7.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;lvLoansRepayments.Parent" xml:space="preserve">
-    <value>tabPageRepayments</value>
-  </data>
-  <data name="&gt;&gt;lvLoansRepayments.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanel8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanel8.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonLoanRepaymentRepay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonLoanRepaymentRepay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="buttonLoanRepaymentRepay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 28</value>
-  </data>
-  <data name="buttonLoanRepaymentRepay.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="buttonLoanRepaymentRepay.Text" xml:space="preserve">
-    <value>Repay</value>
-  </data>
-  <data name="&gt;&gt;buttonLoanRepaymentRepay.Name" xml:space="preserve">
-    <value>buttonLoanRepaymentRepay</value>
-  </data>
-  <data name="&gt;&gt;buttonLoanRepaymentRepay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonLoanRepaymentRepay.Parent" xml:space="preserve">
-    <value>flowLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;buttonLoanRepaymentRepay.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="buttonLoanReschedule.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonLoanReschedule.Location" type="System.Drawing.Point, System.Drawing">
-    <value>149, 3</value>
-  </data>
-  <data name="buttonLoanReschedule.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 28</value>
-  </data>
-  <data name="buttonLoanReschedule.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="buttonLoanReschedule.Text" xml:space="preserve">
-    <value>Reschedule</value>
-  </data>
-  <data name="&gt;&gt;buttonLoanReschedule.Name" xml:space="preserve">
-    <value>buttonLoanReschedule</value>
-  </data>
-  <data name="&gt;&gt;buttonLoanReschedule.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonLoanReschedule.Parent" xml:space="preserve">
-    <value>flowLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;buttonLoanReschedule.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="buttonManualSchedule.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonManualSchedule.Location" type="System.Drawing.Point, System.Drawing">
-    <value>295, 3</value>
-  </data>
-  <data name="buttonManualSchedule.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 28</value>
-  </data>
-  <data name="buttonManualSchedule.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="buttonManualSchedule.Text" xml:space="preserve">
-    <value>Manual schedule</value>
-  </data>
-  <data name="&gt;&gt;buttonManualSchedule.Name" xml:space="preserve">
-    <value>buttonManualSchedule</value>
-  </data>
-  <data name="&gt;&gt;buttonManualSchedule.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonManualSchedule.Parent" xml:space="preserve">
-    <value>flowLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;buttonManualSchedule.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="buttonAddTranche.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonAddTranche.Location" type="System.Drawing.Point, System.Drawing">
-    <value>441, 3</value>
-  </data>
-  <data name="buttonAddTranche.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 28</value>
-  </data>
-  <data name="buttonAddTranche.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="buttonAddTranche.Text" xml:space="preserve">
-    <value>Add tranche</value>
-  </data>
-  <data name="&gt;&gt;buttonAddTranche.Name" xml:space="preserve">
-    <value>buttonAddTranche</value>
-  </data>
-  <data name="&gt;&gt;buttonAddTranche.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonAddTranche.Parent" xml:space="preserve">
-    <value>flowLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;buttonAddTranche.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="btnWriteOff.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnWriteOff.Location" type="System.Drawing.Point, System.Drawing">
-    <value>587, 3</value>
-  </data>
-  <data name="btnWriteOff.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 28</value>
-  </data>
-  <data name="btnWriteOff.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="btnWriteOff.Text" xml:space="preserve">
-    <value>Write off</value>
-  </data>
-  <data name="&gt;&gt;btnWriteOff.Name" xml:space="preserve">
-    <value>btnWriteOff</value>
-  </data>
-  <data name="&gt;&gt;btnWriteOff.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnWriteOff.Parent" xml:space="preserve">
-    <value>flowLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;btnWriteOff.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="btnRepaymentNotice.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnRepaymentNotice.Location" type="System.Drawing.Point, System.Drawing">
-    <value>733, 3</value>
-  </data>
-  <data name="btnRepaymentNotice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 28</value>
-  </data>
-  <data name="btnRepaymentNotice.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="btnRepaymentNotice.Text" xml:space="preserve">
-    <value>Repayment Notice</value>
-  </data>
-  <data name="&gt;&gt;btnRepaymentNotice.Name" xml:space="preserve">
-    <value>btnRepaymentNotice</value>
-  </data>
-  <data name="&gt;&gt;btnRepaymentNotice.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnRepaymentNotice.Parent" xml:space="preserve">
-    <value>flowLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;btnRepaymentNotice.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="flowLayoutPanel8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="flowLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 381</value>
-  </data>
-  <data name="flowLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1267, 34</value>
-  </data>
-  <data name="flowLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel8.Name" xml:space="preserve">
-    <value>flowLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel8.Parent" xml:space="preserve">
-    <value>tabPageRepayments</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel8.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabPageRepayments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
-  </data>
-  <data name="tabPageRepayments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1267, 415</value>
-  </data>
-  <data name="tabPageRepayments.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabPageRepayments.Text" xml:space="preserve">
-    <value>Repayment schedule</value>
-  </data>
-  <data name="&gt;&gt;tabPageRepayments.Name" xml:space="preserve">
-    <value>tabPageRepayments</value>
-  </data>
-  <data name="&gt;&gt;tabPageRepayments.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageRepayments.Parent" xml:space="preserve">
-    <value>tabControlRepayments</value>
-  </data>
-  <data name="&gt;&gt;tabPageRepayments.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lvEvents.Name" xml:space="preserve">
-    <value>lvEvents</value>
-  </data>
-  <data name="&gt;&gt;lvEvents.Type" xml:space="preserve">
-    <value>OpenCBS.GUI.UserControl.ListViewEx, OpenCBS.GUI, Version=14.7.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;lvEvents.Parent" xml:space="preserve">
-    <value>tabPageEvents</value>
-  </data>
-  <data name="&gt;&gt;lvEvents.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>tabPageEvents</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabPageEvents.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
-  </data>
-  <data name="tabPageEvents.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1267, 415</value>
-  </data>
-  <data name="tabPageEvents.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tabPageEvents.Text" xml:space="preserve">
-    <value>Events</value>
-  </data>
-  <data name="&gt;&gt;tabPageEvents.Name" xml:space="preserve">
-    <value>tabPageEvents</value>
-  </data>
-  <data name="&gt;&gt;tabPageEvents.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageEvents.Parent" xml:space="preserve">
-    <value>tabControlRepayments</value>
-  </data>
-  <data name="&gt;&gt;tabPageEvents.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabControlRepayments.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <metadata name="imageListTab.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>907, 15</value>
-  </metadata>
-  <data name="imageListTab.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAS
-        HQAAAk1TRnQBSQFMAgEBBQEAATQBJwE0AScBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
-        AwABgAMAAUADAAEBAQABCAYAASAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
-        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
-        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
-        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
-        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
-        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
-        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
-        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
-        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
-        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
-        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
-        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
-        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
-        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
-        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
-        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
-        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
-        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
-        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
-        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
-        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
-        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
-        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
-        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
-        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
-        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
-        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
-        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/wMAA/8W9AL/ZQAB/wG8
-        Fu8B9wHvAfAB9GIAAv8CvA4HBu8D9wHsAesBvAH/YQAB/wLzDf8C9APzAvIE8QHwAe0B9wH0YQAB/wHy
-        AfQM/wP0AvMB8gEHAbwF8QHvAZIB9GEAAf8B8gH0DP8F9AHvAesB7wHyBPEB7wGSAfRhAAH/AfIB9Az/
-        A/QB8wHyAWwBFAH3AQcB8ALxAfIB7wGSAfRhAAH/AfIB9AT/AfAB7wHzBv8B9AHyAe8B9wFsARMD7AEH
-        AfEB8gEHAZIB9GEAAf8B8gH0A/8BvAHqAewBkgHzBf8B8wHsARUDDQEQAUMBbQHsAe8B8wEHAZIB9GEA
-        Af8B8gH0Av8B8QFsAQ4BFQHsAZIB8wT/AZECDQFxAXIBbAGRAUkBDgFtAewB8AEHAZIB9GEAAf8B8gH0
-        Af8B8AFsAQ0BSAENARUB7AH3AfMC/wEIAUgBDQFyAfQBkQHqAfABCAFsAQ8B7AIHAZIB9GEAAf8B8gH/
-        AfMBbARIAQ0BQwGSAfEC/wGRAQ0BFQHwAf8BkQFsAQcB9AH3AQ0BEgHvAQcBkgH0YQAB/wHyAfQBvAH3
-        Ae8B9wFIAWwBkgHrAfcD/wHvAUkB6wH0Af8BkQFsAQcB/wG7AQ0BFAIHAZIB9GEAAf8B8gH0A/8B8AEN
-        AesB8wX/AfQBBwHwAv8BkQFsAQcB/wH3AQ0BFAG8AQcBkgH0YQAB/wHyAfQD/wEIAQ0BbQHwCv8BkQES
-        Ae8BBwFsAQ0BbQHzAbwBkgH0YQAB/wHyAfQD/wEIAQ0BbQHwCP8B9AHzAXIBEgHsAUkCDQEHAf8BvAGS
-        AfRhAAH/AfIB9AP/AQgBDQFtAfAH/wHzAe8B7AFJBA0B7QL/AbwB9wH0YQAB/wHyAfQD/wEIAQ0BbQHw
-        Bv8B8wHsAUMCDQFIAWwBkQEHA/8B8AH3AfRhAAH/AfIB9AP/AQgBDQFtAfAG/wHsAg0BkQFxAWwBvAX/
-        AfAB9wH0YQAB/wHyAfQD/wEIAQ0BbQHwBf8B8AFIAQ0BkQH0AZEBEgG8Bf8B8AH3AfRhAAH/AfIB9AP/
-        AQgBDQFtAfAF/wG7AUgBFQG8Af8BkQFsAbwB/wHzAQcBvAH/AfAB9wH0YQAB/wHyAfQD/wEIAQ0BbQHw
-        Bf8BBwFIARQB7wH0AZEBbAG8AfMB7AFtAe0B8wHwAfcB9GEAAf8B8gH0A/8BCAENAW0B8AX/AfABbAER
-        Ae0BBwGRARIBvAHvAQ0BDgH3Af8B8AH3AfRhAAH/AfIB9AP/AQgBDQFtAfAF/wH0AZEBDQESAfcBbAES
-        Ae8BbAENARQB8gH/AfAB9wH0YQAB/wHyAfQD/wG8AQ0B6wHyBv8B8gFyAQ0BFQENAUMBFQINAQcC/wHw
-        AfcB9GEAAf8B8gH0A/8B8gFyAfcI/wHyAfcBcgFsAQ0BbAFyAQgD/wHwAfcB9GEAAf8B8gH0EP8B9AH3
-        AXEB8QX/AfABkgH0YQAB/wHyAfQR/wHzAfIG/wHwAfcB9GEAAf8C8xn/AfEBvAH/YQAB/wH0AfIB8xf0
-        AfIB8AL/YgAB/wH0GPMB9AH/ZQAa/4YAGv8GAAP/FvQC/wUAA/8W9AL/BAAC/wHzF/IB8wH/BAAB/wHy
-        AbwXBwHyAf8FAAH/AbwW7wH3Ae8B8AH0BAAB/wG8Fu8B9wHvAfAB9AMAAf8BBwGSDO0L7AHtAfAB/wIA
-        Af8B8QLvDPcEkgbtAuwB8QH/AgAC/wK8DgcG7wP3AewB6wG8Af8BAAL/ArwIBwG8BgcI7wHsAesBvAH/
-        AQAB/wHxDPMD8gLxA/AEvAEHAuwB8wH/AQAB9AHxCv8D9APzAvID8QPwAQcB7AH3AfQCAAH/AvMN/wL0
-        A/MC8gTxAfAB7QH3AfQBAAH/AvMI/wHzAvED8AO8BgcBvAHwAe0B9wH0AQAB9AHyAv8B9AfzA/ID8QLw
-        BLwBBwG8AfEBBwHsAfEB/wEAAfIG/wHwBLwHBwTvAQcB8ALxAe8BkgH0AgAB/wHyAfQM/wP0A/MC8gXx
-        Ae8BkgH0AQAB/wHyAfQH/wHzAe8N7AHrAZIB8QHvAZIB9AEAAfQB8gH/AfMB7w3tCOwBvAHwAewB8QH/
-        AQAB8gH0BP8BBwHrD20B7AG8AvEB7wGSAfQCAAH/AfIB9AL/AfQJ/wP0AvMD8gXxAe8BkgH0AQAB/wHy
-        AfQH/wH3AQ0BEAwNARUBkgHxAQcBkgH0AQAB9AHyAf8BkRRDAREB7ALwAewB8QH/AQAB8gH0BP8BkQ7r
-        AW0BQwHsAfAC8gHvAZIB9AIAAf8B8gH0Af8B8wIHAfEB9Ab/A/QD8wPyA/EB8gHvAZIB9AEAAf8B8gH0
-        B/8B7wFyDLwB7AERAfcB8QEHAZIB9AEAAfQB8gH/AbsBSBQNAfcB8QHwAewB8QH/AQAB8gH0A/8B9AG7
-        D/8B6gHsAfAC8gEHAZIB9AIAAf8B8gL/Ae0B6wLsAfcB7wHwAfMD/wT0AvMH8gEHAZIB9AEAAf8B8gH0
-        B/8BuwGSDP8B9wERAfcB8QEHAZIB9AEAAfQB8gH/AfEBbBJIAQ0BFQEHAfIB8AHsAfEB/wEAAfIB9AP/
-        AfQBBw//AeoB7AHwAvIBBwGSAfQCAAH/AfIB9AH/AQgBSQFDARQBEgFtAewBkgG8A/8E9APzBPIB8wEH
-        AZIB9AEAAf8B8gH0B/8BuwGSAfIBbAHwAXIB7wH3AewB8AFsAfIBbAEHAfcBEQHvAfIBBwGSAfQBAAH0
-        AfIB/wH0AZEBSAENEEgBDQFtAfAB8wHxAewB8QH/AQAB8gH0A/8B9AEHAf8BkQxsAfABbQHsAfAC8wEH
-        AZIB9AIAAf8B8gH0Av8DBwHsARIBFQFtAewB7wHzAv8D9AXzAvIB8wEHAZIB9AEAAf8B8gH0B/8BuwGR
-        Af8BBwH0AbwC8gG8AfQBBwH0AQgB8wH3AREB7wHyAQcBkgH0AQAB9AHyAv8BBwFsAQ0QSAENAfcC8wHx
-        AewB8QH/AQAB8gH0A/8B9AEHAf8B8AEHCbsCBwHzAeoB7AHxAvMBBwGSAfQCAAH/AfIB9AL/AfQBvAL/
-        AfQB9wERARMB7AH3AfEC/wP0B/MBBwGSAfQBAAH/AfIB9Af/AbsBkgH0AZIB8wHvArwB7wHyAZIB9AH3
-        AfEB9wERAe8B8wEHAZIB9AEAAfQB8gL/AfMBkQFIAQ0OSAENARIB8QHzAfQB8gHsAfEB/wEAAfIB9AP/
-        AfQBBwH/AfQL8gHzAfQB6gHsAfEB9AHzAQcBkgH0AgAB/wHyAfQD/wHxAfAC/wGRAWwB6wEUAesB7QG8
-        AfQB/wX0A/MB9AEHAZIB9AEAAf8B8gH0B/8BuwGSAfMB7AHyAZECBwGSAfEBkQHzAewB8AH3AREB7wHz
-        AQcBkgH0AQAB9AHyA/8BvAFsAUgCDQhIAg0BSAINAQcD9AHyAe0B8QH/AQAB8gH0A/8B9AEHAf8BkQFJ
-        CWwBSQFsAfABbQHtAfIC9AEHAZIB9AIAAf8B8gH0BP8BvAHzAZEBbAGSAZEB7AEUAW0B7AHvAfMB/wj0
-        AQcBkgH0AQAB/wHyAfQH/wG7AZEB/wHyAf8B8wL0AfMB/wHyAf8B8gH/AfcBQwHvAfMBvAGSAfQBAAH0
-        AfIE/wEHAXEMSAINAe8B/wP0AfIB7QHxAf8BAAHyAfQD/wH0AQcB/wH0C/MC9AHqAe0B8gL0AbwBkgH0
-        AgAB/wHyAfQE/wH0AQgCkQGSAbsBkQHtARIBEwHsAfcB8QL/BvQBvAGSAfQBAAH/AfIB9Af/AbsBkgHz
-        AWwB8AFxAZgB9wFyAfABbAHyAWwBBwH3AUMB7wH0AbwBkgH0AQAB9AHyBf8B8AH3ApEBSQRIAQ0BSAFx
-        AXIBkQG8Af8E9AHzAe0B8QH/AQAB8gH0A/8B9AEHAf8BvAH3C+8B8wHqAe0B8wL/AbwBkgH0AgAB/wHy
-        AfQF/wH0AfAB8QHvAZEBBwGRAe0BbQEUAesB7QG8AfQB/wT0Af8BvAGSAfQBAAH/AfIB9AT/AfAB9AH/
-        AbsBkQH/AfAB9AHxAvMB8QH0AfAB9AHwAf8B9wFDAe8B9AG8AZIB9AEAAfQB8gf/AfIBkQVIAQ0BQwHt
-        Ae8B8AP/AvQB/wHzAe0B8QH/AQAB8gH0A/8B9AEHAf8BkgxsAfABbQHtAfMC/wG8AZIB9AIAAf8B8gH0
-        B/8B8QHwAQgBkQHvAZIBkQHsARUBbQHsAQcB9AX/AbwBkgH0AQAB/wHyAfQD/wHvAewBBwH/AQcNbAFJ
-        AUMB7wH0AbwBkgH0AQAB9AHyBv8B8wFsAQ0GSAENAQ8BbQHtAfIF/wHzAe0B8QH/AQAB8gH0A/8B9AEH
-        Dv8B9AHqAe0B8wL/AbwB9wH0AgAB/wHyAfQI/wHzAbwB8AGRAZIB7wGRAe0BEwESAewB9wHyBP8BvAH3
-        AfQBAAH/AfIB9AH/AfQBvAEUAeoB7QHvAQcBbA0NARUB7wH/AfAB9wH0AQAB9AHyBv8BkQINB0gBDQEQ
-        AewBBwX/AfQB7QHxAf8BAAHyAfQD/wH0AQcB/wH3BHIBvAf/AfQB6gHtAfMC/wHwAfcB9AIAAf8B8gH0
-        Cf8B9AG8AfEB9wGRAbsBkQGSAW0BFAHsAe0B8AP/AfAB9wH0AQAB/wHyAfQB/wH3AUMCDQEVAe0B9wFs
-        AQ0LSAENARUBvAH/AfAB9wH0AQAB9AHyBf8B8gFJCkgBDQETAe8B9AT/AfQB7QHxAf8BAAHyAfQD/wH0
-        AQcB/wEHAewCkQHsAbwH/wH0AeoB7QH0Av8B8AH3AfQCAAH/AfIB9Av/AfEB8AEHAZEB7wKRARQBEQHr
-        AewBBwH0Af8B8AH3AfQBAAH/AfIB/wHyAUgBSQFxAZEBbAETAe8BkgJsCZEBbAFJAW0B9AH/AfAB9wH0
-        AQAB9AHyBf8BuwtIAQ0BEQH3AfME/wH0Ae0B8QH/AQAB8gH0A/8B9AEHB/8G9AH/AfQB6gHtAfQC/wHw
-        AfcB9AIAAf8B8gH0DP8B8wK8AZEB9wGRAUgBDQEPARIB7AHvAfMB8AH3AfQBAAH/AfIB/wHyAZEBBwGR
-        Ae8B9wENAe8B9AGRAZIJ9AFxAe8B9AL/AfAB9wH0AQAB9AHyBf8B7wFIAQ0JSAINAZIB8wT/AfQB7QHx
-        Af8BAAHyAfQD/wH0AQcB/wGRAUkLbAHwAW0B7QH0Av8B8AH3AfQCAAH/AfIB9A3/AfQBvAHxAZEBSAIN
-        Ae0BEgEVAewB9wEHAfcB9AEAAf8B8gH0A/8C6wFsAQ0BBwH/AQcB8An/AQcB8wP/AfAB9wH0AQAB9AHy
-        Bf8B7wFJAQ0JSAINAfcB9AT/AfQB7QHxAf8BAAHyAfQD/wH0AQcB/wHyAQgIvAIHAbwB8wHqAe0B8wL/
-        AfAB9wH0AgAB/wHyAfQP/wHxAfcBSQENAWwB/wH0AesBFQHsAQcB9wH0AQAB/wHyAfQB/wHyAewBSAIN
-        AesB9BH/AfAB9wH0AQAB9AHyBf8BvAFsAQ0JSAINAQcF/wH0Ae0B8QH/AQAB8gH0A/8B9AEHAf8B8wjw
-        AfEE/wHqAfcB9AL/AfAB9wH0AgAB/wHyAfQQ/wH0AfcBkQHzA/8BEwHtAbwB9wH0AQAB/wHyAfQB/wFy
-        AQ0BSAFsAfcB9BL/AfAB9wH0AQAB9AHyBf8B8wGRAUgBDQhIAQ0BEgHzBf8B9AHtAfEB/wEAAfIB9AP/
-        AfQBBwH/AZEBSAZsAUkBbAH0AfcCkQESAfED/wHwAfcB9AIAAf8B8gH0Ev8B8AHxAv8B8AFsAfEB8AH3
-        AfQBAAH/AfIB/wHxAUgBbAFyAe0B8AEHAbwR/wHwAfcB9AEAAfQB8gb/AQcBbAENB0gCDQHvBv8B9AHt
-        AfEB/wEAAfIB9AP/AfQBBwL/CvQBbAINAbwE/wHwAfcB9AIAAf8B8gH0E/8B8AK8AWwB9wH/AfAB9wH0
-        AQAB/wHyAf8B8gFJAewB6wHsAW0B6gEHEf8B8AH3AfQBAAH0AfIG/wH0AZgBbAUNAUgCDQHsB/8B9AHt
-        AfEB/wEAAfIB9AP/AfQBBwz/AWwBDQEHBf8B8AH3AfQCAAH/AfIB9BT/AfIB9wG8Av8B8AH3AfQBAAH/
-        AfIB9AH/Ae0BSQEVAUkBDgFtAfQR/wHwAfcB9AEAAfQB8gf/AfQBuwFxAUkFSAHtCP8B9AHtAfEB/wEA
-        AfIB9AP/AfQBBwHzCvQB8QFsAe8G/wHwAfcB9AIAAf8B8gH0Gf8B8AGSAfQBAAH/AfIB9AH/AfQB7wFs
-        AUkBkQH0Ev8B8AGSAfQBAAH0AfIJ/wHxAe8DkQHtAfAJ/wH0Ae0B8QH/AQAB8gH0BP8B8gu8AQcBvAf/
-        AfAB9wH0AgAB/wHyAfQZ/wHwAfcB9AEAAf8B8gH0A/8BvAHwFP8B8AH3AfQBAAH0AfIM/wH0Df8B9wHz
-        Af8BAAHzAfQZ/wHyAQcB/wIAAf8C8xn/AfEBvAH/AQAB/wLzGf8B8QG8Af8BAAH0AfIZ/wH0AQcC/wEA
-        AfQB8gH0F/8B9AEHAfQB/wIAAf8B9AHyAfMX9AHyAfAC/wEAAf8B9AHyAfMX9AHyAfAC/wEAAf8B9Bjy
-        AfEB8gL/AgAB/wH0AfMY8gH/BQAB/wH0GPMB9AH/BAAB/wH0GPMB9AH/BAAC/xf0Av8FABv/BgAa/wYA
-        Gv8EAAFCAU0BPgcAAT4DAAEoAwABgAMAAUADAAEBAQABAQYAAQQWAAP/AQABwAIAAQcMAAHAAgABAw8A
-        AQEPAAEBDwABAQ8AAQEPAAEBDwABAQ8AAQEPAAEBDwABAQ8AAQEPAAEBDwABAQ8AAQEPAAEBDwABAQ8A
-        AQEPAAEBDwABAQ8AAQEPAAEBDwABAQ8AAQEPAAEBDwABAQ8AAQEPAAEBDwABAQ8AAQEMAAGAAgABBwwA
-        AcACAAEPDAAE/wHAAgABDwHAAgABBwHAAgABBwGAAgABBwGAAgABBwHAAgABAwHAAgABAwGAAgABAwMA
-        AQMDAAEBAwABAQMAAQEDAAEDAwABAQMAAQEDAAEBAwABAwMAAQEDAAEBAwABAQMAAQMDAAEBAwABAQMA
-        AQEDAAEDAwABAQMAAQEDAAEBAwABAwMAAQEDAAEBAwABAQMAAQMDAAEBAwABAQMAAQEDAAEDAwABAQMA
-        AQEDAAEBAwABAwMAAQEDAAEBAwABAQMAAQMDAAEBAwABAQMAAQEDAAEDAwABAQMAAQEDAAEBAwABAwMA
-        AQEDAAEBAwABAQMAAQMDAAEBAwABAQMAAQEDAAEDAwABAQMAAQEDAAEBAwABAwMAAQEDAAEBAwABAQMA
-        AQMDAAEBAwABAQMAAQEDAAEDAwABAQMAAQEDAAEBAwABAwMAAQEDAAEBAwABAQMAAQMDAAEBAwABAQMA
-        AQEDAAEDAwABAQMAAQEDAAEBAwABAwMAAQEDAAEBAwABAQMAAQMDAAEBAwABAQMAAQEDAAEDAwABAQMA
-        AQEDAAEBAwABAwMAAQEDAAEBAwABAQMAAQMDAAEBAwABAQMAAQEDAAEDAwABAQMAAQEDAAEBAwABAwMA
-        AQEDAAEBAwABAQMAAQMDAAEBAwABAQMAAQMDAAEPAYACAAEHAYACAAEHAYACAAEPAYACAAEPAcACAAEP
-        AcACAAEPCw==
-</value>
-  </data>
-  <data name="tabControlRepayments.ItemSize" type="System.Drawing.Size, System.Drawing">
-    <value>175, 32</value>
-  </data>
-  <data name="tabControlRepayments.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 157</value>
-  </data>
-  <data name="tabControlRepayments.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 455</value>
-  </data>
-  <data name="tabControlRepayments.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;tabControlRepayments.Name" xml:space="preserve">
     <value>tabControlRepayments</value>
   </data>
@@ -2838,24 +2961,6 @@
   <data name="&gt;&gt;tabControlRepayments.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="richTextBoxStatus.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="richTextBoxStatus.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
-  </data>
-  <data name="richTextBoxStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 53</value>
-  </data>
-  <data name="richTextBoxStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 104</value>
-  </data>
-  <data name="richTextBoxStatus.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="richTextBoxStatus.Text" xml:space="preserve">
-    <value>Status:</value>
-  </data>
   <data name="&gt;&gt;richTextBoxStatus.Name" xml:space="preserve">
     <value>richTextBoxStatus</value>
   </data>
@@ -2867,33 +2972,6 @@
   </data>
   <data name="&gt;&gt;richTextBoxStatus.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="lblLoanStatus.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="lblLoanStatus.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 15.75pt, style=Italic</value>
-  </data>
-  <data name="lblLoanStatus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblLoanStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="lblLoanStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1275, 53</value>
-  </data>
-  <data name="lblLoanStatus.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="lblLoanStatus.Text" xml:space="preserve">
-    <value>Contract repayment status</value>
-  </data>
-  <data name="lblLoanStatus.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="lblLoanStatus.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="&gt;&gt;lblLoanStatus.Name" xml:space="preserve">
     <value>lblLoanStatus</value>
@@ -3921,6 +3999,141 @@
   <data name="tabControlPerson.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
+  <metadata name="imageListTab.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>907, 15</value>
+  </metadata>
+  <data name="imageListTab.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAS
+        HQAAAk1TRnQBSQFMAgEBBQEAAWwBJwFsAScBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABgAMAAUADAAEBAQABCAYAASAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
+        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
+        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
+        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
+        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
+        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
+        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
+        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
+        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
+        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
+        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
+        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
+        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
+        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
+        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
+        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
+        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
+        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
+        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
+        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
+        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
+        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
+        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
+        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
+        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
+        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
+        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/wMAA/8W9AL/ZQAB/wG8
+        Fu8B9wHvAfAB9GIAAv8CvA4HBu8D9wHsAesBvAH/YQAB/wLzDf8C9APzAvIE8QHwAe0B9wH0YQAB/wHy
+        AfQM/wP0AvMB8gEHAbwF8QHvAZIB9GEAAf8B8gH0DP8F9AHvAesB7wHyBPEB7wGSAfRhAAH/AfIB9Az/
+        A/QB8wHyAWwBFAH3AQcB8ALxAfIB7wGSAfRhAAH/AfIB9AT/AfAB7wHzBv8B9AHyAe8B9wFsARMD7AEH
+        AfEB8gEHAZIB9GEAAf8B8gH0A/8BvAHqAewBkgHzBf8B8wHsARUDDQEQAUMBbQHsAe8B8wEHAZIB9GEA
+        Af8B8gH0Av8B8QFsAQ4BFQHsAZIB8wT/AZECDQFxAXIBbAGRAUkBDgFtAewB8AEHAZIB9GEAAf8B8gH0
+        Af8B8AFsAQ0BSAENARUB7AH3AfMC/wEIAUgBDQFyAfQBkQHqAfABCAFsAQ8B7AIHAZIB9GEAAf8B8gH/
+        AfMBbARIAQ0BQwGSAfEC/wGRAQ0BFQHwAf8BkQFsAQcB9AH3AQ0BEgHvAQcBkgH0YQAB/wHyAfQBvAH3
+        Ae8B9wFIAWwBkgHrAfcD/wHvAUkB6wH0Af8BkQFsAQcB/wG7AQ0BFAIHAZIB9GEAAf8B8gH0A/8B8AEN
+        AesB8wX/AfQBBwHwAv8BkQFsAQcB/wH3AQ0BFAG8AQcBkgH0YQAB/wHyAfQD/wEIAQ0BbQHwCv8BkQES
+        Ae8BBwFsAQ0BbQHzAbwBkgH0YQAB/wHyAfQD/wEIAQ0BbQHwCP8B9AHzAXIBEgHsAUkCDQEHAf8BvAGS
+        AfRhAAH/AfIB9AP/AQgBDQFtAfAH/wHzAe8B7AFJBA0B7QL/AbwB9wH0YQAB/wHyAfQD/wEIAQ0BbQHw
+        Bv8B8wHsAUMCDQFIAWwBkQEHA/8B8AH3AfRhAAH/AfIB9AP/AQgBDQFtAfAG/wHsAg0BkQFxAWwBvAX/
+        AfAB9wH0YQAB/wHyAfQD/wEIAQ0BbQHwBf8B8AFIAQ0BkQH0AZEBEgG8Bf8B8AH3AfRhAAH/AfIB9AP/
+        AQgBDQFtAfAF/wG7AUgBFQG8Af8BkQFsAbwB/wHzAQcBvAH/AfAB9wH0YQAB/wHyAfQD/wEIAQ0BbQHw
+        Bf8BBwFIARQB7wH0AZEBbAG8AfMB7AFtAe0B8wHwAfcB9GEAAf8B8gH0A/8BCAENAW0B8AX/AfABbAER
+        Ae0BBwGRARIBvAHvAQ0BDgH3Af8B8AH3AfRhAAH/AfIB9AP/AQgBDQFtAfAF/wH0AZEBDQESAfcBbAES
+        Ae8BbAENARQB8gH/AfAB9wH0YQAB/wHyAfQD/wG8AQ0B6wHyBv8B8gFyAQ0BFQENAUMBFQINAQcC/wHw
+        AfcB9GEAAf8B8gH0A/8B8gFyAfcI/wHyAfcBcgFsAQ0BbAFyAQgD/wHwAfcB9GEAAf8B8gH0EP8B9AH3
+        AXEB8QX/AfABkgH0YQAB/wHyAfQR/wHzAfIG/wHwAfcB9GEAAf8C8xn/AfEBvAH/YQAB/wH0AfIB8xf0
+        AfIB8AL/YgAB/wH0GPMB9AH/ZQAa/4YAGv8GAAP/FvQC/wUAA/8W9AL/BAAC/wHzF/IB8wH/BAAB/wHy
+        AbwXBwHyAf8FAAH/AbwW7wH3Ae8B8AH0BAAB/wG8Fu8B9wHvAfAB9AMAAf8BBwGSDO0L7AHtAfAB/wIA
+        Af8B8QLvDPcEkgbtAuwB8QH/AgAC/wK8DgcG7wP3AewB6wG8Af8BAAL/ArwIBwG8BgcI7wHsAesBvAH/
+        AQAB/wHxDPMD8gLxA/AEvAEHAuwB8wH/AQAB9AHxCv8D9APzAvID8QPwAQcB7AH3AfQCAAH/AvMN/wL0
+        A/MC8gTxAfAB7QH3AfQBAAH/AvMI/wHzAvED8AO8BgcBvAHwAe0B9wH0AQAB9AHyAv8B9AfzA/ID8QLw
+        BLwBBwG8AfEBBwHsAfEB/wEAAfIG/wHwBLwHBwTvAQcB8ALxAe8BkgH0AgAB/wHyAfQM/wP0A/MC8gXx
+        Ae8BkgH0AQAB/wHyAfQH/wHzAe8N7AHrAZIB8QHvAZIB9AEAAfQB8gH/AfMB7w3tCOwBvAHwAewB8QH/
+        AQAB8gH0BP8BBwHrD20B7AG8AvEB7wGSAfQCAAH/AfIB9AL/AfQJ/wP0AvMD8gXxAe8BkgH0AQAB/wHy
+        AfQH/wH3AQ0BEAwNARUBkgHxAQcBkgH0AQAB9AHyAf8BkRRDAREB7ALwAewB8QH/AQAB8gH0BP8BkQ7r
+        AW0BQwHsAfAC8gHvAZIB9AIAAf8B8gH0Af8B8wIHAfEB9Ab/A/QD8wPyA/EB8gHvAZIB9AEAAf8B8gH0
+        B/8B7wFyDLwB7AERAfcB8QEHAZIB9AEAAfQB8gH/AbsBSBQNAfcB8QHwAewB8QH/AQAB8gH0A/8B9AG7
+        D/8B6gHsAfAC8gEHAZIB9AIAAf8B8gL/Ae0B6wLsAfcB7wHwAfMD/wT0AvMH8gEHAZIB9AEAAf8B8gH0
+        B/8BuwGSDP8B9wERAfcB8QEHAZIB9AEAAfQB8gH/AfEBbBJIAQ0BFQEHAfIB8AHsAfEB/wEAAfIB9AP/
+        AfQBBw//AeoB7AHwAvIBBwGSAfQCAAH/AfIB9AH/AQgBSQFDARQBEgFtAewBkgG8A/8E9APzBPIB8wEH
+        AZIB9AEAAf8B8gH0B/8BuwGSAfIBbAHwAXIB7wH3AewB8AFsAfIBbAEHAfcBEQHvAfIBBwGSAfQBAAH0
+        AfIB/wH0AZEBSAENEEgBDQFtAfAB8wHxAewB8QH/AQAB8gH0A/8B9AEHAf8BkQxsAfABbQHsAfAC8wEH
+        AZIB9AIAAf8B8gH0Av8DBwHsARIBFQFtAewB7wHzAv8D9AXzAvIB8wEHAZIB9AEAAf8B8gH0B/8BuwGR
+        Af8BBwH0AbwC8gG8AfQBBwH0AQgB8wH3AREB7wHyAQcBkgH0AQAB9AHyAv8BBwFsAQ0QSAENAfcC8wHx
+        AewB8QH/AQAB8gH0A/8B9AEHAf8B8AEHCbsCBwHzAeoB7AHxAvMBBwGSAfQCAAH/AfIB9AL/AfQBvAL/
+        AfQB9wERARMB7AH3AfEC/wP0B/MBBwGSAfQBAAH/AfIB9Af/AbsBkgH0AZIB8wHvArwB7wHyAZIB9AH3
+        AfEB9wERAe8B8wEHAZIB9AEAAfQB8gL/AfMBkQFIAQ0OSAENARIB8QHzAfQB8gHsAfEB/wEAAfIB9AP/
+        AfQBBwH/AfQL8gHzAfQB6gHsAfEB9AHzAQcBkgH0AgAB/wHyAfQD/wHxAfAC/wGRAWwB6wEUAesB7QG8
+        AfQB/wX0A/MB9AEHAZIB9AEAAf8B8gH0B/8BuwGSAfMB7AHyAZECBwGSAfEBkQHzAewB8AH3AREB7wHz
+        AQcBkgH0AQAB9AHyA/8BvAFsAUgCDQhIAg0BSAINAQcD9AHyAe0B8QH/AQAB8gH0A/8B9AEHAf8BkQFJ
+        CWwBSQFsAfABbQHtAfIC9AEHAZIB9AIAAf8B8gH0BP8BvAHzAZEBbAGSAZEB7AEUAW0B7AHvAfMB/wj0
+        AQcBkgH0AQAB/wHyAfQH/wG7AZEB/wHyAf8B8wL0AfMB/wHyAf8B8gH/AfcBQwHvAfMBvAGSAfQBAAH0
+        AfIE/wEHAXEMSAINAe8B/wP0AfIB7QHxAf8BAAHyAfQD/wH0AQcB/wH0C/MC9AHqAe0B8gL0AbwBkgH0
+        AgAB/wHyAfQE/wH0AQgCkQGSAbsBkQHtARIBEwHsAfcB8QL/BvQBvAGSAfQBAAH/AfIB9Af/AbsBkgHz
+        AWwB8AFxAZgB9wFyAfABbAHyAWwBBwH3AUMB7wH0AbwBkgH0AQAB9AHyBf8B8AH3ApEBSQRIAQ0BSAFx
+        AXIBkQG8Af8E9AHzAe0B8QH/AQAB8gH0A/8B9AEHAf8BvAH3C+8B8wHqAe0B8wL/AbwBkgH0AgAB/wHy
+        AfQF/wH0AfAB8QHvAZEBBwGRAe0BbQEUAesB7QG8AfQB/wT0Af8BvAGSAfQBAAH/AfIB9AT/AfAB9AH/
+        AbsBkQH/AfAB9AHxAvMB8QH0AfAB9AHwAf8B9wFDAe8B9AG8AZIB9AEAAfQB8gf/AfIBkQVIAQ0BQwHt
+        Ae8B8AP/AvQB/wHzAe0B8QH/AQAB8gH0A/8B9AEHAf8BkgxsAfABbQHtAfMC/wG8AZIB9AIAAf8B8gH0
+        B/8B8QHwAQgBkQHvAZIBkQHsARUBbQHsAQcB9AX/AbwBkgH0AQAB/wHyAfQD/wHvAewBBwH/AQcNbAFJ
+        AUMB7wH0AbwBkgH0AQAB9AHyBv8B8wFsAQ0GSAENAQ8BbQHtAfIF/wHzAe0B8QH/AQAB8gH0A/8B9AEH
+        Dv8B9AHqAe0B8wL/AbwB9wH0AgAB/wHyAfQI/wHzAbwB8AGRAZIB7wGRAe0BEwESAewB9wHyBP8BvAH3
+        AfQBAAH/AfIB9AH/AfQBvAEUAeoB7QHvAQcBbA0NARUB7wH/AfAB9wH0AQAB9AHyBv8BkQINB0gBDQEQ
+        AewBBwX/AfQB7QHxAf8BAAHyAfQD/wH0AQcB/wH3BHIBvAf/AfQB6gHtAfMC/wHwAfcB9AIAAf8B8gH0
+        Cf8B9AG8AfEB9wGRAbsBkQGSAW0BFAHsAe0B8AP/AfAB9wH0AQAB/wHyAfQB/wH3AUMCDQEVAe0B9wFs
+        AQ0LSAENARUBvAH/AfAB9wH0AQAB9AHyBf8B8gFJCkgBDQETAe8B9AT/AfQB7QHxAf8BAAHyAfQD/wH0
+        AQcB/wEHAewCkQHsAbwH/wH0AeoB7QH0Av8B8AH3AfQCAAH/AfIB9Av/AfEB8AEHAZEB7wKRARQBEQHr
+        AewBBwH0Af8B8AH3AfQBAAH/AfIB/wHyAUgBSQFxAZEBbAETAe8BkgJsCZEBbAFJAW0B9AH/AfAB9wH0
+        AQAB9AHyBf8BuwtIAQ0BEQH3AfME/wH0Ae0B8QH/AQAB8gH0A/8B9AEHB/8G9AH/AfQB6gHtAfQC/wHw
+        AfcB9AIAAf8B8gH0DP8B8wK8AZEB9wGRAUgBDQEPARIB7AHvAfMB8AH3AfQBAAH/AfIB/wHyAZEBBwGR
+        Ae8B9wENAe8B9AGRAZIJ9AFxAe8B9AL/AfAB9wH0AQAB9AHyBf8B7wFIAQ0JSAINAZIB8wT/AfQB7QHx
+        Af8BAAHyAfQD/wH0AQcB/wGRAUkLbAHwAW0B7QH0Av8B8AH3AfQCAAH/AfIB9A3/AfQBvAHxAZEBSAIN
+        Ae0BEgEVAewB9wEHAfcB9AEAAf8B8gH0A/8C6wFsAQ0BBwH/AQcB8An/AQcB8wP/AfAB9wH0AQAB9AHy
+        Bf8B7wFJAQ0JSAINAfcB9AT/AfQB7QHxAf8BAAHyAfQD/wH0AQcB/wHyAQgIvAIHAbwB8wHqAe0B8wL/
+        AfAB9wH0AgAB/wHyAfQP/wHxAfcBSQENAWwB/wH0AesBFQHsAQcB9wH0AQAB/wHyAfQB/wHyAewBSAIN
+        AesB9BH/AfAB9wH0AQAB9AHyBf8BvAFsAQ0JSAINAQcF/wH0Ae0B8QH/AQAB8gH0A/8B9AEHAf8B8wjw
+        AfEE/wHqAfcB9AL/AfAB9wH0AgAB/wHyAfQQ/wH0AfcBkQHzA/8BEwHtAbwB9wH0AQAB/wHyAfQB/wFy
+        AQ0BSAFsAfcB9BL/AfAB9wH0AQAB9AHyBf8B8wGRAUgBDQhIAQ0BEgHzBf8B9AHtAfEB/wEAAfIB9AP/
+        AfQBBwH/AZEBSAZsAUkBbAH0AfcCkQESAfED/wHwAfcB9AIAAf8B8gH0Ev8B8AHxAv8B8AFsAfEB8AH3
+        AfQBAAH/AfIB/wHxAUgBbAFyAe0B8AEHAbwR/wHwAfcB9AEAAfQB8gb/AQcBbAENB0gCDQHvBv8B9AHt
+        AfEB/wEAAfIB9AP/AfQBBwL/CvQBbAINAbwE/wHwAfcB9AIAAf8B8gH0E/8B8AK8AWwB9wH/AfAB9wH0
+        AQAB/wHyAf8B8gFJAewB6wHsAW0B6gEHEf8B8AH3AfQBAAH0AfIG/wH0AZgBbAUNAUgCDQHsB/8B9AHt
+        AfEB/wEAAfIB9AP/AfQBBwz/AWwBDQEHBf8B8AH3AfQCAAH/AfIB9BT/AfIB9wG8Av8B8AH3AfQBAAH/
+        AfIB9AH/Ae0BSQEVAUkBDgFtAfQR/wHwAfcB9AEAAfQB8gf/AfQBuwFxAUkFSAHtCP8B9AHtAfEB/wEA
+        AfIB9AP/AfQBBwHzCvQB8QFsAe8G/wHwAfcB9AIAAf8B8gH0Gf8B8AGSAfQBAAH/AfIB9AH/AfQB7wFs
+        AUkBkQH0Ev8B8AGSAfQBAAH0AfIJ/wHxAe8DkQHtAfAJ/wH0Ae0B8QH/AQAB8gH0BP8B8gu8AQcBvAf/
+        AfAB9wH0AgAB/wHyAfQZ/wHwAfcB9AEAAf8B8gH0A/8BvAHwFP8B8AH3AfQBAAH0AfIM/wH0Df8B9wHz
+        Af8BAAHzAfQZ/wHyAQcB/wIAAf8C8xn/AfEBvAH/AQAB/wLzGf8B8QG8Af8BAAH0AfIZ/wH0AQcC/wEA
+        AfQB8gH0F/8B9AEHAfQB/wIAAf8B9AHyAfMX9AHyAfAC/wEAAf8B9AHyAfMX9AHyAfAC/wEAAf8B9Bjy
+        AfEB8gL/AgAB/wH0AfMY8gH/BQAB/wH0GPMB9AH/BAAB/wH0GPMB9AH/BAAC/xf0Av8FABv/BgAa/wYA
+        Gv8EAAFCAU0BPgcAAT4DAAEoAwABgAMAAUADAAEBAQABAQYAAQQWAAP/AQABwAIAAQcMAAHAAgABAw8A
+        AQEPAAEBDwABAQ8AAQEPAAEBDwABAQ8AAQEPAAEBDwABAQ8AAQEPAAEBDwABAQ8AAQEPAAEBDwABAQ8A
+        AQEPAAEBDwABAQ8AAQEPAAEBDwABAQ8AAQEPAAEBDwABAQ8AAQEPAAEBDwABAQ8AAQEMAAGAAgABBwwA
+        AcACAAEPDAAE/wHAAgABDwHAAgABBwHAAgABBwGAAgABBwGAAgABBwHAAgABAwHAAgABAwGAAgABAwMA
+        AQMDAAEBAwABAQMAAQEDAAEDAwABAQMAAQEDAAEBAwABAwMAAQEDAAEBAwABAQMAAQMDAAEBAwABAQMA
+        AQEDAAEDAwABAQMAAQEDAAEBAwABAwMAAQEDAAEBAwABAQMAAQMDAAEBAwABAQMAAQEDAAEDAwABAQMA
+        AQEDAAEBAwABAwMAAQEDAAEBAwABAQMAAQMDAAEBAwABAQMAAQEDAAEDAwABAQMAAQEDAAEBAwABAwMA
+        AQEDAAEBAwABAQMAAQMDAAEBAwABAQMAAQEDAAEDAwABAQMAAQEDAAEBAwABAwMAAQEDAAEBAwABAQMA
+        AQMDAAEBAwABAQMAAQEDAAEDAwABAQMAAQEDAAEBAwABAwMAAQEDAAEBAwABAQMAAQMDAAEBAwABAQMA
+        AQEDAAEDAwABAQMAAQEDAAEBAwABAwMAAQEDAAEBAwABAQMAAQMDAAEBAwABAQMAAQEDAAEDAwABAQMA
+        AQEDAAEBAwABAwMAAQEDAAEBAwABAQMAAQMDAAEBAwABAQMAAQEDAAEDAwABAQMAAQEDAAEBAwABAwMA
+        AQEDAAEBAwABAQMAAQMDAAEBAwABAQMAAQMDAAEPAYACAAEHAYACAAEHAYACAAEPAYACAAEPAcACAAEP
+        AcACAAEPCw==
+</value>
+  </data>
   <data name="tabControlPerson.ItemSize" type="System.Drawing.Size, System.Drawing">
     <value>60, 32</value>
   </data>
@@ -3943,231 +4156,6 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tabControlPerson.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;groupBoxProjectDetails.Name" xml:space="preserve">
-    <value>groupBoxProjectDetails</value>
-  </data>
-  <data name="&gt;&gt;groupBoxProjectDetails.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxProjectDetails.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;groupBoxProjectDetails.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tabControlProject.Name" xml:space="preserve">
-    <value>tabControlProject</value>
-  </data>
-  <data name="&gt;&gt;tabControlProject.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControlProject.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;tabControlProject.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1269, 606</value>
-  </data>
-  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
-    <value>tabPageProject</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="groupBoxProjectDetails" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel1" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tabControlProject" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,193,Absolute,65,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="&gt;&gt;dateTimePickerProjectBeginDate.Name" xml:space="preserve">
-    <value>dateTimePickerProjectBeginDate</value>
-  </data>
-  <data name="&gt;&gt;dateTimePickerProjectBeginDate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dateTimePickerProjectBeginDate.Parent" xml:space="preserve">
-    <value>groupBoxProjectDetails</value>
-  </data>
-  <data name="&gt;&gt;dateTimePickerProjectBeginDate.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;labelProjectDate.Name" xml:space="preserve">
-    <value>labelProjectDate</value>
-  </data>
-  <data name="&gt;&gt;labelProjectDate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelProjectDate.Parent" xml:space="preserve">
-    <value>groupBoxProjectDetails</value>
-  </data>
-  <data name="&gt;&gt;labelProjectDate.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectSelectPurpose.Name" xml:space="preserve">
-    <value>buttonProjectSelectPurpose</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectSelectPurpose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectSelectPurpose.Parent" xml:space="preserve">
-    <value>groupBoxProjectDetails</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectSelectPurpose.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectPurpose.Name" xml:space="preserve">
-    <value>textBoxProjectPurpose</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectPurpose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectPurpose.Parent" xml:space="preserve">
-    <value>groupBoxProjectDetails</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectPurpose.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;labelProjectPurpose.Name" xml:space="preserve">
-    <value>labelProjectPurpose</value>
-  </data>
-  <data name="&gt;&gt;labelProjectPurpose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelProjectPurpose.Parent" xml:space="preserve">
-    <value>groupBoxProjectDetails</value>
-  </data>
-  <data name="&gt;&gt;labelProjectPurpose.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;labelProjectName.Name" xml:space="preserve">
-    <value>labelProjectName</value>
-  </data>
-  <data name="&gt;&gt;labelProjectName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelProjectName.Parent" xml:space="preserve">
-    <value>groupBoxProjectDetails</value>
-  </data>
-  <data name="&gt;&gt;labelProjectName.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectName.Name" xml:space="preserve">
-    <value>textBoxProjectName</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectName.Parent" xml:space="preserve">
-    <value>groupBoxProjectDetails</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectName.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;labelProjectCode.Name" xml:space="preserve">
-    <value>labelProjectCode</value>
-  </data>
-  <data name="&gt;&gt;labelProjectCode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelProjectCode.Parent" xml:space="preserve">
-    <value>groupBoxProjectDetails</value>
-  </data>
-  <data name="&gt;&gt;labelProjectCode.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectCode.Name" xml:space="preserve">
-    <value>textBoxProjectCode</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectCode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectCode.Parent" xml:space="preserve">
-    <value>groupBoxProjectDetails</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectCode.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;labelFirstProjectName.Name" xml:space="preserve">
-    <value>labelFirstProjectName</value>
-  </data>
-  <data name="&gt;&gt;labelFirstProjectName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelFirstProjectName.Parent" xml:space="preserve">
-    <value>groupBoxProjectDetails</value>
-  </data>
-  <data name="&gt;&gt;labelFirstProjectName.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectAim.Name" xml:space="preserve">
-    <value>textBoxProjectAim</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectAim.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectAim.Parent" xml:space="preserve">
-    <value>groupBoxProjectDetails</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectAim.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="groupBoxProjectDetails.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="groupBoxProjectDetails.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="groupBoxProjectDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1263, 187</value>
-  </data>
-  <data name="groupBoxProjectDetails.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;groupBoxProjectDetails.Name" xml:space="preserve">
-    <value>groupBoxProjectDetails</value>
-  </data>
-  <data name="&gt;&gt;groupBoxProjectDetails.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxProjectDetails.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;groupBoxProjectDetails.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="dateTimePickerProjectBeginDate.Location" type="System.Drawing.Point, System.Drawing">
@@ -4470,42 +4458,6 @@
   <data name="&gt;&gt;textBoxProjectAim.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="&gt;&gt;buttonProjectSave.Name" xml:space="preserve">
-    <value>buttonProjectSave</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectSave.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectSave.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 196</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1263, 59</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="buttonProjectSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -4537,195 +4489,6 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;buttonProjectSave.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabPageProjectLoans.Name" xml:space="preserve">
-    <value>tabPageProjectLoans</value>
-  </data>
-  <data name="&gt;&gt;tabPageProjectLoans.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageProjectLoans.Parent" xml:space="preserve">
-    <value>tabControlProject</value>
-  </data>
-  <data name="&gt;&gt;tabPageProjectLoans.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabPageProjectAnalyses.Name" xml:space="preserve">
-    <value>tabPageProjectAnalyses</value>
-  </data>
-  <data name="&gt;&gt;tabPageProjectAnalyses.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageProjectAnalyses.Parent" xml:space="preserve">
-    <value>tabControlProject</value>
-  </data>
-  <data name="&gt;&gt;tabPageProjectAnalyses.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tabPageCorporate.Name" xml:space="preserve">
-    <value>tabPageCorporate</value>
-  </data>
-  <data name="&gt;&gt;tabPageCorporate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageCorporate.Parent" xml:space="preserve">
-    <value>tabControlProject</value>
-  </data>
-  <data name="&gt;&gt;tabPageCorporate.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tabPageFollowUp.Name" xml:space="preserve">
-    <value>tabPageFollowUp</value>
-  </data>
-  <data name="&gt;&gt;tabPageFollowUp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageFollowUp.Parent" xml:space="preserve">
-    <value>tabControlProject</value>
-  </data>
-  <data name="&gt;&gt;tabPageFollowUp.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tabControlProject.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabControlProject.ItemSize" type="System.Drawing.Size, System.Drawing">
-    <value>58, 32</value>
-  </data>
-  <data name="tabControlProject.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 261</value>
-  </data>
-  <data name="tabControlProject.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1263, 342</value>
-  </data>
-  <data name="tabControlProject.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tabControlProject.Name" xml:space="preserve">
-    <value>tabControlProject</value>
-  </data>
-  <data name="&gt;&gt;tabControlProject.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControlProject.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;tabControlProject.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;pnlLoans.Name" xml:space="preserve">
-    <value>pnlLoans</value>
-  </data>
-  <data name="&gt;&gt;pnlLoans.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlLoans.Parent" xml:space="preserve">
-    <value>tabPageProjectLoans</value>
-  </data>
-  <data name="&gt;&gt;pnlLoans.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabPageProjectLoans.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
-  </data>
-  <data name="tabPageProjectLoans.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageProjectLoans.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1255, 302</value>
-  </data>
-  <data name="tabPageProjectLoans.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tabPageProjectLoans.Text" xml:space="preserve">
-    <value>Contracts</value>
-  </data>
-  <data name="&gt;&gt;tabPageProjectLoans.Name" xml:space="preserve">
-    <value>tabPageProjectLoans</value>
-  </data>
-  <data name="&gt;&gt;tabPageProjectLoans.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageProjectLoans.Parent" xml:space="preserve">
-    <value>tabControlProject</value>
-  </data>
-  <data name="&gt;&gt;tabPageProjectLoans.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lvContracts.Name" xml:space="preserve">
-    <value>lvContracts</value>
-  </data>
-  <data name="&gt;&gt;lvContracts.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lvContracts.Parent" xml:space="preserve">
-    <value>pnlLoans</value>
-  </data>
-  <data name="&gt;&gt;lvContracts.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
-    <value>pnlLoans</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="pnlLoans.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="pnlLoans.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="pnlLoans.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1249, 296</value>
-  </data>
-  <data name="pnlLoans.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;pnlLoans.Name" xml:space="preserve">
-    <value>pnlLoans</value>
-  </data>
-  <data name="&gt;&gt;pnlLoans.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pnlLoans.Parent" xml:space="preserve">
-    <value>tabPageProjectLoans</value>
-  </data>
-  <data name="&gt;&gt;pnlLoans.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lvContracts.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="lvContracts.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
-  </data>
-  <data name="lvContracts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="lvContracts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1063, 296</value>
-  </data>
-  <data name="lvContracts.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;lvContracts.Name" xml:space="preserve">
-    <value>lvContracts</value>
-  </data>
-  <data name="&gt;&gt;lvContracts.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lvContracts.Parent" xml:space="preserve">
-    <value>pnlLoans</value>
-  </data>
-  <data name="&gt;&gt;lvContracts.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="columnProductType.Text" xml:space="preserve">
@@ -4823,252 +4586,6 @@
   </data>
   <data name="columnHeaderLoanCategory.Width" type="System.Int32, mscorlib">
     <value>86</value>
-  </data>
-  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectAddContract.Name" xml:space="preserve">
-    <value>buttonProjectAddContract</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectAddContract.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectAddContract.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectAddContract.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectViewContract.Name" xml:space="preserve">
-    <value>buttonProjectViewContract</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectViewContract.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectViewContract.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectViewContract.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="flowLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="flowLayoutPanel1.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>TopDown</value>
-  </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1063, 0</value>
-  </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 296</value>
-  </data>
-  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
-    <value>pnlLoans</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="buttonProjectAddContract.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="buttonProjectAddContract.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
-  </data>
-  <data name="buttonProjectAddContract.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonProjectAddContract.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="buttonProjectAddContract.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 28</value>
-  </data>
-  <data name="buttonProjectAddContract.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="buttonProjectAddContract.Text" xml:space="preserve">
-    <value>Add loan</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectAddContract.Name" xml:space="preserve">
-    <value>buttonProjectAddContract</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectAddContract.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectAddContract.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectAddContract.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="buttonProjectViewContract.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="buttonProjectViewContract.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
-  </data>
-  <data name="buttonProjectViewContract.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonProjectViewContract.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 37</value>
-  </data>
-  <data name="buttonProjectViewContract.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 28</value>
-  </data>
-  <data name="buttonProjectViewContract.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="buttonProjectViewContract.Text" xml:space="preserve">
-    <value>View contract</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectViewContract.Name" xml:space="preserve">
-    <value>buttonProjectViewContract</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectViewContract.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectViewContract.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonProjectViewContract.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectConcurrence.Name" xml:space="preserve">
-    <value>textBoxProjectConcurrence</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectConcurrence.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectConcurrence.Parent" xml:space="preserve">
-    <value>tabPageProjectAnalyses</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectConcurrence.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectMarket.Name" xml:space="preserve">
-    <value>textBoxProjectMarket</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectMarket.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectMarket.Parent" xml:space="preserve">
-    <value>tabPageProjectAnalyses</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectMarket.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;labelProjectConcurrence.Name" xml:space="preserve">
-    <value>labelProjectConcurrence</value>
-  </data>
-  <data name="&gt;&gt;labelProjectConcurrence.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelProjectConcurrence.Parent" xml:space="preserve">
-    <value>tabPageProjectAnalyses</value>
-  </data>
-  <data name="&gt;&gt;labelProjectConcurrence.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;labelProjectMarket.Name" xml:space="preserve">
-    <value>labelProjectMarket</value>
-  </data>
-  <data name="&gt;&gt;labelProjectMarket.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelProjectMarket.Parent" xml:space="preserve">
-    <value>tabPageProjectAnalyses</value>
-  </data>
-  <data name="&gt;&gt;labelProjectMarket.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectAbilities.Name" xml:space="preserve">
-    <value>textBoxProjectAbilities</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectAbilities.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectAbilities.Parent" xml:space="preserve">
-    <value>tabPageProjectAnalyses</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectAbilities.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectExperience.Name" xml:space="preserve">
-    <value>textBoxProjectExperience</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectExperience.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectExperience.Parent" xml:space="preserve">
-    <value>tabPageProjectAnalyses</value>
-  </data>
-  <data name="&gt;&gt;textBoxProjectExperience.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;labelProjectExperience.Name" xml:space="preserve">
-    <value>labelProjectExperience</value>
-  </data>
-  <data name="&gt;&gt;labelProjectExperience.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelProjectExperience.Parent" xml:space="preserve">
-    <value>tabPageProjectAnalyses</value>
-  </data>
-  <data name="&gt;&gt;labelProjectExperience.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;labelProjectAbilities.Name" xml:space="preserve">
-    <value>labelProjectAbilities</value>
-  </data>
-  <data name="&gt;&gt;labelProjectAbilities.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelProjectAbilities.Parent" xml:space="preserve">
-    <value>tabPageProjectAnalyses</value>
-  </data>
-  <data name="&gt;&gt;labelProjectAbilities.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="tabPageProjectAnalyses.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
-  </data>
-  <data name="tabPageProjectAnalyses.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageProjectAnalyses.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1255, 302</value>
-  </data>
-  <data name="tabPageProjectAnalyses.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabPageProjectAnalyses.Text" xml:space="preserve">
-    <value>Analyses</value>
-  </data>
-  <data name="&gt;&gt;tabPageProjectAnalyses.Name" xml:space="preserve">
-    <value>tabPageProjectAnalyses</value>
-  </data>
-  <data name="&gt;&gt;tabPageProjectAnalyses.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageProjectAnalyses.Parent" xml:space="preserve">
-    <value>tabControlProject</value>
-  </data>
-  <data name="&gt;&gt;tabPageProjectAnalyses.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="textBoxProjectConcurrence.Location" type="System.Drawing.Point, System.Drawing">
     <value>288, 269</value>
@@ -5297,57 +4814,6 @@
   </data>
   <data name="&gt;&gt;labelProjectAbilities.ZOrder" xml:space="preserve">
     <value>7</value>
-  </data>
-  <data name="tabPageCorporate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
-  </data>
-  <data name="tabPageCorporate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1255, 302</value>
-  </data>
-  <data name="tabPageCorporate.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tabPageCorporate.Text" xml:space="preserve">
-    <value>Created Company</value>
-  </data>
-  <data name="&gt;&gt;tabPageCorporate.Name" xml:space="preserve">
-    <value>tabPageCorporate</value>
-  </data>
-  <data name="&gt;&gt;tabPageCorporate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageCorporate.Parent" xml:space="preserve">
-    <value>tabControlProject</value>
-  </data>
-  <data name="&gt;&gt;tabPageCorporate.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabPageFollowUp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 36</value>
-  </data>
-  <data name="tabPageFollowUp.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageFollowUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1255, 302</value>
-  </data>
-  <data name="tabPageFollowUp.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="tabPageFollowUp.Text" xml:space="preserve">
-    <value>Follow-up</value>
-  </data>
-  <data name="&gt;&gt;tabPageFollowUp.Name" xml:space="preserve">
-    <value>tabPageFollowUp</value>
-  </data>
-  <data name="&gt;&gt;tabPageFollowUp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageFollowUp.Parent" xml:space="preserve">
-    <value>tabControlProject</value>
-  </data>
-  <data name="&gt;&gt;tabPageFollowUp.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="&gt;&gt;tabPageInstallments.Name" xml:space="preserve">
     <value>tabPageInstallments</value>
@@ -10403,6 +9869,510 @@ Max:
   <data name="&gt;&gt;tBCreditCommitteeCode.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="&gt;&gt;lvLoansRepayments.Name" xml:space="preserve">
+    <value>lvLoansRepayments</value>
+  </data>
+  <data name="&gt;&gt;lvLoansRepayments.Type" xml:space="preserve">
+    <value>OpenCBS.GUI.UserControl.ListViewEx, OpenCBS.GUI, Version=14.7.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lvLoansRepayments.Parent" xml:space="preserve">
+    <value>tabPageRepayments</value>
+  </data>
+  <data name="&gt;&gt;lvLoansRepayments.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel8.Name" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel8.Parent" xml:space="preserve">
+    <value>tabPageRepayments</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel8.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPageRepayments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 36</value>
+  </data>
+  <data name="tabPageRepayments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1267, 415</value>
+  </data>
+  <data name="tabPageRepayments.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPageRepayments.Text" xml:space="preserve">
+    <value>Repayment schedule</value>
+  </data>
+  <data name="&gt;&gt;tabPageRepayments.Name" xml:space="preserve">
+    <value>tabPageRepayments</value>
+  </data>
+  <data name="&gt;&gt;tabPageRepayments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageRepayments.Parent" xml:space="preserve">
+    <value>tabControlRepayments</value>
+  </data>
+  <data name="&gt;&gt;tabPageRepayments.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lvEvents.Name" xml:space="preserve">
+    <value>lvEvents</value>
+  </data>
+  <data name="&gt;&gt;lvEvents.Type" xml:space="preserve">
+    <value>OpenCBS.GUI.UserControl.ListViewEx, OpenCBS.GUI, Version=14.7.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lvEvents.Parent" xml:space="preserve">
+    <value>tabPageEvents</value>
+  </data>
+  <data name="&gt;&gt;lvEvents.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>tabPageEvents</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPageEvents.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 36</value>
+  </data>
+  <data name="tabPageEvents.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1267, 415</value>
+  </data>
+  <data name="tabPageEvents.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPageEvents.Text" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="&gt;&gt;tabPageEvents.Name" xml:space="preserve">
+    <value>tabPageEvents</value>
+  </data>
+  <data name="&gt;&gt;tabPageEvents.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageEvents.Parent" xml:space="preserve">
+    <value>tabControlRepayments</value>
+  </data>
+  <data name="&gt;&gt;tabPageEvents.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabControlRepayments.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControlRepayments.ItemSize" type="System.Drawing.Size, System.Drawing">
+    <value>175, 32</value>
+  </data>
+  <data name="tabControlRepayments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 157</value>
+  </data>
+  <data name="tabControlRepayments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1275, 455</value>
+  </data>
+  <data name="tabControlRepayments.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabControlRepayments.Name" xml:space="preserve">
+    <value>tabControlRepayments</value>
+  </data>
+  <data name="&gt;&gt;tabControlRepayments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControlRepayments.Parent" xml:space="preserve">
+    <value>tabPageLoanRepayment</value>
+  </data>
+  <data name="&gt;&gt;tabControlRepayments.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="columnHeader1.Text" xml:space="preserve">
+    <value>N°</value>
+  </data>
+  <data name="columnHeader1.Width" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="columnHeader2.Text" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="columnHeader2.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="columnHeader2.Width" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="columnHeader3.Text" xml:space="preserve">
+    <value>Expected interests</value>
+  </data>
+  <data name="columnHeader3.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="columnHeader3.Width" type="System.Int32, mscorlib">
+    <value>137</value>
+  </data>
+  <data name="columnHeader4.Text" xml:space="preserve">
+    <value>Expected principal</value>
+  </data>
+  <data name="columnHeader4.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="columnHeader4.Width" type="System.Int32, mscorlib">
+    <value>149</value>
+  </data>
+  <data name="columnHeader5.Text" xml:space="preserve">
+    <value>Installment total</value>
+  </data>
+  <data name="columnHeader5.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="columnHeader5.Width" type="System.Int32, mscorlib">
+    <value>148</value>
+  </data>
+  <data name="columnHeader6.Text" xml:space="preserve">
+    <value>OLB</value>
+  </data>
+  <data name="columnHeader6.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="columnHeader6.Width" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="columnHeader7.Text" xml:space="preserve">
+    <value>Paid interests</value>
+  </data>
+  <data name="columnHeader7.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="columnHeader7.Width" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="columnHeader8.Text" xml:space="preserve">
+    <value>Paid principal</value>
+  </data>
+  <data name="columnHeader8.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="columnHeader8.Width" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="columnHeader9.Text" xml:space="preserve">
+    <value>Paid date</value>
+  </data>
+  <data name="columnHeader9.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="columnHeader9.Width" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="columnHeaderLateDays.Text" xml:space="preserve">
+    <value>Late days</value>
+  </data>
+  <data name="columnHeaderLateDays.Width" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
+  <data name="columnHeaderComment.Text" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="columnHeaderComment.Width" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="lvLoansRepayments.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="lvLoansRepayments.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="lvLoansRepayments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="lvLoansRepayments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1267, 381</value>
+  </data>
+  <data name="lvLoansRepayments.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;lvLoansRepayments.Name" xml:space="preserve">
+    <value>lvLoansRepayments</value>
+  </data>
+  <data name="&gt;&gt;lvLoansRepayments.Type" xml:space="preserve">
+    <value>OpenCBS.GUI.UserControl.ListViewEx, OpenCBS.GUI, Version=14.7.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lvLoansRepayments.Parent" xml:space="preserve">
+    <value>tabPageRepayments</value>
+  </data>
+  <data name="&gt;&gt;lvLoansRepayments.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanel8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel8.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;buttonLoanRepaymentRepay.Name" xml:space="preserve">
+    <value>buttonLoanRepaymentRepay</value>
+  </data>
+  <data name="&gt;&gt;buttonLoanRepaymentRepay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonLoanRepaymentRepay.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;buttonLoanRepaymentRepay.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;buttonLoanReschedule.Name" xml:space="preserve">
+    <value>buttonLoanReschedule</value>
+  </data>
+  <data name="&gt;&gt;buttonLoanReschedule.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonLoanReschedule.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;buttonLoanReschedule.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;buttonManualSchedule.Name" xml:space="preserve">
+    <value>buttonManualSchedule</value>
+  </data>
+  <data name="&gt;&gt;buttonManualSchedule.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonManualSchedule.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;buttonManualSchedule.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;buttonAddTranche.Name" xml:space="preserve">
+    <value>buttonAddTranche</value>
+  </data>
+  <data name="&gt;&gt;buttonAddTranche.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonAddTranche.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;buttonAddTranche.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btnWriteOff.Name" xml:space="preserve">
+    <value>btnWriteOff</value>
+  </data>
+  <data name="&gt;&gt;btnWriteOff.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnWriteOff.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;btnWriteOff.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;btnRepaymentNotice.Name" xml:space="preserve">
+    <value>btnRepaymentNotice</value>
+  </data>
+  <data name="&gt;&gt;btnRepaymentNotice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRepaymentNotice.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;btnRepaymentNotice.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="flowLayoutPanel8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="flowLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 381</value>
+  </data>
+  <data name="flowLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1267, 34</value>
+  </data>
+  <data name="flowLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel8.Name" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel8.Parent" xml:space="preserve">
+    <value>tabPageRepayments</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel8.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonLoanRepaymentRepay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonLoanRepaymentRepay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="buttonLoanRepaymentRepay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 28</value>
+  </data>
+  <data name="buttonLoanRepaymentRepay.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="buttonLoanRepaymentRepay.Text" xml:space="preserve">
+    <value>Repay</value>
+  </data>
+  <data name="&gt;&gt;buttonLoanRepaymentRepay.Name" xml:space="preserve">
+    <value>buttonLoanRepaymentRepay</value>
+  </data>
+  <data name="&gt;&gt;buttonLoanRepaymentRepay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonLoanRepaymentRepay.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;buttonLoanRepaymentRepay.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonLoanReschedule.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonLoanReschedule.Location" type="System.Drawing.Point, System.Drawing">
+    <value>149, 3</value>
+  </data>
+  <data name="buttonLoanReschedule.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 28</value>
+  </data>
+  <data name="buttonLoanReschedule.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonLoanReschedule.Text" xml:space="preserve">
+    <value>Reschedule</value>
+  </data>
+  <data name="&gt;&gt;buttonLoanReschedule.Name" xml:space="preserve">
+    <value>buttonLoanReschedule</value>
+  </data>
+  <data name="&gt;&gt;buttonLoanReschedule.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonLoanReschedule.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;buttonLoanReschedule.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonManualSchedule.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonManualSchedule.Location" type="System.Drawing.Point, System.Drawing">
+    <value>295, 3</value>
+  </data>
+  <data name="buttonManualSchedule.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 28</value>
+  </data>
+  <data name="buttonManualSchedule.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="buttonManualSchedule.Text" xml:space="preserve">
+    <value>Manual schedule</value>
+  </data>
+  <data name="&gt;&gt;buttonManualSchedule.Name" xml:space="preserve">
+    <value>buttonManualSchedule</value>
+  </data>
+  <data name="&gt;&gt;buttonManualSchedule.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonManualSchedule.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;buttonManualSchedule.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonAddTranche.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonAddTranche.Location" type="System.Drawing.Point, System.Drawing">
+    <value>441, 3</value>
+  </data>
+  <data name="buttonAddTranche.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 28</value>
+  </data>
+  <data name="buttonAddTranche.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="buttonAddTranche.Text" xml:space="preserve">
+    <value>Add tranche</value>
+  </data>
+  <data name="&gt;&gt;buttonAddTranche.Name" xml:space="preserve">
+    <value>buttonAddTranche</value>
+  </data>
+  <data name="&gt;&gt;buttonAddTranche.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonAddTranche.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;buttonAddTranche.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnWriteOff.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnWriteOff.Location" type="System.Drawing.Point, System.Drawing">
+    <value>587, 3</value>
+  </data>
+  <data name="btnWriteOff.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 28</value>
+  </data>
+  <data name="btnWriteOff.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnWriteOff.Text" xml:space="preserve">
+    <value>Write off</value>
+  </data>
+  <data name="&gt;&gt;btnWriteOff.Name" xml:space="preserve">
+    <value>btnWriteOff</value>
+  </data>
+  <data name="&gt;&gt;btnWriteOff.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnWriteOff.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;btnWriteOff.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnRepaymentNotice.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnRepaymentNotice.Location" type="System.Drawing.Point, System.Drawing">
+    <value>733, 3</value>
+  </data>
+  <data name="btnRepaymentNotice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 28</value>
+  </data>
+  <data name="btnRepaymentNotice.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="btnRepaymentNotice.Text" xml:space="preserve">
+    <value>Repayment Notice</value>
+  </data>
+  <data name="&gt;&gt;btnRepaymentNotice.Name" xml:space="preserve">
+    <value>btnRepaymentNotice</value>
+  </data>
+  <data name="&gt;&gt;btnRepaymentNotice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnRepaymentNotice.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;btnRepaymentNotice.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="columnHeader11.Text" xml:space="preserve">
     <value>Date</value>
   </data>
@@ -10669,6 +10639,75 @@ Max:
   </data>
   <data name="&gt;&gt;btnDeleteEvent.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="richTextBoxStatus.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="richTextBoxStatus.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="richTextBoxStatus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 53</value>
+  </data>
+  <data name="richTextBoxStatus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1275, 104</value>
+  </data>
+  <data name="richTextBoxStatus.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="richTextBoxStatus.Text" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxStatus.Name" xml:space="preserve">
+    <value>richTextBoxStatus</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxStatus.Parent" xml:space="preserve">
+    <value>tabPageLoanRepayment</value>
+  </data>
+  <data name="&gt;&gt;richTextBoxStatus.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblLoanStatus.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="lblLoanStatus.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 15.75pt, style=Italic</value>
+  </data>
+  <data name="lblLoanStatus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblLoanStatus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="lblLoanStatus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1275, 53</value>
+  </data>
+  <data name="lblLoanStatus.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="lblLoanStatus.Text" xml:space="preserve">
+    <value>Contract repayment status</value>
+  </data>
+  <data name="lblLoanStatus.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="lblLoanStatus.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;lblLoanStatus.Name" xml:space="preserve">
+    <value>lblLoanStatus</value>
+  </data>
+  <data name="&gt;&gt;lblLoanStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblLoanStatus.Parent" xml:space="preserve">
+    <value>tabPageLoanRepayment</value>
+  </data>
+  <data name="&gt;&gt;lblLoanStatus.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;tabPageSavingsAmountsAndFees.Name" xml:space="preserve">
     <value>tabPageSavingsAmountsAndFees</value>
@@ -14016,7 +14055,7 @@ Max:
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageSavingsEvents.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1261, 352</value>
+    <value>1261, 350</value>
   </data>
   <data name="tabPageSavingsEvents.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -14043,7 +14082,7 @@ Max:
     <value>3, 3</value>
   </data>
   <data name="lvSavingEvent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1255, 346</value>
+    <value>1255, 344</value>
   </data>
   <data name="lvSavingEvent.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -16133,6 +16172,18 @@ Max:
   <data name="chStatus.Width" type="System.Int32, mscorlib">
     <value>126</value>
   </data>
+  <data name="&gt;&gt;btnFDChargesNotice.Name" xml:space="preserve">
+    <value>btnFDChargesNotice</value>
+  </data>
+  <data name="&gt;&gt;btnFDChargesNotice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnFDChargesNotice.Parent" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="&gt;&gt;btnFDChargesNotice.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;btnCAGenerateStatement.Name" xml:space="preserve">
     <value>btnCAGenerateStatement</value>
   </data>
@@ -16143,7 +16194,7 @@ Max:
     <value>panel5</value>
   </data>
   <data name="&gt;&gt;btnCAGenerateStatement.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;btnViewCurrentAccount.Name" xml:space="preserve">
     <value>btnViewCurrentAccount</value>
@@ -16155,7 +16206,7 @@ Max:
     <value>panel5</value>
   </data>
   <data name="&gt;&gt;btnViewCurrentAccount.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;btnAddCurrentAccount.Name" xml:space="preserve">
     <value>btnAddCurrentAccount</value>
@@ -16167,7 +16218,7 @@ Max:
     <value>panel5</value>
   </data>
   <data name="&gt;&gt;btnAddCurrentAccount.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
     <value>803, 300</value>
@@ -16189,6 +16240,33 @@ Max:
   </data>
   <data name="&gt;&gt;panel5.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="btnFDChargesNotice.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnFDChargesNotice.Location" type="System.Drawing.Point, System.Drawing">
+    <value>44, 153</value>
+  </data>
+  <data name="btnFDChargesNotice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 37</value>
+  </data>
+  <data name="btnFDChargesNotice.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnFDChargesNotice.Text" xml:space="preserve">
+    <value>Charges Notice</value>
+  </data>
+  <data name="&gt;&gt;btnFDChargesNotice.Name" xml:space="preserve">
+    <value>btnFDChargesNotice</value>
+  </data>
+  <data name="&gt;&gt;btnFDChargesNotice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnFDChargesNotice.Parent" xml:space="preserve">
+    <value>panel5</value>
+  </data>
+  <data name="&gt;&gt;btnFDChargesNotice.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="btnCAGenerateStatement.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -16215,7 +16293,7 @@ Max:
     <value>panel5</value>
   </data>
   <data name="&gt;&gt;btnCAGenerateStatement.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btnViewCurrentAccount.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -16242,7 +16320,7 @@ Max:
     <value>panel5</value>
   </data>
   <data name="&gt;&gt;btnViewCurrentAccount.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnAddCurrentAccount.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -16269,7 +16347,19 @@ Max:
     <value>panel5</value>
   </data>
   <data name="&gt;&gt;btnAddCurrentAccount.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btnCAChargesNotice.Name" xml:space="preserve">
+    <value>btnCAChargesNotice</value>
+  </data>
+  <data name="&gt;&gt;btnCAChargesNotice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCAChargesNotice.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;btnCAChargesNotice.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;btnGenerateFDStatement.Name" xml:space="preserve">
     <value>btnGenerateFDStatement</value>
@@ -16281,7 +16371,7 @@ Max:
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;btnGenerateFDStatement.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;btnViewFixedDeposit.Name" xml:space="preserve">
     <value>btnViewFixedDeposit</value>
@@ -16293,7 +16383,7 @@ Max:
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;btnViewFixedDeposit.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;btnAddFixedDeposit.Name" xml:space="preserve">
     <value>btnAddFixedDeposit</value>
@@ -16305,7 +16395,7 @@ Max:
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;btnAddFixedDeposit.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
     <value>803, 41</value>
@@ -16327,6 +16417,33 @@ Max:
   </data>
   <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="btnCAChargesNotice.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnCAChargesNotice.Location" type="System.Drawing.Point, System.Drawing">
+    <value>40, 147</value>
+  </data>
+  <data name="btnCAChargesNotice.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 35</value>
+  </data>
+  <data name="btnCAChargesNotice.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnCAChargesNotice.Text" xml:space="preserve">
+    <value>Charges Notice</value>
+  </data>
+  <data name="&gt;&gt;btnCAChargesNotice.Name" xml:space="preserve">
+    <value>btnCAChargesNotice</value>
+  </data>
+  <data name="&gt;&gt;btnCAChargesNotice.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCAChargesNotice.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;btnCAChargesNotice.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="btnGenerateFDStatement.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -16353,7 +16470,7 @@ Max:
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;btnGenerateFDStatement.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btnViewFixedDeposit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -16380,7 +16497,7 @@ Max:
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;btnViewFixedDeposit.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnAddFixedDeposit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -16407,7 +16524,7 @@ Max:
     <value>panel4</value>
   </data>
   <data name="&gt;&gt;btnAddFixedDeposit.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 15.75pt</value>

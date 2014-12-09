@@ -175,10 +175,12 @@
     <Compile Include="Accounting\BookingToExport.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Accounting\CurrencyAssets.cs" />
     <Compile Include="Accounting\ExchangeRate.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Accounting\DefaultAccounts.cs" />
+    <Compile Include="Accounting\Expense.cs" />
     <Compile Include="Accounting\FiscalYear.cs" />
     <Compile Include="Accounting\FundingLineAccountingRule.cs" />
     <Compile Include="Accounting\IAccountingRule.cs" />

@@ -351,8 +351,8 @@ public List<CurrentAccountTransactions> FetchFeeTransactions(string accountNumbe
 [from_account_balance]
 
 FROM [dbo].[CurrentAccountTransactions]
-WHERE from_account = @accountNumber OR to_account = @accountNumber
-AND maker = @maker";
+WHERE ((from_account = @accountNumber OR to_account = @accountNumber)
+AND ([transaction_type] = @maker))";
 
 
 

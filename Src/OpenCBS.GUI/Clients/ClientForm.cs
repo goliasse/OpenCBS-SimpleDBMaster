@@ -80,6 +80,7 @@ namespace OpenCBS.GUI.Clients
 {
 
     using ML = MultiLanguageStrings;
+    using OpenCBS.Services.Events;
     public partial class ClientForm : SweetForm
     {
         #region *** Fields ***
@@ -829,7 +830,7 @@ namespace OpenCBS.GUI.Clients
         {
             listViewFeeTransactions.Items.Clear();
             CurrentAccountTransactionService _currentAccountTransactionService = ServicesProvider.GetInstance().GetCurrentAccountTransactionService();
-            List<CurrentAccountTransactions> currentAccountTransactionsList = _currentAccountTransactionService.FetchFeeTransactions(accountNumber, "Fees");
+            List<CurrentAccountTransactions> currentAccountTransactionsList = _currentAccountTransactionService.FetchFeeTransactions(accountNumber, "Fee");
 
 
             if (currentAccountTransactionsList != null)
@@ -9548,7 +9549,7 @@ namespace OpenCBS.GUI.Clients
                 int i = lvFixedDeposits.SelectedIndices[0];
                 string selectedContractCode = lvFixedDeposits.Items[i].Text;
 
-                SelectStatementPeriod selectStatementPeriod = new SelectStatementPeriod(selectedContractCode, "FD");
+                SelectStatementPeriod selectStatementPeriod = new SelectStatementPeriod(selectedContractCode, "FD", _client);
                 selectStatementPeriod.Show();
             }
             catch (Exception ex)
@@ -9575,7 +9576,7 @@ namespace OpenCBS.GUI.Clients
                 int i = lvCurrentAccountProducts.SelectedIndices[0];
                 string selectedContractCode = lvCurrentAccountProducts.Items[i].Text;
 
-                SelectStatementPeriod selectStatementPeriod = new SelectStatementPeriod(selectedContractCode, "CA");
+                SelectStatementPeriod selectStatementPeriod = new SelectStatementPeriod(selectedContractCode, "CA", _client);
                 selectStatementPeriod.Show();
             }
             catch (Exception ex)
@@ -9794,7 +9795,7 @@ namespace OpenCBS.GUI.Clients
 
         private void btnRepaymentNotice_Click(object sender, EventArgs e)
         {
-            lvLoansRepayments.Items.Clear();
+            
             OCurrency OLBDue = 0;
             OCurrency interestsDue = 0;
             Installment lateInstallment = null;
@@ -9890,7 +9891,7 @@ namespace OpenCBS.GUI.Clients
                 document.Content.Text = document.Content.Text + "Dear Sir,";
 
                 document.Content.Text = document.Content.Text + "It is our pleasure to find you as one of our old and valued clients. We hope, you will continue enjoying our loan services as to your banking needs.";
-                document.Content.Text = document.Content.Text + "You have applied for loan of " + _credit.Product.Currency + " " + _credit.Amount + " under our Scheme " + _credit.Product.Name + ". Your next installment was due on " + lateInstallment.ExpectedDate.ToShortDateString() + ", which has already passed. We urge you to clear the due installment as soon as possible.";
+                document.Content.Text = document.Content.Text + "You have applied for loan of " + _credit.Product.Currency + " " + _credit.Amount + " under our Scheme " + _credit.Product.Name + ". Your next installment of " + lateInstallment.Amount + " was due on " + lateInstallment.ExpectedDate.ToShortDateString() + ", which has already passed. We urge you to clear the due installment as soon as possible.";
                 document.Content.Text = document.Content.Text + "We are proud to serve you. Thank you Sir.";
 
                 document.Content.Text = document.Content.Text + Environment.NewLine;
@@ -9924,6 +9925,985 @@ namespace OpenCBS.GUI.Clients
 
 
 
+        }
+
+        private void btnCAChargesNotice_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                int i = lvFixedDeposits.SelectedIndices[0];
+                string accountNumber = lvFixedDeposits.Items[i].Text;
+
+                CurrentAccountTransactionService _currentAccountTransactionService = ServicesProvider.GetInstance().GetCurrentAccountTransactionService();
+                List<CurrentAccountTransactions> currentAccountTransactionsList = _currentAccountTransactionService.FetchFeeTransactions(accountNumber, "Fee");
+
+
+                if ((currentAccountTransactionsList != null) && (currentAccountTransactionsList.Count > 0))
+                {
+
+                    //Create an instance for word app
+                    Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
+
+                    //Set animation status for word application
+                    //winword.ShowAnimation = false;
+
+                    //Set status for word application is to be visible or not.
+                    winword.Visible = false;
+
+                    //Create a missing variable for missing value
+                    object missing = System.Reflection.Missing.Value;
+
+                    //Create a new document
+                    Microsoft.Office.Interop.Word.Document document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+
+                    //Add header into the document
+                    foreach (Microsoft.Office.Interop.Word.Section section in document.Sections)
+                    {
+                        //Get the header range and add the header details.
+                        Microsoft.Office.Interop.Word.Range headerRange = section.Headers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                        headerRange.Fields.Add(headerRange, Microsoft.Office.Interop.Word.WdFieldType.wdFieldPage);
+                        headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                        headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
+                        headerRange.Font.Size = 10;
+                        headerRange.Text = "<Bank Name>";
+                    }
+
+                    //Add the footers into the document
+                    foreach (Microsoft.Office.Interop.Word.Section wordSection in document.Sections)
+                    {
+                        //Get the footer range and add the footer details.
+                        Microsoft.Office.Interop.Word.Range footerRange = wordSection.Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                        footerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdDarkRed;
+                        footerRange.Font.Size = 10;
+                        footerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                        footerRange.Text = "Fixed Deposit Charges Notice";
+                    }
+
+                    //adding text to document
+
+                    document.Content.SetRange(0, 0);
+
+                    document.Content.Text = document.Content.Text + "Customer Name    : " + _client.Name;
+                    document.Content.Text = document.Content.Text + "Fixed Deposit Contract Code: " + accountNumber;
+
+                    document.Content.Text = document.Content.Text + "Notice Date :            : " + DateTime.Today.ToShortDateString();
+                    document.Content.Text = document.Content.Text + Environment.NewLine;
+                    document.Content.Text = document.Content.Text + "Subject: Account charges for contract code " + accountNumber;
+                    document.Content.Text = document.Content.Text + "Dear Sir,";
+
+                    document.Content.Text = document.Content.Text + "Thank you for continuing your banking relationship with us. It’s a secure way to protect your money and valuables.";
+
+                    document.Content.Text = document.Content.Text + "Your account has been charged for the following items.";
+
+                    //Add paragraph with Heading 1 style
+                    Microsoft.Office.Interop.Word.Paragraph para1 = document.Content.Paragraphs.Add(ref missing);
+
+
+                    String[] columnName = { "S.No.", "Particular", "Amount", "Date" };
+                    String[,] data = new String[currentAccountTransactionsList.Count, 4];
+                    int j = 0;
+                    foreach (CurrentAccountTransactions currentAccountTransactions in currentAccountTransactionsList)
+                    {
+                        data[j, 0] = (j + 1).ToString();
+                        data[j, 1] = currentAccountTransactions.PurposeOfTransfer;
+                        data[j, 2] = currentAccountTransactions.Amount.GetFormatedValue(false);
+                        data[j, 3] = currentAccountTransactions.TransactionDate.ToShortDateString();
+                        j++;
+                    }
+
+                    //Create a 5X5 table and insert some dummy record
+                    Microsoft.Office.Interop.Word.Table firstTable = document.Tables.Add(para1.Range, currentAccountTransactionsList.Count+1, 4, ref missing, ref missing);
+
+
+
+                    firstTable.Borders.Enable = 1;
+                    foreach (Row row in firstTable.Rows)
+                    {
+                        if (row.Index == 1)
+                        {
+                            foreach (Cell cell in row.Cells)
+                            {     //Header row
+
+                                cell.Range.Text = columnName[cell.ColumnIndex - 1];
+                                cell.Range.Font.Bold = 1;
+                                //other format properties goes here
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                //cell.Range.Font.ColorIndex = WdColorIndex.wdGray25;                            
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorGray25;
+                                //Center alignment for the Header cells
+                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+
+                            }
+                        }
+
+                        //Data row
+                        if (row.Index != 1)
+                        {
+                            CurrentAccountTransactions currentAccountTransaction = currentAccountTransactionsList[row.Index - 2];
+                            foreach (Cell cell in row.Cells)
+                            {
+                                cell.Range.Text = data[row.Index - 2, cell.ColumnIndex - 1];
+                            }
+                        }
+
+                    }
+
+                    //Add paragraph with Heading 2 style
+                    Microsoft.Office.Interop.Word.Paragraph para2 = document.Content.Paragraphs.Add(ref missing);
+                    para2.Range.Text = Environment.NewLine + "Should you have any questions or require additional information, please call the phone number that is listed on your bank statement.";
+
+                    para2.Range.Text = para2.Range.Text + "We are proud to serve you. Thank you Sir/Mam.";
+                    para2.Range.Text = para2.Range.Text + Environment.NewLine + "Regards,";
+                    para2.Range.Text = para2.Range.Text + "Bank Representative";
+                    para2.Range.Text = para2.Range.Text + "Name of bank";
+                    para2.Range.InsertParagraphAfter();
+
+                    //Save the document
+                    object filename = @"E:\temp1.docx";
+                    document.SaveAs2(ref filename);
+                    document.Close(ref missing, ref missing, ref missing);
+                    document = null;
+                    winword.Quit(ref missing, ref missing, ref missing);
+                    winword = null;
+                    MessageBox.Show("Document created successfully !");
+
+                }
+                else
+                {
+                    MessageBox.Show("No Charges for the selected account !");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FixedDepositProductSelectAProduct);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
+
+
+        }
+
+        private void btnFDChargesNotice_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                int i = lvCurrentAccountProducts.SelectedIndices[0];
+                string accountNumber = lvCurrentAccountProducts.Items[i].Text;
+
+                CurrentAccountTransactionService _currentAccountTransactionService = ServicesProvider.GetInstance().GetCurrentAccountTransactionService();
+                List<CurrentAccountTransactions> currentAccountTransactionsList = _currentAccountTransactionService.FetchFeeTransactions(accountNumber, "Fee");
+
+
+                if ((currentAccountTransactionsList != null) && (currentAccountTransactionsList.Count > 0))
+                {
+
+                    //Create an instance for word app
+                    Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
+
+                    //Set animation status for word application
+                    //winword.ShowAnimation = false;
+
+                    //Set status for word application is to be visible or not.
+                    winword.Visible = false;
+
+                    //Create a missing variable for missing value
+                    object missing = System.Reflection.Missing.Value;
+
+                    //Create a new document
+                    Microsoft.Office.Interop.Word.Document document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+
+                    //Add header into the document
+                    foreach (Microsoft.Office.Interop.Word.Section section in document.Sections)
+                    {
+                        //Get the header range and add the header details.
+                        Microsoft.Office.Interop.Word.Range headerRange = section.Headers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                        headerRange.Fields.Add(headerRange, Microsoft.Office.Interop.Word.WdFieldType.wdFieldPage);
+                        headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                        headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
+                        headerRange.Font.Size = 10;
+                        headerRange.Text = "<Bank Name>";
+                    }
+
+                    //Add the footers into the document
+                    foreach (Microsoft.Office.Interop.Word.Section wordSection in document.Sections)
+                    {
+                        //Get the footer range and add the footer details.
+                        Microsoft.Office.Interop.Word.Range footerRange = wordSection.Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                        footerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdDarkRed;
+                        footerRange.Font.Size = 10;
+                        footerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                        footerRange.Text = "Current Account Charges Notice";
+                    }
+
+                    //adding text to document
+
+                    document.Content.SetRange(0, 0);
+                  
+                    document.Content.Text = document.Content.Text + "Customer Name    : " + _client.Name;
+                    document.Content.Text = document.Content.Text + "Current Account Contract Code: " + accountNumber;
+                    
+                    document.Content.Text = document.Content.Text + "Notice Date :            : " + DateTime.Today.ToShortDateString();
+                    document.Content.Text = document.Content.Text + Environment.NewLine;
+                    document.Content.Text = document.Content.Text + "Subject: Account charges for contract code " + accountNumber;
+                    document.Content.Text = document.Content.Text + "Dear Sir,";
+
+                    document.Content.Text = document.Content.Text + "Thank you for continuing your banking relationship with us. It’s a secure way to protect your money and valuables.";
+
+                    document.Content.Text = document.Content.Text + "Your account has been charged for the following items.";
+
+                    //Add paragraph with Heading 1 style
+                    Microsoft.Office.Interop.Word.Paragraph para1 = document.Content.Paragraphs.Add(ref missing);
+                 
+
+                    String[] columnName = { "S.No.", "Particular", "Amount", "Date" };
+                    String[,] data = new String[currentAccountTransactionsList.Count,4];
+                    int j = 0;
+                    foreach (CurrentAccountTransactions currentAccountTransactions in currentAccountTransactionsList)
+                    {
+                        data[j,0] = (j+1).ToString();
+                        data[j,1] = currentAccountTransactions.PurposeOfTransfer;
+                        data[j,2] = currentAccountTransactions.Amount.GetFormatedValue(false);
+                        data[j,3] = currentAccountTransactions.TransactionDate.ToShortDateString();
+                        j++;
+                    }
+
+                    //Create a 5X5 table and insert some dummy record
+                    Microsoft.Office.Interop.Word.Table firstTable = document.Tables.Add(para1.Range, currentAccountTransactionsList.Count+1, 4, ref missing, ref missing);
+
+
+                  
+                    firstTable.Borders.Enable = 1;
+                    foreach (Row row in firstTable.Rows)
+                    {
+                        if (row.Index == 1)
+                        {
+                            foreach (Cell cell in row.Cells)
+                            {     //Header row
+
+                                cell.Range.Text = columnName[cell.ColumnIndex - 1];
+                                cell.Range.Font.Bold = 1;
+                                //other format properties goes here
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                //cell.Range.Font.ColorIndex = WdColorIndex.wdGray25;                            
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorGray25;
+                                //Center alignment for the Header cells
+                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+
+                            }
+                        }
+
+                        //Data row
+                        if (row.Index != 1)
+                        {
+                            CurrentAccountTransactions currentAccountTransaction = currentAccountTransactionsList[row.Index - 2];
+                            foreach (Cell cell in row.Cells)
+                            {
+                                cell.Range.Text = data[row.Index - 2, cell.ColumnIndex - 1];
+                            }
+                        }
+
+                    }
+
+                    //Add paragraph with Heading 2 style
+                    Microsoft.Office.Interop.Word.Paragraph para2 = document.Content.Paragraphs.Add(ref missing);
+                    para2.Range.Text = Environment.NewLine + "Should you have any questions or require additional information, please call the phone number that is listed on your bank statement.";
+
+                    para2.Range.Text = para2.Range.Text + "We are proud to serve you. Thank you Sir/Mam.";
+                    para2.Range.Text = para2.Range.Text + Environment.NewLine+"Regards,";
+                    para2.Range.Text = para2.Range.Text + "Bank Representative";
+                    para2.Range.Text = para2.Range.Text + "Name of bank";
+                    para2.Range.InsertParagraphAfter();
+
+                    //Save the document
+                    object filename = @"E:\temp1.docx";
+                    document.SaveAs2(ref filename);
+                    document.Close(ref missing, ref missing, ref missing);
+                    document = null;
+                    winword.Quit(ref missing, ref missing, ref missing);
+                    winword = null;
+                    MessageBox.Show("Document created successfully !");
+
+                }
+                else
+                {
+                    MessageBox.Show("No Charges for the selected account !");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FixedDepositProductSelectAProduct);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
+        }
+
+        private void btnGenerateLoanStatement_Click(object sender, EventArgs eventArgs)
+        {
+            try
+            {
+                
+                if (lvContracts.SelectedItems.Count == 0) return;
+
+                if (lvContracts.SelectedItems[0].Tag is Loan)
+                {
+                    Loan pCredit = lvContracts.SelectedItems[0].Tag as Loan;
+
+                    if (pCredit != null)
+                    {
+
+                       
+                        List<Event> events = pCredit.Events.GetSortedEvents();
+                        EventProcessorServices eps = ServicesProvider.GetInstance().GetEventProcessorServices();
+
+                        String[] columnName = { "Date", "Principal", "Interest", "Commission", "Penalties", "Description", "Installment Number", "Payment Method" };
+                        String[,] data = new String[events.Count, 8];
+                        int i = 0 ;
+                      foreach (Event displayEvent in events)
+                        {
+                            
+                            data[i, 0] = (displayEvent.Date.ToShortDateString());
+                         
+                            if (displayEvent is LoanDisbursmentEvent)
+                            {
+                                var e = displayEvent as LoanDisbursmentEvent;
+                                data[i,1] =  (e.Amount.GetFormatedValue(pCredit.UseCents));
+                                data[i,2] =  ("-");
+                                data[i,3] =  (e.Fee.GetFormatedValue(pCredit.UseCents));
+                                data[i,4] =  ("-");
+                               
+                                
+                            }
+                            else if (displayEvent is LoanEntryFeeEvent)
+                            {
+                                LoanEntryFeeEvent e = displayEvent as LoanEntryFeeEvent;
+
+                                data[i,1] =  ("-");
+                                data[i,2] =  ("-");
+                                data[i,3] =  (e.Fee.GetFormatedValue(pCredit.UseCents));
+                                data[i,4] =  ("-");
+                               
+                                
+                            }
+                            else if (displayEvent is AccruedInterestEvent)
+                            {
+                                AccruedInterestEvent evt = displayEvent as AccruedInterestEvent;
+                                data[i,1] =  ("-");
+                                data[i,2] =  (evt.AccruedInterest.GetFormatedValue(pCredit.UseCents));
+                                data[i,3] =  ("-");
+                                data[i,4] =  ("-");
+                               
+                                
+                            }
+                            else if (displayEvent is RepaymentEvent)
+                            {
+                                RepaymentEvent _event = displayEvent as RepaymentEvent;
+                                data[i,1] =  (_event.Principal.GetFormatedValue(pCredit.UseCents));
+                                data[i,2] =  (_event.Interests.GetFormatedValue(pCredit.UseCents));
+                                data[i,3] =  (_event.Commissions.GetFormatedValue(pCredit.UseCents));
+                                data[i,4] =  (_event.Penalties.GetFormatedValue(pCredit.UseCents));
+                               
+                                
+                            }
+                            else if (displayEvent is BadLoanRepaymentEvent)
+                            {
+                                BadLoanRepaymentEvent _event = displayEvent as BadLoanRepaymentEvent;
+                                data[i,1] =  (_event.Principal.GetFormatedValue(pCredit.UseCents));
+                                data[i,2] =  (_event.Interests.GetFormatedValue(pCredit.UseCents));
+                                data[i,3] =  (_event.Commissions.GetFormatedValue(pCredit.UseCents));
+                                data[i,4] =  (_event.Penalties.GetFormatedValue(pCredit.UseCents));
+                               
+                                
+                            }
+                            else if (displayEvent is TrancheEvent)
+                            {
+                                TrancheEvent _event = displayEvent as TrancheEvent;
+                                data[i,1] =  (_event.Amount.GetFormatedValue(pCredit.UseCents));
+                                data[i,2] =  ("-");
+                                data[i,3] =  ("-");
+                                data[i,4] =  ("-");
+                               
+                                
+                            }
+                            else if (displayEvent is OverdueEvent)
+                            {
+                                OverdueEvent _event = displayEvent as OverdueEvent;
+                                data[i,1] =  (_event.OLB.GetFormatedValue(pCredit.UseCents));
+                                data[i,2] =  ("-");
+                                data[i,3] =  ("-");
+                                data[i,4] =  ("-");
+                               
+                            }
+                            else if (displayEvent is ProvisionEvent)
+                            {
+                                ProvisionEvent _event = displayEvent as ProvisionEvent;
+                                data[i,1] =  (_event.Amount.GetFormatedValue(pCredit.UseCents));
+                                data[i,2] =  ("-");
+                                data[i,3] =  ("-");
+                                data[i,4] =  ("-");
+                               
+                            }
+                            else if (displayEvent is LoanPenaltyAccrualEvent)
+                            {
+                                LoanPenaltyAccrualEvent _event = displayEvent as LoanPenaltyAccrualEvent;
+                                data[i,1] =  ("-");
+                                data[i,2] =  ("-");
+                                data[i,3] =  ("-");
+                                data[i,4] =  (_event.Penalty.GetFormatedValue(pCredit.UseCents));
+                               
+                            }
+                            else if (displayEvent is LoanInterestAccrualEvent)
+                            {
+                                LoanInterestAccrualEvent _event = displayEvent as LoanInterestAccrualEvent;
+                                data[i,1] =  ("-");
+                                data[i,2] =  (_event.Interest.GetFormatedValue(pCredit.UseCents));
+                                data[i,3] =  ("-");
+                                data[i,4] =  ("-");
+                               
+                            }
+                            else if (displayEvent is LoanTransitionEvent)
+                            {
+                                var _event = displayEvent as LoanTransitionEvent;
+                                data[i,1] =  (_event.Amount.GetFormatedValue(pCredit.UseCents));
+                                data[i,2] =  ("-");
+                                data[i,3] =  ("-");
+                                data[i,4] =  ("-");
+                               
+                            }
+                            else if (displayEvent is RegEvent
+                                     || displayEvent is WriteOffEvent
+                                     || displayEvent is LoanValidationEvent
+                                     || displayEvent is LoanCloseEvent
+                                     || displayEvent is ManualScheduleChangeEvent)
+                            {
+                                data[i,1] =  ("-");
+                                data[i,2] =  ("-");
+                                data[i,3] =  ("-");
+                                data[i,4] =  ("-");
+                               
+                            }
+                            else if (displayEvent is RescheduleLoanEvent)
+                            {
+                                RescheduleLoanEvent _event = displayEvent as RescheduleLoanEvent;
+                                data[i,1] =  (_event.Amount.GetFormatedValue(pCredit.UseCents));
+                                data[i,2] =  ("-");
+                                data[i,3] =  ("-");
+                                data[i,4] =  ("-");
+                               
+                            }
+                            else if (displayEvent is CreditInsuranceEvent)
+                            {
+                                CreditInsuranceEvent _event = displayEvent as CreditInsuranceEvent;
+                                data[i,1] =  (_event.Principal.GetFormatedValue(pCredit.UseCents));
+                                data[i,2] =  ("-");
+                                data[i,3] =  (_event.Commission.GetFormatedValue(pCredit.Product.Currency.UseCents));
+                                data[i,4] =  ("-");
+                               
+                            }
+
+                            data[i, 5] = eps.SelectEventTypeByEventType(displayEvent.Code).Description;
+                            data[i,6] =  (displayEvent.InstallmentNumber.ToString());
+                           
+                            if (displayEvent.PaymentMethod != null)
+                            {
+                                data[i,7] =  (displayEvent.PaymentMethod.Name);
+                            }
+                            else
+                            {
+                                data[i,7] =  (string.Empty);
+                            }
+
+
+                            i++;
+                           
+                        }
+
+
+                   //Create an instance for word app
+                    Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
+
+                    //Set animation status for word application
+                    //winword.ShowAnimation = false;
+
+                    //Set status for word application is to be visible or not.
+                    winword.Visible = false;
+
+                    //Create a missing variable for missing value
+                    object missing = System.Reflection.Missing.Value;
+
+                    //Create a new document
+                    Microsoft.Office.Interop.Word.Document document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+
+                    //Add header into the document
+                    foreach (Microsoft.Office.Interop.Word.Section section in document.Sections)
+                    {
+                        //Get the header range and add the header details.
+                        Microsoft.Office.Interop.Word.Range headerRange = section.Headers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                        headerRange.Fields.Add(headerRange, Microsoft.Office.Interop.Word.WdFieldType.wdFieldPage);
+                        headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                        headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
+                        headerRange.Font.Size = 10;
+                        headerRange.Text = "<Bank Name>";
+                    }
+
+                    //Add the footers into the document
+                    foreach (Microsoft.Office.Interop.Word.Section wordSection in document.Sections)
+                    {
+                        //Get the footer range and add the footer details.
+                        Microsoft.Office.Interop.Word.Range footerRange = wordSection.Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                        footerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdDarkRed;
+                        footerRange.Font.Size = 10;
+                        footerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                        footerRange.Text = "Loan Statement";
+                    }
+
+                    //adding text to document
+
+                    document.Content.SetRange(0, 0);
+                  
+                    document.Content.Text = document.Content.Text + "Customer Name     : " + _client.Name;
+                    document.Content.Text = document.Content.Text + "Loan Contract Code: " + pCredit.Code;
+                    document.Content.Text = document.Content.Text + "Statement Date    : " + DateTime.Today.ToShortDateString();
+                    document.Content.Text = document.Content.Text + "Loan Amount       : " + pCredit.LoanAmount;
+                    document.Content.Text = document.Content.Text + "Remaining Principal: " + pCredit.OLB;
+                    document.Content.Text = document.Content.Text + "Contract Status: " + pCredit.ContractStatus;
+                    
+                    document.Content.Text = document.Content.Text + "Subject: Loan statement for contract code " + pCredit.Code;
+                    document.Content.Text = document.Content.Text + "Dear Sir,";
+
+                    document.Content.Text = document.Content.Text + "Thank you for continuing your banking relationship with us. It’s a secure way to protect your money and valuables.";
+
+                    document.Content.Text = document.Content.Text + "Please find the your loan statement for the contract code "+pCredit.Code+ ".";
+
+                    //Add paragraph with Heading 1 style
+                    Microsoft.Office.Interop.Word.Paragraph para1 = document.Content.Paragraphs.Add(ref missing);
+                 
+                    //Create a 5X5 table and insert some dummy record
+                    Microsoft.Office.Interop.Word.Table firstTable = document.Tables.Add(para1.Range, events.Count+1, 8, ref missing, ref missing);
+
+
+                  
+                    firstTable.Borders.Enable = 1;
+                    foreach (Row row in firstTable.Rows)
+                    {
+                        if (row.Index == 1)
+                        {
+                            foreach (Cell cell in row.Cells)
+                            {     //Header row
+
+                                cell.Range.Text = columnName[cell.ColumnIndex - 1];
+                                cell.Range.Font.Bold = 1;
+                                //other format properties goes here
+                                cell.Range.Font.Name = "verdana";
+                                cell.Range.Font.Size = 10;
+                                //cell.Range.Font.ColorIndex = WdColorIndex.wdGray25;                            
+                                cell.Shading.BackgroundPatternColor = WdColor.wdColorGray25;
+                                //Center alignment for the Header cells
+                                cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+
+                            }
+                        }
+
+                        //Data row
+                        if (row.Index != 1)
+                        {
+                            foreach (Cell cell in row.Cells)
+                            {
+                                cell.Range.Text = data[row.Index - 2, cell.ColumnIndex - 1];
+                            }
+                        }
+
+                    }
+
+                    //Add paragraph with Heading 2 style
+                    Microsoft.Office.Interop.Word.Paragraph para2 = document.Content.Paragraphs.Add(ref missing);
+                    para2.Range.Text = Environment.NewLine + "Should you have any questions or require additional information, please call the phone number that is listed on your loan statement.";
+
+                    para2.Range.Text = para2.Range.Text + "We are proud to serve you. Thank you Sir/Mam.";
+                    para2.Range.Text = para2.Range.Text + Environment.NewLine+"Regards,";
+                    para2.Range.Text = para2.Range.Text + "Bank Representative";
+                    para2.Range.Text = para2.Range.Text + "Name of bank";
+                    para2.Range.InsertParagraphAfter();
+
+                    //Save the document
+                    object filename = @"E:\temp1.docx";
+                    document.SaveAs2(ref filename);
+                    document.Close(ref missing, ref missing, ref missing);
+                    document = null;
+                    winword.Quit(ref missing, ref missing, ref missing);
+                    winword = null;
+                    MessageBox.Show("Document created successfully !");
+
+                }
+                else
+                {
+                    MessageBox.Show("No Charges for the selected account !");
+                }
+
+                    }
+                }
+            
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FixedDepositProductSelectAProduct);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
+        }
+
+        private void btnCurrentChargesNotice_Click(object sender, EventArgs ev)
+        {
+            try
+            {
+
+                if (lvContracts.SelectedItems.Count == 0) return;
+
+                if (lvContracts.SelectedItems[0].Tag is Loan)
+                {
+                    Loan pCredit = lvContracts.SelectedItems[0].Tag as Loan;
+
+                    if (pCredit != null)
+                    {
+
+                        lvEvents.Items.Clear();
+                        List<Event> events = pCredit.Events.GetSortedEvents();
+                        EventProcessorServices eps = ServicesProvider.GetInstance().GetEventProcessorServices();
+
+                        String[] columnName = { "Date", "Interest", "Commission", "Penalties", "Installment Number", "Description" };
+                        String[,] data = new String[events.Count, 6];
+                        int i = 0;
+                        decimal totalInterestPaid = 0;
+                        decimal totalCommissionPaid = 0;
+                        decimal totalPenaltiesPaid = 0;
+                        foreach (Event displayEvent in events)
+                        {
+
+                            data[i, 0] = (displayEvent.Date.ToShortDateString());
+
+                            if (displayEvent is LoanDisbursmentEvent)
+                            {
+                                var e = displayEvent as LoanDisbursmentEvent;
+                                
+                                data[i, 1] = ("-");
+                                data[i, 2] = (e.Fee.GetFormatedValue(pCredit.UseCents));
+                                data[i, 3] = ("-");
+
+
+                            }
+                            else if (displayEvent is LoanEntryFeeEvent)
+                            {
+                                LoanEntryFeeEvent e = displayEvent as LoanEntryFeeEvent;
+
+                                
+                                data[i, 1] = ("-");
+                                data[i, 2] = (e.Fee.GetFormatedValue(pCredit.UseCents));
+                                data[i, 3] = ("-");
+
+
+                            }
+                            else if (displayEvent is AccruedInterestEvent)
+                            {
+                                AccruedInterestEvent evt = displayEvent as AccruedInterestEvent;
+                                
+                                data[i, 1] = (evt.AccruedInterest.GetFormatedValue(pCredit.UseCents));
+                                data[i, 2] = ("-");
+                                data[i, 3] = ("-");
+
+
+                            }
+                            else if (displayEvent is RepaymentEvent)
+                            {
+                                RepaymentEvent _event = displayEvent as RepaymentEvent;
+                                
+                                data[i, 1] = (_event.Interests.GetFormatedValue(pCredit.UseCents));
+                                data[i, 2] = (_event.Commissions.GetFormatedValue(pCredit.UseCents));
+                                data[i, 3] = (_event.Penalties.GetFormatedValue(pCredit.UseCents));
+
+
+                            }
+                            else if (displayEvent is BadLoanRepaymentEvent)
+                            {
+                                BadLoanRepaymentEvent _event = displayEvent as BadLoanRepaymentEvent;
+                                
+                                data[i, 1] = (_event.Interests.GetFormatedValue(pCredit.UseCents));
+                                data[i, 2] = (_event.Commissions.GetFormatedValue(pCredit.UseCents));
+                                data[i, 3] = (_event.Penalties.GetFormatedValue(pCredit.UseCents));
+
+
+                            }
+                            else if (displayEvent is TrancheEvent)
+                            {
+                                TrancheEvent _event = displayEvent as TrancheEvent;
+                                
+                                data[i, 1] = ("-");
+                                data[i, 2] = ("-");
+                                data[i, 3] = ("-");
+
+
+                            }
+                            else if (displayEvent is OverdueEvent)
+                            {
+                                OverdueEvent _event = displayEvent as OverdueEvent;
+                                
+                                data[i, 1] = ("-");
+                                data[i, 2] = ("-");
+                                data[i, 3] = ("-");
+
+                            }
+                            else if (displayEvent is ProvisionEvent)
+                            {
+                                ProvisionEvent _event = displayEvent as ProvisionEvent;
+                                
+                                data[i, 1] = ("-");
+                                data[i, 2] = ("-");
+                                data[i, 3] = ("-");
+
+                            }
+                            else if (displayEvent is LoanPenaltyAccrualEvent)
+                            {
+                                LoanPenaltyAccrualEvent _event = displayEvent as LoanPenaltyAccrualEvent;
+                                
+                                data[i, 1] = ("-");
+                                data[i, 2] = ("-");
+                                data[i, 3] = (_event.Penalty.GetFormatedValue(pCredit.UseCents));
+
+                            }
+                            else if (displayEvent is LoanInterestAccrualEvent)
+                            {
+                                LoanInterestAccrualEvent _event = displayEvent as LoanInterestAccrualEvent;
+                                
+                                data[i, 1] = (_event.Interest.GetFormatedValue(pCredit.UseCents));
+                                data[i, 2] = ("-");
+                                data[i, 3] = ("-");
+
+                            }
+                            else if (displayEvent is LoanTransitionEvent)
+                            {
+                                var _event = displayEvent as LoanTransitionEvent;
+                                
+                                data[i, 1] = ("-");
+                                data[i, 2] = ("-");
+                                data[i, 3] = ("-");
+
+                            }
+                            else if (displayEvent is RegEvent
+                                     || displayEvent is WriteOffEvent
+                                     || displayEvent is LoanValidationEvent
+                                     || displayEvent is LoanCloseEvent
+                                     || displayEvent is ManualScheduleChangeEvent)
+                            {
+                                
+                                data[i, 1] = ("-");
+                                data[i, 2] = ("-");
+                                data[i, 3] = ("-");
+
+                            }
+                            else if (displayEvent is RescheduleLoanEvent)
+                            {
+                                RescheduleLoanEvent _event = displayEvent as RescheduleLoanEvent;
+                                
+                                data[i, 1] = ("-");
+                                data[i, 2] = ("-");
+                                data[i, 3] = ("-");
+
+                            }
+                            else if (displayEvent is CreditInsuranceEvent)
+                            {
+                                CreditInsuranceEvent _event = displayEvent as CreditInsuranceEvent;
+                                
+                                data[i, 1] = ("-");
+                                data[i, 2] = (_event.Commission.GetFormatedValue(pCredit.Product.Currency.UseCents));
+                                data[i, 3] = ("-");
+
+                            }
+
+                            data[i, 4] = (displayEvent.InstallmentNumber.ToString());
+                            data[i, 5] = eps.SelectEventTypeByEventType(displayEvent.Code).Description;
+
+                            if (data[i, 1] != "-")
+                                totalInterestPaid = totalInterestPaid + Convert.ToDecimal(data[i, 1]);
+                            if (data[i, 2] != "-")
+                                totalCommissionPaid = totalCommissionPaid + Convert.ToDecimal(data[i, 2]);
+                            if (data[i, 3] != "-")
+                                totalPenaltiesPaid = totalPenaltiesPaid + Convert.ToDecimal(data[i, 3]);
+
+                            if ((data[i, 1] != "-") && (data[i, 2] != "-") && (data[i, 3] != "-"))
+                                i++;
+
+                        }
+
+
+
+
+
+                        //Create an instance for word app
+                        Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
+
+                        //Set animation status for word application
+                        //winword.ShowAnimation = false;
+
+                        //Set status for word application is to be visible or not.
+                        winword.Visible = false;
+
+                        //Create a missing variable for missing value
+                        object missing = System.Reflection.Missing.Value;
+
+                        //Create a new document
+                        Microsoft.Office.Interop.Word.Document document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+
+                        //Add header into the document
+                        foreach (Microsoft.Office.Interop.Word.Section section in document.Sections)
+                        {
+                            //Get the header range and add the header details.
+                            Microsoft.Office.Interop.Word.Range headerRange = section.Headers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                            headerRange.Fields.Add(headerRange, Microsoft.Office.Interop.Word.WdFieldType.wdFieldPage);
+                            headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                            headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
+                            headerRange.Font.Size = 10;
+                            headerRange.Text = "<Bank Name>";
+                        }
+
+                        //Add the footers into the document
+                        foreach (Microsoft.Office.Interop.Word.Section wordSection in document.Sections)
+                        {
+                            //Get the footer range and add the footer details.
+                            Microsoft.Office.Interop.Word.Range footerRange = wordSection.Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                            footerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdDarkRed;
+                            footerRange.Font.Size = 10;
+                            footerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                            footerRange.Text = "Charges Notice " + pCredit.Code;
+                        }
+
+                        //adding text to document
+
+                        document.Content.SetRange(0, 0);
+
+                        document.Content.Text = document.Content.Text + "Customer Name     : " + _client.Name;
+                        document.Content.Text = document.Content.Text + "Loan Contract Code: " + pCredit.Code;
+                        document.Content.Text = document.Content.Text + "Notice Date    : " + DateTime.Today.ToShortDateString();
+                        document.Content.Text = document.Content.Text + "Loan Amount       : " + pCredit.LoanAmount;
+                        document.Content.Text = document.Content.Text + "Remaining Principal: " + pCredit.OLB;
+                        document.Content.Text = document.Content.Text + "Contract Status : " + pCredit.ContractStatus;
+                        document.Content.Text = document.Content.Text + "Total Interest Paid : " + totalInterestPaid;
+                        document.Content.Text = document.Content.Text + "Total Commission Paid : " + totalCommissionPaid;
+                        document.Content.Text = document.Content.Text + "Total Penalties Paid : " + totalPenaltiesPaid;
+
+
+                        
+                        document.Content.Text = document.Content.Text + "Subject: Charges notice for contract code " + pCredit.Code;
+                        document.Content.Text = document.Content.Text + "Dear Sir,";
+                        document.Content.Text = document.Content.Text + "Thank you for continuing your banking relationship with us. It’s a secure way to protect your money and valuables.";
+
+                        document.Content.Text = document.Content.Text + "Your account has been charged for the following items.";
+
+                        //Add paragraph with Heading 1 style
+                        Microsoft.Office.Interop.Word.Paragraph para1 = document.Content.Paragraphs.Add(ref missing);
+
+                        //Create a 5X5 table and insert some dummy record
+                        Microsoft.Office.Interop.Word.Table firstTable = document.Tables.Add(para1.Range, i+1, 6, ref missing, ref missing);
+
+
+
+                        firstTable.Borders.Enable = 1;
+                        foreach (Row row in firstTable.Rows)
+                        {
+                            if (row.Index == 1)
+                            {
+                                foreach (Cell cell in row.Cells)
+                                {     //Header row
+
+                                    cell.Range.Text = columnName[cell.ColumnIndex - 1];
+                                    cell.Range.Font.Bold = 1;
+                                    //other format properties goes here
+                                    cell.Range.Font.Name = "verdana";
+                                    cell.Range.Font.Size = 10;
+                                    //cell.Range.Font.ColorIndex = WdColorIndex.wdGray25;                            
+                                    cell.Shading.BackgroundPatternColor = WdColor.wdColorGray25;
+                                    //Center alignment for the Header cells
+                                    cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                                    cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+
+                                }
+                            }
+
+                            //Data row
+                            if (row.Index != 1)
+                            {
+                                foreach (Cell cell in row.Cells)
+                                {
+                                    cell.Range.Text = data[row.Index - 2, cell.ColumnIndex - 1];
+                                }
+                            }
+
+                        }
+
+                        //Add paragraph with Heading 2 style
+                        Microsoft.Office.Interop.Word.Paragraph para2 = document.Content.Paragraphs.Add(ref missing);
+                        para2.Range.Text = Environment.NewLine + "Should you have any questions or require additional information, please call the phone number that is listed on your loan statement.";
+
+                        para2.Range.Text = para2.Range.Text + "We are proud to serve you. Thank you Sir/Mam.";
+                        para2.Range.Text = para2.Range.Text + Environment.NewLine + "Regards,";
+                        para2.Range.Text = para2.Range.Text + "Bank Representative";
+                        para2.Range.Text = para2.Range.Text + "Name of bank";
+                        para2.Range.InsertParagraphAfter();
+
+                        //Save the document
+                        object filename = @"E:\temp1.docx";
+                        document.SaveAs2(ref filename);
+                        document.Close(ref missing, ref missing, ref missing);
+                        document = null;
+                        winword.Quit(ref missing, ref missing, ref missing);
+                        winword = null;
+                        MessageBox.Show("Document created successfully !");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Charges for the selected account !");
+                    }
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                try
+                {
+
+                    throw new OpenCbsFixedDepositException(OpenCbsFixedDepositExceptionEnum.FixedDepositProductSelectAProduct);
+                }
+                catch (Exception exc)
+                {
+                    new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
+                }
+            }
         }
 
     }

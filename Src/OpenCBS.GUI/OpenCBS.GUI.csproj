@@ -302,6 +302,12 @@
     <Compile Include="Accounting\AddBooking.Designer.cs">
       <DependentUpon>AddBooking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Accounting\AddExpensesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\AddExpensesForm.Designer.cs">
+      <DependentUpon>AddExpensesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Accounting\AddStandardBooking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -316,6 +322,12 @@
     </Compile>
     <Compile Include="Accounting\ClosureBookings.Designer.cs">
       <DependentUpon>ClosureBookings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\CurrencyAssetsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\CurrencyAssetsForm.Designer.cs">
+      <DependentUpon>CurrencyAssetsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Accounting\EditFiscalYear.cs">
       <SubType>Form</SubType>
@@ -1275,6 +1287,9 @@
       <DependentUpon>AddBooking.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\AddExpensesForm.resx">
+      <DependentUpon>AddExpensesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Accounting\AddStandardBooking.es-ES.resx">
       <DependentUpon>AddStandardBooking.cs</DependentUpon>
     </EmbeddedResource>
@@ -1316,6 +1331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Accounting\ClosureBookings.ru-RU.resx">
       <DependentUpon>ClosureBookings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\CurrencyAssetsForm.resx">
+      <DependentUpon>CurrencyAssetsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Accounting\EditFiscalYear.fr.resx">
       <DependentUpon>EditFiscalYear.cs</DependentUpon>

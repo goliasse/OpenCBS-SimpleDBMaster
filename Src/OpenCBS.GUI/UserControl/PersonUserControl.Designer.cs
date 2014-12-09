@@ -620,6 +620,7 @@ namespace OpenCBS.GUI.UserControl
             this.clSavingList.Name = "clSavingList";
             this.clSavingList.AddSelectedSaving += new System.EventHandler(this.savingsListUserControl_AddSelectedSaving);
             this.clSavingList.ViewSelectedSaving += new System.EventHandler(this.savingsListUserControl_ViewSelectedSaving);
+            this.clSavingList.Load += new System.EventHandler(this.clSavingList_Load);
             // 
             // tabPageGroupMember
             // 

@@ -82,6 +82,12 @@ namespace OpenCBS.Services.Events
             _InitializeEventProcessor();
         }
 
+
+        public EventType SelectEventTypeByEventType(string eventType)
+        {
+            return _eventManagement.SelectEventTypeByEventType(eventType);
+        }
+
 		public EventProcessorServices(EventManager eventManagement) 
 		{
 			_eventManagement = eventManagement;

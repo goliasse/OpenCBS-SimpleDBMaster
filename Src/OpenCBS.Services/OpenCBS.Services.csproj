@@ -202,6 +202,8 @@
     </Compile>
     <Compile Include="Accounting\AccountingRuleServices.cs" />
     <Compile Include="Accounting\AccountingServices.cs" />
+    <Compile Include="Accounting\CurrencyAssetService.cs" />
+    <Compile Include="Accounting\ExpenseService.cs" />
     <Compile Include="BankGuaranteesService.cs" />
     <Compile Include="BranchService.cs" />
     <Compile Include="CollateralProductServices.cs" />

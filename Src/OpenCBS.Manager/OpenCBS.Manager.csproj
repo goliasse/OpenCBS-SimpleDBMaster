@@ -170,6 +170,8 @@
     </Compile>
     <Compile Include="Accounting\AccountingRuleManager.cs" />
     <Compile Include="Accounting\AccountManager.cs" />
+    <Compile Include="Accounting\CurrencyAssetManager.cs" />
+    <Compile Include="Accounting\ExpenseManager.cs" />
     <Compile Include="BankGuaranteeManager.cs" />
     <Compile Include="BranchManager.cs" />
     <Compile Include="CollateralProductManager.cs" />
