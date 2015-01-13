@@ -134,9 +134,12 @@ namespace OpenCBS.Manager.Products
             finalAmountTransaction.TransactionFees = 0;
             finalAmountTransaction.TransactionMode = "Debit";
             finalAmountTransaction.TransactionType = productHolding.FinalAmountPaymentMethod;
+            finalAmountTransaction.toFDAccount = FetchProduct(finalAmountTransaction.ToAccount);
+            finalAmountTransaction.fromFDAccount = FetchProduct(finalAmountTransaction.FromAccount);
+            string branch = productHolding.FixedDepositContractCode.Split('/')[0];
 
-            accountManager.UpdateChartOfAccount("Interest", "Credit", productHolding.FinalAmount.Value-productHolding.InitialAmount.Value,"F");
-            accountManager.UpdateChartOfAccount(finalAmountTransaction.TransactionType, finalAmountTransaction.TransactionMode, productHolding.InitialAmount.Value, "F");
+            accountManager.UpdateChartOfAccount("Debit", productHolding.FinalAmount.Value - productHolding.InitialAmount.Value, "ProfitAndLossExpense", "FDAccountExpense", "Interest paid for FD " + productHolding.FixedDepositContractCode, productHolding.FixedDepositProduct.Currency.Name, branch);
+            accountManager.UpdateChartOfAccount("Debit", productHolding.FinalAmount.Value, "BalanceSheetLiabilities", "FDAccountLiabilities", "Final amount paid for FD " + productHolding.FixedDepositContractCode, productHolding.FixedDepositProduct.Currency.Name, branch);
                 
 
             return currentAccountTransactionManager.MakeFDTransaction(finalAmountTransaction);
@@ -163,6 +166,8 @@ namespace OpenCBS.Manager.Products
             initialAmountTransaction.TransactionFees = 0;
             initialAmountTransaction.TransactionMode = "Credit";
             initialAmountTransaction.TransactionType = productHolding.InitialAmountPaymentMethod;
+            initialAmountTransaction.toFDAccount = FetchProduct(initialAmountTransaction.ToAccount);
+            initialAmountTransaction.fromFDAccount = FetchProduct(initialAmountTransaction.FromAccount);
             return currentAccountTransactionManager.MakeFDTransaction(initialAmountTransaction);
 
         }

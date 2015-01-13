@@ -38,24 +38,34 @@ namespace OpenCBS.GUI.Accounting
             this.rbDebit = new System.Windows.Forms.RadioButton();
             this.rbCredit = new System.Windows.Forms.RadioButton();
             this.treeViewAccounts = new System.Windows.Forms.TreeView();
-            this.textNumericNumber = new OpenCBS.GUI.UserControl.TextNumericUserControl();
             this.textBoxLabel = new System.Windows.Forms.TextBox();
             this.labelLabel = new System.Windows.Forms.Label();
             this.labelAccountNumber = new System.Windows.Forms.Label();
             this.labelParentValue = new System.Windows.Forms.Label();
             this.labelAccountType = new System.Windows.Forms.Label();
-            this.tabPageCategory = new System.Windows.Forms.TabPage();
-            this.tbAccountCategory = new System.Windows.Forms.TextBox();
-            this.lbaccountCategoryName = new System.Windows.Forms.Label();
+            this.tabPageSubCategory = new System.Windows.Forms.TabPage();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbSubCategory = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBoxAction = new System.Windows.Forms.GroupBox();
             this.btnSaving = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.lbaccountCategoryName = new System.Windows.Forms.Label();
+            this.tbAccountCategory = new System.Windows.Forms.TextBox();
+            this.tabPageCategory = new System.Windows.Forms.TabPage();
+            this.textNumericNumber = new OpenCBS.GUI.UserControl.TextNumericUserControl();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbBalance = new System.Windows.Forms.TextBox();
+            this.cbBranch = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBoxData.SuspendLayout();
             this.tabControlData.SuspendLayout();
             this.tabPageAccount.SuspendLayout();
-            this.tabPageCategory.SuspendLayout();
+            this.tabPageSubCategory.SuspendLayout();
             this.groupBoxAction.SuspendLayout();
+            this.tabPageCategory.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -77,6 +87,7 @@ namespace OpenCBS.GUI.Accounting
             // 
             this.tabControlData.Controls.Add(this.tabPageAccount);
             this.tabControlData.Controls.Add(this.tabPageCategory);
+            this.tabControlData.Controls.Add(this.tabPageSubCategory);
             resources.ApplyResources(this.tabControlData, "tabControlData");
             this.tabControlData.Name = "tabControlData";
             this.tabControlData.SelectedIndex = 0;
@@ -116,11 +127,6 @@ namespace OpenCBS.GUI.Accounting
             this.treeViewAccounts.PathSeparator = " --> ";
             this.treeViewAccounts.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewAccounts_AfterSelect);
             // 
-            // textNumericNumber
-            // 
-            resources.ApplyResources(this.textNumericNumber, "textNumericNumber");
-            this.textNumericNumber.Name = "textNumericNumber";
-            // 
             // textBoxLabel
             // 
             resources.ApplyResources(this.textBoxLabel, "textBoxLabel");
@@ -147,22 +153,41 @@ namespace OpenCBS.GUI.Accounting
             resources.ApplyResources(this.labelAccountType, "labelAccountType");
             this.labelAccountType.Name = "labelAccountType";
             // 
-            // tabPageCategory
+            // tabPageSubCategory
             // 
-            this.tabPageCategory.Controls.Add(this.tbAccountCategory);
-            this.tabPageCategory.Controls.Add(this.lbaccountCategoryName);
-            resources.ApplyResources(this.tabPageCategory, "tabPageCategory");
-            this.tabPageCategory.Name = "tabPageCategory";
+            this.tabPageSubCategory.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageSubCategory.Controls.Add(this.cbBranch);
+            this.tabPageSubCategory.Controls.Add(this.tbBalance);
+            this.tabPageSubCategory.Controls.Add(this.label3);
+            this.tabPageSubCategory.Controls.Add(this.label2);
+            this.tabPageSubCategory.Controls.Add(this.cbCategory);
+            this.tabPageSubCategory.Controls.Add(this.label6);
+            this.tabPageSubCategory.Controls.Add(this.tbSubCategory);
+            this.tabPageSubCategory.Controls.Add(this.label1);
+            resources.ApplyResources(this.tabPageSubCategory, "tabPageSubCategory");
+            this.tabPageSubCategory.Name = "tabPageSubCategory";
             // 
-            // tbAccountCategory
+            // cbCategory
             // 
-            resources.ApplyResources(this.tbAccountCategory, "tbAccountCategory");
-            this.tbAccountCategory.Name = "tbAccountCategory";
+            this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cbCategory, "cbCategory");
+            this.cbCategory.FormattingEnabled = true;
+            this.cbCategory.Name = "cbCategory";
             // 
-            // lbaccountCategoryName
+            // label6
             // 
-            resources.ApplyResources(this.lbaccountCategoryName, "lbaccountCategoryName");
-            this.lbaccountCategoryName.Name = "lbaccountCategoryName";
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // tbSubCategory
+            // 
+            resources.ApplyResources(this.tbSubCategory, "tbSubCategory");
+            this.tbSubCategory.Name = "tbSubCategory";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // groupBoxAction
             // 
@@ -177,12 +202,58 @@ namespace OpenCBS.GUI.Accounting
             resources.ApplyResources(this.btnSaving, "btnSaving");
             this.btnSaving.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSaving.Name = "btnSaving";
+            this.btnSaving.Click += new System.EventHandler(this.btnSaving_Click);
             // 
             // btnClose
             // 
             resources.ApplyResources(this.btnClose, "btnClose");
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.Name = "btnClose";
+            // 
+            // lbaccountCategoryName
+            // 
+            resources.ApplyResources(this.lbaccountCategoryName, "lbaccountCategoryName");
+            this.lbaccountCategoryName.Name = "lbaccountCategoryName";
+            // 
+            // tbAccountCategory
+            // 
+            resources.ApplyResources(this.tbAccountCategory, "tbAccountCategory");
+            this.tbAccountCategory.Name = "tbAccountCategory";
+            // 
+            // tabPageCategory
+            // 
+            this.tabPageCategory.Controls.Add(this.tbAccountCategory);
+            this.tabPageCategory.Controls.Add(this.lbaccountCategoryName);
+            resources.ApplyResources(this.tabPageCategory, "tabPageCategory");
+            this.tabPageCategory.Name = "tabPageCategory";
+            // 
+            // textNumericNumber
+            // 
+            resources.ApplyResources(this.textNumericNumber, "textNumericNumber");
+            this.textNumericNumber.Name = "textNumericNumber";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // tbBalance
+            // 
+            resources.ApplyResources(this.tbBalance, "tbBalance");
+            this.tbBalance.Name = "tbBalance";
+            this.tbBalance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbBalance_KeyPress);
+            // 
+            // cbBranch
+            // 
+            this.cbBranch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cbBranch, "cbBranch");
+            this.cbBranch.FormattingEnabled = true;
+            this.cbBranch.Name = "cbBranch";
             // 
             // FrmAccount
             // 
@@ -198,9 +269,11 @@ namespace OpenCBS.GUI.Accounting
             this.tabControlData.ResumeLayout(false);
             this.tabPageAccount.ResumeLayout(false);
             this.tabPageAccount.PerformLayout();
+            this.tabPageSubCategory.ResumeLayout(false);
+            this.tabPageSubCategory.PerformLayout();
+            this.groupBoxAction.ResumeLayout(false);
             this.tabPageCategory.ResumeLayout(false);
             this.tabPageCategory.PerformLayout();
-            this.groupBoxAction.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -221,10 +294,19 @@ namespace OpenCBS.GUI.Accounting
         private System.Windows.Forms.Label labelAccountNumber;
         private System.Windows.Forms.Label labelParentValue;
         private System.Windows.Forms.Label labelAccountType;
-        private System.Windows.Forms.TabPage tabPageCategory;
-        private System.Windows.Forms.Label lbaccountCategoryName;
-        private System.Windows.Forms.TextBox tbAccountCategory;
         private System.Windows.Forms.RadioButton rbDebit;
         private System.Windows.Forms.RadioButton rbCredit;
+        private System.Windows.Forms.TabPage tabPageSubCategory;
+        private System.Windows.Forms.TextBox tbSubCategory;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbCategory;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TabPage tabPageCategory;
+        private System.Windows.Forms.TextBox tbAccountCategory;
+        private System.Windows.Forms.Label lbaccountCategoryName;
+        private System.Windows.Forms.TextBox tbBalance;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbBranch;
     }
 }

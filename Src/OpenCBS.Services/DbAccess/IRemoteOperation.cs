@@ -73,7 +73,10 @@ namespace OpenCBS.Services
         FixedAssetRegisterService GetFixedAssetRegisterService(User user);
         RWAPercentageService GetRWAPercentageService(User user);
         BankGuaranteesService GetBankGuaranteesService();
-        LetterOfCreditService GetLetterOfCredit();
+        LetterOfCreditService GetLetterOfCreditService();
+        ExpenseService GetExpenseService();
+        CurrencyAssetService GetCurrencyAssetService();
+        IncomeService GetIncomeService();
         bool TestRemoting();
 
         void SuppressAllRemotingInfos(User pUser, string pComputerName, string pLoginName);

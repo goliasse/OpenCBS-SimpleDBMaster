@@ -37,7 +37,11 @@ namespace OpenCBS.Manager.Accounting
 	/// </summary>
 	public class AccountManager : Manager
 	{
-        public AccountManager(User pUser) : base(pUser){}
+        private User _user = new User();
+        public AccountManager(User pUser) : base(pUser){
+            _user = pUser;
+            
+        }
 		public AccountManager(string testDB) : base(testDB){}
 
         public Account Select(int pAccountId)
@@ -66,6 +70,8 @@ namespace OpenCBS.Manager.Accounting
                         return GetAccount(reader);
                     }
                 }
+
+                
             }
 		}
 
@@ -128,6 +134,29 @@ namespace OpenCBS.Manager.Accounting
                     }
                 }
             }
+        }
+
+
+
+        public int AddChartOfAccount(string categoryName, string subCategory, decimal balance, string branch)
+        {
+
+            int ret = -99;
+            using (SqlConnection conn = GetConnection())
+            {
+                using (OpenCbsCommand command = new OpenCbsCommand("SetChartOfAccounts", conn).AsStoredProcedure())
+                {
+
+                    command.AddParam("@account_sub_category", subCategory);
+                    command.AddParam("@balance", balance);
+                    command.AddParam("@account_category", categoryName);
+                    command.AddParam("@branch", branch);
+
+                    ret = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+            return ret;
+
         }
 
         public List<Account> SelectAllAccounts()
@@ -553,20 +582,20 @@ transaction_type = @transactionType AND transaction_mode= @transactionMode  GROU
 
 
 
-        public int UpdateChartOfAccount(string transactionType, string transactionMode, decimal amount, string accountType)
+        public int UpdateChartOfAccount(string transactionMode, decimal amount, string category, string subCategory, string description, string currency, string branch)
         {
             int ret = -1;
             using (SqlConnection conn = GetConnection())
             {
                 using (OpenCbsCommand command = new OpenCbsCommand("UpdateChartOfAccounts", conn).AsStoredProcedure())
                 {
-
-                    command.AddParam("@TransactionType", transactionType);
                     command.AddParam("@TransactionMode", transactionMode);
-                    command.AddParam("@amount", amount);
-                    command.AddParam("@accountType", accountType);
-
-
+                    command.AddParam("@Amount", amount);
+                    command.AddParam("@Category", category);
+                    command.AddParam("@SubCategory", subCategory);
+                    command.AddParam("@Description", description);
+                    command.AddParam("@Currency", currency);
+                    command.AddParam("@Branch", branch);
                     ret = Convert.ToInt32(command.ExecuteScalar());
 
                 }
@@ -623,6 +652,21 @@ transaction_type = @transactionType AND transaction_mode= @transactionMode  GROU
 	            foreach (var tableName in RelatedTables)
                     if (RecordExists(tableName, connection)) yield return tableName;
 	    }
+
+        public int DeleteCOATranByDesc(string desc)
+        {
+            const string q = @"DELETE FROM [dbo].[ChartOfAccountTransactions] WHERE [Description] = @desc";
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@desc", desc);
+                c.ExecuteNonQuery();
+                
+            }
+           
+            return 1;
+        }
 
 	    public void DeleteRelatedRecords(SqlTransaction transaction)
 	    {

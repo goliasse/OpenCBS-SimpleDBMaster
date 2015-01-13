@@ -293,6 +293,8 @@ namespace OpenCBS.GUI.LetterOfCredit
             if (ret != "")
             {
                 MessageBox.Show("Letter Of Credit Successfully Issued. Code is " + ret);
+                //Update chart of account
+                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", letterOfCredit.TotalFee.Value, "ProfitAndLossIncome", "OtherIncome", "Letter of credit Ref. " + ret, letterOfCredit.Currency, letterOfCredit.Branch);
             }
             else
             {
@@ -312,6 +314,9 @@ namespace OpenCBS.GUI.LetterOfCredit
             letterOfCredit.Status = cmbStatus.SelectedItem.ToString();
             _letterOfCreditService.UpdateLetterOfCredit(letterOfCredit);
             MessageBox.Show("Letter Of Credit " + letterOfCredit.LetterOfCreditCode + " Successfully Updated!");
+
+            //Update chart of account
+            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", letterOfCredit.Value.Value, "BalanceSheetLiabilities", "OtherLiabilities", "Letter of credit Ref. " + letterOfCredit.LetterOfCreditCode, letterOfCredit.Currency, letterOfCredit.Branch);
             btnUpdate.Enabled = false;
         }
 
@@ -327,6 +332,11 @@ namespace OpenCBS.GUI.LetterOfCredit
                 txtTotalFee.Text = (Convert.ToInt32(txtValidity.Text) * ServicesHelper.ConvertStringToNullableDecimal(txtFeePerPeriod.Text)).ToString();
                 txtTotalFee.Enabled = false;
             }
+        }
+
+        private void cmbStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

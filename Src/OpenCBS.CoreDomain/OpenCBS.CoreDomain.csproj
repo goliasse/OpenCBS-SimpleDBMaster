@@ -184,6 +184,7 @@
     <Compile Include="Accounting\FiscalYear.cs" />
     <Compile Include="Accounting\FundingLineAccountingRule.cs" />
     <Compile Include="Accounting\IAccountingRule.cs" />
+    <Compile Include="Accounting\Income.cs" />
     <Compile Include="Accounting\Interfaces\IBooking.cs">
       <SubType>Code</SubType>
     </Compile>

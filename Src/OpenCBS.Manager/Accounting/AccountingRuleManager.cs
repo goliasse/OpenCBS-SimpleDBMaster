@@ -436,7 +436,7 @@ namespace OpenCBS.Manager.Accounting
 
         public AccountingRuleCollection SelectAllByEventType(string type)
         {
-            const string sqlText = @"SELECT id, rule_type
+            const string sqlText = @"SELECT *
                                      FROM [AccountingRules] 
                                      WHERE deleted = 0
                                        AND (event_type = @event_type OR @event_type = '')";

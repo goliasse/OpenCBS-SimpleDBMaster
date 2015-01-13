@@ -27,6 +27,7 @@ using OpenCBS.Enums;
 using OpenCBS.MultiLanguageRessources;
 using OpenCBS.CoreDomain.Accounting;
 using OpenCBS.Services;
+using OpenCBS.CoreDomain;
 
 namespace OpenCBS.GUI.Accounting
 {
@@ -37,6 +38,16 @@ namespace OpenCBS.GUI.Accounting
            Mode = 0;
            InitializeComponent();
            Initialize();
+           
+        }
+
+        private void InitializeComboBoxBranches()
+        {
+            cbBranch.Items.Clear();
+            List<Branch> branches = ServicesProvider.GetInstance().GetBranchService().FindAllNonDeleted();
+            cbBranch.ValueMember = "Code";
+            cbBranch.DisplayMember = "Code";
+            cbBranch.DataSource = branches;
         }
 
         public FrmAccount(bool showBothTabs)
@@ -173,6 +184,34 @@ namespace OpenCBS.GUI.Accounting
             }
             else
                 treeViewAccounts.SelectedNode = treeViewAccounts.Nodes[0];
+
+            cbCategory.ValueMember = "name";
+            cbCategory.DisplayMember = "name";
+            cbCategory.DataSource = accountCategories;
+
+
+            InitializeComboBoxBranches();
+            
+        }
+
+
+        void KeyPressControl(KeyPressEventArgs e)
+        {
+            int keyCode = e.KeyChar;
+
+            if (
+                (keyCode >= 48 && keyCode <= 57) ||
+                (keyCode == 8) ||
+                (Char.IsControl(e.KeyChar) && e.KeyChar != ((char)Keys.V | (char)Keys.ControlKey))
+                ||
+                (Char.IsControl(e.KeyChar) && e.KeyChar != ((char)Keys.C | (char)Keys.ControlKey))
+                ||
+                (e.KeyChar.ToString() == System.Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator))
+            {
+                e.Handled = false;
+            }
+            else
+                e.Handled = true;
         }
 
         private static void AddAccountInTree(TreeNode pParent, Account pAccount, List<Account> pListAccount)
@@ -191,6 +230,28 @@ namespace OpenCBS.GUI.Accounting
         private void tabControlData_SelectedIndexChanged(object sender, EventArgs e)
         {
             Mode = tabControlData.SelectedIndex;
+        }
+
+        private void btnSaving_Click(object sender, EventArgs e)
+        {
+            string categoryName = cbCategory.SelectedValue.ToString();
+            string subCategory = tbSubCategory.Text.ToString();
+            decimal balance = Convert.ToDecimal(tbBalance.Text);
+            string branch = cbBranch.SelectedValue.ToString();
+            
+            int ret = ServicesProvider.GetInstance().GetChartOfAccountsServices().AddChartOfAccount(categoryName, subCategory, balance, branch);
+
+            if (ret >= 1)
+            {
+                MessageBox.Show("Chart Of Account added successfully.");
+            }
+            else
+                MessageBox.Show("Some error ocurred.");
+        }
+
+        private void tbBalance_KeyPress(object sender, KeyPressEventArgs e)
+        {
+KeyPressControl(e);
         }
     }
 }

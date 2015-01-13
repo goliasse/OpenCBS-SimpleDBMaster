@@ -14,17 +14,22 @@ namespace OpenCBS.Services
     {
 
         private readonly CurrentAccountTransactionManager _currentAccountTransactionManager;
+        private readonly CurrentAccountProductHoldingManager _currentAccountProductHoldingManager;
+        private readonly FixedDepositProductHoldingManager _fixedDepositProductHoldingManager;
         private User _user;
 
-        public CurrentAccountTransactionService(CurrentAccountTransactionManager currentAccountProductManager)
+        public CurrentAccountTransactionService(CurrentAccountTransactionManager currentAccountTransactionManager)
 		{
-            _currentAccountTransactionManager = currentAccountProductManager;
+            _currentAccountTransactionManager = currentAccountTransactionManager;
 		}
 
         public CurrentAccountTransactionService(User user)
 		{
             _user = user;
             _currentAccountTransactionManager = new CurrentAccountTransactionManager(user);
+            _currentAccountProductHoldingManager = new CurrentAccountProductHoldingManager(user);
+            _fixedDepositProductHoldingManager = new FixedDepositProductHoldingManager(user);
+
 		}
 
 
@@ -88,11 +93,19 @@ namespace OpenCBS.Services
               public int MakeATransaction(CurrentAccountTransactions currentAccountTransactions, CurrentAccountTransactionFees currentAccountTransactionFees, CurrentAccountProduct _currentAccountProduct, CurrentAccountProductHoldings currentAccountProductHoldings)
               {
                   ValidateCurrentAccountTransaction(currentAccountTransactions, _currentAccountProduct, currentAccountProductHoldings);
+                  currentAccountTransactions.toCAAccount = _currentAccountProductHoldingManager.FetchProduct(currentAccountTransactions.ToAccount);
+                  currentAccountTransactions.fromCAAccount = _currentAccountProductHoldingManager.FetchProduct(currentAccountTransactions.FromAccount);
+                  currentAccountTransactions.toFDAccount = _fixedDepositProductHoldingManager.FetchProduct(currentAccountTransactions.ToAccount);
+                  currentAccountTransactions.fromFDAccount =_fixedDepositProductHoldingManager.FetchProduct(currentAccountTransactions.FromAccount);
                   return _currentAccountTransactionManager.MakeATransaction(currentAccountTransactions, currentAccountTransactionFees);
               }
 
               public int DebitFeeTransaction(CurrentAccountTransactions currentAccountTransactions)
               {
+                  currentAccountTransactions.toCAAccount = _currentAccountProductHoldingManager.FetchProduct(currentAccountTransactions.ToAccount);
+                  currentAccountTransactions.fromCAAccount = _currentAccountProductHoldingManager.FetchProduct(currentAccountTransactions.FromAccount);
+                  currentAccountTransactions.toFDAccount = _fixedDepositProductHoldingManager.FetchProduct(currentAccountTransactions.ToAccount);
+                  currentAccountTransactions.fromFDAccount = _fixedDepositProductHoldingManager.FetchProduct(currentAccountTransactions.FromAccount);
                  return _currentAccountTransactionManager.DebitFeeTransaction(currentAccountTransactions);
               }
 
@@ -103,6 +116,10 @@ namespace OpenCBS.Services
 
         public int MakeFDTransaction(CurrentAccountTransactions currentAccountTransactions)
         {
+            currentAccountTransactions.toCAAccount = _currentAccountProductHoldingManager.FetchProduct(currentAccountTransactions.ToAccount);
+            currentAccountTransactions.fromCAAccount = _currentAccountProductHoldingManager.FetchProduct(currentAccountTransactions.FromAccount);
+            currentAccountTransactions.toFDAccount = _fixedDepositProductHoldingManager.FetchProduct(currentAccountTransactions.ToAccount);
+            currentAccountTransactions.fromFDAccount = _fixedDepositProductHoldingManager.FetchProduct(currentAccountTransactions.FromAccount);
             return _currentAccountTransactionManager.MakeFDTransaction(currentAccountTransactions);
         }
 

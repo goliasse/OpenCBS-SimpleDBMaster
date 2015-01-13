@@ -16,6 +16,7 @@ namespace OpenCBS.Manager
     public class BankGuaranteesManager : Manager
     {
         CurrentAccountTransactionManager currentAccountTransactionManager = null;
+        CurrentAccountProductHoldingManager currentAccountProductHoldingManager = null;
         CurrentAccountEventManager currentAccountEventManager = null;
         public BankGuaranteesManager(User pUser) : base(pUser) {
             currentAccountTransactionManager = new CurrentAccountTransactionManager(pUser);
@@ -254,6 +255,8 @@ namespace OpenCBS.Manager
                 feeTransaction.TransactionFees = -1;
                 feeTransaction.TransactionMode = "Debit";
                 feeTransaction.TransactionType = "Fee";
+                feeTransaction.toCAAccount = currentAccountProductHoldingManager.FetchProduct(feeTransaction.ToAccount);
+                feeTransaction.fromCAAccount = currentAccountProductHoldingManager.FetchProduct(feeTransaction.FromAccount);
                 int ret = currentAccountTransactionManager.DebitFeeTransaction(feeTransaction);
                 if (ret > 0)
                 {

@@ -75,7 +75,11 @@ case OpenCbsExpenseExceptionsEnum.ExpenseAmountIsEmpty:
                     break;
 case OpenCbsExpenseExceptionsEnum.ReferenceIsEmpty:
                     returned = "ReferenceIsEmpty";
-                    break;	
+                    break;
+
+case OpenCbsExpenseExceptionsEnum.ExpenseAmountIsInvalid:
+                    returned = "ExpenseAmountIsInvalid";
+                    break;
             }
             return returned;
         }
@@ -97,6 +101,7 @@ case OpenCbsExpenseExceptionsEnum.ReferenceIsEmpty:
                    
                     ExpenseAmountIsEmpty,
                    
-                    ReferenceIsEmpty
+                    ReferenceIsEmpty,
+                    ExpenseAmountIsInvalid
     }
 }

@@ -368,8 +368,9 @@ namespace OpenCBS.GUI.Contracts
                             savingServices.Deposit(_saving, _date, _amount, _description, User.CurrentUser, pending,
                                                    savingsMethod, null, Teller.CurrentTeller);
 
-                            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Fee", "Debit", updAmountFees.Value, "S");
-                            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Cash", "Credit", _amount.Value, "S");
+
+                            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", updAmountFees.Value, "ProfitAndLossIncome", "SavingAccountIncome", "Credit fee applied for " + _saving.Code, _saving.Product.Currency.Name, _saving.Branch.Code);
+                            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", _amount.Value, "BalanceSheetLiabilities", "SavingAccountLiabilities", "Amount credit to " + _saving.Code, _saving.Product.Currency.Name, _saving.Branch.Code);
                             break;
                         }
                     case OSavingsOperation.Debit:
@@ -379,18 +380,20 @@ namespace OpenCBS.GUI.Contracts
                                 if (_flatFees.HasValue)
                                 {
                                     ((SavingBookContract)_saving).FlatWithdrawFees = updAmountFees.Value;
-                                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Fee", "Debit", updAmountFees.Value, "S");
+
+                                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", updAmountFees.Value, "ProfitAndLossIncome", "SavingAccountIncome", "Withdraw fee applied for " + _saving.Code, _saving.Product.Currency.Name, _saving.Branch.Code);
                                 }
                                 else
                                 {
                                     ((SavingBookContract)_saving).RateWithdrawFees = (double)(updAmountFees.Value / 100);
-                                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Fee", "Debit", (updAmountFees.Value / 100)*_amount.Value, "S");
+
+                                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", (updAmountFees.Value / 100) * _amount.Value, "ProfitAndLossIncome", "SavingAccountIncome", "Withdraw fee applied for " + _saving.Code, _saving.Product.Currency.Name, _saving.Branch.Code);
                                 }
                             }
 
                             savingServices.Withdraw(_saving, _date, _amount, _description, User.CurrentUser, Teller.CurrentTeller);
-                            
-                            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Cash", "Debit", _amount.Value, "S");
+
+                            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", _amount.Value, "BalanceSheetLiabilities", "SavingAccountLiabilities", "Amount debited from " + _saving.Code, _saving.Product.Currency.Name, _saving.Branch.Code);
                             break;
                         }
                     case OSavingsOperation.Transfer:
@@ -407,10 +410,9 @@ namespace OpenCBS.GUI.Contracts
                                 }
                             }
                             decimal fee = nudTotalAmount.Value - nudAmount.Value;
-                            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Fee", "Debit", fee, "S");
                             savingServices.Transfer(_saving, _savingTarget, _date, _amount, fee, _description, User.CurrentUser, false);
-                            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Transfer", "Debit", _amount.Value, "S");
-                            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Transfer", "Credit", _amount.Value, "S");
+                            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", fee, "ProfitAndLossIncome", "SavingAccountIncome", "Transfer fee applied for " + _saving.Code, _saving.Product.Currency.Name, _saving.Branch.Code);
+                            
                             break;
                         }
 
@@ -423,8 +425,7 @@ namespace OpenCBS.GUI.Contracts
                                 savingServices.SpecialOperation(_saving, _date, _amount, _description, User.CurrentUser,
                                                                 savingsMethod, rbxCredit.Checked, booking);
 
-                                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Cash", "Credit", _amount.Value, "S");
-                                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Cash", "Debit", _amount.Value, "S");
+                                   
                                 break;
                             }
                             throw new OpenCbsSavingException(OpenCbsSavingExceptionEnum.TransactionInvalid);

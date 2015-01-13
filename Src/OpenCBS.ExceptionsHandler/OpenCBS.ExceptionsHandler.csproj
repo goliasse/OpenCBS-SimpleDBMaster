@@ -135,6 +135,7 @@
     <Compile Include="..\SolutionInfo.cs">
       <Link>Properties\SolutionInfo.cs</Link>
     </Compile>
+    <Compile Include="Exceptions\AccountExceptions\OpenCbsIncomeException.cs" />
     <Compile Include="Exceptions\AccountExceptions\OpenCbsCurrencyAssetException.cs" />
     <Compile Include="Exceptions\AccountExceptions\OpenCbsExpenseException.cs" />
     <Compile Include="Exceptions\BankGuaranteeExceptions\OpenCbsBankGuaranteeException.cs" />

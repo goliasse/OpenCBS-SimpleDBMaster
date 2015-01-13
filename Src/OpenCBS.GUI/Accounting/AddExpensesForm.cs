@@ -6,14 +6,24 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using OpenCBS.CoreDomain;
+using OpenCBS.CoreDomain.Accounting;
+using OpenCBS.ExceptionsHandler;
+using OpenCBS.MultiLanguageRessources;
+using OpenCBS.Services;
+using OpenCBS.Services.Accounting;
 
 namespace OpenCBS.GUI.Accounting
 {
     public partial class AddExpensesForm : Form
     {
-        public AddExpensesForm()
+        AddedExpense _addedExpense = null;
+        public AddExpensesForm(AddedExpense addedExpense)
         {
+            _addedExpense = addedExpense;
             InitializeComponent();
+            InitializeComboBoxCurrencies();
+            InitializeComboBoxBranches();
         }
 
         private void tbFDContractCode_TextChanged(object sender, EventArgs e)
@@ -21,14 +31,64 @@ namespace OpenCBS.GUI.Accounting
 
         }
 
+        private void InitializeComboBoxCurrencies()
+        {
+            cbCurrency.Items.Clear();
+            cbCurrency.Text = MultiLanguageStrings.GetString(Ressource.FrmAddLoanProduct, "Currency.Text");
+
+            List<Currency> currencies = ServicesProvider.GetInstance().GetCurrencyServices().FindAllCurrencies();
+            Currency line = new Currency { Name = MultiLanguageStrings.GetString(Ressource.FrmAddLoanProduct, "Currency.Text"), Id = 0 };
+            cbCurrency.Items.Add(line);
+
+            foreach (Currency cur in currencies)
+            {
+                cbCurrency.Items.Add(cur.Name);
+            }
+            cbCurrency.SelectedIndex = 0;
+            //bool oneCurrency = 2 == cbCurrency.Items.Count;
+            //cbCurrency.SelectedIndex = oneCurrency ? 1 : 0;
+            //cbCurrency.Enabled = !oneCurrency;
+        }
+
+        private void InitializeComboBoxBranches()
+        {
+            cbBranch.Items.Clear();
+            List<Branch> branches = ServicesProvider.GetInstance().GetBranchService().FindAllNonDeleted();
+            cbBranch.ValueMember = "Id";
+            cbBranch.DisplayMember = "";
+            cbBranch.DataSource = branches;
+        }
+
         private void btnAddExpense_Click(object sender, EventArgs e)
         {
-            DateTime expense = expenseDate.Value;
-            string expenseCategory = cbExpenseCategory.SelectedItem.ToString();
-            string expenseDescription = tbExpenseDescription.Text;
-            string expenseAmount = tbExpenseAmount.Text;
-            string reference = tbReference.Text;
+            try {
+            Expense expense = new Expense();
+            expense.ExpenseDate = expenseDate.Value;
+            expense.ExpenseCategory = cbExpenseCategory.SelectedItem.ToString();
+            expense.ExpenseDescription = tbExpenseDescription.Text;
+            expense.ExpenseAmount = Convert.ToDecimal(tbExpenseAmount.Text);
+            expense.Reference = tbReference.Text;
+            expense.Currency = cbCurrency.SelectedItem.ToString();
+            expense.Branch = cbBranch.SelectedItem.ToString();
 
+            ExpenseService expenseService = ServicesProvider.GetInstance().GetExpenseService();
+            int ret = expenseService.AddExpense(expense);
+            if (ret >= 1)
+            {
+                MessageBox.Show("Expense added successfully.");
+                _addedExpense.InitializeExpenseList();
+                //Update chart of account
+                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", expense.ExpenseAmount.Value, "ProfitAndLossExpense", "OtherExpense", expense.ExpenseCategory + " " + ret, expense.Currency, expense.Branch);
+                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", expense.ExpenseAmount.Value, "ProfitAndLossIncome", "ProfitAndLossIncome", expense.ExpenseCategory + " " + ret, expense.Currency, expense.Branch);
+            }
+            else
+                MessageBox.Show("Some error ocurred.");
+              }
+            catch (Exception ex)
+            {
+               new frmShowError(CustomExceptionHandler.ShowExceptionText(ex)).ShowDialog();
+                
+            }
 
         }
 

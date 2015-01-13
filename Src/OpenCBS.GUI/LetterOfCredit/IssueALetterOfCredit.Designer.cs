@@ -87,6 +87,7 @@
             this.cmbStatus.Size = new System.Drawing.Size(183, 21);
             this.cmbStatus.TabIndex = 116;
             this.cmbStatus.Visible = false;
+            this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
             // 
             // txtExpiryDate
             // 

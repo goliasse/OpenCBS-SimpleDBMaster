@@ -121,6 +121,7 @@ namespace OpenCBS.GUI.Accounting
                     _CheckExchangeRate();
 
                     var booking = (Booking)(cbBookings.SelectedItem);
+                    
                     booking.Amount = Convert.ToInt32(textBoxAmount.Text);
                     booking.Description = textBoxDescription.Text;
                     booking.ExchangeRate = _rate.Rate;
@@ -131,7 +132,7 @@ namespace OpenCBS.GUI.Accounting
                     booking.Maker  = cbMaker.SelectedItem.ToString();
                     booking.Checker = cbChecker.SelectedItem.ToString();
                     booking.TypeOfTransaction = cbTypeOfTransactions.SelectedItem.ToString(); 
-                        
+
                     btnSave.Enabled = false;
 
                     ServicesProvider.GetInstance().GetAccountingServices().BookManualEntry(booking, User.CurrentUser);
@@ -139,6 +140,10 @@ namespace OpenCBS.GUI.Accounting
                     cbBookings.Text = "";
                     textBoxAmount.Text = "";
                     textBoxDescription.Text = "";
+
+                    //Update chart of account
+                   // ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", booking.Amount.Value, "", "", booking.Description);
+                    //ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", booking.Amount.Value, "", "", booking.Description);
 
                     if (MessageBox.Show(MultiLanguageStrings.GetString(Ressource.ElemMvtUserControl, "AccountSaved.Text"), "", MessageBoxButtons.YesNo,
                                         MessageBoxIcon.Question) == DialogResult.Yes)

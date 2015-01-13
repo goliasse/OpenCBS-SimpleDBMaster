@@ -168,6 +168,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\ObjectListView.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>True</Private>
     </Reference>
@@ -210,6 +212,7 @@
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
+    <Reference Include="WindowsBase" />
     <Reference Include="ZedGraph">
       <Name>ZedGraph</Name>
       <HintPath>..\..\Lib\ZedGraph.dll</HintPath>
@@ -290,6 +293,30 @@
     <Compile Include="Accounting\AccountingJournals.Designer.cs">
       <DependentUpon>AccountingJournals.cs</DependentUpon>
     </Compile>
+    <Compile Include="Accounting\AccountingJournalsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\AccountingJournalsForm.Designer.cs">
+      <DependentUpon>AccountingJournalsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\AccountingLedger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\AccountingLedger.Designer.cs">
+      <DependentUpon>AccountingLedger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\AccountsPayable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\AccountsPayable.Designer.cs">
+      <DependentUpon>AccountsPayable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\AccountsReceivable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\AccountsReceivable.Designer.cs">
+      <DependentUpon>AccountsReceivable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Accounting\AccountView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -302,17 +329,65 @@
     <Compile Include="Accounting\AddBooking.Designer.cs">
       <DependentUpon>AddBooking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Accounting\AddCOARule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\AddCOARule.Designer.cs">
+      <DependentUpon>AddCOARule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\AddedCOARules.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\AddedCOARules.Designer.cs">
+      <DependentUpon>AddedCOARules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\AddedCurrencyAsset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\AddedCurrencyAsset.Designer.cs">
+      <DependentUpon>AddedCurrencyAsset.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\AddedExpense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\AddedExpense.Designer.cs">
+      <DependentUpon>AddedExpense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\AddedIncome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\AddedIncome.Designer.cs">
+      <DependentUpon>AddedIncome.cs</DependentUpon>
+    </Compile>
     <Compile Include="Accounting\AddExpensesForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Accounting\AddExpensesForm.Designer.cs">
       <DependentUpon>AddExpensesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Accounting\AddIncome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\AddIncome.Designer.cs">
+      <DependentUpon>AddIncome.cs</DependentUpon>
+    </Compile>
     <Compile Include="Accounting\AddStandardBooking.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Accounting\AddStandardBooking.Designer.cs">
       <DependentUpon>AddStandardBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\BalanceSheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\BalanceSheet.Designer.cs">
+      <DependentUpon>BalanceSheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\CashFlowStatement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\CashFlowStatement.Designer.cs">
+      <DependentUpon>CashFlowStatement.cs</DependentUpon>
     </Compile>
     <Compile Include="Accounting\ChartOfAccountsForm.cs">
       <SubType>Form</SubType>
@@ -386,6 +461,12 @@
     <Compile Include="Accounting\ManualEntries.Designer.cs">
       <DependentUpon>ManualEntries.cs</DependentUpon>
     </Compile>
+    <Compile Include="Accounting\ProfitAndLossStatement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\ProfitAndLossStatement.Designer.cs">
+      <DependentUpon>ProfitAndLossStatement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Accounting\StandardBooking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -397,6 +478,12 @@
     </Compile>
     <Compile Include="Accounting\AccountTrialBalance.Designer.cs">
       <DependentUpon>AccountTrialBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\TrialBalance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounting\TrialBalance.Designer.cs">
+      <DependentUpon>TrialBalance.cs</DependentUpon>
     </Compile>
     <Compile Include="Accounting\TrialBalancePreview.cs">
       <SubType>Form</SubType>
@@ -1241,6 +1328,18 @@
     <EmbeddedResource Include="Accounting\AccountingJournals.ru-RU.resx">
       <DependentUpon>AccountingJournals.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\AccountingJournalsForm.resx">
+      <DependentUpon>AccountingJournalsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\AccountingLedger.resx">
+      <DependentUpon>AccountingLedger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\AccountsPayable.resx">
+      <DependentUpon>AccountsPayable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\AccountsReceivable.resx">
+      <DependentUpon>AccountsReceivable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Accounting\AccountTrialBalance.fr.resx">
       <DependentUpon>AccountTrialBalance.cs</DependentUpon>
     </EmbeddedResource>
@@ -1287,8 +1386,26 @@
       <DependentUpon>AddBooking.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\AddCOARule.resx">
+      <DependentUpon>AddCOARule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\AddedCOARules.resx">
+      <DependentUpon>AddedCOARules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\AddedCurrencyAsset.resx">
+      <DependentUpon>AddedCurrencyAsset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\AddedExpense.resx">
+      <DependentUpon>AddedExpense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\AddedIncome.resx">
+      <DependentUpon>AddedIncome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Accounting\AddExpensesForm.resx">
       <DependentUpon>AddExpensesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\AddIncome.resx">
+      <DependentUpon>AddIncome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Accounting\AddStandardBooking.es-ES.resx">
       <DependentUpon>AddStandardBooking.cs</DependentUpon>
@@ -1306,6 +1423,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Accounting\AddStandardBooking.ru-RU.resx">
       <DependentUpon>AddStandardBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\BalanceSheet.resx">
+      <DependentUpon>BalanceSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\CashFlowStatement.resx">
+      <DependentUpon>CashFlowStatement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Accounting\ChartOfAccountsForm.es-ES.resx">
       <DependentUpon>ChartOfAccountsForm.cs</DependentUpon>
@@ -1460,6 +1583,9 @@
     <EmbeddedResource Include="Accounting\ManualEntries.ru-RU.resx">
       <DependentUpon>ManualEntries.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\ProfitAndLossStatement.resx">
+      <DependentUpon>ProfitAndLossStatement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Accounting\StandardBooking.es-ES.resx">
       <DependentUpon>StandardBooking.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1481,6 +1607,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Accounting\AccountTrialBalance.resx">
       <DependentUpon>AccountTrialBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounting\TrialBalance.resx">
+      <DependentUpon>TrialBalance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Accounting\TrialBalancePreview.resx">
       <DependentUpon>TrialBalancePreview.cs</DependentUpon>

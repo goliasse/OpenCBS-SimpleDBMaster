@@ -308,6 +308,9 @@ WHERE current_account_contract_code = @contractCode";
              initialAmountTransaction.TransactionFees = 0;
              initialAmountTransaction.TransactionMode = "Credit";
              initialAmountTransaction.TransactionType = productHolding.InitialAmountPaymentMethod;
+             initialAmountTransaction.toCAAccount = FetchProduct(initialAmountTransaction.ToAccount);
+             initialAmountTransaction.fromCAAccount = FetchProduct(initialAmountTransaction.FromAccount);
+             
              currentAccountTransactionManager.MakeATransaction(initialAmountTransaction, null);
              
          }
@@ -328,6 +331,8 @@ WHERE current_account_contract_code = @contractCode";
              finalAmountTransaction.TransactionFees = 0;
              finalAmountTransaction.TransactionMode = "Debit";
              finalAmountTransaction.TransactionType = productHolding.FinalAmountPaymentMethod;
+             finalAmountTransaction.toCAAccount = FetchProduct(finalAmountTransaction.ToAccount);
+             finalAmountTransaction.fromCAAccount = FetchProduct(finalAmountTransaction.FromAccount);
              currentAccountTransactionManager.MakeATransaction(finalAmountTransaction, null);
 
          }
@@ -356,6 +361,8 @@ WHERE current_account_contract_code = @contractCode";
              feeTransaction.TransactionFees = -1;
              feeTransaction.TransactionMode = "Debit";
              feeTransaction.TransactionType = "Fee";
+             feeTransaction.toCAAccount = FetchProduct(feeTransaction.ToAccount);
+             feeTransaction.fromCAAccount = FetchProduct(feeTransaction.FromAccount);
              int ret = currentAccountTransactionManager.DebitFeeTransaction(feeTransaction);
              if (ret > 0)
              {
@@ -392,6 +399,8 @@ WHERE current_account_contract_code = @contractCode";
              feeTransaction.TransactionFees = -1;
              feeTransaction.TransactionMode = "Debit";
              feeTransaction.TransactionType = "Fee";
+             feeTransaction.toCAAccount = FetchProduct(feeTransaction.ToAccount);
+             feeTransaction.fromCAAccount = FetchProduct(feeTransaction.FromAccount);
              int ret = currentAccountTransactionManager.DebitFeeTransaction(feeTransaction);
              if (ret > 0)
              {
@@ -427,6 +436,8 @@ WHERE current_account_contract_code = @contractCode";
              feeTransaction.TransactionFees = -1;
              feeTransaction.TransactionMode = "Debit";
              feeTransaction.TransactionType = "Fee";
+             feeTransaction.toCAAccount = FetchProduct(feeTransaction.ToAccount);
+             feeTransaction.fromCAAccount = FetchProduct(feeTransaction.FromAccount);
              int ret = currentAccountTransactionManager.DebitFeeTransaction(feeTransaction);
              if (ret > 0)
              {
@@ -475,6 +486,8 @@ WHERE current_account_contract_code = @contractCode";
              feeTransaction.TransactionFees = -1;
              feeTransaction.TransactionMode = "Debit";
              feeTransaction.TransactionType = "Fee";
+             feeTransaction.toCAAccount = FetchProduct(feeTransaction.ToAccount);
+             feeTransaction.fromCAAccount = FetchProduct(feeTransaction.FromAccount);
              int ret = currentAccountTransactionManager.DebitFeeTransaction(feeTransaction);
              if (ret > 0)
              {
@@ -525,6 +538,8 @@ WHERE current_account_contract_code = @contractCode";
                 feeTransaction.TransactionFees = -1;
                 feeTransaction.TransactionMode = "Debit";
                 feeTransaction.TransactionType = "Fee";
+                feeTransaction.toCAAccount = FetchProduct(feeTransaction.ToAccount);
+                feeTransaction.fromCAAccount = FetchProduct(feeTransaction.FromAccount);
                 int ret = currentAccountTransactionManager.DebitFeeTransaction(feeTransaction);
                 if (ret > 0)
                 {
@@ -1016,7 +1031,7 @@ return currentAccountProductHolding;
              transactionSearchResult.Amount = r.GetDecimal("Amount");
              transactionSearchResult.Balance = r.GetDecimal("Balance");
              transactionSearchResult.Description = r.GetString("purpose_of_transfer");
-             transactionSearchResult.Mode = r.GetString("mode");
+             transactionSearchResult.Mode = r.GetString("transaction_mode");
              return transactionSearchResult;
          }
 
@@ -1051,9 +1066,9 @@ return currentAccountProductHolding;
 
             string contractCode = productHolding.CurrentAccountContractCode;
 
-            string q = @" Select From_Account As Account, Transaction_Date, Amount, From_Account_Balance as Balance From CurrentAccountTransactions Where From_Account = @contractCode  And Month(Transaction_Date) = @month
+            string q = @" Select From_Account As Account, purpose_of_transfer, transaction_mode, Transaction_Date, Amount, From_Account_Balance as Balance From CurrentAccountTransactions Where From_Account = @contractCode  And Month(Transaction_Date) = @month
                            UNION
-                           Select To_Account As Account, Transaction_Date, Amount, To_Account_Balance as Balance From CurrentAccountTransactions Where To_Account = @contractCode And Month(Transaction_Date) = @month order By Transaction_Date";
+                        Select To_Account As Account, purpose_of_transfer, transaction_mode, Transaction_Date, Amount, To_Account_Balance as Balance From CurrentAccountTransactions Where To_Account = @contractCode And Month(Transaction_Date) = @month order By Transaction_Date";
 
             List<TransactionSearchResult> listTransaction = new List<TransactionSearchResult>();
             listTransaction = SearchTransaction(q, calculationDate, contractCode);
@@ -1148,7 +1163,8 @@ return currentAccountProductHolding;
             interestTransaction.TransactionFees = -1;
             interestTransaction.TransactionMode = "Debit";
             interestTransaction.TransactionType = "Interest";
-
+            interestTransaction.toCAAccount = FetchProduct(interestTransaction.ToAccount);
+            interestTransaction.fromCAAccount = FetchProduct(interestTransaction.FromAccount);
             int ret = currentAccountTransactionManager.DebitFeeTransaction(interestTransaction);
             if (ret > 0)
             {
@@ -1168,9 +1184,9 @@ return currentAccountProductHolding;
             
             string contractCode = productHolding.CurrentAccountContractCode;
 
-            string q = @" Select From_Account As Account, Transaction_Date, Amount, From_Account_Balance as Balance From CurrentAccountTransactions Where From_Account = @contractCode  And Month(Transaction_Date) = @month
+            string q = @" Select From_Account As Account, purpose_of_transfer, transaction_mode, Transaction_Date, Amount, From_Account_Balance as Balance From CurrentAccountTransactions Where From_Account = @contractCode  And Month(Transaction_Date) = @month
                            UNION
-                           Select To_Account As Account, Transaction_Date, Amount, To_Account_Balance as Balance From CurrentAccountTransactions Where To_Account = @contractCode And Month(Transaction_Date) = @month order By Transaction_Date";
+                           Select To_Account As Account, purpose_of_transfer, transaction_mode, Transaction_Date, Amount, To_Account_Balance as Balance From CurrentAccountTransactions Where To_Account = @contractCode And Month(Transaction_Date) = @month order By Transaction_Date";
 
             List<TransactionSearchResult> listTransaction = new List<TransactionSearchResult>();
             listTransaction = SearchTransaction(q, calculationDate, contractCode);
@@ -1272,7 +1288,8 @@ return currentAccountProductHolding;
             interestTransaction.TransactionFees = -1;
             interestTransaction.TransactionMode = "Debit";
             interestTransaction.TransactionType = "Fee";
-
+            interestTransaction.toCAAccount = FetchProduct(interestTransaction.ToAccount);
+            interestTransaction.fromCAAccount = FetchProduct(interestTransaction.FromAccount);
             int ret = currentAccountTransactionManager.DebitFeeTransaction(interestTransaction);
             if (ret > 0)
             {
@@ -1293,9 +1310,9 @@ return currentAccountProductHolding;
          {
              string contractCode = productHolding.CurrentAccountContractCode;
 
-             string q = @" Select From_Account As Account, Transaction_Date, Amount, From_Account_Balance as Balance From CurrentAccountTransactions Where From_Account = @contractCode And Month(Transaction_Date) = @month
+             string q = @" Select From_Account As Account, purpose_of_transfer, transaction_mode, Transaction_Date, Amount, From_Account_Balance as Balance From CurrentAccountTransactions Where From_Account = @contractCode And Month(Transaction_Date) = @month
                            UNION
-                           Select To_Account As Account, Transaction_Date, Amount, To_Account_Balance as Balance From CurrentAccountTransactions Where To_Account = @contractCode And Month(Transaction_Date) = @month order By Transaction_Date";
+                           Select To_Account As Account, purpose_of_transfer, transaction_mode, Transaction_Date, Amount, To_Account_Balance as Balance From CurrentAccountTransactions Where To_Account = @contractCode And Month(Transaction_Date) = @month order By Transaction_Date";
 
              List<TransactionSearchResult> listTransaction = new List<TransactionSearchResult>();
              listTransaction = SearchTransaction(q, calculationDate,contractCode);
@@ -1386,7 +1403,8 @@ return currentAccountProductHolding;
             interestTransaction.TransactionFees = -1;
             interestTransaction.TransactionMode = "Credit";
             interestTransaction.TransactionType = "Interest";
-
+            interestTransaction.toCAAccount = FetchProduct(interestTransaction.ToAccount);
+            interestTransaction.fromCAAccount = FetchProduct(interestTransaction.FromAccount);
             currentAccountTransactionManager.DebitFeeTransaction(interestTransaction);
              return interest;
 }

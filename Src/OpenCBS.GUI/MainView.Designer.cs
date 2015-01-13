@@ -119,7 +119,15 @@ namespace OpenCBS.GUI
             this.fiscalYearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.capitalAdequacyRatioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.riskWeightedAssetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.chartOfAccountsBalanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.currencyAssetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addExpensesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addIncomeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.accountsReceivableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.accountsPayableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.accountingJournalsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.balanceSheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.profitAndLossStatementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cashFlowStatementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuConfiguration = new System.Windows.Forms.ToolStripMenuItem();
             this.branchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparatorConfig1 = new System.Windows.Forms.ToolStripSeparator();
@@ -166,9 +174,6 @@ namespace OpenCBS.GUI
             this._modulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._aboutModulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.noticesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loanCOAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.feeEarnedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainStatusBar = new System.Windows.Forms.StatusStrip();
             this.mainStatusBarLblUpdateVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainStatusBarLblUserName = new System.Windows.Forms.ToolStripStatusLabel();
@@ -513,7 +518,15 @@ namespace OpenCBS.GUI
             this.fiscalYearToolStripMenuItem,
             this.capitalAdequacyRatioToolStripMenuItem,
             this.riskWeightedAssetsToolStripMenuItem,
-            this.chartOfAccountsBalanceToolStripMenuItem});
+            this.currencyAssetsToolStripMenuItem,
+            this.addExpensesToolStripMenuItem,
+            this.addIncomeToolStripMenuItem,
+            this.accountsReceivableToolStripMenuItem,
+            this.accountsPayableToolStripMenuItem,
+            this.accountingJournalsToolStripMenuItem,
+            this.balanceSheetToolStripMenuItem,
+            this.profitAndLossStatementToolStripMenuItem,
+            this.cashFlowStatementToolStripMenuItem});
             this.mnuAccounting.Name = "mnuAccounting";
             resources.ApplyResources(this.mnuAccounting, "mnuAccounting");
             // 
@@ -522,6 +535,7 @@ namespace OpenCBS.GUI
             this.mnuChartOfAccounts.Image = global::OpenCBS.GUI.Properties.Resources.page;
             resources.ApplyResources(this.mnuChartOfAccounts, "mnuChartOfAccounts");
             this.mnuChartOfAccounts.Name = "mnuChartOfAccounts";
+            this.mnuChartOfAccounts.Click += new System.EventHandler(this.mnuChartOfAccounts_Click_1);
             // 
             // accountingRulesToolStripMenuItem
             // 
@@ -589,11 +603,59 @@ namespace OpenCBS.GUI
             resources.ApplyResources(this.riskWeightedAssetsToolStripMenuItem, "riskWeightedAssetsToolStripMenuItem");
             this.riskWeightedAssetsToolStripMenuItem.Click += new System.EventHandler(this.riskWeightedAssetsToolStripMenuItem_Click);
             // 
-            // chartOfAccountsBalanceToolStripMenuItem
+            // currencyAssetsToolStripMenuItem
             // 
-            this.chartOfAccountsBalanceToolStripMenuItem.Name = "chartOfAccountsBalanceToolStripMenuItem";
-            resources.ApplyResources(this.chartOfAccountsBalanceToolStripMenuItem, "chartOfAccountsBalanceToolStripMenuItem");
-            this.chartOfAccountsBalanceToolStripMenuItem.Click += new System.EventHandler(this.chartOfAccountsBalanceToolStripMenuItem_Click);
+            this.currencyAssetsToolStripMenuItem.Name = "currencyAssetsToolStripMenuItem";
+            resources.ApplyResources(this.currencyAssetsToolStripMenuItem, "currencyAssetsToolStripMenuItem");
+            this.currencyAssetsToolStripMenuItem.Click += new System.EventHandler(this.currencyAssetsToolStripMenuItem_Click);
+            // 
+            // addExpensesToolStripMenuItem
+            // 
+            this.addExpensesToolStripMenuItem.Name = "addExpensesToolStripMenuItem";
+            resources.ApplyResources(this.addExpensesToolStripMenuItem, "addExpensesToolStripMenuItem");
+            this.addExpensesToolStripMenuItem.Click += new System.EventHandler(this.addExpensesToolStripMenuItem_Click);
+            // 
+            // addIncomeToolStripMenuItem
+            // 
+            this.addIncomeToolStripMenuItem.Name = "addIncomeToolStripMenuItem";
+            resources.ApplyResources(this.addIncomeToolStripMenuItem, "addIncomeToolStripMenuItem");
+            this.addIncomeToolStripMenuItem.Click += new System.EventHandler(this.addIncomeToolStripMenuItem_Click);
+            // 
+            // accountsReceivableToolStripMenuItem
+            // 
+            this.accountsReceivableToolStripMenuItem.Name = "accountsReceivableToolStripMenuItem";
+            resources.ApplyResources(this.accountsReceivableToolStripMenuItem, "accountsReceivableToolStripMenuItem");
+            this.accountsReceivableToolStripMenuItem.Click += new System.EventHandler(this.accountsReceivableToolStripMenuItem_Click);
+            // 
+            // accountsPayableToolStripMenuItem
+            // 
+            this.accountsPayableToolStripMenuItem.Name = "accountsPayableToolStripMenuItem";
+            resources.ApplyResources(this.accountsPayableToolStripMenuItem, "accountsPayableToolStripMenuItem");
+            this.accountsPayableToolStripMenuItem.Click += new System.EventHandler(this.accountsPayableToolStripMenuItem_Click);
+            // 
+            // accountingJournalsToolStripMenuItem
+            // 
+            this.accountingJournalsToolStripMenuItem.Name = "accountingJournalsToolStripMenuItem";
+            resources.ApplyResources(this.accountingJournalsToolStripMenuItem, "accountingJournalsToolStripMenuItem");
+            this.accountingJournalsToolStripMenuItem.Click += new System.EventHandler(this.accountingJournalsToolStripMenuItem_Click);
+            // 
+            // balanceSheetToolStripMenuItem
+            // 
+            this.balanceSheetToolStripMenuItem.Name = "balanceSheetToolStripMenuItem";
+            resources.ApplyResources(this.balanceSheetToolStripMenuItem, "balanceSheetToolStripMenuItem");
+            this.balanceSheetToolStripMenuItem.Click += new System.EventHandler(this.balanceSheetToolStripMenuItem_Click);
+            // 
+            // profitAndLossStatementToolStripMenuItem
+            // 
+            this.profitAndLossStatementToolStripMenuItem.Name = "profitAndLossStatementToolStripMenuItem";
+            resources.ApplyResources(this.profitAndLossStatementToolStripMenuItem, "profitAndLossStatementToolStripMenuItem");
+            this.profitAndLossStatementToolStripMenuItem.Click += new System.EventHandler(this.profitAndLossStatementToolStripMenuItem_Click);
+            // 
+            // cashFlowStatementToolStripMenuItem
+            // 
+            this.cashFlowStatementToolStripMenuItem.Name = "cashFlowStatementToolStripMenuItem";
+            resources.ApplyResources(this.cashFlowStatementToolStripMenuItem, "cashFlowStatementToolStripMenuItem");
+            this.cashFlowStatementToolStripMenuItem.Click += new System.EventHandler(this.cashFlowStatementToolStripMenuItem_Click);
             // 
             // mnuConfiguration
             // 
@@ -733,7 +795,6 @@ namespace OpenCBS.GUI
             this._modulesMenuItem,
             this.mnuAccounting,
             this.reportsToolStripMenuItem,
-            this.noticesToolStripMenuItem,
             this.mnuWindow,
             this.mnuHelp});
             resources.ApplyResources(this.mainMenu, "mainMenu");
@@ -936,26 +997,6 @@ namespace OpenCBS.GUI
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             resources.ApplyResources(this.reportsToolStripMenuItem, "reportsToolStripMenuItem");
             // 
-            // noticesToolStripMenuItem
-            // 
-            this.noticesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loanCOAToolStripMenuItem,
-            this.feeEarnedToolStripMenuItem});
-            this.noticesToolStripMenuItem.Name = "noticesToolStripMenuItem";
-            resources.ApplyResources(this.noticesToolStripMenuItem, "noticesToolStripMenuItem");
-            // 
-            // loanCOAToolStripMenuItem
-            // 
-            this.loanCOAToolStripMenuItem.Name = "loanCOAToolStripMenuItem";
-            resources.ApplyResources(this.loanCOAToolStripMenuItem, "loanCOAToolStripMenuItem");
-            this.loanCOAToolStripMenuItem.Click += new System.EventHandler(this.loanCOAToolStripMenuItem_Click);
-            // 
-            // feeEarnedToolStripMenuItem
-            // 
-            this.feeEarnedToolStripMenuItem.Name = "feeEarnedToolStripMenuItem";
-            resources.ApplyResources(this.feeEarnedToolStripMenuItem, "feeEarnedToolStripMenuItem");
-            this.feeEarnedToolStripMenuItem.Click += new System.EventHandler(this.feeEarnedToolStripMenuItem_Click);
-            // 
             // mainStatusBar
             // 
             resources.ApplyResources(this.mainStatusBar, "mainStatusBar");
@@ -1117,17 +1158,22 @@ namespace OpenCBS.GUI
         private ToolStripMenuItem contactMenuItem;
         private ToolStripMenuItem fixedDepositProductsToolStripMenuItem;
         private ToolStripMenuItem currentAccountProductsToolStripMenuItem;
-        private ToolStripMenuItem noticesToolStripMenuItem;
         private ToolStripMenuItem tellersToolStripMenuItem;
         private ToolStripMenuItem configureCountersToolStripMenuItem;
         private ToolStripMenuItem fixedAssetRegisterToolStripMenuItem;
         private ToolStripMenuItem manageCountersToolStripMenuItem;
         private ToolStripMenuItem capitalAdequacyRatioToolStripMenuItem;
         private ToolStripMenuItem riskWeightedAssetsToolStripMenuItem;
-        private ToolStripMenuItem loanCOAToolStripMenuItem;
-        private ToolStripMenuItem feeEarnedToolStripMenuItem;
         private ToolStripMenuItem lIBORRateToolStripMenuItem;
-        private ToolStripMenuItem chartOfAccountsBalanceToolStripMenuItem;
+        private ToolStripMenuItem currencyAssetsToolStripMenuItem;
+        private ToolStripMenuItem addExpensesToolStripMenuItem;
+        private ToolStripMenuItem addIncomeToolStripMenuItem;
+        private ToolStripMenuItem accountsReceivableToolStripMenuItem;
+        private ToolStripMenuItem accountsPayableToolStripMenuItem;
+        private ToolStripMenuItem accountingJournalsToolStripMenuItem;
+        private ToolStripMenuItem balanceSheetToolStripMenuItem;
+        private ToolStripMenuItem profitAndLossStatementToolStripMenuItem;
+        private ToolStripMenuItem cashFlowStatementToolStripMenuItem;
 
 
     }

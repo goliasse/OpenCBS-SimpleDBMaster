@@ -382,7 +382,18 @@ namespace OpenCBS.GUI.UserControl
 
                 ServicesProvider.GetInstance().GetAccountingServices().BookManualEntry(booking, User.CurrentUser);
                 ServicesProvider.GetInstance().GetEventProcessorServices().LogUser(OUserEvents.UserManualEntryEvent, txbDescription.Text, User.CurrentUser.Id);
-                
+
+                string debitCategory = _debitAccount.Label.Split('-')[0];
+
+                string debitSubCategory = _debitAccount.Label.Split('-')[1];
+
+                string creditSubCategory = _creditAccount.Label.Split('-')[1];
+                string creditCategory = _creditAccount.Label.Split('-')[0];
+
+            //Update chart of accounts
+                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", _amount.Value, creditCategory, creditSubCategory, "Manual book entry", cbCurrencies.SelectedItem.ToString(), _branch.Code);
+                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", _amount.Value, debitCategory, debitSubCategory, "Manual book entry", cbCurrencies.SelectedItem.ToString(), _branch.Code);
+
                 _deleteIsPossible = false;
 
             return true;

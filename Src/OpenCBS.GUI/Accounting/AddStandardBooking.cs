@@ -66,5 +66,10 @@ namespace OpenCBS.GUI.Accounting
                 DebitAccount = comboBoxDebit.SelectedItem as Account
             }; 
         }
+
+        private void btSaving_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

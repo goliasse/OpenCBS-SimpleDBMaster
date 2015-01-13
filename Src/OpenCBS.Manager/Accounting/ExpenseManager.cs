@@ -8,16 +8,16 @@ using OpenCBS.CoreDomain.Accounting;
 
 namespace OpenCBS.Manager
 {
-    class expenseManager : Manager
+    public class ExpenseManager : Manager
     {
         User _user;
-        public expenseManager(User pUser)
+        public ExpenseManager(User pUser)
             : base(pUser)
         {
             _user = pUser;
         }
 
-        public expenseManager(string testDB) : base(testDB) { }
+        public ExpenseManager(string testDB) : base(testDB) { }
 
         public int AddExpense(Expense expense)
         {
@@ -32,7 +32,8 @@ namespace OpenCBS.Manager
                    ,@expenseCategory
                    ,@expenseDescription
                    ,@expenseAmount
-                   ,@reference) ";
+                   ,@reference) 
+SELECT SCOPE_IDENTITY()";
 
             using (SqlConnection conn = GetConnection())
             using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
@@ -75,7 +76,35 @@ namespace OpenCBS.Manager
 
         }
 
-        
+        public List<Expense> FetchExpenses()
+        {
+            List<Expense> listExpesne = new List<Expense>();
+            const string q = @"SELECT * FROM [dbo].[Expenses]";
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+               
+
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+
+                    if (r == null || r.Empty) return null;
+
+                    while (r.Read())
+                    {
+
+                        Expense expense = GetExpense(r);
+
+                        listExpesne.Add(expense);
+                    }
+                }
+            }
+
+            return listExpesne;
+
+
+        }
 
         public int UpdateExpense(Expense expense)
         {
@@ -100,5 +129,22 @@ namespace OpenCBS.Manager
             return 1;
 
         }
+
+
+        public int DeleteExpense(int Id)
+        {
+            const string q = @"DELETE FROM [dbo].[Expenses] WHERE id = @id";
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+
+                c.AddParam("@id", Id);
+                c.ExecuteNonQuery();
+            }
+
+            return 1;
+        }
+
     }
 }

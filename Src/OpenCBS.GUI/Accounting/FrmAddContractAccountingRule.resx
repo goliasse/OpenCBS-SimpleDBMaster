@@ -112,23 +112,23 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tableLayoutPanel1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="btnSaving.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnSaving.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.25pt</value>
   </data>
@@ -151,7 +151,7 @@
     <value>btnSaving</value>
   </data>
   <data name="&gt;&gt;btnSaving.Type" xml:space="preserve">
-    <value>OpenCBS.GUI.UserControl.SweetButton, OpenCBS.GUI, Version=1.1.1.28732, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnSaving.Parent" xml:space="preserve">
     <value>gbxButtons</value>
@@ -184,7 +184,7 @@
     <value>btnClose</value>
   </data>
   <data name="&gt;&gt;btnClose.Type" xml:space="preserve">
-    <value>OpenCBS.GUI.UserControl.SweetButton, OpenCBS.GUI, Version=1.1.1.28732, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnClose.Parent" xml:space="preserve">
     <value>gbxButtons</value>
@@ -208,7 +208,7 @@
     <value>gbxButtons</value>
   </data>
   <data name="&gt;&gt;gbxButtons.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;gbxButtons.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -232,7 +232,7 @@
     <value>tbDescription</value>
   </data>
   <data name="&gt;&gt;tbDescription.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tbDescription.Parent" xml:space="preserve">
     <value>gbxDetails</value>
@@ -253,7 +253,7 @@
     <value>9, 168</value>
   </data>
   <data name="lblDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 16</value>
+    <value>73, 16</value>
   </data>
   <data name="lblDescription.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -265,7 +265,7 @@
     <value>lblDescription</value>
   </data>
   <data name="&gt;&gt;lblDescription.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblDescription.Parent" xml:space="preserve">
     <value>gbxDetails</value>
@@ -289,7 +289,7 @@
     <value>tbOrder</value>
   </data>
   <data name="&gt;&gt;tbOrder.Type" xml:space="preserve">
-    <value>OpenCBS.GUI.UserControl.TextNumericUserControl, OpenCBS.GUI, Version=1.1.1.28732, Culture=neutral, PublicKeyToken=null</value>
+    <value>OpenCBS.GUI.UserControl.TextNumericUserControl, OpenCBS.GUI, Version=14.7.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tbOrder.Parent" xml:space="preserve">
     <value>gbxDetails</value>
@@ -310,7 +310,7 @@
     <value>9, 138</value>
   </data>
   <data name="lblOrder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 16</value>
+    <value>40, 16</value>
   </data>
   <data name="lblOrder.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -322,7 +322,7 @@
     <value>lblOrder</value>
   </data>
   <data name="&gt;&gt;lblOrder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblOrder.Parent" xml:space="preserve">
     <value>gbxDetails</value>
@@ -346,7 +346,7 @@
     <value>cmbEventAttribute</value>
   </data>
   <data name="&gt;&gt;cmbEventAttribute.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cmbEventAttribute.Parent" xml:space="preserve">
     <value>gbxDetails</value>
@@ -367,7 +367,7 @@
     <value>9, 43</value>
   </data>
   <data name="lbEventAttribute.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 16</value>
+    <value>91, 16</value>
   </data>
   <data name="lbEventAttribute.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -379,7 +379,7 @@
     <value>lbEventAttribute</value>
   </data>
   <data name="&gt;&gt;lbEventAttribute.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lbEventAttribute.Parent" xml:space="preserve">
     <value>gbxDetails</value>
@@ -403,7 +403,7 @@
     <value>cmbEventCode</value>
   </data>
   <data name="&gt;&gt;cmbEventCode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cmbEventCode.Parent" xml:space="preserve">
     <value>gbxDetails</value>
@@ -424,7 +424,7 @@
     <value>9, 16</value>
   </data>
   <data name="lbEventType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 16</value>
+    <value>69, 16</value>
   </data>
   <data name="lbEventType.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -436,7 +436,7 @@
     <value>lbEventType</value>
   </data>
   <data name="&gt;&gt;lbEventType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lbEventType.Parent" xml:space="preserve">
     <value>gbxDetails</value>
@@ -460,7 +460,7 @@
     <value>6, 28</value>
   </data>
   <data name="lbCurrency.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 16</value>
+    <value>60, 16</value>
   </data>
   <data name="lbCurrency.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -472,7 +472,7 @@
     <value>lbCurrency</value>
   </data>
   <data name="&gt;&gt;lbCurrency.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lbCurrency.Parent" xml:space="preserve">
     <value>gbxCriterias</value>
@@ -496,7 +496,7 @@
     <value>cmbCurrency</value>
   </data>
   <data name="&gt;&gt;cmbCurrency.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cmbCurrency.Parent" xml:space="preserve">
     <value>gbxCriterias</value>
@@ -526,7 +526,7 @@
     <value>lbProductDescription</value>
   </data>
   <data name="&gt;&gt;lbProductDescription.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lbProductDescription.Parent" xml:space="preserve">
     <value>gbxCriterias</value>
@@ -544,7 +544,7 @@
     <value>6, 176</value>
   </data>
   <data name="lbEconomicActivity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 16</value>
+    <value>110, 16</value>
   </data>
   <data name="lbEconomicActivity.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -556,7 +556,7 @@
     <value>lbEconomicActivity</value>
   </data>
   <data name="&gt;&gt;lbEconomicActivity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lbEconomicActivity.Parent" xml:space="preserve">
     <value>gbxCriterias</value>
@@ -574,7 +574,7 @@
     <value>6, 146</value>
   </data>
   <data name="lbClientType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 16</value>
+    <value>70, 16</value>
   </data>
   <data name="lbClientType.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -586,7 +586,7 @@
     <value>lbClientType</value>
   </data>
   <data name="&gt;&gt;lbClientType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lbClientType.Parent" xml:space="preserve">
     <value>gbxCriterias</value>
@@ -610,7 +610,7 @@
     <value>cmbEconomicActivity</value>
   </data>
   <data name="&gt;&gt;cmbEconomicActivity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cmbEconomicActivity.Parent" xml:space="preserve">
     <value>gbxCriterias</value>
@@ -628,7 +628,7 @@
     <value>6, 91</value>
   </data>
   <data name="lbProduct.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 16</value>
+    <value>53, 16</value>
   </data>
   <data name="lbProduct.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -640,7 +640,7 @@
     <value>lbProduct</value>
   </data>
   <data name="&gt;&gt;lbProduct.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lbProduct.Parent" xml:space="preserve">
     <value>gbxCriterias</value>
@@ -664,7 +664,7 @@
     <value>cmbClientType</value>
   </data>
   <data name="&gt;&gt;cmbClientType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cmbClientType.Parent" xml:space="preserve">
     <value>gbxCriterias</value>
@@ -688,7 +688,7 @@
     <value>cmbProduct</value>
   </data>
   <data name="&gt;&gt;cmbProduct.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cmbProduct.Parent" xml:space="preserve">
     <value>gbxCriterias</value>
@@ -706,7 +706,7 @@
     <value>6, 61</value>
   </data>
   <data name="lbProductType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 16</value>
+    <value>82, 16</value>
   </data>
   <data name="lbProductType.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -718,7 +718,7 @@
     <value>lbProductType</value>
   </data>
   <data name="&gt;&gt;lbProductType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lbProductType.Parent" xml:space="preserve">
     <value>gbxCriterias</value>
@@ -742,7 +742,7 @@
     <value>cmbProductType</value>
   </data>
   <data name="&gt;&gt;cmbProductType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cmbProductType.Parent" xml:space="preserve">
     <value>gbxCriterias</value>
@@ -769,7 +769,7 @@
     <value>gbxCriterias</value>
   </data>
   <data name="&gt;&gt;gbxCriterias.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;gbxCriterias.Parent" xml:space="preserve">
     <value>gbxDetails</value>
@@ -796,7 +796,7 @@
     <value>cbmEntryDirection</value>
   </data>
   <data name="&gt;&gt;cbmEntryDirection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cbmEntryDirection.Parent" xml:space="preserve">
     <value>gbxDetails</value>
@@ -820,7 +820,7 @@
     <value>cmbCreditAccount</value>
   </data>
   <data name="&gt;&gt;cmbCreditAccount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cmbCreditAccount.Parent" xml:space="preserve">
     <value>gbxDetails</value>
@@ -844,7 +844,7 @@
     <value>cmbDebitAccount</value>
   </data>
   <data name="&gt;&gt;cmbDebitAccount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cmbDebitAccount.Parent" xml:space="preserve">
     <value>gbxDetails</value>
@@ -865,7 +865,7 @@
     <value>9, 191</value>
   </data>
   <data name="lbEntryDirection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 16</value>
+    <value>92, 16</value>
   </data>
   <data name="lbEntryDirection.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -880,7 +880,7 @@
     <value>lbEntryDirection</value>
   </data>
   <data name="&gt;&gt;lbEntryDirection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lbEntryDirection.Parent" xml:space="preserve">
     <value>gbxDetails</value>
@@ -898,7 +898,7 @@
     <value>9, 109</value>
   </data>
   <data name="lbCreditAccount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 16</value>
+    <value>92, 16</value>
   </data>
   <data name="lbCreditAccount.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -910,7 +910,7 @@
     <value>lbCreditAccount</value>
   </data>
   <data name="&gt;&gt;lbCreditAccount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lbCreditAccount.Parent" xml:space="preserve">
     <value>gbxDetails</value>
@@ -928,7 +928,7 @@
     <value>9, 81</value>
   </data>
   <data name="lbDebitAccount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 16</value>
+    <value>88, 16</value>
   </data>
   <data name="lbDebitAccount.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -940,7 +940,7 @@
     <value>lbDebitAccount</value>
   </data>
   <data name="&gt;&gt;lbDebitAccount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lbDebitAccount.Parent" xml:space="preserve">
     <value>gbxDetails</value>
@@ -967,7 +967,7 @@
     <value>gbxDetails</value>
   </data>
   <data name="&gt;&gt;gbxDetails.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;gbxDetails.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -994,7 +994,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1003,9 +1003,9 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="gbxButtons" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="gbxDetails" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Percent,88,57143,Percent,11,42857" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="gbxButtons" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="gbxDetails" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50" /&gt;&lt;Rows Styles="Percent,88.57143,Percent,11.42857" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
@@ -1024,6 +1024,6 @@
     <value>FrmAddContractAccountingRule</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>OpenCBS.GUI.UserControl.SweetBaseForm, OpenCBS.GUI, Version=1.1.1.28732, Culture=neutral, PublicKeyToken=null</value>
+    <value>OpenCBS.GUI.UserControl.SweetBaseForm, OpenCBS.GUI, Version=14.7.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

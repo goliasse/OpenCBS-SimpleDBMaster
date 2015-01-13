@@ -290,6 +290,21 @@ namespace OpenCBS.Services
             return new LetterOfCreditService(CurrentUser);
         }
 
+        public ExpenseService GetExpenseService()
+        {
+            return new ExpenseService(CurrentUser);
+        }
+
+        public CurrencyAssetService GetCurrencyAssetService()
+        {
+            return new CurrencyAssetService(CurrentUser);
+        }
+
+        public IncomeService GetIncomeService()
+        {
+            return new IncomeService(CurrentUser);
+        }
+
         #region IServices Members
 
         public NonWorkingDateSingleton GetNonWorkingDate()

@@ -574,8 +574,11 @@ namespace OpenCBS.GUI
 
         private void toolStripMenuItemAccountView_Click(object sender, EventArgs e)
         {
-            AccountView accountView = new AccountView { MdiParent = this };
-            accountView.Show();
+            //AccountView accountView = new AccountView { MdiParent = this };
+            //accountView.Show();
+
+            AccountingLedger accountingLedger = new AccountingLedger { MdiParent = this };
+            accountingLedger.Show();
         }
 
         private void menuItemLocations_Click(object sender, EventArgs e)
@@ -1073,8 +1076,11 @@ namespace OpenCBS.GUI
 
         private void accountingRulesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmAccountingRules frmAccountingRules = new FrmAccountingRules { MdiParent = this };
-            frmAccountingRules.Show();
+            //FrmAccountingRules frmAccountingRules = new FrmAccountingRules { MdiParent = this };
+            //frmAccountingRules.Show();
+
+            AddedCOARules addedCOARules = new AddedCOARules { MdiParent = this };
+            addedCOARules.Show();
         }
 
         private void rolesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1090,7 +1096,10 @@ namespace OpenCBS.GUI
 
         private void trialBalanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AccountTrialBalance accountTrialBalance = new AccountTrialBalance { MdiParent = this };
+            //AccountTrialBalance accountTrialBalance = new AccountTrialBalance { MdiParent = this };
+            //accountTrialBalance.Show();
+
+            TrialBalance accountTrialBalance = new TrialBalance { MdiParent = this };
             accountTrialBalance.Show();
         }
 
@@ -1303,6 +1312,69 @@ namespace OpenCBS.GUI
         {
             SetLIBORRate setLIBORRate = new SetLIBORRate();
             setLIBORRate.Show();
+
+        }
+
+        private void currencyAssetsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddedCurrencyAsset currencyAssetsForm = new AddedCurrencyAsset() { MdiParent = this };
+            currencyAssetsForm.Show();
+        }
+
+        private void addExpensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddedExpense addExpensesForm = new AddedExpense() { MdiParent = this };
+            addExpensesForm.Show();
+        }
+
+        private void addIncomeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddedIncome addIncome = new AddedIncome() { MdiParent = this };
+            addIncome.Show();
+        }
+
+        private void accountsReceivableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            AccountsReceivable frm = new AccountsReceivable() { MdiParent = this };
+            frm.Show();
+
+            
+        }
+
+        private void accountsPayableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AccountsPayable frm = new AccountsPayable() { MdiParent = this };
+            frm.Show();
+
+        }
+
+        private void accountingJournalsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AccountingJournalsForm frm = new AccountingJournalsForm() { MdiParent = this };
+            frm.Show();
+        }
+
+        private void balanceSheetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BalanceSheet frm = new BalanceSheet() { MdiParent = this };
+            frm.Show();
+        }
+
+        private void profitAndLossStatementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProfitAndLossStatement frm = new ProfitAndLossStatement() { MdiParent = this };
+            frm.Show();
+        }
+
+        private void cashFlowStatementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CashFlowStatement frm = new CashFlowStatement() { MdiParent = this };
+            frm.Show();
+        }
+
+        private void mnuChartOfAccounts_Click_1(object sender, EventArgs e)
+        {
 
         }
     }

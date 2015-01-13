@@ -43,6 +43,7 @@ namespace OpenCBS.Services.Accounting
     public class ChartOfAccountsServices : BaseServices
 	{
         private User _user = new User();
+        
         private readonly AccountManager _accountManagement;
 	    private readonly TellerManager _tellerManager;
         private readonly ProvisioningRuleManager _provisionningRuleManager;
@@ -57,6 +58,7 @@ namespace OpenCBS.Services.Accounting
             _provisionningRuleManager = new ProvisioningRuleManager(pUser);
             _loanScaleManager = new LoanScaleManager(pUser);
             _currencyManager = new CurrencyManager(pUser);
+           
         }
 
 		public ChartOfAccountsServices(string testDB)
@@ -67,6 +69,7 @@ namespace OpenCBS.Services.Accounting
             _loanScaleManager = new LoanScaleManager(testDB);
             _currencyManager = new CurrencyManager(testDB);
             ConnectionManager.GetInstance(testDB);
+            
 
 		}
 
@@ -92,9 +95,14 @@ namespace OpenCBS.Services.Accounting
             return _accountManagement.SearchChartOfAccount(accountType, transactionType, transactionMode);
         }
 
-        public int UpdateChartOfAccount(string transactionType, string transactionMode, decimal amount, string accountType)
+        public int UpdateChartOfAccount(string transactionMode, decimal amount, string category, string subCategory, string description, string currency, string branch)
         {
-            return _accountManagement.UpdateChartOfAccount(transactionType, transactionMode, amount, accountType);
+            return _accountManagement.UpdateChartOfAccount(transactionMode, amount, category, subCategory, description, currency, branch);
+        }
+
+        public int DeleteCOATranByDesc(string desc)
+        {
+            return _accountManagement.DeleteCOATranByDesc(desc);
         }
 
         public DataSet GetAccountsDataset()
@@ -105,6 +113,11 @@ namespace OpenCBS.Services.Accounting
         public List<AccountCategory> SelectAccountCategories()
         {
             return _accountManagement.SelectAccountCategories();
+        }
+
+        public int  AddChartOfAccount(string categoryName,string subCategory,decimal  balance,string branch)
+        {
+            return _accountManagement.AddChartOfAccount(categoryName, subCategory, balance, branch);
         }
 
         public Account SelectAccountById(int id)
@@ -315,6 +328,10 @@ namespace OpenCBS.Services.Accounting
                 }
             }
 		}
+
+
+       
+
         public void AddLoanScale(LoanScaleRate lR)
         {
             LoanScaleTable lT = LoanScaleTable.GetInstance(_user);

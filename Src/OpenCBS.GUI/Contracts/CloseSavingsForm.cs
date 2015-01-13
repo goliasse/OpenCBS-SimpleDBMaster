@@ -33,7 +33,7 @@ namespace OpenCBS.GUI.Contracts
         private OCurrency _amount;
         private OCurrency _closeFees;
         private readonly SavingsBookProduct _savingsBookProduct;
-
+        
         public bool IsWithdraw
         {
             get { return rbWithdraw.Checked; }
@@ -183,32 +183,25 @@ namespace OpenCBS.GUI.Contracts
         private void bSave_Click(object sender, EventArgs e)
         {
             _closeFees = udCloseFees.Value;
+            string branch = _savingsBookProduct.Code.Split('/')[0];
 
             if (checkBoxDesactivateFees.Checked)
             {
+                
                 if (rbWithdraw.Checked == true)
                 {
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Fee", "Debit", udCloseFees.Value, "S");
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Cash", "Debit", Amount.Value, "S");
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", Amount.Value, "BalanceSheetLiabilities", "SavingAccountLiabilities", "Final amount withdrawn on closing saving a/c " + _savingsBookProduct.Code, _savingsBookProduct.Currency.Name, branch);
                 }
-                else
-                {
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Fee", "Debit", udCloseFees.Value, "S");
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Transfer", "Debit", Amount.Value, "S");
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Transfer", "Credit", Amount.Value, "S");
-                }
+                
             }
             else
             {
                 if (rbWithdraw.Checked == true)
                 {
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Cash", "Debit", Amount.Value, "S");
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", udCloseFees.Value, "ProfitAndLossIncome", "SavingAccountIncome", "Closing fee applied for " + _savingsBookProduct.Code, _savingsBookProduct.Currency.Name, branch);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", Amount.Value, "BalanceSheetLiabilities", "SavingAccountLiabilities", "Final amount withdrawn on closing saving a/c " + _savingsBookProduct.Code, _savingsBookProduct.Currency.Name, branch);
                 }
-                else
-                {
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Transfer", "Debit", Amount.Value, "S");
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Transfer", "Credit", Amount.Value, "S");
-                }
+                
             }
         }
     }

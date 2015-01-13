@@ -31,7 +31,7 @@ namespace OpenCBS.ExceptionsHandler.Exceptions.AccountExceptions
     public class OpenCbsCurrencyAssetException : OpenCbsException
     {
         private readonly string _code;
-        public OpenCbsCurrencyAssetException(OpenCbsCurrencyAssetExceptionsEnum exceptionCode)
+        public OpenCbsCurrencyAssetException(OpenCbsCurrencyAssetExceptionEnum exceptionCode)
         {
             _code = _FindException(exceptionCode);
         }
@@ -53,44 +53,50 @@ namespace OpenCBS.ExceptionsHandler.Exceptions.AccountExceptions
             base.GetObjectData(info, context);
         }
 
-        private string _FindException(OpenCbsCurrencyAssetExceptionsEnum exceptionId)
+        private string _FindException(OpenCbsCurrencyAssetExceptionEnum exceptionId)
         {
             string returned = String.Empty;
             switch (exceptionId)
             {
-             case OpenCbsCurrencyAssetExceptionsEnum.AssetDateIsEmpty:
+             case OpenCbsCurrencyAssetExceptionEnum.AssetDateIsEmpty:
 
                     returned = "AssetDateIsEmpty";
 
                     break;
 
-case OpenCbsCurrencyAssetExceptionsEnum.AssetDateIsInvalid:
+case OpenCbsCurrencyAssetExceptionEnum.AssetDateIsInvalid:
 
                     returned = "AssetDateIsInvalid";
 
                     break;
 
-case OpenCbsCurrencyAssetExceptionsEnum.AssetCategoryIsEmpty:
+case OpenCbsCurrencyAssetExceptionEnum.AssetCategoryIsEmpty:
 
                     returned = "AssetCategoryIsEmpty";
 
                     break;
 
-case OpenCbsCurrencyAssetExceptionsEnum.AssetDescriptionIsEmpty:
+case OpenCbsCurrencyAssetExceptionEnum.AssetDescriptionIsEmpty:
 
                     returned = "AssetDescriptionIsEmpty";
 
                     break;
 
-case OpenCbsCurrencyAssetExceptionsEnum.AssetAmountIsEmpty:
+case OpenCbsCurrencyAssetExceptionEnum.AssetAmountIsEmpty:
 
                     returned = "AssetAmountIsEmpty";
 
                     break;
 
-case OpenCbsCurrencyAssetExceptionsEnum.ReferenceIsEmpty:
+case OpenCbsCurrencyAssetExceptionEnum.ReferenceIsEmpty:
 
                     returned = "ReferenceIsEmpty";
+
+                    break;
+
+case OpenCbsCurrencyAssetExceptionEnum.AssetAmountIsInvalid:
+
+                    returned = "AssetAmountIsInvalid";
 
                     break;   
             }
@@ -99,7 +105,7 @@ case OpenCbsCurrencyAssetExceptionsEnum.ReferenceIsEmpty:
     }
 
     [Serializable]
-    public enum OpenCbsCurrencyAssetExceptionsEnum
+    public enum OpenCbsCurrencyAssetExceptionEnum
     {
         
 
@@ -117,7 +123,9 @@ case OpenCbsCurrencyAssetExceptionsEnum.ReferenceIsEmpty:
 
                     AssetAmountIsEmpty,
 
-                    ReferenceIsEmpty
+                    ReferenceIsEmpty,
+                    AssetAmountIsInvalid
+
 
         
     }

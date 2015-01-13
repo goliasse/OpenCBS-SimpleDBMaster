@@ -89,6 +89,7 @@ namespace OpenCBS.GUI.Accounting
             resources.ApplyResources(this.btnSaving, "btnSaving");
             this.btnSaving.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSaving.Name = "btnSaving";
+            this.btnSaving.Click += new System.EventHandler(this.btnSaving_Click);
             // 
             // btnClose
             // 

@@ -269,8 +269,11 @@ namespace OpenCBS.GUI.Contracts
                 }
 
                 //Update chart of account
-                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Loan", "Credit", _loan.Amount.Value, "L");
-                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Fee", "Debit", Convert.ToDecimal(tbEntryFee.Text), "L");
+                 string branch = _loan.Code.Split('/')[0];
+                 ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", _loan.Amount.Value, "BalanceSheetAsset", "LoanAccountAsset", "Loan amount disbursed for code " + _loan.Code, _loan.Product.Currency.Name, branch);
+                 ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", _loan.Amount.Value, "BusinessCapital", "LoanFund", "Loan amount disbursed for code " + _loan.Code, _loan.Product.Currency.Name, branch);
+                if (Convert.ToDecimal(tbEntryFee.Text) >= 0)
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", Convert.ToDecimal(tbEntryFee.Text), "ProfitAndLossIncome", "LoanAccountIncome", "Loan entry fee paid for " + _loan.Code, _loan.Product.Currency.Name, branch);
 
 
             }

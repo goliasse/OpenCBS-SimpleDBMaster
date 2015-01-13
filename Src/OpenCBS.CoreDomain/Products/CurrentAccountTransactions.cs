@@ -21,6 +21,10 @@ namespace OpenCBS.CoreDomain.Products
         public string PurposeOfTransfer { get; set; }
         public OCurrency FromBalance { get; set; }
         public OCurrency ToBalance { get; set; }
+        public CurrentAccountProductHoldings toCAAccount { get; set; }
+        public CurrentAccountProductHoldings fromCAAccount { get; set; }
+        public FixedDepositProductHoldings toFDAccount { get; set; }
+        public FixedDepositProductHoldings fromFDAccount { get; set; }
 
 
     }

@@ -267,13 +267,19 @@ namespace OpenCBS.GUI.FixedAssetRegister
              
                     fixedAssetRegister.AcquisitionDate = Convert.ToDateTime(txtAcquisitionDate.Text);
                     fixedAssetRegister.DisposalDate = DateTime.MaxValue;
-
+                    string currency = cbCurrency.SelectedItem.ToString();
                     FixedAssetRegisterService _fixedAssetRegisterService = ServicesProvider.GetInstance().GetFixedAssetRegisterService();
 
                     int ret = _fixedAssetRegisterService.InsertFixedAssetRecord(fixedAssetRegister);
 
-                    if(ret >= 1)
+                    if (ret >= 1)
+                    {
                         MessageBox.Show("Fixed Asset Added Successfully.");
+                        decimal totalCost = fixedAssetRegister.OriginalCost.Value * fixedAssetRegister.NoOfAssets.Value;
+                        //Update chart of account
+                        ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", totalCost, "BalanceSheetAsset", "FixedAsset", "Fixed asset registet Ref. " + ret, currency, fixedAssetRegister.Branch);
+                        ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", totalCost, "BusinessCapital", "FixedAssetFund", "Fixed asset registet Ref. " + ret, currency, fixedAssetRegister.Branch);
+                    }
                     else
                         MessageBox.Show("Some error ocurred.");
 
@@ -307,17 +313,15 @@ namespace OpenCBS.GUI.FixedAssetRegister
                 fixedAssetRegister.AcquisitionCapitalTransaction = txtAcqCapTranNum.Text;
                 fixedAssetRegister.DisposalAmountTransaction = txtDisAmtTranNum.Text;
                 fixedAssetRegister.DisposalAmountTransfer = cmbDisAmtTranMethod.SelectedItem.ToString();
-
-            
                 fixedAssetRegister.AcquisitionDate = Convert.ToDateTime(txtAcquisitionDate.Text);
-            
                 fixedAssetRegister.DisposalDate = Convert.ToDateTime(txtDisDate.Text);
+
                 int depChargePerAsset = CalculateAccumulatedDepriciation(fixedAssetRegister.AnnualDepreciationRate.Value,
                fixedAssetRegister.OriginalCost.Value, fixedAssetRegister.AcquisitionDate, fixedAssetRegister.DisposalDate);
-                fixedAssetRegister.NetBookValue = depChargePerAsset;
+                fixedAssetRegister.NetBookValue = fixedAssetRegister.OriginalCost.Value - depChargePerAsset;
                 fixedAssetRegister.AccumulatedDepreciationCharge = ((fixedAssetRegister.OriginalCost.Value - depChargePerAsset) * fixedAssetRegister.NoOfAssets);
                 string ProfitLoss=  txtProfitLoss.Text.ToString();
-
+                string currency = cbCurrency.SelectedItem.ToString();
                 if (ProfitLoss == "Loss")
                     fixedAssetRegister.ProfitLossDisposal = -1;
                 if (ProfitLoss == "Profit")
@@ -331,7 +335,15 @@ namespace OpenCBS.GUI.FixedAssetRegister
                 int ret = _fixedAssetRegisterService.UpdateFixedAssetRegister(fixedAssetRegister);
 
                 if (ret >= 1)
+                {
                     MessageBox.Show("Fixed Asset Updated Successfully.");
+                    decimal totalValue = fixedAssetRegister.NetBookValue.Value * fixedAssetRegister.NoOfAssets.Value;
+                    
+                    //Update chart of account
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", totalValue + fixedAssetRegister.AccumulatedDepreciationCharge.Value, "BalanceSheetAsset", "FixedAsset", "Fixed asset registet Ref. " + fixedAssetRegister.AssetId, currency, fixedAssetRegister.Branch);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", totalValue, "BusinessCapital", "FixedAssetFund", "Fixed asset registet Ref. " + fixedAssetRegister.AssetId, currency, fixedAssetRegister.Branch);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", fixedAssetRegister.AccumulatedDepreciationCharge.Value, "ProfitAndLossExpense", "OtherExpense", "Fixed asset registet Ref. " + fixedAssetRegister.AssetId, currency, fixedAssetRegister.Branch);
+                }
                 else
                     MessageBox.Show("Some error ocurred.");
 

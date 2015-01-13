@@ -125,7 +125,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB0
-        CwAAAk1TRnQBSQFMAgEBBQEAAXQBEQF0AREBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBBQEAAaQBEQGkAREBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -796,19 +796,19 @@
     <value>None</value>
   </data>
   <data name="mnuChartOfAccounts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 22</value>
+    <value>209, 22</value>
   </data>
   <data name="mnuChartOfAccounts.Text" xml:space="preserve">
     <value>Chart of accounts</value>
   </data>
   <data name="accountingRulesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 22</value>
+    <value>209, 22</value>
   </data>
   <data name="accountingRulesToolStripMenuItem.Text" xml:space="preserve">
     <value>Accounting Rules</value>
   </data>
   <data name="trialBalanceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 22</value>
+    <value>209, 22</value>
   </data>
   <data name="trialBalanceToolStripMenuItem.Text" xml:space="preserve">
     <value>Trial Balance</value>
@@ -817,64 +817,112 @@
     <value>None</value>
   </data>
   <data name="toolStripMenuItemAccountView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 22</value>
+    <value>209, 22</value>
   </data>
   <data name="toolStripMenuItemAccountView.Text" xml:space="preserve">
     <value>General Ledger</value>
   </data>
   <data name="manualEntriesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 22</value>
+    <value>209, 22</value>
   </data>
   <data name="manualEntriesToolStripMenuItem.Text" xml:space="preserve">
     <value>Manual Entries</value>
   </data>
   <data name="standardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 22</value>
+    <value>209, 22</value>
   </data>
   <data name="standardToolStripMenuItem.Text" xml:space="preserve">
     <value>Standard Bookings</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 6</value>
+    <value>206, 6</value>
   </data>
   <data name="menuItemExportTransaction.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
     <value>None</value>
   </data>
   <data name="menuItemExportTransaction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 22</value>
+    <value>209, 22</value>
   </data>
   <data name="menuItemExportTransaction.Text" xml:space="preserve">
     <value>Export Transactions</value>
   </data>
   <data name="mnuNewclosure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 22</value>
+    <value>209, 22</value>
   </data>
   <data name="mnuNewclosure.Text" xml:space="preserve">
     <value>Accounting Closure</value>
   </data>
   <data name="fiscalYearToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 22</value>
+    <value>209, 22</value>
   </data>
   <data name="fiscalYearToolStripMenuItem.Text" xml:space="preserve">
     <value>Fiscal Year</value>
   </data>
   <data name="capitalAdequacyRatioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 22</value>
+    <value>209, 22</value>
   </data>
   <data name="capitalAdequacyRatioToolStripMenuItem.Text" xml:space="preserve">
     <value>Capital Adequacy Ratio</value>
   </data>
   <data name="riskWeightedAssetsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 22</value>
+    <value>209, 22</value>
   </data>
   <data name="riskWeightedAssetsToolStripMenuItem.Text" xml:space="preserve">
     <value>Risk Weighted Assets</value>
   </data>
-  <data name="chartOfAccountsBalanceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 22</value>
+  <data name="currencyAssetsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
   </data>
-  <data name="chartOfAccountsBalanceToolStripMenuItem.Text" xml:space="preserve">
-    <value>Chart Of Accounts Balance</value>
+  <data name="currencyAssetsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Added Currency Assets</value>
+  </data>
+  <data name="addExpensesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="addExpensesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Added Expenses</value>
+  </data>
+  <data name="addIncomeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="addIncomeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Added Income</value>
+  </data>
+  <data name="accountsReceivableToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="accountsReceivableToolStripMenuItem.Text" xml:space="preserve">
+    <value>Accounts Receivable</value>
+  </data>
+  <data name="accountsPayableToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="accountsPayableToolStripMenuItem.Text" xml:space="preserve">
+    <value>Accounts Payable</value>
+  </data>
+  <data name="accountingJournalsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="accountingJournalsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Accounting Journals</value>
+  </data>
+  <data name="balanceSheetToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="balanceSheetToolStripMenuItem.Text" xml:space="preserve">
+    <value>Balance Sheet</value>
+  </data>
+  <data name="profitAndLossStatementToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="profitAndLossStatementToolStripMenuItem.Text" xml:space="preserve">
+    <value>Profit and Loss Statement</value>
+  </data>
+  <data name="cashFlowStatementToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="cashFlowStatementToolStripMenuItem.Text" xml:space="preserve">
+    <value>Cash Flow Statement</value>
   </data>
   <data name="mnuAccounting.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 20</value>
@@ -1190,24 +1238,6 @@
   </data>
   <data name="reportsToolStripMenuItem.Text" xml:space="preserve">
     <value>Reports</value>
-  </data>
-  <data name="loanCOAToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 22</value>
-  </data>
-  <data name="loanCOAToolStripMenuItem.Text" xml:space="preserve">
-    <value>Loan COA</value>
-  </data>
-  <data name="feeEarnedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 22</value>
-  </data>
-  <data name="feeEarnedToolStripMenuItem.Text" xml:space="preserve">
-    <value>Fee Earned</value>
-  </data>
-  <data name="noticesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 20</value>
-  </data>
-  <data name="noticesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Notices</value>
   </data>
   <data name="mainMenu.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -2146,10 +2176,58 @@
   <data name="&gt;&gt;riskWeightedAssetsToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;chartOfAccountsBalanceToolStripMenuItem.Name" xml:space="preserve">
-    <value>chartOfAccountsBalanceToolStripMenuItem</value>
+  <data name="&gt;&gt;currencyAssetsToolStripMenuItem.Name" xml:space="preserve">
+    <value>currencyAssetsToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;chartOfAccountsBalanceToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;currencyAssetsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;addExpensesToolStripMenuItem.Name" xml:space="preserve">
+    <value>addExpensesToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;addExpensesToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;addIncomeToolStripMenuItem.Name" xml:space="preserve">
+    <value>addIncomeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;addIncomeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;accountsReceivableToolStripMenuItem.Name" xml:space="preserve">
+    <value>accountsReceivableToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;accountsReceivableToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;accountsPayableToolStripMenuItem.Name" xml:space="preserve">
+    <value>accountsPayableToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;accountsPayableToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;accountingJournalsToolStripMenuItem.Name" xml:space="preserve">
+    <value>accountingJournalsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;accountingJournalsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;balanceSheetToolStripMenuItem.Name" xml:space="preserve">
+    <value>balanceSheetToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;balanceSheetToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;profitAndLossStatementToolStripMenuItem.Name" xml:space="preserve">
+    <value>profitAndLossStatementToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;profitAndLossStatementToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cashFlowStatementToolStripMenuItem.Name" xml:space="preserve">
+    <value>cashFlowStatementToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;cashFlowStatementToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;mnuConfiguration.Name" xml:space="preserve">
@@ -2420,24 +2498,6 @@
     <value>reportsToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;reportsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;noticesToolStripMenuItem.Name" xml:space="preserve">
-    <value>noticesToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;noticesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;loanCOAToolStripMenuItem.Name" xml:space="preserve">
-    <value>loanCOAToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;loanCOAToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;feeEarnedToolStripMenuItem.Name" xml:space="preserve">
-    <value>feeEarnedToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;feeEarnedToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;mainStatusBarLblUpdateVersion.Name" xml:space="preserve">

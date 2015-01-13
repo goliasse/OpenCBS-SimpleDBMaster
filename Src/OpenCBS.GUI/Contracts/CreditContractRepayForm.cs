@@ -537,9 +537,22 @@ namespace OpenCBS.GUI.Contracts
                 //Update Chart of account
                 string[] a = lbInterest.Text.Split(' ');
                 string interest = a[0];
-                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Interest", "Debit", Convert.ToDecimal(interest), "L");
+                if (_interest.Value >= 0)
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", _interest.Value, "ProfitAndLossIncome", "LoanAccountIncome", "Loan interest paid for installment " + _instalmentNumber,_loan.Product.Currency.Name, _loan.BranchCode);
+                if (_manualInterests.Value >= 0)
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", _manualInterests.Value, "ProfitAndLossIncome", "LoanAccountIncome", "Loan manual interest paid for installment " + _instalmentNumber, _loan.Product.Currency.Name, _loan.BranchCode);
+                if(_commission.Value >= 0)
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", _commission.Value, "ProfitAndLossIncome", "LoanAccountIncome", "Loan commission paid  installment " + _instalmentNumber, _loan.Product.Currency.Name, _loan.BranchCode);
+                if(_manualCommission.Value >= 0)
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", _manualCommission.Value, "ProfitAndLossIncome", "LoanAccountIncome", "Loan manual commission paid  installment " + _instalmentNumber, _loan.Product.Currency.Name, _loan.BranchCode);
+                if(_manualPenalties.Value >= 0)
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", _manualPenalties.Value, "ProfitAndLossIncome", "LoanAccountIncome", "Loan manual penalty paid  installment " + _instalmentNumber, _loan.Product.Currency.Name, _loan.BranchCode);
                 decimal amount = Convert.ToDecimal(nudICAmount.Value - Convert.ToDecimal(interest));
-                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Loan", "Debit", amount, "L");
+                if (_principal.Value >= 0)
+                {
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", _principal.Value, "BalanceSheetAsset", "LoanAccountAsset", "Loan principal paid for installment " + _instalmentNumber, _loan.Product.Currency.Name, _loan.BranchCode);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", _principal.Value, "BusinessCapital", "LoanFund", "Loan principal paid for installment " + _instalmentNumber, _loan.Product.Currency.Name, _loan.BranchCode);
+                }
                 
 
                  

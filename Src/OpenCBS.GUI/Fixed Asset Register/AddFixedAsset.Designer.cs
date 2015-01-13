@@ -60,6 +60,8 @@
             this.lblAccDepCharge = new System.Windows.Forms.Label();
             this.lblProfitLoss = new System.Windows.Forms.Label();
             this.txtProfitLoss = new System.Windows.Forms.TextBox();
+            this.cbCurrency = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtAssetDescription
@@ -250,7 +252,7 @@
             // btnUpdate
             // 
             this.btnUpdate.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnUpdate.Location = new System.Drawing.Point(263, 546);
+            this.btnUpdate.Location = new System.Drawing.Point(268, 566);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(96, 23);
             this.btnUpdate.TabIndex = 43;
@@ -261,7 +263,7 @@
             // btnSubmit
             // 
             this.btnSubmit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSubmit.Location = new System.Drawing.Point(105, 546);
+            this.btnSubmit.Location = new System.Drawing.Point(105, 566);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(107, 23);
             this.btnSubmit.TabIndex = 42;
@@ -378,11 +380,35 @@
             this.txtProfitLoss.TabIndex = 65;
             this.txtProfitLoss.Visible = false;
             // 
+            // cbCurrency
+            // 
+            this.cbCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCurrency.FormattingEnabled = true;
+            this.cbCurrency.Location = new System.Drawing.Point(268, 528);
+            this.cbCurrency.Name = "cbCurrency";
+            this.cbCurrency.Size = new System.Drawing.Size(183, 21);
+            this.cbCurrency.TabIndex = 67;
+            this.cbCurrency.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label7.Location = new System.Drawing.Point(148, 529);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 16);
+            this.label7.TabIndex = 66;
+            this.label7.Text = "Currency:";
+            this.label7.Visible = false;
+            // 
             // AddFixedAsset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 590);
+            this.ClientSize = new System.Drawing.Size(539, 617);
+            this.Controls.Add(this.cbCurrency);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.txtProfitLoss);
             this.Controls.Add(this.lblProfitLoss);
             this.Controls.Add(this.txtAccDepCharge);
@@ -456,5 +482,7 @@
         private System.Windows.Forms.Label lblAccDepCharge;
         private System.Windows.Forms.Label lblProfitLoss;
         private System.Windows.Forms.TextBox txtProfitLoss;
+        private System.Windows.Forms.ComboBox cbCurrency;
+        private System.Windows.Forms.Label label7;
     }
 }

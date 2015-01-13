@@ -2333,10 +2333,7 @@ Enter another account number.
   <data name="ExpenseAmountIsEmpty" xml:space="preserve">
     <value>Expense Amount cannot be empty</value>
   </data>
-  <data name="ReferenceIsEmpty" xml:space="preserve">
-    <value>Reference cannot be empty</value>
-  </data>
-
+ 
   <data name="AssetDateIsEmpty" xml:space="preserve">
 
     <value>Asset Date cannot be empty</value>
@@ -2378,5 +2375,51 @@ Enter another account number.
     <value>Reference cannot be empty</value>
 
   </data>
+  
+<data name="AssetAmountIsInvalid" xml:space="preserve">
+
+    <value>Asset Amount is invalid</value>
+
+  </data>
+
+<data name="ExpenseAmountIsInvalid" xml:space="preserve">
+    <value>Expense Amount cannot be less than zero</value>
+  </data>
+
+
+<data name="IncomeDateIsEmpty" xml:space="preserve">
+    <value>Income Date cannot be empty</value>
+  </data>
+
+<data name="IncomeDateIsInvalid" xml:space="preserve">
+    <value>Income Date cannot be greater than today's date</value>
+  </data>
+  
+  <data name="IncomeCategoryIsEmpty" xml:space="preserve">
+    <value>Income Category is not selected</value>
+  </data>
+  
+  <data name="IncomeDescriptionIsEmpty" xml:space="preserve">
+    <value>Income Description cannot be empty</value>
+  </data>
+  <data name="IncomeAmountIsEmpty" xml:space="preserve">
+    <value>Income Amount cannot be empty</value>
+  </data>
+
+<data name=" IncomeAmountIsInvalid " xml:space="preserve">
+    <value>Income Amount cannot be less than zero</value>
+  </data>
+
+  <data name="ReferenceIsEmpty" xml:space="preserve">
+    <value>Reference cannot be empty</value>
+  </data>
+  
+  <data name="CurrencyIsEmpty" xml:space="preserve">
+    <value>Currency is not selected</value>
+  </data>
+  <data name="BranchIsEmpty" xml:space="preserve">
+    <value>Branch is not selected</value>
+  </data>
+
 
 </root>
