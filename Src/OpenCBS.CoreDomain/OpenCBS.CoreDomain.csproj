@@ -159,6 +159,8 @@
     </Compile>
     <Compile Include="Accounting\AccountingClosure.cs" />
     <Compile Include="Accounting\ClosureOptions.cs" />
+    <Compile Include="Accounting\COARule.cs" />
+    <Compile Include="Accounting\COATransaction.cs" />
     <Compile Include="Accounting\ContractAccountingRule.cs" />
     <Compile Include="Accounting\AccountingRuleCollection.cs" />
     <Compile Include="Accounting\Comparer\AccountComparer.cs" />

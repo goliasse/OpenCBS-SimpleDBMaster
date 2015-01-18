@@ -195,7 +195,7 @@ namespace OpenCBS.Manager.Accounting
         public decimal SearchChartOfAccount(string accountType, string transactionType, string transactionMode)
         {
             const string q = @"SELECT SUM([amount]) as amount ,[transaction_type] ,[transaction_mode], 
-[account_type] FROM [Test].[dbo].[ChartOfAccountTransactions] WHERE account_type = @accountType AND  
+[account_type] FROM [dbo].[ChartOfAccountTransactions] WHERE account_type = @accountType AND  
 transaction_type = @transactionType AND transaction_mode= @transactionMode  GROUP by  
 [transaction_type],[transaction_mode],[account_type]";
 
@@ -582,27 +582,27 @@ transaction_type = @transactionType AND transaction_mode= @transactionMode  GROU
 
 
 
-        public int UpdateChartOfAccount(string transactionMode, decimal amount, string category, string subCategory, string description, string currency, string branch)
-        {
-            int ret = -1;
-            using (SqlConnection conn = GetConnection())
-            {
-                using (OpenCbsCommand command = new OpenCbsCommand("UpdateChartOfAccounts", conn).AsStoredProcedure())
-                {
-                    command.AddParam("@TransactionMode", transactionMode);
-                    command.AddParam("@Amount", amount);
-                    command.AddParam("@Category", category);
-                    command.AddParam("@SubCategory", subCategory);
-                    command.AddParam("@Description", description);
-                    command.AddParam("@Currency", currency);
-                    command.AddParam("@Branch", branch);
-                    ret = Convert.ToInt32(command.ExecuteScalar());
+        //public int UpdateChartOfAccount(string transactionMode, decimal amount, string category, string subCategory, string description, string currency, string branch)
+        //{
+        //    int ret = -1;
+        //    using (SqlConnection conn = GetConnection())
+        //    {
+        //        using (OpenCbsCommand command = new OpenCbsCommand("UpdateChartOfAccounts", conn).AsStoredProcedure())
+        //        {
+        //            command.AddParam("@TransactionMode", transactionMode);
+        //            command.AddParam("@Amount", amount);
+        //            command.AddParam("@Category", category);
+        //            command.AddParam("@SubCategory", subCategory);
+        //            command.AddParam("@Description", description);
+        //            command.AddParam("@Currency", currency);
+        //            command.AddParam("@Branch", branch);
+        //            ret = Convert.ToInt32(command.ExecuteScalar());
 
-                }
-            }
+        //        }
+        //    }
 
-            return ret;
-        }
+        //    return ret;
+        //}
 
 
 
@@ -812,5 +812,220 @@ transaction_type = @transactionType AND transaction_mode= @transactionMode  GROU
             }
             return fiscalYears;
         }
+
+
+        public List<COARule> FetchCOARule()
+        {
+            List<COARule> listCOARule = new List<COARule>();
+            const string q = @"SELECT * FROM [dbo].[COARule]";
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                
+
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+                    if (r == null || r.Empty) return null;
+
+                    while (r.Read())
+                    {
+                        listCOARule.Add((COARule)GetCOARule(r));
+                    }
+                    
+                }
+            }
+            return listCOARule;
+        }
+        private static COARule GetCOARule(OpenCbsReader reader)
+        {
+            COARule coaRule = new COARule();
+            coaRule.Id = reader.GetInt("id");
+            coaRule.EventType = reader.GetString("eventType");
+            coaRule.Currency = reader.GetString("currency");
+
+            coaRule.DebitAccount = reader.GetString("debitAccount");
+            coaRule.CreditAccount = reader.GetString("creditAccount");
+            coaRule.Branch = reader.GetString("branch");
+
+            return coaRule;
+        }
+
+        public int AddCOARule(COARule coaRule)
+        {
+            const string q = @"INSERT INTO [dbo].[COARule]
+                   ([eventType]
+                   ,[currency]
+                   ,[debitAccount]
+                   ,[creditAccount]
+                   ,[branch])
+             VALUES
+                   (@eventType
+                   ,@currency
+                   ,@debitAccount
+                   ,@creditAccount
+                   ,@branch) 
+
+             SELECT SCOPE_IDENTITY();               
+                        ";
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                SetCOARule(c, coaRule);
+                int id = Convert.ToInt32(c.ExecuteScalar());
+                return id;
+            }
+        }
+
+        private static void SetCOARule(OpenCbsCommand c, COARule coaRule)
+        {
+            c.AddParam("@eventType", coaRule.EventType);
+            c.AddParam("@currency", coaRule.Currency);
+            c.AddParam("@debitAccount", coaRule.DebitAccount);
+            c.AddParam("@creditAccount", coaRule.CreditAccount);
+            c.AddParam("@branch", coaRule.Branch);
+        }
+
+
+        public int DeleteCOARule(string id)
+        {
+            const string q = @"DELETE FROM COARule WHERE id = @id";
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@id", id);
+                
+                c.ExecuteNonQuery();
+            }
+
+            return 1;
+        }
+
+        public List<string> FetchCOAEvents()
+        {
+            List<string> listCOAEvents = new List<string>();
+            const string q = @"SELECT * FROM [dbo].[COAEvents] ORDER BY [event_code]";
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+                    if (r == null || r.Empty) return null;
+
+                    while (r.Read())
+                    {
+                        listCOAEvents.Add(r.GetString("event_code") + "-" + r.GetString("description"));
+                    }
+
+                }
+            }
+            return listCOAEvents;
+        }
+
+        public int UpdateChartOfAccount(string eventType,decimal amount, string description, string currency, string branch)
+        {
+            int ret = -1;
+            using (SqlConnection conn = GetConnection())
+            {
+                using (OpenCbsCommand command = new OpenCbsCommand("COAEventProcessor", conn).AsStoredProcedure())
+                {
+                    command.AddParam("@eventType", eventType);
+                    command.AddParam("@currency", currency);
+                    command.AddParam("@branch", branch);
+                    command.AddParam("@amount", amount);
+                    command.AddParam("@description", description);
+                    ret = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+
+            return ret;
+        }
+
+
+        public int UpdateChartOfAccount(string eventType,string debitAccount, string creditAccount, decimal amount, string description, string currency, string branch)
+        {
+            const string q = @"INSERT INTO [dbo].[ChartOfAccountTransactions]
+           ([debit_account]
+           ,[amount]
+           ,[transaction_date]
+           ,[Description]
+           ,[credit_account]
+           ,[Currency]
+           ,[Branch]
+           ,[Event])
+
+          VALUES
+
+           (@debitAccount
+           ,@amount
+           ,GETDATE()
+           ,@description
+           ,@creditAccount
+           ,@currency
+           ,@branch
+           ,@eventType)
+
+           SELECT SCOPE_IDENTITY();               
+                        ";
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                c.AddParam("@amount", amount);
+                c.AddParam("@description", description);
+                c.AddParam("@eventType", eventType);
+                c.AddParam("@currency", currency);
+                c.AddParam("@debitAccount", debitAccount);
+                c.AddParam("@creditAccount", creditAccount);
+                c.AddParam("@branch", branch);
+                
+                int id = Convert.ToInt32(c.ExecuteScalar());
+                return id;
+            }
+        }
+
+        private static COATransaction GetCOATransaction(OpenCbsReader reader)
+        {
+            COATransaction coaTransaction = new COATransaction();
+
+            coaTransaction.Id = reader.GetInt("Id");
+            coaTransaction.DebitAccount = reader.GetString("debit_account");
+            coaTransaction.Amount = reader.GetDecimal("amount");
+            coaTransaction.TransactionDate = reader.GetDateTime("transaction_date");
+            coaTransaction.Description = reader.GetString("Description");
+            coaTransaction.CreditAccount = reader.GetString("credit_account");
+            coaTransaction.Currency = reader.GetString("Currency");
+            coaTransaction.Branch = reader.GetString("Branch");
+            coaTransaction.EventCode = reader.GetString("Event");
+
+            return coaTransaction;
+        }
+
+        public List<COATransaction> FetchCOATransactions()
+        {
+            List<COATransaction> listCOATransaction = new List<COATransaction>();
+            const string q = @"SELECT * FROM [dbo].[ChartOfAccountTransactions]";
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+                    if (r == null || r.Empty) return null;
+
+                    while (r.Read())
+                    {
+                        listCOATransaction.Add(GetCOATransaction(r));
+                    }
+
+                }
+            }
+            return listCOATransaction;
+        }
+
+
 	}
 }

@@ -32,14 +32,15 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lvAccountsPayable = new System.Windows.Forms.ListView();
+            this.lvAccountingLedger = new System.Windows.Forms.ListView();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerTillDate = new System.Windows.Forms.DateTimePicker();
             this.lblEndDate = new System.Windows.Forms.Label();
             this.btnView = new System.Windows.Forms.Button();
             this.lblBranch = new System.Windows.Forms.Label();
@@ -68,15 +69,14 @@
             // 
             // columnHeader6
             // 
-            this.columnHeader6.DisplayIndex = 5;
             this.columnHeader6.Text = "Description";
             this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader6.Width = 122;
             // 
-            // lvAccountsPayable
+            // lvAccountingLedger
             // 
-            this.lvAccountsPayable.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.lvAccountsPayable.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvAccountingLedger.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.lvAccountingLedger.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
@@ -84,39 +84,41 @@
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6,
-            this.columnHeader7});
-            this.lvAccountsPayable.FullRowSelect = true;
-            this.lvAccountsPayable.GridLines = true;
-            this.lvAccountsPayable.Location = new System.Drawing.Point(0, 38);
-            this.lvAccountsPayable.Name = "lvAccountsPayable";
-            this.lvAccountsPayable.Size = new System.Drawing.Size(617, 509);
-            this.lvAccountsPayable.TabIndex = 40;
-            this.lvAccountsPayable.UseCompatibleStateImageBehavior = false;
-            this.lvAccountsPayable.View = System.Windows.Forms.View.Details;
+            this.columnHeader7,
+            this.columnHeader9});
+            this.lvAccountingLedger.FullRowSelect = true;
+            this.lvAccountingLedger.GridLines = true;
+            this.lvAccountingLedger.Location = new System.Drawing.Point(0, 38);
+            this.lvAccountingLedger.Name = "lvAccountingLedger";
+            this.lvAccountingLedger.Size = new System.Drawing.Size(617, 509);
+            this.lvAccountingLedger.TabIndex = 40;
+            this.lvAccountingLedger.UseCompatibleStateImageBehavior = false;
+            this.lvAccountingLedger.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader8
             // 
-            this.columnHeader8.DisplayIndex = 7;
             this.columnHeader8.Text = "Amount";
             // 
             // columnHeader4
             // 
-            this.columnHeader4.DisplayIndex = 3;
             this.columnHeader4.Text = "Branch";
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader4.Width = 166;
             // 
             // columnHeader5
             // 
-            this.columnHeader5.DisplayIndex = 4;
             this.columnHeader5.Text = "Currency";
             this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader5.Width = 172;
             // 
             // columnHeader7
             // 
-            this.columnHeader7.DisplayIndex = 6;
             this.columnHeader7.Text = "Date";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Event Code";
+            this.columnHeader9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -133,7 +135,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dateTimePickerEndDate);
+            this.groupBox1.Controls.Add(this.dateTimePickerTillDate);
             this.groupBox1.Controls.Add(this.lblEndDate);
             this.groupBox1.Controls.Add(this.btnView);
             this.groupBox1.Controls.Add(this.lblBranch);
@@ -146,15 +148,15 @@
             this.groupBox1.TabIndex = 72;
             this.groupBox1.TabStop = false;
             // 
-            // dateTimePickerEndDate
+            // dateTimePickerTillDate
             // 
-            this.dateTimePickerEndDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dateTimePickerTillDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePickerEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerEndDate.Location = new System.Drawing.Point(113, 80);
-            this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
-            this.dateTimePickerEndDate.Size = new System.Drawing.Size(153, 20);
-            this.dateTimePickerEndDate.TabIndex = 74;
+            this.dateTimePickerTillDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerTillDate.Location = new System.Drawing.Point(113, 80);
+            this.dateTimePickerTillDate.Name = "dateTimePickerTillDate";
+            this.dateTimePickerTillDate.Size = new System.Drawing.Size(153, 20);
+            this.dateTimePickerTillDate.TabIndex = 74;
             // 
             // lblEndDate
             // 
@@ -180,6 +182,7 @@
             this.btnView.Size = new System.Drawing.Size(236, 25);
             this.btnView.TabIndex = 72;
             this.btnView.Text = "View";
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // lblBranch
             // 
@@ -239,7 +242,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(916, 678);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lvAccountsPayable);
+            this.Controls.Add(this.lvAccountingLedger);
             this.Controls.Add(this.label1);
             this.Name = "AccountingLedger";
             this.Text = "Accounting Ledger";
@@ -255,20 +258,21 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.ListView lvAccountsPayable;
+        private System.Windows.Forms.ListView lvAccountingLedger;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePickerEndDate;
+        private System.Windows.Forms.DateTimePicker dateTimePickerTillDate;
         private System.Windows.Forms.Label lblEndDate;
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.Label lblBranch;
         private System.Windows.Forms.Label lblCurrency;
         private System.Windows.Forms.ComboBox cbBranches;
         private System.Windows.Forms.ComboBox cbCurrencies;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
 
     }
 }

@@ -277,8 +277,8 @@ namespace OpenCBS.GUI.FixedAssetRegister
                         MessageBox.Show("Fixed Asset Added Successfully.");
                         decimal totalCost = fixedAssetRegister.OriginalCost.Value * fixedAssetRegister.NoOfAssets.Value;
                         //Update chart of account
-                        ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", totalCost, "BalanceSheetAsset", "FixedAsset", "Fixed asset registet Ref. " + ret, currency, fixedAssetRegister.Branch);
-                        ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", totalCost, "BusinessCapital", "FixedAssetFund", "Fixed asset registet Ref. " + ret, currency, fixedAssetRegister.Branch);
+                        ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CFAPR", totalCost, "Fixed asset registet Ref. " + ret, currency, fixedAssetRegister.Branch);
+                        
                     }
                     else
                         MessageBox.Show("Some error ocurred.");
@@ -340,9 +340,9 @@ namespace OpenCBS.GUI.FixedAssetRegister
                     decimal totalValue = fixedAssetRegister.NetBookValue.Value * fixedAssetRegister.NoOfAssets.Value;
                     
                     //Update chart of account
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", totalValue + fixedAssetRegister.AccumulatedDepreciationCharge.Value, "BalanceSheetAsset", "FixedAsset", "Fixed asset registet Ref. " + fixedAssetRegister.AssetId, currency, fixedAssetRegister.Branch);
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", totalValue, "BusinessCapital", "FixedAssetFund", "Fixed asset registet Ref. " + fixedAssetRegister.AssetId, currency, fixedAssetRegister.Branch);
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", fixedAssetRegister.AccumulatedDepreciationCharge.Value, "ProfitAndLossExpense", "OtherExpense", "Fixed asset registet Ref. " + fixedAssetRegister.AssetId, currency, fixedAssetRegister.Branch);
+                    
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CFADI", totalValue, "Fixed asset registet Ref. " + fixedAssetRegister.AssetId, currency, fixedAssetRegister.Branch);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CFADE", fixedAssetRegister.AccumulatedDepreciationCharge.Value, "Fixed asset registet Ref. " + fixedAssetRegister.AssetId, currency, fixedAssetRegister.Branch);
                 }
                 else
                     MessageBox.Show("Some error ocurred.");

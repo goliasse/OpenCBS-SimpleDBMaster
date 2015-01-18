@@ -78,7 +78,7 @@ namespace OpenCBS.Manager
 
         public void UpdateBankGuaranteeCode(BankGuarantees bankGuarantee)
         {
-            const string q = @"UPDATE [Test].[dbo].[BankGuarantees]
+            const string q = @"UPDATE [dbo].[BankGuarantees]
                SET [bankGuaranteeCode] = @bankGuaranteeCode
                   WHERE id = @id";
 
@@ -96,7 +96,7 @@ namespace OpenCBS.Manager
 
         public void UpdateBankGuarantee(BankGuarantees bankGuarantee)
         {
-            const string q = @"UPDATE [Test].[dbo].[BankGuarantees]
+            const string q = @"UPDATE [dbo].[BankGuarantees]
                SET [bankGuaranteeCode] = @bankGuaranteeCode
                   ,[issuingDate] = @issuingDate
                   ,[expiryDate] = @expiryDate
@@ -171,7 +171,7 @@ namespace OpenCBS.Manager
         public string SaveBankGuarantee(BankGuarantees bankGuarantee)
         {
 
-            const string q = @"INSERT INTO [Test].[dbo].[BankGuarantees]
+            const string q = @"INSERT INTO [dbo].[BankGuarantees]
            ([bankGuaranteeCode]
            ,[issuingDate]
            ,[expiryDate]

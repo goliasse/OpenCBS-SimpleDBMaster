@@ -108,7 +108,7 @@ namespace OpenCBS.GUI.Accounting
                     MessageBox.Show("Income added successfully.");
                     _addedIncome.InitializeIncomeList();
                     //Update chart of account
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", income.IncomeAmount.Value, "ProfitAndLossIncome", "OtherIncome", income.IncomeCategory + " " + ret, income.Currency, income.Branch);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CMAIN", income.IncomeAmount.Value, income.IncomeCategory + " " + ret, income.Currency, income.Branch);
                 }
                 else
                     MessageBox.Show("Some error ocurred.");

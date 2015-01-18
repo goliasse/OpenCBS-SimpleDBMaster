@@ -10,6 +10,7 @@ using OpenCBS.CoreDomain;
 using OpenCBS.CoreDomain.Accounting;
 using OpenCBS.MultiLanguageRessources;
 using OpenCBS.Services;
+using OpenCBS.Services.Accounting;
 
 namespace OpenCBS.GUI.Accounting
 {
@@ -20,15 +21,19 @@ namespace OpenCBS.GUI.Accounting
             InitializeComponent();
             InitializeComboBoxBranches();
             InitializeComboBoxCurrencies();
+            InitializeCOATransactionList();
         }
 
         private void InitializeComboBoxBranches()
         {
             List<Branch> branches = ServicesProvider.GetInstance().GetBranchService().FindAllNonDeleted();
             cbBranches.Items.Clear();
-            cbBranches.ValueMember = "Id";
-            cbBranches.DisplayMember = "";
-            cbBranches.DataSource = branches;
+            cbBranches.Items.Add("All");
+            foreach (Branch branch in branches)
+            {
+                cbBranches.Items.Add(branch.Code);
+            }
+            cbBranches.SelectedIndex = 0;
         }
 
         private void InitializeComboBoxCurrencies()
@@ -44,6 +49,41 @@ namespace OpenCBS.GUI.Accounting
             }
             cbCurrencies.SelectedIndex = 0;
 
+        }
+
+        public void InitializeCOATransactionList()
+        {
+
+            lvAccountingLedger.Items.Clear();
+
+            ChartOfAccountsServices coaService = ServicesProvider.GetInstance().GetChartOfAccountsServices();
+            List<COATransaction> COATransactionList = coaService.FetchCOATransactions();
+            if (COATransactionList != null)
+            {
+                foreach (COATransaction coaTransaction in COATransactionList)
+                {
+                    var item = new ListViewItem(new[] {
+                    coaTransaction.Id.ToString(),
+                    coaTransaction.DebitAccount,
+                    coaTransaction.CreditAccount,
+                    coaTransaction.Amount.GetFormatedValue(true),
+                    coaTransaction.Branch,
+                    coaTransaction.Currency,
+                    coaTransaction.Description,
+                    coaTransaction.TransactionDate.ToShortDateString(),
+                    coaTransaction.EventCode
+
+                });
+                    lvAccountingLedger.Items.Add(item);
+
+                }
+            }
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            string branch = cbBranches.SelectedItem.ToString();
+            DateTime tillDate = dateTimePickerTillDate.Value;
         }
     }
 }

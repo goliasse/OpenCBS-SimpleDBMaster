@@ -138,8 +138,8 @@ namespace OpenCBS.Manager.Products
             finalAmountTransaction.fromFDAccount = FetchProduct(finalAmountTransaction.FromAccount);
             string branch = productHolding.FixedDepositContractCode.Split('/')[0];
 
-            accountManager.UpdateChartOfAccount("Debit", productHolding.FinalAmount.Value - productHolding.InitialAmount.Value, "ProfitAndLossExpense", "FDAccountExpense", "Interest paid for FD " + productHolding.FixedDepositContractCode, productHolding.FixedDepositProduct.Currency.Name, branch);
-            accountManager.UpdateChartOfAccount("Debit", productHolding.FinalAmount.Value, "BalanceSheetLiabilities", "FDAccountLiabilities", "Final amount paid for FD " + productHolding.FixedDepositContractCode, productHolding.FixedDepositProduct.Currency.Name, branch);
+            accountManager.UpdateChartOfAccount("CFDIN", productHolding.FinalAmount.Value - productHolding.InitialAmount.Value, "Interest paid for FD " + productHolding.FixedDepositContractCode, productHolding.FixedDepositProduct.Currency.Name, branch);
+            accountManager.UpdateChartOfAccount("CFDDB", productHolding.FinalAmount.Value, "Final amount paid for FD " + productHolding.FixedDepositContractCode, productHolding.FixedDepositProduct.Currency.Name, branch);
                 
 
             return currentAccountTransactionManager.MakeFDTransaction(finalAmountTransaction);

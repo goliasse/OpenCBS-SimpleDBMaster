@@ -538,20 +538,20 @@ namespace OpenCBS.GUI.Contracts
                 string[] a = lbInterest.Text.Split(' ');
                 string interest = a[0];
                 if (_interest.Value >= 0)
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", _interest.Value, "ProfitAndLossIncome", "LoanAccountIncome", "Loan interest paid for installment " + _instalmentNumber,_loan.Product.Currency.Name, _loan.BranchCode);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CLOFE", _interest.Value, "Loan interest paid for installment " + _instalmentNumber, _loan.Product.Currency.Name, _loan.BranchCode);
                 if (_manualInterests.Value >= 0)
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", _manualInterests.Value, "ProfitAndLossIncome", "LoanAccountIncome", "Loan manual interest paid for installment " + _instalmentNumber, _loan.Product.Currency.Name, _loan.BranchCode);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CLOFE", _manualInterests.Value, "Loan manual interest paid for installment " + _instalmentNumber, _loan.Product.Currency.Name, _loan.BranchCode);
                 if(_commission.Value >= 0)
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", _commission.Value, "ProfitAndLossIncome", "LoanAccountIncome", "Loan commission paid  installment " + _instalmentNumber, _loan.Product.Currency.Name, _loan.BranchCode);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CLOFE", _commission.Value, "Loan commission paid  installment " + _instalmentNumber, _loan.Product.Currency.Name, _loan.BranchCode);
                 if(_manualCommission.Value >= 0)
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", _manualCommission.Value, "ProfitAndLossIncome", "LoanAccountIncome", "Loan manual commission paid  installment " + _instalmentNumber, _loan.Product.Currency.Name, _loan.BranchCode);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CLOFE", _manualCommission.Value, "Loan manual commission paid  installment " + _instalmentNumber, _loan.Product.Currency.Name, _loan.BranchCode);
                 if(_manualPenalties.Value >= 0)
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", _manualPenalties.Value, "ProfitAndLossIncome", "LoanAccountIncome", "Loan manual penalty paid  installment " + _instalmentNumber, _loan.Product.Currency.Name, _loan.BranchCode);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CLOFE", _manualPenalties.Value, "Loan manual penalty paid  installment " + _instalmentNumber, _loan.Product.Currency.Name, _loan.BranchCode);
                 decimal amount = Convert.ToDecimal(nudICAmount.Value - Convert.ToDecimal(interest));
                 if (_principal.Value >= 0)
                 {
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", _principal.Value, "BalanceSheetAsset", "LoanAccountAsset", "Loan principal paid for installment " + _instalmentNumber, _loan.Product.Currency.Name, _loan.BranchCode);
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", _principal.Value, "BusinessCapital", "LoanFund", "Loan principal paid for installment " + _instalmentNumber, _loan.Product.Currency.Name, _loan.BranchCode);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CLOPP", _principal.Value, "Loan principal paid for installment " + _instalmentNumber, _loan.Product.Currency.Name, _loan.BranchCode);
+                   
                 }
                 
 

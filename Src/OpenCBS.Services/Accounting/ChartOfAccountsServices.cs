@@ -95,10 +95,16 @@ namespace OpenCBS.Services.Accounting
             return _accountManagement.SearchChartOfAccount(accountType, transactionType, transactionMode);
         }
 
-        public int UpdateChartOfAccount(string transactionMode, decimal amount, string category, string subCategory, string description, string currency, string branch)
+        public int UpdateChartOfAccount(string eventType, decimal amount, string description, string currency, string branch)
         {
-            return _accountManagement.UpdateChartOfAccount(transactionMode, amount, category, subCategory, description, currency, branch);
+            return _accountManagement.UpdateChartOfAccount(eventType, amount, description, currency, branch);
         }
+
+        public int UpdateChartOfAccount(string eventType,string debitAccount, string creditAccount, decimal amount, string description, string currency, string branch)
+        {
+            return _accountManagement.UpdateChartOfAccount(eventType, debitAccount, creditAccount, amount, description, currency, branch);
+        }
+
 
         public int DeleteCOATranByDesc(string desc)
         {
@@ -507,5 +513,32 @@ namespace OpenCBS.Services.Accounting
 	    {
 	        return _accountManagement.NotEmptyRelatedObjects();
 	    }
+
+
+        public List<COARule> FetchCOARule()
+        {
+            return _accountManagement.FetchCOARule();
+        }
+
+        public int AddCOARule(COARule coaRule)
+        {
+            return _accountManagement.AddCOARule(coaRule);
+        }
+
+        public int DeleteCOARule(string id)
+        {
+           return _accountManagement.DeleteCOARule(id);
+        }
+
+        public List<string> FetchCOAEvents()
+        {
+            return _accountManagement.FetchCOAEvents();
+        }
+
+        public List<COATransaction> FetchCOATransactions()
+        {
+            return _accountManagement.FetchCOATransactions();
+        }
+
 	}
 }

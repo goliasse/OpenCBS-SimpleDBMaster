@@ -162,6 +162,7 @@
             this.btnAddRule.Size = new System.Drawing.Size(125, 25);
             this.btnAddRule.TabIndex = 73;
             this.btnAddRule.Text = "Add";
+            this.btnAddRule.Click += new System.EventHandler(this.btnAddRule_Click);
             // 
             // AddCOARule
             // 

@@ -78,8 +78,8 @@ namespace OpenCBS.GUI.Accounting
                 MessageBox.Show("Expense added successfully.");
                 _addedExpense.InitializeExpenseList();
                 //Update chart of account
-                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", expense.ExpenseAmount.Value, "ProfitAndLossExpense", "OtherExpense", expense.ExpenseCategory + " " + ret, expense.Currency, expense.Branch);
-                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", expense.ExpenseAmount.Value, "ProfitAndLossIncome", "ProfitAndLossIncome", expense.ExpenseCategory + " " + ret, expense.Currency, expense.Branch);
+                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CMIEX", expense.ExpenseAmount.Value, expense.ExpenseCategory + " " + ret, expense.Currency, expense.Branch);
+               
             }
             else
                 MessageBox.Show("Some error ocurred.");

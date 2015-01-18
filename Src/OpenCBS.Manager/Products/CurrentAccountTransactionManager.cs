@@ -424,14 +424,14 @@ AND ([transaction_type] = @maker))";
                             
                             currentAccountEvent.EventCode = "RICT";
                             currentAccountEvent.Description = "Regular interest credit transaction #" + ret;
-                            accountManager.UpdateChartOfAccount("Credit", currentAccountTransactions.Amount.Value, "ProfitAndLossExpense", "CurrentAccountExpense", currentAccountEvent.Description, currentAccountProductHolding.CurrentAccountProduct.Currency.Name, branch);
-                            accountManager.UpdateChartOfAccount("Debit", currentAccountTransactions.Amount.Value, "ProfitAndLossIncome", "CurrentAccountIncome", currentAccountEvent.Description, currentAccountProductHolding.CurrentAccountProduct.Currency.Name, branch);
+                            accountManager.UpdateChartOfAccount("CCAIN", currentAccountTransactions.Amount.Value, currentAccountEvent.Description, currentAccountProductHolding.CurrentAccountProduct.Currency.Name, branch);
+                            
                         }
                         else
                         {
                             currentAccountEvent.EventCode = "CACT";
                             currentAccountEvent.Description = "Current Account Credit transaction #" + ret;
-                            accountManager.UpdateChartOfAccount("Credit", currentAccountTransactions.Amount.Value, "BalanceSheetLiabilities", "CurrentAccountLiabilities", currentAccountEvent.Description, currentAccountProductHolding.CurrentAccountProduct.Currency.Name, branch);
+                            accountManager.UpdateChartOfAccount("CCACR", currentAccountTransactions.Amount.Value, currentAccountEvent.Description, currentAccountProductHolding.CurrentAccountProduct.Currency.Name, branch);
                         }
 
                         
@@ -444,7 +444,7 @@ AND ([transaction_type] = @maker))";
                         currentAccountEvent.EventCode = "CADT";
                         currentAccountEvent.Description = "Current Account Debit transaction #" + ret;
                         //Update chart of account
-                        accountManager.UpdateChartOfAccount("Debit", currentAccountTransactions.Amount.Value, "BalanceSheetLiabilities", "CurrentAccountLiabilities", currentAccountTransactions.PurposeOfTransfer, currentAccountProductHolding.CurrentAccountProduct.Currency.Name, branch);
+                        accountManager.UpdateChartOfAccount("CCADB", currentAccountTransactions.Amount.Value, currentAccountTransactions.PurposeOfTransfer, currentAccountProductHolding.CurrentAccountProduct.Currency.Name, branch);
                     }
                     currentAccountEventManager.SaveCurrentAccountEvent(currentAccountEvent);
 
@@ -495,7 +495,7 @@ public int DebitFeeTransaction(CurrentAccountTransactions currentAccountTransact
                         string branch = currentAccountProductHolding.CurrentAccountContractCode.Split('/')[0];
                         command.AddParam("@to_account", GetChartOfAccountNumber("ProfitAndLossIncome"));
                         command.AddParam("@from_account", currentAccountTransactions.FromAccount);
-                        accountManager.UpdateChartOfAccount("Credit", currentAccountTransactions.Amount.Value, "ProfitAndLossIncome", "CurrentAccountIncome", currentAccountTransactions.PurposeOfTransfer, currentAccountProductHolding.CurrentAccountProduct.Currency.Name, branch);
+                        accountManager.UpdateChartOfAccount("CCAFE", currentAccountTransactions.Amount.Value, currentAccountTransactions.PurposeOfTransfer, currentAccountProductHolding.CurrentAccountProduct.Currency.Name, branch);
                     }
                     else
                     {
@@ -503,8 +503,8 @@ public int DebitFeeTransaction(CurrentAccountTransactions currentAccountTransact
                         string branch = currentAccountProductHolding.CurrentAccountContractCode.Split('/')[0];
                         command.AddParam("@to_account", currentAccountTransactions.ToAccount);
                         command.AddParam("@from_account", GetChartOfAccountNumber("ProfitAndLossExpense"));
-                        accountManager.UpdateChartOfAccount("Credit", currentAccountTransactions.Amount.Value, "ProfitAndLossExpense", "CurrentAccountExpense", currentAccountTransactions.PurposeOfTransfer, currentAccountProductHolding.CurrentAccountProduct.Currency.Name, branch);
-                        accountManager.UpdateChartOfAccount("Debit", currentAccountTransactions.Amount.Value, "ProfitAndLossIncome", "CurrentAccountIncome", currentAccountTransactions.PurposeOfTransfer, currentAccountProductHolding.CurrentAccountProduct.Currency.Name, branch);
+                        accountManager.UpdateChartOfAccount("CCAIN", currentAccountTransactions.Amount.Value, currentAccountTransactions.PurposeOfTransfer, currentAccountProductHolding.CurrentAccountProduct.Currency.Name, branch);
+                        
                     }
 
                     command.AddParam("@transaction_mode", currentAccountTransactions.TransactionMode);
@@ -554,9 +554,9 @@ public int MakeFDTransaction(CurrentAccountTransactions fixedDepositTransactions
                 string branch = fixedDepositProductHolding.FixedDepositContractCode.Split('/')[0];
                 fixedDepositEvent.ContractCode = fixedDepositTransactions.ToAccount;
                 fixedDepositEvent.EventCode = "FDCT";
-                fixedDepositEvent.Description = "Fixed depsit Credit transaction #" + ret;
+                fixedDepositEvent.Description = "Fixed deposit Credit transaction #" + ret;
                 //Update chart of account
-                accountManager.UpdateChartOfAccount(fixedDepositTransactions.TransactionMode, fixedDepositTransactions.Amount.Value, "BalanceSheetLiabilities", "FDAccountLiabilities", fixedDepositTransactions.PurposeOfTransfer, fixedDepositProductHolding.FixedDepositProduct.Currency.Name, branch);
+                accountManager.UpdateChartOfAccount("CFDCR", fixedDepositTransactions.Amount.Value, fixedDepositTransactions.PurposeOfTransfer, fixedDepositProductHolding.FixedDepositProduct.Currency.Name, branch);
            
                 
             }
@@ -566,9 +566,9 @@ public int MakeFDTransaction(CurrentAccountTransactions fixedDepositTransactions
                 string branch = fixedDepositProductHolding.FixedDepositContractCode.Split('/')[0];
                 fixedDepositEvent.ContractCode = fixedDepositTransactions.FromAccount;
                 fixedDepositEvent.EventCode = "FDDT";
-                fixedDepositEvent.Description = "Fixed depsit Debit transaction #" + ret;
+                fixedDepositEvent.Description = "Fixed deposit Debit transaction #" + ret;
                 //Update chart of account
-                accountManager.UpdateChartOfAccount(fixedDepositTransactions.TransactionMode, fixedDepositTransactions.Amount.Value, "BalanceSheetLiabilities", "FDAccountLiabilities", fixedDepositTransactions.PurposeOfTransfer, fixedDepositProductHolding.FixedDepositProduct.Currency.Name, branch);
+                accountManager.UpdateChartOfAccount("CFDDB", fixedDepositTransactions.Amount.Value, fixedDepositTransactions.PurposeOfTransfer, fixedDepositProductHolding.FixedDepositProduct.Currency.Name, branch);
            
             }
             fixedDepositEventManager.SaveFixedDepositEvent(fixedDepositEvent);

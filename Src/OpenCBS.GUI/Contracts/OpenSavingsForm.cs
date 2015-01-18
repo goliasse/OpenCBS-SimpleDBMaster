@@ -136,8 +136,8 @@ namespace OpenCBS.GUI.Contracts
             _entryFees = udEntryFees.Value;
             _initialAmount = nudInitialAmount.Value;
             string branch = _savingsProduct.Code.Split('/')[0];
-            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", _initialAmount.Value, "BalanceSheetLiabilities", "SavingAccountLiabilities", "Initial amount paid for " + _savingsProduct.Code, _savingsProduct.Currency.Name, branch);
-            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", udEntryFees.Value, "ProfitAndLossIncome", "SavingAccountIncome", "Entery fee applied for " + _savingsProduct.Code, _savingsProduct.Currency.Name, branch);
+            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CSACR", _initialAmount.Value, "Initial amount paid for " + _savingsProduct.Code, _savingsProduct.Currency.Name, branch);
+            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CSAFE", udEntryFees.Value, "Entery fee applied for " + _savingsProduct.Code, _savingsProduct.Currency.Name, branch);
         }
 
         private void udEntryFees_ValueChanged(object sender, EventArgs e)

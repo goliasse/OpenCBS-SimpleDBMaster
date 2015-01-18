@@ -237,7 +237,7 @@ namespace OpenCBS.GUI.BankGuarantee
             MessageBox.Show("Bank Guarantee " + bankGuarantees.BankGuaranteeCode + " Successfully Updated!");
 
             //Update chart of account
-            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", bankGuarantees.Value.Value, "BalanceSheetLiabilities", "OtherLiabilities", "Bank Guarantees Ref. " + bankGuarantees.BankGuaranteeCode, bankGuarantees.Currency, bankGuarantees.Branch);
+            ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CBGAV", bankGuarantees.Value.Value, "Bank Guarantees Ref. " + bankGuarantees.BankGuaranteeCode, bankGuarantees.Currency, bankGuarantees.Branch);
 
             btnUpdate.Enabled = false;
         }
@@ -277,7 +277,7 @@ namespace OpenCBS.GUI.BankGuarantee
                 {
                     MessageBox.Show("Bank Guarantee Successfully Issued. Code is " + ret);
                     //Update chart of account
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", bankGuarantees.TotalFee.Value, "ProfitAndLossIncome", "OtherIncome", "Bank Guarantees Ref. " + ret, bankGuarantees.Currency, bankGuarantees.Branch);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CBGFE", bankGuarantees.TotalFee.Value, "Bank Guarantees Ref. " + ret, bankGuarantees.Currency, bankGuarantees.Branch);
                 }
                 else
                 {

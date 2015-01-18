@@ -75,18 +75,18 @@ namespace OpenCBS.GUI.Accounting
                 if (fundedFrom == "Income Ledger")
                 {
                     //Update chart of account
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", currencyAssets.AssetAmount.Value, "BalanceSheetAsset", "OtherAsset", currencyAssets.AssetCategory + " " + ret, currencyAssets.Currency, currencyAssets.Branch);
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", currencyAssets.AssetAmount.Value, "ProfitAndLossIncome", "ProfitAndLossIncome", currencyAssets.AssetCategory + " " + ret, currencyAssets.Currency, currencyAssets.Branch);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CMAIN", currencyAssets.AssetAmount.Value, currencyAssets.AssetCategory + " " + ret, currencyAssets.Currency, currencyAssets.Branch);
+                    
                 }
                 else if (fundedFrom == "Capital Ledger")
                 {
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", currencyAssets.AssetAmount.Value, "BalanceSheetAsset", "OtherAsset", currencyAssets.AssetCategory + " " + ret, currencyAssets.Currency, currencyAssets.Branch);
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", currencyAssets.AssetAmount.Value, "BusinessCapital", "CashOnHand", currencyAssets.AssetCategory + " " + ret, currencyAssets.Currency, currencyAssets.Branch);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CMACA", currencyAssets.AssetAmount.Value, currencyAssets.AssetCategory + " " + ret, currencyAssets.Currency, currencyAssets.Branch);
+                    
                 }
                 else if (fundedFrom == "Liabilities Ledger")
                 {
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", currencyAssets.AssetAmount.Value, "BalanceSheetAsset", "OtherAsset", currencyAssets.AssetCategory + " " + ret, currencyAssets.Currency, currencyAssets.Branch);
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", currencyAssets.AssetAmount.Value, "BalanceSheetLiabilities", "OtherLiabilities", currencyAssets.AssetCategory + " " + ret, currencyAssets.Currency, currencyAssets.Branch);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CMALI", currencyAssets.AssetAmount.Value, currencyAssets.AssetCategory + " " + ret, currencyAssets.Currency, currencyAssets.Branch);
+                    
                 }
             }
             else

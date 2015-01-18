@@ -391,8 +391,8 @@ namespace OpenCBS.GUI.UserControl
                 string creditCategory = _creditAccount.Label.Split('-')[0];
 
             //Update chart of accounts
-                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", _amount.Value, creditCategory, creditSubCategory, "Manual book entry", cbCurrencies.SelectedItem.ToString(), _branch.Code);
-                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", _amount.Value, debitCategory, debitSubCategory, "Manual book entry", cbCurrencies.SelectedItem.ToString(), _branch.Code);
+                ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CMABE", _debitAccount.Label,_creditAccount.Label,  _amount.Value, "Manual book entry", cbCurrencies.SelectedItem.ToString(), _branch.Code);
+                
 
                 _deleteIsPossible = false;
 

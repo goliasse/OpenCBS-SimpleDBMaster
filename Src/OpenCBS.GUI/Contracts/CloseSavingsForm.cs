@@ -190,7 +190,7 @@ namespace OpenCBS.GUI.Contracts
                 
                 if (rbWithdraw.Checked == true)
                 {
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", Amount.Value, "BalanceSheetLiabilities", "SavingAccountLiabilities", "Final amount withdrawn on closing saving a/c " + _savingsBookProduct.Code, _savingsBookProduct.Currency.Name, branch);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CSADB", Amount.Value, "Final amount withdrawn on closing saving a/c " + _savingsBookProduct.Code, _savingsBookProduct.Currency.Name, branch);
                 }
                 
             }
@@ -198,8 +198,8 @@ namespace OpenCBS.GUI.Contracts
             {
                 if (rbWithdraw.Checked == true)
                 {
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Credit", udCloseFees.Value, "ProfitAndLossIncome", "SavingAccountIncome", "Closing fee applied for " + _savingsBookProduct.Code, _savingsBookProduct.Currency.Name, branch);
-                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("Debit", Amount.Value, "BalanceSheetLiabilities", "SavingAccountLiabilities", "Final amount withdrawn on closing saving a/c " + _savingsBookProduct.Code, _savingsBookProduct.Currency.Name, branch);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CSAFE", udCloseFees.Value, "Closing fee applied for " + _savingsBookProduct.Code, _savingsBookProduct.Currency.Name, branch);
+                    ServicesProvider.GetInstance().GetChartOfAccountsServices().UpdateChartOfAccount("CSADB", Amount.Value, "Final amount withdrawn on closing saving a/c " + _savingsBookProduct.Code, _savingsBookProduct.Currency.Name, branch);
                 }
                 
             }

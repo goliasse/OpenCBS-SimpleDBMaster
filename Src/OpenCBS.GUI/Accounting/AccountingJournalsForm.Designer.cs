@@ -45,6 +45,8 @@
             this.lblCurrency = new System.Windows.Forms.Label();
             this.cbBranches = new System.Windows.Forms.ComboBox();
             this.cbCurrencies = new System.Windows.Forms.ComboBox();
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,12 +55,14 @@
             this.lvAccountsPayable.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.lvAccountsPayable.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
+            this.columnHeader9,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6,
-            this.columnHeader7});
+            this.columnHeader7,
+            this.columnHeader8});
             this.lvAccountsPayable.FullRowSelect = true;
             this.lvAccountsPayable.GridLines = true;
             this.lvAccountsPayable.Location = new System.Drawing.Point(1, 38);
@@ -222,6 +226,16 @@
             this.cbCurrencies.Size = new System.Drawing.Size(156, 24);
             this.cbCurrencies.TabIndex = 69;
             // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Event Code";
+            this.columnHeader8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Mode";
+            this.columnHeader9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // AccountingJournalsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -257,6 +271,8 @@
         private System.Windows.Forms.Label lblCurrency;
         private System.Windows.Forms.ComboBox cbBranches;
         private System.Windows.Forms.ComboBox cbCurrencies;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
 
 
     }
