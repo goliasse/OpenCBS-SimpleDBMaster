@@ -83,6 +83,11 @@ namespace OpenCBS.Services.Accounting
             return _accountManagement.SelectAllAccounts();
         }
 
+        public List<Account> SelectAllAccounts(string category)
+        {
+            return _accountManagement.SelectAllAccounts(category);
+        }
+
         public List<Account> FindAllAccountsWithoutTeller(int accountId)
         {
             return _accountManagement.SelectAllAccountsWithoutTeller(accountId);
@@ -540,5 +545,29 @@ namespace OpenCBS.Services.Accounting
             return _accountManagement.FetchCOATransactions();
         }
 
-	}
+        public List<COATransaction> FetchCOATransactions(string branch, DateTime tillDate)
+        {
+            return _accountManagement.FetchCOATransactions(branch, tillDate);
+        }
+
+        public List<COATransaction> FetchCOATransactions(string branch, DateTime tillDate, string accountName)
+        {
+            return _accountManagement.FetchCOATransactions(branch, tillDate, accountName);
+        }
+
+        public decimal CalculateCOABalance(string branch, DateTime tillDate, string accountName)
+        {
+            return _accountManagement.CalculateCOABalance(branch, tillDate, accountName);
+        }
+
+        public decimal CalculateCreditCOABalance(string branch, DateTime tillDate, string accountName)
+        {
+            return _accountManagement.CalculateCreditCOABalance(branch, tillDate, accountName);
+        }
+
+        public decimal CalculateDebitCOABalance(string branch, DateTime tillDate, string accountName)
+        {
+            return _accountManagement.CalculateDebitCOABalance(branch, tillDate, accountName);
+        }
+    }
 }

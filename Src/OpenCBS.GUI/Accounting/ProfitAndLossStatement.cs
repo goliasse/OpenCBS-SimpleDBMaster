@@ -10,6 +10,7 @@ using OpenCBS.CoreDomain;
 using OpenCBS.CoreDomain.Accounting;
 using OpenCBS.MultiLanguageRessources;
 using OpenCBS.Services;
+using OpenCBS.Services.Accounting;
 
 namespace OpenCBS.GUI.Accounting
 {
@@ -20,15 +21,64 @@ namespace OpenCBS.GUI.Accounting
             InitializeComponent();
             InitializeComboBoxBranches();
             InitializeComboBoxCurrencies();
+            InitializeProfitAndLoseStatement("DEF", DateTime.Today.Date);
+        }
+
+        private void InitializeProfitAndLoseStatement(string branch, DateTime tillDate)
+        {
+            lvProfitAndLossStatement.Items.Clear();
+            ChartOfAccountsServices coaService = ServicesProvider.GetInstance().GetChartOfAccountsServices();
+            List<Account> listAccount = coaService.SelectAllAccounts("ProfitAndLossIncome");
+            int i = 0;
+            decimal income = 0;
+            foreach (Account account in listAccount)
+            {
+
+                decimal balance = coaService.CalculateCOABalance(branch, tillDate, account.Number + " : " + account.Label);
+                var item = new ListViewItem(new[] {
+                    i++.ToString(),
+                    account.Number+" : "+account.Label,
+                    balance.ToString()
+                    
+                });
+                lvProfitAndLossStatement.Items.Add(item);
+                income = income + balance;
+            }
+
+
+            listAccount = coaService.SelectAllAccounts("ProfitAndLossExpense");
+            i = 0;
+            decimal expense = 0;
+            foreach (Account account in listAccount)
+            {
+
+                decimal balance = coaService.CalculateCOABalance(branch, tillDate, account.Number + " : " + account.Label);
+                var item = new ListViewItem(new[] {
+                    i++.ToString(),
+                    account.Number+" : "+account.Label,
+                    balance.ToString()
+                    
+                });
+                lvProfitAndLossStatement.Items.Add(item);
+                expense = expense + balance;
+            }
+
+            lblTotalIncome.Text = income.ToString();
+            lblTotalExpense.Text = expense.ToString();
+            lblNetProfit.Text = (income - expense).ToString();
+
         }
 
         private void InitializeComboBoxBranches()
         {
             List<Branch> branches = ServicesProvider.GetInstance().GetBranchService().FindAllNonDeleted();
             cbBranches.Items.Clear();
-            cbBranches.ValueMember = "Id";
-            cbBranches.DisplayMember = "";
-            cbBranches.DataSource = branches;
+            
+            foreach (Branch branch in branches)
+            {
+                cbBranches.Items.Add(branch.Code);
+            }
+            cbBranches.SelectedIndex = 0;
         }
 
         private void InitializeComboBoxCurrencies()
@@ -44,6 +94,13 @@ namespace OpenCBS.GUI.Accounting
             }
             cbCurrencies.SelectedIndex = 0;
 
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            string branch = cbBranches.SelectedItem.ToString();
+            DateTime tillDate = dateTimePickerTillDate.Value.Date;
+            InitializeProfitAndLoseStatement(branch, tillDate);
         }
     }
 }

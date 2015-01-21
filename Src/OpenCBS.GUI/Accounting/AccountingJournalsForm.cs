@@ -10,6 +10,7 @@ using OpenCBS.CoreDomain;
 using OpenCBS.CoreDomain.Accounting;
 using OpenCBS.MultiLanguageRessources;
 using OpenCBS.Services;
+using OpenCBS.Services.Accounting;
 
 namespace OpenCBS.GUI.Accounting
 {
@@ -20,15 +21,65 @@ namespace OpenCBS.GUI.Accounting
             InitializeComponent();
             InitializeComboBoxBranches();
             InitializeComboBoxCurrencies();
+            ChartOfAccountsServices coaService = ServicesProvider.GetInstance().GetChartOfAccountsServices();
+            List<COATransaction> COATransactionList = coaService.FetchCOATransactions("All", DateTime.Today.Date);
+            InitializeCOATransactionList(COATransactionList);
+        }
+
+        public void InitializeCOATransactionList(List<COATransaction> COATransactionList)
+        {
+
+            lvAccountingJournal.Items.Clear();
+
+
+            if (COATransactionList != null)
+            {
+                foreach (COATransaction coaTransaction in COATransactionList)
+                {
+                    var item = new ListViewItem(new[] {
+                    coaTransaction.Id.ToString(),
+                    "Debit",
+                    coaTransaction.DebitAccount,
+                    coaTransaction.Amount.GetFormatedValue(true),
+                    "",
+                    coaTransaction.Branch,
+                    coaTransaction.Currency,
+                    coaTransaction.Description,
+                    coaTransaction.TransactionDate.ToShortDateString(),
+                    coaTransaction.EventCode
+
+                });
+                    lvAccountingJournal.Items.Add(item);
+
+                    var item1 = new ListViewItem(new[] {
+                    coaTransaction.Id.ToString(),
+                    "Credit",
+                    coaTransaction.CreditAccount,
+                    "",
+                    coaTransaction.Amount.GetFormatedValue(true),
+                    coaTransaction.Branch,
+                    coaTransaction.Currency,
+                    coaTransaction.Description,
+                    coaTransaction.TransactionDate.ToShortDateString(),
+                    coaTransaction.EventCode
+
+                });
+                    lvAccountingJournal.Items.Add(item1);
+
+                }
+            }
         }
 
         private void InitializeComboBoxBranches()
         {
             List<Branch> branches = ServicesProvider.GetInstance().GetBranchService().FindAllNonDeleted();
             cbBranches.Items.Clear();
-            cbBranches.ValueMember = "Id";
-            cbBranches.DisplayMember = "";
-            cbBranches.DataSource = branches;
+            cbBranches.Items.Add("All");
+            foreach (Branch branch in branches)
+            {
+                cbBranches.Items.Add(branch.Code);
+            }
+            cbBranches.SelectedIndex = 0;
         }
 
         private void InitializeComboBoxCurrencies()
@@ -44,6 +95,15 @@ namespace OpenCBS.GUI.Accounting
             }
             cbCurrencies.SelectedIndex = 0;
 
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            string branch = cbBranches.SelectedItem.ToString();
+            DateTime tillDate = dateTimePickerTillDate.Value.Date;
+            ChartOfAccountsServices coaService = ServicesProvider.GetInstance().GetChartOfAccountsServices();
+            List<COATransaction> COATransactionList = coaService.FetchCOATransactions(branch, tillDate);
+            InitializeCOATransactionList(COATransactionList);
         }
     }
 }

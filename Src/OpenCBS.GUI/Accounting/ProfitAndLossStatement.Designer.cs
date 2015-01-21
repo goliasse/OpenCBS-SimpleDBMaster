@@ -34,13 +34,13 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblNetProfit = new System.Windows.Forms.Label();
+            this.lblTotalExpense = new System.Windows.Forms.Label();
+            this.lblTotalIncome = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerTillDate = new System.Windows.Forms.DateTimePicker();
             this.lblEndDate = new System.Windows.Forms.Label();
             this.btnView = new System.Windows.Forms.Button();
             this.lblBranch = new System.Windows.Forms.Label();
@@ -98,13 +98,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.lblNetProfit);
+            this.groupBox1.Controls.Add(this.lblTotalExpense);
+            this.groupBox1.Controls.Add(this.lblTotalIncome);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.dateTimePickerEndDate);
+            this.groupBox1.Controls.Add(this.dateTimePickerTillDate);
             this.groupBox1.Controls.Add(this.lblEndDate);
             this.groupBox1.Controls.Add(this.btnView);
             this.groupBox1.Controls.Add(this.lblBranch);
@@ -117,44 +117,44 @@
             this.groupBox1.TabIndex = 69;
             this.groupBox1.TabStop = false;
             // 
-            // label7
+            // lblNetProfit
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblNetProfit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(138, 204);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(87, 16);
-            this.label7.TabIndex = 80;
-            this.label7.Text = "Total Assets :";
+            this.lblNetProfit.AutoSize = true;
+            this.lblNetProfit.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblNetProfit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblNetProfit.Location = new System.Drawing.Point(138, 204);
+            this.lblNetProfit.Name = "lblNetProfit";
+            this.lblNetProfit.Size = new System.Drawing.Size(87, 16);
+            this.lblNetProfit.TabIndex = 80;
+            this.lblNetProfit.Text = "Total Assets :";
             // 
-            // label6
+            // lblTotalExpense
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblTotalExpense.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(138, 179);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(87, 16);
-            this.label6.TabIndex = 79;
-            this.label6.Text = "Total Assets :";
+            this.lblTotalExpense.AutoSize = true;
+            this.lblTotalExpense.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblTotalExpense.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblTotalExpense.Location = new System.Drawing.Point(138, 179);
+            this.lblTotalExpense.Name = "lblTotalExpense";
+            this.lblTotalExpense.Size = new System.Drawing.Size(87, 16);
+            this.lblTotalExpense.TabIndex = 79;
+            this.lblTotalExpense.Text = "Total Assets :";
             // 
-            // label5
+            // lblTotalIncome
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblTotalIncome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(138, 153);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 16);
-            this.label5.TabIndex = 78;
-            this.label5.Text = "Total Assets :";
+            this.lblTotalIncome.AutoSize = true;
+            this.lblTotalIncome.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblTotalIncome.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblTotalIncome.Location = new System.Drawing.Point(138, 153);
+            this.lblTotalIncome.Name = "lblTotalIncome";
+            this.lblTotalIncome.Size = new System.Drawing.Size(87, 16);
+            this.lblTotalIncome.TabIndex = 78;
+            this.lblTotalIncome.Text = "Total Assets :";
             // 
             // label4
             // 
@@ -165,9 +165,9 @@
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label4.Location = new System.Drawing.Point(32, 204);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 16);
+            this.label4.Size = new System.Drawing.Size(70, 16);
             this.label4.TabIndex = 77;
-            this.label4.Text = "Total Equity :";
+            this.label4.Text = "Net Profit :";
             // 
             // label3
             // 
@@ -178,9 +178,9 @@
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label3.Location = new System.Drawing.Point(32, 179);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 16);
+            this.label3.Size = new System.Drawing.Size(98, 16);
             this.label3.TabIndex = 76;
-            this.label3.Text = "Total Liabilities :";
+            this.label3.Text = "Total Expense :";
             // 
             // label2
             // 
@@ -191,19 +191,19 @@
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label2.Location = new System.Drawing.Point(32, 153);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 16);
+            this.label2.Size = new System.Drawing.Size(89, 16);
             this.label2.TabIndex = 75;
-            this.label2.Text = "Total Assets :";
+            this.label2.Text = "Total Income :";
             // 
-            // dateTimePickerEndDate
+            // dateTimePickerTillDate
             // 
-            this.dateTimePickerEndDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dateTimePickerTillDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePickerEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerEndDate.Location = new System.Drawing.Point(113, 80);
-            this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
-            this.dateTimePickerEndDate.Size = new System.Drawing.Size(153, 20);
-            this.dateTimePickerEndDate.TabIndex = 74;
+            this.dateTimePickerTillDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerTillDate.Location = new System.Drawing.Point(113, 80);
+            this.dateTimePickerTillDate.Name = "dateTimePickerTillDate";
+            this.dateTimePickerTillDate.Size = new System.Drawing.Size(153, 20);
+            this.dateTimePickerTillDate.TabIndex = 74;
             // 
             // lblEndDate
             // 
@@ -229,6 +229,7 @@
             this.btnView.Size = new System.Drawing.Size(236, 25);
             this.btnView.TabIndex = 72;
             this.btnView.Text = "View";
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // lblBranch
             // 
@@ -306,13 +307,13 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblNetProfit;
+        private System.Windows.Forms.Label lblTotalExpense;
+        private System.Windows.Forms.Label lblTotalIncome;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePickerEndDate;
+        private System.Windows.Forms.DateTimePicker dateTimePickerTillDate;
         private System.Windows.Forms.Label lblEndDate;
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.Label lblBranch;

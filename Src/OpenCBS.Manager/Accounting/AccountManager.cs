@@ -191,6 +191,39 @@ namespace OpenCBS.Manager.Accounting
             }
         }
 
+        public List<Account> SelectAllAccounts(string category)
+        {
+            List<Account> list = new List<Account>();
+
+            const string sqlText = @"SELECT id, 
+                                       account_number,
+                                       label,
+                                       debit_plus, 
+                                       type_code,                                                    
+                                       account_category_id, 
+                                       type,  
+                                       parent_account_id, lft, rgt
+                                     FROM ChartOfAccounts WHERE [account_category] = @category
+                                     ORDER BY account_number";
+
+            using (SqlConnection conn = GetConnection())
+            {
+                using (OpenCbsCommand select = new OpenCbsCommand(sqlText, conn))
+                {
+                    select.AddParam("@category", category);
+                    using (OpenCbsReader reader = select.ExecuteReader())
+                    {
+                        if (reader == null || reader.Empty) return list;
+                        while (reader.Read())
+                        {
+                            list.Add(GetAccount(reader));
+                        }
+                    }
+                    return list;
+                }
+            }
+        }
+
 
         public decimal SearchChartOfAccount(string accountType, string transactionType, string transactionMode)
         {
@@ -1024,6 +1057,234 @@ transaction_type = @transactionType AND transaction_mode= @transactionMode  GROU
                 }
             }
             return listCOATransaction;
+        }
+
+        public List<COATransaction> FetchCOATransactions(string branch, DateTime tillDate)
+        {
+            List<COATransaction> listCOATransaction = new List<COATransaction>();
+            string q = @"SELECT * FROM [dbo].[ChartOfAccountTransactions]";
+
+            if ((branch != "All") && (tillDate < DateTime.Today))
+                q = @"SELECT * FROM [dbo].[ChartOfAccountTransactions] WHERE branch = @branch AND transaction_date < @tillDate";
+            else
+            {
+                if (branch != "All")
+                    q = @"SELECT * FROM [dbo].[ChartOfAccountTransactions] WHERE branch = @branch";
+
+                if (tillDate < DateTime.Today.Date)
+                    q = @"SELECT * FROM [dbo].[ChartOfAccountTransactions] WHERE transaction_date < @tillDate";
+
+            }
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+                if ((branch != "All") && (tillDate < DateTime.Today))
+                {
+                    c.AddParam("@branch", branch);
+                    c.AddParam("@tillDate", tillDate);
+                }
+                else
+                {
+                    if (branch != "All")
+                        c.AddParam("@branch", branch);
+
+                    if (tillDate < DateTime.Today)
+                        c.AddParam("@tillDate", tillDate);
+                }
+
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+                    if (r == null || r.Empty) return null;
+
+                    while (r.Read())
+                    {
+                        listCOATransaction.Add(GetCOATransaction(r));
+                    }
+
+                }
+            }
+            return listCOATransaction;
+        }
+
+        public List<COATransaction> FetchCOATransactions(string branch, DateTime tillDate, string accountName)
+        {
+            List<COATransaction> listCOATransaction = new List<COATransaction>();
+            string q = @"SELECT * FROM [dbo].[ChartOfAccountTransactions] WHERE [debit_account] = @accountName"+
+                " UNION "+ 
+                "SELECT * FROM [dbo].[ChartOfAccountTransactions] WHERE [credit_account] = @accountName";
+
+            if ((branch != "All") && (tillDate < DateTime.Today))
+                q = @"SELECT * FROM [dbo].[ChartOfAccountTransactions] WHERE branch = @branch AND transaction_date < @tillDate AND [debit_account] = @accountName"+
+                    " UNION "+
+                    "SELECT * FROM [dbo].[ChartOfAccountTransactions] WHERE branch = @branch AND transaction_date < @tillDate AND [credit_account] = @accountName";
+            else
+            {
+                if (branch != "All")
+                    q = @"SELECT * FROM [dbo].[ChartOfAccountTransactions] WHERE branch = @branch AND [debit_account] = @accountName"+
+                        " UNION "+
+                        "SELECT * FROM [dbo].[ChartOfAccountTransactions] WHERE branch = @branch AND [credit_account] = @accountName";
+
+                if (tillDate < DateTime.Today.Date)
+                    q = @"SELECT * FROM [dbo].[ChartOfAccountTransactions] WHERE transaction_date < @tillDate AND [debit_account] = @accountName"+
+                        " UNION "+
+                        "SELECT * FROM [dbo].[ChartOfAccountTransactions] WHERE transaction_date < @tillDate AND [credit_account] = @accountName";
+
+            }
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+
+                c.AddParam("@accountName", accountName);
+                if ((branch != "All") && (tillDate < DateTime.Today))
+                {
+                    c.AddParam("@branch", branch);
+                    c.AddParam("@tillDate", tillDate);
+                }
+                else
+                {
+                    if (branch != "All")
+                        c.AddParam("@branch", branch);
+
+                    if (tillDate < DateTime.Today)
+                        c.AddParam("@tillDate", tillDate);
+                }
+
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+                    if (r == null || r.Empty) return null;
+
+                    while (r.Read())
+                    {
+                        listCOATransaction.Add(GetCOATransaction(r));
+                    }
+
+                }
+            }
+            return listCOATransaction;
+        }
+
+
+        public decimal CalculateDebitCOABalance(string branch, DateTime tillDate, string accountName)
+        {
+            decimal debitBalance = 0;
+            string q = @"SELECT SUM(Amount) AS debitBalance FROM [dbo].[ChartOfAccountTransactions] WHERE [debit_account] = @accountName";
+
+
+            if ((branch != "All") && (tillDate < DateTime.Today))
+                q = @"SELECT SUM(Amount) AS debitBalance FROM [dbo].[ChartOfAccountTransactions] WHERE branch = @branch AND transaction_date < @tillDate AND [debit_account] = @accountName";
+
+            else
+            {
+                if (branch != "All")
+                    q = @"SELECT SUM(Amount) AS debitBalance FROM [dbo].[ChartOfAccountTransactions] WHERE branch = @branch AND [debit_account] = @accountName";
+
+
+                if (tillDate < DateTime.Today.Date)
+                    q = @"SELECT SUM(Amount) AS debitBalance FROM [dbo].[ChartOfAccountTransactions] WHERE transaction_date < @tillDate AND [debit_account] = @accountName";
+
+
+            }
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+
+                c.AddParam("@accountName", accountName);
+                if ((branch != "All") && (tillDate < DateTime.Today))
+                {
+                    c.AddParam("@branch", branch);
+                    c.AddParam("@tillDate", tillDate);
+                }
+                else
+                {
+                    if (branch != "All")
+                        c.AddParam("@branch", branch);
+
+                    if (tillDate < DateTime.Today)
+                        c.AddParam("@tillDate", tillDate);
+                }
+
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+                    if (r == null || r.Empty)
+                        debitBalance = 0;
+                    else
+                    {
+
+                        r.Read();
+                        if (r.GetNullDecimal("debitBalance") != null)
+                            debitBalance = r.GetDecimal("debitBalance");
+                    }
+
+                }
+            }
+            return debitBalance;
+        }
+
+        public decimal CalculateCreditCOABalance(string branch, DateTime tillDate, string accountName)
+        {
+            decimal creditBalance = 0;
+            string q = @"SELECT SUM(Amount) AS creditBalance FROM [dbo].[ChartOfAccountTransactions] WHERE [credit_account] = @accountName";
+
+
+            if ((branch != "All") && (tillDate < DateTime.Today))
+                q = @"SELECT SUM(Amount) AS creditBalance FROM [dbo].[ChartOfAccountTransactions] WHERE branch = @branch AND transaction_date < @tillDate AND [credit_account] = @accountName";
+
+            else
+            {
+                if (branch != "All")
+                    q = @"SELECT SUM(Amount) AS creditBalance FROM [dbo].[ChartOfAccountTransactions] WHERE branch = @branch AND [credit_account] = @accountName";
+
+
+                if (tillDate < DateTime.Today.Date)
+                    q = @"SELECT SUM(Amount) AS creditBalance FROM [dbo].[ChartOfAccountTransactions] WHERE transaction_date < @tillDate AND [credit_account] = @accountName";
+
+
+            }
+
+            using (SqlConnection conn = GetConnection())
+            using (OpenCbsCommand c = new OpenCbsCommand(q, conn))
+            {
+
+                c.AddParam("@accountName", accountName);
+                if ((branch != "All") && (tillDate < DateTime.Today))
+                {
+                    c.AddParam("@branch", branch);
+                    c.AddParam("@tillDate", tillDate);
+                }
+                else
+                {
+                    if (branch != "All")
+                        c.AddParam("@branch", branch);
+
+                    if (tillDate < DateTime.Today)
+                        c.AddParam("@tillDate", tillDate);
+                }
+
+                using (OpenCbsReader r = c.ExecuteReader())
+                {
+                    if (r == null || r.Empty)
+                        creditBalance = 0;
+                    else
+                    {
+                        r.Read();
+                        if (r.GetNullDecimal("creditBalance") != null)
+                            creditBalance = r.GetDecimal("creditBalance");
+                    }
+
+                }
+            }
+            return creditBalance;
+        }
+
+
+        public decimal CalculateCOABalance(string branch, DateTime tillDate, string accountName)
+        {
+             decimal debitBalance = CalculateDebitCOABalance(branch, tillDate, accountName);
+             decimal creditBalance = CalculateCreditCOABalance(branch, tillDate, accountName);
+             return creditBalance - debitBalance;
         }
 
 

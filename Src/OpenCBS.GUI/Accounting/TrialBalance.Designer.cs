@@ -29,20 +29,21 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.lvAccountsPayable = new System.Windows.Forms.ListView();
+            this.lvTrialBalance = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerTillDate = new System.Windows.Forms.DateTimePicker();
             this.lblEndDate = new System.Windows.Forms.Label();
             this.btnView = new System.Windows.Forms.Button();
             this.lblBranch = new System.Windows.Forms.Label();
             this.lblCurrency = new System.Windows.Forms.Label();
             this.cbBranches = new System.Windows.Forms.ComboBox();
             this.cbCurrencies = new System.Windows.Forms.ComboBox();
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,23 +60,24 @@
             this.label1.Text = "Trial Balance";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lvAccountsPayable
+            // lvTrialBalance
             // 
-            this.lvAccountsPayable.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.lvAccountsPayable.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvTrialBalance.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.lvTrialBalance.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
+            this.columnHeader6,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
-            this.lvAccountsPayable.FullRowSelect = true;
-            this.lvAccountsPayable.GridLines = true;
-            this.lvAccountsPayable.Location = new System.Drawing.Point(1, 39);
-            this.lvAccountsPayable.Name = "lvAccountsPayable";
-            this.lvAccountsPayable.Size = new System.Drawing.Size(614, 528);
-            this.lvAccountsPayable.TabIndex = 40;
-            this.lvAccountsPayable.UseCompatibleStateImageBehavior = false;
-            this.lvAccountsPayable.View = System.Windows.Forms.View.Details;
+            this.lvTrialBalance.FullRowSelect = true;
+            this.lvTrialBalance.GridLines = true;
+            this.lvTrialBalance.Location = new System.Drawing.Point(1, 39);
+            this.lvTrialBalance.Name = "lvTrialBalance";
+            this.lvTrialBalance.Size = new System.Drawing.Size(614, 528);
+            this.lvTrialBalance.TabIndex = 40;
+            this.lvTrialBalance.UseCompatibleStateImageBehavior = false;
+            this.lvTrialBalance.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -108,7 +110,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dateTimePickerEndDate);
+            this.groupBox1.Controls.Add(this.dateTimePickerTillDate);
             this.groupBox1.Controls.Add(this.lblEndDate);
             this.groupBox1.Controls.Add(this.btnView);
             this.groupBox1.Controls.Add(this.lblBranch);
@@ -121,15 +123,15 @@
             this.groupBox1.TabIndex = 74;
             this.groupBox1.TabStop = false;
             // 
-            // dateTimePickerEndDate
+            // dateTimePickerTillDate
             // 
-            this.dateTimePickerEndDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dateTimePickerTillDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePickerEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerEndDate.Location = new System.Drawing.Point(113, 80);
-            this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
-            this.dateTimePickerEndDate.Size = new System.Drawing.Size(153, 20);
-            this.dateTimePickerEndDate.TabIndex = 74;
+            this.dateTimePickerTillDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerTillDate.Location = new System.Drawing.Point(113, 80);
+            this.dateTimePickerTillDate.Name = "dateTimePickerTillDate";
+            this.dateTimePickerTillDate.Size = new System.Drawing.Size(153, 20);
+            this.dateTimePickerTillDate.TabIndex = 74;
             // 
             // lblEndDate
             // 
@@ -155,6 +157,7 @@
             this.btnView.Size = new System.Drawing.Size(236, 25);
             this.btnView.TabIndex = 72;
             this.btnView.Text = "View";
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // lblBranch
             // 
@@ -208,6 +211,11 @@
             this.cbCurrencies.Size = new System.Drawing.Size(156, 24);
             this.cbCurrencies.TabIndex = 69;
             // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Account";
+            this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // TrialBalance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,7 +223,7 @@
             this.ClientSize = new System.Drawing.Size(916, 678);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lvAccountsPayable);
+            this.Controls.Add(this.lvTrialBalance);
             this.Name = "TrialBalance";
             this.Text = "Trial Balance";
             this.groupBox1.ResumeLayout(false);
@@ -227,20 +235,21 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView lvAccountsPayable;
+        private System.Windows.Forms.ListView lvTrialBalance;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePickerEndDate;
+        private System.Windows.Forms.DateTimePicker dateTimePickerTillDate;
         private System.Windows.Forms.Label lblEndDate;
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.Label lblBranch;
         private System.Windows.Forms.Label lblCurrency;
         private System.Windows.Forms.ComboBox cbBranches;
         private System.Windows.Forms.ComboBox cbCurrencies;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
 
     }
 }

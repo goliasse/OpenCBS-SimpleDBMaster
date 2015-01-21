@@ -10,6 +10,7 @@ using OpenCBS.CoreDomain;
 using OpenCBS.CoreDomain.Accounting;
 using OpenCBS.MultiLanguageRessources;
 using OpenCBS.Services;
+using OpenCBS.Services.Accounting;
 
 namespace OpenCBS.GUI.Accounting
 {
@@ -20,15 +21,41 @@ namespace OpenCBS.GUI.Accounting
             InitializeComponent();
             InitializeComboBoxBranches();
             InitializeComboBoxCurrencies();
+            InitializeTrialBalance("DEF", DateTime.Today.Date);
+        }
+
+        private void InitializeTrialBalance(string branch, DateTime tillDate)
+        {
+            lvTrialBalance.Items.Clear();
+            ChartOfAccountsServices coaService = ServicesProvider.GetInstance().GetChartOfAccountsServices();
+            List<Account> listAccount = coaService.FindAllAccounts().OrderBy(item => item.Number).ToList();
+            int i = 0;
+            foreach (Account account in listAccount)
+            {
+
+                decimal balance = coaService.CalculateCOABalance(branch, tillDate, account.Number + " : " + account.Label);
+                var item = new ListViewItem(new[] {
+                    i++.ToString(),
+                    account.Number+" : "+account.Label,
+                    coaService.CalculateCreditCOABalance(branch, tillDate, account.Number + " : " + account.Label).ToString(),
+                    coaService.CalculateDebitCOABalance(branch, tillDate, account.Number + " : " + account.Label).ToString(),
+                    branch,
+                    "USD"
+
+                });
+                lvTrialBalance.Items.Add(item);
+            }
         }
 
         private void InitializeComboBoxBranches()
         {
             List<Branch> branches = ServicesProvider.GetInstance().GetBranchService().FindAllNonDeleted();
             cbBranches.Items.Clear();
-            cbBranches.ValueMember = "Id";
-            cbBranches.DisplayMember = "";
-            cbBranches.DataSource = branches;
+            foreach (Branch branch in branches)
+            {
+                cbBranches.Items.Add(branch.Code);
+            }
+            cbBranches.SelectedIndex = 0;
         }
 
         private void InitializeComboBoxCurrencies()
@@ -44,6 +71,13 @@ namespace OpenCBS.GUI.Accounting
             }
             cbCurrencies.SelectedIndex = 0;
 
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            string branch = cbBranches.SelectedItem.ToString();
+            DateTime tillDate = dateTimePickerTillDate.Value.Date;
+            InitializeTrialBalance(branch, tillDate);
         }
     }
 }

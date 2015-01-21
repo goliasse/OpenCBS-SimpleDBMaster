@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.lvProfitAndLossStatement = new System.Windows.Forms.ListView();
+            this.lvBalanceSheet = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblTotalEquity = new System.Windows.Forms.Label();
+            this.lblTotalLiabilities = new System.Windows.Forms.Label();
+            this.lblTotalAssets = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePickerEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerTillDate = new System.Windows.Forms.DateTimePicker();
             this.lblEndDate = new System.Windows.Forms.Label();
             this.btnView = new System.Windows.Forms.Button();
             this.lblBranch = new System.Windows.Forms.Label();
@@ -63,21 +63,21 @@
             this.label1.Text = "Balance Sheet";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lvProfitAndLossStatement
+            // lvBalanceSheet
             // 
-            this.lvProfitAndLossStatement.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.lvProfitAndLossStatement.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvBalanceSheet.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.lvBalanceSheet.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
-            this.lvProfitAndLossStatement.FullRowSelect = true;
-            this.lvProfitAndLossStatement.GridLines = true;
-            this.lvProfitAndLossStatement.Location = new System.Drawing.Point(5, 48);
-            this.lvProfitAndLossStatement.Name = "lvProfitAndLossStatement";
-            this.lvProfitAndLossStatement.Size = new System.Drawing.Size(464, 492);
-            this.lvProfitAndLossStatement.TabIndex = 53;
-            this.lvProfitAndLossStatement.UseCompatibleStateImageBehavior = false;
-            this.lvProfitAndLossStatement.View = System.Windows.Forms.View.Details;
+            this.lvBalanceSheet.FullRowSelect = true;
+            this.lvBalanceSheet.GridLines = true;
+            this.lvBalanceSheet.Location = new System.Drawing.Point(5, 48);
+            this.lvBalanceSheet.Name = "lvBalanceSheet";
+            this.lvBalanceSheet.Size = new System.Drawing.Size(464, 492);
+            this.lvBalanceSheet.TabIndex = 53;
+            this.lvBalanceSheet.UseCompatibleStateImageBehavior = false;
+            this.lvBalanceSheet.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -98,13 +98,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.lblTotalEquity);
+            this.groupBox1.Controls.Add(this.lblTotalLiabilities);
+            this.groupBox1.Controls.Add(this.lblTotalAssets);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.dateTimePickerEndDate);
+            this.groupBox1.Controls.Add(this.dateTimePickerTillDate);
             this.groupBox1.Controls.Add(this.lblEndDate);
             this.groupBox1.Controls.Add(this.btnView);
             this.groupBox1.Controls.Add(this.lblBranch);
@@ -117,44 +117,44 @@
             this.groupBox1.TabIndex = 68;
             this.groupBox1.TabStop = false;
             // 
-            // label7
+            // lblTotalEquity
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblTotalEquity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(138, 204);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(87, 16);
-            this.label7.TabIndex = 80;
-            this.label7.Text = "Total Assets :";
+            this.lblTotalEquity.AutoSize = true;
+            this.lblTotalEquity.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblTotalEquity.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblTotalEquity.Location = new System.Drawing.Point(138, 204);
+            this.lblTotalEquity.Name = "lblTotalEquity";
+            this.lblTotalEquity.Size = new System.Drawing.Size(87, 16);
+            this.lblTotalEquity.TabIndex = 80;
+            this.lblTotalEquity.Text = "Total Assets :";
             // 
-            // label6
+            // lblTotalLiabilities
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblTotalLiabilities.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(138, 179);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(87, 16);
-            this.label6.TabIndex = 79;
-            this.label6.Text = "Total Assets :";
+            this.lblTotalLiabilities.AutoSize = true;
+            this.lblTotalLiabilities.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblTotalLiabilities.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblTotalLiabilities.Location = new System.Drawing.Point(138, 179);
+            this.lblTotalLiabilities.Name = "lblTotalLiabilities";
+            this.lblTotalLiabilities.Size = new System.Drawing.Size(87, 16);
+            this.lblTotalLiabilities.TabIndex = 79;
+            this.lblTotalLiabilities.Text = "Total Assets :";
             // 
-            // label5
+            // lblTotalAssets
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblTotalAssets.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(138, 153);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 16);
-            this.label5.TabIndex = 78;
-            this.label5.Text = "Total Assets :";
+            this.lblTotalAssets.AutoSize = true;
+            this.lblTotalAssets.Font = new System.Drawing.Font("Arial", 9.75F);
+            this.lblTotalAssets.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblTotalAssets.Location = new System.Drawing.Point(138, 153);
+            this.lblTotalAssets.Name = "lblTotalAssets";
+            this.lblTotalAssets.Size = new System.Drawing.Size(87, 16);
+            this.lblTotalAssets.TabIndex = 78;
+            this.lblTotalAssets.Text = "Total Assets :";
             // 
             // label4
             // 
@@ -195,15 +195,15 @@
             this.label2.TabIndex = 75;
             this.label2.Text = "Total Assets :";
             // 
-            // dateTimePickerEndDate
+            // dateTimePickerTillDate
             // 
-            this.dateTimePickerEndDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dateTimePickerTillDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePickerEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerEndDate.Location = new System.Drawing.Point(113, 80);
-            this.dateTimePickerEndDate.Name = "dateTimePickerEndDate";
-            this.dateTimePickerEndDate.Size = new System.Drawing.Size(153, 20);
-            this.dateTimePickerEndDate.TabIndex = 74;
+            this.dateTimePickerTillDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerTillDate.Location = new System.Drawing.Point(113, 80);
+            this.dateTimePickerTillDate.Name = "dateTimePickerTillDate";
+            this.dateTimePickerTillDate.Size = new System.Drawing.Size(153, 20);
+            this.dateTimePickerTillDate.TabIndex = 74;
             // 
             // lblEndDate
             // 
@@ -229,6 +229,7 @@
             this.btnView.Size = new System.Drawing.Size(236, 25);
             this.btnView.TabIndex = 72;
             this.btnView.Text = "View";
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // lblBranch
             // 
@@ -289,7 +290,7 @@
             this.ClientSize = new System.Drawing.Size(916, 678);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lvProfitAndLossStatement);
+            this.Controls.Add(this.lvBalanceSheet);
             this.Name = "BalanceSheet";
             this.Text = "Balance Sheet";
             this.groupBox1.ResumeLayout(false);
@@ -301,18 +302,18 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView lvProfitAndLossStatement;
+        private System.Windows.Forms.ListView lvBalanceSheet;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblTotalEquity;
+        private System.Windows.Forms.Label lblTotalLiabilities;
+        private System.Windows.Forms.Label lblTotalAssets;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePickerEndDate;
+        private System.Windows.Forms.DateTimePicker dateTimePickerTillDate;
         private System.Windows.Forms.Label lblEndDate;
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.Label lblBranch;
