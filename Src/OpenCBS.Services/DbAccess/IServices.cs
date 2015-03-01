@@ -80,6 +80,7 @@ namespace OpenCBS.Services
         ExpenseService GetExpenseService();
         CurrencyAssetService GetCurrencyAssetService();
         IncomeService GetIncomeService();
+        BatchService GetBatchService();
         void SuppressAllRemotingInfos(string pComputerName, string pLoginName);
 
         string GetAuthentification(string pOctoUsername, string pOctoPass, string pDbName, string pComputerName, string pLoginName);

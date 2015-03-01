@@ -57,7 +57,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.AcceptanceTest", "O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.ExceptionsHandler", "OpenCBS.ExceptionsHandler\OpenCBS.ExceptionsHandler.csproj", "{98B26AD8-D160-462B-B70F-982D8701154A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.CurrentAccountBatch", "CurrentAccountBatch\OpenCBS.CurrentAccountBatch.csproj", "{DE67E933-5011-4BAF-8D9E-B18D7B2E05A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCBS.OpenCBSBatch", "CurrentAccountBatch\OpenCBS.OpenCBSBatch.csproj", "{DE67E933-5011-4BAF-8D9E-B18D7B2E05A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -274,8 +274,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		GreenPepperConfigXmlRpcHandler = greenpepper1
 		GreenPepperConfigServerUrl = http://wiki.octopusnetwork.org
+		GreenPepperConfigXmlRpcHandler = greenpepper1
 	EndGlobalSection
 	GlobalSection(Performance) = preSolution
 		HasPerformanceSessions = true

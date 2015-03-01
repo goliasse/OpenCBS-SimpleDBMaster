@@ -504,6 +504,12 @@
     <Compile Include="BankGuarantee\IssueBankGuarantee.Designer.cs">
       <DependentUpon>IssueBankGuarantee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Batch\RunABatchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Batch\RunABatchForm.Designer.cs">
+      <DependentUpon>RunABatchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Capital Adequacy Ratio\CalculateCapitalAdequacyRatio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1638,6 +1644,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BankGuarantee\IssueBankGuarantee.resx">
       <DependentUpon>IssueBankGuarantee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Batch\RunABatchForm.resx">
+      <DependentUpon>RunABatchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Capital Adequacy Ratio\CalculateCapitalAdequacyRatio.resx">
       <DependentUpon>CalculateCapitalAdequacyRatio.cs</DependentUpon>

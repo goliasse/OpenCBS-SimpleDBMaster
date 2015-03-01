@@ -197,6 +197,7 @@ namespace OpenCBS.GUI.Clients
             this.buttonProjectAddContract = new System.Windows.Forms.Button();
             this.buttonProjectViewContract = new System.Windows.Forms.Button();
             this.btnGenerateLoanStatement = new System.Windows.Forms.Button();
+            this.btnCurrentChargesNotice = new System.Windows.Forms.Button();
             this.tabPageProjectAnalyses = new System.Windows.Forms.TabPage();
             this.textBoxProjectConcurrence = new System.Windows.Forms.TextBox();
             this.textBoxProjectMarket = new System.Windows.Forms.TextBox();
@@ -810,7 +811,6 @@ namespace OpenCBS.GUI.Clients
             this.menuPendingSavingEvents = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemConfirmPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCancelPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnCurrentChargesNotice = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).BeginInit();
             this.splitContainer10.Panel1.SuspendLayout();
             this.splitContainer10.Panel2.SuspendLayout();
@@ -1473,6 +1473,7 @@ namespace OpenCBS.GUI.Clients
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tabControlProject, 0, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // groupBoxProjectDetails
             // 
@@ -1698,6 +1699,12 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.btnGenerateLoanStatement, "btnGenerateLoanStatement");
             this.btnGenerateLoanStatement.Name = "btnGenerateLoanStatement";
             this.btnGenerateLoanStatement.Click += new System.EventHandler(this.btnGenerateLoanStatement_Click);
+            // 
+            // btnCurrentChargesNotice
+            // 
+            resources.ApplyResources(this.btnCurrentChargesNotice, "btnCurrentChargesNotice");
+            this.btnCurrentChargesNotice.Name = "btnCurrentChargesNotice";
+            this.btnCurrentChargesNotice.Click += new System.EventHandler(this.btnCurrentChargesNotice_Click);
             // 
             // tabPageProjectAnalyses
             // 
@@ -3916,6 +3923,7 @@ namespace OpenCBS.GUI.Clients
             this.lvFixedDeposits.Name = "lvFixedDeposits";
             this.lvFixedDeposits.UseCompatibleStateImageBehavior = false;
             this.lvFixedDeposits.View = System.Windows.Forms.View.Details;
+            this.lvFixedDeposits.SelectedIndexChanged += new System.EventHandler(this.lvFixedDeposits_SelectedIndexChanged);
             // 
             // ContractCode
             // 
@@ -4630,6 +4638,7 @@ namespace OpenCBS.GUI.Clients
             // 
             resources.ApplyResources(this.tbCalculationFrequency, "tbCalculationFrequency");
             this.tbCalculationFrequency.Name = "tbCalculationFrequency";
+            this.tbCalculationFrequency.TextChanged += new System.EventHandler(this.tbCalculationFrequency_TextChanged);
             this.tbCalculationFrequency.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCurrentInitialAmount_KeyPress);
             // 
             // label43
@@ -5821,12 +5830,6 @@ namespace OpenCBS.GUI.Clients
             this.menuItemCancelPendingSavingEvent.Name = "menuItemCancelPendingSavingEvent";
             resources.ApplyResources(this.menuItemCancelPendingSavingEvent, "menuItemCancelPendingSavingEvent");
             this.menuItemCancelPendingSavingEvent.Click += new System.EventHandler(this.menuItemCancelPendingSavingEvent_Click);
-            // 
-            // btnCurrentChargesNotice
-            // 
-            resources.ApplyResources(this.btnCurrentChargesNotice, "btnCurrentChargesNotice");
-            this.btnCurrentChargesNotice.Name = "btnCurrentChargesNotice";
-            this.btnCurrentChargesNotice.Click += new System.EventHandler(this.btnCurrentChargesNotice_Click);
             // 
             // ClientForm
             // 

@@ -38,6 +38,13 @@ namespace OpenCBS.GUI.UserControl
 {
     public partial class SavingsListUserControl : System.Windows.Forms.UserControl
     {
+        string noticePath = "";
+        int officeVersion = 0;
+        string bankName = "";
+        string bankRepresentative = "";
+
+        ApplicationSettingsServices _applicationSettingsServices = ServicesProvider.GetInstance().GetApplicationSettingsServices();
+        
         public event EventHandler AddSelectedSaving;
         public event EventHandler ViewSelectedSaving;
         ListViewItem totalItem = new ListViewItem("");
@@ -54,6 +61,16 @@ namespace OpenCBS.GUI.UserControl
         public SavingsListUserControl()
         {
             InitializeComponent();
+            Init();
+        }
+
+        private void Init()
+        {
+            noticePath = _applicationSettingsServices.SelectParameterValue("NOTICE_PATH").ToString();
+            officeVersion = _applicationSettingsServices.GetOfficeVersion();
+            bankName = _applicationSettingsServices.SelectParameterValue("BANK_NAME").ToString();
+            bankRepresentative = _applicationSettingsServices.SelectParameterValue("BANK_REPRESENTATIVE").ToString();
+
         }
 
         public void DisplaySavings(IEnumerable<ISavingsContract> pSavings)
@@ -167,6 +184,7 @@ namespace OpenCBS.GUI.UserControl
 
         private void btnGenerateSavingStatement_Click(object sender, EventArgs e)
         {
+            btnGenerateSavingStatement.Text = "Creating Document...";
             try
             {
 
@@ -224,7 +242,7 @@ namespace OpenCBS.GUI.UserControl
                     headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
                     headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
                     headerRange.Font.Size = 10;
-                    headerRange.Text = "<Bank Name>";
+                    headerRange.Text = bankName;
                 }
 
                 //Add the footers into the document
@@ -305,13 +323,17 @@ namespace OpenCBS.GUI.UserControl
 
                 para2.Range.Text = para2.Range.Text + "We are proud to serve you. Thank you Sir/Mam.";
                 para2.Range.Text = para2.Range.Text + Environment.NewLine + "Regards,";
-                para2.Range.Text = para2.Range.Text + "Bank Representative";
-                para2.Range.Text = para2.Range.Text + "Name of bank";
+                para2.Range.Text = para2.Range.Text + bankRepresentative;
+                para2.Range.Text = para2.Range.Text + bankName;
                 para2.Range.InsertParagraphAfter();
 
                 //Save the document
-                object filename = @"E:\temp1.docx";
-                document.SaveAs2(ref filename);
+                object filename = noticePath + pSaving.Code.Replace('/', '_') + "_Account Statement.docx";
+
+                if (officeVersion <= 2007)
+                    document.SaveAs(ref filename);
+                else
+                    document.SaveAs2(ref filename);
                 document.Close(ref missing, ref missing, ref missing);
                 document = null;
                 winword.Quit(ref missing, ref missing, ref missing);
@@ -335,10 +357,12 @@ namespace OpenCBS.GUI.UserControl
                 }
             }
 
+            btnGenerateSavingStatement.Text = "Generate Saving Statement";
         }
 
         private void btnSAChargesNotice_Click(object sender, EventArgs e)
         {
+            btnSAChargesNotice.Text = "Creating Document...";
             try
             {
 
@@ -387,7 +411,7 @@ namespace OpenCBS.GUI.UserControl
                     headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
                     headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
                     headerRange.Font.Size = 10;
-                    headerRange.Text = "<Bank Name>";
+                    headerRange.Text = bankName;
                 }
 
                 //Add the footers into the document
@@ -468,13 +492,17 @@ namespace OpenCBS.GUI.UserControl
 
                 para2.Range.Text = para2.Range.Text + "We are proud to serve you. Thank you Sir/Mam.";
                 para2.Range.Text = para2.Range.Text + Environment.NewLine + "Regards,";
-                para2.Range.Text = para2.Range.Text + "Bank Representative";
-                para2.Range.Text = para2.Range.Text + "Name of bank";
+                para2.Range.Text = para2.Range.Text + bankRepresentative;
+                para2.Range.Text = para2.Range.Text + bankName;
                 para2.Range.InsertParagraphAfter();
 
                 //Save the document
-                object filename = @"E:\temp1.docx";
-                document.SaveAs2(ref filename);
+                object filename = noticePath + pSaving.Code.Replace('/', '_') + "_Charges Notice.docx";
+
+                if (officeVersion <= 2007)
+                    document.SaveAs(ref filename);
+                else
+                    document.SaveAs2(ref filename);
                 document.Close(ref missing, ref missing, ref missing);
                 document = null;
                 winword.Quit(ref missing, ref missing, ref missing);
@@ -497,6 +525,7 @@ namespace OpenCBS.GUI.UserControl
                     new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
                 }
             }
+            btnSAChargesNotice.Text = "Charges Notice";
         }
     }
 }

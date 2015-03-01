@@ -150,5 +150,16 @@ namespace OpenCBS.Services
         {
             _dataParamManager.SetGuid(guid);
         }
+
+        public int GetOfficeVersion()
+        {
+            return _dataParamManager.GetOfficeVersion();
+            
+        }
+
+        public object SelectParameterValue(string key)
+        {
+            return _dataParamManager.SelectParameterValue(key);
+        }
     }
 }

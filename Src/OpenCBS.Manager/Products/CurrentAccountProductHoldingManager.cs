@@ -1031,7 +1031,7 @@ return currentAccountProductHolding;
              transactionSearchResult.Amount = r.GetDecimal("Amount");
              transactionSearchResult.Balance = r.GetDecimal("Balance");
              transactionSearchResult.Description = r.GetString("purpose_of_transfer");
-             transactionSearchResult.Mode = r.GetString("transaction_mode");
+             transactionSearchResult.Mode = r.GetString("mode");
              return transactionSearchResult;
          }
 

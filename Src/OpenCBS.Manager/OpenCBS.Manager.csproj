@@ -124,6 +124,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\Ionic.Zip.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -174,6 +177,7 @@
     <Compile Include="Accounting\ExpenseManager.cs" />
     <Compile Include="Accounting\IncomeManager.cs" />
     <Compile Include="BankGuaranteeManager.cs" />
+    <Compile Include="BatchManager.cs" />
     <Compile Include="BranchManager.cs" />
     <Compile Include="CollateralProductManager.cs" />
     <Compile Include="CounterBalanceManager.cs" />

@@ -123,6 +123,15 @@ namespace OpenCBS.GUI.Clients
         private DateTime _oldFirstInstalmentDate;
         private bool _changeDisDateBool;
 
+        string noticePath = "";
+        int officeVersion = 0;
+        string bankName = "";
+        string bankRepresentative = "";
+
+        ApplicationSettingsServices _applicationSettingsServices = ServicesProvider.GetInstance().GetApplicationSettingsServices();
+        
+
+
         [ImportMany(typeof(ILoanTabs), RequiredCreationPolicy = CreationPolicy.NonShared)]
         public List<ILoanTabs> LoanExtensions { get; set; }
 
@@ -183,6 +192,11 @@ namespace OpenCBS.GUI.Clients
             ApplicationSettings dataParam = ApplicationSettings.GetInstance(string.Empty);
             int decimalPlaces = dataParam.InterestRateDecimalPlaces;
             nudInterestRate.DecimalPlaces = decimalPlaces;
+
+            noticePath = _applicationSettingsServices.SelectParameterValue("NOTICE_PATH").ToString();
+            officeVersion = _applicationSettingsServices.GetOfficeVersion();
+            bankName = _applicationSettingsServices.SelectParameterValue("BANK_NAME").ToString();
+            bankRepresentative = _applicationSettingsServices.SelectParameterValue("BANK_REPRESENTATIVE").ToString();
 
             decimal increment = decimal.One;
             for (int exp = 0; exp < decimalPlaces; exp++)
@@ -7661,14 +7675,7 @@ namespace OpenCBS.GUI.Clients
                     currentAccountEvent.Description = "Current Account OD applied";
                     _currentAccountProductHoldingServices.SaveCurrentAccountEvent(currentAccountEvent);
                 }
-                else
-                {
-                    currentAccountEvent = new CurrentAccountEvent();
-                    currentAccountEvent.ContractCode = _currentAccountProductHoldings.CurrentAccountContractCode;
-                    currentAccountEvent.EventCode = "ODWT";
-                    currentAccountEvent.Description = "Current Account OD withdrawn";
-                    _currentAccountProductHoldingServices.SaveCurrentAccountEvent(currentAccountEvent);
-                }
+              
                 MessageBox.Show(MultiLanguageStrings.GetString(Ressource.ClientForm, "Contract Successfull") + contractCode);
                 btnAddCurrentAccountProduct.Enabled = false;
 
@@ -8461,9 +8468,15 @@ namespace OpenCBS.GUI.Clients
                     tbOverdraftDate.Text = _currentAccountProductHoldings.OverdraftAppliedDate.ToShortDateString();
                     tbOverdraftDate.Visible = true;
                     lblOverdraftAppliedDate.Visible = true;
+                    btnOverdraft.Text = "Update Overdraft";
                 }
                 else
+                {
                     checkBoxOverdraftApplied.Checked = false;
+                    tbOverdraftDate.Visible = false;
+                    lblOverdraftAppliedDate.Visible = false;
+                    btnOverdraft.Text = "Apply Overdraft";
+                }
 
 
                 EnableCurrentAccountControls(false);
@@ -8499,7 +8512,7 @@ namespace OpenCBS.GUI.Clients
             cbCAInitialAmountMethod.Enabled = enabled;
             tbCAOpenedDate.Enabled = enabled;
             // cbCAAccountStatus.Enabled = enabled;
-            tbOverdraftFees.Enabled = enabled;
+            
             cbCurrentAccountProducts.Enabled = enabled;
             tbCurrentInitialAmount.Enabled = enabled;
             tbEntryFees.Enabled = enabled;
@@ -8507,17 +8520,18 @@ namespace OpenCBS.GUI.Clients
             // cbManagementFeeFreq.Enabled = enabled;
             cbCAPaymentMethod.Enabled = enabled;
             tbCAChequeAccount.Enabled = enabled;
-            tbOverdraftAmount.Enabled = enabled;
             tbCAInterestRate.Enabled = enabled;
             tbCalculationFrequency.Enabled = enabled;
             tbCABalanceAmount.Enabled = enabled;
             tbInitialPaymentNumber.Enabled = enabled;
-            rbODInterestTypeFlat.Enabled = enabled;
-            rbODInterestTypeRate.Enabled = enabled;
-            tbCAODInterestRate.Enabled = enabled;
-            rbODCommitmentTypeFlat.Enabled = enabled;
-            rbODCommitmentTypeRate.Enabled = enabled;
-            tbCAODCommitmentFee.Enabled = enabled;
+            //tbOverdraftFees.Enabled = enabled;
+            //rbODInterestTypeFlat.Enabled = enabled;
+            //rbODInterestTypeRate.Enabled = enabled;
+            //tbCAODInterestRate.Enabled = enabled;
+            //rbODCommitmentTypeFlat.Enabled = enabled;
+            //rbODCommitmentTypeRate.Enabled = enabled;
+            //tbCAODCommitmentFee.Enabled = enabled;
+            //tbOverdraftAmount.Enabled = enabled;
             //checkBoxOverdraftApplied.Enabled = enabled;
 
 
@@ -8632,13 +8646,13 @@ namespace OpenCBS.GUI.Clients
             }
             else if (transferMethod == OCurrentAccount.PaymentMethodCheque)
             {
-                lblChequeNumber.Text = "Cheque Number";
+                lblChequeNumber.Text = "To Cheque Number";
                 lblChequeNumber.Visible = true;
                 tbTransferNumber.Visible = true;
             }
             else if (transferMethod == OCurrentAccount.PaymentMethodTransfer)
             {
-                lblChequeNumber.Text = "Account Number";
+                lblChequeNumber.Text = "To Account Number";
                 lblChequeNumber.Visible = true;
                 tbTransferNumber.Visible = true;
             }
@@ -9065,19 +9079,21 @@ namespace OpenCBS.GUI.Clients
         {
             try
             {
-                if (btnOverdraft.Text == "Overdraft")
+                if (btnOverdraft.Text == "Apply Overdraft")
                 {
-                    btnOverdraft.Text = "Update";
+                    btnOverdraft.Text = "Update Overdraft";
                     checkBoxOverdraftApplied.Enabled = true;
                     tbOverdraftAmount.Enabled = true;
                     tbOverdraftFees.Enabled = true;
                     tbCAODInterestRate.Enabled = true;
-                    tbOverdraftDate.Enabled = true;
+                    tbOverdraftDate.Text = DateTime.Today.ToShortDateString();
+                    tbOverdraftDate.Enabled = false;
                     tbCAODCommitmentFee.Enabled = true;
+                    checkBoxOverdraftApplied.Checked = true;
                 }
                 else
                 {
-                    btnOverdraft.Text = "Overdraft";
+                   
                     UpdateOverdraft();
                     CurrentAccountProductHoldingServices _currentAccountProductHoldingService = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
                     CurrentAccountProductService _currentAccountProductService = ServicesProvider.GetInstance().GetCurrentAccountProductService();
@@ -9086,6 +9102,24 @@ namespace OpenCBS.GUI.Clients
                     _currentAccountProductHoldings.CurrentAccountProduct = currentAccountProduct;
                     _currentAccountProductHoldingService.UpdateCurrentAccountProductHolding(_currentAccountProductHoldings, tbCAProductCode.Text);
                     MessageBox.Show(MultiLanguageStrings.GetString(Ressource.ClientForm, "Overdraft Success Update"));
+
+                    if (_currentAccountProductHoldings.OverdraftApplied == 1)
+                    {
+                        CurrentAccountEvent currentAccountEvent = new CurrentAccountEvent();
+                        currentAccountEvent.ContractCode = _currentAccountProductHoldings.CurrentAccountContractCode;
+                        currentAccountEvent.EventCode = "ODAP";
+                        currentAccountEvent.Description = "Current Account OD applied";
+                        _currentAccountProductHoldingService.SaveCurrentAccountEvent(currentAccountEvent);
+                    }
+                    else
+                    {
+                        CurrentAccountEvent currentAccountEvent = new CurrentAccountEvent();
+                        currentAccountEvent.ContractCode = _currentAccountProductHoldings.CurrentAccountContractCode;
+                        currentAccountEvent.EventCode = "ODWT";
+                        currentAccountEvent.Description = "Current Account OD withdrawn";
+                        _currentAccountProductHoldingService.SaveCurrentAccountEvent(currentAccountEvent);
+                    }
+                    btnOverdraft.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -9208,6 +9242,7 @@ namespace OpenCBS.GUI.Clients
 
         private void checkBoxOverdraftApplied_CheckedChanged(object sender, EventArgs e)
         {
+            btnOverdraft.Enabled = true;
             if (checkBoxOverdraftApplied.Checked)
             {
                 tabControlCurrentAccount.TabPages.Remove(tabPageOverdraft);
@@ -9245,6 +9280,7 @@ namespace OpenCBS.GUI.Clients
                 rbODInterestTypeRate.Enabled = false;
                 rbODCommitmentTypeFlat.Enabled = false;
                 rbODCommitmentTypeRate.Enabled = false;
+                btnOverdraft.Text = "Update Overdraft";
 
             }
             else
@@ -9291,9 +9327,6 @@ namespace OpenCBS.GUI.Clients
 
         private void cbInitialAmountPaymentMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-
-
             string transferMethod = cbInitialAmountPaymentMethod.SelectedItem.ToString();
             tbFDInitialAmountNumber.Text = "";
             if (transferMethod == OCurrentAccount.PaymentMethodCash)
@@ -9303,13 +9336,13 @@ namespace OpenCBS.GUI.Clients
             }
             else if (transferMethod == OCurrentAccount.PaymentMethodCheque)
             {
-                lblChequeNumber.Text = "From Cheque Number";
+                lblFDInitialAccount.Text = "From Cheque Number";
                 lblFDInitialAccount.Visible = true;
                 tbFDInitialAmountNumber.Visible = true;
             }
             else if (transferMethod == OCurrentAccount.PaymentMethodTransfer)
             {
-                lblChequeNumber.Text = "From Account Number";
+                lblFDInitialAccount.Text = "From Account Number";
                 lblFDInitialAccount.Visible = true;
                 tbFDInitialAmountNumber.Visible = true;
             }
@@ -9317,7 +9350,7 @@ namespace OpenCBS.GUI.Clients
 
         private void button3_Click(object sender, EventArgs e)
         {
-            DateTime calculationDate = new DateTime(2014, 07, 31);
+            DateTime calculationDate = new DateTime(2015, 02, 23);
 
             CurrentAccountProductHoldingServices _currentAccountProductHoldingService = ServicesProvider.GetInstance().GetCurrentAccountProductHoldingServices();
 
@@ -9542,7 +9575,7 @@ namespace OpenCBS.GUI.Clients
         private void btnGenerateFDStatement_Click(object sender, EventArgs e)
         {
 
-
+            
             try
             {
 
@@ -9597,7 +9630,7 @@ namespace OpenCBS.GUI.Clients
 
         private void btnGenerateBGLetter_Click(object sender, EventArgs e)
         {
-
+            btnGenerateBGLetter.Text = "Creating Document...";
             try
             {
                 int i = lvBankGuarantee.SelectedIndices[0];
@@ -9632,7 +9665,7 @@ namespace OpenCBS.GUI.Clients
                     headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
                     headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
                     headerRange.Font.Size = 10;
-                    headerRange.Text = "<Bank Name Goes here>";
+                    headerRange.Text = bankName;
                 }
 
                 //Add the footers into the document
@@ -9654,7 +9687,7 @@ namespace OpenCBS.GUI.Clients
                 document.Content.Text = document.Content.Text + "Bank Guarantee Code: " + bankGuarantees.BankGuaranteeCode;
                 document.Content.Text = document.Content.Text + "Issued On Date     : " + bankGuarantees.IssuingDate.ToShortDateString();
                 document.Content.Text = document.Content.Text + "Status             : " + bankGuarantees.Status;
-                document.Content.Text = document.Content.Text + "Issued By          : " + "<Bank name>";
+                document.Content.Text = document.Content.Text + "Issued By          : " + bankName;
                 document.Content.Text = document.Content.Text + Environment.NewLine;
 
                 document.Content.Text = document.Content.Text + "To whom it may concern:" + Environment.NewLine;
@@ -9664,14 +9697,18 @@ namespace OpenCBS.GUI.Clients
                 document.Content.Text = document.Content.Text + Environment.NewLine;
                 document.Content.Text = document.Content.Text + Environment.NewLine;
                 document.Content.Text = document.Content.Text + "Regards,";
-                document.Content.Text = document.Content.Text + "Bank Representative";
-                document.Content.Text = document.Content.Text + "Name of bank";
+                document.Content.Text = document.Content.Text + bankRepresentative;
+                document.Content.Text = document.Content.Text + bankName;
 
 
 
                 //Save the document
-                object filename = @"E:\temp1.docx";
-                document.SaveAs2(ref filename);
+                object filename = noticePath + bankGuarantees.BankGuaranteeCode.Replace('/', '_') + "_Bank Guarantee Letter.docx";
+
+                if (officeVersion <= 2007)
+                    document.SaveAs(ref filename);
+                else
+                    document.SaveAs2(ref filename);
                 document.Close(ref missing, ref missing, ref missing);
                 document = null;
                 winword.Quit(ref missing, ref missing, ref missing);
@@ -9691,12 +9728,12 @@ namespace OpenCBS.GUI.Clients
                 }
             }
 
-
+            btnGenerateBGLetter.Text = "Generate Letter";
         }
 
         private void btnGenerateLOCLetter_Click(object sender, EventArgs e)
         {
-
+            btnGenerateBGLetter.Text = "Creating Document...";
             try
             {
                 int i = lvLetterOfCredit.SelectedIndices[0];
@@ -9732,7 +9769,7 @@ namespace OpenCBS.GUI.Clients
                     headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
                     headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
                     headerRange.Font.Size = 10;
-                    headerRange.Text = "<Bank Name>";
+                    headerRange.Text = bankName;
                 }
 
                 //Add the footers into the document
@@ -9764,13 +9801,17 @@ namespace OpenCBS.GUI.Clients
                 document.Content.Text = document.Content.Text + Environment.NewLine;
                 document.Content.Text = document.Content.Text + Environment.NewLine;
                 document.Content.Text = document.Content.Text + "Regards,";
-                document.Content.Text = document.Content.Text + "Bank Representative";
-                document.Content.Text = document.Content.Text + "Name of bank";
+                document.Content.Text = document.Content.Text + bankRepresentative;
+                document.Content.Text = document.Content.Text + bankName;
 
 
                 //Save the document
-                object filename = @"E:\temp1.docx";
-                document.SaveAs2(ref filename);
+                object filename = noticePath + letterOfCredit.LetterOfCreditCode.Replace('/', '_') + "_Letter Of Credit.docx";
+
+                if (officeVersion <= 2007)
+                    document.SaveAs(ref filename);
+                else
+                    document.SaveAs2(ref filename);
                 document.Close(ref missing, ref missing, ref missing);
                 document = null;
                 winword.Quit(ref missing, ref missing, ref missing);
@@ -9789,7 +9830,7 @@ namespace OpenCBS.GUI.Clients
                     new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
                 }
             }
-
+            btnGenerateBGLetter.Text = "Generate Letter";
 
         }
 
@@ -9861,7 +9902,7 @@ namespace OpenCBS.GUI.Clients
                     headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
                     headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
                     headerRange.Font.Size = 10;
-                    headerRange.Text = "<Bank Name>";
+                    headerRange.Text = bankName;
                 }
 
                 //Add the footers into the document
@@ -9897,13 +9938,18 @@ namespace OpenCBS.GUI.Clients
                 document.Content.Text = document.Content.Text + Environment.NewLine;
                 
                 document.Content.Text = document.Content.Text + "Regards,";
-                document.Content.Text = document.Content.Text + "Bank Representative";
-                document.Content.Text = document.Content.Text + "Name of bank";
+                document.Content.Text = document.Content.Text + bankRepresentative;
+                document.Content.Text = document.Content.Text + bankName;
 
 
                 //Save the document
-                object filename = @"E:\temp1.docx";
-                document.SaveAs2(ref filename);
+               
+                object filename = noticePath + _credit.Code.Replace('/', '_') + "_Loan Repayment Notice.docx";
+
+                if (officeVersion <= 2007)
+                    document.SaveAs(ref filename);
+                else
+                    document.SaveAs2(ref filename);
                 document.Close(ref missing, ref missing, ref missing);
                 document = null;
                 winword.Quit(ref missing, ref missing, ref missing);
@@ -9929,7 +9975,7 @@ namespace OpenCBS.GUI.Clients
 
         private void btnCAChargesNotice_Click(object sender, EventArgs e)
         {
-
+            btnCAChargesNotice.Text = "Creating Document...";
             try
             {
 
@@ -9967,7 +10013,7 @@ namespace OpenCBS.GUI.Clients
                         headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
                         headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
                         headerRange.Font.Size = 10;
-                        headerRange.Text = "<Bank Name>";
+                        headerRange.Text = bankName;
                     }
 
                     //Add the footers into the document
@@ -10058,13 +10104,21 @@ namespace OpenCBS.GUI.Clients
 
                     para2.Range.Text = para2.Range.Text + "We are proud to serve you. Thank you Sir/Mam.";
                     para2.Range.Text = para2.Range.Text + Environment.NewLine + "Regards,";
-                    para2.Range.Text = para2.Range.Text + "Bank Representative";
-                    para2.Range.Text = para2.Range.Text + "Name of bank";
+                    para2.Range.Text = para2.Range.Text + bankRepresentative;
+                    para2.Range.Text = para2.Range.Text + bankName;
                     para2.Range.InsertParagraphAfter();
 
                     //Save the document
-                    object filename = @"E:\temp1.docx";
-                    document.SaveAs2(ref filename);
+
+
+                    
+                    object filename = noticePath + accountNumber.Replace('/', '_') + "_FD Charges.docx";
+
+                    if (officeVersion <= 2007)
+                        document.SaveAs(ref filename);
+                    else
+                        document.SaveAs2(ref filename);
+
                     document.Close(ref missing, ref missing, ref missing);
                     document = null;
                     winword.Quit(ref missing, ref missing, ref missing);
@@ -10076,6 +10130,8 @@ namespace OpenCBS.GUI.Clients
                 {
                     MessageBox.Show("No Charges for the selected account !");
                 }
+
+                
             }
 
             catch (Exception ex)
@@ -10091,11 +10147,12 @@ namespace OpenCBS.GUI.Clients
                 }
             }
 
-
+            btnCAChargesNotice.Text = "Charges Statement";
         }
 
         private void btnFDChargesNotice_Click(object sender, EventArgs e)
         {
+            btnFDChargesNotice.Text = "Creating Document...";
             try
             {
 
@@ -10133,7 +10190,7 @@ namespace OpenCBS.GUI.Clients
                         headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
                         headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
                         headerRange.Font.Size = 10;
-                        headerRange.Text = "<Bank Name>";
+                        headerRange.Text = bankName;
                     }
 
                     //Add the footers into the document
@@ -10224,13 +10281,19 @@ namespace OpenCBS.GUI.Clients
 
                     para2.Range.Text = para2.Range.Text + "We are proud to serve you. Thank you Sir/Mam.";
                     para2.Range.Text = para2.Range.Text + Environment.NewLine+"Regards,";
-                    para2.Range.Text = para2.Range.Text + "Bank Representative";
-                    para2.Range.Text = para2.Range.Text + "Name of bank";
+                    para2.Range.Text = para2.Range.Text + bankRepresentative;
+                    para2.Range.Text = para2.Range.Text + bankName;
                     para2.Range.InsertParagraphAfter();
 
                     //Save the document
-                    object filename = @"E:\temp1.docx";
-                    document.SaveAs2(ref filename);
+                    
+                    object filename = noticePath + accountNumber.Replace('/', '_') + "_CA Charges.docx";
+
+                    if (officeVersion <= 2007)
+                        document.SaveAs(ref filename);
+                    else
+                        document.SaveAs2(ref filename);
+                    
                     document.Close(ref missing, ref missing, ref missing);
                     document = null;
                     winword.Quit(ref missing, ref missing, ref missing);
@@ -10256,10 +10319,13 @@ namespace OpenCBS.GUI.Clients
                     new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
                 }
             }
+
+            btnFDChargesNotice.Text = "Charges Notice";
         }
 
         private void btnGenerateLoanStatement_Click(object sender, EventArgs eventArgs)
         {
+            btnGenerateLoanStatement.Text = "Creating Document...";
             try
             {
                 
@@ -10463,7 +10529,7 @@ namespace OpenCBS.GUI.Clients
                         headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
                         headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
                         headerRange.Font.Size = 10;
-                        headerRange.Text = "<Bank Name>";
+                        headerRange.Text = bankName;
                     }
 
                     //Add the footers into the document
@@ -10542,13 +10608,17 @@ namespace OpenCBS.GUI.Clients
 
                     para2.Range.Text = para2.Range.Text + "We are proud to serve you. Thank you Sir/Mam.";
                     para2.Range.Text = para2.Range.Text + Environment.NewLine+"Regards,";
-                    para2.Range.Text = para2.Range.Text + "Bank Representative";
-                    para2.Range.Text = para2.Range.Text + "Name of bank";
+                    para2.Range.Text = para2.Range.Text + bankRepresentative;
+                    para2.Range.Text = para2.Range.Text + bankName;
                     para2.Range.InsertParagraphAfter();
 
                     //Save the document
-                    object filename = @"E:\temp1.docx";
-                    document.SaveAs2(ref filename);
+                    object filename = noticePath + pCredit.Code.Replace('/', '_') + "_Loan Statement.docx";
+
+                    if (officeVersion <= 2007)
+                        document.SaveAs(ref filename);
+                    else
+                        document.SaveAs2(ref filename);
                     document.Close(ref missing, ref missing, ref missing);
                     document = null;
                     winword.Quit(ref missing, ref missing, ref missing);
@@ -10576,10 +10646,13 @@ namespace OpenCBS.GUI.Clients
                     new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
                 }
             }
+
+            btnGenerateLoanStatement.Text = "Generate Loan Statement";
         }
 
         private void btnCurrentChargesNotice_Click(object sender, EventArgs ev)
         {
+            btnCurrentChargesNotice.Text = "Creating Document...";
             try
             {
 
@@ -10787,7 +10860,7 @@ namespace OpenCBS.GUI.Clients
                             headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
                             headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
                             headerRange.Font.Size = 10;
-                            headerRange.Text = "<Bank Name>";
+                            headerRange.Text = bankName;
                         }
 
                         //Add the footers into the document
@@ -10870,13 +10943,17 @@ namespace OpenCBS.GUI.Clients
 
                         para2.Range.Text = para2.Range.Text + "We are proud to serve you. Thank you Sir/Mam.";
                         para2.Range.Text = para2.Range.Text + Environment.NewLine + "Regards,";
-                        para2.Range.Text = para2.Range.Text + "Bank Representative";
-                        para2.Range.Text = para2.Range.Text + "Name of bank";
+                        para2.Range.Text = para2.Range.Text + bankRepresentative;
+                        para2.Range.Text = para2.Range.Text + bankName;
                         para2.Range.InsertParagraphAfter();
 
                         //Save the document
-                        object filename = @"E:\temp1.docx";
-                        document.SaveAs2(ref filename);
+                        object filename = noticePath + pCredit.Code.Replace('/', '_') + "_Charges Notice.docx";
+
+                        if (officeVersion <= 2007)
+                            document.SaveAs(ref filename);
+                        else
+                            document.SaveAs2(ref filename);
                         document.Close(ref missing, ref missing, ref missing);
                         document = null;
                         winword.Quit(ref missing, ref missing, ref missing);
@@ -10904,6 +10981,23 @@ namespace OpenCBS.GUI.Clients
                     new frmShowError(CustomExceptionHandler.ShowExceptionText(exc)).ShowDialog();
                 }
             }
+
+            btnCurrentChargesNotice.Text = "Charges Notice";
+        }
+
+        private void lvFixedDeposits_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbCalculationFrequency_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
     }

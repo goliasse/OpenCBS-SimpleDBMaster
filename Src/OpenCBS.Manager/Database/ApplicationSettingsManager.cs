@@ -25,6 +25,7 @@ using System.Collections;
 using OpenCBS.CoreDomain;
 using OpenCBS.Shared;
 using OpenCBS.Shared.Settings;
+using Microsoft.Office.Interop;
 
 namespace OpenCBS.Manager.Database
 {
@@ -110,6 +111,43 @@ namespace OpenCBS.Manager.Database
             
         }
 
+        public int GetOfficeVersion()
+        {
+         
+        int sVersion = 0;
+        Microsoft.Office.Interop.Word.Application appVersion = new Microsoft.Office.Interop.Word.Application();
+        appVersion.Visible = false;
+        switch (appVersion.Version.ToString())
+        {
+            case "7.0":
+                sVersion = 95;
+                break;
+            case "8.0":
+                sVersion = 97;
+                break;
+            case "9.0":
+                sVersion = 2000;
+                break;
+            case "10.0":
+                sVersion = 2002;
+                break;
+            case "11.0":
+                sVersion = 2003;
+                break;
+            case "12.0":
+                sVersion = 2007;
+                break;
+            case "14.0":
+                sVersion = 2010;
+                break;
+            default:
+                sVersion = 0;
+                break;
+
+                
+        }
+        return sVersion;
+        }
 
         public object SelectParameterValue(string key)
         {

@@ -404,6 +404,11 @@ namespace OpenCBS.Services
             return new IncomeService(CurrentUser);
         }
 
+        public BatchService GetBatchService()
+        {
+            return new BatchService(CurrentUser);
+        }
+
         #region IServices Members
 
 

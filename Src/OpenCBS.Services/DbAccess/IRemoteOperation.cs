@@ -77,6 +77,7 @@ namespace OpenCBS.Services
         ExpenseService GetExpenseService();
         CurrencyAssetService GetCurrencyAssetService();
         IncomeService GetIncomeService();
+        BatchService GetBatchService();
         bool TestRemoting();
 
         void SuppressAllRemotingInfos(User pUser, string pComputerName, string pLoginName);

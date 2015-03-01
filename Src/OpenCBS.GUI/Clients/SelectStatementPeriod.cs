@@ -17,19 +17,27 @@ namespace OpenCBS.GUI.Clients
 {
     public partial class SelectStatementPeriod : Form
     {
+        string noticePath = "";
+        int officeVersion = 0;
+        string bankName = "";
+        string bankRepresentative = "";
 
+        ApplicationSettingsServices _applicationSettingsServices = ServicesProvider.GetInstance().GetApplicationSettingsServices();
+        
         string _contractCode = "";
         string _type = "";
         IClient _client = null;
         public SelectStatementPeriod()
         {
             InitializeComponent();
+            Init();
         }
 
         public SelectStatementPeriod(string contractCode, string type, IClient client)
         {
             
             InitializeComponent();
+            Init();
             _contractCode = contractCode;
             _type = type;
             lblContractCode.Text = contractCode;
@@ -38,8 +46,18 @@ namespace OpenCBS.GUI.Clients
             
         }
 
+        private void Init()
+        {
+            noticePath = _applicationSettingsServices.SelectParameterValue("NOTICE_PATH").ToString();
+            officeVersion = _applicationSettingsServices.GetOfficeVersion();
+            bankName = _applicationSettingsServices.SelectParameterValue("BANK_NAME").ToString();
+            bankRepresentative = _applicationSettingsServices.SelectParameterValue("BANK_REPRESENTATIVE").ToString();
+
+        }
+
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
+            btnGenerateReport.Text = "Creating Report...";
             DateTime from = dtpFrom.Value;
             DateTime to = dtpTo.Value;
             if (_type == "CA")
@@ -92,7 +110,7 @@ namespace OpenCBS.GUI.Clients
                         headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
                         headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
                         headerRange.Font.Size = 10;
-                        headerRange.Text = "<Bank Name>";
+                        headerRange.Text = bankName;
                     }
 
                     //Add the footers into the document
@@ -172,13 +190,17 @@ namespace OpenCBS.GUI.Clients
 
                     para2.Range.Text = para2.Range.Text + "We are proud to serve you. Thank you Sir/Mam.";
                     para2.Range.Text = para2.Range.Text + Environment.NewLine + "Regards,";
-                    para2.Range.Text = para2.Range.Text + "Bank Representative";
-                    para2.Range.Text = para2.Range.Text + "Name of bank";
+                    para2.Range.Text = para2.Range.Text + bankRepresentative;
+                    para2.Range.Text = para2.Range.Text + bankName;
                     para2.Range.InsertParagraphAfter();
 
                     //Save the document
-                    object filename = @"E:\temp1.docx";
-                    document.SaveAs2(ref filename);
+                    object filename = noticePath + _contractCode.Replace('/', '_') + "_Account Statement.docx";
+
+                    if (officeVersion <= 2007)
+                        document.SaveAs(ref filename);
+                    else
+                        document.SaveAs2(ref filename);
                     document.Close(ref missing, ref missing, ref missing);
                     document = null;
                     winword.Quit(ref missing, ref missing, ref missing);
@@ -241,7 +263,7 @@ namespace OpenCBS.GUI.Clients
                         headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
                         headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
                         headerRange.Font.Size = 10;
-                        headerRange.Text = "<Bank Name>";
+                        headerRange.Text = bankName;
                     }
 
                     //Add the footers into the document
@@ -328,13 +350,17 @@ namespace OpenCBS.GUI.Clients
 
                     para2.Range.Text = para2.Range.Text + "We are proud to serve you. Thank you Sir/Mam.";
                     para2.Range.Text = para2.Range.Text + Environment.NewLine + "Regards,";
-                    para2.Range.Text = para2.Range.Text + "Bank Representative";
-                    para2.Range.Text = para2.Range.Text + "Name of bank";
+                    para2.Range.Text = para2.Range.Text + bankRepresentative;
+                    para2.Range.Text = para2.Range.Text + bankName;
                     para2.Range.InsertParagraphAfter();
 
                     //Save the document
-                    object filename = @"E:\temp1.docx";
-                    document.SaveAs2(ref filename);
+                    object filename = noticePath + _contractCode.Replace('/', '_') + "_Account Statement.docx";
+
+                    if (officeVersion <= 2007)
+                        document.SaveAs(ref filename);
+                    else
+                        document.SaveAs2(ref filename);
                     document.Close(ref missing, ref missing, ref missing);
                     document = null;
                     winword.Quit(ref missing, ref missing, ref missing);
@@ -346,6 +372,8 @@ namespace OpenCBS.GUI.Clients
                     MessageBox.Show("No Charges for the selected account !");
                 }
             }
+
+            btnGenerateReport.Text = "Generate Report";
            
         }
 

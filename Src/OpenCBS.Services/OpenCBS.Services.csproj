@@ -206,6 +206,7 @@
     <Compile Include="Accounting\ExpenseService.cs" />
     <Compile Include="Accounting\IncomeService.cs" />
     <Compile Include="BankGuaranteesService.cs" />
+    <Compile Include="BatchService.cs" />
     <Compile Include="BranchService.cs" />
     <Compile Include="CollateralProductServices.cs" />
     <Compile Include="CounterBalanceService.cs" />
