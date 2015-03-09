@@ -1381,8 +1381,23 @@ namespace OpenCBS.GUI
 
         private void runABatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RunABatchForm runABatchForm = new RunABatchForm();
+           
+        }
+
+        private void runABatchToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmRunABatchForm runABatchForm = new FrmRunABatchForm() { MdiParent = this };
             runABatchForm.Show();
+        }
+
+        private void scheduleABatchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void batchResultsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

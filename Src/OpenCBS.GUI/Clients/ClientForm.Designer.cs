@@ -643,6 +643,7 @@ namespace OpenCBS.GUI.Clients
             this.tbManagementFees = new System.Windows.Forms.TextBox();
             this.lbManagementFeesMin = new System.Windows.Forms.Label();
             this.tabPageOverdraft = new System.Windows.Forms.TabPage();
+            this.lblODLimitMinMax = new System.Windows.Forms.Label();
             this.tbOverdraftDate = new System.Windows.Forms.TextBox();
             this.lblOverdraftAppliedDate = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -811,7 +812,6 @@ namespace OpenCBS.GUI.Clients
             this.menuPendingSavingEvents = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemConfirmPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCancelPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblODLimitMinMax = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).BeginInit();
             this.splitContainer10.Panel1.SuspendLayout();
             this.splitContainer10.Panel2.SuspendLayout();
@@ -4791,6 +4791,11 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.tabPageOverdraft, "tabPageOverdraft");
             this.tabPageOverdraft.Name = "tabPageOverdraft";
             // 
+            // lblODLimitMinMax
+            // 
+            resources.ApplyResources(this.lblODLimitMinMax, "lblODLimitMinMax");
+            this.lblODLimitMinMax.Name = "lblODLimitMinMax";
+            // 
             // tbOverdraftDate
             // 
             resources.ApplyResources(this.tbOverdraftDate, "tbOverdraftDate");
@@ -5832,11 +5837,6 @@ namespace OpenCBS.GUI.Clients
             this.menuItemCancelPendingSavingEvent.Name = "menuItemCancelPendingSavingEvent";
             resources.ApplyResources(this.menuItemCancelPendingSavingEvent, "menuItemCancelPendingSavingEvent");
             this.menuItemCancelPendingSavingEvent.Click += new System.EventHandler(this.menuItemCancelPendingSavingEvent_Click);
-            // 
-            // lblODLimitMinMax
-            // 
-            resources.ApplyResources(this.lblODLimitMinMax, "lblODLimitMinMax");
-            this.lblODLimitMinMax.Name = "lblODLimitMinMax";
             // 
             // ClientForm
             // 

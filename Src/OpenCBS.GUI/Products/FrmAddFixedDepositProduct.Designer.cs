@@ -106,7 +106,6 @@
             this.tabControlSaving.SelectedIndex = 0;
             this.tabControlSaving.Size = new System.Drawing.Size(677, 664);
             this.tabControlSaving.TabIndex = 16;
-            
             // 
             // tabPageMainParameters
             // 
@@ -118,7 +117,6 @@
             this.tabPageMainParameters.Size = new System.Drawing.Size(669, 624);
             this.tabPageMainParameters.TabIndex = 0;
             this.tabPageMainParameters.Text = "Main Parameters";
-            
             // 
             // groupBox1
             // 
@@ -142,7 +140,6 @@
             this.groupBox1.Size = new System.Drawing.Size(663, 618);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
-            
             // 
             // btnUpdate
             // 
@@ -152,7 +149,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(196, 573);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(128, 25);
-            this.btnUpdate.TabIndex = 16;
+            this.btnUpdate.TabIndex = 2;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.Visible = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -172,7 +169,6 @@
             this.groupBox4.TabIndex = 15;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Maturity Period";
-            
             // 
             // label4
             // 
@@ -184,7 +180,6 @@
             this.label4.Size = new System.Drawing.Size(51, 16);
             this.label4.TabIndex = 14;
             this.label4.Text = "Months";
-            
             // 
             // label5
             // 
@@ -196,7 +191,6 @@
             this.label5.Size = new System.Drawing.Size(51, 16);
             this.label5.TabIndex = 13;
             this.label5.Text = "Months";
-            
             // 
             // tbMaxMaturityPeriod
             // 
@@ -204,8 +198,7 @@
             this.tbMaxMaturityPeriod.Location = new System.Drawing.Point(78, 54);
             this.tbMaxMaturityPeriod.Name = "tbMaxMaturityPeriod";
             this.tbMaxMaturityPeriod.Size = new System.Drawing.Size(100, 22);
-            this.tbMaxMaturityPeriod.TabIndex = 7;
-            
+            this.tbMaxMaturityPeriod.TabIndex = 1;
             this.tbMaxMaturityPeriod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // tbMinMaturityPeriod
@@ -214,8 +207,7 @@
             this.tbMinMaturityPeriod.Location = new System.Drawing.Point(78, 22);
             this.tbMinMaturityPeriod.Name = "tbMinMaturityPeriod";
             this.tbMinMaturityPeriod.Size = new System.Drawing.Size(100, 22);
-            this.tbMinMaturityPeriod.TabIndex = 6;
-            
+            this.tbMinMaturityPeriod.TabIndex = 0;
             this.tbMinMaturityPeriod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // label6
@@ -228,7 +220,6 @@
             this.label6.Size = new System.Drawing.Size(37, 16);
             this.label6.TabIndex = 5;
             this.label6.Text = "Max:";
-            
             // 
             // label7
             // 
@@ -240,7 +231,6 @@
             this.label7.Size = new System.Drawing.Size(33, 16);
             this.label7.TabIndex = 4;
             this.label7.Text = "Min:";
-            
             // 
             // groupBox3
             // 
@@ -260,7 +250,6 @@
             this.groupBox3.TabIndex = 14;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Penalty If Withdrawn Before Maturity";
-            
             // 
             // tbPenaltyValue
             // 
@@ -268,7 +257,7 @@
             this.tbPenaltyValue.Location = new System.Drawing.Point(393, 54);
             this.tbPenaltyValue.Name = "tbPenaltyValue";
             this.tbPenaltyValue.Size = new System.Drawing.Size(100, 22);
-            this.tbPenaltyValue.TabIndex = 21;
+            this.tbPenaltyValue.TabIndex = 4;
             // 
             // lbEntryFeesValue
             // 
@@ -289,7 +278,7 @@
             this.rbPenalityTypeRate.Location = new System.Drawing.Point(133, 22);
             this.rbPenalityTypeRate.Name = "rbPenalityTypeRate";
             this.rbPenalityTypeRate.Size = new System.Drawing.Size(53, 20);
-            this.rbPenalityTypeRate.TabIndex = 18;
+            this.rbPenalityTypeRate.TabIndex = 1;
             this.rbPenalityTypeRate.Text = "Rate";
             this.rbPenalityTypeRate.CheckedChanged += new System.EventHandler(this.rbPenalityTypeRate_CheckedChanged);
             // 
@@ -302,7 +291,7 @@
             this.rbPenalityTypeFlat.Location = new System.Drawing.Point(79, 22);
             this.rbPenalityTypeFlat.Name = "rbPenalityTypeFlat";
             this.rbPenalityTypeFlat.Size = new System.Drawing.Size(48, 20);
-            this.rbPenalityTypeFlat.TabIndex = 19;
+            this.rbPenalityTypeFlat.TabIndex = 0;
             this.rbPenalityTypeFlat.TabStop = true;
             this.rbPenalityTypeFlat.Text = "Flat";
             this.rbPenalityTypeFlat.CheckedChanged += new System.EventHandler(this.rbPenalityTypeFlat_CheckedChanged);
@@ -317,7 +306,6 @@
             this.label1.Size = new System.Drawing.Size(39, 16);
             this.label1.TabIndex = 17;
             this.label1.Text = "Type:";
-            
             // 
             // tbPenalityMax
             // 
@@ -325,8 +313,7 @@
             this.tbPenalityMax.Location = new System.Drawing.Point(78, 80);
             this.tbPenalityMax.Name = "tbPenalityMax";
             this.tbPenalityMax.Size = new System.Drawing.Size(100, 22);
-            this.tbPenalityMax.TabIndex = 7;
-            
+            this.tbPenalityMax.TabIndex = 3;
             this.tbPenalityMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // tbPenalityMin
@@ -335,8 +322,7 @@
             this.tbPenalityMin.Location = new System.Drawing.Point(78, 51);
             this.tbPenalityMin.Name = "tbPenalityMin";
             this.tbPenalityMin.Size = new System.Drawing.Size(100, 22);
-            this.tbPenalityMin.TabIndex = 6;
-            
+            this.tbPenalityMin.TabIndex = 2;
             this.tbPenalityMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // label2
@@ -349,7 +335,6 @@
             this.label2.Size = new System.Drawing.Size(37, 16);
             this.label2.TabIndex = 5;
             this.label2.Text = "Max:";
-            
             // 
             // label3
             // 
@@ -361,7 +346,6 @@
             this.label3.Size = new System.Drawing.Size(33, 16);
             this.label3.TabIndex = 4;
             this.label3.Text = "Min:";
-            
             // 
             // btnSave
             // 
@@ -371,7 +355,7 @@
             this.btnSave.Location = new System.Drawing.Point(356, 573);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(128, 25);
-            this.btnSave.TabIndex = 12;
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -384,7 +368,7 @@
             this.btnClose.Location = new System.Drawing.Point(519, 573);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(128, 25);
-            this.btnClose.TabIndex = 13;
+            this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -400,7 +384,6 @@
             this.gbFrequency.TabIndex = 10;
             this.gbFrequency.TabStop = false;
             this.gbFrequency.Text = "Interest Calculation Frequency";
-            
             // 
             // label8
             // 
@@ -418,7 +401,7 @@
             this.tbFrequencyMonths.Location = new System.Drawing.Point(135, 26);
             this.tbFrequencyMonths.Name = "tbFrequencyMonths";
             this.tbFrequencyMonths.Size = new System.Drawing.Size(100, 22);
-            this.tbFrequencyMonths.TabIndex = 3;
+            this.tbFrequencyMonths.TabIndex = 0;
             this.tbFrequencyMonths.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // lbAccrual
@@ -431,7 +414,6 @@
             this.lbAccrual.Size = new System.Drawing.Size(73, 16);
             this.lbAccrual.TabIndex = 2;
             this.lbAccrual.Text = "Frequency:";
-            
             // 
             // groupBoxCurrency
             // 
@@ -443,7 +425,6 @@
             this.groupBoxCurrency.TabIndex = 4;
             this.groupBoxCurrency.TabStop = false;
             this.groupBoxCurrency.Text = "Attach product to currency";
-            
             // 
             // cbCurrency
             // 
@@ -454,7 +435,6 @@
             this.cbCurrency.Name = "cbCurrency";
             this.cbCurrency.Size = new System.Drawing.Size(155, 24);
             this.cbCurrency.TabIndex = 0;
-            
             // 
             // lbCodeSavingProduct
             // 
@@ -466,7 +446,6 @@
             this.lbCodeSavingProduct.Size = new System.Drawing.Size(38, 16);
             this.lbCodeSavingProduct.TabIndex = 0;
             this.lbCodeSavingProduct.Text = "Code";
-            
             // 
             // lbNameSavingProduct
             // 
@@ -478,7 +457,6 @@
             this.lbNameSavingProduct.Size = new System.Drawing.Size(42, 16);
             this.lbNameSavingProduct.TabIndex = 0;
             this.lbNameSavingProduct.Text = "Name";
-
             // 
             // gbClientType
             // 
@@ -494,7 +472,6 @@
             this.gbClientType.TabIndex = 3;
             this.gbClientType.TabStop = false;
             this.gbClientType.Text = "Attach product to a specific client type";
-
             // 
             // clientTypeCorpCheckBox
             // 
@@ -504,9 +481,8 @@
             this.clientTypeCorpCheckBox.Location = new System.Drawing.Point(215, 32);
             this.clientTypeCorpCheckBox.Name = "clientTypeCorpCheckBox";
             this.clientTypeCorpCheckBox.Size = new System.Drawing.Size(58, 20);
-            this.clientTypeCorpCheckBox.TabIndex = 6;
+            this.clientTypeCorpCheckBox.TabIndex = 4;
             this.clientTypeCorpCheckBox.Text = "Corp.";
-
             // 
             // clientTypeIndivCheckBox
             // 
@@ -516,9 +492,8 @@
             this.clientTypeIndivCheckBox.Location = new System.Drawing.Point(161, 32);
             this.clientTypeIndivCheckBox.Name = "clientTypeIndivCheckBox";
             this.clientTypeIndivCheckBox.Size = new System.Drawing.Size(48, 20);
-            this.clientTypeIndivCheckBox.TabIndex = 6;
+            this.clientTypeIndivCheckBox.TabIndex = 3;
             this.clientTypeIndivCheckBox.Text = "Ind.";
-
             // 
             // clientTypeVillageCheckBox
             // 
@@ -528,9 +503,8 @@
             this.clientTypeVillageCheckBox.Location = new System.Drawing.Point(280, 32);
             this.clientTypeVillageCheckBox.Name = "clientTypeVillageCheckBox";
             this.clientTypeVillageCheckBox.Size = new System.Drawing.Size(111, 20);
-            this.clientTypeVillageCheckBox.TabIndex = 6;
+            this.clientTypeVillageCheckBox.TabIndex = 0;
             this.clientTypeVillageCheckBox.Text = "Non sol. group";
-
             // 
             // clientTypeGroupCheckBox
             // 
@@ -542,7 +516,6 @@
             this.clientTypeGroupCheckBox.Size = new System.Drawing.Size(86, 20);
             this.clientTypeGroupCheckBox.TabIndex = 6;
             this.clientTypeGroupCheckBox.Text = "Sol. group";
-
             // 
             // clientTypeAllCheckBox
             // 
@@ -562,8 +535,7 @@
             this.tbCodeFixedDepositProduct.Location = new System.Drawing.Point(326, 16);
             this.tbCodeFixedDepositProduct.Name = "tbCodeFixedDepositProduct";
             this.tbCodeFixedDepositProduct.Size = new System.Drawing.Size(175, 22);
-            this.tbCodeFixedDepositProduct.TabIndex = 2;
-
+            this.tbCodeFixedDepositProduct.TabIndex = 1;
             // 
             // tbName
             // 
@@ -571,8 +543,7 @@
             this.tbName.Location = new System.Drawing.Point(59, 16);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(175, 22);
-            this.tbName.TabIndex = 1;
-
+            this.tbName.TabIndex = 0;
             // 
             // gbInitialAmount
             // 
@@ -587,7 +558,6 @@
             this.gbInitialAmount.TabIndex = 5;
             this.gbInitialAmount.TabStop = false;
             this.gbInitialAmount.Text = "Initial amount";
-
             // 
             // tbInitialAmountMax
             // 
@@ -596,7 +566,6 @@
             this.tbInitialAmountMax.Name = "tbInitialAmountMax";
             this.tbInitialAmountMax.Size = new System.Drawing.Size(100, 22);
             this.tbInitialAmountMax.TabIndex = 1;
-
             this.tbInitialAmountMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // tbInitialAmountMin
@@ -606,7 +575,6 @@
             this.tbInitialAmountMin.Name = "tbInitialAmountMin";
             this.tbInitialAmountMin.Size = new System.Drawing.Size(100, 22);
             this.tbInitialAmountMin.TabIndex = 0;
-
             this.tbInitialAmountMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // lbInitialAmonutMax
@@ -619,7 +587,6 @@
             this.lbInitialAmonutMax.Size = new System.Drawing.Size(37, 16);
             this.lbInitialAmonutMax.TabIndex = 1;
             this.lbInitialAmonutMax.Text = "Max:";
-
             // 
             // lbInitialAmountMin
             // 
@@ -631,7 +598,6 @@
             this.lbInitialAmountMin.Size = new System.Drawing.Size(33, 16);
             this.lbInitialAmountMin.TabIndex = 0;
             this.lbInitialAmountMin.Text = "Min:";
-
             // 
             // gbInterestRate
             // 
@@ -648,7 +614,6 @@
             this.gbInterestRate.TabIndex = 8;
             this.gbInterestRate.TabStop = false;
             this.gbInterestRate.Text = "Interest rate";
-
             // 
             // lbYearlyInterestRateMax
             // 
@@ -660,7 +625,6 @@
             this.lbYearlyInterestRateMax.Size = new System.Drawing.Size(71, 16);
             this.lbYearlyInterestRateMax.TabIndex = 14;
             this.lbYearlyInterestRateMax.Text = "...% yearly";
-            
             // 
             // lbYearlyInterestRateMin
             // 
@@ -672,7 +636,6 @@
             this.lbYearlyInterestRateMin.Size = new System.Drawing.Size(71, 16);
             this.lbYearlyInterestRateMin.TabIndex = 13;
             this.lbYearlyInterestRateMin.Text = "...% yearly";
-            
             // 
             // tbInterestRateMax
             // 
@@ -680,8 +643,7 @@
             this.tbInterestRateMax.Location = new System.Drawing.Point(78, 51);
             this.tbInterestRateMax.Name = "tbInterestRateMax";
             this.tbInterestRateMax.Size = new System.Drawing.Size(100, 22);
-            this.tbInterestRateMax.TabIndex = 7;
-            
+            this.tbInterestRateMax.TabIndex = 1;
             this.tbInterestRateMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // tbInterestRateMin
@@ -690,8 +652,7 @@
             this.tbInterestRateMin.Location = new System.Drawing.Point(78, 22);
             this.tbInterestRateMin.Name = "tbInterestRateMin";
             this.tbInterestRateMin.Size = new System.Drawing.Size(100, 22);
-            this.tbInterestRateMin.TabIndex = 6;
-            
+            this.tbInterestRateMin.TabIndex = 0;
             this.tbInterestRateMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInitialAmountMin_KeyPress);
             // 
             // lbInterestRateMax
@@ -704,7 +665,6 @@
             this.lbInterestRateMax.Size = new System.Drawing.Size(37, 16);
             this.lbInterestRateMax.TabIndex = 5;
             this.lbInterestRateMax.Text = "Max:";
-            
             // 
             // lbInterestRateMin
             // 
@@ -716,7 +676,6 @@
             this.lbInterestRateMin.Size = new System.Drawing.Size(33, 16);
             this.lbInterestRateMin.TabIndex = 4;
             this.lbInterestRateMin.Text = "Min:";
-            
             // 
             // groupBox2
             // 
@@ -728,7 +687,6 @@
             this.groupBox2.Size = new System.Drawing.Size(677, 664);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
-            
             // 
             // btSavingProduct
             // 
@@ -740,7 +698,6 @@
             this.btSavingProduct.Size = new System.Drawing.Size(128, 25);
             this.btSavingProduct.TabIndex = 9;
             this.btSavingProduct.Text = "Save";
-            
             // 
             // bClose
             // 
@@ -753,12 +710,13 @@
             this.bClose.Size = new System.Drawing.Size(128, 25);
             this.bClose.TabIndex = 11;
             this.bClose.Text = "Close";
-            
             // 
             // FrmAddFixedDepositProduct
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(677, 664);
             this.Controls.Add(this.tabControlSaving);
             this.Controls.Add(this.groupBox2);
@@ -768,6 +726,7 @@
             this.Name = "FrmAddFixedDepositProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fixed Deposit Product";
+            this.Load += new System.EventHandler(this.FrmAddFixedDepositProduct_Load);
             this.tabControlSaving.ResumeLayout(false);
             this.tabPageMainParameters.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

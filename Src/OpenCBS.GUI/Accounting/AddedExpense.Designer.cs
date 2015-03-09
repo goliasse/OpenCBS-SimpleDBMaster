@@ -65,7 +65,7 @@
             this.btnDeleteExpense.Location = new System.Drawing.Point(812, 82);
             this.btnDeleteExpense.Name = "btnDeleteExpense";
             this.btnDeleteExpense.Size = new System.Drawing.Size(140, 28);
-            this.btnDeleteExpense.TabIndex = 35;
+            this.btnDeleteExpense.TabIndex = 2;
             this.btnDeleteExpense.Text = "Delete Expense";
             this.btnDeleteExpense.Click += new System.EventHandler(this.btnDeleteExpense_Click);
             // 
@@ -97,7 +97,7 @@
             this.lvExpense.Location = new System.Drawing.Point(77, 48);
             this.lvExpense.Name = "lvExpense";
             this.lvExpense.Size = new System.Drawing.Size(733, 232);
-            this.lvExpense.TabIndex = 27;
+            this.lvExpense.TabIndex = 1;
             this.lvExpense.UseCompatibleStateImageBehavior = false;
             this.lvExpense.View = System.Windows.Forms.View.Details;
             // 
@@ -144,12 +144,13 @@
             this.btnAddExpense.Location = new System.Drawing.Point(812, 48);
             this.btnAddExpense.Name = "btnAddExpense";
             this.btnAddExpense.Size = new System.Drawing.Size(140, 28);
-            this.btnAddExpense.TabIndex = 7;
+            this.btnAddExpense.TabIndex = 0;
             this.btnAddExpense.Text = "Add Expense";
             this.btnAddExpense.Click += new System.EventHandler(this.btnAddExpense_Click);
             // 
             // AddedExpense
             // 
+            this.AcceptButton = this.btnAddExpense;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(885, 503);

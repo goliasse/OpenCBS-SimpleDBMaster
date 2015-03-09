@@ -504,11 +504,29 @@
     <Compile Include="BankGuarantee\IssueBankGuarantee.Designer.cs">
       <DependentUpon>IssueBankGuarantee.cs</DependentUpon>
     </Compile>
-    <Compile Include="Batch\RunABatchForm.cs">
+    <Compile Include="Batch\FrmBatchResult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Batch\RunABatchForm.Designer.cs">
-      <DependentUpon>RunABatchForm.cs</DependentUpon>
+    <Compile Include="Batch\FrmBatchResult.Designer.cs">
+      <DependentUpon>FrmBatchResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Batch\FrmRunABatchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Batch\FrmRunABatchForm.Designer.cs">
+      <DependentUpon>FrmRunABatchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Batch\FrmScheduleABatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Batch\FrmScheduleABatch.Designer.cs">
+      <DependentUpon>FrmScheduleABatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Batch\FrmScheduledBatches.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Batch\FrmScheduledBatches.Designer.cs">
+      <DependentUpon>FrmScheduledBatches.cs</DependentUpon>
     </Compile>
     <Compile Include="Capital Adequacy Ratio\CalculateCapitalAdequacyRatio.cs">
       <SubType>Form</SubType>
@@ -1645,8 +1663,17 @@
     <EmbeddedResource Include="BankGuarantee\IssueBankGuarantee.resx">
       <DependentUpon>IssueBankGuarantee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Batch\RunABatchForm.resx">
-      <DependentUpon>RunABatchForm.cs</DependentUpon>
+    <EmbeddedResource Include="Batch\FrmBatchResult.resx">
+      <DependentUpon>FrmBatchResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Batch\FrmRunABatchForm.resx">
+      <DependentUpon>FrmRunABatchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Batch\FrmScheduleABatch.resx">
+      <DependentUpon>FrmScheduleABatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Batch\FrmScheduledBatches.resx">
+      <DependentUpon>FrmScheduledBatches.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Capital Adequacy Ratio\CalculateCapitalAdequacyRatio.resx">
       <DependentUpon>CalculateCapitalAdequacyRatio.cs</DependentUpon>

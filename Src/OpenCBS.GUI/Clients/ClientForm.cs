@@ -9118,7 +9118,7 @@ namespace OpenCBS.GUI.Clients
 
                     currentAccountProduct = _currentAccountProductService.FetchProduct(_currentAccountProductHoldings.CurrentAccountProduct.Id);
                     _currentAccountProductHoldings.CurrentAccountProduct = currentAccountProduct;
-                    _currentAccountProductHoldingService.UpdateCurrentAccountProductHolding(_currentAccountProductHoldings, tbCAProductCode.Text);
+                    _currentAccountProductHoldingService.UpdateCurrentAccountProductHolding(_currentAccountProductHoldings, _currentAccountProductHoldings.CurrentAccountContractCode);
                     MessageBox.Show(MultiLanguageStrings.GetString(Ressource.ClientForm, "Overdraft Success Update"));
 
                     if (_currentAccountProductHoldings.OverdraftApplied == 1)
@@ -9260,49 +9260,59 @@ namespace OpenCBS.GUI.Clients
 
         private void checkBoxOverdraftApplied_CheckedChanged(object sender, EventArgs e)
         {
-            btnOverdraft.Enabled = true;
-            if (checkBoxOverdraftApplied.Checked)
-            {
-                tabControlCurrentAccount.TabPages.Remove(tabPageOverdraft);
-                tabControlCurrentAccount.TabPages.Add(tabPageOverdraft);
-                tabControlCurrentAccount.SelectedTab = tabPageOverdraft;
+            
+                btnOverdraft.Enabled = true;
+                if (checkBoxOverdraftApplied.Checked)
+                {
+                    if (currentAccountProduct != null)
+                    {
+                    tabControlCurrentAccount.TabPages.Remove(tabPageOverdraft);
+                    tabControlCurrentAccount.TabPages.Add(tabPageOverdraft);
+                    tabControlCurrentAccount.SelectedTab = tabPageOverdraft;
 
 
-                if (currentAccountProduct.OverdraftType == OCurrentAccount.FeeTypeFlat)
-                    rbFlatOverdraftFees.Checked = true;
+                    if (currentAccountProduct.OverdraftType == OCurrentAccount.FeeTypeFlat)
+                        rbFlatOverdraftFees.Checked = true;
+                    else
+                        rbRateOverdraftFees.Checked = true;
+
+                    if (currentAccountProduct.OverdraftValue.HasValue)
+                        tbOverdraftFees.Text = currentAccountProduct.OverdraftValue.GetFormatedValue(OCurrency.UseCents);
+
+                    if (currentAccountProduct.CommitmentFeeType == OCurrentAccount.FeeTypeFlat)
+                        rbODCommitmentTypeFlat.Checked = true;
+                    else
+                        rbODCommitmentTypeRate.Checked = true;
+
+                    if (currentAccountProduct.CommitmentFeeValue.HasValue)
+                        tbCAODCommitmentFee.Text = currentAccountProduct.CommitmentFeeValue.ToString();
+
+                    if (currentAccountProduct.OverdraftInterestType == OCurrentAccount.FeeTypeFlat)
+                        rbODInterestTypeFlat.Checked = true;
+                    else
+                        rbODInterestTypeRate.Checked = true;
+
+                    if (currentAccountProduct.OverdraftInterestValue.HasValue)
+                        tbCAODInterestRate.Text = currentAccountProduct.OverdraftInterestValue.ToString();
+
+                    rbFlatOverdraftFees.Enabled = false;
+                    rbRateOverdraftFees.Enabled = false;
+                    rbODInterestTypeFlat.Enabled = false;
+                    rbODInterestTypeRate.Enabled = false;
+                    rbODCommitmentTypeFlat.Enabled = false;
+                    rbODCommitmentTypeRate.Enabled = false;
+                    btnOverdraft.Text = "Update Overdraft";
+
+                }
                 else
-                    rbRateOverdraftFees.Checked = true;
-
-                if (currentAccountProduct.OverdraftValue.HasValue)
-                    tbOverdraftFees.Text = currentAccountProduct.OverdraftValue.GetFormatedValue(OCurrency.UseCents);
-
-                if (currentAccountProduct.CommitmentFeeType == OCurrentAccount.FeeTypeFlat)
-                    rbODCommitmentTypeFlat.Checked = true;
-                else
-                    rbODCommitmentTypeRate.Checked = true;
-
-                if (currentAccountProduct.CommitmentFeeValue.HasValue)
-                    tbCAODCommitmentFee.Text = currentAccountProduct.CommitmentFeeValue.ToString();
-
-                if (currentAccountProduct.OverdraftInterestType == OCurrentAccount.FeeTypeFlat)
-                    rbODInterestTypeFlat.Checked = true;
-                else
-                    rbODInterestTypeRate.Checked = true;
-
-                if (currentAccountProduct.OverdraftInterestValue.HasValue)
-                    tbCAODInterestRate.Text = currentAccountProduct.OverdraftInterestValue.ToString();
-
-                rbFlatOverdraftFees.Enabled = false;
-                rbRateOverdraftFees.Enabled = false;
-                rbODInterestTypeFlat.Enabled = false;
-                rbODInterestTypeRate.Enabled = false;
-                rbODCommitmentTypeFlat.Enabled = false;
-                rbODCommitmentTypeRate.Enabled = false;
-                btnOverdraft.Text = "Update Overdraft";
-
+                {
+                    MessageBox.Show("Please select a current account product first.");
+                    checkBoxOverdraftApplied.Checked = false;   
+                }
             }
             else
             {
+                
                 tabControlCurrentAccount.TabPages.Remove(tabPageOverdraft);
                 tbOverdraftAmount.ResetText();
                 tbOverdraftFees.ResetText();

@@ -38,13 +38,13 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlSavingsProducts = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnAddCounter = new System.Windows.Forms.Button();
             this.lvCounters = new System.Windows.Forms.ListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnAddCounter = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlSavingsProducts.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +57,7 @@
             this.btnManageCounter.Location = new System.Drawing.Point(863, 38);
             this.btnManageCounter.Name = "btnManageCounter";
             this.btnManageCounter.Size = new System.Drawing.Size(140, 28);
-            this.btnManageCounter.TabIndex = 7;
+            this.btnManageCounter.TabIndex = 1;
             this.btnManageCounter.Text = "Manage Counters";
             this.btnManageCounter.Click += new System.EventHandler(this.buttonAddFixedAsset_Click);
             // 
@@ -105,7 +105,7 @@
             this.lvAllocatedBalance.Location = new System.Drawing.Point(127, 0);
             this.lvAllocatedBalance.Name = "lvAllocatedBalance";
             this.lvAllocatedBalance.Size = new System.Drawing.Size(733, 232);
-            this.lvAllocatedBalance.TabIndex = 27;
+            this.lvAllocatedBalance.TabIndex = 0;
             this.lvAllocatedBalance.UseCompatibleStateImageBehavior = false;
             this.lvAllocatedBalance.View = System.Windows.Forms.View.Details;
             this.lvAllocatedBalance.SelectedIndexChanged += new System.EventHandler(this.lvFixedAsset_SelectedIndexChanged);
@@ -140,19 +140,6 @@
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(81)))), ((int)(((byte)(152)))));
-            this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(3, 1);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(884, 36);
-            this.label1.TabIndex = 32;
-            this.label1.Text = "Today\'s Allocated Counter Balance";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(81)))), ((int)(((byte)(152)))));
@@ -166,6 +153,18 @@
             this.label2.Text = "Available Counters";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnAddCounter
+            // 
+            this.btnAddCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddCounter.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnAddCounter.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnAddCounter.Location = new System.Drawing.Point(863, 304);
+            this.btnAddCounter.Name = "btnAddCounter";
+            this.btnAddCounter.Size = new System.Drawing.Size(140, 28);
+            this.btnAddCounter.TabIndex = 3;
+            this.btnAddCounter.Text = "Add Counter";
+            this.btnAddCounter.Click += new System.EventHandler(this.btnAddCounter_Click);
+            // 
             // lvCounters
             // 
             this.lvCounters.Activation = System.Windows.Forms.ItemActivation.OneClick;
@@ -178,7 +177,7 @@
             this.lvCounters.Location = new System.Drawing.Point(127, 274);
             this.lvCounters.Name = "lvCounters";
             this.lvCounters.Size = new System.Drawing.Size(733, 232);
-            this.lvCounters.TabIndex = 28;
+            this.lvCounters.TabIndex = 2;
             this.lvCounters.UseCompatibleStateImageBehavior = false;
             this.lvCounters.View = System.Windows.Forms.View.Details;
             // 
@@ -199,17 +198,18 @@
             this.columnHeader9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader9.Width = 266;
             // 
-            // btnAddCounter
+            // label1
             // 
-            this.btnAddCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddCounter.Font = new System.Drawing.Font("Arial", 9F);
-            this.btnAddCounter.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnAddCounter.Location = new System.Drawing.Point(863, 304);
-            this.btnAddCounter.Name = "btnAddCounter";
-            this.btnAddCounter.Size = new System.Drawing.Size(140, 28);
-            this.btnAddCounter.TabIndex = 29;
-            this.btnAddCounter.Text = "Add Counter";
-            this.btnAddCounter.Click += new System.EventHandler(this.btnAddCounter_Click);
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(81)))), ((int)(((byte)(152)))));
+            this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(3, 1);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(884, 36);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "Today\'s Allocated Counter Balance";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AvailableCounterAndAllocatedBalance
             // 

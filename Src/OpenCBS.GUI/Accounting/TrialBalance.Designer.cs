@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lvTrialBalance = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -43,7 +44,6 @@
             this.lblCurrency = new System.Windows.Forms.Label();
             this.cbBranches = new System.Windows.Forms.ComboBox();
             this.cbCurrencies = new System.Windows.Forms.ComboBox();
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,6 +83,11 @@
             // 
             this.columnHeader1.Text = "S. No.";
             this.columnHeader1.Width = 86;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Account";
+            this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // columnHeader2
             // 
@@ -131,7 +136,7 @@
             this.dateTimePickerTillDate.Location = new System.Drawing.Point(113, 80);
             this.dateTimePickerTillDate.Name = "dateTimePickerTillDate";
             this.dateTimePickerTillDate.Size = new System.Drawing.Size(153, 20);
-            this.dateTimePickerTillDate.TabIndex = 74;
+            this.dateTimePickerTillDate.TabIndex = 2;
             // 
             // lblEndDate
             // 
@@ -155,7 +160,7 @@
             this.btnView.Location = new System.Drawing.Point(30, 116);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(236, 25);
-            this.btnView.TabIndex = 72;
+            this.btnView.TabIndex = 3;
             this.btnView.Text = "View";
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
@@ -195,7 +200,7 @@
             this.cbBranches.Location = new System.Drawing.Point(110, 49);
             this.cbBranches.Name = "cbBranches";
             this.cbBranches.Size = new System.Drawing.Size(156, 24);
-            this.cbBranches.TabIndex = 68;
+            this.cbBranches.TabIndex = 1;
             // 
             // cbCurrencies
             // 
@@ -209,15 +214,11 @@
             this.cbCurrencies.Location = new System.Drawing.Point(110, 19);
             this.cbCurrencies.Name = "cbCurrencies";
             this.cbCurrencies.Size = new System.Drawing.Size(156, 24);
-            this.cbCurrencies.TabIndex = 69;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Account";
-            this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.cbCurrencies.TabIndex = 0;
             // 
             // TrialBalance
             // 
+            this.AcceptButton = this.btnView;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(916, 678);

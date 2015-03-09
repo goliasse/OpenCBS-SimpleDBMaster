@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pnlSavingsProducts = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnGenerateFAR = new System.Windows.Forms.Button();
             this.lvFixedAsset = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -44,7 +45,6 @@
             this.btnViewFixedAsset = new System.Windows.Forms.Button();
             this.buttonEditFixedAsset = new System.Windows.Forms.Button();
             this.buttonAddFixedAsset = new System.Windows.Forms.Button();
-            this.btnGenerateFAR = new System.Windows.Forms.Button();
             this.pnlSavingsProducts.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -86,6 +86,18 @@
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             // 
+            // btnGenerateFAR
+            // 
+            this.btnGenerateFAR.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerateFAR.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnGenerateFAR.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnGenerateFAR.Location = new System.Drawing.Point(771, 138);
+            this.btnGenerateFAR.Name = "btnGenerateFAR";
+            this.btnGenerateFAR.Size = new System.Drawing.Size(140, 28);
+            this.btnGenerateFAR.TabIndex = 3;
+            this.btnGenerateFAR.Text = "Generate FAR";
+            this.btnGenerateFAR.Click += new System.EventHandler(this.btnGenerateFAR_Click);
+            // 
             // lvFixedAsset
             // 
             this.lvFixedAsset.Activation = System.Windows.Forms.ItemActivation.OneClick;
@@ -104,7 +116,7 @@
             this.lvFixedAsset.Location = new System.Drawing.Point(0, 0);
             this.lvFixedAsset.Name = "lvFixedAsset";
             this.lvFixedAsset.Size = new System.Drawing.Size(765, 339);
-            this.lvFixedAsset.TabIndex = 27;
+            this.lvFixedAsset.TabIndex = 4;
             this.lvFixedAsset.UseCompatibleStateImageBehavior = false;
             this.lvFixedAsset.View = System.Windows.Forms.View.Details;
             // 
@@ -166,7 +178,7 @@
             this.btnViewFixedAsset.Location = new System.Drawing.Point(771, 104);
             this.btnViewFixedAsset.Name = "btnViewFixedAsset";
             this.btnViewFixedAsset.Size = new System.Drawing.Size(140, 28);
-            this.btnViewFixedAsset.TabIndex = 10;
+            this.btnViewFixedAsset.TabIndex = 2;
             this.btnViewFixedAsset.Text = "View Fixed Asset";
             this.btnViewFixedAsset.Click += new System.EventHandler(this.btnViewProduct_Click);
             // 
@@ -178,7 +190,7 @@
             this.buttonEditFixedAsset.Location = new System.Drawing.Point(771, 70);
             this.buttonEditFixedAsset.Name = "buttonEditFixedAsset";
             this.buttonEditFixedAsset.Size = new System.Drawing.Size(140, 28);
-            this.buttonEditFixedAsset.TabIndex = 9;
+            this.buttonEditFixedAsset.TabIndex = 1;
             this.buttonEditFixedAsset.Text = "Dispose Fixed Asset";
             this.buttonEditFixedAsset.Click += new System.EventHandler(this.buttonEditProduct_Click);
             // 
@@ -190,24 +202,13 @@
             this.buttonAddFixedAsset.Location = new System.Drawing.Point(771, 39);
             this.buttonAddFixedAsset.Name = "buttonAddFixedAsset";
             this.buttonAddFixedAsset.Size = new System.Drawing.Size(140, 28);
-            this.buttonAddFixedAsset.TabIndex = 7;
+            this.buttonAddFixedAsset.TabIndex = 0;
             this.buttonAddFixedAsset.Text = "Add Fixed Asset";
             this.buttonAddFixedAsset.Click += new System.EventHandler(this.buttonAddProduct_Click);
             // 
-            // btnGenerateFAR
-            // 
-            this.btnGenerateFAR.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenerateFAR.Font = new System.Drawing.Font("Arial", 9F);
-            this.btnGenerateFAR.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnGenerateFAR.Location = new System.Drawing.Point(771, 138);
-            this.btnGenerateFAR.Name = "btnGenerateFAR";
-            this.btnGenerateFAR.Size = new System.Drawing.Size(140, 28);
-            this.btnGenerateFAR.TabIndex = 28;
-            this.btnGenerateFAR.Text = "Generate FAR";
-            this.btnGenerateFAR.Click += new System.EventHandler(this.btnGenerateFAR_Click);
-            // 
             // FrmAvailableFixedAssets
             // 
+            this.AcceptButton = this.buttonAddFixedAsset;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 572);

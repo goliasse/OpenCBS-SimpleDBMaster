@@ -174,6 +174,10 @@ namespace OpenCBS.GUI
             this._modulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._aboutModulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.batchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.runABatchToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.scheduleABatchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.batchResultsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainStatusBar = new System.Windows.Forms.StatusStrip();
             this.mainStatusBarLblUpdateVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainStatusBarLblUserName = new System.Windows.Forms.ToolStripStatusLabel();
@@ -181,7 +185,6 @@ namespace OpenCBS.GUI
             this.toolStripStatusLblBranchCode = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLblDB = new System.Windows.Forms.ToolStripStatusLabel();
             this.alertBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.runABatchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvAlerts)).BeginInit();
             this.tabFilter.SuspendLayout();
@@ -674,8 +677,7 @@ namespace OpenCBS.GUI
             this.miContractCode,
             this.tellersToolStripMenuItem,
             this.configureCountersToolStripMenuItem,
-            this.lIBORRateToolStripMenuItem,
-            this.runABatchToolStripMenuItem});
+            this.lIBORRateToolStripMenuItem});
             this.mnuConfiguration.Name = "mnuConfiguration";
             resources.ApplyResources(this.mnuConfiguration, "mnuConfiguration");
             // 
@@ -797,6 +799,7 @@ namespace OpenCBS.GUI
             this._modulesMenuItem,
             this.mnuAccounting,
             this.reportsToolStripMenuItem,
+            this.batchToolStripMenuItem,
             this.mnuWindow,
             this.mnuHelp});
             resources.ApplyResources(this.mainMenu, "mainMenu");
@@ -999,6 +1002,33 @@ namespace OpenCBS.GUI
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             resources.ApplyResources(this.reportsToolStripMenuItem, "reportsToolStripMenuItem");
             // 
+            // batchToolStripMenuItem
+            // 
+            this.batchToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.runABatchToolStripMenuItem1,
+            this.scheduleABatchToolStripMenuItem,
+            this.batchResultsToolStripMenuItem});
+            this.batchToolStripMenuItem.Name = "batchToolStripMenuItem";
+            resources.ApplyResources(this.batchToolStripMenuItem, "batchToolStripMenuItem");
+            // 
+            // runABatchToolStripMenuItem1
+            // 
+            this.runABatchToolStripMenuItem1.Name = "runABatchToolStripMenuItem1";
+            resources.ApplyResources(this.runABatchToolStripMenuItem1, "runABatchToolStripMenuItem1");
+            this.runABatchToolStripMenuItem1.Click += new System.EventHandler(this.runABatchToolStripMenuItem1_Click);
+            // 
+            // scheduleABatchToolStripMenuItem
+            // 
+            this.scheduleABatchToolStripMenuItem.Name = "scheduleABatchToolStripMenuItem";
+            resources.ApplyResources(this.scheduleABatchToolStripMenuItem, "scheduleABatchToolStripMenuItem");
+            this.scheduleABatchToolStripMenuItem.Click += new System.EventHandler(this.scheduleABatchToolStripMenuItem_Click);
+            // 
+            // batchResultsToolStripMenuItem
+            // 
+            this.batchResultsToolStripMenuItem.Name = "batchResultsToolStripMenuItem";
+            resources.ApplyResources(this.batchResultsToolStripMenuItem, "batchResultsToolStripMenuItem");
+            this.batchResultsToolStripMenuItem.Click += new System.EventHandler(this.batchResultsToolStripMenuItem_Click);
+            // 
             // mainStatusBar
             // 
             resources.ApplyResources(this.mainStatusBar, "mainStatusBar");
@@ -1061,12 +1091,6 @@ namespace OpenCBS.GUI
             // alertBindingSource
             // 
             this.alertBindingSource.DataSource = typeof(OpenCBS.CoreDomain.Alert);
-            // 
-            // runABatchToolStripMenuItem
-            // 
-            this.runABatchToolStripMenuItem.Name = "runABatchToolStripMenuItem";
-            resources.ApplyResources(this.runABatchToolStripMenuItem, "runABatchToolStripMenuItem");
-            this.runABatchToolStripMenuItem.Click += new System.EventHandler(this.runABatchToolStripMenuItem_Click);
             // 
             // MainView
             // 
@@ -1182,7 +1206,10 @@ namespace OpenCBS.GUI
         private ToolStripMenuItem balanceSheetToolStripMenuItem;
         private ToolStripMenuItem profitAndLossStatementToolStripMenuItem;
         private ToolStripMenuItem cashFlowStatementToolStripMenuItem;
-        private ToolStripMenuItem runABatchToolStripMenuItem;
+        private ToolStripMenuItem batchToolStripMenuItem;
+        private ToolStripMenuItem runABatchToolStripMenuItem1;
+        private ToolStripMenuItem scheduleABatchToolStripMenuItem;
+        private ToolStripMenuItem batchResultsToolStripMenuItem;
 
 
     }

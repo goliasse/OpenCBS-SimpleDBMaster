@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using OpenCBS.CoreDomain;
+using OpenCBS.CoreDomain.Batch;
 using OpenCBS.Manager;
 
 namespace OpenCBS.Services
@@ -46,6 +47,10 @@ namespace OpenCBS.Services
     {
         return _batchManager.CurrentAccountManagemntFeeBatch(calculationDate);
 }
+            public int FixedOverdraftFeesBatch(DateTime calculationDate)
+            {
+                return _batchManager.FixedOverdraftFeesBatch(calculationDate);
+            }
 
 public int LoanStatementBatch()
     {
@@ -80,6 +85,16 @@ public int FixedDepositChargesNoticeBatch()
     return _batchManager.FixedDepositChargesNoticeBatch();
 }
 
+
+public List<BatchResults> FetchBatchResults(string monthYear)
+{
+    return _batchManager.FetchBatchResults(monthYear);
+}
+
+public BatchResults FetchBatchResults(string contractCode, string monthYear)
+{
+    return _batchManager.FetchBatchResults(contractCode, monthYear);
+}
 
 
         

@@ -40,7 +40,7 @@
             this.txtDescription.Location = new System.Drawing.Point(181, 75);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(149, 20);
-            this.txtDescription.TabIndex = 85;
+            this.txtDescription.TabIndex = 1;
             // 
             // label12
             // 
@@ -60,7 +60,7 @@
             this.cmbBranch.Location = new System.Drawing.Point(181, 48);
             this.cmbBranch.Name = "cmbBranch";
             this.cmbBranch.Size = new System.Drawing.Size(149, 21);
-            this.cmbBranch.TabIndex = 83;
+            this.cmbBranch.TabIndex = 0;
             // 
             // label4
             // 
@@ -79,12 +79,13 @@
             this.btnSubmit.Location = new System.Drawing.Point(181, 111);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(107, 23);
-            this.btnSubmit.TabIndex = 86;
+            this.btnSubmit.TabIndex = 2;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // AddCounter
             // 
+            this.AcceptButton = this.btnSubmit;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(390, 257);

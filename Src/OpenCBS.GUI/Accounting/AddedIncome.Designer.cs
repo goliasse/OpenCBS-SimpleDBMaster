@@ -38,9 +38,9 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnAddIncome = new System.Windows.Forms.Button();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnAddIncome = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +67,7 @@
             this.btnDeleteIncome.Location = new System.Drawing.Point(812, 82);
             this.btnDeleteIncome.Name = "btnDeleteIncome";
             this.btnDeleteIncome.Size = new System.Drawing.Size(140, 28);
-            this.btnDeleteIncome.TabIndex = 35;
+            this.btnDeleteIncome.TabIndex = 2;
             this.btnDeleteIncome.Text = "Delete Income";
             this.btnDeleteIncome.Click += new System.EventHandler(this.btnDeleteIncome_Click);
             // 
@@ -101,7 +101,7 @@
             this.lvIncome.Location = new System.Drawing.Point(77, 48);
             this.lvIncome.Name = "lvIncome";
             this.lvIncome.Size = new System.Drawing.Size(733, 232);
-            this.lvIncome.TabIndex = 27;
+            this.lvIncome.TabIndex = 1;
             this.lvIncome.UseCompatibleStateImageBehavior = false;
             this.lvIncome.View = System.Windows.Forms.View.Details;
             // 
@@ -140,18 +140,6 @@
             this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader6.Width = 122;
             // 
-            // btnAddIncome
-            // 
-            this.btnAddIncome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddIncome.Font = new System.Drawing.Font("Arial", 9F);
-            this.btnAddIncome.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnAddIncome.Location = new System.Drawing.Point(812, 48);
-            this.btnAddIncome.Name = "btnAddIncome";
-            this.btnAddIncome.Size = new System.Drawing.Size(140, 28);
-            this.btnAddIncome.TabIndex = 7;
-            this.btnAddIncome.Text = "Add Income";
-            this.btnAddIncome.Click += new System.EventHandler(this.btnAddIncome_Click);
-            // 
             // columnHeader7
             // 
             this.columnHeader7.Text = "Currency";
@@ -162,8 +150,21 @@
             this.columnHeader8.Text = "Branch";
             this.columnHeader8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // btnAddIncome
+            // 
+            this.btnAddIncome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddIncome.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnAddIncome.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnAddIncome.Location = new System.Drawing.Point(812, 48);
+            this.btnAddIncome.Name = "btnAddIncome";
+            this.btnAddIncome.Size = new System.Drawing.Size(140, 28);
+            this.btnAddIncome.TabIndex = 0;
+            this.btnAddIncome.Text = "Add Income";
+            this.btnAddIncome.Click += new System.EventHandler(this.btnAddIncome_Click);
+            // 
             // AddedIncome
             // 
+            this.AcceptButton = this.btnAddIncome;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(895, 491);

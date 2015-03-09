@@ -101,7 +101,7 @@
             this.lvFixedDepositProducts.Location = new System.Drawing.Point(0, 0);
             this.lvFixedDepositProducts.Name = "lvFixedDepositProducts";
             this.lvFixedDepositProducts.Size = new System.Drawing.Size(765, 339);
-            this.lvFixedDepositProducts.TabIndex = 27;
+            this.lvFixedDepositProducts.TabIndex = 5;
             this.lvFixedDepositProducts.UseCompatibleStateImageBehavior = false;
             this.lvFixedDepositProducts.View = System.Windows.Forms.View.Details;
             // 
@@ -147,7 +147,7 @@
             this.btnViewProduct.Location = new System.Drawing.Point(771, 135);
             this.btnViewProduct.Name = "btnViewProduct";
             this.btnViewProduct.Size = new System.Drawing.Size(140, 28);
-            this.btnViewProduct.TabIndex = 10;
+            this.btnViewProduct.TabIndex = 4;
             this.btnViewProduct.Text = "View product";
             this.btnViewProduct.Click += new System.EventHandler(this.btnViewProduct_Click);
             // 
@@ -159,7 +159,7 @@
             this.buttonEditProduct.Location = new System.Drawing.Point(771, 70);
             this.buttonEditProduct.Name = "buttonEditProduct";
             this.buttonEditProduct.Size = new System.Drawing.Size(140, 28);
-            this.buttonEditProduct.TabIndex = 9;
+            this.buttonEditProduct.TabIndex = 2;
             this.buttonEditProduct.Text = "Edit product";
             this.buttonEditProduct.Click += new System.EventHandler(this.buttonEditProduct_Click);
             // 
@@ -172,7 +172,7 @@
             this.checkBoxShowDeletedProduct.Location = new System.Drawing.Point(771, 16);
             this.checkBoxShowDeletedProduct.Name = "checkBoxShowDeletedProduct";
             this.checkBoxShowDeletedProduct.Size = new System.Drawing.Size(125, 20);
-            this.checkBoxShowDeletedProduct.TabIndex = 8;
+            this.checkBoxShowDeletedProduct.TabIndex = 0;
             this.checkBoxShowDeletedProduct.Text = "Deleted products";
             this.checkBoxShowDeletedProduct.CheckedChanged += new System.EventHandler(this.checkBoxShowDeletedProduct_CheckedChanged);
             // 
@@ -184,7 +184,7 @@
             this.buttonAddProduct.Location = new System.Drawing.Point(771, 39);
             this.buttonAddProduct.Name = "buttonAddProduct";
             this.buttonAddProduct.Size = new System.Drawing.Size(140, 28);
-            this.buttonAddProduct.TabIndex = 7;
+            this.buttonAddProduct.TabIndex = 1;
             this.buttonAddProduct.Text = "Add product";
             this.buttonAddProduct.Click += new System.EventHandler(this.buttonAddProduct_Click);
             // 
@@ -196,7 +196,7 @@
             this.buttonDeleteProduct.Location = new System.Drawing.Point(771, 101);
             this.buttonDeleteProduct.Name = "buttonDeleteProduct";
             this.buttonDeleteProduct.Size = new System.Drawing.Size(140, 28);
-            this.buttonDeleteProduct.TabIndex = 6;
+            this.buttonDeleteProduct.TabIndex = 3;
             this.buttonDeleteProduct.Text = "Delete product";
             this.buttonDeleteProduct.Click += new System.EventHandler(this.buttonDeleteProduct_Click);
             // 
@@ -209,7 +209,7 @@
             this.btnClose.Location = new System.Drawing.Point(774, 5);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(140, 28);
-            this.btnClose.TabIndex = 28;
+            this.btnClose.TabIndex = 0;
             this.btnClose.Text = "Close";
             // 
             // FrmAvailableFixedDepositProducts

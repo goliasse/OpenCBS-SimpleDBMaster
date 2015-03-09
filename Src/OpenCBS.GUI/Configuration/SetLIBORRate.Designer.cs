@@ -40,7 +40,7 @@
             this.txtLIBORRate.Location = new System.Drawing.Point(148, 41);
             this.txtLIBORRate.Name = "txtLIBORRate";
             this.txtLIBORRate.Size = new System.Drawing.Size(130, 20);
-            this.txtLIBORRate.TabIndex = 39;
+            this.txtLIBORRate.TabIndex = 0;
             // 
             // lblName
             // 
@@ -58,7 +58,7 @@
             this.btnSetLIBOR.Location = new System.Drawing.Point(105, 114);
             this.btnSetLIBOR.Name = "btnSetLIBOR";
             this.btnSetLIBOR.Size = new System.Drawing.Size(75, 23);
-            this.btnSetLIBOR.TabIndex = 42;
+            this.btnSetLIBOR.TabIndex = 2;
             this.btnSetLIBOR.Text = "Set LIBOR";
             this.btnSetLIBOR.UseVisualStyleBackColor = true;
             this.btnSetLIBOR.Click += new System.EventHandler(this.btnSetLIBOR_Click);
@@ -87,10 +87,11 @@
             this.cmbInterestPeriod.Location = new System.Drawing.Point(148, 74);
             this.cmbInterestPeriod.Name = "cmbInterestPeriod";
             this.cmbInterestPeriod.Size = new System.Drawing.Size(130, 21);
-            this.cmbInterestPeriod.TabIndex = 68;
+            this.cmbInterestPeriod.TabIndex = 1;
             // 
             // SetLIBORRate
             // 
+            this.AcceptButton = this.btnSetLIBOR;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(302, 262);

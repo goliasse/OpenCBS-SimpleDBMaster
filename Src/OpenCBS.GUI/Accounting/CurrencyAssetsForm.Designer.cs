@@ -52,7 +52,7 @@
             this.assetDate.Location = new System.Drawing.Point(160, 22);
             this.assetDate.Name = "assetDate";
             this.assetDate.Size = new System.Drawing.Size(149, 20);
-            this.assetDate.TabIndex = 73;
+            this.assetDate.TabIndex = 0;
             // 
             // tbReference
             // 
@@ -60,7 +60,7 @@
             this.tbReference.Location = new System.Drawing.Point(160, 147);
             this.tbReference.Name = "tbReference";
             this.tbReference.Size = new System.Drawing.Size(149, 22);
-            this.tbReference.TabIndex = 72;
+            this.tbReference.TabIndex = 4;
             // 
             // tbAssetAmount
             // 
@@ -68,7 +68,7 @@
             this.tbAssetAmount.Location = new System.Drawing.Point(160, 119);
             this.tbAssetAmount.Name = "tbAssetAmount";
             this.tbAssetAmount.Size = new System.Drawing.Size(149, 22);
-            this.tbAssetAmount.TabIndex = 71;
+            this.tbAssetAmount.TabIndex = 3;
             this.tbAssetAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbAssetAmount_KeyPress);
             // 
             // label4
@@ -121,7 +121,7 @@
             this.btnAddAsset.Location = new System.Drawing.Point(160, 275);
             this.btnAddAsset.Name = "btnAddAsset";
             this.btnAddAsset.Size = new System.Drawing.Size(149, 28);
-            this.btnAddAsset.TabIndex = 66;
+            this.btnAddAsset.TabIndex = 8;
             this.btnAddAsset.Text = "Add Asset";
             this.btnAddAsset.UseVisualStyleBackColor = true;
             this.btnAddAsset.Click += new System.EventHandler(this.btnAddAsset_Click);
@@ -132,7 +132,7 @@
             this.tbAssetDescription.Location = new System.Drawing.Point(160, 87);
             this.tbAssetDescription.Name = "tbAssetDescription";
             this.tbAssetDescription.Size = new System.Drawing.Size(149, 22);
-            this.tbAssetDescription.TabIndex = 65;
+            this.tbAssetDescription.TabIndex = 2;
             // 
             // cbAssetCategory
             // 
@@ -150,7 +150,7 @@
             this.cbAssetCategory.Location = new System.Drawing.Point(160, 55);
             this.cbAssetCategory.Name = "cbAssetCategory";
             this.cbAssetCategory.Size = new System.Drawing.Size(149, 24);
-            this.cbAssetCategory.TabIndex = 64;
+            this.cbAssetCategory.TabIndex = 1;
             // 
             // amountLabel
             // 
@@ -186,7 +186,7 @@
             this.assetFundedFrom.Location = new System.Drawing.Point(160, 177);
             this.assetFundedFrom.Name = "assetFundedFrom";
             this.assetFundedFrom.Size = new System.Drawing.Size(149, 24);
-            this.assetFundedFrom.TabIndex = 75;
+            this.assetFundedFrom.TabIndex = 5;
             this.assetFundedFrom.SelectedIndexChanged += new System.EventHandler(this.assetFundedFrom_SelectedIndexChanged);
             // 
             // cbCurrency
@@ -197,7 +197,7 @@
             this.cbCurrency.Location = new System.Drawing.Point(160, 212);
             this.cbCurrency.Name = "cbCurrency";
             this.cbCurrency.Size = new System.Drawing.Size(149, 24);
-            this.cbCurrency.TabIndex = 77;
+            this.cbCurrency.TabIndex = 6;
             // 
             // label6
             // 
@@ -218,7 +218,7 @@
             this.cbBranch.Location = new System.Drawing.Point(160, 245);
             this.cbBranch.Name = "cbBranch";
             this.cbBranch.Size = new System.Drawing.Size(149, 24);
-            this.cbBranch.TabIndex = 79;
+            this.cbBranch.TabIndex = 7;
             // 
             // label7
             // 
@@ -233,6 +233,7 @@
             // 
             // CurrencyAssetsForm
             // 
+            this.AcceptButton = this.btnAddAsset;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(343, 318);

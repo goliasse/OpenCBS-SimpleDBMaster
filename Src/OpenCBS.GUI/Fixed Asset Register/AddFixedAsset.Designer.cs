@@ -69,7 +69,7 @@
             this.txtAssetDescription.Location = new System.Drawing.Point(268, 60);
             this.txtAssetDescription.Name = "txtAssetDescription";
             this.txtAssetDescription.Size = new System.Drawing.Size(183, 20);
-            this.txtAssetDescription.TabIndex = 25;
+            this.txtAssetDescription.TabIndex = 1;
             // 
             // lblAmount
             // 
@@ -90,7 +90,7 @@
             this.cmbBranch.Location = new System.Drawing.Point(268, 24);
             this.cmbBranch.Name = "cmbBranch";
             this.cmbBranch.Size = new System.Drawing.Size(183, 21);
-            this.cmbBranch.TabIndex = 23;
+            this.cmbBranch.TabIndex = 0;
             // 
             // lblBranch
             // 
@@ -121,14 +121,14 @@
             this.cmbAssetType.Location = new System.Drawing.Point(268, 98);
             this.cmbAssetType.Name = "cmbAssetType";
             this.cmbAssetType.Size = new System.Drawing.Size(183, 21);
-            this.cmbAssetType.TabIndex = 26;
+            this.cmbAssetType.TabIndex = 2;
             // 
             // txtNoOfAssets
             // 
             this.txtNoOfAssets.Location = new System.Drawing.Point(268, 138);
             this.txtNoOfAssets.Name = "txtNoOfAssets";
             this.txtNoOfAssets.Size = new System.Drawing.Size(183, 20);
-            this.txtNoOfAssets.TabIndex = 29;
+            this.txtNoOfAssets.TabIndex = 3;
             this.txtNoOfAssets.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNoOfAssets_KeyPress);
             // 
             // label2
@@ -147,7 +147,7 @@
             this.txtOriginalCost.Location = new System.Drawing.Point(268, 174);
             this.txtOriginalCost.Name = "txtOriginalCost";
             this.txtOriginalCost.Size = new System.Drawing.Size(183, 20);
-            this.txtOriginalCost.TabIndex = 31;
+            this.txtOriginalCost.TabIndex = 4;
             this.txtOriginalCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNoOfAssets_KeyPress);
             // 
             // txtDepreciationRate
@@ -155,7 +155,7 @@
             this.txtDepreciationRate.Location = new System.Drawing.Point(268, 213);
             this.txtDepreciationRate.Name = "txtDepreciationRate";
             this.txtDepreciationRate.Size = new System.Drawing.Size(183, 20);
-            this.txtDepreciationRate.TabIndex = 33;
+            this.txtDepreciationRate.TabIndex = 5;
             this.txtDepreciationRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNoOfAssets_KeyPress);
             // 
             // label4
@@ -187,7 +187,7 @@
             this.cmbAcqCapFinMethod.Location = new System.Drawing.Point(268, 273);
             this.cmbAcqCapFinMethod.Name = "cmbAcqCapFinMethod";
             this.cmbAcqCapFinMethod.Size = new System.Drawing.Size(183, 21);
-            this.cmbAcqCapFinMethod.TabIndex = 35;
+            this.cmbAcqCapFinMethod.TabIndex = 7;
             // 
             // label6
             // 
@@ -205,7 +205,7 @@
             this.txtAcqCapTranNum.Location = new System.Drawing.Point(268, 310);
             this.txtAcqCapTranNum.Name = "txtAcqCapTranNum";
             this.txtAcqCapTranNum.Size = new System.Drawing.Size(183, 20);
-            this.txtAcqCapTranNum.TabIndex = 36;
+            this.txtAcqCapTranNum.TabIndex = 8;
             // 
             // lblDisAmtTran
             // 
@@ -224,7 +224,7 @@
             this.txtDisAmtTranNum.Location = new System.Drawing.Point(268, 375);
             this.txtDisAmtTranNum.Name = "txtDisAmtTranNum";
             this.txtDisAmtTranNum.Size = new System.Drawing.Size(183, 20);
-            this.txtDisAmtTranNum.TabIndex = 40;
+            this.txtDisAmtTranNum.TabIndex = 10;
             this.txtDisAmtTranNum.Visible = false;
             // 
             // cmbDisAmtTranMethod
@@ -234,7 +234,7 @@
             this.cmbDisAmtTranMethod.Location = new System.Drawing.Point(268, 338);
             this.cmbDisAmtTranMethod.Name = "cmbDisAmtTranMethod";
             this.cmbDisAmtTranMethod.Size = new System.Drawing.Size(183, 21);
-            this.cmbDisAmtTranMethod.TabIndex = 39;
+            this.cmbDisAmtTranMethod.TabIndex = 9;
             this.cmbDisAmtTranMethod.Visible = false;
             // 
             // lblDisAmtTransMethod
@@ -255,7 +255,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(268, 566);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(96, 23);
-            this.btnUpdate.TabIndex = 43;
+            this.btnUpdate.TabIndex = 17;
             this.btnUpdate.Text = "Dispose";
             this.btnUpdate.Visible = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -266,7 +266,7 @@
             this.btnSubmit.Location = new System.Drawing.Point(105, 566);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(107, 23);
-            this.btnSubmit.TabIndex = 42;
+            this.btnSubmit.TabIndex = 16;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
@@ -286,7 +286,7 @@
             this.txtAcquisitionDate.Location = new System.Drawing.Point(268, 245);
             this.txtAcquisitionDate.Name = "txtAcquisitionDate";
             this.txtAcquisitionDate.Size = new System.Drawing.Size(183, 20);
-            this.txtAcquisitionDate.TabIndex = 55;
+            this.txtAcquisitionDate.TabIndex = 6;
             // 
             // label3
             // 
@@ -304,7 +304,7 @@
             this.txtDisDate.Location = new System.Drawing.Point(268, 405);
             this.txtDisDate.Name = "txtDisDate";
             this.txtDisDate.Size = new System.Drawing.Size(183, 20);
-            this.txtDisDate.TabIndex = 59;
+            this.txtDisDate.TabIndex = 11;
             this.txtDisDate.Visible = false;
             this.txtDisDate.TextChanged += new System.EventHandler(this.txtDisDate_TextChanged);
             // 
@@ -325,7 +325,7 @@
             this.txtNetBookValue.Location = new System.Drawing.Point(268, 435);
             this.txtNetBookValue.Name = "txtNetBookValue";
             this.txtNetBookValue.Size = new System.Drawing.Size(183, 20);
-            this.txtNetBookValue.TabIndex = 61;
+            this.txtNetBookValue.TabIndex = 12;
             this.txtNetBookValue.Visible = false;
             // 
             // lblNetBookValue
@@ -345,7 +345,7 @@
             this.txtAccDepCharge.Location = new System.Drawing.Point(268, 466);
             this.txtAccDepCharge.Name = "txtAccDepCharge";
             this.txtAccDepCharge.Size = new System.Drawing.Size(183, 20);
-            this.txtAccDepCharge.TabIndex = 63;
+            this.txtAccDepCharge.TabIndex = 13;
             this.txtAccDepCharge.Visible = false;
             // 
             // lblAccDepCharge
@@ -377,7 +377,7 @@
             this.txtProfitLoss.Location = new System.Drawing.Point(268, 498);
             this.txtProfitLoss.Name = "txtProfitLoss";
             this.txtProfitLoss.Size = new System.Drawing.Size(183, 20);
-            this.txtProfitLoss.TabIndex = 65;
+            this.txtProfitLoss.TabIndex = 14;
             this.txtProfitLoss.Visible = false;
             // 
             // cbCurrency
@@ -387,7 +387,7 @@
             this.cbCurrency.Location = new System.Drawing.Point(268, 528);
             this.cbCurrency.Name = "cbCurrency";
             this.cbCurrency.Size = new System.Drawing.Size(183, 21);
-            this.cbCurrency.TabIndex = 67;
+            this.cbCurrency.TabIndex = 15;
             this.cbCurrency.Visible = false;
             // 
             // label7
@@ -404,6 +404,7 @@
             // 
             // AddFixedAsset
             // 
+            this.AcceptButton = this.btnSubmit;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(539, 617);

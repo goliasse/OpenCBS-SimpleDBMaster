@@ -49,7 +49,7 @@
             this.cmbEventCode.Location = new System.Drawing.Point(124, 12);
             this.cmbEventCode.Name = "cmbEventCode";
             this.cmbEventCode.Size = new System.Drawing.Size(267, 21);
-            this.cmbEventCode.TabIndex = 12;
+            this.cmbEventCode.TabIndex = 0;
             // 
             // lbEventType
             // 
@@ -70,7 +70,7 @@
             this.cmbCreditAccount.Location = new System.Drawing.Point(124, 96);
             this.cmbCreditAccount.Name = "cmbCreditAccount";
             this.cmbCreditAccount.Size = new System.Drawing.Size(267, 21);
-            this.cmbCreditAccount.TabIndex = 7;
+            this.cmbCreditAccount.TabIndex = 3;
             // 
             // cmbDebitAccount
             // 
@@ -80,7 +80,7 @@
             this.cmbDebitAccount.Location = new System.Drawing.Point(124, 69);
             this.cmbDebitAccount.Name = "cmbDebitAccount";
             this.cmbDebitAccount.Size = new System.Drawing.Size(267, 21);
-            this.cmbDebitAccount.TabIndex = 8;
+            this.cmbDebitAccount.TabIndex = 2;
             // 
             // lbCreditAccount
             // 
@@ -123,7 +123,7 @@
             this.cmbCurrency.Location = new System.Drawing.Point(124, 42);
             this.cmbCurrency.Name = "cmbCurrency";
             this.cmbCurrency.Size = new System.Drawing.Size(267, 21);
-            this.cmbCurrency.TabIndex = 11;
+            this.cmbCurrency.TabIndex = 1;
             // 
             // lblBranch
             // 
@@ -149,7 +149,7 @@
             this.cbBranches.Location = new System.Drawing.Point(124, 123);
             this.cbBranches.Name = "cbBranches";
             this.cbBranches.Size = new System.Drawing.Size(267, 24);
-            this.cbBranches.TabIndex = 71;
+            this.cbBranches.TabIndex = 4;
             // 
             // btnAddRule
             // 
@@ -160,12 +160,13 @@
             this.btnAddRule.Location = new System.Drawing.Point(124, 164);
             this.btnAddRule.Name = "btnAddRule";
             this.btnAddRule.Size = new System.Drawing.Size(125, 25);
-            this.btnAddRule.TabIndex = 73;
+            this.btnAddRule.TabIndex = 5;
             this.btnAddRule.Text = "Add";
             this.btnAddRule.Click += new System.EventHandler(this.btnAddRule_Click);
             // 
             // AddCOARule
             // 
+            this.AcceptButton = this.btnAddRule;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(403, 219);

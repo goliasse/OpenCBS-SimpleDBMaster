@@ -65,7 +65,7 @@
             this.txtTransactionNumber.Location = new System.Drawing.Point(206, 333);
             this.txtTransactionNumber.Name = "txtTransactionNumber";
             this.txtTransactionNumber.Size = new System.Drawing.Size(183, 20);
-            this.txtTransactionNumber.TabIndex = 118;
+            this.txtTransactionNumber.TabIndex = 10;
             // 
             // label3
             // 
@@ -85,7 +85,7 @@
             this.cmbStatus.Location = new System.Drawing.Point(206, 411);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(183, 21);
-            this.cmbStatus.TabIndex = 116;
+            this.cmbStatus.TabIndex = 13;
             this.cmbStatus.Visible = false;
             this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
             // 
@@ -94,7 +94,7 @@
             this.txtExpiryDate.Location = new System.Drawing.Point(206, 385);
             this.txtExpiryDate.Name = "txtExpiryDate";
             this.txtExpiryDate.Size = new System.Drawing.Size(183, 20);
-            this.txtExpiryDate.TabIndex = 115;
+            this.txtExpiryDate.TabIndex = 12;
             this.txtExpiryDate.Visible = false;
             // 
             // lblExpiryDate
@@ -114,7 +114,7 @@
             this.txtTotalFee.Location = new System.Drawing.Point(206, 359);
             this.txtTotalFee.Name = "txtTotalFee";
             this.txtTotalFee.Size = new System.Drawing.Size(183, 20);
-            this.txtTotalFee.TabIndex = 113;
+            this.txtTotalFee.TabIndex = 11;
             this.txtTotalFee.TextChanged += new System.EventHandler(this.txtTotalFee_TextChanged);
             this.txtTotalFee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApplicantId_KeyPress);
             // 
@@ -134,7 +134,7 @@
             this.txtValidity.Location = new System.Drawing.Point(208, 132);
             this.txtValidity.Name = "txtValidity";
             this.txtValidity.Size = new System.Drawing.Size(183, 20);
-            this.txtValidity.TabIndex = 111;
+            this.txtValidity.TabIndex = 3;
             this.txtValidity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApplicantId_KeyPress);
             // 
             // label12
@@ -166,7 +166,7 @@
             this.txtIssuingDate.Location = new System.Drawing.Point(206, 304);
             this.txtIssuingDate.Name = "txtIssuingDate";
             this.txtIssuingDate.Size = new System.Drawing.Size(183, 20);
-            this.txtIssuingDate.TabIndex = 108;
+            this.txtIssuingDate.TabIndex = 9;
             // 
             // label10
             // 
@@ -185,7 +185,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(208, 461);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(96, 23);
-            this.btnUpdate.TabIndex = 106;
+            this.btnUpdate.TabIndex = 15;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -195,7 +195,7 @@
             this.btnSubmit.Location = new System.Drawing.Point(67, 461);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(107, 23);
-            this.btnSubmit.TabIndex = 105;
+            this.btnSubmit.TabIndex = 14;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
@@ -204,7 +204,7 @@
             this.txtValue.Location = new System.Drawing.Point(206, 241);
             this.txtValue.Name = "txtValue";
             this.txtValue.Size = new System.Drawing.Size(183, 20);
-            this.txtValue.TabIndex = 104;
+            this.txtValue.TabIndex = 7;
             this.txtValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApplicantId_KeyPress);
             // 
             // label9
@@ -225,7 +225,7 @@
             this.cmbCurrency.Location = new System.Drawing.Point(206, 272);
             this.cmbCurrency.Name = "cmbCurrency";
             this.cmbCurrency.Size = new System.Drawing.Size(183, 21);
-            this.cmbCurrency.TabIndex = 102;
+            this.cmbCurrency.TabIndex = 8;
             // 
             // label8
             // 
@@ -243,7 +243,7 @@
             this.txtInstrumentDescription.Location = new System.Drawing.Point(206, 215);
             this.txtInstrumentDescription.Name = "txtInstrumentDescription";
             this.txtInstrumentDescription.Size = new System.Drawing.Size(183, 20);
-            this.txtInstrumentDescription.TabIndex = 100;
+            this.txtInstrumentDescription.TabIndex = 6;
             // 
             // label7
             // 
@@ -263,7 +263,7 @@
             this.cmbFeePeriod.Location = new System.Drawing.Point(206, 158);
             this.cmbFeePeriod.Name = "cmbFeePeriod";
             this.cmbFeePeriod.Size = new System.Drawing.Size(183, 21);
-            this.cmbFeePeriod.TabIndex = 98;
+            this.cmbFeePeriod.TabIndex = 4;
             // 
             // label6
             // 
@@ -281,7 +281,7 @@
             this.txtFeePerPeriod.Location = new System.Drawing.Point(208, 185);
             this.txtFeePerPeriod.Name = "txtFeePerPeriod";
             this.txtFeePerPeriod.Size = new System.Drawing.Size(183, 20);
-            this.txtFeePerPeriod.TabIndex = 96;
+            this.txtFeePerPeriod.TabIndex = 5;
             this.txtFeePerPeriod.TextChanged += new System.EventHandler(this.txtFeePerPeriod_TextChanged);
             this.txtFeePerPeriod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApplicantId_KeyPress);
             // 
@@ -303,7 +303,7 @@
             this.cmbInstrumentType.Location = new System.Drawing.Point(208, 105);
             this.cmbInstrumentType.Name = "cmbInstrumentType";
             this.cmbInstrumentType.Size = new System.Drawing.Size(183, 21);
-            this.cmbInstrumentType.TabIndex = 94;
+            this.cmbInstrumentType.TabIndex = 2;
             // 
             // label4
             // 
@@ -321,7 +321,7 @@
             this.txtBeneficiaryParty.Location = new System.Drawing.Point(208, 75);
             this.txtBeneficiaryParty.Name = "txtBeneficiaryParty";
             this.txtBeneficiaryParty.Size = new System.Drawing.Size(183, 20);
-            this.txtBeneficiaryParty.TabIndex = 92;
+            this.txtBeneficiaryParty.TabIndex = 1;
             // 
             // label2
             // 
@@ -340,7 +340,7 @@
             this.txtApplicantId.Location = new System.Drawing.Point(208, 44);
             this.txtApplicantId.Name = "txtApplicantId";
             this.txtApplicantId.Size = new System.Drawing.Size(183, 20);
-            this.txtApplicantId.TabIndex = 90;
+            this.txtApplicantId.TabIndex = 0;
             this.txtApplicantId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApplicantId_KeyPress);
             // 
             // label1
@@ -356,6 +356,7 @@
             // 
             // IssueALetterOfCredit
             // 
+            this.AcceptButton = this.btnSubmit;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(429, 531);

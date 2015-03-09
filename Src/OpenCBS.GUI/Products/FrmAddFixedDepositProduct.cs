@@ -358,5 +358,10 @@ namespace OpenCBS.GUI.Products
         {
             KeyPressControl(e);
         }
+
+        private void FrmAddFixedDepositProduct_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

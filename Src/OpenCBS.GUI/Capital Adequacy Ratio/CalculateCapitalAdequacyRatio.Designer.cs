@@ -321,7 +321,7 @@
             this.txtPaidupcapital.Location = new System.Drawing.Point(319, 56);
             this.txtPaidupcapital.Name = "txtPaidupcapital";
             this.txtPaidupcapital.Size = new System.Drawing.Size(183, 20);
-            this.txtPaidupcapital.TabIndex = 64;
+            this.txtPaidupcapital.TabIndex = 0;
             this.txtPaidupcapital.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaidupcapital_KeyPress);
             // 
             // txtStatutoryreserves
@@ -329,7 +329,7 @@
             this.txtStatutoryreserves.Location = new System.Drawing.Point(319, 82);
             this.txtStatutoryreserves.Name = "txtStatutoryreserves";
             this.txtStatutoryreserves.Size = new System.Drawing.Size(183, 20);
-            this.txtStatutoryreserves.TabIndex = 65;
+            this.txtStatutoryreserves.TabIndex = 1;
             this.txtStatutoryreserves.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaidupcapital_KeyPress);
             // 
             // txtRetainedearnings
@@ -337,7 +337,7 @@
             this.txtRetainedearnings.Location = new System.Drawing.Point(319, 109);
             this.txtRetainedearnings.Name = "txtRetainedearnings";
             this.txtRetainedearnings.Size = new System.Drawing.Size(183, 20);
-            this.txtRetainedearnings.TabIndex = 66;
+            this.txtRetainedearnings.TabIndex = 2;
             this.txtRetainedearnings.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaidupcapital_KeyPress);
             // 
             // txtGoodwill
@@ -345,7 +345,7 @@
             this.txtGoodwill.Location = new System.Drawing.Point(319, 136);
             this.txtGoodwill.Name = "txtGoodwill";
             this.txtGoodwill.Size = new System.Drawing.Size(183, 20);
-            this.txtGoodwill.TabIndex = 67;
+            this.txtGoodwill.TabIndex = 3;
             this.txtGoodwill.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaidupcapital_KeyPress);
             // 
             // txtLoanlossreserve
@@ -353,7 +353,7 @@
             this.txtLoanlossreserve.Location = new System.Drawing.Point(319, 214);
             this.txtLoanlossreserve.Name = "txtLoanlossreserve";
             this.txtLoanlossreserve.Size = new System.Drawing.Size(183, 20);
-            this.txtLoanlossreserve.TabIndex = 68;
+            this.txtLoanlossreserve.TabIndex = 4;
             this.txtLoanlossreserve.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaidupcapital_KeyPress);
             // 
             // txtSubordinateddebt
@@ -361,7 +361,7 @@
             this.txtSubordinateddebt.Location = new System.Drawing.Point(319, 242);
             this.txtSubordinateddebt.Name = "txtSubordinateddebt";
             this.txtSubordinateddebt.Size = new System.Drawing.Size(183, 20);
-            this.txtSubordinateddebt.TabIndex = 69;
+            this.txtSubordinateddebt.TabIndex = 5;
             this.txtSubordinateddebt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaidupcapital_KeyPress);
             // 
             // txtRevaluationreserve
@@ -369,7 +369,7 @@
             this.txtRevaluationreserve.Location = new System.Drawing.Point(319, 268);
             this.txtRevaluationreserve.Name = "txtRevaluationreserve";
             this.txtRevaluationreserve.Size = new System.Drawing.Size(183, 20);
-            this.txtRevaluationreserve.TabIndex = 70;
+            this.txtRevaluationreserve.TabIndex = 6;
             this.txtRevaluationreserve.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaidupcapital_KeyPress);
             // 
             // txtPreferenceshares
@@ -377,7 +377,7 @@
             this.txtPreferenceshares.Location = new System.Drawing.Point(319, 294);
             this.txtPreferenceshares.Name = "txtPreferenceshares";
             this.txtPreferenceshares.Size = new System.Drawing.Size(183, 20);
-            this.txtPreferenceshares.TabIndex = 71;
+            this.txtPreferenceshares.TabIndex = 7;
             this.txtPreferenceshares.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaidupcapital_KeyPress);
             // 
             // txtContractrelatedtransaction
@@ -385,7 +385,7 @@
             this.txtContractrelatedtransaction.Location = new System.Drawing.Point(745, 55);
             this.txtContractrelatedtransaction.Name = "txtContractrelatedtransaction";
             this.txtContractrelatedtransaction.Size = new System.Drawing.Size(183, 20);
-            this.txtContractrelatedtransaction.TabIndex = 72;
+            this.txtContractrelatedtransaction.TabIndex = 8;
             this.txtContractrelatedtransaction.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaidupcapital_KeyPress);
             // 
             // txtBidbond
@@ -393,7 +393,7 @@
             this.txtBidbond.Location = new System.Drawing.Point(745, 84);
             this.txtBidbond.Name = "txtBidbond";
             this.txtBidbond.Size = new System.Drawing.Size(183, 20);
-            this.txtBidbond.TabIndex = 73;
+            this.txtBidbond.TabIndex = 9;
             this.txtBidbond.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaidupcapital_KeyPress);
             // 
             // txtPerformancebond
@@ -401,7 +401,7 @@
             this.txtPerformancebond.Location = new System.Drawing.Point(745, 110);
             this.txtPerformancebond.Name = "txtPerformancebond";
             this.txtPerformancebond.Size = new System.Drawing.Size(183, 20);
-            this.txtPerformancebond.TabIndex = 74;
+            this.txtPerformancebond.TabIndex = 10;
             this.txtPerformancebond.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaidupcapital_KeyPress);
             // 
             // txtFinancialguarantee
@@ -409,7 +409,7 @@
             this.txtFinancialguarantee.Location = new System.Drawing.Point(745, 135);
             this.txtFinancialguarantee.Name = "txtFinancialguarantee";
             this.txtFinancialguarantee.Size = new System.Drawing.Size(183, 20);
-            this.txtFinancialguarantee.TabIndex = 75;
+            this.txtFinancialguarantee.TabIndex = 11;
             this.txtFinancialguarantee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaidupcapital_KeyPress);
             // 
             // txtLetterofcredit
@@ -417,7 +417,7 @@
             this.txtLetterofcredit.Location = new System.Drawing.Point(744, 162);
             this.txtLetterofcredit.Name = "txtLetterofcredit";
             this.txtLetterofcredit.Size = new System.Drawing.Size(183, 20);
-            this.txtLetterofcredit.TabIndex = 76;
+            this.txtLetterofcredit.TabIndex = 12;
             this.txtLetterofcredit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaidupcapital_KeyPress);
             // 
             // txtMortgageloan
@@ -425,7 +425,7 @@
             this.txtMortgageloan.Location = new System.Drawing.Point(745, 187);
             this.txtMortgageloan.Name = "txtMortgageloan";
             this.txtMortgageloan.Size = new System.Drawing.Size(183, 20);
-            this.txtMortgageloan.TabIndex = 77;
+            this.txtMortgageloan.TabIndex = 13;
             this.txtMortgageloan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaidupcapital_KeyPress);
             // 
             // txtOtherloans
@@ -433,7 +433,7 @@
             this.txtOtherloans.Location = new System.Drawing.Point(745, 213);
             this.txtOtherloans.Name = "txtOtherloans";
             this.txtOtherloans.Size = new System.Drawing.Size(183, 20);
-            this.txtOtherloans.TabIndex = 78;
+            this.txtOtherloans.TabIndex = 14;
             this.txtOtherloans.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaidupcapital_KeyPress);
             // 
             // txtGovernmentLoans
@@ -441,7 +441,7 @@
             this.txtGovernmentLoans.Location = new System.Drawing.Point(745, 238);
             this.txtGovernmentLoans.Name = "txtGovernmentLoans";
             this.txtGovernmentLoans.Size = new System.Drawing.Size(183, 20);
-            this.txtGovernmentLoans.TabIndex = 79;
+            this.txtGovernmentLoans.TabIndex = 15;
             this.txtGovernmentLoans.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaidupcapital_KeyPress);
             // 
             // txtCash
@@ -449,7 +449,7 @@
             this.txtCash.Location = new System.Drawing.Point(745, 264);
             this.txtCash.Name = "txtCash";
             this.txtCash.Size = new System.Drawing.Size(183, 20);
-            this.txtCash.TabIndex = 80;
+            this.txtCash.TabIndex = 16;
             this.txtCash.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPaidupcapital_KeyPress);
             // 
             // btnCalculateCAR
@@ -458,7 +458,7 @@
             this.btnCalculateCAR.Location = new System.Drawing.Point(395, 368);
             this.btnCalculateCAR.Name = "btnCalculateCAR";
             this.btnCalculateCAR.Size = new System.Drawing.Size(107, 23);
-            this.btnCalculateCAR.TabIndex = 81;
+            this.btnCalculateCAR.TabIndex = 17;
             this.btnCalculateCAR.Text = "Calculate CAR";
             this.btnCalculateCAR.Click += new System.EventHandler(this.btnCalculateCAR_Click);
             // 
@@ -556,6 +556,7 @@
             // 
             // CalculateCapitalAdequacyRatio
             // 
+            this.AcceptButton = this.btnCalculateCAR;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(940, 437);

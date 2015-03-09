@@ -50,7 +50,7 @@
             this.incomeDate.Location = new System.Drawing.Point(159, 25);
             this.incomeDate.Name = "incomeDate";
             this.incomeDate.Size = new System.Drawing.Size(149, 20);
-            this.incomeDate.TabIndex = 73;
+            this.incomeDate.TabIndex = 0;
             // 
             // tbReference
             // 
@@ -58,7 +58,7 @@
             this.tbReference.Location = new System.Drawing.Point(159, 150);
             this.tbReference.Name = "tbReference";
             this.tbReference.Size = new System.Drawing.Size(149, 22);
-            this.tbReference.TabIndex = 72;
+            this.tbReference.TabIndex = 4;
             // 
             // tbIncomeAmount
             // 
@@ -66,7 +66,7 @@
             this.tbIncomeAmount.Location = new System.Drawing.Point(159, 122);
             this.tbIncomeAmount.Name = "tbIncomeAmount";
             this.tbIncomeAmount.Size = new System.Drawing.Size(149, 22);
-            this.tbIncomeAmount.TabIndex = 71;
+            this.tbIncomeAmount.TabIndex = 3;
             this.tbIncomeAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbIncomeAmount_KeyPress);
             // 
             // label4
@@ -119,7 +119,7 @@
             this.btnAddExpense.Location = new System.Drawing.Point(159, 251);
             this.btnAddExpense.Name = "btnAddExpense";
             this.btnAddExpense.Size = new System.Drawing.Size(149, 28);
-            this.btnAddExpense.TabIndex = 66;
+            this.btnAddExpense.TabIndex = 7;
             this.btnAddExpense.Text = "Add Income";
             this.btnAddExpense.UseVisualStyleBackColor = true;
             this.btnAddExpense.Click += new System.EventHandler(this.btnAddExpense_Click);
@@ -130,7 +130,7 @@
             this.tbIncomeDescription.Location = new System.Drawing.Point(159, 90);
             this.tbIncomeDescription.Name = "tbIncomeDescription";
             this.tbIncomeDescription.Size = new System.Drawing.Size(149, 22);
-            this.tbIncomeDescription.TabIndex = 65;
+            this.tbIncomeDescription.TabIndex = 2;
             // 
             // cbIncomeCategory
             // 
@@ -143,7 +143,7 @@
             this.cbIncomeCategory.Location = new System.Drawing.Point(159, 58);
             this.cbIncomeCategory.Name = "cbIncomeCategory";
             this.cbIncomeCategory.Size = new System.Drawing.Size(149, 24);
-            this.cbIncomeCategory.TabIndex = 64;
+            this.cbIncomeCategory.TabIndex = 1;
             // 
             // amountLabel
             // 
@@ -168,7 +168,7 @@
             this.cbBranch.Location = new System.Drawing.Point(159, 214);
             this.cbBranch.Name = "cbBranch";
             this.cbBranch.Size = new System.Drawing.Size(149, 24);
-            this.cbBranch.TabIndex = 87;
+            this.cbBranch.TabIndex = 6;
             // 
             // label7
             // 
@@ -193,7 +193,7 @@
             this.cbCurrency.Location = new System.Drawing.Point(159, 181);
             this.cbCurrency.Name = "cbCurrency";
             this.cbCurrency.Size = new System.Drawing.Size(149, 24);
-            this.cbCurrency.TabIndex = 85;
+            this.cbCurrency.TabIndex = 5;
             // 
             // label6
             // 
@@ -208,6 +208,7 @@
             // 
             // AddIncome
             // 
+            this.AcceptButton = this.btnAddExpense;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(342, 291);

@@ -75,7 +75,7 @@
             this.btnGenerateReport.Location = new System.Drawing.Point(166, 161);
             this.btnGenerateReport.Name = "btnGenerateReport";
             this.btnGenerateReport.Size = new System.Drawing.Size(115, 23);
-            this.btnGenerateReport.TabIndex = 44;
+            this.btnGenerateReport.TabIndex = 2;
             this.btnGenerateReport.Text = "Generate Report";
             this.btnGenerateReport.UseVisualStyleBackColor = true;
             this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
@@ -96,17 +96,18 @@
             this.dtpFrom.Location = new System.Drawing.Point(166, 85);
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(200, 20);
-            this.dtpFrom.TabIndex = 45;
+            this.dtpFrom.TabIndex = 0;
             // 
             // dtpTo
             // 
             this.dtpTo.Location = new System.Drawing.Point(166, 111);
             this.dtpTo.Name = "dtpTo";
             this.dtpTo.Size = new System.Drawing.Size(200, 20);
-            this.dtpTo.TabIndex = 46;
+            this.dtpTo.TabIndex = 1;
             // 
             // SelectStatementPeriod
             // 
+            this.AcceptButton = this.btnGenerateReport;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(392, 216);

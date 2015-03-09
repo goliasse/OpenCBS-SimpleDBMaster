@@ -74,7 +74,7 @@
             this.rbDebit.Location = new System.Drawing.Point(319, 30);
             this.rbDebit.Name = "rbDebit";
             this.rbDebit.Size = new System.Drawing.Size(56, 20);
-            this.rbDebit.TabIndex = 32;
+            this.rbDebit.TabIndex = 1;
             this.rbDebit.Text = "Debit";
             this.rbDebit.CheckedChanged += new System.EventHandler(this.rbDebit_CheckedChanged);
             // 
@@ -87,7 +87,7 @@
             this.rbCredit.Location = new System.Drawing.Point(226, 30);
             this.rbCredit.Name = "rbCredit";
             this.rbCredit.Size = new System.Drawing.Size(60, 20);
-            this.rbCredit.TabIndex = 33;
+            this.rbCredit.TabIndex = 0;
             this.rbCredit.TabStop = true;
             this.rbCredit.Text = "Credit";
             this.rbCredit.CheckedChanged += new System.EventHandler(this.rbCredit_CheckedChanged);
@@ -165,7 +165,7 @@
             this.tbTransactionFees.Location = new System.Drawing.Point(226, 267);
             this.tbTransactionFees.Name = "tbTransactionFees";
             this.tbTransactionFees.Size = new System.Drawing.Size(149, 22);
-            this.tbTransactionFees.TabIndex = 42;
+            this.tbTransactionFees.TabIndex = 9;
             this.tbTransactionFees.Visible = false;
             // 
             // tbAmount
@@ -174,7 +174,7 @@
             this.tbAmount.Location = new System.Drawing.Point(226, 148);
             this.tbAmount.Name = "tbAmount";
             this.tbAmount.Size = new System.Drawing.Size(149, 22);
-            this.tbAmount.TabIndex = 43;
+            this.tbAmount.TabIndex = 5;
             this.tbAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbAmount_KeyPress);
             // 
             // cbFromAccount
@@ -184,7 +184,7 @@
             this.cbFromAccount.Location = new System.Drawing.Point(226, 88);
             this.cbFromAccount.Name = "cbFromAccount";
             this.cbFromAccount.Size = new System.Drawing.Size(149, 24);
-            this.cbFromAccount.TabIndex = 44;
+            this.cbFromAccount.TabIndex = 3;
             this.cbFromAccount.SelectedIndexChanged += new System.EventHandler(this.cbFromAccount_SelectedIndexChanged);
             // 
             // cbToAccount
@@ -194,7 +194,7 @@
             this.cbToAccount.Location = new System.Drawing.Point(226, 118);
             this.cbToAccount.Name = "cbToAccount";
             this.cbToAccount.Size = new System.Drawing.Size(149, 24);
-            this.cbToAccount.TabIndex = 45;
+            this.cbToAccount.TabIndex = 4;
             this.cbToAccount.SelectedIndexChanged += new System.EventHandler(this.cbToAccount_SelectedIndexChanged);
             // 
             // cbMaker
@@ -205,7 +205,7 @@
             this.cbMaker.Location = new System.Drawing.Point(226, 179);
             this.cbMaker.Name = "cbMaker";
             this.cbMaker.Size = new System.Drawing.Size(149, 24);
-            this.cbMaker.TabIndex = 48;
+            this.cbMaker.TabIndex = 6;
             // 
             // cbChecker
             // 
@@ -215,7 +215,7 @@
             this.cbChecker.Location = new System.Drawing.Point(226, 209);
             this.cbChecker.Name = "cbChecker";
             this.cbChecker.Size = new System.Drawing.Size(149, 24);
-            this.cbChecker.TabIndex = 49;
+            this.cbChecker.TabIndex = 7;
             // 
             // btnMakeTransaction
             // 
@@ -223,7 +223,7 @@
             this.btnMakeTransaction.Location = new System.Drawing.Point(66, 321);
             this.btnMakeTransaction.Name = "btnMakeTransaction";
             this.btnMakeTransaction.Size = new System.Drawing.Size(115, 28);
-            this.btnMakeTransaction.TabIndex = 50;
+            this.btnMakeTransaction.TabIndex = 11;
             this.btnMakeTransaction.Text = "Make Transaction";
             this.btnMakeTransaction.UseVisualStyleBackColor = true;
             this.btnMakeTransaction.Click += new System.EventHandler(this.btnExtendPeriod_Click);
@@ -252,7 +252,7 @@
             this.cbTransactionType.Location = new System.Drawing.Point(226, 56);
             this.cbTransactionType.Name = "cbTransactionType";
             this.cbTransactionType.Size = new System.Drawing.Size(149, 24);
-            this.cbTransactionType.TabIndex = 53;
+            this.cbTransactionType.TabIndex = 2;
             this.cbTransactionType.SelectedIndexChanged += new System.EventHandler(this.cbTransactionType_SelectedIndexChanged);
             // 
             // label5
@@ -283,7 +283,7 @@
             this.tbPurpose.Location = new System.Drawing.Point(226, 238);
             this.tbPurpose.Name = "tbPurpose";
             this.tbPurpose.Size = new System.Drawing.Size(149, 22);
-            this.tbPurpose.TabIndex = 55;
+            this.tbPurpose.TabIndex = 8;
             this.tbPurpose.Text = "Default";
             // 
             // tbTransactionDate
@@ -292,7 +292,7 @@
             this.tbTransactionDate.Location = new System.Drawing.Point(226, 293);
             this.tbTransactionDate.Name = "tbTransactionDate";
             this.tbTransactionDate.Size = new System.Drawing.Size(149, 22);
-            this.tbTransactionDate.TabIndex = 57;
+            this.tbTransactionDate.TabIndex = 10;
             this.tbTransactionDate.Visible = false;
             this.tbTransactionDate.WordWrap = false;
             // 

@@ -48,7 +48,7 @@
             this.btnConfirm.Location = new System.Drawing.Point(129, 253);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(107, 23);
-            this.btnConfirm.TabIndex = 24;
+            this.btnConfirm.TabIndex = 7;
             this.btnConfirm.Text = "Confirm";
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
@@ -57,7 +57,7 @@
             this.tbxAmount.Location = new System.Drawing.Point(129, 200);
             this.tbxAmount.Name = "tbxAmount";
             this.tbxAmount.Size = new System.Drawing.Size(183, 20);
-            this.tbxAmount.TabIndex = 21;
+            this.tbxAmount.TabIndex = 6;
             this.tbxAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxAmount_KeyPress);
             // 
             // lblAmount
@@ -77,7 +77,7 @@
             this.rbtnClosingAmt.Location = new System.Drawing.Point(129, 80);
             this.rbtnClosingAmt.Name = "rbtnClosingAmt";
             this.rbtnClosingAmt.Size = new System.Drawing.Size(98, 17);
-            this.rbtnClosingAmt.TabIndex = 17;
+            this.rbtnClosingAmt.TabIndex = 2;
             this.rbtnClosingAmt.Text = "Closing Amount";
             // 
             // rbtnOpeningAmt
@@ -88,7 +88,7 @@
             this.rbtnOpeningAmt.Location = new System.Drawing.Point(129, 57);
             this.rbtnOpeningAmt.Name = "rbtnOpeningAmt";
             this.rbtnOpeningAmt.Size = new System.Drawing.Size(104, 17);
-            this.rbtnOpeningAmt.TabIndex = 16;
+            this.rbtnOpeningAmt.TabIndex = 1;
             this.rbtnOpeningAmt.TabStop = true;
             this.rbtnOpeningAmt.Text = "Opening Amount";
             // 
@@ -99,7 +99,7 @@
             this.cmbCashier.Location = new System.Drawing.Point(129, 126);
             this.cmbCashier.Name = "cmbCashier";
             this.cmbCashier.Size = new System.Drawing.Size(183, 21);
-            this.cmbCashier.TabIndex = 19;
+            this.cmbCashier.TabIndex = 4;
             // 
             // cmbBranch
             // 
@@ -108,7 +108,7 @@
             this.cmbBranch.Location = new System.Drawing.Point(129, 25);
             this.cmbBranch.Name = "cmbBranch";
             this.cmbBranch.Size = new System.Drawing.Size(183, 21);
-            this.cmbBranch.TabIndex = 15;
+            this.cmbBranch.TabIndex = 0;
             // 
             // lblTeller
             // 
@@ -137,7 +137,7 @@
             this.rbtnTopUp.Location = new System.Drawing.Point(129, 103);
             this.rbtnTopUp.Name = "rbtnTopUp";
             this.rbtnTopUp.Size = new System.Drawing.Size(61, 17);
-            this.rbtnTopUp.TabIndex = 26;
+            this.rbtnTopUp.TabIndex = 3;
             this.rbtnTopUp.Text = "Top Up";
             // 
             // cmbCounter
@@ -147,7 +147,7 @@
             this.cmbCounter.Location = new System.Drawing.Point(129, 164);
             this.cmbCounter.Name = "cmbCounter";
             this.cmbCounter.Size = new System.Drawing.Size(183, 21);
-            this.cmbCounter.TabIndex = 28;
+            this.cmbCounter.TabIndex = 5;
             // 
             // label1
             // 
@@ -161,6 +161,7 @@
             // 
             // AllocateCounter
             // 
+            this.AcceptButton = this.btnConfirm;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(365, 320);

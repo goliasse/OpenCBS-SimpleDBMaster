@@ -70,7 +70,7 @@
             this.lvCurrencyAsset.Location = new System.Drawing.Point(77, 48);
             this.lvCurrencyAsset.Name = "lvCurrencyAsset";
             this.lvCurrencyAsset.Size = new System.Drawing.Size(733, 232);
-            this.lvCurrencyAsset.TabIndex = 27;
+            this.lvCurrencyAsset.TabIndex = 1;
             this.lvCurrencyAsset.UseCompatibleStateImageBehavior = false;
             this.lvCurrencyAsset.View = System.Windows.Forms.View.Details;
             // 
@@ -117,7 +117,7 @@
             this.btnAddCurrencyAsset.Location = new System.Drawing.Point(812, 48);
             this.btnAddCurrencyAsset.Name = "btnAddCurrencyAsset";
             this.btnAddCurrencyAsset.Size = new System.Drawing.Size(140, 28);
-            this.btnAddCurrencyAsset.TabIndex = 7;
+            this.btnAddCurrencyAsset.TabIndex = 0;
             this.btnAddCurrencyAsset.Text = "Add Currency Asset";
             this.btnAddCurrencyAsset.Click += new System.EventHandler(this.btnManageCounter_Click);
             // 
@@ -144,12 +144,13 @@
             this.btnDeleteCurrencyAsset.Location = new System.Drawing.Point(812, 82);
             this.btnDeleteCurrencyAsset.Name = "btnDeleteCurrencyAsset";
             this.btnDeleteCurrencyAsset.Size = new System.Drawing.Size(140, 28);
-            this.btnDeleteCurrencyAsset.TabIndex = 35;
+            this.btnDeleteCurrencyAsset.TabIndex = 2;
             this.btnDeleteCurrencyAsset.Text = "Delete Currency Asset";
             this.btnDeleteCurrencyAsset.Click += new System.EventHandler(this.btnDeleteCurrencyAsset_Click);
             // 
             // AddedCurrencyAsset
             // 
+            this.AcceptButton = this.btnAddCurrencyAsset;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(888, 528);

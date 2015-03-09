@@ -85,7 +85,7 @@
             this.lvCurrentAccountProducts.Location = new System.Drawing.Point(0, 0);
             this.lvCurrentAccountProducts.Name = "lvCurrentAccountProducts";
             this.lvCurrentAccountProducts.Size = new System.Drawing.Size(755, 339);
-            this.lvCurrentAccountProducts.TabIndex = 26;
+            this.lvCurrentAccountProducts.TabIndex = 0;
             this.lvCurrentAccountProducts.UseCompatibleStateImageBehavior = false;
             this.lvCurrentAccountProducts.View = System.Windows.Forms.View.Details;
             this.lvCurrentAccountProducts.SelectedIndexChanged += new System.EventHandler(this.lvCurrentAccountProducts_SelectedIndexChanged);
@@ -146,7 +146,7 @@
             this.btnViewProduct.Location = new System.Drawing.Point(6, 129);
             this.btnViewProduct.Name = "btnViewProduct";
             this.btnViewProduct.Size = new System.Drawing.Size(140, 28);
-            this.btnViewProduct.TabIndex = 10;
+            this.btnViewProduct.TabIndex = 4;
             this.btnViewProduct.Text = "View Product";
             this.btnViewProduct.UseVisualStyleBackColor = true;
             this.btnViewProduct.Click += new System.EventHandler(this.btnViewProduct_Click);
@@ -159,7 +159,7 @@
             this.buttonEditProduct.Location = new System.Drawing.Point(6, 65);
             this.buttonEditProduct.Name = "buttonEditProduct";
             this.buttonEditProduct.Size = new System.Drawing.Size(140, 28);
-            this.buttonEditProduct.TabIndex = 9;
+            this.buttonEditProduct.TabIndex = 2;
             this.buttonEditProduct.Text = "Edit product";
             this.buttonEditProduct.Click += new System.EventHandler(this.buttonEditProduct_Click);
             // 
@@ -172,7 +172,7 @@
             this.checkBoxShowDeletedProduct.Location = new System.Drawing.Point(6, 11);
             this.checkBoxShowDeletedProduct.Name = "checkBoxShowDeletedProduct";
             this.checkBoxShowDeletedProduct.Size = new System.Drawing.Size(125, 20);
-            this.checkBoxShowDeletedProduct.TabIndex = 8;
+            this.checkBoxShowDeletedProduct.TabIndex = 0;
             this.checkBoxShowDeletedProduct.Text = "Deleted products";
             this.checkBoxShowDeletedProduct.CheckedChanged += new System.EventHandler(this.checkBoxShowDeletedProduct_CheckedChanged);
             // 
@@ -184,7 +184,7 @@
             this.buttonAddProduct.Location = new System.Drawing.Point(6, 34);
             this.buttonAddProduct.Name = "buttonAddProduct";
             this.buttonAddProduct.Size = new System.Drawing.Size(140, 28);
-            this.buttonAddProduct.TabIndex = 7;
+            this.buttonAddProduct.TabIndex = 1;
             this.buttonAddProduct.Text = "Add product";
             this.buttonAddProduct.Click += new System.EventHandler(this.buttonAddProduct_Click);
             // 
@@ -196,7 +196,7 @@
             this.buttonDeleteProduct.Location = new System.Drawing.Point(6, 96);
             this.buttonDeleteProduct.Name = "buttonDeleteProduct";
             this.buttonDeleteProduct.Size = new System.Drawing.Size(140, 28);
-            this.buttonDeleteProduct.TabIndex = 6;
+            this.buttonDeleteProduct.TabIndex = 3;
             this.buttonDeleteProduct.Text = "Delete product";
             this.buttonDeleteProduct.Click += new System.EventHandler(this.buttonDeleteProduct_Click);
             // 

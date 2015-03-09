@@ -90,7 +90,7 @@
             this.cbExpenseCategory.Location = new System.Drawing.Point(159, 74);
             this.cbExpenseCategory.Name = "cbExpenseCategory";
             this.cbExpenseCategory.Size = new System.Drawing.Size(149, 24);
-            this.cbExpenseCategory.TabIndex = 53;
+            this.cbExpenseCategory.TabIndex = 1;
             // 
             // tbExpenseDescription
             // 
@@ -98,7 +98,7 @@
             this.tbExpenseDescription.Location = new System.Drawing.Point(159, 106);
             this.tbExpenseDescription.Name = "tbExpenseDescription";
             this.tbExpenseDescription.Size = new System.Drawing.Size(149, 22);
-            this.tbExpenseDescription.TabIndex = 54;
+            this.tbExpenseDescription.TabIndex = 2;
             this.tbExpenseDescription.TextChanged += new System.EventHandler(this.tbFDContractCode_TextChanged);
             // 
             // btnAddExpense
@@ -107,7 +107,7 @@
             this.btnAddExpense.Location = new System.Drawing.Point(159, 267);
             this.btnAddExpense.Name = "btnAddExpense";
             this.btnAddExpense.Size = new System.Drawing.Size(149, 28);
-            this.btnAddExpense.TabIndex = 55;
+            this.btnAddExpense.TabIndex = 7;
             this.btnAddExpense.Text = "Add Expense";
             this.btnAddExpense.UseVisualStyleBackColor = true;
             this.btnAddExpense.Click += new System.EventHandler(this.btnAddExpense_Click);
@@ -162,7 +162,7 @@
             this.tbExpenseAmount.Location = new System.Drawing.Point(159, 138);
             this.tbExpenseAmount.Name = "tbExpenseAmount";
             this.tbExpenseAmount.Size = new System.Drawing.Size(149, 22);
-            this.tbExpenseAmount.TabIndex = 60;
+            this.tbExpenseAmount.TabIndex = 3;
             this.tbExpenseAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbExpenseAmount_KeyPress);
             // 
             // tbReference
@@ -171,14 +171,14 @@
             this.tbReference.Location = new System.Drawing.Point(159, 166);
             this.tbReference.Name = "tbReference";
             this.tbReference.Size = new System.Drawing.Size(149, 22);
-            this.tbReference.TabIndex = 61;
+            this.tbReference.TabIndex = 4;
             // 
             // expenseDate
             // 
             this.expenseDate.Location = new System.Drawing.Point(159, 41);
             this.expenseDate.Name = "expenseDate";
             this.expenseDate.Size = new System.Drawing.Size(149, 20);
-            this.expenseDate.TabIndex = 62;
+            this.expenseDate.TabIndex = 0;
             // 
             // cbBranch
             // 
@@ -188,7 +188,7 @@
             this.cbBranch.Location = new System.Drawing.Point(159, 227);
             this.cbBranch.Name = "cbBranch";
             this.cbBranch.Size = new System.Drawing.Size(149, 24);
-            this.cbBranch.TabIndex = 83;
+            this.cbBranch.TabIndex = 6;
             // 
             // label7
             // 
@@ -209,7 +209,7 @@
             this.cbCurrency.Location = new System.Drawing.Point(159, 194);
             this.cbCurrency.Name = "cbCurrency";
             this.cbCurrency.Size = new System.Drawing.Size(149, 24);
-            this.cbCurrency.TabIndex = 81;
+            this.cbCurrency.TabIndex = 5;
             // 
             // label6
             // 
@@ -224,6 +224,7 @@
             // 
             // AddExpensesForm
             // 
+            this.AcceptButton = this.btnAddExpense;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(349, 331);

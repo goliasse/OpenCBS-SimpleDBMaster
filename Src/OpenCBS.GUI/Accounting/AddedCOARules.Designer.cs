@@ -51,7 +51,7 @@
             this.btnView.Location = new System.Drawing.Point(17, 19);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(236, 25);
-            this.btnView.TabIndex = 72;
+            this.btnView.TabIndex = 0;
             this.btnView.Text = "Add Rule";
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
@@ -74,7 +74,7 @@
             this.btnDeleteRule.Location = new System.Drawing.Point(17, 67);
             this.btnDeleteRule.Name = "btnDeleteRule";
             this.btnDeleteRule.Size = new System.Drawing.Size(236, 25);
-            this.btnDeleteRule.TabIndex = 73;
+            this.btnDeleteRule.TabIndex = 1;
             this.btnDeleteRule.Text = "Delete Rule";
             this.btnDeleteRule.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -146,6 +146,7 @@
             // 
             // AddedCOARules
             // 
+            this.AcceptButton = this.btnView;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(916, 678);
