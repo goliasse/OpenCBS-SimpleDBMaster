@@ -52,9 +52,6 @@ namespace CurrentAccountBatch
                 {
                     currentAccountProductHoldingList.Remove(currentAccountProductHoldings);
                 }
-
-
-
             }
 
 

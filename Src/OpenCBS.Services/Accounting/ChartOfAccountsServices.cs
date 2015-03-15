@@ -100,9 +100,9 @@ namespace OpenCBS.Services.Accounting
             return _accountManagement.SearchChartOfAccount(accountType, transactionType, transactionMode);
         }
 
-        public int UpdateChartOfAccount(string eventType, decimal amount, string description, string currency, string branch)
+        public int UpdateChartOfAccount(string eventType, decimal amount, string description, string currency, string branch, string paymentMethod)
         {
-            return _accountManagement.UpdateChartOfAccount(eventType, amount, description, currency, branch);
+            return _accountManagement.UpdateChartOfAccount(eventType, amount, description, currency, branch, paymentMethod);
         }
 
         public int UpdateChartOfAccount(string eventType,string debitAccount, string creditAccount, decimal amount, string description, string currency, string branch)

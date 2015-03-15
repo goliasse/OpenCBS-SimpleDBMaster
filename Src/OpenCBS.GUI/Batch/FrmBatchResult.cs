@@ -27,13 +27,15 @@ namespace OpenCBS.GUI.Batch
         {
 
             lvBatchResults.Items.Clear();
-            int i = 0;
+            int i = 1;
             
             if (batchResultsList != null)
             {
                 foreach (BatchResults batchResult in batchResultsList)
                 {
-                    var item = new ListViewItem(new[] {
+                    if (batchResult != null)
+                    {
+                        var item = new ListViewItem(new[] {
                     i++.ToString(),
                     batchResult.ContractCode,
                     batchResult.MonthYear,
@@ -44,8 +46,8 @@ namespace OpenCBS.GUI.Batch
                     batchResult.FixedOverdraftFeeResult.ToString()
                  
                 });
-                    lvBatchResults.Items.Add(item);
-
+                        lvBatchResults.Items.Add(item);
+                    }
                 }
             }
         }
@@ -68,6 +70,12 @@ namespace OpenCBS.GUI.Batch
             }
 
 
+        }
+
+        private void btnRunABatch_Click(object sender, EventArgs e)
+        {
+            FrmRunABatchForm frmRunABatchForm = new FrmRunABatchForm();
+            frmRunABatchForm.Show();
         }
     }
 }

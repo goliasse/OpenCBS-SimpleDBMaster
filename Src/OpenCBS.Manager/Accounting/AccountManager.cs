@@ -958,7 +958,7 @@ transaction_type = @transactionType AND transaction_mode= @transactionMode  GROU
             return listCOAEvents;
         }
 
-        public int UpdateChartOfAccount(string eventType,decimal amount, string description, string currency, string branch)
+        public int UpdateChartOfAccount(string eventType,decimal amount, string description, string currency, string branch, string paymentMethod)
         {
             int ret = -1;
             using (SqlConnection conn = GetConnection())
@@ -970,6 +970,8 @@ transaction_type = @transactionType AND transaction_mode= @transactionMode  GROU
                     command.AddParam("@branch", branch);
                     command.AddParam("@amount", amount);
                     command.AddParam("@description", description);
+                    command.AddParam("@paymentMethod", paymentMethod);
+                    command.AddParam("@user", User.CurrentUser.UserName);
                     ret = Convert.ToInt32(command.ExecuteScalar());
                 }
             }

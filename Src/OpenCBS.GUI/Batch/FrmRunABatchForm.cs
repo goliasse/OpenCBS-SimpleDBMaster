@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using OpenCBS.CoreDomain.Batch;
 using OpenCBS.Services;
 
 namespace OpenCBS.GUI.Batch
@@ -48,39 +49,40 @@ namespace OpenCBS.GUI.Batch
             if (cbAllBatchDate.Checked)
             {
                 calculationDate = dtpAllBatches.Value.Date;
-                batchService.CurrentAccountInterestBatch(calculationDate);
+                int batchId = ScheduleABatch("All", calculationDate);
+                batchService.CurrentAccountInterestBatch(calculationDate, batchId);
 
-                batchService.ODFeesBatch(calculationDate);
+                batchService.ODFeesBatch(calculationDate, batchId);
 
-                batchService.CommitmentFeesBatch(calculationDate);
+                batchService.CommitmentFeesBatch(calculationDate, batchId);
 
-                batchService.AccountDormantBatch(calculationDate);
+                batchService.AccountDormantBatch(calculationDate, batchId);
 
-                batchService.CurrentAccountManagemntFeeBatch(calculationDate);
+                batchService.CurrentAccountManagemntFeeBatch(calculationDate, batchId);
 
-                batchService.FixedOverdraftFeesBatch(calculationDate);
+                batchService.FixedOverdraftFeesBatch(calculationDate, batchId);
             }
 
             else
             {
-
+                int batchId = ScheduleABatch("All", DateTime.Today.Date);
                 calculationDate = dtpCAIBatch.Value.Date;
-                batchService.CurrentAccountInterestBatch(calculationDate);
+                batchService.CurrentAccountInterestBatch(calculationDate, batchId);
 
                 calculationDate = dtpODICBatch.Value.Date;
-                batchService.ODFeesBatch(calculationDate);
+                batchService.ODFeesBatch(calculationDate, batchId);
 
                 calculationDate = dtpCFCBatch.Value.Date;
-                batchService.CommitmentFeesBatch(calculationDate);
+                batchService.CommitmentFeesBatch(calculationDate, batchId);
 
                 calculationDate = dtpDABatch.Value.Date;
-                batchService.AccountDormantBatch(calculationDate);
+                batchService.AccountDormantBatch(calculationDate, batchId);
 
                 calculationDate = dtpAMFCBatch.Value.Date;
-                batchService.CurrentAccountManagemntFeeBatch(calculationDate);
+                batchService.CurrentAccountManagemntFeeBatch(calculationDate, batchId);
 
                 calculationDate = dtpFODFBatch.Value.Date;
-                batchService.FixedOverdraftFeesBatch(calculationDate);
+                batchService.FixedOverdraftFeesBatch(calculationDate, batchId);
 
                 //batchService.LoanStatementBatch();
 
@@ -110,74 +112,76 @@ namespace OpenCBS.GUI.Batch
             if (cbSelectedBatch.Checked)
             {
                 calculationDate = dtpSelectedBatchs.Value.Date;
+                int batchId = ScheduleABatch("Selected", calculationDate);
                 if (cbCurrentAccountInterest.Checked)
                 {
-                    batchService.CurrentAccountInterestBatch(calculationDate);
+                    batchService.CurrentAccountInterestBatch(calculationDate, batchId);
                 }
 
                 if (cbOverdraftFees.Checked)
                 {
-                    batchService.ODFeesBatch(calculationDate);
+                    batchService.ODFeesBatch(calculationDate, batchId);
                 }
 
                 if (cbCommitmentFees.Checked)
                 {
-                    batchService.CommitmentFeesBatch(calculationDate);
+                    batchService.CommitmentFeesBatch(calculationDate, batchId);
                 }
 
                 if (cbDormantAccount.Checked)
                 {
-                    batchService.AccountDormantBatch(calculationDate);
+                    batchService.AccountDormantBatch(calculationDate, batchId);
                 }
 
                 if (cbCurrentAccMgmtFees.Checked)
                 {
-                    batchService.CurrentAccountManagemntFeeBatch(calculationDate);
+                    batchService.CurrentAccountManagemntFeeBatch(calculationDate, batchId);
                 }
 
 
                 if (cbFixedODFees.Checked)
                 {
-                    batchService.FixedOverdraftFeesBatch(calculationDate);
+                    batchService.FixedOverdraftFeesBatch(calculationDate, batchId);
                 }
                 
             }
             else {
+                int batchId = ScheduleABatch("Selected", DateTime.Today.Date);
                 if (cbCurrentAccountInterest.Checked)
                 {
                     calculationDate = dtpCAIBatch.Value.Date;
-                    batchService.CurrentAccountInterestBatch(calculationDate);
+                    batchService.CurrentAccountInterestBatch(calculationDate, batchId);
                 }
 
                 if (cbOverdraftFees.Checked)
                 {
                     calculationDate = dtpODICBatch.Value.Date;
-                    batchService.ODFeesBatch(calculationDate);
+                    batchService.ODFeesBatch(calculationDate, batchId);
                 }
 
                 if (cbCommitmentFees.Checked)
                 {
                     calculationDate = dtpCFCBatch.Value.Date;
-                    batchService.CommitmentFeesBatch(calculationDate);
+                    batchService.CommitmentFeesBatch(calculationDate, batchId);
                 }
 
                 if (cbDormantAccount.Checked)
                 {
                     calculationDate = dtpDABatch.Value.Date;
-                    batchService.AccountDormantBatch(calculationDate);
+                    batchService.AccountDormantBatch(calculationDate, batchId);
                 }
 
                 if (cbCurrentAccMgmtFees.Checked)
                 {
                     calculationDate = dtpAMFCBatch.Value.Date;
-                    batchService.CurrentAccountManagemntFeeBatch(calculationDate);
+                    batchService.CurrentAccountManagemntFeeBatch(calculationDate, batchId);
                 }
 
 
                 if (cbFixedODFees.Checked)
                 {
                     calculationDate = dtpFODFBatch.Value.Date;
-                    batchService.FixedOverdraftFeesBatch(calculationDate);
+                    batchService.FixedOverdraftFeesBatch(calculationDate, batchId);
                 }
                 
             }
@@ -226,12 +230,48 @@ namespace OpenCBS.GUI.Batch
 
         }
 
+        private int ScheduleABatch(string batchName, DateTime batchDate)
+        {
+            ScheduledBatch scheduledBatches = new ScheduledBatch();
+            scheduledBatches.BatchName = batchName;
+            scheduledBatches.ScheduledDate = batchDate.Date;
+            scheduledBatches.BatchResult = 0;
+            scheduledBatches.LogFilePath = "";
+            scheduledBatches.NoOfRuns = 0;
+            scheduledBatches.BatchMode = "Manual";
+            int ret = batchService.ScheduleABatch(scheduledBatches);
+            if (ret >= 1)
+                MessageBox.Show("Batch has been scheduled successfully. Batch ID is "+ret);
+            else if (ret == -1)
+                MessageBox.Show("Duplicate Batch.");
+            else
+                MessageBox.Show("Some error ocurred.");
+
+            return ret;
+        }
+
+        private void UpdateBatchStatus(int batchId, int batchResult, int noOfRuns)
+        {
+            batchService.UpdateScheduledBatches(batchId, batchResult, noOfRuns);
+        }
+
         private void btnCurrentAccountInterest_Click(object sender, EventArgs e)
         {
             string old = btnCurrentAccountInterest.Text;
             btnCurrentAccountInterest.Text = batchIsRunning;
             calculationDate = dtpCAIBatch.Value.Date;
-            batchService.CurrentAccountInterestBatch(calculationDate);
+            int batchId = ScheduleABatch("CurrentAccountInterestBatch", calculationDate);
+            int i = batchService.CurrentAccountInterestBatch(calculationDate, batchId);
+            if (i == 1)
+            {
+                MessageBox.Show("Batch has been executed successfully. Batch Id is " + batchId);
+                UpdateBatchStatus(batchId, 1, 1);
+            }
+            else
+            {
+                MessageBox.Show("Some error ocurred while Batch execution. Batch Id is " + batchId);
+                UpdateBatchStatus(batchId, 0, 1);
+            }
             btnCurrentAccountInterest.Text = old;
         }
 
@@ -240,7 +280,18 @@ namespace OpenCBS.GUI.Batch
             string old = btnOverdraftFees.Text;
             btnOverdraftFees.Text = batchIsRunning;
             calculationDate = dtpODICBatch.Value.Date;
-            batchService.ODFeesBatch(calculationDate);
+            int batchId = ScheduleABatch("OverdraftInterestCalculationBatch", calculationDate);
+            int i = batchService.ODFeesBatch(calculationDate, batchId);
+            if (i == 1)
+            {
+                MessageBox.Show("Batch has been executed successfully. Batch Id is " + batchId);
+                UpdateBatchStatus(batchId, 1, 1);
+            }
+            else
+            {
+                MessageBox.Show("Some error ocurred while Batch execution. Batch Id is " + batchId);
+                UpdateBatchStatus(batchId, 0, 1);
+            }
             btnOverdraftFees.Text = old;
         }
 
@@ -249,7 +300,18 @@ namespace OpenCBS.GUI.Batch
             string old = btnCommitmentFees.Text;
             btnCommitmentFees.Text = batchIsRunning;
             calculationDate = dtpCFCBatch.Value.Date;
-            batchService.CommitmentFeesBatch(calculationDate);
+            int batchId = ScheduleABatch("OverdraftCommitmentFeeBatch", calculationDate);
+            int i = batchService.CommitmentFeesBatch(calculationDate, batchId);
+            if (i == 1)
+            {
+                MessageBox.Show("Batch has been executed successfully. Batch Id is " + batchId);
+                UpdateBatchStatus(batchId, 1, 1);
+            }
+            else
+            {
+                MessageBox.Show("Some error ocurred while Batch execution. Batch Id is " + batchId);
+                UpdateBatchStatus(batchId, 0, 1);
+            }
             btnCommitmentFees.Text = old;
         }
 
@@ -258,7 +320,18 @@ namespace OpenCBS.GUI.Batch
             string old = btnDormantAccount.Text;
             btnDormantAccount.Text = batchIsRunning;
             calculationDate = dtpDABatch.Value.Date;
-            batchService.AccountDormantBatch(calculationDate);
+            int batchId = ScheduleABatch("AccountDormantBatch", calculationDate);
+            int i = batchService.AccountDormantBatch(calculationDate, batchId);
+            if (i == 1)
+            {
+                MessageBox.Show("Batch has been executed successfully. Batch Id is " + batchId);
+                UpdateBatchStatus(batchId, 1, 1);
+            }
+            else
+            {
+                MessageBox.Show("Some error ocurred while Batch execution. Batch Id is " + batchId);
+                UpdateBatchStatus(batchId, 0, 1);
+            }
             btnDormantAccount.Text = old;
         }
 
@@ -267,7 +340,18 @@ namespace OpenCBS.GUI.Batch
             string old = btnAccountManagementFees.Text;
             btnAccountManagementFees.Text = batchIsRunning;
             calculationDate = dtpAMFCBatch.Value.Date;
-            batchService.CurrentAccountManagemntFeeBatch(calculationDate);
+            int batchId = ScheduleABatch("AccountManagementFeeBatch", calculationDate);
+            int i = batchService.CurrentAccountManagemntFeeBatch(calculationDate, batchId);
+            if (i == 1)
+            {
+                MessageBox.Show("Batch has been executed successfully. Batch Id is " + batchId);
+                UpdateBatchStatus(batchId, 1, 1);
+            }
+            else
+            {
+                MessageBox.Show("Some error ocurred while Batch execution. Batch Id is " + batchId);
+                UpdateBatchStatus(batchId, 0, 1);
+            }
             btnAccountManagementFees.Text = old;
         }
 
@@ -276,7 +360,18 @@ namespace OpenCBS.GUI.Batch
             string old = btnFixedODFees.Text;
             btnFixedODFees.Text = batchIsRunning;
             calculationDate = dtpFODFBatch.Value.Date;
-            batchService.FixedOverdraftFeesBatch(calculationDate);
+            int batchId = ScheduleABatch("FixedOverdraftFeeBatch", calculationDate);
+            int i = batchService.FixedOverdraftFeesBatch(calculationDate, batchId);
+            if (i == 1)
+            {
+                MessageBox.Show("Batch has been executed successfully. Batch Id is " + batchId);
+                UpdateBatchStatus(batchId, 1, 1);
+            }
+            else
+            {
+                MessageBox.Show("Some error ocurred while Batch execution. Batch Id is " + batchId);
+                UpdateBatchStatus(batchId, 0, 1);
+            }
             btnFixedODFees.Text = old;
         }
 

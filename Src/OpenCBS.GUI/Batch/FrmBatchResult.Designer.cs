@@ -32,16 +32,17 @@
             this.lvBatchResults = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dtpSelectMonthYear = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.btnViewResult = new System.Windows.Forms.Button();
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txtContractCode = new System.Windows.Forms.TextBox();
+            this.btnRunABatch = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label5
@@ -73,7 +74,7 @@
             this.lvBatchResults.GridLines = true;
             this.lvBatchResults.Location = new System.Drawing.Point(6, 37);
             this.lvBatchResults.Name = "lvBatchResults";
-            this.lvBatchResults.Size = new System.Drawing.Size(701, 599);
+            this.lvBatchResults.Size = new System.Drawing.Size(701, 499);
             this.lvBatchResults.TabIndex = 57;
             this.lvBatchResults.UseCompatibleStateImageBehavior = false;
             this.lvBatchResults.View = System.Windows.Forms.View.Details;
@@ -88,6 +89,11 @@
             this.columnHeader2.Text = "Contract Code";
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader2.Width = 117;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Batch Date";
+            this.columnHeader8.Width = 80;
             // 
             // columnHeader3
             // 
@@ -113,6 +119,10 @@
             this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader6.Width = 122;
             // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Fixed Overdraft Fee Batch";
+            // 
             // dtpSelectMonthYear
             // 
             this.dtpSelectMonthYear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -120,7 +130,7 @@
             this.dtpSelectMonthYear.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpSelectMonthYear.Location = new System.Drawing.Point(713, 59);
             this.dtpSelectMonthYear.Name = "dtpSelectMonthYear";
-            this.dtpSelectMonthYear.Size = new System.Drawing.Size(141, 20);
+            this.dtpSelectMonthYear.Size = new System.Drawing.Size(79, 20);
             this.dtpSelectMonthYear.TabIndex = 58;
             // 
             // label2
@@ -145,15 +155,6 @@
             this.btnViewResult.Text = "View Result";
             this.btnViewResult.Click += new System.EventHandler(this.btnViewResult_Click);
             // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Fixed Overdraft Fee Batch";
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Batch Date";
-            this.columnHeader8.Width = 80;
-            // 
             // txtContractCode
             // 
             this.txtContractCode.Location = new System.Drawing.Point(713, 85);
@@ -161,18 +162,29 @@
             this.txtContractCode.Size = new System.Drawing.Size(141, 20);
             this.txtContractCode.TabIndex = 61;
             // 
-            // BatchResult
+            // btnRunABatch
+            // 
+            this.btnRunABatch.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnRunABatch.Location = new System.Drawing.Point(713, 143);
+            this.btnRunABatch.Name = "btnRunABatch";
+            this.btnRunABatch.Size = new System.Drawing.Size(141, 26);
+            this.btnRunABatch.TabIndex = 62;
+            this.btnRunABatch.Text = "Run A Batch";
+            this.btnRunABatch.Click += new System.EventHandler(this.btnRunABatch_Click);
+            // 
+            // FrmBatchResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(916, 678);
+            this.Controls.Add(this.btnRunABatch);
             this.Controls.Add(this.txtContractCode);
             this.Controls.Add(this.btnViewResult);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtpSelectMonthYear);
             this.Controls.Add(this.lvBatchResults);
             this.Controls.Add(this.label5);
-            this.Name = "BatchResult";
+            this.Name = "FrmBatchResult";
             this.Text = "Batch Result";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -195,5 +207,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.TextBox txtContractCode;
+        private System.Windows.Forms.Button btnRunABatch;
     }
 }

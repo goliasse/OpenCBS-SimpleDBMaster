@@ -118,6 +118,7 @@ namespace OpenCBS.Manager.Products
 
         public int TransferFinalAmount(FixedDepositProductHoldings productHolding)
         {
+            
             CurrentAccountTransactions finalAmountTransaction = new CurrentAccountTransactions();
             finalAmountTransaction.Amount = productHolding.FinalAmount;
             finalAmountTransaction.Checker = "Final Amount";
@@ -138,8 +139,8 @@ namespace OpenCBS.Manager.Products
             finalAmountTransaction.fromFDAccount = FetchProduct(finalAmountTransaction.FromAccount);
             string branch = productHolding.FixedDepositContractCode.Split('/')[0];
 
-            accountManager.UpdateChartOfAccount("CFDIN", productHolding.FinalAmount.Value - productHolding.InitialAmount.Value, "Interest paid for FD " + productHolding.FixedDepositContractCode, productHolding.FixedDepositProduct.Currency.Name, branch);
-            accountManager.UpdateChartOfAccount("CFDDB", productHolding.FinalAmount.Value, "Final amount paid for FD " + productHolding.FixedDepositContractCode, productHolding.FixedDepositProduct.Currency.Name, branch);
+            accountManager.UpdateChartOfAccount("CFDIN", productHolding.FinalAmount.Value - productHolding.InitialAmount.Value, "Interest paid for FD " + productHolding.FixedDepositContractCode, productHolding.FixedDepositProduct.Currency.Name, branch, productHolding.FinalAmountPaymentMethod);
+            accountManager.UpdateChartOfAccount("CFDDB", productHolding.FinalAmount.Value, "Final amount paid for FD " + productHolding.FixedDepositContractCode, productHolding.FixedDepositProduct.Currency.Name, branch, productHolding.FinalAmountPaymentMethod);
                 
 
             return currentAccountTransactionManager.MakeFDTransaction(finalAmountTransaction);

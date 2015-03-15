@@ -1392,12 +1392,14 @@ namespace OpenCBS.GUI
 
         private void scheduleABatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FrmScheduledBatches frmScheduledBatches = new FrmScheduledBatches() { MdiParent = this };
+            frmScheduledBatches.Show();
         }
 
         private void batchResultsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FrmBatchResult frmBatchResult = new FrmBatchResult() { MdiParent = this };
+            frmBatchResult.Show();
         }
     }
 }

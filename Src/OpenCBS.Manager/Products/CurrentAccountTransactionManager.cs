@@ -485,6 +485,7 @@ AND ([transaction_type] = @maker))";
 
 public int DebitFeeTransaction(CurrentAccountTransactions currentAccountTransactions)
         {
+    
             int ret = -99;
             using (SqlConnection conn = GetConnection())
             {
@@ -527,6 +528,7 @@ public int DebitFeeTransaction(CurrentAccountTransactions currentAccountTransact
 
 public int MakeFDTransaction(CurrentAccountTransactions fixedDepositTransactions)
 {
+    
     int ret = -99;
     using (SqlConnection conn = GetConnection())
     {
@@ -557,7 +559,7 @@ public int MakeFDTransaction(CurrentAccountTransactions fixedDepositTransactions
                 fixedDepositEvent.EventCode = "FDCT";
                 fixedDepositEvent.Description = "Fixed deposit Credit transaction #" + ret;
                 //Update chart of account
-                accountManager.UpdateChartOfAccount("CFDCR", fixedDepositTransactions.Amount.Value, fixedDepositTransactions.PurposeOfTransfer, fixedDepositProductHolding.FixedDepositProduct.Currency.Name, branch);
+                accountManager.UpdateChartOfAccount("CFDCR", fixedDepositTransactions.Amount.Value, fixedDepositTransactions.PurposeOfTransfer, fixedDepositProductHolding.FixedDepositProduct.Currency.Name, branch, fixedDepositProductHolding.InitialAmountPaymentMethod);
            
                 
             }
@@ -569,7 +571,7 @@ public int MakeFDTransaction(CurrentAccountTransactions fixedDepositTransactions
                 fixedDepositEvent.EventCode = "FDDT";
                 fixedDepositEvent.Description = "Fixed deposit Debit transaction #" + ret;
                 //Update chart of account
-                accountManager.UpdateChartOfAccount("CFDDB", fixedDepositTransactions.Amount.Value, fixedDepositTransactions.PurposeOfTransfer, fixedDepositProductHolding.FixedDepositProduct.Currency.Name, branch);
+                accountManager.UpdateChartOfAccount("CFDDB", fixedDepositTransactions.Amount.Value, fixedDepositTransactions.PurposeOfTransfer, fixedDepositProductHolding.FixedDepositProduct.Currency.Name, branch, fixedDepositProductHolding.FinalAmountPaymentMethod);
            
             }
             fixedDepositEventManager.SaveFixedDepositEvent(fixedDepositEvent);

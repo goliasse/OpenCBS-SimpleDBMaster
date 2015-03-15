@@ -14,6 +14,7 @@ namespace OpenCBS.CoreDomain.Batch
         public int CommitmentFeeResult { get; set; }
         public int AccountManagementFeeResult { get; set; }
         public int FixedOverdraftFeeResult { get; set; }
+        public int BatchId { get; set; }
 
     }
 }

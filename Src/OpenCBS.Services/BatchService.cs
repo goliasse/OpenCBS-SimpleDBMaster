@@ -27,29 +27,29 @@ namespace OpenCBS.Services
                 
             }
 
-            public int CurrentAccountInterestBatch(DateTime calculationDate)
+            public int CurrentAccountInterestBatch(DateTime calculationDate, int batchId)
 {
-    return _batchManager.CurrentAccountInterestBatch(calculationDate);
+    return _batchManager.CurrentAccountInterestBatch(calculationDate,batchId);
 }
-            public int ODFeesBatch(DateTime calculationDate)
+            public int ODFeesBatch(DateTime calculationDate,int batchId)
 {
-    return _batchManager.OverdraftInterestCalculationBatch(calculationDate);
+    return _batchManager.OverdraftInterestCalculationBatch(calculationDate, batchId);
 }
-            public int CommitmentFeesBatch(DateTime calculationDate)
+            public int CommitmentFeesBatch(DateTime calculationDate,int batchId)
     {
-        return _batchManager.CommitmentFeesCalculationBatch(calculationDate);
+        return _batchManager.CommitmentFeesCalculationBatch(calculationDate, batchId);
 }
-            public int AccountDormantBatch(DateTime calculationDate)
+            public int AccountDormantBatch(DateTime calculationDate, int batchId)
     {
-        return _batchManager.AccountDormantBatch(calculationDate);
+        return _batchManager.AccountDormantBatch(calculationDate, batchId);
 }
-            public int CurrentAccountManagemntFeeBatch(DateTime calculationDate)
+            public int CurrentAccountManagemntFeeBatch(DateTime calculationDate, int batchId)
     {
-        return _batchManager.CurrentAccountManagemntFeeBatch(calculationDate);
+        return _batchManager.CurrentAccountManagemntFeeBatch(calculationDate, batchId);
 }
-            public int FixedOverdraftFeesBatch(DateTime calculationDate)
+            public int FixedOverdraftFeesBatch(DateTime calculationDate, int batchId)
             {
-                return _batchManager.FixedOverdraftFeesBatch(calculationDate);
+                return _batchManager.FixedOverdraftFeesBatch(calculationDate, batchId);
             }
 
 public int LoanStatementBatch()
@@ -96,7 +96,29 @@ public BatchResults FetchBatchResults(string contractCode, string monthYear)
     return _batchManager.FetchBatchResults(contractCode, monthYear);
 }
 
+public int ScheduleABatch(ScheduledBatch scheduledBatches)
+{
+    return _batchManager.ScheduleABatch(scheduledBatches);
+}
 
-        
+
+public void UpdateScheduledBatches(int batchId, int batchResult, int noOfRuns)
+{
+    _batchManager.UpdateScheduledBatches(batchId, batchResult, noOfRuns);
+}
+ 
+public ScheduledBatch FetchScheduledBatches(int id)
+{
+    return _batchManager.FetchScheduledBatches(id);
+}
+public List<ScheduledBatch> FetchAllScheduledBatches()
+{
+    return _batchManager.FetchAllScheduledBatches();
+}
+
+public List<ScheduledBatch> FetchAllScheduledBatches(DateTime scheduleBatchDate)
+{
+    return _batchManager.FetchAllScheduledBatches(scheduleBatchDate);
+}
     }
 }
