@@ -55,6 +55,7 @@ using OpenCBS.GUI.Report_Browser;
 using OpenCBS.GUI.TellerManagement;
 using OpenCBS.GUI.Tools;
 using OpenCBS.GUI.UserControl;
+using OpenCBS.GUI.Batch;
 using OpenCBS.MultiLanguageRessources;
 using OpenCBS.Reports;
 using OpenCBS.Reports.Forms;
@@ -1376,6 +1377,12 @@ namespace OpenCBS.GUI
         private void mnuChartOfAccounts_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void runABatchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RunABatchForm runABatchForm = new RunABatchForm();
+            runABatchForm.Show();
         }
     }
 }

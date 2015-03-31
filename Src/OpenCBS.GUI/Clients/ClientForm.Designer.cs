@@ -811,6 +811,7 @@ namespace OpenCBS.GUI.Clients
             this.menuPendingSavingEvents = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemConfirmPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCancelPendingSavingEvent = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblODLimitMinMax = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer10)).BeginInit();
             this.splitContainer10.Panel1.SuspendLayout();
             this.splitContainer10.Panel2.SuspendLayout();
@@ -4779,6 +4780,7 @@ namespace OpenCBS.GUI.Clients
             // tabPageOverdraft
             // 
             this.tabPageOverdraft.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageOverdraft.Controls.Add(this.lblODLimitMinMax);
             this.tabPageOverdraft.Controls.Add(this.tbOverdraftDate);
             this.tabPageOverdraft.Controls.Add(this.lblOverdraftAppliedDate);
             this.tabPageOverdraft.Controls.Add(this.groupBox6);
@@ -5831,6 +5833,11 @@ namespace OpenCBS.GUI.Clients
             resources.ApplyResources(this.menuItemCancelPendingSavingEvent, "menuItemCancelPendingSavingEvent");
             this.menuItemCancelPendingSavingEvent.Click += new System.EventHandler(this.menuItemCancelPendingSavingEvent_Click);
             // 
+            // lblODLimitMinMax
+            // 
+            resources.ApplyResources(this.lblODLimitMinMax, "lblODLimitMinMax");
+            this.lblODLimitMinMax.Name = "lblODLimitMinMax";
+            // 
             // ClientForm
             // 
             resources.ApplyResources(this, "$this");
@@ -6764,5 +6771,6 @@ namespace OpenCBS.GUI.Clients
         private Button btnCAChargesNotice;
         private Button btnGenerateLoanStatement;
         private Button btnCurrentChargesNotice;
+        private Label lblODLimitMinMax;
     }
 }

@@ -193,7 +193,7 @@
             this.btnOverdraftFees.Name = "btnOverdraftFees";
             this.btnOverdraftFees.Size = new System.Drawing.Size(182, 26);
             this.btnOverdraftFees.TabIndex = 19;
-            this.btnOverdraftFees.Text = "Overdraft Fees";
+            this.btnOverdraftFees.Text = "Overdraft Interest";
             this.btnOverdraftFees.Click += new System.EventHandler(this.btnOverdraftFees_Click);
             // 
             // btnCurrentAccountInterest

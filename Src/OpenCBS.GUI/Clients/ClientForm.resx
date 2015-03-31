@@ -7462,7 +7462,7 @@ Max:
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAS
-        HQAAAk1TRnQBSQFMAgEBBQEAAZQBJwGUAScBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        HQAAAk1TRnQBSQFMAgEBBQEAAaQBJwGkAScBIAEAASABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABgAMAAUADAAEBAQABCAYAASAYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -15158,6 +15158,39 @@ Max:
   <data name="&gt;&gt;tabPageFees.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="lblODLimitMinMax.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 7pt</value>
+  </data>
+  <data name="lblODLimitMinMax.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblODLimitMinMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>323, 8</value>
+  </data>
+  <data name="lblODLimitMinMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 29</value>
+  </data>
+  <data name="lblODLimitMinMax.TabIndex" type="System.Int32, mscorlib">
+    <value>66</value>
+  </data>
+  <data name="lblODLimitMinMax.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="lblODLimitMinMax.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;lblODLimitMinMax.Name" xml:space="preserve">
+    <value>lblODLimitMinMax</value>
+  </data>
+  <data name="&gt;&gt;lblODLimitMinMax.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblODLimitMinMax.Parent" xml:space="preserve">
+    <value>tabPageOverdraft</value>
+  </data>
+  <data name="&gt;&gt;lblODLimitMinMax.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="tbOverdraftDate.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -15186,7 +15219,7 @@ Max:
     <value>tabPageOverdraft</value>
   </data>
   <data name="&gt;&gt;tbOverdraftDate.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="lblOverdraftAppliedDate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -15222,7 +15255,7 @@ Max:
     <value>tabPageOverdraft</value>
   </data>
   <data name="&gt;&gt;lblOverdraftAppliedDate.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="lblCACommitmentFeesMinMax.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 7pt</value>
@@ -15477,7 +15510,7 @@ Max:
     <value>tabPageOverdraft</value>
   </data>
   <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="lblCAODInterestMinMax.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 7pt</value>
@@ -15732,16 +15765,16 @@ Max:
     <value>tabPageOverdraft</value>
   </data>
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="tbOverdraftAmount.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
   </data>
   <data name="tbOverdraftAmount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>287, 9</value>
+    <value>217, 9</value>
   </data>
   <data name="tbOverdraftAmount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
+    <value>100, 22</value>
   </data>
   <data name="tbOverdraftAmount.TabIndex" type="System.Int32, mscorlib">
     <value>49</value>
@@ -15756,7 +15789,7 @@ Max:
     <value>tabPageOverdraft</value>
   </data>
   <data name="&gt;&gt;tbOverdraftAmount.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="label35.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -15768,7 +15801,7 @@ Max:
     <value>NoControl</value>
   </data>
   <data name="label35.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 15</value>
+    <value>29, 12</value>
   </data>
   <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 16</value>
@@ -15789,7 +15822,7 @@ Max:
     <value>tabPageOverdraft</value>
   </data>
   <data name="&gt;&gt;label35.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="lblCAOverdraftFeesMinMax.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 7pt</value>
@@ -16044,16 +16077,16 @@ Max:
     <value>tabPageOverdraft</value>
   </data>
   <data name="&gt;&gt;gtOverdraftFees.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="tabPageOverdraft.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+    <value>4, 25</value>
   </data>
   <data name="tabPageOverdraft.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageOverdraft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1263, 310</value>
+    <value>1263, 307</value>
   </data>
   <data name="tabPageOverdraft.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>

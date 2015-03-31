@@ -26,26 +26,27 @@ namespace OpenCBS.Services
                 
             }
 
-public int CurrentAccountInterestBatch()
+            public int CurrentAccountInterestBatch(DateTime calculationDate)
 {
-    return _batchManager.CurrentAccountInterestBatch();
+    return _batchManager.CurrentAccountInterestBatch(calculationDate);
 }
-public int ODFeesBatch()
+            public int ODFeesBatch(DateTime calculationDate)
 {
-    return _batchManager.ODFeesBatch();
+    return _batchManager.OverdraftInterestCalculationBatch(calculationDate);
 }
-public int CommitmentFeesBatch()
+            public int CommitmentFeesBatch(DateTime calculationDate)
     {
-        return _batchManager.CommitmentFeesBatch();
+        return _batchManager.CommitmentFeesCalculationBatch(calculationDate);
 }
-public int AccountDormantBatch()
+            public int AccountDormantBatch(DateTime calculationDate)
     {
-        return _batchManager.AccountDormantBatch();
+        return _batchManager.AccountDormantBatch(calculationDate);
 }
-public int CurrentAccountManagemntFeeBatch()
+            public int CurrentAccountManagemntFeeBatch(DateTime calculationDate)
     {
-        return _batchManager.CurrentAccountManagemntFeeBatch();
+        return _batchManager.CurrentAccountManagemntFeeBatch(calculationDate);
 }
+
 public int LoanStatementBatch()
     {
         return _batchManager.LoanStatementBatch();

@@ -9017,6 +9017,24 @@ namespace OpenCBS.GUI.Clients
                               currentAccountProduct.ClosingFeesType == OCurrentAccount.FeeTypeFlat ? currentAccountProduct.Currency.Code : "%");
                     }
 
+                    if (currentAccountProduct.OverdraftLimit.HasValue)
+                    {
+
+                        lblODLimitMinMax.Text = string.Format("{0} {1}",
+                       (currentAccountProduct.OverdraftLimit.GetFormatedValue(currentAccountProduct.Currency.UseCents)), currentAccountProduct.Currency.Code);
+
+                        tbOverdraftAmount.Text = currentAccountProduct.OverdraftLimit.GetFormatedValue(currentAccountProduct.Currency.UseCents);
+                        tbOverdraftAmount.Enabled = false;
+                    }
+                    else
+                    {
+                   
+                        lblODLimitMinMax.Text = string.Format("{0}{1} {4}\r\n{2}{3} {4}",
+                              "Min ", (currentAccountProduct.OverdraftLimitMin.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
+                              "Max ", (currentAccountProduct.OverdraftLimitMax.GetFormatedValue(currentAccountProduct.Currency.UseCents)),
+                              currentAccountProduct.Currency.Code);
+                    }
+
                     ApplicationSettingsServices applicationSettingsServices = ServicesProvider.GetInstance().GetApplicationSettingsServices();
                     lblLIBOR.Text = "LIBOR " + applicationSettingsServices.GetLIBORRate(DateTime.Today, "Yearly");
 

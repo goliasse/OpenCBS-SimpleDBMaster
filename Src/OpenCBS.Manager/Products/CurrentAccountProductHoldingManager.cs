@@ -1058,6 +1058,24 @@ return currentAccountProductHolding;
              return listTransaction;
          }
 
+         public string GetDormantAccount(string fromAccount)
+         {
+             string ret = "";
+             using (SqlConnection conn = GetConnection())
+             {
+                 using (OpenCbsCommand command = new OpenCbsCommand("GetDormantAccount", conn).AsStoredProcedure())
+                 {
+
+                     command.AddParam("@from_account", fromAccount);
+
+
+                     ret = Convert.ToString(command.ExecuteScalar());
+
+                 }
+             }
+
+             return ret;
+         }
 
         public decimal CurrentAccountOverdraftInterestCalculation(DateTime calculationDate, CurrentAccountProductHoldings productHolding)
         {
@@ -1066,9 +1084,9 @@ return currentAccountProductHolding;
 
             string contractCode = productHolding.CurrentAccountContractCode;
 
-            string q = @" Select From_Account As Account, purpose_of_transfer, transaction_mode, Transaction_Date, Amount, From_Account_Balance as Balance From CurrentAccountTransactions Where From_Account = @contractCode  And Month(Transaction_Date) = @month
+            string q = @" Select From_Account As Account, purpose_of_transfer, transaction_mode as mode, Transaction_Date, Amount, From_Account_Balance as Balance From CurrentAccountTransactions Where From_Account = @contractCode  And Month(Transaction_Date) = @month
                            UNION
-                        Select To_Account As Account, purpose_of_transfer, transaction_mode, Transaction_Date, Amount, To_Account_Balance as Balance From CurrentAccountTransactions Where To_Account = @contractCode And Month(Transaction_Date) = @month order By Transaction_Date";
+                        Select To_Account As Account, purpose_of_transfer, transaction_mode as mode, Transaction_Date, Amount, To_Account_Balance as Balance From CurrentAccountTransactions Where To_Account = @contractCode And Month(Transaction_Date) = @month order By Transaction_Date";
 
             List<TransactionSearchResult> listTransaction = new List<TransactionSearchResult>();
             listTransaction = SearchTransaction(q, calculationDate, contractCode);
@@ -1142,7 +1160,7 @@ return currentAccountProductHolding;
                 {
                     double effectiveDays = (secondTransaction.TransactionDate - firstTransaction.TransactionDate).TotalDays;
                     decimal effectiveBalance = firstTransaction.Balance;
-                    double overdraftInterestRate = productHolding.InterestRate.Value;
+                    double overdraftInterestRate = productHolding.OverdraftInterest.Value;
                     if (i != (listTransaction.Count - 2))
                         overdraftInterest = overdraftInterest + ((effectiveBalance * (decimal)overdraftInterestRate * (decimal)effectiveDays) / (100 * 365));
                     else
@@ -1184,9 +1202,9 @@ return currentAccountProductHolding;
             
             string contractCode = productHolding.CurrentAccountContractCode;
 
-            string q = @" Select From_Account As Account, purpose_of_transfer, transaction_mode, Transaction_Date, Amount, From_Account_Balance as Balance From CurrentAccountTransactions Where From_Account = @contractCode  And Month(Transaction_Date) = @month
+            string q = @" Select From_Account As Account, purpose_of_transfer, transaction_mode as mode, Transaction_Date, Amount, From_Account_Balance as Balance From CurrentAccountTransactions Where From_Account = @contractCode  And Month(Transaction_Date) = @month
                            UNION
-                           Select To_Account As Account, purpose_of_transfer, transaction_mode, Transaction_Date, Amount, To_Account_Balance as Balance From CurrentAccountTransactions Where To_Account = @contractCode And Month(Transaction_Date) = @month order By Transaction_Date";
+                           Select To_Account As Account, purpose_of_transfer, transaction_mode as mode, Transaction_Date, Amount, To_Account_Balance as Balance From CurrentAccountTransactions Where To_Account = @contractCode And Month(Transaction_Date) = @month order By Transaction_Date";
 
             List<TransactionSearchResult> listTransaction = new List<TransactionSearchResult>();
             listTransaction = SearchTransaction(q, calculationDate, contractCode);
@@ -1310,9 +1328,9 @@ return currentAccountProductHolding;
          {
              string contractCode = productHolding.CurrentAccountContractCode;
 
-             string q = @" Select From_Account As Account, purpose_of_transfer, transaction_mode, Transaction_Date, Amount, From_Account_Balance as Balance From CurrentAccountTransactions Where From_Account = @contractCode And Month(Transaction_Date) = @month
+             string q = @" Select From_Account As Account, purpose_of_transfer, transaction_mode as mode, Transaction_Date, Amount, From_Account_Balance as Balance From CurrentAccountTransactions Where From_Account = @contractCode And Month(Transaction_Date) = @month
                            UNION
-                           Select To_Account As Account, purpose_of_transfer, transaction_mode, Transaction_Date, Amount, To_Account_Balance as Balance From CurrentAccountTransactions Where To_Account = @contractCode And Month(Transaction_Date) = @month order By Transaction_Date";
+                           Select To_Account As Account, purpose_of_transfer, transaction_mode as mode, Transaction_Date, Amount, To_Account_Balance as Balance From CurrentAccountTransactions Where To_Account = @contractCode And Month(Transaction_Date) = @month order By Transaction_Date";
 
              List<TransactionSearchResult> listTransaction = new List<TransactionSearchResult>();
              listTransaction = SearchTransaction(q, calculationDate,contractCode);

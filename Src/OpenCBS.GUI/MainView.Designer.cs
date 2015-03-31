@@ -181,6 +181,7 @@ namespace OpenCBS.GUI
             this.toolStripStatusLblBranchCode = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLblDB = new System.Windows.Forms.ToolStripStatusLabel();
             this.alertBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.runABatchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvAlerts)).BeginInit();
             this.tabFilter.SuspendLayout();
@@ -673,7 +674,8 @@ namespace OpenCBS.GUI
             this.miContractCode,
             this.tellersToolStripMenuItem,
             this.configureCountersToolStripMenuItem,
-            this.lIBORRateToolStripMenuItem});
+            this.lIBORRateToolStripMenuItem,
+            this.runABatchToolStripMenuItem});
             this.mnuConfiguration.Name = "mnuConfiguration";
             resources.ApplyResources(this.mnuConfiguration, "mnuConfiguration");
             // 
@@ -1060,6 +1062,12 @@ namespace OpenCBS.GUI
             // 
             this.alertBindingSource.DataSource = typeof(OpenCBS.CoreDomain.Alert);
             // 
+            // runABatchToolStripMenuItem
+            // 
+            this.runABatchToolStripMenuItem.Name = "runABatchToolStripMenuItem";
+            resources.ApplyResources(this.runABatchToolStripMenuItem, "runABatchToolStripMenuItem");
+            this.runABatchToolStripMenuItem.Click += new System.EventHandler(this.runABatchToolStripMenuItem_Click);
+            // 
             // MainView
             // 
             resources.ApplyResources(this, "$this");
@@ -1174,6 +1182,7 @@ namespace OpenCBS.GUI
         private ToolStripMenuItem balanceSheetToolStripMenuItem;
         private ToolStripMenuItem profitAndLossStatementToolStripMenuItem;
         private ToolStripMenuItem cashFlowStatementToolStripMenuItem;
+        private ToolStripMenuItem runABatchToolStripMenuItem;
 
 
     }

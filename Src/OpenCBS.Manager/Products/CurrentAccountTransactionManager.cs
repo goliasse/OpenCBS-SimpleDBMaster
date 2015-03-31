@@ -131,6 +131,7 @@ namespace OpenCBS.Manager.Products
 
                 feeTransaction.Checker = "Fees";
                 feeTransaction.FromAccount = currentAccountTransactions.FromAccount;
+                feeTransaction.fromCAAccount = currentAccountTransactions.fromCAAccount;
                 feeTransaction.Maker = "Fees";
                 feeTransaction.PurposeOfTransfer = "Transaction fee applied for " + currentAccountTransactions.Id;
                 feeTransaction.ToAccount = FetchBranchAccountNumber(currentAccountTransactions.FromAccount);  

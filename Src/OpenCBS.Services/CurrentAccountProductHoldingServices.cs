@@ -162,6 +162,11 @@ namespace OpenCBS.Services
 
            if (productHolding.OverdraftApplied == 1)
            {
+               if (!ServicesHelper.CheckIfValueBetweenMinAndMax(product.OverdraftLimitMin,
+                                                                 product.OverdraftLimitMax,
+                                                                 productHolding.OverdraftLimit))
+                   throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CAPHOverdraftLimitIsInvalid);
+
                if (!productHolding.OverdraftLimit.HasValue)
                    throw new OpenCbsCurrentAccountException(OpenCbsCurrentAccountExceptionEnum.CAPHOverdraftLimitIsEmpty);
 
