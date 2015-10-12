@@ -11,6 +11,8 @@ How do we handle confirmation dialog.
 Have you ever heard about Xpath ancestor, siblings.
 How can we put the value in a disabled textbox.
 What is the ideal approach for sending a large text to a textbox.
+How do you deal with the certificate errors?
+Is there any difference between accessing http://gmail.com and https://gmail.com
 
 What is TestNG?
 What are the different annotations used in TestNG?
