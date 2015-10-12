@@ -1,0 +1,32 @@
+What is xpath
+What is difference between relative xpath and absolute xpath?
+How do you find the relative and absolute xpath of an element on the page?
+How do you do the multibrowser testing with selenium.
+What are the different locators available in Selenium?
+How do we setup Selenium Grid, Explain with commnads to be used for creating Node and Hub.
+Write the driver initialization code for Different browsers.
+How do we handle the multipe windows in webdriver.
+How do we handle web page alerts.
+How do we handle confirmation dialog.
+Have you ever heard about Xpath ancestor, siblings.
+
+What is TestNG?
+What are the different annotations used in TestNG?
+What is differenec between TestNG and Junit?
+What is the purpose of BeforeClass and AfterClass annotation in TestNG?
+What are the different challenges faced by you while working on Selenium automation?
+Explain reporting in TestNG.
+
+Explain OOPS concept.
+What is inheritance, Polymorphism and Encapsulation?
+Explain PSVM in details.
+Types of inheritance in Java.
+What is inheritance, how does it work, what is the purpose of it.
+
+Tell me about yourself.
+Explain about the project.
+Tell me about your role and responsibilities in team being as automation tester.
+What do you do when there is a script failure during automation run.
+How do you identify the objects on webpage. Explain in steps.
+Is there any other way for typing the text in a textbox other than sendkeys method.
+What is code repository being used in your project.
