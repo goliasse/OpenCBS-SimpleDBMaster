@@ -29,6 +29,7 @@ Tell me about your role and responsibilities in team being as automation tester.
 What do you do when there is a script failure during automation run.
 How do you identify the objects on webpage. Explain in steps.
 Is there any other way for typing the text in a textbox other than sendkeys method.
+What is alternative to .click() method. in selenium.
 What is code repository being used in your project.
 
-What does DECODE function do.
+What does DECODE function do in SQL.
