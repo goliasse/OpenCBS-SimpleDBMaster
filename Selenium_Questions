@@ -13,6 +13,7 @@ How can we put the value in a disabled textbox.
 What is the ideal approach for sending a large text to a textbox.
 How do you deal with the certificate errors?
 Is there any difference between accessing http://gmail.com and https://gmail.com
+How do we handle OS windows dialog in Selenium.
 
 What is TestNG?
 What are the different annotations used in TestNG?
