@@ -14,6 +14,31 @@ What is the ideal approach for sending a large text to a textbox.
 How do you deal with the certificate errors?
 Is there any difference between accessing http://gmail.com and https://gmail.com
 How do we handle OS windows dialog in Selenium.
+What are desired capabilities?
+Difference between Selenium RC and Selenium Web driver.
+Difference between Web driver listener and TestNG Listener.
+Which is the best way to locate an element?
+Why do we store the FireFoxDriver class object in reference of WebDriver class. Can we store it directly in FireFoxDriver reference itself
+What is the difference between thread.Sleep() and selenium. Set Speed ("2000")?
+How do we handle the dynamic id of the webelement.
+In what situation selenium finding element get fails?
+What is the difference between "GET" and "NAVIGATE" to open a web page in selenium web driver?
+Please tell me the difference b/w implicitly Wait and Explicit wait.
+What is the difference between driver.Close() and driver.Quit () method?
+How to scroll web element?
+What is the basic use of Firefox profiles and how can we use them using selenium?
+How to handle internationalisation through web driver?
+How to overcome same origin policy through web driver?
+What is Error Collector in TestNG? What is its use?
+How can we get the font size, font color, font type used for a particular text on a webpage using Selenium web driver?
+Can we run the testcases in parallel on multiple browsers without using the Selenium Grid.
+Is it possible test web services using selenium?
+How to refresh a page without using context click?
+Can u send a code for printing in selenium?
+How to find broken images in a page using Selenium Web driver.
+How to handle auto complete box in web driver?
+
+
 
 What is TestNG?
 What are the different annotations used in TestNG?
