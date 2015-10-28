@@ -24,7 +24,15 @@ Business requirements
 Android app
 
 2- Seller Hub - Web and Android App
+Android app
+1- Seller hub can create the shopkeeper and allocate him an ID which will be used for login to application
+2- Seller hub can create the product catalouge on behalf of a Shopkeeper
+3- Seller Hub can view all the orders placed through the application to different Shopkeeper
 
+Web 
+1- Seller hub can create the shopkeeper and allocate him an ID which will be used for login to application
+2- Seller hub can create the product catalouge on behalf of a Shopkeeper
+3- Seller Hub can view all the orders placed through the application to different Shopkeeper
 
 3- Shopkeeper - Web and Android App
 Android app
@@ -35,7 +43,8 @@ Android app
 5- Shopkeeper can create the product catalouge with image, description and price.
 6- Shopkeeper can cancel the individual items in a order
 7- Shopkeeper should be able to provide quote, availability of the asked product by the customer
-5- Shopkeeper can update the product catalouge with image, description and price.
+8- Shopkeeper can update the product catalouge with image, description and price.
+9- Shopkeeper will login to the application with Seller ID provided by Seller Hub or Admin
 
 Web
 1- Shopkeeper can login to his account 
@@ -53,16 +62,15 @@ Android app
 7- Customer can track the status of the order placed
 8- Customer will be notified of the status change in the order
 9- If a product is not listed, he can specify the product in simple text and place the order
-10 - Customer can add multiple items in his cart
+10- Customer can add multiple items in his cart
 11- Customer can ask for the availability and quote for the product which is not listed in the app
 
 
 
 
-
-
-
-
+Each application will be regsitered with an application ID which will be allocated to each shopkeeper and Seller hub.
+If that ID is active then only application will be active otherwise appication will not be active.
+Customer can get the application link by giving a missed call on a specific number
 
 
 
