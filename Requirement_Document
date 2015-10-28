@@ -71,7 +71,18 @@ Android app
 Each application will be regsitered with an application ID which will be allocated to each shopkeeper and Seller hub.
 If that ID is active then only application will be active otherwise appication will not be active.
 Customer can get the application link by giving a missed call on a specific mobile number and that mobile number may be owned by shopkeeper.
-We need to create a separate application for this purpose which will send the link to customer number and put that number into verfied mobile number database.
+We need to create a separate application for this purpose which will send the link to customer number and put that number into verfied mobile number database. When customer will use that mobile number for registration, he will be able to do it straightly, no need to verify the mobile number.
+Customer's mobile number will be used a his unique ID
+
+Customer - Register
+Customer will launch the application
+A screen will be displayed to him asking for the mobile number
+Customer entes his mobile number
+His entered mobile number will be checked in verified mobile number database, if it is there then he will be displayed a screen asking for Name and Address and can register himmself.
+If his mobile number is not in verified mobile number list then he will be asked to give a miss call on the specified mobile number. Once he gives the miss call, mobile number will be checked again, if it is verfied he can register himself.
+Once registered, no need to login
+After registration, customer can directly view product catalouge
+
 
 
 
