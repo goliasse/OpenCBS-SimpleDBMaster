@@ -73,6 +73,7 @@ If that ID is active then only application will be active otherwise appication w
 Customer can get the application link by giving a missed call on a specific mobile number and that mobile number may be owned by shopkeeper.
 We need to create a separate application for this purpose which will send the link to customer number and put that number into verfied mobile number database. When customer will use that mobile number for registration, he will be able to do it straightly, no need to verify the mobile number.
 Customer's mobile number will be used a his unique ID
+Products will be categorised into different categories
 
 Customer - Register
 Customer will launch the application
