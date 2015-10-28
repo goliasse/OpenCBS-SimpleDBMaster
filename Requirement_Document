@@ -1,1 +1,55 @@
 
+
+
+User of the application
+1- Admin
+2- Seller Hub
+3- Shopkeeper
+4- Customer
+
+Channels for different users
+1- Admin - Web and Android App
+2- Seller Hub - Web and Android App
+3- Shopkeepaer - Web and Android App
+4- Customer - Android App
+
+
+Payment method 
+1- Cash on delivery
+2- Card on delivery
+
+
+Business requirements
+1- Admin - Web and Android App
+Android app
+
+2- Seller Hub - Web and Android App
+
+3- Shopkeeper - Web and Android App
+
+4- Customer - Android App
+Android app
+1- Customer can register with his mobile number, name and address
+2- Customer can view all the products made available by shopkeeper for sell
+3- Customer can place his order to the specified shopkeeper
+4- Customer can view all the previously placed orders
+5- Customer can call, SMS to shopkeeper from application itself
+6- Customer can register a complaint against a order
+7- Customer 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
