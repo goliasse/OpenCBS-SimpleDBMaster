@@ -70,7 +70,8 @@ Android app
 
 Each application will be regsitered with an application ID which will be allocated to each shopkeeper and Seller hub.
 If that ID is active then only application will be active otherwise appication will not be active.
-Customer can get the application link by giving a missed call on a specific number
+Customer can get the application link by giving a missed call on a specific mobile number and that mobile number may be owned by shopkeeper.
+We need to create a separate application for this purpose which will send the link to customer number and put that number into verfied mobile number database.
 
 
 
