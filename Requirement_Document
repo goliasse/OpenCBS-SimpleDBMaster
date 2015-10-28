@@ -74,6 +74,7 @@ Customer can get the application link by giving a missed call on a specific mobi
 We need to create a separate application for this purpose which will send the link to customer number and put that number into verfied mobile number database. When customer will use that mobile number for registration, he will be able to do it straightly, no need to verify the mobile number.
 Customer's mobile number will be used a his unique ID
 Products will be categorised into different categories
+Each product will be having a unique ID
 
 Customer - Register
 Customer will launch the application
@@ -83,6 +84,21 @@ His entered mobile number will be checked in verified mobile number database, if
 If his mobile number is not in verified mobile number list then he will be asked to give a miss call on the specified mobile number. Once he gives the miss call, mobile number will be checked again, if it is verfied he can register himself.
 Once registered, no need to login
 After registration, customer can directly view product catalouge
+
+
+Customer - Place a Order
+Customer launch the application
+Customer selects the product category
+Customer selects the product
+Customer adjusts the quantity and add the product into cart
+Customer clicks on Place Order menu option
+Customer is redirected to Checkout screen where he can see all  the products in the card.
+Customer Selects the Payment method on chekcout screen and clicks on Place Order button.
+Customer's order is sent to Shopkeeper for Review.
+
+
+
+
 
 
 
