@@ -75,6 +75,7 @@ We need to create a separate application for this purpose which will send the li
 Customer's mobile number will be used a his unique ID
 Products will be categorised into different categories
 Each product will be having a unique ID
+While placing the order, customer will provide maximum acceptable date and time
 
 Customer - Register
 Customer will launch the application
@@ -92,14 +93,16 @@ Customer selects the product category
 Customer selects the product
 Customer adjusts the quantity and add the product into cart
 Customer clicks on Place Order menu option
-Customer is redirected to Checkout screen where he can see all  the products in the card.
+Customer is redirected to Checkout screen where he can see all the products in the cart.
 Customer Selects the Payment method on chekcout screen and clicks on Place Order button.
 Customer's order is sent to Shopkeeper for Review.
 
 
-
-
-
+Order fulfillment by Shopkeeper
+Respective shopkeeper will be notified of the Order.
+As the shopkeeper will click on the notification, order will be opened on App with all the order information (Customer details (name, mobile, address), product list, estimated amount, order date abd time, delivery method, payment method)
+Shopkeeper will enter the ETA and will acknowledge the order and will start preparing the order
+As soon as shopkeeper will acknowledge the order, customer will be notified of this event.
 
 
 
