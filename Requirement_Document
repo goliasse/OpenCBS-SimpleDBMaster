@@ -25,6 +25,7 @@ Android app
 
 2- Seller Hub - Web and Android App
 
+
 3- Shopkeeper - Web and Android App
 Android app
 1- Shopkeeper will be notified of the order placed to him by the customers
@@ -34,6 +35,12 @@ Android app
 5- Shopkeeper can create the product catalouge with image, description and price.
 6- Shopkeeper can cancel the individual items in a order
 7- Shopkeeper should be able to provide quote, availability of the asked product by the customer
+5- Shopkeeper can update the product catalouge with image, description and price.
+
+Web
+1- Shopkeeper can login to his account 
+2- Shopkeeper can create the product catalouge with image, description and price
+3- Shopkeeper can update the product catalouge with image, description and price
 
 4- Customer - Android App
 Android app
