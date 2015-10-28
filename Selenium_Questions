@@ -68,3 +68,90 @@ What is alternative to .click() method. in selenium.
 What is code repository being used in your project.
 
 What does DECODE function do in SQL.
+
+
+
+db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"', '"+KEY_SUBMISSION_STATUS+"') VALUES(1, 'Selenium', 'What is xpath?\n', '', '1');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(2, 'Selenium', 'What is difference between relative xpath and absolute xpath?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(3, 'Selenium', 'How do you find the relative and absolute xpath of an element on the page?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(4, 'Selenium', 'How do you do the multibrowser testing with selenium?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(5, 'Selenium', 'What are the different locators available in Selenium?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(6, 'Selenium', 'How do we setup Selenium Grid, Explain with commnads to be used for creating Node and Hub.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(7, 'Selenium', 'Write the driver initialization code for Different browsers.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(8, 'Selenium', 'How do we handle the multipe windows in webdriver.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(9, 'Selenium', 'How do we handle web page alerts.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(10, 'Selenium', 'How do we handle confirmation dialog.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(11, 'Selenium', 'Have you ever heard about Xpath ancestor, siblings.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(12, 'Selenium', 'How can we put the value in a disabled textbox.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(13, 'Selenium', 'What is the ideal approach for sending a large text to a textbox.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(14, 'Selenium', 'How do you deal with the certificate errors?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(15, 'Selenium', 'Is there any difference between accessing http://gmail.com and https://gmail.com\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(16, 'Selenium', 'How do we handle OS windows dialog in Selenium.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(17, 'Selenium', 'What are desired capabilities?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(18, 'Selenium', 'Difference between Selenium RC and Selenium Web driver.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(19, 'Selenium', 'Difference between Web driver listener and TestNG Listener.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(20, 'Selenium', 'Which is the best way to locate an element?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(21, 'Selenium', 'Why do we store the FireFoxDriver class object in reference of WebDriver class. Can we store it directly in FireFoxDriver reference itself.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(22, 'Selenium', 'What is the difference between thread.Sleep() and selenium. Set Speed (\"2000\")?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(23, 'Selenium', 'How do we handle the dynamic id of the webelement.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(24, 'Selenium', 'In what situation selenium finding element get fails?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(25, 'Selenium', 'What is the difference between \"GET\" and \"NAVIGATE\" to open a web page in selenium web driver?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(26, 'Selenium', 'Please tell me the difference b/w implicitly Wait and Explicit wait.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(27, 'Selenium', 'What is the difference between driver.Close() and driver.Quit () method?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(28, 'Selenium', 'How to scroll web element?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(29, 'Selenium', 'What is the basic use of Firefox profiles and how can we use them using selenium?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(30, 'Selenium', 'How to handle internationalisation through web driver?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(31, 'Selenium', 'How to overcome same origin policy through web driver?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(32, 'Selenium', 'What is Error Collector in TestNG? What is its use?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(33, 'Selenium', 'How can we get the font size, font color, font type used for a particular text on a webpage using Selenium web driver?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(34, 'Selenium', 'Can we run the testcases in parallel on multiple browsers without using the Selenium Grid.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(35, 'Selenium', 'Is it possible test web services using selenium?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(36, 'Selenium', 'How to refresh a page without using context click?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(37, 'Selenium', 'Can u send a code for printing in selenium?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(38, 'Selenium', 'How to find broken images in a page using Selenium Web driver.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(39, 'Selenium', 'How to handle auto complete box in web driver?\n', '');");
+            
+            //TextNG
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(1, 'TestNG', 'What is TestNG?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(2, 'TestNG', 'What are the different annotations used in TestNG?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(3, 'TestNG', 'What is differenec between TestNG and Junit?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(4, 'TestNG', 'What is the purpose of BeforeClass and AfterClass annotation in TestNG?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(5, 'TestNG', 'What are the different challenges faced by you while working on Selenium automation?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(6, 'TestNG', 'Explain reporting in TestNG.\n', '');");
+            
+            //Java
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(1, 'Java', 'Explain OOPS concept.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(2, 'Java', 'What is inheritance, Polymorphism and Encapsulation?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(3, 'Java', 'Explain PSVM in details.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(4, 'Java', 'Types of inheritance in Java.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(5, 'Java', 'What is inheritance, how does it work, what is the purpose of it.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(6, 'Java', 'How do we use inheritance in Java.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(7, 'Java', 'How do we use interfaces in Java.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(8, 'Java', 'What is deadly diamond od death in Java.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(9, 'Java', 'What are the different access specifers for Class and Method in Java.\n', '');");
+
+            //General
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(1, 'General', 'Tell me about yourself.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(2, 'General', 'Explain about the project.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(3, 'General', 'Tell me about your role and responsibilities in team being as automation tester.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(4, 'General', 'What do you do when there is a script failure during automation run.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(5, 'General', 'How do you identify the objects on webpage. Explain in steps.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(6, 'General', 'Is there any other way for typing the text in a textbox other than sendkeys method.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(7, 'General', 'What is alternative to .click() method. in selenium.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(8, 'General', 'What is code repository being used in your project.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(8, 'General', 'Explain your experience in testing.\n', '');");
+
+            //Manual Testing
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(1, 'Manual Testing', 'What do you do in defect management?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(2, 'Manual Testing', 'Two methods to log the bugs QC-ALM.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(3, 'Manual Testing', 'Type of build delivered in Agile methodology.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(4, 'Manual Testing', 'What is Defect Rejection Ratio?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(5, 'Manual Testing', 'Explain Defect leakage.\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(6, 'Manual Testing', 'What is the entry criteria for moving the build in SIT?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(7, 'Manual Testing', 'What is need of having UAT?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(8, 'Manual Testing', 'What are the different test design techniques?\n', '');");
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(9, 'Manual Testing', 'Explain Test Estimation.\n', '');");
+            
+            //SQL
+            db.execSQL("insert into " + TABLE_QUESTIONS + " ('"+KEY_QUESTION_NUMBER+"', '"+KEY_SUBJECT+"', '"+KEY_QUESTION+"', '"+KEY_ANSWER+"') VALUES(1, 'SQL', 'What does DECODE function do in SQL.\n', '');");
+
