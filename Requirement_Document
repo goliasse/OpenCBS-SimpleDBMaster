@@ -26,6 +26,14 @@ Android app
 2- Seller Hub - Web and Android App
 
 3- Shopkeeper - Web and Android App
+Android app
+1- Shopkeeper will be notified of the order placed to him by the customers
+2- Shopkeeper will accept the order and will start preparing the order and will provide a ETA to the customer for his order fulfillment
+3- Shopkeeper can reject the order and will have to stat the reason for rejection
+4- Shopkeeper can update the order status
+5- Shopkeeper can create the product catalouge with image, description and price.
+6- Shopkeeper can cancel the individual items in a order
+7- Shopkeeper should be able to provide quote, availability of the asked product by the customer
 
 4- Customer - Android App
 Android app
@@ -33,10 +41,13 @@ Android app
 2- Customer can view all the products made available by shopkeeper for sell
 3- Customer can place his order to the specified shopkeeper
 4- Customer can view all the previously placed orders
-5- Customer can call, SMS to shopkeeper from application itself
+5- Customer can call and SMS to shopkeeper from application itself
 6- Customer can register a complaint against a order
-7- Customer 
-
+7- Customer can track the status of the order placed
+8- Customer will be notified of the status change in the order
+9- If a product is not listed, he can specify the product in simple text and place the order
+10 - Customer can add multiple items in his cart
+11- Customer can ask for the availability and quote for the product which is not listed in the app
 
 
 
