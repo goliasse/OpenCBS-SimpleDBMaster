@@ -45,6 +45,10 @@ Android app
 7- Shopkeeper should be able to provide quote, availability of the asked product by the customer
 8- Shopkeeper can update the product catalouge with image, description and price.
 9- Shopkeeper will login to the application with Seller ID provided by Seller Hub or Admin
+Shopkeeper can define the opening and closing time for the shop from the delivery point of view.
+Shopkeeper can define the dates on which shop will be closed completely
+Shopkeeper should be able to update the availability of the product
+While adding the product shopkeeper is suppoded to define the quantity type for the product
 
 Web
 1- Shopkeeper can login to his account 
@@ -64,8 +68,9 @@ Android app
 9- If a product is not listed, he can specify the product in simple text and place the order
 10- Customer can add multiple items in his cart
 11- Customer can ask for the availability and quote for the product which is not listed in the app
-
-
+Date and time on which a shop is closed, will not be appeared in the product search list
+Customer should be able to rate and review the shopkeeper
+Customer should be able to define the quantity in terms of numbers and gms.
 
 
 Each application will be regsitered with an application ID which will be allocated to each shopkeeper and Seller hub.
@@ -106,8 +111,9 @@ As soon as shopkeeper will acknowledge the order, customer will be notified of t
 
 
 
-
-
-
+How will the delivery boy be able to get the information about the product to be delivered? Do we need one more user to added into user of system list.
+What should be the product selection strategy while displaying the product list to user from multiple shopkeepers.
+what are the different order status that each order will go through in his life cycle?
+Do you want to show them the list of shopkeepers to him they are placing the order? or it will be visible and you will pick up the product, if yes, then how will you quote the best rate for the product.
 
 
