@@ -49,6 +49,7 @@ Shopkeeper can define the opening and closing time for the shop from the deliver
 Shopkeeper can define the dates on which shop will be closed completely
 Shopkeeper should be able to update the availability of the product
 While adding the product shopkeeper is suppoded to define the quantity type for the product
+Shopkeeper should be having the facility of selecting the delivery partner from a dropdown who will be delivering the product to the customer.
 
 Web
 1- Shopkeeper can login to his account 
@@ -71,7 +72,7 @@ Android app
 Date and time on which a shop is closed, will not be appeared in the product search list
 Customer should be able to rate and review the shopkeeper
 Customer should be able to define the quantity in terms of numbers and gms.
-
+Customer should be able to see the name and contact number of the person who will be delivering the product to him.
 
 Each application will be regsitered with an application ID which will be allocated to each shopkeeper and Seller hub.
 If that ID is active then only application will be active otherwise appication will not be active.
@@ -80,7 +81,9 @@ We need to create a separate application for this purpose which will send the li
 Customer's mobile number will be used a his unique ID
 Products will be categorised into different categories
 Each product will be having a unique ID
-While placing the order, customer will provide maximum acceptable date and time
+While placing the order, customer will provide maximum acceptable date and time.
+Product to be displayed will be fetched from Products table
+After craeting the order, products will be fetched from Cart table.
 
 Customer - Register
 Customer will launch the application
@@ -134,6 +137,7 @@ As soon as customer will click on Category, he will be presented with all the se
 
 Information needs to be captured while adding a Product
 Product name
+Product registration status
 Product description
 Product category (It will be a dropdown while adding a product)
 Product availability (In stock or out of stock)
@@ -148,6 +152,8 @@ After adding the product into database, a SKU ID will be generated
 
 Information needs to be captured while adding a Shopkeeper
 Shop name
+Shop registration status
+Shop Application ID
 Shop owner name
 Shop address area/sector
 Shop address city
@@ -181,6 +187,7 @@ While storing ID document will be named as ID Type_ID Number_Shop ID
 
 Information needs to be captured while adding a Customer
 Customer name
+Customer registration status
 Customer mobile number
 customer mobile verified
 Customer address
@@ -191,6 +198,8 @@ Customer mobile no will be used as their user id for logging into system
 
 Information needs to be captured while adding a Seller Hub
 SellerHub name
+SellerHub Application ID
+SellerHub registration status
 SellerHub mobile
 SellerHub address
 SellerHub individual or business
@@ -222,6 +231,7 @@ Order being shipped by
 
 Information needs to be captured while adding a Delivery Person
 DeliveryPerson Shop ID or Seller Hub ID
+DeliveryPerson registration status
 DeliveryPerson Name
 DeliveryPerson Mobile Number
 DeliveryPerson Resedential address
