@@ -140,6 +140,9 @@ Product availability (In stock or out of stock)
 Product order unit (gms, kgs, nos)
 product price
 Product image name
+Product added by (it can be a shopkeeper ID or seller hub ID)
+Product added for (Shop ID to which this product is associated)
+Product creation timestamp
 
 After adding the product into database, a SKU ID will be generated
 
@@ -167,10 +170,14 @@ Shop owner ID document name
 Shop TAN document name
 Shop owner ID verified
 Shop TAN Document verified
+Shop created by
+Shop created for
+Shop creation timestamp
+
 After successfully adding the shop to database, a shop id will be generated in form of SP______.
 A folder will be created at the server end named as generated Shop ID, which will be having some subfolders for string different documents related to shop.
 Like - Product images, ID Documents
-While storing ID document will be named as ID Type_ID Number_
+While storing ID document will be named as ID Type_ID Number_Shop ID
 
 Information needs to be captured while adding a Customer
 Customer name
@@ -178,7 +185,9 @@ Customer mobile number
 customer mobile verified
 Customer address
 Customer as a business
-Customer mobile no will be used as their uiser id for logging into system
+Customer creation timestamp
+
+Customer mobile no will be used as their user id for logging into system
 
 Information needs to be captured while adding a Seller Hub
 SellerHub name
@@ -189,7 +198,47 @@ SellerHub ID type
 SellerHub ID number
 SellerHub ID document name
 SellerHub TAN number
+SellerHub TAN document name
+SellerHub created by
+SellerHub creation timestamp
+
+After successfully adding the SellerHub to database, a SellerHub id will be generated in form of SH______.
+A folder will be created at the server end named as generated SellerHub ID, which will be having some subfolders for storing different documents related to SellerHub
+Like - Product images, ID Documents
+While storing, ID document will be named as ID Type_ID Number_SellerHub ID
+
+Information needs to be captured while adding a Order
+Order Placed By
+Order Placed To
+Order creation timestamp
+Order last update timestamp
+order quoted amount
+Order invoice amount
+order expected delivery timestamp
+order cart ID
+Order status
+Order being shipped by
 
 
+Information needs to be captured while adding a Delivery Person
+DeliveryPerson Shop ID or Seller Hub ID
+DeliveryPerson Name
+DeliveryPerson Mobile Number
+DeliveryPerson Resedential address
+DeliveryPerson ID Type
+DeliveryPerson ID number
+DeliveryPerson ID document name
 
+After successfully adding the DeliveryPerson to database, a DeliveryPerson id will be generated in form of DP______.
+A folder will be created at the server end named as generated  DeliveryPerson ID, which will be having some subfolders for storing different documents related to DeliveryPerson
+Like - ID Documents
+While storing, ID document will be named as ID Type_ID Number_DeliveryPerson ID
+
+Information needs to be captured while adding a Cart
+Cart ID
+Cart Product ID
+Cart Product Price
+Cart Product quantity
+Cart product order unit
+Cart product availability
 
