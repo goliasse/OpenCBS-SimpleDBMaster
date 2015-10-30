@@ -114,6 +114,19 @@ As soon as shopkeeper will acknowledge the order, customer will be notified of t
 How will the delivery boy be able to get the information about the product to be delivered? Do we need one more user to added into user of system list.
 What should be the product selection strategy while displaying the product list to user from multiple shopkeepers.
 what are the different order status that each order will go through in his life cycle?
-Do you want to show them the list of shopkeepers to him they are placing the order? or it will be visible and you will pick up the product, if yes, then how will you quote the best rate for the product.
+Do you want to show them the list of shopkeepers to him they are placing the order? or it will be invisible and you will pick up the product, if yes, then how will you quote the best rate for the product.
 
+Different product selection strategy are
+1- Lowest priced first
+2- Highest ranking first
+3- Nearest first
+
+Which are the possible categories for the products to be displayed.
+How are we supposed to do the screen navigation at the customer end.
+1- Launch the application
+2- Customer will be presented with all the possible categories
+3- As soon as customer will click on a category, he will be presented with all the products in that category, product information will be showing seller information as well something similar to flipkart and customer can see all the sellers with their quoted price for that product. The first highlighted product displayed will depend on the product selection strategy used.
+In that case, it will be tough to maintain the min order policy from the shopkeeper's point of view. Because an order of 10 products may contain 5 sellers.
+OR
+As soon as customer will click on Category, he will be presented with all the sellers of that category and clicking on seller will display the products offered by him. Product will be displayed with all the required information and customer can see all the sellers with their quoted price for that product.
 
