@@ -89,7 +89,7 @@ Customer entes his mobile number
 His entered mobile number will be checked in verified mobile number database, if it is there then he will be displayed a screen asking for Name and Address and can register himmself.
 If his mobile number is not in verified mobile number list then he will be asked to give a miss call on the specified mobile number. Once he gives the miss call, mobile number will be checked again, if it is verfied he can register himself.
 Once registered, no need to login
-After registration, customer can directly view product catalouge
+After registration, customer can directly view product categories
 
 
 Customer - Place a Order
@@ -115,6 +115,7 @@ How will the delivery boy be able to get the information about the product to be
 What should be the product selection strategy while displaying the product list to user from multiple shopkeepers.
 what are the different order status that each order will go through in his life cycle?
 Do you want to show them the list of shopkeepers to him they are placing the order? or it will be invisible and you will pick up the product, if yes, then how will you quote the best rate for the product.
+will seller hub need to take some kind of government licenses like Shopkeeper need to take while
 
 Different product selection strategy are
 1- Lowest priced first
@@ -129,4 +130,66 @@ How are we supposed to do the screen navigation at the customer end.
 In that case, it will be tough to maintain the min order policy from the shopkeeper's point of view. Because an order of 10 products may contain 5 sellers.
 OR
 As soon as customer will click on Category, he will be presented with all the sellers of that category and clicking on seller will display the products offered by him. Product will be displayed with all the required information and customer can see all the sellers with their quoted price for that product.
+
+
+Information needs to be captured while adding a Product
+Product name
+Product description
+Product category (It will be a dropdown while adding a product)
+Product availability (In stock or out of stock)
+Product order unit (gms, kgs, nos)
+product price
+Product image name
+
+After adding the product into database, a SKU ID will be generated
+
+Information needs to be captured while adding a Shopkeeper
+Shop name
+Shop owner name
+Shop address area/sector
+Shop address city
+Shop address pincode
+Shop address state
+Shop address country
+Shop address milestone/identification point
+Shop closing time
+Shop opening time
+Shop owner contact number
+Shop support contact number
+Shop email id
+Shop longitude
+Shop lattitude
+Shop minimum accepted order
+Shop owner ID type
+Shop owner ID number
+Shop TAN Number
+Shop owner ID document name
+Shop TAN document name
+Shop owner ID verified
+Shop TAN Document verified
+After successfully adding the shop to database, a shop id will be generated in form of SP______.
+A folder will be created at the server end named as generated Shop ID, which will be having some subfolders for string different documents related to shop.
+Like - Product images, ID Documents
+While storing ID document will be named as ID Type_ID Number_
+
+Information needs to be captured while adding a Customer
+Customer name
+Customer mobile number
+customer mobile verified
+Customer address
+Customer as a business
+Customer mobile no will be used as their uiser id for logging into system
+
+Information needs to be captured while adding a Seller Hub
+SellerHub name
+SellerHub mobile
+SellerHub address
+SellerHub individual or business
+SellerHub ID type
+SellerHub ID number
+SellerHub ID document name
+SellerHub TAN number
+
+
+
 
