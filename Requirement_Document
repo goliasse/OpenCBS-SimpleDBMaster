@@ -73,6 +73,8 @@ Date and time on which a shop is closed, will not be appeared in the product sea
 Customer should be able to rate and review the shopkeeper
 Customer should be able to define the quantity in terms of numbers and gms.
 Customer should be able to see the name and contact number of the person who will be delivering the product to him.
+Customer should be able to add a message with the order being placed.
+
 
 Each application will be regsitered with an application ID which will be allocated to each shopkeeper and Seller hub.
 If that ID is active then only application will be active otherwise appication will not be active.
@@ -227,6 +229,7 @@ order expected delivery timestamp
 order cart ID
 Order status
 Order being shipped by
+Order custom message
 
 
 Information needs to be captured while adding a Delivery Person
