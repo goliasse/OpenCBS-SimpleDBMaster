@@ -121,7 +121,7 @@ will seller hub need to take some kind of government licenses like Shopkeeper ne
 How will the distance of Customer's current location and Shop location be determined?
 What will be the behavior of system if user logs in with the same user id but on different device.
 What will be the mechanism used for detecting the different device.
-
+How will the product image download mechanism will work? Device will send all the SKUID of the product for which images are needed. Server will put all the required images in a zip file and send it to device. Device will unzip it, and will update the ProductImages table and will store the images in database.
 
 Different product selection strategy are
 1- Lowest priced first
