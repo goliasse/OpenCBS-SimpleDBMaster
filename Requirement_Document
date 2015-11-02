@@ -269,3 +269,47 @@ Information needs to be captured for User Logs
 UserLog username
 UserLog Login Timestamp
 
+Application ID of the app will be Shop ID or SellerHub ID itself.
+
+Workflow
+
+1- Customer register himself with a new mobile number which was never used previously (New mobile new device)
+Business Workflow
+Start
+Customer will launch the application
+A 'Register' screen will be displayed to him asking for the mobile number, Name and Resedential Address (All are manadatory fields)
+Customer enters all the required details
+Customer clicks on Register button
+A OTP will be sent to his registered mobile number
+Customer is redirected to 'Verify Mobile Number' screen
+If the entered mobile is same as device SIM number, then application will try to detect the OPT by itself.
+If the entered number is different from device SIM number, then user will need to enter the OTP by himself.
+After successful verfication of mobile number, user will be redirected to Home screen, which will be displaying all the possible shop categories.
+No user specific data will be fetched and synced with device.
+End
+
+2- Customer register himself with a already used mobile number which was used previously on a new device (Existing mobile new device)
+Start
+Same as above
+End
+
+3- Customer register himself with a new mobile number which was used previously on a previously used device (New mobile existing device)
+Start
+Same as above
+End
+
+4- Customer register himself with a already used mobile number on the same device used previously (Existing mobile existing device)
+Start
+Customer will launch the application
+A 'Register' screen will be displayed to him asking for the mobile number, Name and Resedential Address (All are manadatory fields)
+Customer enters all the required details
+Customer clicks on Register button
+A OTP will be sent to his registered mobile number
+Customer is redirected to 'Verify Mobile Number' screen
+If the entered mobile is same as device SIM number, then application will try to detect the OPT by itself.
+If the entered number is different from device SIM number, then user will need to enter the OTP by himself.
+After successful verfication of mobile number, user will be redirected to Home screen, which will be displaying all the possible shop categories.
+All the user specific data will be fetched and synced with device i.e. Addresses, Previous Orders, Complaints, Favrouite Shops
+End
+
+Technical workflow
