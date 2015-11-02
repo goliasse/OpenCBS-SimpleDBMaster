@@ -55,8 +55,8 @@ Web
 
 4- Customer - Android App
 Android app
-1- Customer can register with his mobile number, name and address
-2- Customer can view all the products made available by shopkeeper for sell
+1- Customer can register with his mobile number, name and address (DONE)
+2- Customer can view all the products made available by shopkeeper for sell ()
 3- Customer can place his order to the specified shopkeeper
 4- Customer can view all the previously placed orders
 5- Customer can call and SMS to shopkeeper from application itself
@@ -71,7 +71,7 @@ Customer should be able to rate and review the shopkeeper
 Customer should be able to define the quantity in terms of numbers and gms.
 Customer should be able to see the name and contact number of the person who will be delivering the product to him.
 Customer should be able to add a message with the order being placed.
-
+Customer should be able to reorder the same order from the prev order list.
 
 Each application will be regsitered with an application ID which will be allocated to each shopkeeper and Seller hub.
 If that ID is active then only application will be active otherwise appication will not be active.
@@ -385,3 +385,10 @@ End
 
 Technical workflow
 Same as above, in this case, Success Response 2 will be sent from API
+
+
+5 - When a verified customer launch the application
+
+6 - When a new customer launch the application
+
+7 - Customer places a order
