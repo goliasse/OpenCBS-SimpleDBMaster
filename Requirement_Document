@@ -269,7 +269,7 @@ Information needs to be captured for User Logs
 UserLog username
 UserLog Login Timestamp
 
-OTP to be added into Customer table
+A table for storing the OTP
 
 Application ID of the app will be Shop ID or SellerHub ID itself.
 
@@ -294,36 +294,69 @@ End
 Technical flow
 Actions to be taken after click on Register button
 Device will call Register_user service with Input parameters as
-Name
 Mobile number
-Resedential address
 This service will do the following operations
-Save the user details in Customer table as Verified set to 0
+Generate the OTP and Save the OTP in OTP table
 If failure, Send 0 in response and Exit
 Send a OTP to Customer mobile number with the help of Send_SMS service
 If failure, Send 0 in response and Exit
 If both are success, Send 1 in response
+
+At deive end
+When Response is 0
+Show an error message to customer
+
+When Response is 1
+Do nothing additional and redirect the customer to Verify page
 
 Actions to be taken after click on Verify button
 Device will call Verify_mobile service with input parameters as
 Application ID
 Device ID
 Mobile number
+Name
+Resedential address
 OTP
 Verify the user OTP
 If OTP is correct, 
-Update the user details in Custoemr table as Verified to 1
+Save or Update the user details in Custoemr table as Verified to 1, depending upon whether a record exists with same mobile number or not
 If failure ocurred while updating the data in Customer table, Send response as 0
 If OTP not correct, Send Response as -1 and Exit the process
 Check whether the Application ID is Enabled or not in the respective table e.g if Application ID is SP* then it is ShopID, if it is SH* then it is SellerHub id.
 If Application ID is not enabled 
+Fetch the SellerHUb's support contact number and put it in response
 Send -99 in response and exit the process
 If application ID is enabled
 Check for Mobile number and Device ID combination in database, if it is not found
 Success, Send 1 as response and Exit 
-If it found
-Succes, Send 2 an response amd Exit
+If it is found
+Succes, Send 2 as response amd Exit
 
+At Device end.
+Save these below details in local device tables and do not fetch any other details from web database
+Settings table
+Application ID
+Device ID
+First Login
+First Login timestamp
+
+Personal information table
+Mobile number
+Name
+Resedential address
+Verified
+
+When Response is 0
+Show an error message to custoemr
+
+When Response is 1
+Do nothing additional and redirect the customer to Home page
+
+When response is 2
+Fetch user specific details from web database (Orders, Addresses, Complaints) and save these into local device tables and redirect the customer to Home page
+
+when resposne is -99
+Show an error message to customer which includes the sellerhub's csupport contact number. so that customer could reach to him.
 
 2- Customer register himself with a already used mobile number which was used previously on a new device (Existing mobile new device)
 Start
