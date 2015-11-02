@@ -269,6 +269,8 @@ Information needs to be captured for User Logs
 UserLog username
 UserLog Login Timestamp
 
+OTP to be added into Customer table
+
 Application ID of the app will be Shop ID or SellerHub ID itself.
 
 Workflow
@@ -284,9 +286,44 @@ A OTP will be sent to his registered mobile number
 Customer is redirected to 'Verify Mobile Number' screen
 If the entered mobile is same as device SIM number, then application will try to detect the OPT by itself.
 If the entered number is different from device SIM number, then user will need to enter the OTP by himself.
+Customer clicks on Verify button
 After successful verfication of mobile number, user will be redirected to Home screen, which will be displaying all the possible shop categories.
-No user specific data will be fetched and synced with device.
+No user specific data will be fetched and synced with device. (Success = 1)
 End
+
+Technical flow
+Actions to be taken after click on Register button
+Device will call Register_user service with Input parameters as
+Name
+Mobile number
+Resedential address
+This service will do the following operations
+Save the user details in Customer table as Verified set to 0
+If failure, Send 0 in response and Exit
+Send a OTP to Customer mobile number with the help of Send_SMS service
+If failure, Send 0 in response and Exit
+If both are success, Send 1 in response
+
+Actions to be taken after click on Verify button
+Device will call Verify_mobile service with input parameters as
+Application ID
+Device ID
+Mobile number
+OTP
+Verify the user OTP
+If OTP is correct, 
+Update the user details in Custoemr table as Verified to 1
+If failure ocurred while updating the data in Customer table, Send response as 0
+If OTP not correct, Send Response as -1 and Exit the process
+Check whether the Application ID is Enabled or not in the respective table e.g if Application ID is SP* then it is ShopID, if it is SH* then it is SellerHub id.
+If Application ID is not enabled 
+Send -99 in response and exit the process
+If application ID is enabled
+Check for Mobile number and Device ID combination in database, if it is not found
+Success, Send 1 as response and Exit 
+If it found
+Succes, Send 2 an response amd Exit
+
 
 2- Customer register himself with a already used mobile number which was used previously on a new device (Existing mobile new device)
 Start
@@ -308,8 +345,10 @@ A OTP will be sent to his registered mobile number
 Customer is redirected to 'Verify Mobile Number' screen
 If the entered mobile is same as device SIM number, then application will try to detect the OPT by itself.
 If the entered number is different from device SIM number, then user will need to enter the OTP by himself.
+Customer clicks on Verify button.
 After successful verfication of mobile number, user will be redirected to Home screen, which will be displaying all the possible shop categories.
-All the user specific data will be fetched and synced with device i.e. Addresses, Previous Orders, Complaints, Favrouite Shops
+All the user specific data will be fetched and synced with device i.e. Addresses, Previous Orders, Complaints, Favrouite Shops (Success = 2)
 End
 
 Technical workflow
+Same as above, in this case, Success Response 2 will be sent from API
