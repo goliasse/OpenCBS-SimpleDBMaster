@@ -388,7 +388,25 @@ Same as above, in this case, Success Response 2 will be sent from API
 
 
 5 - When a verified customer launch the application
+Business Flow
+Customer is directly redirected to Home screen
+
+Technical workflow (Web)
+Device calls Verify_ApplicationID service with the input parameters as
+Application ID
+If ApplicationID is enabled then
+Send response as 1
+If ApplicationID is not enabled then
+Send response as -99
+
+Technical workflow (Device)
+If Response is 1
+Redirect the user to Home screen
+If Response is -99 then
+Redirect the customer to Application blocked error screen conating SellerHub Support contact number.
 
 6 - When a new customer launch the application
+Business flow
+Customer is redirected to Registration screen
 
 7 - Customer places a order
