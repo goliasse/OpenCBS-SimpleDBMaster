@@ -307,7 +307,8 @@ When Response is 0
 Show an error message to customer
 
 When Response is 1
-Do nothing additional and redirect the customer to Verify page
+Save Mobile number in Settings or Personal Information table on Device
+And redirect the customer to Verify page
 
 Actions to be taken after click on Verify button
 Device will call Verify_mobile service with input parameters as
@@ -389,9 +390,12 @@ Same as above, in this case, Success Response 2 will be sent from API
 
 5 - When a verified customer launch the application
 Business Flow
+Execute 'No internet connection' check workflow
 Customer is directly redirected to Home screen
 
 Technical workflow (Web)
+Execute 'No internet connection' check workflow
+Device checks whether the verified parameter in Settings table is set or not if it is set to 1 then
 Device calls Verify_ApplicationID service with the input parameters as
 Application ID
 If ApplicationID is enabled then
@@ -400,6 +404,7 @@ If ApplicationID is not enabled then
 Send response as -99
 
 Technical workflow (Device)
+Execute 'No internet connection' check workflow
 If Response is 1
 Redirect the user to Home screen
 If Response is -99 then
@@ -409,4 +414,53 @@ Redirect the customer to Application blocked error screen conating SellerHub Sup
 Business flow
 Customer is redirected to Registration screen
 
-7 - Customer places a order
+Technical workflow (Web)
+Device checks whether the verified parameter in Settings table is set or not if it is not set or set to 0 then
+No web API calls
+
+Technical workflow (Device)
+Device checks whether the verified parameter in Settings table is set or not if it is not set then
+Redirect the customer to Registration screen
+
+Device checks whether the verified parameter in Settings table is set or not if it is set to 0 then
+Redirect the customer to Verify Mobile screen
+
+7 - Customer should be able to see a Error screen when there is no intenet connection on device
+Business workflow
+Customer launch the application
+Device is not connected to internet
+Customer is redirected to 'No Internet Connection' error screen
+
+Technical workflow (Web)
+NA
+
+Technical workflow (Device)
+Device checks for internet connectivity
+If it is there then 
+Do the additional check and perform appropriate action
+
+If it is not there then
+Customer is redirected to 'No internect connection' screen
+
+
+8 - Registered customer should be able to see the Home screen with all the Shop categories populated
+Business Workflow
+Customer launch the application
+Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
+
+Technical workflow (Web)
+Technical workflow (Device)
+
+8 - Customer places a order
+
+
+
+
+
+
+
+
+
+
+
+
