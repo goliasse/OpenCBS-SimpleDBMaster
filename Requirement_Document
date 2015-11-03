@@ -125,6 +125,9 @@ How will the product image download mechanism will work? Device will send all th
 Any propsoed mechanism for enquiring about the product which is not listed but customer feels that it may be available from shopkeeper.
 Possible complaint categories while filing a complaint against a shopid for a order id ?
 We need to define two type of categories, one for showing before shop selction. i.e. Shop Category and another after selcting the shop i.e. Product category. Please define initial values for both.
+How will we determine the serviceable area for a Shop, on the basis of Customer's and Shop's Map locations or on the basis of Specifically specified service area by shopkeeper
+Multilple shops means multiple orders ? Y/N
+Business rule for displaying the Product category screen or not? there may be the case when shop is having very few products to be displayed.
 
 Different product selection strategy are
 1- Lowest priced first
@@ -449,7 +452,71 @@ Customer launch the application
 Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
 
 Technical workflow (Web)
+Device will call the Fetch_Shop_Categories service with input parameters as
+LastSyncShopCategories (Fetched from LastSynced table from device)
+Service will send all the unique records of ShopCategory column in Shop table which was inserted or updated after or on LastSyncShopCategories time in response
+If success, send responseCode as 1
+If failure, send responseCode as 0
+
 Technical workflow (Device)
+If responseCode is 1 then
+Populate the Home screen with ShopCategories data received in response from API
+Save that data in local ShopCategories table
+Update the LastSync table record for ShopCategory table with the current timestamp
+
+If responseCode is 0 then
+Redirect the user to Error screen
+
+9 - Registered customer should be able to see all the Shops registered for that category when clicked on a Category on Home screen
+Business Workflow
+Customer launch the application
+Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
+Customer clicks on a Shop category
+Customer is redirected to Shop list Screen displaying all the shop listed in that area
+
+Technical workflow (Web)
+Device will call the Fetch_Shops service with input parameters as
+LastSyncShop (Fetched from LastSynced table from device)
+Selected Shop Category
+Map location or Area of the customer
+Service will send all the records in Shop table satisfying the criteria (Category and Location) which was inserted or updated after or on LastSyncShop time in response
+If success, send responseCode as 1
+If failure, send responseCode as 0
+
+Technical workflow (Device)
+If responseCode is 1 then
+Populate the Shops screen with Shops data received in response from API
+Save that data in local Shop table
+Update the LastSync table record for Shop table with the current timestamp
+
+If responseCode is 0 then
+Redirect the user to Error screen
+
+10 - Registered customer should be able to see all the Product categories in which selected shop is having the products listed
+Business Workflow
+Customer launch the application
+Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
+Customer clicks on a Shop category
+Customer is redirected to Shop list Screen displaying all the shop listed in that area
+Customer clicks on a Shop
+Customer is redirected to Product Category screen having displayed all the product categories in which shop is having the products listed
+
+Technical workflow (Web)
+Device will call the Fetch_Product_Categories service with input parameters as
+LastSyncProductCategories (Fetched from LastSynced table from device)
+Selected Shop ID
+Service will send all the ProductCategories records in Shop table satisfying the criteria (Category and Location) which was inserted or updated after or on LastSyncShop time in response
+If success, send responseCode as 1
+If failure, send responseCode as 0
+
+Technical workflow (Device)
+If responseCode is 1 then
+Populate the Shops screen with Shops data received in response from API
+Save that data in local Shop table
+Update the LastSync table record for Shop table with the current timestamp
+
+If responseCode is 0 then
+Redirect the user to Error screen
 
 8 - Customer places a order
 
