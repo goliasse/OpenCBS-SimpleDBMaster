@@ -518,6 +518,36 @@ Update the LastSync table record for Shop table with the current timestamp
 If responseCode is 0 then
 Redirect the user to Error screen
 
+11 - Registered customer should be able to see all the Products of Selected Category offered by Selected Shop on Products screen
+Business Workflow
+Customer launch the application
+Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
+Customer clicks on a Shop category
+Customer is redirected to Shop list Screen displaying all the shop listed in that area for Selected category
+Customer clicks on a Shop
+Customer is redirected to Product Category screen having displayed all the product categories in which shop is having the products listed
+Customer clicks on a Product Category
+Customer is redirected to Product screen displaying all the Products offered by Selected Shop under that category
+
+Technical workflow (Web)
+Device will call the Fetch_Products service with input parameters as
+LastSyncProducts (Fetched from LastSynced table from device)
+Selected Shop ID
+Selected ProductCategory
+Service will send all the Product records in Shop table satisfying the criteria (Category and Location) which was inserted or updated after or on LastSyncShop time in response
+If success, send responseCode as 1
+If failure, send responseCode as 0
+
+Technical workflow (Device)
+If responseCode is 1 then
+Populate the Shops screen with Shops data received in response from API
+Save that data in local Shop table
+Update the LastSync table record for Shop table with the current timestamp
+
+If responseCode is 0 then
+Redirect the user to Error screen
+
+
 8 - Customer places a order
 
 
