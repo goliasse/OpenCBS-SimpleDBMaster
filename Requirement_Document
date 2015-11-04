@@ -544,11 +544,62 @@ If responseCode is 1 then
 Populate the Products screen with Products data received in response from API
 Save that data in device's Product table
 Update the LastSync table record for Products table with the current timestamp
-Check the SKUIDs for which images are available in device in ProductImages table
+Exclude the SKUIDs for which images are available in device in ProductImages table
+Call the Fetch_Product_Images service with the remaining SKUID fro which image is not available in device
+Update the ProductImages table with those SKUID for which images has been fetched from the server
+
 
 If responseCode is 0 then
 Redirect the user to Error screen
+If there is an error ocurred while fteching the images from server, then also display the Product screen without images.
 
+12 - Customer should be able to specify the desired quantity to be ordered on Product Screen
+Business Workflow
+Customer launch the application
+Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
+Customer clicks on a Shop category
+Customer is redirected to Shop list Screen displaying all the shop listed in that area for Selected category
+Customer clicks on a Shop
+Customer is redirected to Product Category screen having displayed all the product categories in which shop is having the products listed
+Customer clicks on a Product Category
+Customer is redirected to Product screen displaying all the Active Products offered by Selected Shop under that product category
+Customer specifies the unit and quantity to be purchased and as soon as the user will specify the quantity, product will be added to cart.
+if multiple units of same products are added then overall count reflects the no of units added.
+
+
+Technical workflow (Web)
+NA - while adding the product to cart, no action will be taken at web server end.
+
+Technical workflow (Device)
+Update the Intermittent_Cart table in device database for the products for which a quantity has been specified.
+
+12 - Customer Places order by clicking on Place order button on Products screen after specifying the quanity to be purchased
+Business Workflow
+Customer launch the application
+Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
+Customer clicks on a Shop category
+Customer is redirected to Shop list Screen displaying all the shop listed in that area for Selected category
+Customer clicks on a Shop
+Customer is redirected to Product Category screen having displayed all the product categories in which shop is having the products listed
+Customer clicks on a Product Category
+Customer is redirected to Product screen displaying all the Active Products offered by Selected Shop under that product category
+Customer specifies the unit and quantity to be purchased and as soon as the user will specify the quantity, product will be added to cart.if multiple units of same products are added then overall count reflects the no of units added.
+Customer clicks on Place Order button
+Customer is redirected to Checkout screen
+Customer adjusts the quantity to be ordered
+Customer specifies the Payment method, Delivery method, Maximum acceptable time of delivery
+
+
+Technical workflow (Web)
+NA - After clicking on Place order button, no action will be taken at web server end.
+
+Technical workflow (Device)
+Display the Products fetched from Intermittent_Cart table on the CheckOut screen
+Display the Total amount of the cart
+Display the Available payment methods
+Display the Available delivery methods
+Display the total no of products added into cart
+Display the total no of units added into cart
 
 8 - Customer places a order
 
