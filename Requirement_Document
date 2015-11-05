@@ -676,9 +676,10 @@ Device calls the Confirm_Original_Order service with the following input paramet
 OrderId
 Order status as - Confirmed
 Cart status as - Original
-Service updates the order status as 
+Service updates the order status as 'Confirmed' in Order table
+Service updates the Cart table - 
 
-
+Technical workflow (Device)
 
 
 
