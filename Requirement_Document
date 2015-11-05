@@ -595,15 +595,62 @@ NA - After clicking on Place order button, no action will be taken at web server
 
 Technical workflow (Device)
 Display the Products fetched from Intermittent_Cart table on the CheckOut screen
-Display the Total amount of the cart
+Display the Total amount of the products
+Display the delivery charges as per specified by shop
 Display the Available payment methods
 Display the Available delivery methods
 Display the total no of products added into cart
 Display the total no of units added into cart
 
-8 - Customer places a order
+13 - Customer Check Out the cart by clicking on CheckOut button on CheckOut screen
+Business Workflow
+Customer launch the application
+Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
+Customer clicks on a Shop category
+Customer is redirected to Shop list Screen displaying all the shop listed in that area for Selected category
+Customer clicks on a Shop
+Customer is redirected to Product Category screen having displayed all the product categories in which shop is having the products listed
+Customer clicks on a Product Category
+Customer is redirected to Product screen displaying all the Active Products offered by Selected Shop under that product category
+Customer specifies the unit and quantity to be purchased and as soon as the user will specify the quantity, product will be added to cart.if multiple units of same products are added then overall count reflects the no of units added.
+Customer clicks on Place Order button
+Customer is redirected to Checkout screen
+Customer adjusts the quantity to be ordered
+Customer specifies the Payment method, Delivery method, Maximum acceptable time of delivery
+Customer Clicks on Checkout button
+Customer is redirected to Order Summary status Which will display required order details.
+Order Id
+Order Status
+Ordered Cart Details 
 
+Technical workflow (Web)
+Device will call the Place_a_order service with the following input parameters
+Shop ID
+Customer ID
+Cart Deatils
+Service will insert a record in Order table with status as "Ordered" and will generate the order id
+Cart details with this Order Id will be saved in Cart table
+If success, send responseCode as 1 and Send OrderID in response
+If failure, send responseCode as 0
 
+Technical workflow (Device)
+Final cart details will be saved in the device in Intermittent_Cart table before calling the Place_a_order Service
+
+If responseCode received is 1
+Display the Order details on Order Summary screen with Received Order ID in response
+
+If responseCode received is 0
+Display Error screen to the customer
+
+14 - Shopkeeper and SellerHub should receive a notification and SMS for every new order placment to him
+Business workflow
+As soon as the Customer successfully places the order, Shopkeeper and SellerHub gets an notification on his device.
+As soon as the Customer successfully places the order, Shopkeeper and SellerHub receives an SMS on his mobile number.
+Clicking on that Notification will redirect the user to Review Order screen
+
+Technical workflow (Web)
+
+Technical workflow (Device)
 
 
 
