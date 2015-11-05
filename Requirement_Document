@@ -651,14 +651,32 @@ Clicking on that Notification will redirect the user to Review Order screen
 Technical workflow (Web)
 Device will be polling Fetch_Order service on a specified interval of time with following input parameters
 ShopID
-Order Status to be looked upon
-Service will fetch and send in response all the order details satisfying the given criteria (Shop ID and Order Status)
+Order Status to be looked upon - Ordered
+Service will fetch and send in response all the order details and cart details satisfying the given criteria (Shop ID and Order Status)
 If Success, send responseCode as 1
 If Failure, send responseCode as 0
 
 Technical workflow (Device)
+One separate notification will be sent for each order with status as Ordered
+Device will save the response received from service in local Order and Cart table.
+When customer will click on notification, data will be fetched from local Order and Cart table
 
+Note - ItemInStock, OrderedQuantity, AvailableQuantity column need to be added in Cart table, 
+AcceptedExpectedDeliveryTime, SuggestedDeliveryTime, AcceptedSuggestedDeliveryTime, CartUpdatedWhileReview in Order table
+15 - Shopkeeper reviews and confirms the order as is whatever was put by customer into that order
+Business Flow
+Shopkeeper clicks on the New order notification
+Shopkeeper is redirected to Review Order screen with Confirm and Update button
+Shopkeeper reviews the ordered items and Maximum acceptable delivery time.
+Shopkeeper clicks on Confirm button and start preparing the order for delivery.
+Shopkeeper is redirected to New Orders screen where he can see all the new orders pending for his confirmation
 
+Technical workflow (Web)
+Device calls the Confirm_Original_Order service with the following input parameters
+OrderId
+Order status as - Confirmed
+Cart status as - Original
+Service updates the order status as 
 
 
 
