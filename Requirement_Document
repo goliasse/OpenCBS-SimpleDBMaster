@@ -677,12 +677,49 @@ OrderId
 Order status as - Confirmed
 Cart status as - Original
 Service updates the order status as 'Confirmed' in Order table
-Service updates the Cart table - 
+If Failure, send responseCode as 0 and Exit
+If Success
+Service updates the Cart table, Copy the OrderedQuantity column value to AvailableQuantity column value and ItemInStock as Y for that OrderId
+If Success, send responseCode as 1 Exit
+If Failure, send responseCode as 0 and Exit
 
 Technical workflow (Device)
+If responseCode is 1
+Update the OrderId as Confirmed in local Order table 
+Update Cart table in local device, Copy the OrderedQuantity column value to AvailableQuantity column value and ItemInStock as Y for that OrderId
+If sucess, redirect the customer to New Orders screen
+If Failure, redirect him to Error screen
 
 
+16 - Customer should be able to get a notification and SMS on his device when his order is confirmed by Shopkeeper
+Business Flow
+Customer receives a notification when shopkeeper confirms his order and his order is being processed by him.
+Customer receives an SMS regarding the same
 
+Technical workflow (Web)
+Customer device is polling Fetch_Order service with input parameters as
+Customer ID
+Order status as - Confirmed
+LastSyncOrder timestamp from LastSync table
+Service will send all the orderids in response satisfying all the conditions (Customer ids, Order Status, Updated after LastSyncOrder timestamp)
+If success, send responseCode as 1
+If Failure, send responseCode as 0
 
+Technical workflow (Device)
+If responseCode is 1
+Device will display a notification for each order id retrieved in API response
+Device will update the order status in local Order table as Confirmed for all order ids
+If responseCode is 0
+Redirect the customer to Error screen
+
+17 - Clicking on Confirm Order notification should redirect the user to Order Details screen
+Business workflow
+Customer Clicks on Order Confirmation notification.
+Which redirects him to Order Details screen displaying all the order details nad cart details with Cancel button
+
+Technical workflow (Web)
+NA
+
+Technical workflow (Device)
 
 
