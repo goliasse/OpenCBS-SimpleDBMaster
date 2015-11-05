@@ -642,13 +642,19 @@ Display the Order details on Order Summary screen with Received Order ID in resp
 If responseCode received is 0
 Display Error screen to the customer
 
-14 - Shopkeeper and SellerHub should receive a notification and SMS for every new order placment to him
+14 - Shopkeeper and SellerHub should receive a notification and SMS for every new order placement to him
 Business workflow
 As soon as the Customer successfully places the order, Shopkeeper and SellerHub gets an notification on his device.
 As soon as the Customer successfully places the order, Shopkeeper and SellerHub receives an SMS on his mobile number.
 Clicking on that Notification will redirect the user to Review Order screen
 
 Technical workflow (Web)
+Device will be polling Fetch_Order service on a specified interval of time with following input parameters
+ShopID
+Order Status to be looked upon
+Service will fetch and send in response all the order details satisfying the given criteria (Shop ID and Order Status)
+If Success, send responseCode as 1
+If Failure, send responseCode as 0
 
 Technical workflow (Device)
 
