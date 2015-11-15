@@ -277,65 +277,76 @@ A table for storing the OTP
 
 Application ID of the app will be Shop ID or SellerHub ID itself.
 
+Service specification
+Web services should be able to handle Unicode data.
+Web service should be implementing a proper error handling mechanism by which admin should be able to track the error and provide the suitable solution to user.
+When there is a error occurred in any of the web service the following details  should be saved in a persistent storage e.g. database, text file.
+Service name
+Request
+userid
+Response sent
+Exception stack trace
+Each service will be having  a unique code which will be sent to device if error occurred in that service.
+
 Workflow
 
 1- Customer register himself with a new mobile number which was never used previously (New mobile new device)
 Business Workflow
 Start
-Customer will launch the application
-A 'Register' screen will be displayed to him asking for the mobile number, Name and Resedential Address (All are manadatory fields)
-Customer enters all the required details
-Customer clicks on Register button
-A OTP will be sent to his registered mobile number
-Customer is redirected to 'Verify Mobile Number' screen
-If the entered mobile is same as device SIM number, then application will try to detect the OPT by itself.
-If the entered number is different from device SIM number, then user will need to enter the OTP by himself.
-Customer clicks on Verify button
-After successful verfication of mobile number, user will be redirected to Home screen, which will be displaying all the possible shop categories.
-No user specific data will be fetched and synced with device. (Success = 1)
+•	Customer will launch the application
+•	A 'Register' screen will be displayed to him asking for the mobile number, Name and Resedential Address (All are manadatory fields)
+•	Customer enters all the required details
+•	Customer clicks on Register button
+•	A OTP will be sent to his registered mobile number
+•	Customer is redirected to 'Verify Mobile Number' screen
+•	If the entered mobile is same as device SIM number, then application will try to detect the OPT by itself.
+•	If the entered number is different from device SIM number, then user will need to enter the OTP by himself.
+•	Customer clicks on Verify button
+•	After successful verfication of mobile number, user will be redirected to Home screen, which will be displaying all the possible shop categories.
+•	No user specific data will be fetched and synced with device. (Success = 1)
 End
 
 Technical flow
-Actions to be taken after click on Register button
-Device will call Register_user service with Input parameters as
-Mobile number
-This service will do the following operations
-Generate the OTP and Save the OTP in OTP table
-If failure, Send 0 in response and Exit
-Send a OTP to Customer mobile number with the help of Send_SMS service
-If failure, Send 0 in response and Exit
-If both are success, Send 1 in response
+•	Actions to be taken after click on Register button
+•	Device will call Register_user service with Input parameters as
+•	Mobile number
+•	This service will do the following operations
+•	Generate the OTP and Save the OTP in OTP table
+•	If failure, Send 0 in response and Exit
+•	Send a OTP to Customer mobile number with the help of Send_SMS service
+•	If failure, Send 0 in response and Exit
+•	If both are success, Send 1 in response
 
-At deive end
-When Response is 0
-Show an error message to customer
+At device end
+•	When Response is 0
+•	Show an error message to customer
 
-When Response is 1
-Save Mobile number in Settings or Personal Information table on Device
-And redirect the customer to Verify page
+•	When Response is 1
+•	Save Mobile number in Settings or Personal Information table on Device
+•	And redirect the customer to Verify page
 
 Actions to be taken after click on Verify button
 Device will call Verify_mobile service with input parameters as
-Application ID
-Device ID
-Mobile number
-Name
-Resedential address
-OTP
-Verify the user OTP
-If OTP is correct, 
-Save or Update the user details in Custoemr table as Verified to 1, depending upon whether a record exists with same mobile number or not
-If failure ocurred while updating the data in Customer table, Send response as 0
-If OTP not correct, Send Response as -1 and Exit the process
-Check whether the Application ID is Enabled or not in the respective table e.g if Application ID is SP* then it is ShopID, if it is SH* then it is SellerHub id.
-If Application ID is not enabled 
-Fetch the SellerHUb's support contact number and put it in response
-Send -99 in response and exit the process
-If application ID is enabled
-Check for Mobile number and Device ID combination in database, if it is not found
-Success, Send 1 as response and Exit 
-If it is found
-Succes, Send 2 as response amd Exit
+•	Application ID
+•	Device ID
+•	Mobile number
+•	Name
+•	Residential address
+•	OTP
+•	Verify the user OTP
+•	If OTP is correct, 
+•	Save or Update the user details in Customer table as Verified to 1, depending upon whether a record exists with same mobile number or not
+•	If failure occurred while updating the data in Customer table, Send responseCode as 0
+•	If OTP not correct, Send responseCode as -1 and Exit the process
+•	Check whether the Application ID is Enabled or not in the respective table e.g if Application ID is SP* then it is ShopID, if it is SH* then it is SellerHub id.
+•	If Application ID is not enabled 
+•	Fetch the SellerHUb's support contact number and put it in response
+•	Send -99 in response and exit the process
+•	If application ID is enabled
+•	Check for Mobile number and Device ID combination in database, if it is not found
+•	Success, Send 1 as response and Exit 
+•	If it is found
+•	Success, Send 2 as response and Exit
 
 At Device end.
 Save these below details in local device tables and do not fetch any other details from web database
@@ -348,20 +359,20 @@ First Login timestamp
 Personal information table
 Mobile number
 Name
-Resedential address
+Residential address
 Verified
 
-When Response is 0
-Show an error message to custoemr
+•	When Response is 0
+•	Show an error message to customer
 
-When Response is 1
-Do nothing additional and redirect the customer to Home page
+•	When Response is 1
+•	Do nothing additional and redirect the customer to Home page
 
-When response is 2
-Fetch user specific details from web database (Orders, Addresses, Complaints) and save these into local device tables and redirect the customer to Home page
+•	When response is 2
+•	Fetch user specific details from web database (Orders, Addresses, Complaints) and save these into local device tables and redirect the customer to Home page
 
-when resposne is -99
-Show an error message to customer which includes the sellerhub's csupport contact number. so that customer could reach to him.
+•	when response  is -99
+•	Show an error message to customer which includes the sellerhub's support contact number. so that customer could reach to him.
 
 2- Customer register himself with a already used mobile number which was used previously on a new device (Existing mobile new device)
 Start
@@ -376,7 +387,7 @@ End
 4- Customer register himself with a already used mobile number on the same device used previously (Existing mobile existing device)
 Start
 Customer will launch the application
-A 'Register' screen will be displayed to him asking for the mobile number, Name and Resedential Address (All are manadatory fields)
+A 'Register' screen will be displayed to him asking for the mobile number, Name and Residential Address (All are mandatory fields)
 Customer enters all the required details
 Customer clicks on Register button
 A OTP will be sent to his registered mobile number
@@ -384,8 +395,8 @@ Customer is redirected to 'Verify Mobile Number' screen
 If the entered mobile is same as device SIM number, then application will try to detect the OPT by itself.
 If the entered number is different from device SIM number, then user will need to enter the OTP by himself.
 Customer clicks on Verify button.
-After successful verfication of mobile number, user will be redirected to Home screen, which will be displaying all the possible shop categories.
-All the user specific data will be fetched and synced with device i.e. Addresses, Previous Orders, Complaints, Favrouite Shops (Success = 2)
+After successful verification of mobile number, user will be redirected to Home screen, which will be displaying all the possible shop categories.
+All the user specific data will be fetched and synced with device i.e. Addresses, Previous Orders, Complaints, Favorite Shops (Success = 2)
 End
 
 Technical workflow
@@ -394,332 +405,413 @@ Same as above, in this case, Success Response 2 will be sent from API
 
 5 - When a verified customer launch the application
 Business Flow
-Execute 'No internet connection' check workflow
-Customer is directly redirected to Home screen
+•	Customer launch the application
+•	Execute 'No internet connection' check workflow
+•	Customer is directly redirected to Home screen
 
 Technical workflow (Web)
-Execute 'No internet connection' check workflow
-Device checks whether the verified parameter in Settings table is set or not if it is set to 1 then
-Device calls Verify_ApplicationID service with the input parameters as
-Application ID
-If ApplicationID is enabled then
-Send response as 1
-If ApplicationID is not enabled then
-Send response as -99
+•	Execute 'No internet connection' check workflow
+•	Device checks whether the verified parameter in Settings table is set or not if it is set to 1 then
+•	Device calls Verify_ApplicationID service with the input parameters as
+•	Application ID
+•	If ApplicationID is enabled then
+•	Send responseCode as 1
+•	If ApplicationID is not enabled then
+•	Send responseCode as -99
 
 Technical workflow (Device)
-Execute 'No internet connection' check workflow
-If Response is 1
-Redirect the user to Home screen
-If Response is -99 then
-Redirect the customer to Application blocked error screen conating SellerHub Support contact number.
+•	Execute 'No internet connection' check workflow
+•	If Response is 1
+•	Redirect the user to Home screen
+•	If Response is -99 then
+•	Redirect the customer to Application blocked error screen containing SellerHub's Support contact number.
 
 6 - When a new customer launch the application
 Business flow
-Customer is redirected to Registration screen
+•	Customer launch the application
+•	Execute 'No internet connection' check workflow
+
+•	Customer is redirected to Registration screen
 
 Technical workflow (Web)
-Device checks whether the verified parameter in Settings table is set or not if it is not set or set to 0 then
+Device checks whether the verified parameter in Settings table is set or not if it is null or set to 0 then
 No web API calls
 
 Technical workflow (Device)
-Device checks whether the verified parameter in Settings table is set or not if it is not set then
-Redirect the customer to Registration screen
+•	Device checks if the verified parameter in Settings table is set to null then
+•	Redirect the customer to Registration screen
 
-Device checks whether the verified parameter in Settings table is set or not if it is set to 0 then
-Redirect the customer to Verify Mobile screen
+•	Device checks if the verified parameter in Settings table is set 0 then
+•	Redirect the customer to Verify Mobile screen
 
-7 - Customer should be able to see a Error screen when there is no intenet connection on device
+7 - Customer should be able to see a Error screen when there is no internet connection on device
 Business workflow
-Customer launch the application
-Device is not connected to internet
-Customer is redirected to 'No Internet Connection' error screen
+•	Customer launch the application
+•	Device is not connected to internet
+•	Customer is redirected to 'No Internet Connection' error screen
 
 Technical workflow (Web)
 NA
 
 Technical workflow (Device)
-Device checks for internet connectivity
-If it is there then 
-Do the additional check and perform appropriate action
+•	Device checks for internet connectivity
+•	If it is there then 
+•	Do the additional check and perform appropriate action
 
-If it is not there then
-Customer is redirected to 'No internect connection' screen
+•	If it is not there then
+•	Customer is redirected to 'No internet connection' screen
 
 
 8 - Registered customer should be able to see the Home screen with all the Shop categories populated
 Business Workflow
-Customer launch the application
-Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
+•	Customer launch the application
+•	Customer is redirected to Home Screen which will display all the Shop categories fetched in real time from web server.
 
 Technical workflow (Web)
-Device will call the Fetch_Shop_Categories service with input parameters as
-LastSyncShopCategories (Fetched from LastSynced table from device)
-Service will send all the unique records of ShopCategory column in Shop table which was inserted or updated after or on LastSyncShopCategories time in response
-If success, send responseCode as 1
-If failure, send responseCode as 0
+•	Device will call the Fetch_Shop_Categories service with input parameters as
+•	LastSyncShopCategories (Fetched from LastSynced table from device)
+•	Service will send all the unique records of ShopCategory column in Shop table which was inserted or updated after or on LastSyncShopCategories time in response
+•	If success, send responseCode as 1
+•	If failure, send responseCode as 0
 
 Technical workflow (Device)
-If responseCode is 1 then
-Populate the Home screen with ShopCategories data received in response from API
-Save that data in local ShopCategories table
-Update the LastSync table record for ShopCategory table with the current timestamp
+•	If responseCode is 1 then
+•	Populate the Home screen with ShopCategories data received in response from API
+•	Save that data in local ShopCategories table
+•	Update the LastSync table record for ShopCategory table with the current timestamp
 
-If responseCode is 0 then
-Redirect the user to Error screen
+•	If responseCode is 0 then
+•	Redirect the user to Error screen
 
 9 - Registered customer should be able to see all the Shops registered for that category when clicked on a Category on Home screen
 Business Workflow
-Customer launch the application
-Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
-Customer clicks on a Shop category
-Customer is redirected to Shop list Screen displaying all the shop listed in that area
+•	Customer launch the application
+•	Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
+•	Customer clicks on a Shop category
+•	Customer is redirected to Shop list Screen displaying all the shop listed in that area
 
 Technical workflow (Web)
-Device will call the Fetch_Shops service with input parameters as
-LastSyncShop (Fetched from LastSynced table from device)
-Selected Shop Category
-Map location or Area of the customer
-Service will send all the records in Shop table satisfying the criteria (Category and Location) which was inserted or updated after or on LastSyncShop time in response
-If success, send responseCode as 1
-If failure, send responseCode as 0
+•	Device will call the Fetch_Shops service with input parameters as
+•	LastSyncShop (Fetched from LastSynced table from device)
+•	Selected Shop Category
+•	Map location or Area of the customer
+•	Service will send all the records in Shop table satisfying the criteria (Category and Location) which was inserted or updated after or on LastSyncShop time in response
+•	If success, send responseCode as 1
+•	If failure, send responseCode as 0
 
 Technical workflow (Device)
-If responseCode is 1 then
-Populate the Shops screen with Shops data received in response from API
-Save that data in local Shop table
-Update the LastSync table record for Shop table with the current timestamp
+•	If responseCode is 1 then
+•	Populate the Shops screen with Shops data received in response from API
+•	Save that data in local Shop table
+•	Update the LastSync table record for Shop table with the current timestamp
 
-If responseCode is 0 then
-Redirect the user to Error screen
+•	If responseCode is 0 then
+•	Redirect the user to Error screen
 
 10 - Registered customer should be able to see all the Product categories in which selected shop is having the products listed
 Business Workflow
-Customer launch the application
-Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
-Customer clicks on a Shop category
-Customer is redirected to Shop list Screen displaying all the shop listed in that area
-Customer clicks on a Shop
-Customer is redirected to Product Category screen having displayed all the product categories in which shop is having the products listed
+•	Customer launch the application
+•	Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
+•	Customer clicks on a Shop category
+•	Customer is redirected to Shop list Screen displaying all the shop listed in that area
+•	Customer clicks on a Shop
+•	Customer is redirected to Product Category screen having displayed all the product categories in which shop is having the products listed
 
 Technical workflow (Web)
-Device will call the Fetch_Product_Categories service with input parameters as
-LastSyncProductCategories (Fetched from LastSynced table from device)
-Selected Shop ID
-Service will send all the ProductCategories records in Shop table satisfying the criteria (Category and Location) which was inserted or updated after or on LastSyncShop time in response
-If success, send responseCode as 1
-If failure, send responseCode as 0
+•	Device will call the Fetch_Product_Categories service with input parameters as
+•	LastSyncProductCategories (Fetched from LastSynced table from device)
+•	Selected Shop ID
+•	Service will send all the ProductCategories records in Shop table satisfying the criteria (Category and Location) which was inserted or updated after or on LastSyncShop time in response
+•	If success, send responseCode as 1
+•	If failure, send responseCode as 0
 
 Technical workflow (Device)
-If responseCode is 1 then
-Populate the Shops screen with Shops data received in response from API
-Save that data in local Shop table
-Update the LastSync table record for Shop table with the current timestamp
-
-If responseCode is 0 then
-Redirect the user to Error screen
+•	If responseCode is 1 then
+•	Populate the Shops screen with Shops data received in response from API
+•	Save that data in local Shop table
+•	Update the LastSync table record for Shop table with the current timestamp
+•	If responseCode is 0 then
+•	Redirect the user to Error screen
 
 11 - Registered customer should be able to see all the Products of Selected Category offered by Selected Shop on Products screen
 Business Workflow
-Customer launch the application
-Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
-Customer clicks on a Shop category
-Customer is redirected to Shop list Screen displaying all the shop listed in that area for Selected category
-Customer clicks on a Shop
-Customer is redirected to Product Category screen having displayed all the product categories in which shop is having the products listed
-Customer clicks on a Product Category
-Customer is redirected to Product screen displaying all the Active Products offered by Selected Shop under that product category
+•	Customer launch the application
+•	Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
+•	Customer clicks on a Shop category
+•	Customer is redirected to Shop list Screen displaying all the shop listed in that area for Selected category
+•	Customer clicks on a Shop
+•	Customer is redirected to Product Category screen having displayed all the product categories in which shop is having the products listed
+•	Customer clicks on a Product Category
+•	Customer is redirected to Product screen displaying all the Active Products offered by Selected Shop under that product category
 
 Technical workflow (Web)
-Device will call the Fetch_Products service with input parameters as
-LastSyncProducts (Fetched from LastSynced table from device)
-Selected Shop ID
-Selected ProductCategory
-Service will send all the Product records in Products table satisfying the criteria (Shop ID, Category and Status) which was inserted or updated after or on LastSyncProducts time in response
-If success, send responseCode as 1
-If failure, send responseCode as 0
+•	Device will call the Fetch_Products service with input parameters as
+•	LastSyncProducts (Fetched from LastSynced table from device)
+•	Selected Shop ID
+•	Selected ProductCategory
+•	Service will send all the Product records in Products table satisfying the criteria (Shop ID, Category and Status) which was inserted or updated after or on LastSyncProducts time in response
+•	If success, send responseCode as 1
+•	If failure, send responseCode as 0
 
 Technical workflow (Device)
-If responseCode is 1 then
-Populate the Products screen with Products data received in response from API
-Save that data in device's Product table
-Update the LastSync table record for Products table with the current timestamp
-Exclude the SKUIDs for which images are available in device in ProductImages table
-Call the Fetch_Product_Images service with the remaining SKUID fro which image is not available in device
-Update the ProductImages table with those SKUID for which images has been fetched from the server
-
-
-If responseCode is 0 then
-Redirect the user to Error screen
-If there is an error ocurred while fteching the images from server, then also display the Product screen without images.
+•	If responseCode is 1 then
+•	Populate the Products screen with Products data received in response from API
+•	Save that data in device's Product table
+•	Update the LastSync table record for Products table with the current timestamp
+•	Exclude the SKUIDs for which images are available in device in ProductImages table
+•	Call the Fetch_Product_Images service with the remaining SKUID for which image is not available in device
+•	Update the ProductImages table with those SKUID for which images has been fetched from the server
+•	If responseCode is 0 then
+•	Redirect the user to Error screen
+•	If there is an error occurred while fetching the images from server, then also display the Product screen without images.
 
 12 - Customer should be able to specify the desired quantity to be ordered on Product Screen
 Business Workflow
-Customer launch the application
-Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
-Customer clicks on a Shop category
-Customer is redirected to Shop list Screen displaying all the shop listed in that area for Selected category
-Customer clicks on a Shop
-Customer is redirected to Product Category screen having displayed all the product categories in which shop is having the products listed
-Customer clicks on a Product Category
-Customer is redirected to Product screen displaying all the Active Products offered by Selected Shop under that product category
-Customer specifies the unit and quantity to be purchased and as soon as the user will specify the quantity, product will be added to cart.
-if multiple units of same products are added then overall count reflects the no of units added.
+•	Customer launch the application
+•	Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
+•	Customer clicks on a Shop category
+•	Customer is redirected to Shop list Screen displaying all the shop listed in that area for Selected category
+•	Customer clicks on a Shop
+•	Customer is redirected to Product Category screen having displayed all the product categories in which shop is having the products listed
+•	Customer clicks on a Product Category
+•	Customer is redirected to Product screen displaying all the Active Products offered by Selected Shop under that product category
+•	Customer specifies the unit and quantity to be purchased and as soon as the user will specify the quantity, product will be added to cart.
+•	if multiple units of same products are added then overall count reflects the no of units added.
 
 
 Technical workflow (Web)
 NA - while adding the product to cart, no action will be taken at web server end.
 
 Technical workflow (Device)
-Update the Intermittent_Cart table in device database for the products for which a quantity has been specified.
+•	Update the Intermittent_Cart table in device database for the products for which a quantity has been specified.
 
-12 - Customer Places order by clicking on Place order button on Products screen after specifying the quanity to be purchased
+13 - Customer Places order by clicking on Place order button on Products screen after specifying the quantity to be purchased
 Business Workflow
-Customer launch the application
-Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
-Customer clicks on a Shop category
-Customer is redirected to Shop list Screen displaying all the shop listed in that area for Selected category
-Customer clicks on a Shop
-Customer is redirected to Product Category screen having displayed all the product categories in which shop is having the products listed
-Customer clicks on a Product Category
-Customer is redirected to Product screen displaying all the Active Products offered by Selected Shop under that product category
-Customer specifies the unit and quantity to be purchased and as soon as the user will specify the quantity, product will be added to cart.if multiple units of same products are added then overall count reflects the no of units added.
-Customer clicks on Place Order button
-Customer is redirected to Checkout screen
-Customer adjusts the quantity to be ordered
-Customer specifies the Payment method, Delivery method, Maximum acceptable time of delivery
+•	Customer launch the application
+•	Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
+•	Customer clicks on a Shop category
+•	Customer is redirected to Shop list Screen displaying all the shop listed in that area for Selected category
+•	Customer clicks on a Shop
+•	Customer is redirected to Product Category screen having displayed all the product categories in which shop is having the products listed
+•	Customer clicks on a Product Category
+•	Customer is redirected to Product screen displaying all the Active Products offered by Selected Shop under that product category
+•	Customer specifies the unit and quantity to be purchased and as soon as the user will specify the quantity, product will be added to cart.if multiple units of same products are added then overall count reflects the no of units added.
+•	Customer clicks on Place Order button
+•	Customer is redirected to Checkout screen
+•	Customer adjusts the quantity to be ordered
+•	Customer specifies the Payment method, Delivery method, Maximum acceptable time of delivery
 
 
 Technical workflow (Web)
 NA - After clicking on Place order button, no action will be taken at web server end.
 
 Technical workflow (Device)
-Display the Products fetched from Intermittent_Cart table on the CheckOut screen
-Display the Total amount of the products
-Display the delivery charges as per specified by shop
-Display the Available payment methods
-Display the Available delivery methods
-Display the total no of products added into cart
-Display the total no of units added into cart
+•	Display the Products fetched from Intermittent_Cart table on the CheckOut screen
+•	Display the Total amount of the products
+•	Display the delivery charges as per specified by shop
+•	Display the Available payment methods
+•	Display the Available delivery methods
+•	Display the total no of products added into cart
+•	Display the total no of units added into cart
 
-13 - Customer Check Out the cart by clicking on CheckOut button on CheckOut screen
+14 - Customer Check Out the cart by clicking on CheckOut button on CheckOut screen
 Business Workflow
-Customer launch the application
-Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
-Customer clicks on a Shop category
-Customer is redirected to Shop list Screen displaying all the shop listed in that area for Selected category
-Customer clicks on a Shop
-Customer is redirected to Product Category screen having displayed all the product categories in which shop is having the products listed
-Customer clicks on a Product Category
-Customer is redirected to Product screen displaying all the Active Products offered by Selected Shop under that product category
-Customer specifies the unit and quantity to be purchased and as soon as the user will specify the quantity, product will be added to cart.if multiple units of same products are added then overall count reflects the no of units added.
-Customer clicks on Place Order button
-Customer is redirected to Checkout screen
-Customer adjusts the quantity to be ordered
-Customer specifies the Payment method, Delivery method, Maximum acceptable time of delivery
-Customer Clicks on Checkout button
-Customer is redirected to Order Summary status Which will display required order details.
-Order Id
-Order Status
-Ordered Cart Details 
+•	Customer launch the application
+•	Customer is redirected to Home Screen which will display all the Shop categories fetched in realtime from web server.
+•	Customer clicks on a Shop category
+•	Customer is redirected to Shop list Screen displaying all the shop listed in that area for Selected category
+•	Customer clicks on a Shop
+•	Customer is redirected to Product Category screen having displayed all the product categories in which shop is having the products listed
+•	Customer clicks on a Product Category
+•	Customer is redirected to Product screen displaying all the Active Products offered by Selected Shop under that product category
+•	Customer specifies the unit and quantity to be purchased and as soon as the user will specify the quantity, product will be added to cart.if multiple units of same products are added then overall count reflects the no of units added.
+•	Customer clicks on Place Order button
+•	Customer is redirected to Checkout screen
+•	Customer adjusts the quantity to be ordered
+•	Customer specifies the Payment method, Delivery method, Maximum acceptable time of delivery
+•	Customer Clicks on Checkout button
+•	Customer is redirected to Order Summary status Which will display required order details.
+•	Order Id
+•	Order Status
+•	Ordered Cart Details 
 
 Technical workflow (Web)
-Device will call the Place_a_order service with the following input parameters
-Shop ID
-Customer ID
-Cart Deatils
-Service will insert a record in Order table with status as "Ordered" and will generate the order id
-Cart details with this Order Id will be saved in Cart table
-If success, send responseCode as 1 and Send OrderID in response
-If failure, send responseCode as 0
+•	Device will call the Place_a_order service with the following input parameters
+•	Shop ID
+•	Customer ID
+•	Cart Deatils
+•	Service will insert a record in Order table with status as "Ordered" and will generate the order id
+•	Cart details with this Order Id will be saved in Cart table
+•	If success, send responseCode as 1 and Send OrderID in response
+•	If failure, send responseCode as 0
 
 Technical workflow (Device)
-Final cart details will be saved in the device in Intermittent_Cart table before calling the Place_a_order Service
+•	Final cart details will be saved in the device in Intermittent_Cart table before calling the Place_a_order Service
+•	If responseCode received is 1
+•	Display the Order details on Order Summary screen with Received Order ID in response
 
-If responseCode received is 1
-Display the Order details on Order Summary screen with Received Order ID in response
+•	If responseCode received is 0
+•	Display Error screen to the customer
 
-If responseCode received is 0
-Display Error screen to the customer
-
-14 - Shopkeeper and SellerHub should receive a notification and SMS for every new order placement to him
+15 - Shopkeeper and SellerHub should receive a notification and SMS for every new order placement to him
 Business workflow
-As soon as the Customer successfully places the order, Shopkeeper and SellerHub gets an notification on his device.
-As soon as the Customer successfully places the order, Shopkeeper and SellerHub receives an SMS on his mobile number.
-Clicking on that Notification will redirect the user to Review Order screen
+•	As soon as the Customer successfully places the order, Shopkeeper and SellerHub gets an notification on his device.
+•	As soon as the Customer successfully places the order, Shopkeeper and SellerHub receives an SMS on his mobile number.
+•	Clicking on that Notification will redirect the user to Review Order screen
 
 Technical workflow (Web)
-Device will be polling Fetch_Order service on a specified interval of time with following input parameters
-ShopID
-Order Status to be looked upon - Ordered
-Service will fetch and send in response all the order details and cart details satisfying the given criteria (Shop ID and Order Status)
-If Success, send responseCode as 1
-If Failure, send responseCode as 0
-
+•	Device will be polling Fetch_Order service on a specified interval of time with following input parameters
+•	ShopID
+•	Order Status to be looked upon - Ordered
+•	Service will fetch and send in response all the order details and cart details satisfying the given criteria (Shop ID and Order Status)
+•	If Success, send responseCode as 1
+•	If Failure, send responseCode as 0
+	
 Technical workflow (Device)
-One separate notification will be sent for each order with status as Ordered
-Device will save the response received from service in local Order and Cart table.
-When customer will click on notification, data will be fetched from local Order and Cart table
+•	One separate notification will be sent for each order with status as Ordered
+•	Device will save the response received from service in local Order and Cart table.
+•	When customer will click on notification, data will be fetched from local Order and Cart table
 
 Note - ItemInStock, OrderedQuantity, AvailableQuantity column need to be added in Cart table, 
 AcceptedExpectedDeliveryTime, SuggestedDeliveryTime, AcceptedSuggestedDeliveryTime, CartUpdatedWhileReview in Order table
-15 - Shopkeeper reviews and confirms the order as is whatever was put by customer into that order
+16 - Shopkeeper reviews and confirms the order as is whatever was put by customer into that order
 Business Flow
-Shopkeeper clicks on the New order notification
-Shopkeeper is redirected to Review Order screen with Confirm and Update button
-Shopkeeper reviews the ordered items and Maximum acceptable delivery time.
-Shopkeeper clicks on Confirm button and start preparing the order for delivery.
-Shopkeeper is redirected to New Orders screen where he can see all the new orders pending for his confirmation
+•	Shopkeeper clicks on the New order notification
+•	Shopkeeper is redirected to Review Order screen with Confirm and Update button
+•	Shopkeeper reviews the ordered items and Maximum acceptable delivery time.
+•	Shopkeeper clicks on Confirm button and start preparing the order for delivery.
+•	Shopkeeper is redirected to New Orders screen where he can see all the new orders pending for his confirmation
 
 Technical workflow (Web)
-Device calls the Confirm_Original_Order service with the following input parameters
-OrderId
-Order status as - Confirmed
-Cart status as - Original
-Service updates the order status as 'Confirmed' in Order table
-If Failure, send responseCode as 0 and Exit
-If Success
-Service updates the Cart table, Copy the OrderedQuantity column value to AvailableQuantity column value and ItemInStock as Y for that OrderId
-If Success, send responseCode as 1 Exit
-If Failure, send responseCode as 0 and Exit
+•	Device calls the Confirm_Original_Order service with the following input parameters
+•	OrderId
+•	Order status as - Confirmed
+•	Cart status as - Original
+•	Service updates the order status as 'Confirmed' in Order table
+•	If Failure, send responseCode as 0 and Exit
+•	If Success
+•	Service updates the Cart table, Copy the OrderedQuantity column value to AvailableQuantity column value and ItemInStock as Y for that OrderId
+•	If Success, send responseCode as 1 Exit
+•	If Failure, send responseCode as 0 and Exit
 
 Technical workflow (Device)
-If responseCode is 1
-Update the OrderId as Confirmed in local Order table 
-Update Cart table in local device, Copy the OrderedQuantity column value to AvailableQuantity column value and ItemInStock as Y for that OrderId
-If sucess, redirect the customer to New Orders screen
-If Failure, redirect him to Error screen
+•	If responseCode is 1
+•	Update the OrderId as Confirmed in local Order table 
+•	Update Cart table in local device, Copy the OrderedQuantity column value to AvailableQuantity column value and ItemInStock as Y for that OrderId
+•	If sucess, redirect the customer to New Orders screen
+•	If Failure, redirect him to Error screen
 
-
-16 - Customer should be able to get a notification and SMS on his device when his order is confirmed by Shopkeeper
+	
+17 - Customer should be able to get a notification and SMS on his device when his order is confirmed by Shopkeeper
 Business Flow
-Customer receives a notification when shopkeeper confirms his order and his order is being processed by him.
-Customer receives an SMS regarding the same
+•	Customer receives a notification when shopkeeper confirms his order and his order is being processed by him.
+•	Customer receives an SMS regarding the same
 
 Technical workflow (Web)
-Customer device is polling Fetch_Order service with input parameters as
-Customer ID
-Order status as - Confirmed
-LastSyncOrder timestamp from LastSync table
-Service will send all the orderids in response satisfying all the conditions (Customer ids, Order Status, Updated after LastSyncOrder timestamp)
-If success, send responseCode as 1
-If Failure, send responseCode as 0
+•	Customer device is polling Fetch_Order service with input parameters as
+•	Customer ID
+•	Order status as - Confirmed
+•	LastSyncOrder timestamp from LastSync table
+•	Service will send all the orderids in response satisfying all the conditions (Customer ids, Order Status, Updated after LastSyncOrder timestamp)
+•	If success, send responseCode as 1
+•	If Failure, send responseCode as 0
 
 Technical workflow (Device)
-If responseCode is 1
-Device will display a notification for each order id retrieved in API response
-Device will update the order status in local Order table as Confirmed for all order ids
-If responseCode is 0
-Redirect the customer to Error screen
+•	If responseCode is 1
+•	Device will display a notification for each order id retrieved in API response
+•	Device will update the order status in local Order table as Confirmed for all order ids
+•	If responseCode is 0
+•	Redirect the customer to Error screen
 
-17 - Clicking on Confirm Order notification should redirect the user to Order Details screen
-Business workflow
-Customer Clicks on Order Confirmation notification.
-Which redirects him to Order Details screen displaying all the order details nad cart details with Cancel button
-
+18 - Clicking on Confirm Order notification should redirect the user to Order Details screen
+Business workflow	
+•	Customer Clicks on Order Confirmation notification.
+•	Which redirects him to Order Details screen displaying all the order details and cart details with Cancel button
 Technical workflow (Web)
 NA
+Technical workflow (Device)
+Device will retrieve all the required details from Local Order and Cart tables on device and display on Order Details screen
+
+
+
+19 - Shopkeeper should be able to update the order status to "Ready for shipment" and assign a DeliveryPerson to the order when he has prepared the order and order is ready for shipment. DeliveryPerson should be notified of it.
+Business Flow
+When shopkeeper has prepared the customer agreed order. He should be able to - 
+Change the order status to "Ready for shipment".
+Assign a delivery person to order for shipment
+Technical workflow (Web)
+Device should call update_order_status service with the following parameters
+OrderId
+OrderStatus
+DeliveryPersonId
+Service will update the order status to "Ready for shipment" in Order table.
+Service will push a notification to corresponding DeliveryPerson regarding the order status
+Service will send an SMS to corresponding DeliveryPerson regarding the order status
+If success, then send status as 1
+If failure, then send status as 0
 
 Technical workflow (Device)
+if status is 1
+Display the success message to user
+if status is 0
+Display the error screen to user
 
+20 - DeliveryPerson should be able to get a notification and SMS on his device when  an order is "Ready for shipment" and assigned to him for delivery.
+Business Flow
+As soon as shopkeeper has updated the order status to "Ready for shipment" assigned delivery person will be given a notification.
+DeliveryPerson will receive a SMS regarding the order assigned to him for shipment.
+Technical workflow (Web)
+Technical workflow (Device)
+21 - DeliveryPerson should be able to view Order Details and Shop Details on Order Details screen when he clicks on the notification sent to him after updating the order status to "Ready for shipment".
+Business Flow
+Technical workflow (Web)
+Technical workflow (Device)
+22 - Shopkeeper should be able to update the order status to "Shipped" when order has been picked up by DeliveryPerson for delivery.
+Business Flow
+Technical workflow (Web)
+Technical workflow (Device)
+23 - Customer should be notified of order status change to "Shipped".
+Business Flow
+Technical workflow (Web)
+Technical workflow (Device)
+24 - Customer should be able to see the order details and Delivery person details when clicking on order "Shipped" notification.
+ Business Flow
+Technical workflow (Web)
+Technical workflow (Device)
+25 - DeliveryPerson should be able to update the order status to "Delivered" when order has been successfully delivered to customer by DeliveryPerson and appropriate amount collected from customer .
+Business Flow
+Technical workflow (Web)
+Technical workflow (Device)
+26 - Shopkeeper should be notified of "Delivered" status change in orderId by DeliveryPerson
+Business Flow
+Technical workflow (Web)
+Technical workflow (Device)
+27 - Shopkeeper should be able to see OrderDetails, Invoice amount collected and Delivery Time updated by DeliveryPerson while delivering the order to customer
+Business Flow
+Technical workflow (Web)
+Technical workflow (Device)
+28 - DeliveryPerson should be able to get some evidence from customer that he has successfully delivered the order to him. Either in digital form or in form of a duplicate receipt signed by customer.
+Business Flow
+Technical workflow (Web)
+Technical workflow (Device)
+29 - Shopkeeper  should be able to update the order status to "Closed" when he has received the appropriate amount from DeliveryPerson after successful delivery of order to customer.
+Business Flow
+Technical workflow (Web)
+Technical workflow (Device)
+30 - Shopkeeper and DeliveryPerson both should be able to mark any order as "Disputed" but after successful delivery of the order to customer which is supposed to be looked upon by corresponding SellerHub.
+Business Flow
+Technical workflow (Web)
+Technical workflow (Device)
+31 - SellerHub should be able to see a notification when a Shopkeeper and DeliveryPerson marks a OrderID as  "Disputed"
+Business Flow
+Technical workflow (Web)
+Technical workflow (Device)
+32 - SellerHub should be able to see the Order details, Shop details, DeliveryPerson and Dispute message details when clicking on notification for "Disputed" order
+Business Flow
+Technical workflow (Web)
+Technical workflow (Device)
+33 - Customer should be able to cancel his order before its status got changed to "Shipped"
+Business Flow
+Technical workflow (Web)
+Technical workflow (Device)
 
