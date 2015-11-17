@@ -811,16 +811,31 @@ Technical workflow (Device)
 If status is 1
 Display order details screen with DeliverPerson details on screen
 If status is 0
-Shopkeeper should be displayed a error screen
+Shopkeeper should be displayed an error screen
 
-25 - DeliveryPerson should be able to update the order status to "Delivered" when order has been successfully delivered to customer by DeliveryPerson and appropriate amount collected from customer .
+25 - DeliveryPerson should be able to update the order status to "Delivered" when order has been successfully delivered to customer by DeliveryPerson and appropriate amount collected from customer and Shopkeeper should be notified of "Delivered" status change in orderId by DeliveryPerson.
 Business Flow
+DeliveryPerson has successfully deliverd the order to Customer
+DeliveryPerson has collected the invoice amount from the customer
+DeliveryPerson has marked the order status as Delivered in the System
+DeliveryPerson has marked the Amount Collected for the order in System
+Shopkeeper should be notified of this order status change to Delivered
 Technical workflow (Web)
+Device calls the Update_Order_Status service with the following input parameters
+OrderId
+OrderStatus
+Service updates the order status in Order table to 'Delivered'
+Service sends a Push notification to Shopkeeper regarding order status change to 'Delivered'
+If success, send status as 1
+If failure, send status as 0
+
 Technical workflow (Device)
-26 - Shopkeeper should be notified of "Delivered" status change in orderId by DeliveryPerson
-Business Flow
-Technical workflow (Web)
-Technical workflow (Device)
+If status is 1
+DeliveryPerson should be displayed a success message regarding the order status change
+Shopkeeper should receive a notification regarding the order status change
+If status is 0
+Shopkeeper should be displayed an error screen
+
 27 - Shopkeeper should be able to see OrderDetails, Invoice amount collected and Delivery Time updated by DeliveryPerson while delivering the order to customer
 Business Flow
 Technical workflow (Web)
