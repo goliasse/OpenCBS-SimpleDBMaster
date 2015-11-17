@@ -840,7 +840,7 @@ Shopkeeper should be displayed an error screen
 
 27 - Shopkeeper should be able to see OrderDetails, Invoice amount collected and Delivery Time updated by DeliveryPerson while delivering the order to customer after clicking on 'Delivered' order status change notification
 Business Flow
-Shopkeeper receives an order 'Delivered' when DeliverPerson has 
+Shopkeeper receives an order 'Delivered' notification when DeliveryPerson has successfully delivered the order to customer
 Technical workflow (Web)
 
 Technical workflow (Device)
