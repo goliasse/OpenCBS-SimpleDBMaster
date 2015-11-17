@@ -739,6 +739,8 @@ Business Flow
 When shopkeeper has prepared the customer agreed order. He should be able to - 
 Change the order status to "Ready for shipment".
 Assign a delivery person to order for shipment
+DeliveryPerson should be notified of this order status update to "Ready for shipment".
+DeliveryPerson should be able to receive an SMS of this order status update to "Ready for shipment".
 Technical workflow (Web)
 Device should call update_order_status service with the following parameters
 OrderId
@@ -754,6 +756,7 @@ Technical workflow (Device)
 if status is 1
 Display the success message to Shopkeeper
 DeliveryPerson should have received the notification regarding the Order to be delivered
+DeliveryPerson should have receive an SMS regarding the Order to be delivered
 if status is 0
 Display the error screen to user
 
@@ -803,6 +806,7 @@ Customer is redirected to Order Details screen which displays order details and 
 Technical workflow (Web)
 Device calls Fetch_Order_Details service with the following input parameters
 OrderID
+OrderStatus
 Service sends the OrderDetails, DeliverPerson details in response back to customer
 If success, send status as 1
 If failure, send status as 0
@@ -847,26 +851,43 @@ Technical workflow (Device)
 
 28 - DeliveryPerson should be able to get some evidence from customer that he has successfully delivered the order to him. Either in digital form or in form of a duplicate receipt signed by customer.
 Business Flow
+
 Technical workflow (Web)
+
 Technical workflow (Device)
+
 29 - Shopkeeper  should be able to update the order status to "Closed" when he has received the appropriate amount from DeliveryPerson after successful delivery of order to customer.
 Business Flow
+
 Technical workflow (Web)
+
 Technical workflow (Device)
+
 30 - Shopkeeper and DeliveryPerson both should be able to mark any order as "Disputed" but after successful delivery of the order to customer which is supposed to be looked upon by corresponding SellerHub.
 Business Flow
+
 Technical workflow (Web)
+
 Technical workflow (Device)
+
 31 - SellerHub should be able to see a notification when a Shopkeeper and DeliveryPerson marks a OrderID as  "Disputed"
 Business Flow
+
 Technical workflow (Web)
+
 Technical workflow (Device)
+
 32 - SellerHub should be able to see the Order details, Shop details, DeliveryPerson and Dispute message details when clicking on notification for "Disputed" order
 Business Flow
+
 Technical workflow (Web)
+
 Technical workflow (Device)
+
 33 - Customer should be able to cancel his order before its status got changed to "Shipped"
 Business Flow
+
 Technical workflow (Web)
+
 Technical workflow (Device)
 
