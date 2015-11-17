@@ -781,14 +781,38 @@ Order has been picked up by DeliverPerson for delivery.
 Shopkeeper should be able to update order status to 'Shipped'
 Customer should receive a notification regarding this order status change.
 Technical workflow (Web)
-Device call the Update_order_status service with follwoing input parameters.
-
+Device call the Update_order_status service with following input parameters.
+OrderId
+Order Status
+Service updates the order status in Order table.
+Service pushes a notification to customer id associated with order id regarding the order status change.
+If success, send status as 1
+If failure, send status as 0
 Technical workflow (Device)
+If status is 1
+Shopkeeper should get a success message
+Customer should receive notification regarding the order status change
+If status is 0
+Shopkeeper should be displayed a error screen
 
 24 - Customer should be able to see the order details and Delivery person details when clicking on order "Shipped" notification.
- Business Flow
+Business Flow
+Customer receives a notification on his device regarding the order status change
+Customer clicks on that notification
+Customer is redirected to Order Details screen which displays order details and DeliverPerson details on the screen.
 Technical workflow (Web)
+Device calls Fetch_Order_Details service with the following input parameters
+OrderID
+Service sends the OrderDetails, DeliverPerson details in response back to customer
+If success, send status as 1
+If failure, send status as 0
+
 Technical workflow (Device)
+If status is 1
+Display order details screen with DeliverPerson details on screen
+If status is 0
+Shopkeeper should be displayed a error screen
+
 25 - DeliveryPerson should be able to update the order status to "Delivered" when order has been successfully delivered to customer by DeliveryPerson and appropriate amount collected from customer .
 Business Flow
 Technical workflow (Web)
