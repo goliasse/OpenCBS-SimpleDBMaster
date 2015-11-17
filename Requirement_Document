@@ -824,6 +824,8 @@ Technical workflow (Web)
 Device calls the Update_Order_Status service with the following input parameters
 OrderId
 OrderStatus
+Amount Collected
+DeliveryTime (Timestamp while updating the order status to 'Delivered')
 Service updates the order status in Order table to 'Delivered'
 Service sends a Push notification to Shopkeeper regarding order status change to 'Delivered'
 If success, send status as 1
@@ -836,10 +838,13 @@ Shopkeeper should receive a notification regarding the order status change
 If status is 0
 Shopkeeper should be displayed an error screen
 
-27 - Shopkeeper should be able to see OrderDetails, Invoice amount collected and Delivery Time updated by DeliveryPerson while delivering the order to customer
+27 - Shopkeeper should be able to see OrderDetails, Invoice amount collected and Delivery Time updated by DeliveryPerson while delivering the order to customer after clicking on 'Delivered' order status change notification
 Business Flow
+Shopkeeper receives an order 'Delivered' when DeliverPerson has 
 Technical workflow (Web)
+
 Technical workflow (Device)
+
 28 - DeliveryPerson should be able to get some evidence from customer that he has successfully delivered the order to him. Either in digital form or in form of a duplicate receipt signed by customer.
 Business Flow
 Technical workflow (Web)
