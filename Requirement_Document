@@ -752,28 +752,39 @@ If failure, then send status as 0
 
 Technical workflow (Device)
 if status is 1
-Display the success message to user
+Display the success message to Shopkeeper
+DeliveryPerson should have received the notification regarding the Order to be delivered
 if status is 0
 Display the error screen to user
 
-20 - DeliveryPerson should be able to get a notification and SMS on his device when  an order is "Ready for shipment" and assigned to him for delivery.
-Business Flow
-As soon as shopkeeper has updated the order status to "Ready for shipment" assigned delivery person will be given a notification.
-DeliveryPerson will receive a SMS regarding the order assigned to him for shipment.
-Technical workflow (Web)
-Technical workflow (Device)
 21 - DeliveryPerson should be able to view Order Details and Shop Details on Order Details screen when he clicks on the notification sent to him after updating the order status to "Ready for shipment".
 Business Flow
+DeliveryPerson receives a notification when an order has been assigned to him for delivery.
+DeliveryPerson clicks on notification received.
+DeliveryPerson is redirected to Order details screen which displays the Order details and shop details.
 Technical workflow (Web)
+Device calls the Fetch_Order_Details service with the following input parameters
+Orderid
+Service fetches all the required Order details and shop details from the respective tables and send in response.
+If success, send status as 1
+If failure, send status as 0
+
 Technical workflow (Device)
-22 - Shopkeeper should be able to update the order status to "Shipped" when order has been picked up by DeliveryPerson for delivery.
+If status is 1
+Display Order details and Shop details to user
+If status is 0
+Display error screen to user
+
+22 - Shopkeeper should be able to update the order status to "Shipped" when order has been picked up by DeliveryPerson for delivery. Customer should be notified of this order status change to "Shipped".
 Business Flow
+Order has been picked up by DeliverPerson for delivery.
+Shopkeeper should be able to update order status to 'Shipped'
+Customer should receive a notification regarding this order status change.
 Technical workflow (Web)
+Device call the Update_order_status service with follwoing input parameters.
+
 Technical workflow (Device)
-23 - Customer should be notified of order status change to "Shipped".
-Business Flow
-Technical workflow (Web)
-Technical workflow (Device)
+
 24 - Customer should be able to see the order details and Delivery person details when clicking on order "Shipped" notification.
  Business Flow
 Technical workflow (Web)
