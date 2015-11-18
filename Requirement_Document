@@ -823,6 +823,8 @@ DeliveryPerson has successfully deliverd the order to Customer
 DeliveryPerson has collected the invoice amount from the customer
 DeliveryPerson has marked the order status as Delivered in the System
 DeliveryPerson has marked the Amount Collected for the order in System
+DeliveryPerson has marked the Customer Order Receipt in the System
+DeliveryPerson has collected the physical receipt of order from the customer
 Shopkeeper should be notified of this order status change to Delivered
 Technical workflow (Web)
 Device calls the Update_Order_Status service with the following input parameters
@@ -861,33 +863,45 @@ Display OrderDetails and DeliveryPerson details to Shopkeeer on screen
 If status is 0
 Display error scren to customer
 
-28 - DeliveryPerson should be able to get some evidence from customer that he has successfully delivered the order to him. Either in digital form or in form of a duplicate receipt signed by customer.
-Business Flow
 
+
+29 - Shopkeeper  should be able to update the order status to "Closed" when he has received the appropriate amount from DeliveryPerson after successful delivery of order to customer. DeliverPerson should be notified of this order status change.
+Business Flow
+DeliveryPerson has delivered the order to customer
+Shopkeeper has collected the required amount from the DeliveryPerson
+Shopkeeper has collected the physcial receipt signed by customer from the DeliveryPerson
+Shopkeeper has marked the order status as 'Closed' in system
+DeliveryPerson should be notified of this order status change
+Technical workflow (Web)
+Device calls the Update_Order_Status with the following input parameters
+OrderId
+Amount Receipt confirmation
+Customer Receipt received confirmation
+Service updates the data in required tables
+Service pushes the notification to DeliveryPerson regarding this order status change
+if success, send status as 1
+if failure, send status as 0
+
+Technical workflow (Device)
+If status is 1
+Shopkeeper should get the success message for this order status change
+DeliveryPerson should get an push notification of this order status change
+If status is 0
+Display error scren to customer with error code and Support contact number
+
+
+30 - Shopkeeper and DeliveryPerson both should be able to mark any order as "Disputed" but after successful delivery of the order to customer which is supposed to be looked upon by corresponding SellerHub. SellerHub should be notified of it.
+Business Flow
+DeliveryPerson has successfully delivered the order to Customer
+There is some dispute arising between ShopKeeper and DeliveryPerson
+ShopKeeper or DeliveryPerson has marked the order as 'Disputed' in the system
+ShopKeeper or DeliveryPerson provides an Dispute message while marking the order as disputed
+Associated SellerHub gets an notification regarding the order status change
+SellerHub looks into the dispute and resolves the matter on priority
 Technical workflow (Web)
 
 Technical workflow (Device)
 
-29 - Shopkeeper  should be able to update the order status to "Closed" when he has received the appropriate amount from DeliveryPerson after successful delivery of order to customer.
-Business Flow
-
-Technical workflow (Web)
-
-Technical workflow (Device)
-
-30 - Shopkeeper and DeliveryPerson both should be able to mark any order as "Disputed" but after successful delivery of the order to customer which is supposed to be looked upon by corresponding SellerHub.
-Business Flow
-
-Technical workflow (Web)
-
-Technical workflow (Device)
-
-31 - SellerHub should be able to see a notification when a Shopkeeper and DeliveryPerson marks a OrderID as  "Disputed"
-Business Flow
-
-Technical workflow (Web)
-
-Technical workflow (Device)
 
 32 - SellerHub should be able to see the Order details, Shop details, DeliveryPerson and Dispute message details when clicking on notification for "Disputed" order
 Business Flow
