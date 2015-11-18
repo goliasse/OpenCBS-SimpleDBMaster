@@ -848,9 +848,18 @@ Shopkeeper receives an order 'Delivered' notification when DeliveryPerson has su
 Shopkeeper clicks on notification
 Shopkeeper is redirected to Order details screen which displays OrderDetails, DeliveryPerson details to shopkeeper
 Technical workflow (Web)
-
+Device calls Fetch_Order_Details service with the following input parameterws
+OrderId
+OrderStatus
+Service fetches the OrderDetails and DeliverPerson details from the table and send in response
+If success, send status as 1
+If failure, send status as 1
 
 Technical workflow (Device)
+If status is 1
+Display OrderDetails and DeliveryPerson details to Shopkeeer on screen
+If status is 0
+Display error scren to customer
 
 28 - DeliveryPerson should be able to get some evidence from customer that he has successfully delivered the order to him. Either in digital form or in form of a duplicate receipt signed by customer.
 Business Flow
