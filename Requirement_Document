@@ -960,3 +960,16 @@ Customer gets an success message regarding this order update
 Shopkeeper gets an notification regarding this order status change
 If status is 0
 Display error scren to customer with error code and Support contact number
+
+
+Menu Options for Customer Application ends
+Update Profie - Redirect to update profile screen where customer can update his details i.e. Name, Mobile, Email.
+Update Address - Redirect to update address screnn where customer can update his current address
+Favourite Shops - Redirect to Favourite shops screen where shops marked as Favourite will be listed
+My cart - Redirect to My Cart screen where Products present in Cart will be displayed
+My Orders - All the Orders placed by the customer will be displayed
+Track my recent order - Will display the latest status of the most recent order placed by the customer
+My addresses - Rediret to My addresses screen where customer can update his alternate delivery addresses
+Rate app  - Redirect to play store
+Share App - Display the list of Social media where app could be shared
+Contact Us - Redirect to contact us page
