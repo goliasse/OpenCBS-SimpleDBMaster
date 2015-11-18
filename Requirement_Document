@@ -899,21 +899,64 @@ ShopKeeper or DeliveryPerson provides an Dispute message while marking the order
 Associated SellerHub gets an notification regarding the order status change
 SellerHub looks into the dispute and resolves the matter on priority
 Technical workflow (Web)
+Device call the Update_Order_Status service with the following input parameters
+OrderId
+OrderStatus
+Disputed Message
+Service updates the data in required tables
+Service pushes the notification to SellerHub device regarding this order status change
+if success, send status as 1
+if failure, send status as 0
 
 Technical workflow (Device)
-
+If status is 1
+Shopkeeper or DeliveryPerson receives a success message for this order status change
+SellerHub receives a notification regarding this order status change
+If status is 0
+Display error scren to customer with error code and Support contact number
 
 32 - SellerHub should be able to see the Order details, Shop details, DeliveryPerson and Dispute message details when clicking on notification for "Disputed" order
 Business Flow
-
+Shopkeeper or DeliverPerson raises a Dispute
+SellerHub receives a notification regarding this order status change
+SellerHub clicks on the notification received
+SellerHub is redirected to OrderDetails screen displaying OrderDetails, ShopDetails, DeliveryPersonDetails and Dispute message
 Technical workflow (Web)
+Device calls the Fetch_Order_details service with the follwoing input parameters
+OrderId
+OrderStatus
+Service send the OrderDetails, ShopDetails, DeliveryPersonDetails and Dispute message in response
+If success, send status as 1
+If failure, send status as 0
 
 Technical workflow (Device)
+If status is 1
+SellerHub displays the OrderDetails screen with OrderDetails, ShopDetails, DeliveryPersonDetails and Dispute message
+If status is 0
+Display error scren to customer with error code and Support contact number
 
 33 - Customer should be able to cancel his order before its status got changed to "Shipped"
 Business Flow
-
+Customer clicks on Orders menu option
+All the non closed orders will be displayed on the screen Sorted by order date with cancel button
+Customer clicks on cancel button to cancel an order
+Customer provides an reason to cancel the order
+Order is cancelled
+Customer gets an success message regarding the cancellation of the order
+Shopkepper should get an notification regaring the order cancellation and stop preparing the order
 Technical workflow (Web)
-
+Device calls the update_order_status with the following input parameters
+OrderId
+OrderStatus
+CancellationReason
+CancellationTimestamp
+Service updates the data in the required tables
+Service pushes a notification to shopkeeper regarding this order status change 
+If success, send status as 1
+If failure, send status as 0
 Technical workflow (Device)
-
+If status is 1
+Customer gets an success message regarding this order update
+Shopkeeper gets an notification regarding this order status change
+If status is 0
+Display error scren to customer with error code and Support contact number
