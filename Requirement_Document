@@ -1001,11 +1001,11 @@ Requirement
 Shopkeeper should be able to view and update his profile information.
 Shopkeeper should be able to view SellerHub profile to whom he is associated.
 Shopkeeper should be able to view and update list of products associated to his shop either added by him or SellerHub
-Shopkeeper should be able to add a product
+Shopkeeper should be able to add a product.
 Shopkeeper should be able to view and update Orders associated to him.
 Shopkeeper should be able to view Delivery Persons associated to SellerHub to whom he is associated 
 Shopkeeper should be able to view and update Delivery Persons associated to him
-
+Shopkeeper should be able to add a Delivery Person which will report to him
 
 Menu Options for  DeliveryPerson Application
 My Profile - View and update his profile
@@ -1016,6 +1016,13 @@ Rate app  - Redirect to play store for rating  the application
 Share App - Display the list of Social media where app could be shared
 Contact Us - Redirect to contact us page
 Exit Application - Exits the application
+
+Requirement
+DeliveryPerson should be able to view and update his profile information.
+DeliveryPerson should be able to view list of shopkeepers who are associated with the corresponding SellerHub
+DeliveryPerson should be able to view the information about Shopkeeper or SellerHub to whom he is associated
+DeliveryPerson should be able to View list of orders processed by him with the option of changing the order status to Dispute, Delivered on any order
+
 
 Menu Options for  SellerHub Application
 My Profile - View and update the SellerHub profile
@@ -1028,7 +1035,15 @@ Share App - Display the list of Social media where app could be shared
 Contact Us - Redirect to contact us page
 Exit Application - Exits the application
 
-
+Requirement
+SellerHub should be able to view and update his SellerHub profile information 
+SellerHub should be able to view and update list of associated Shopkeepers to him
+SellerHub should be able to add a Shopkeeper
+SellerHub should be able to View and update the list of products associated with different shopkeepers associtaed to him
+SellerHub should be able to add a Product on behalf of a shopkeeper
+SellerHub should be able to View and update the list of Delivery Person associated with him
+SellerHub should be able to add a DeliveryPerson
+SellerHub should be able to View the list of Orders processed by Shopkeepers associated with him
 
 
 
