@@ -962,7 +962,7 @@ If status is 0
 Display error scren to customer with error code and Support contact number
 
 
-Menu Options for Customer Application ends
+Menu Options for Customer Application
 Update Profie - Redirect to update profile screen where customer can update his details i.e. Name, Mobile, Email.
 Update Address - Redirect to update address screnn where customer can update his current address
 Favourite Shops - Redirect to Favourite shops screen where shops marked as Favourite will be listed
@@ -973,3 +973,15 @@ My addresses - Rediret to My addresses screen where customer can update his alte
 Rate app  - Redirect to play store
 Share App - Display the list of Social media where app could be shared
 Contact Us - Redirect to contact us page
+
+Menu Options for Shopkeeper Application
+Products
+Orders
+Delivery Persons
+Rate app  - Redirect to play store
+Share App - Display the list of Social media where app could be shared
+Contact Us - Redirect to contact us page
+
+
+
+
