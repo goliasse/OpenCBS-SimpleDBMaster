@@ -973,14 +973,28 @@ My addresses - Rediret to My addresses screen where customer can update his alte
 Rate app  - Redirect to play store
 Share App - Display the list of Social media where app could be shared
 Contact Us - Redirect to contact us page
+Exit Application - Exits the application
 
 Menu Options for Shopkeeper Application
-Products
-Orders
-Delivery Persons
-Rate app  - Redirect to play store
+My Profile - Shopkeeper can view and update his Shopkeeper profile
+Seller Hub Profile - Shopkeeper can view SellerHub information to whom he is associated
+My Products - Lists the products associated to the Shopkeeper
+My Orders - Lists the Orders associated to the Shopkeeper
+Delivery Persons - Lists the Delivery Persons associated to the Shopkeeper Seller Hub
+Rate app  - Redirect to play store for rating  the application
 Share App - Display the list of Social media where app could be shared
 Contact Us - Redirect to contact us page
+Exit Application - Exits the application
+
+Menu Options for  DeliveryPerson Application
+Shopkeeper - 
+My Orders - 
+Rate app  - Redirect to play store for rating  the application
+Share App - Display the list of Social media where app could be shared
+Contact Us - Redirect to contact us page
+Exit Application - Exits the application
+
+
 
 
 
