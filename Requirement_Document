@@ -1036,14 +1036,75 @@ Contact Us - Redirect to contact us page
 Exit Application - Exits the application
 
 Requirement
-SellerHub should be able to view and update his SellerHub profile information 
+SellerHub should be able to view his SellerHub profile information 
+Business flow
+SellerHub clicks on "My Profile" menu option
+SellerHub is redirected to "My Profile" screen where all the fields are displayed.
+The fields which can be edited are supposed to be dispalyed in editable mode
+The fields which cannot be edited are supposed to be dispalyed only in view mode
+
+
+Technical flow (Web)
+Device calls Fetch_SellerHub_Profile service with the following input parameters
+Technical flow (Device)
+
+SellerHub should be able to update his SellerHub profile information 
+Business flow
+SellerHub clicks on "My Profile" menu option
+SellerHub is redirected to "My Profile" screen where all the fields are displayed.
+SellerHub updates the required fields and clicks on Update button
+SellerHub information is successfully updated into system
+SellerHub get a success message regarding this profile update
+
+Technical flow (Web)
+
+Technical flow (Device)
+
 SellerHub should be able to view and update list of associated Shopkeepers to him
+Business flow
+
+Technical flow (Web)
+
+Technical flow (Device)
+
 SellerHub should be able to add a Shopkeeper
+Business flow
+
+Technical flow (Web)
+
+Technical flow (Device)
+
 SellerHub should be able to View and update the list of products associated with different shopkeepers associtaed to him
+Business flow
+
+Technical flow (Web)
+
+Technical flow (Device)
+
 SellerHub should be able to add a Product on behalf of a shopkeeper
+Business flow
+
+Technical flow (Web)
+
+Technical flow (Device)
+
 SellerHub should be able to View and update the list of Delivery Person associated with him
+Business flow
+
+Technical flow (Web)
+
+Technical flow (Device)
+
 SellerHub should be able to add a DeliveryPerson
+Business flow
+
+Technical flow (Web)
+
+Technical flow (Device)
+
 SellerHub should be able to View the list of Orders processed by Shopkeepers associated with him
+Business flow
 
+Technical flow (Web)
 
-
+Technical flow (Device)
