@@ -963,17 +963,28 @@ Display error scren to customer with error code and Support contact number
 
 
 Menu Options for Customer Application
-Update Profie - Redirect to update profile screen where customer can update his details i.e. Name, Mobile, Email.
+Update Profile - Redirect to update profile screen where customer can update his details i.e. Name, Mobile, Email.
 Update Address - Redirect to update address screnn where customer can update his current address
 Favourite Shops - Redirect to Favourite shops screen where shops marked as Favourite will be listed
 My cart - Redirect to My Cart screen where Products present in Cart will be displayed
 My Orders - All the Orders placed by the customer will be displayed
 Track my recent order - Will display the latest status of the most recent order placed by the customer
-My addresses - Rediret to My addresses screen where customer can update his alternate delivery addresses
+My addresses - Redirect to My addresses screen where customer can update his alternate delivery addresses
 Rate app  - Redirect to play store
 Share App - Display the list of Social media where app could be shared
 Contact Us - Redirect to contact us page
 Exit Application - Exits the application
+
+Requirement
+Customer should be able to view and update his profile information.
+Customer should be able to view and update his current address information.
+Customer should be able to view the list of Shops marked as Favroite by the customer.
+Customer should be able to see the items present in Cart organised by Shops.
+Customer should be able to see all the Orders placed by Customer till date.
+Customer should be able to see status of most recently placed order by customer.
+Customer should be able to view and update the Delivery Addresses.
+Customer should be able to add a new Delivery Addresses.
+
 
 Menu Options for Shopkeeper Application
 My Profile - Shopkeeper can view and update his Shopkeeper profile
@@ -985,6 +996,16 @@ Rate app  - Redirect to play store for rating  the application
 Share App - Display the list of Social media where app could be shared
 Contact Us - Redirect to contact us page
 Exit Application - Exits the application
+
+Requirement
+Shopkeeper should be able to view and update his profile information.
+Shopkeeper should be able to view SellerHub profile to whom he is associated.
+Shopkeeper should be able to view and update list of products associated to his shop either added by him or SellerHub
+Shopkeeper should be able to add a product
+Shopkeeper should be able to view and update Orders associated to him.
+Shopkeeper should be able to view Delivery Persons associated to SellerHub to whom he is associated 
+Shopkeeper should be able to view and update Delivery Persons associated to him
+
 
 Menu Options for  DeliveryPerson Application
 My Profile - View and update his profile
