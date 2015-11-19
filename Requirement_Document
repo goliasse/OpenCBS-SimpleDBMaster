@@ -987,13 +987,25 @@ Contact Us - Redirect to contact us page
 Exit Application - Exits the application
 
 Menu Options for  DeliveryPerson Application
-Shopkeeper - 
-My Orders - 
+My Profile - View and update his profile
+Shopkeepers - View list of all the Shopkeepers associated with the SellerHub with whom DeliveryPerson is associated
+Shopkeeper or Seller Hub Profile Information - View Information about Shopkeeper or Seller Hub to whom he is associated
+My Orders - View list of orders processed by him with the option of changing the order status to Dispute, Delivered on any order
 Rate app  - Redirect to play store for rating  the application
 Share App - Display the list of Social media where app could be shared
 Contact Us - Redirect to contact us page
 Exit Application - Exits the application
 
+Menu Options for  SellerHub Application
+My Profile - View and update the SellerHub profile
+Shopkeeper - View and update the list of shopkeepers associated
+Prducts - View and update the list of products associated with different shopkeepers
+Delivery Person - View and update the list of Delivery Person associated with him
+Orders - View the list of Orders processed by Shopkeepers associated with him
+Rate app  - Redirect to play store for rating  the application
+Share App - Display the list of Social media where app could be shared
+Contact Us - Redirect to contact us page
+Exit Application - Exits the application
 
 
 
