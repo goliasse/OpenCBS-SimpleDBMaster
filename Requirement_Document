@@ -1082,28 +1082,118 @@ Business flow
 SellerHub clicks on "Shopkeeper" menu option
 SellerHub will be displayed "Shopkeeper" screen which will be displaying all the Shopkeeper associated to him
 Technical flow (Web)
-Device calls Fetch_Shopkeepers service with the following paerameters
+Device calls Fetch_Shopkeeper_Profiles service with the following paerameters
 SellerHubId
-Service fetches Shopkeepers 
-
+Service fetches associated Shopkeepers data from the corresponding table and send in response
+If success, send 1 as status
+If failure, send 0 as status
 Technical flow (Device)
+If status is 1
+Device displays the list of Shopkeepers associated with SellerHub
+If status is 0
+Error screen will be displayed with the Error code and support contact number
 
 SellerHub should be able to update a associated Shopkeeper to him
+Business flow
+SellerHub clicks on "Shopkeeper" menu option
+SellerHub will be displayed "Shopkeeper" screen which will be displaying all the Shopkeeper associated to him
+SellerHub clicks on Edit icon to edit a Shopkeeper record
+Sellerhub is redirected to "Edit Shopkeeper" screen with the selected shopkeeper profile data populated
+SellerHub updates the shopkeeper profile data
+SellerHub clicks on Update button
+Sellerhub gets a message regarding the successful update of Shopkeeper profile
+Technical flow (Web)
+Device calls the Update_Shopkeeper_Profile with the following input parameters
+ShopkeeperId
+SellerHubId
+Fields to be updated in the table
+Service updates the required table data
+If success, send 1 as status
+If failure, send 0 as status
+Technical flow (Device)
+If status is 1
+Sellerhub gets a message regarding the successful update of Shopkeeper profile
+If status is 0
+Error screen will be displayed with the Error code and support contact number
+
 SellerHub should be able to remove a associated Shopkeeper to him
+Business flow
+SellerHub clicks on "Shopkeeper" menu option
+SellerHub will be displayed "Shopkeeper" screen which will be displaying all the Shopkeeper associated to him
+SellerHub clicks on Delete icon to remove a Shopkeeper record
+Sellerhub is redirected to "Remove Shopkeeper" screen with the selected shopkeeper profile data populated
+SellerHub clicks on Remove button
+Sellerhub gets a message regarding the successful removal of Shopkeeper profile
+Technical flow (Web)
+Device calls Remove_Shopkeeper_Profile with the following input parameters
+ShopkeeperId
+SellerHubId
+Service makes the required changes in corresponding tables
+If success, send 1 in response
+If failure, send 0 in response
+Technical flow (Device)
+If status is 1
+Sellerhub gets a message regarding the successful removal of Shopkeeper profile
+If status is 0
+Error screen will be displayed with the Error code and support contact number
 
 SellerHub should be able to add a Shopkeeper
 Business flow
+SellerHub clicks on "Shopkeeper" menu option
+SellerHub will be displayed "Shopkeeper" screen which will be displaying all the Shopkeeper associated to him
+SellerHub clicks on Add icon to add a Shopkeeper record
+SellerHub is redirected to "Add Shopkeeper" screen
+SellerHub enters all the required data
+SellerHub clicks on "Add Shopkeeper" button
+Sellerhub gets a message regarding the successful addition of Shopkeeper profile
+Technical flow (Web)
+Device calls the Add_Shopkeeper_Profile with the following input parameters
+SellerHub Id
+Shopkeeper profile parameters
+Service inserts the record into corresponding table
+If success, send 1 in response
+If failure, send 0 in response
+Technical flow (Device)
+If status is 1
+Sellerhub gets a message regarding the successful addition of Shopkeeper profile
+If status is 0
+Error screen will be displayed with the Error code and support contact number
+
+SellerHub should be able to View list of products associated with different shopkeepers associtaed to him
+Business flow
+SellerHub clicks on "Products" menu option
+SellerHub will be displayed "Products" screen which will be displaying all the Shopkeeper associated to him
+SellerHub clicks on Add icon to add a Shopkeeper record
 
 Technical flow (Web)
 
 Technical flow (Device)
+If status is 1
+Sellerhub should be able to see a list of products associated with selected shopkeeper
+If status is 0
+Error screen will be displayed with the Error code and support contact number
 
-SellerHub should be able to View and update the list of products associated with different shopkeepers associtaed to him
+SellerHub should be able to update the product associated with different shopkeepers associtaed to him
 Business flow
 
 Technical flow (Web)
 
 Technical flow (Device)
+If status is 1
+Sellerhub gets a message regarding the successful update of product
+If status is 0
+Error screen will be displayed with the Error code and support contact number
+
+SellerHub should be able to remove the product associated with different shopkeepers associtaed to him
+Business flow
+
+Technical flow (Web)
+
+Technical flow (Device)
+If status is 1
+Sellerhub gets a message regarding the successful removal of product
+If status is 0
+Error screen will be displayed with the Error code and support contact number
 
 SellerHub should be able to add a Product on behalf of a shopkeeper
 Business flow
@@ -1111,8 +1201,26 @@ Business flow
 Technical flow (Web)
 
 Technical flow (Device)
+If status is 1
+Sellerhub gets a message regarding the successful addition of product
+If status is 0
+Error screen will be displayed with the Error code and support contact number
 
-SellerHub should be able to View and update the list of Delivery Person associated with him
+SellerHub should be able to View list of Delivery Persons associated with him
+Business flow
+
+Technical flow (Web)
+
+Technical flow (Device)
+
+SellerHub should be able to update Delivery Person's profile associated with him
+Business flow
+
+Technical flow (Web)
+
+Technical flow (Device)
+
+SellerHub should be able to remove Delivery Person associated with him
 Business flow
 
 Technical flow (Web)
@@ -1125,6 +1233,10 @@ Business flow
 Technical flow (Web)
 
 Technical flow (Device)
+If status is 1
+Sellerhub gets a message regarding the successful addition of DeliveryPerson
+If status is 0
+Error screen will be displayed with the Error code and support contact number
 
 SellerHub should be able to View the list of Orders processed by Shopkeepers associated with him
 Business flow
@@ -1132,3 +1244,7 @@ Business flow
 Technical flow (Web)
 
 Technical flow (Device)
+If status is 1
+Sellerhub should be able to see list of orders according to value selected in the dropdown
+If status is 0
+Error screen will be displayed with the Error code and support contact number
