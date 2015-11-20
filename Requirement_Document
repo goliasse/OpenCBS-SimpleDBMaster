@@ -1084,6 +1084,7 @@ SellerHub will be displayed "Shopkeeper" screen which will be displaying all the
 Technical flow (Web)
 Device calls Fetch_Shopkeeper_Profiles service with the following paerameters
 SellerHubId
+Columns - It will sepcify the list of columns to be fetched from the table
 Service fetches associated Shopkeepers data from the corresponding table and send in response
 If success, send 1 as status
 If failure, send 0 as status
@@ -1159,14 +1160,36 @@ Sellerhub gets a message regarding the successful addition of Shopkeeper profile
 If status is 0
 Error screen will be displayed with the Error code and support contact number
 
-SellerHub should be able to View list of products associated with different shopkeepers associtaed to him
+SellerHub should be able to see a Shopkeeper dropdown on Products screen
 Business flow
 SellerHub clicks on "Products" menu option
-SellerHub will be displayed "Products" screen which will be displaying all the Shopkeeper associated to him
-SellerHub clicks on Add icon to add a Shopkeeper record
-
+SellerHub is redirected to "Products" screen which is having Shopkeeper dropdown on Products screen
+SellerHub should be able to select a value from Shopkeeper dropdown
 Technical flow (Web)
+Device calls Fetch_Shopkeeper_Profiles service with the following input parameters
+SellerHubId
+Columns - It will sepcify the list of columns to be fetched from the table
+Service fetches the data of the specified columns from required tables and send in response
+If success, send 1 in response
+If failure, send 0 in response
+Technical flow (Device)
+If status is 1
+Sellerhub should be able to see a list of Shopkeeper associated with SellerHub on "Products" screen
+If status is 0
+Error screen will be displayed with the Error code and support contact number
 
+SellerHub should be able to View list of products associated with selected shopkeeper from dropdown on "Products" screen
+Business flow
+SellerHub clicks on "Products" menu option
+SellerHub is redirected to "Products" screen which is having Shopkeeper dropdown on Products screen
+SellerHub selects a Shopkeeper from this dropdown
+All the products associated to selected Shopkeeper will be populated on "Products" screen
+Technical flow (Web)
+Device calls the Fetch_Products service with the following input parameters
+ShopkeeperId
+Service fetches the Products details from corresponding tables and send in respnse
+If success, send 1 in response
+If failure, send 0 in response
 Technical flow (Device)
 If status is 1
 Sellerhub should be able to see a list of products associated with selected shopkeeper
@@ -1175,7 +1198,15 @@ Error screen will be displayed with the Error code and support contact number
 
 SellerHub should be able to update the product associated with different shopkeepers associtaed to him
 Business flow
-
+SellerHub clicks on "Products" menu option
+SellerHub is redirected to "Products" screen which is having Shopkeeper dropdown on Products screen
+SellerHub selects a Shopkeeper from this dropdown
+All the products associated to selected Shopkeeper will be populated on "Products" screen
+SellerHub clicks on "Edit" icon
+"Edit Product" screen is displayed with the Product details populated on fields
+SellerHub updates the required parameters
+SellerHub clicks on Update button
+Sellerhub gets a success message regarding the succesful update of product
 Technical flow (Web)
 
 Technical flow (Device)
