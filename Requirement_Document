@@ -1079,8 +1079,12 @@ Error screen will be displayed with the Error code and support contact number
 
 SellerHub should be able to view list of associated Shopkeepers to him
 Business flow
-
+SellerHub clicks on "Shopkeeper" menu option
+SellerHub will be displayed "Shopkeeper" screen which will be displaying all the Shopkeeper associated to him
 Technical flow (Web)
+Device calls Fetch_Shopkeepers service with the following paerameters
+SellerHubId
+Service fetches Shopkeepers 
 
 Technical flow (Device)
 
