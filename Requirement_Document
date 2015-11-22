@@ -1006,6 +1006,7 @@ Shopkeeper should be able to view and update Orders associated to him.
 Shopkeeper should be able to view Delivery Persons associated to SellerHub to whom he is associated 
 Shopkeeper should be able to view and update Delivery Persons associated to him
 Shopkeeper should be able to add a Delivery Person which will report to him
+Shopkeeper should be able to update the shop operational day and time
 
 Menu Options for  DeliveryPerson Application
 My Profile - View and update his profile
