@@ -1210,6 +1210,7 @@ SellerHub clicks on Update button
 Sellerhub gets a success message regarding the succesful update of product
 Technical flow (Web)
 
+
 Technical flow (Device)
 If status is 1
 Sellerhub gets a message regarding the successful update of product
@@ -1271,6 +1272,39 @@ If status is 0
 Error screen will be displayed with the Error code and support contact number
 
 SellerHub should be able to View the list of Orders processed by Shopkeepers associated with him
+Business flow
+
+Technical flow (Web)
+
+Technical flow (Device)
+If status is 1
+Sellerhub should be able to see list of orders according to value selected in the dropdown
+If status is 0
+Error screen will be displayed with the Error code and support contact number
+
+SellerHub should be able to login to his acccount with his SellerHub Id and password
+Business flow
+
+Technical flow (Web)
+
+Technical flow (Device)
+If status is 1
+Sellerhub should be able to see list of orders according to value selected in the dropdown
+If status is 0
+Error screen will be displayed with the Error code and support contact number
+
+SellerHub should be able to change his password and provide security question and answer after first login using default password
+Business flow
+
+Technical flow (Web)
+
+Technical flow (Device)
+If status is 1
+Sellerhub should be able to see list of orders according to value selected in the dropdown
+If status is 0
+Error screen will be displayed with the Error code and support contact number
+
+SellerHub should be able to use his UserID as Password for first login
 Business flow
 
 Technical flow (Web)
