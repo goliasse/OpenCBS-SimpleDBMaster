@@ -1262,6 +1262,8 @@ Technical flow (Device)
 
 SellerHub should be able to add a DeliveryPerson
 Business flow
+SellerHub clicks on Delivery Persons menu option
+SellerHub is redirected to Delivery Persons screen listing all the delivery person associated to him
 
 Technical flow (Web)
 
@@ -1271,46 +1273,92 @@ Sellerhub gets a message regarding the successful addition of DeliveryPerson
 If status is 0
 Error screen will be displayed with the Error code and support contact number
 
-SellerHub should be able to View the list of Orders processed by Shopkeepers associated with him
+SellerHub should be able to see a Shopkeeper dropdown on Orders screen
 Business flow
-
+SellerHub clicks on "Orders" menu option
+SellerHub is redirected to "Orders" screen which is having Shopkeeper dropdown
+SellerHub should be able to select a value from Shopkeeper dropdown
 Technical flow (Web)
-
+Device calls Fetch_Shopkeeper_Profiles service with the following input parameters
+SellerHubId
+Columns - It will sepcify the list of columns to be fetched from the table
+Service fetches the data of the specified columns from required tables and send in response
+If success, send 1 in response
+If failure, send 0 in response
 Technical flow (Device)
 If status is 1
-Sellerhub should be able to see list of orders according to value selected in the dropdown
+Sellerhub should be able to see a list of Shopkeeper associated with SellerHub on "Orders" screen
 If status is 0
 Error screen will be displayed with the Error code and support contact number
 
-SellerHub should be able to login to his acccount with his SellerHub Id and password
+SellerHub should be able to View the list of unclosed Orders processed by Shopkeepers associated with him
 Business flow
+SellerHub clicks on "Orders" menu option
+SellerHub is redirected to Orders screen having a Shopkeeper dropdown listing all the shopkeepers registered with him
+SellerHub selects a Shopkeeper
+All the unclosed ordres processed by him are listed on the Orders screen
 
 Technical flow (Web)
+Device calls fetch_orders with the following input parameters
+shopkeeperId
+orderStatus
+Service fetches all the unclosed order details from the Order tables and send in response
+If success, send 1 as status
+If failure, send 0 as status
 
 Technical flow (Device)
 If status is 1
-Sellerhub should be able to see list of orders according to value selected in the dropdown
+Sellerhub should be able to see list of orders according to value selected in the shopkeeper dropdown
 If status is 0
 Error screen will be displayed with the Error code and support contact number
+
+SellerHub should be able to login to his acccount with his SellerHub Id and password (Already logged out)
+Business flow
+SellerHub launch the application
+SellerHub is redirected to Login screen
+SellerHub enters his UserId and Password and clicks on Login
+SellerHub is redirected to Shopkeepers screen where all the Shopkeepers registered to him are listed
+
+Technical flow (Web)
+Device calls authenticate_user service with the following input parameters
+username
+password
+deviceType (Android, iPhone, Windows, Web)
+Service validates the login credentials with appropriate tables
+if credentials are correct then
+Update userlog table to reflect the appropriate device login
+send 1 in response
+if credentials are correct then
+send 0 in response
+
+Technical flow (Device)
+If status is 1
+SellerHub is redirected to Shopkeepers screen where all the Shopkeepers registered to him are listed
+If status is 0
+Wrong username and password error message will be displayed to user on login screen itself
 
 SellerHub should be able to change his password and provide security question and answer after first login using default password
 Business flow
-
+SellerHub launch the application very first time after account creation
+SellerHub is redirected to Login screen where he logs in with his UserId and provided default password
+SellerHub is redirected to Change Password screen
+SellerHub provides the Password details and Security question and answer on Change password screen and clicks on Change Password button
+"Password changed successfully" message dispalyed to user and user is redirected to "Shopkeepers" screen
 Technical flow (Web)
+Service calls the change_password with following input parameters
+userId
+oldPassword
+newPassword
+firstLogin
+securityQuestion
+securityAnswer
+Service updates the password for the corresponding user in the appropriate table
+Service updates the Security question and answer for the corresponding user in the appropriate table
+if success, send status as 1
+if failure, send status as 0
 
 Technical flow (Device)
 If status is 1
-Sellerhub should be able to see list of orders according to value selected in the dropdown
-If status is 0
-Error screen will be displayed with the Error code and support contact number
-
-SellerHub should be able to use his UserID as Password for first login
-Business flow
-
-Technical flow (Web)
-
-Technical flow (Device)
-If status is 1
-Sellerhub should be able to see list of orders according to value selected in the dropdown
+SellerHub is redirected to "Shopkeepers" screen
 If status is 0
 Error screen will be displayed with the Error code and support contact number
