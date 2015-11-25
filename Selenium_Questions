@@ -38,9 +38,14 @@ Can u send a code for printing in selenium?
 How to find broken images in a page using Selenium Web driver.
 How to handle auto complete box in web driver?
 What is FirefoxBinary class? why is it used.
+How to hndle multiple windows if windows does not have the title.
+Can we store FirefoxDriver instance into FirefoxDriver reference itself or not ?
+What is WebDriver?
 
 
-
+How to specify the expected number of runs for a test method in TestNG?
+Can we give the negative number as priority in @Test annotation in TestNG?
+Difference between beforetest and beforemethod?
 What is TestNG?
 What are the different annotations used in TestNG?
 What is differenec between TestNG and Junit?
