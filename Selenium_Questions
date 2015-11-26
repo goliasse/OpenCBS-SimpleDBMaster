@@ -38,12 +38,24 @@ Can u send a code for printing in selenium?
 How to find broken images in a page using Selenium Web driver.
 How to handle auto complete box in web driver?
 What is FirefoxBinary class? why is it used.
-How to hndle multiple windows if windows does not have the title.
+How to handle multiple windows if windows does not have the title.
+
 Can we store FirefoxDriver instance into FirefoxDriver reference itself or not ?
+Yes, we can store the FirefoxDriver instance into FirefoxDriver reference and it will work as expected.
+
 What is WebDriver?
+WebDriver is a java interface which provides as set of methods which is supposed to be implemented by any browser driver class. e.g. FirefoxDriver impelments the WebDriver interface and provides the method body for all of its methods according to the underlying browser architecture.
+
+What id difference between getWindowHandle() and getWindowHandles()?
+How do we do the right click on a element?
+How do we do the double click on a element?
+
+How do we do the drag and drop using the Selenium?
 
 
 How to specify the expected number of runs for a test method in TestNG?
+We have to specify the invocationCount property of @Test annotation.
+
 Can we give the negative number as priority in @Test annotation in TestNG?
 Difference between beforetest and beforemethod?
 What is TestNG?
