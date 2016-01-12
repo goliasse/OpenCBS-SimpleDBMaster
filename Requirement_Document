@@ -1362,3 +1362,26 @@ If status is 1
 SellerHub is redirected to "Shopkeepers" screen
 If status is 0
 Error screen will be displayed with the Error code and support contact number
+
+
+$query = "SELECT `Product`.ProductSKUID,`Product`.ProductNameEnglish,`Product`.ProductNameHindi,`Product`.ProductDescription,`Product`.ProductOrderUnit,`Product`.ProductPriceForUnits,`ProductShopAssociation`.ProductPrice,`ProductShopAssociation`.ProductOfferedPrice FROM `Product`,`ProductShopAssociation` WHERE (`ProductShopAssociation`.ShopID='".$shopId."') AND (`Product`.ProductSKUID = `ProductShopAssociation`.ProductSKUID) AND (`Product`.ProductRegistrationStatus = '".$STATUS_APPROVED."') AND (`Product`.ProductDeleted = 0) AND (`Product`.ProductCategoryName = '".$productCategoryName."') AND (`Product`.ShopCategoryName = '".$shopCategoryName."')";
+	//echo $query;
+	$result=mysqli_query($link,$query);
+	
+	$dataResult = array();
+	$dataResult['status']=1;
+	$i = 0;
+	if(mysqli_num_rows($result)){
+	while($row=mysqli_fetch_array($result)){
+	$dataRow = array();
+	$dataRow['productSKUID']=$row['ProductSKUID'];
+	$dataRow['productNameEnglish']=$row['ProductNameEnglish'];
+	$dataRow['productNameHindi']=$row['ProductNameHindi'];
+	$dataRow['productDescription']=$row['ProductDescription'];
+	$dataRow['productOrderUnit']=$row['ProductOrderUnit'];
+	$dataRow['productPriceForUnits']=$row['ProductPriceForUnits'];
+	$dataRow['productPrice']=$row['ProductPrice'];
+	$dataRow['productOfferedPrice']=$row['ProductOfferedPrice'];
+	$dataRow['productImageName']=$SERVER_URL.'/'.$PRODUCT_IMAGE_FOLDER.'/'.$row['ProductSKUID'].'.PNG';
+	$dataResult['response']['products'][$i++]=$dataRow;
+	}
