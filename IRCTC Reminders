@@ -1,1 +1,59 @@
+IRCTC Reminders
+
+An app which reminds you of your IRCTC bookings
+
+For the frequent travellers, it is very tough task to track your bookings on SMS and Emails. As there may be multiple trains, 
+multiple routes and multiple tickets to be remembered. So this application gets you some relief of this hectic task.
+
+
+What 'IRCTC Reminders' does - 
+Step 1- It will capture the IRCTC SMS automatically from the phone. 
+Users also have the some other options as well
+1- Copy and paste the SMS manually
+2- Sync the Inbox SMS
+3- Feed the required data
+
+Step 2 - Application will parse the SMS and populate the fields
+Step 3 - After review you can add the journey and set the reminders
+Step 4 - Now it is application's responsibility to send the reminders as per the specification.
+
+Initially we are plannig to send the reminders through two mediums i.e. Emails and Push Notifications. 
+Later on we will be adding some more mediums.
+
+Note - This application requires an internet connection to work.
+
+Menu options
+My Profile
+For updating Name and Emails
+
+Upcoming Journeys 
+For viewing list of all upcoming journyes with various filters.
+
+Sync Journeys
+For syncing journeys manually with copy and paste, Sync Inbox and Add A journey option
+
+Add A Journey
+For adding a journey manually
+
+Notification Settings
+For choosing your preferred notification mediums
+
+Contact Us
+For dropping us a note rearding the app
+
+Application Help
+For viewing Help content
+
+Exit Application
+For Exiting the application
+
+
+Please have a look at our data privacy policy.
+
+
+
+
+
+
+
 
