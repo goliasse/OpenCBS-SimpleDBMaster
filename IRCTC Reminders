@@ -15,8 +15,7 @@ Step 2 - Application will parse the SMS and populate the fields
 Step 3 - After review you can add the journey and set the reminders
 Step 4 - Now it is application's responsibility to send the reminders as per the specification.
 
-Initially we are planning to send the reminders through two mediums i.e. Emails and Push Notifications. 
-Later on we will be adding some more mediums.
+Initially we are planning to send the reminders through two mediums i.e. Emails and Push Notifications. Later on we will be adding some more mediums.
 
 Note - This application requires an internet connection to work.
 
