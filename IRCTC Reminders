@@ -15,6 +15,10 @@ Step 2 - Application will parse the SMS and populate the fields
 Step 3 - After review you can add the journey and set the reminders
 Step 4 - Now it is application's responsibility to send the reminders as per the specification.
 
+For e.g If you set the Reminder Days Before to 2 and date of journey is 28-Dec-1990, then you will start receiving reimnders before 2 days and till Journey of date. You will receive total 3 reminders each on 26-Dec-2016, 27-Dec-2016, 28-Dec-2016.
+
+For e.g If you set the Reminder Hours Before to 2 and date and time of journey is 28-Dec-1990 14:30 PM, then you will start receiving reimnders before 2 hour and till Journey time. You will receive 4 reminders each on 12:30, 13:00, 13:30, 14:00.
+
 Initially we are planning to send the reminders through two mediums i.e. Emails and Push Notifications. Later on we will be adding some more mediums.
 
 Note - This application requires an internet connection to work.
@@ -31,9 +35,6 @@ For syncing journeys manually with copy and paste, Sync Inbox and Add A journey 
 
 Add a Journey
 For adding a journey manually
-
-Notification Settings
-For choosing your preferred notification mediums
 
 Contact Us
 For dropping us a note regarding the app
